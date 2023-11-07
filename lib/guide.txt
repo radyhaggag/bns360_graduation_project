@@ -1,0 +1,13 @@
+// TO GET USED PACKAGES ON THIS STARTUP PROJECT "RUN THE FOLLOWING COMMAND"
+$ flutter pub add dio equatable flutter_screenutil flutter_bloc get_it dartz shared_preferences
+
+-- dio -> for api requests
+-- equatable -> for helping us to compare between to objects without (override == and hashCode)
+-- flutter_screenutil -> for helping us to make our design adapting on different screens
+-- flutter_bloc -> for state-management
+-- get_it -> for dependency injection
+-- dartz -> for use Either data type to return either failure or success result
+-- shared_preferences -> for store small data on the storage
+
+
+-------------------------------------------

@@ -1,0 +1,30 @@
+import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
+
+import '../../../../core/errors/failure.dart';
+import '../../../../core/usecase/base_use_case.dart';
+import '../repositories/auth_repo.dart';
+
+class ResetPasswordUseCase extends UseCase<bool, ResetPasswordParams> {
+  final AuthRepo authRepo;
+
+  ResetPasswordUseCase({required this.authRepo});
+
+  @override
+  Future<Either<Failure, bool>> call(ResetPasswordParams params) {
+    return authRepo.resetPassword(params);
+  }
+}
+
+class ResetPasswordParams extends Equatable {
+  final String email;
+  final String newPassword;
+
+  const ResetPasswordParams({
+    required this.email,
+    required this.newPassword,
+  });
+
+  @override
+  List<Object> get props => [email, newPassword];
+}

@@ -7,7 +7,6 @@ abstract class AppColors {
   static const red = Color(0xffB00020);
 
   // Color platte [Changing according to the app ui]
-  static const primary = Color(0xff6200EE);
-  static const primaryVariant = Color(0xff3700B3);
-  static const secondary = Color(0xff03DAC6);
+  static const primary = Color(0xff3C6255);
+  static const secondary = Color(0xffE1ECC8);
 }

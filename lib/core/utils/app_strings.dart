@@ -1,3 +1,3 @@
 abstract class AppStrings {
-  static const appName = "App Name";
+  static const appName = "BNS360";
 }

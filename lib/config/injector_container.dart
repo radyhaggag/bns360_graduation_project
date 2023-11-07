@@ -1,3 +1,5 @@
+import '../core/localization/localization_bloc.dart';
+import '../core/utils/cache_helper.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -36,6 +38,14 @@ Future<void> initCore() async {
   // App Shared
   sl.registerLazySingleton<AppShared>(
     () => AppShared(sharedPreferences: sl()),
+  );
+  // Cache Helper
+  sl.registerLazySingleton(
+    () => CacheHelper(sl()),
+  );
+  // Localization Bloc
+  sl.registerFactory(
+    () => LocalizationBloc(sl()),
   );
 }
 

@@ -1,3 +1,4 @@
+import '../../../domain/usecases/create_new_password_use_case.dart';
 import '../../../domain/usecases/reset_password_usecase.dart';
 import '../../../domain/usecases/verify_email_use_case.dart';
 
@@ -12,6 +13,7 @@ abstract class AuthRemoteDataSource {
   Future<RegisterModel> register(RegisterParams params);
   Future<bool> verifyEmail(VerifyEmailParams params);
   Future<bool> resetPassword(ResetPasswordParams params);
+  Future<bool> createNewPassword(CreateNewPasswordParams params);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -42,6 +44,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<bool> verifyEmail(VerifyEmailParams params) {
     // TODO: implement verifyEmail
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> createNewPassword(CreateNewPasswordParams params) {
+    // TODO: implement createNewPassword
     throw UnimplementedError();
   }
 }

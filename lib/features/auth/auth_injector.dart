@@ -4,19 +4,24 @@ import 'data/repositories/auth_repo_impl.dart';
 import 'domain/repositories/auth_repo.dart';
 import 'domain/usecases/login_use_case.dart';
 import 'domain/usecases/register_use_case.dart';
+import 'domain/usecases/reset_password_usecase.dart';
+import 'domain/usecases/verify_email_use_case.dart';
 import 'presentation/bloc/auth_bloc.dart';
 
 void initAuth() {
-  // Login Use case
   sl.registerLazySingleton<LoginUseCase>(
     () => LoginUseCase(authRepo: sl()),
   );
-  // Register Use case
   sl.registerLazySingleton<RegisterUseCase>(
     () => RegisterUseCase(authRepo: sl()),
   );
+  sl.registerLazySingleton<VerifyEmailUseCase>(
+    () => VerifyEmailUseCase(authRepo: sl()),
+  );
+  sl.registerLazySingleton<ResetPasswordUseCase>(
+    () => ResetPasswordUseCase(authRepo: sl()),
+  );
 
-  // Auth Repository
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
       authRemoteDataSource: sl(),
@@ -24,16 +29,16 @@ void initAuth() {
     ),
   );
 
-  // Auth Remote Data source
   sl.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(apiConsumer: sl()),
   );
 
-  // Auth Bloc
   sl.registerFactory<AuthBloc>(
     () => AuthBloc(
       registerUseCase: sl(),
       loginUseCase: sl(),
+      resetPasswordUseCase: sl(),
+      verifyEmailUseCase: sl(),
     ),
   );
 }

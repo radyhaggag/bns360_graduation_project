@@ -1,3 +1,15 @@
 {
-  "appName": "BNS360"
+  "appName": "BNS360",
+  "welcome": "Welcome,",
+  "login": "Login",
+  "signUp": "Sign Up",
+  "continueAsGuest": "Continue as Guest",
+  "or": "Or",
+  "email": "Email",
+  "enterEmail": "Enter your email",
+  "password": "Password",
+  "enterPassword": "Enter your password",
+  "loginMsg": "Welcome back to Login to your Account",
+  "forgotPassword": "Forgot password?",
+  "notAccountMsg": "don't have an account?"
 }

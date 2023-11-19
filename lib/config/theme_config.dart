@@ -6,6 +6,7 @@ import '../core/utils/app_styles.dart';
 abstract class ThemeConfig {
   static ThemeData getLightTheme() {
     return ThemeData(
+      fontFamily: 'Poppins',
       textTheme: TextTheme(
         titleLarge: AppStyles.getBlackStyle(),
         titleMedium: AppStyles.getBoldStyle(),
@@ -16,16 +17,39 @@ abstract class ThemeConfig {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          textStyle: AppStyles.getMediumStyle(),
+          textStyle: AppStyles.getSemiBoldStyle(),
+          backgroundColor: AppColors.primary,
+          foregroundColor: AppColors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(25),
           ),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          textStyle: AppStyles.getSemiBoldStyle(),
+          backgroundColor: AppColors.white,
+          foregroundColor: AppColors.primary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+            side: const BorderSide(color: AppColors.primary),
+          ),
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          textStyle: AppStyles.getSemiBoldStyle(),
+          backgroundColor: AppColors.white,
+          foregroundColor: AppColors.primary,
         ),
       ),
       appBarTheme: AppBarTheme(
         centerTitle: true,
         titleTextStyle: AppStyles.getRegularStyle(),
+        backgroundColor: AppColors.white,
       ),
+      indicatorColor: AppColors.primary,
+      scaffoldBackgroundColor: AppColors.white,
     );
   }
 

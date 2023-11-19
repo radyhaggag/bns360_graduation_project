@@ -1,3 +1,15 @@
 {
-  "appName": "BNS360"
+  "appName": "BNS360",
+  "welcome": "مرحبا بك،",
+  "login": "تسحيل الدخول",
+  "signUp": "تسجيل",
+  "continueAsGuest": "الاستمرار كضيف",
+  "or": "أو",
+  "email": "البريد الإلكترونى",
+  "enterEmail": "ادخل بريدك الإلكترونى",
+  "password": "كلمة المرور",
+  "enterPassword": "ادخل كلمة المرور",
+  "loginMsg": "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك",
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "notAccountMsg": "ليس لديك حساب؟"
 }

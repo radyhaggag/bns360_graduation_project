@@ -22,6 +22,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "appName": MessageLookupByLibrary.simpleMessage("BNS360")
+        "appName": MessageLookupByLibrary.simpleMessage("BNS360"),
+        "continueAsGuest":
+            MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
+        "email": MessageLookupByLibrary.simpleMessage("البريد الإلكترونى"),
+        "enterEmail":
+            MessageLookupByLibrary.simpleMessage("ادخل بريدك الإلكترونى"),
+        "enterPassword":
+            MessageLookupByLibrary.simpleMessage("ادخل كلمة المرور"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
+        "login": MessageLookupByLibrary.simpleMessage("تسحيل الدخول"),
+        "loginMsg": MessageLookupByLibrary.simpleMessage(
+            "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
+        "notAccountMsg": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "or": MessageLookupByLibrary.simpleMessage("أو"),
+        "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
+        "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،")
       };
 }

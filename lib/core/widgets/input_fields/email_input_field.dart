@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/extensions.dart';
+import '../../extensions/validators.dart';
 
 class EmailInputField extends StatelessWidget {
   final TextEditingController controller;

@@ -1,10 +1,9 @@
-import '../../../domain/usecases/create_new_password_use_case.dart';
-import '../../../domain/usecases/reset_password_usecase.dart';
-import '../../../domain/usecases/verify_email_use_case.dart';
-
 import '../../../../../core/errors/api/dio_manager/api_consumer.dart';
+import '../../../domain/usecases/create_new_password_use_case.dart';
 import '../../../domain/usecases/login_use_case.dart';
 import '../../../domain/usecases/register_use_case.dart';
+import '../../../domain/usecases/reset_password_usecase.dart';
+import '../../../domain/usecases/verify_email_use_case.dart';
 import '../../models/login_model.dart';
 import '../../models/register_model.dart';
 

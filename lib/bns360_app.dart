@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'config/injector_container.dart';
 import 'config/route_config.dart';
+import 'config/theme_config.dart';
 import 'core/localization/localization_bloc.dart';
 import 'core/utils/app_strings.dart';
 import 'core/utils/constants.dart';
@@ -30,12 +31,9 @@ class BNS360App extends StatelessWidget {
               locale: state.locale,
               debugShowCheckedModeBanner: false,
               title: AppStrings.appName,
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-                useMaterial3: true,
-              ),
+              theme: ThemeConfig.getLightTheme(),
               onGenerateRoute: RouteConfig.getRoute,
-              initialRoute: token != null ? Routes.home : Routes.login,
+              initialRoute: token != null ? Routes.home : Routes.welcome,
             );
           }
           return const SizedBox();

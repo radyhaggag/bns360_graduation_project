@@ -7,54 +7,61 @@ abstract class AuthState extends Equatable {
   List<Object> get props => [];
 }
 
+class ErrorState extends AuthState {
+  final String message;
+
+  const ErrorState({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
 class AuthInitial extends AuthState {}
 
 class LoginLoadingState extends AuthState {}
 
 class LoginSuccessState extends AuthState {}
 
-class LoginErrorState extends AuthState {
-  final String message;
-
-  const LoginErrorState({required this.message});
+class LoginErrorState extends ErrorState {
+  const LoginErrorState({required super.message});
 }
 
-class RegisterLoadingState extends AuthState {}
+class SignUpLoadingState extends AuthState {}
 
-class RegisterSuccessState extends AuthState {}
+class SignUpSuccessState extends AuthState {}
 
-class RegisterErrorState extends AuthState {
-  final String message;
+class SignUpErrorState extends ErrorState {
+  const SignUpErrorState({required super.message});
+}
 
-  const RegisterErrorState({required this.message});
+class SendEmailVerificationLoadingState extends AuthState {}
+
+class SendEmailVerificationSuccessState extends AuthState {}
+
+class SendEmailVerificationErrorState extends ErrorState {
+  const SendEmailVerificationErrorState({required super.message});
 }
 
 class VerifyEmailLoadingState extends AuthState {}
 
 class VerifyEmailSuccessState extends AuthState {}
 
-class VerifyEmailErrorState extends AuthState {
-  final String message;
-
-  const VerifyEmailErrorState({required this.message});
+class VerifyEmailErrorState extends ErrorState {
+  const VerifyEmailErrorState({required super.message});
 }
 
 class ResetPasswordLoadingState extends AuthState {}
 
 class ResetPasswordSuccessState extends AuthState {}
 
-class ResetPasswordErrorState extends AuthState {
-  final String message;
-
-  const ResetPasswordErrorState({required this.message});
+class ResetPasswordErrorState extends ErrorState {
+  const ResetPasswordErrorState({required super.message});
 }
 
-class CreateNewPasswordPasswordLoadingState extends AuthState {}
+class CreateNewPasswordLoadingState extends AuthState {}
 
-class CreateNewPasswordPasswordSuccessState extends AuthState {}
+class CreateNewPasswordSuccessState extends AuthState {}
 
-class CreateNewPasswordPasswordErrorState extends AuthState {
-  final String message;
-
-  const CreateNewPasswordPasswordErrorState({required this.message});
+class CreateNewPasswordErrorState extends ErrorState {
+  const CreateNewPasswordErrorState({required super.message});
 }

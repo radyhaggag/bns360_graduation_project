@@ -11,5 +11,8 @@
   "enterPassword": "ادخل كلمة المرور",
   "loginMsg": "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك",
   "forgotPassword": "هل نسيت كلمة المرور؟",
-  "notAccountMsg": "ليس لديك حساب؟"
+  "notHaveAccountMsg": "ليس لديك حساب؟",
+  "validateEmpty": "الحقل مطلوب",
+  "validateEmail": "البريد الإلكتروني مطلوب",
+  "validatePassword": "يجب أن تكون كلمة المرور على الأقل 6 أحرف"
 }

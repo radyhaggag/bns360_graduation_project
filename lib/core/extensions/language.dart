@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../../config/injector_container.dart';
-import '../utils/cache_helper.dart';
+import '../helpers/cache_helper.dart';
 import '../utils/enums.dart';
 
 extension MediaQueryExtension on BuildContext {

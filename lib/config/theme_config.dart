@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../core/utils/app_colors.dart';
+import '../core/utils/app_fonts.dart';
 import '../core/utils/app_styles.dart';
 
 abstract class ThemeConfig {
   static ThemeData getLightTheme() {
+    final outlineInputBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(color: AppColors.primary),
+    );
     return ThemeData(
       fontFamily: 'Poppins',
       textTheme: TextTheme(
@@ -50,6 +55,16 @@ abstract class ThemeConfig {
       ),
       indicatorColor: AppColors.primary,
       scaffoldBackgroundColor: AppColors.white,
+      inputDecorationTheme: InputDecorationTheme(
+        border: outlineInputBorder,
+        focusedBorder: outlineInputBorder,
+        enabledBorder: outlineInputBorder,
+        errorBorder: outlineInputBorder.copyWith(
+          borderSide: const BorderSide(color: AppColors.red),
+        ),
+        hintStyle: AppStyles.getMediumStyle(color: AppColors.hint),
+        labelStyle: AppStyles.getRegularStyle(fontSize: AppFontSize.body),
+      ),
     );
   }
 

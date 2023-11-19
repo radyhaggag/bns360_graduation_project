@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../utils/cache_helper.dart';
+import '../helpers/cache_helper.dart';
 
 part 'localization_event.dart';
 part 'localization_state.dart';

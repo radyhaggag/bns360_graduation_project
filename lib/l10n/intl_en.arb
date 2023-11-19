@@ -11,5 +11,8 @@
   "enterPassword": "Enter your password",
   "loginMsg": "Welcome back to Login to your Account",
   "forgotPassword": "Forgot password?",
-  "notAccountMsg": "don't have an account?"
+  "notHaveAccountMsg": "don't have an account?",
+  "validateEmpty": "Field is required",
+  "validateEmail": "Email is required",
+  "validatePassword": "Password must be at least 6 characters"
 }

@@ -49,7 +49,7 @@ abstract class AppStyles {
     );
   }
 
-  static TextStyle getRegularStyle({
+  static TextStyle getMediumStyle({
     double? fontSize,
     Color? color,
   }) {
@@ -60,7 +60,7 @@ abstract class AppStyles {
     );
   }
 
-  static TextStyle getMediumStyle({
+  static TextStyle getRegularStyle({
     double? fontSize,
     Color? color,
   }) {

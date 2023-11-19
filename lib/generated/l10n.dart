@@ -1,7 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -172,10 +171,40 @@ class S {
   }
 
   /// `don't have an account?`
-  String get notAccountMsg {
+  String get notHaveAccountMsg {
     return Intl.message(
       'don\'t have an account?',
-      name: 'notAccountMsg',
+      name: 'notHaveAccountMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Field is required`
+  String get validateEmpty {
+    return Intl.message(
+      'Field is required',
+      name: 'validateEmpty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is required`
+  String get validateEmail {
+    return Intl.message(
+      'Email is required',
+      name: 'validateEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 6 characters`
+  String get validatePassword {
+    return Intl.message(
+      'Password must be at least 6 characters',
+      name: 'validatePassword',
       desc: '',
       args: [],
     );

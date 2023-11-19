@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-class Register extends Equatable {
+class SignUp extends Equatable {
   final String token;
 
-  const Register({
+  const SignUp({
     required this.token,
   });
 

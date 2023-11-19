@@ -14,28 +14,36 @@ class LoginEvent extends AuthEvent {
   const LoginEvent({required this.email, required this.password});
 }
 
-class RegisterEvent extends AuthEvent {
+class SignUpEvent extends AuthEvent {
   final String name;
   final String email;
   final String password;
 
-  const RegisterEvent({
+  const SignUpEvent({
     required this.name,
     required this.email,
     required this.password,
   });
 }
 
-class VerifyEmailEvent extends AuthEvent {
+class SendEmailVerificationEvent extends AuthEvent {
   final String email;
 
-  const VerifyEmailEvent({required this.email});
+  const SendEmailVerificationEvent({required this.email});
+}
+
+class VerifyEmailEvent extends AuthEvent {
+  final String email;
+  final String otpCode;
+
+  const VerifyEmailEvent({required this.email, required this.otpCode});
 }
 
 class ResetPasswordEvent extends AuthEvent {
   final String email;
+  final String newPassword;
 
-  const ResetPasswordEvent({required this.email});
+  const ResetPasswordEvent({required this.email, required this.newPassword});
 }
 
 class CreateNewPasswordEvent extends AuthEvent {

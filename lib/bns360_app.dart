@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'config/injector_container.dart';
 import 'config/route_config.dart';
@@ -19,21 +20,27 @@ class BNS360App extends StatelessWidget {
       create: (context) => sl<LocalizationBloc>()..add(GetSavedLanguage()),
       child: BlocBuilder<LocalizationBloc, LocalizationState>(
         builder: (context, state) {
+          ScreenUtil.init(context);
           if (state is ChangeLocalState) {
-            return MaterialApp(
-              supportedLocales: S.delegate.supportedLocales,
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              locale: state.locale,
-              debugShowCheckedModeBanner: false,
-              title: AppStrings.appName,
-              theme: ThemeConfig.getLightTheme(),
-              onGenerateRoute: RouteConfig.getRoute,
-              initialRoute: token != null ? Routes.home : Routes.welcome,
+            return ScreenUtilInit(
+              designSize: const Size(360, 800),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              child: MaterialApp(
+                supportedLocales: S.delegate.supportedLocales,
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                locale: state.locale,
+                debugShowCheckedModeBanner: false,
+                title: AppStrings.appName,
+                theme: ThemeConfig.getLightTheme(),
+                onGenerateRoute: RouteConfig.getRoute,
+                initialRoute: token != null ? Routes.home : Routes.welcome,
+              ),
             );
           }
           return const SizedBox();

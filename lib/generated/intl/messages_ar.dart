@@ -35,10 +35,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("تسحيل الدخول"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
-        "notAccountMsg": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "notHaveAccountMsg":
+            MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "or": MessageLookupByLibrary.simpleMessage("أو"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
+        "validateEmail":
+            MessageLookupByLibrary.simpleMessage("البريد الإلكتروني مطلوب"),
+        "validateEmpty": MessageLookupByLibrary.simpleMessage("الحقل مطلوب"),
+        "validatePassword": MessageLookupByLibrary.simpleMessage(
+            "يجب أن تكون كلمة المرور على الأقل 6 أحرف"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،")
       };
 }

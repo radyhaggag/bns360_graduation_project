@@ -7,6 +7,7 @@ import '../../../../../core/extensions/media_query.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums.dart';
 import '../../../../../core/widgets/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
@@ -20,7 +21,7 @@ class WelcomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 14,
+        horizontal: kHorizontalPadding,
         vertical: 25,
       ),
       child: Column(

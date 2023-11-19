@@ -34,11 +34,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
-        "notAccountMsg":
+        "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("don\'t have an account?"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "validateEmail":
+            MessageLookupByLibrary.simpleMessage("Email is required"),
+        "validateEmpty":
+            MessageLookupByLibrary.simpleMessage("Field is required"),
+        "validatePassword": MessageLookupByLibrary.simpleMessage(
+            "Password must be at least 6 characters"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,")
       };
 }

@@ -4,12 +4,12 @@ import '../../../../config/shared_preferences.dart';
 import '../../../../core/errors/error_handler.dart';
 import '../../../../core/errors/failure.dart';
 import '../../domain/entities/login.dart';
-import '../../domain/entities/register.dart';
+import '../../domain/entities/sign_up.dart';
 import '../../domain/repositories/auth_repo.dart';
 import '../../domain/usecases/create_new_password_use_case.dart';
 import '../../domain/usecases/login_use_case.dart';
-import '../../domain/usecases/register_use_case.dart';
 import '../../domain/usecases/reset_password_usecase.dart';
+import '../../domain/usecases/sign_up_use_case.dart';
 import '../../domain/usecases/verify_email_use_case.dart';
 import '../datasources/remote/auth_remote_data_source.dart';
 
@@ -35,11 +35,11 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, Register>> register(
-    RegisterParams params,
+  Future<Either<Failure, SignUp>> signUp(
+    SignUpParams params,
   ) async {
     try {
-      final result = await authRemoteDataSource.register(params);
+      final result = await authRemoteDataSource.signUp(params);
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e).failure);
@@ -76,6 +76,16 @@ class AuthRepoImpl implements AuthRepo {
   ) async {
     try {
       final result = await authRemoteDataSource.createNewPassword(params);
+      return Right(result);
+    } catch (e) {
+      return Left(ErrorHandler.handle(e).failure);
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> sendEmailVerification(String params) async {
+    try {
+      final result = await authRemoteDataSource.sendEmailVerification(params);
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e).failure);

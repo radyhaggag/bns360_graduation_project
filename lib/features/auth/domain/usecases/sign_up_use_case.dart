@@ -3,26 +3,26 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/usecase/base_use_case.dart';
-import '../entities/register.dart';
+import '../entities/sign_up.dart';
 import '../repositories/auth_repo.dart';
 
-class RegisterUseCase extends UseCase<Register, RegisterParams> {
+class SignUpUseCase extends UseCase<SignUp, SignUpParams> {
   final AuthRepo authRepo;
 
-  RegisterUseCase({required this.authRepo});
+  SignUpUseCase({required this.authRepo});
 
   @override
-  Future<Either<Failure, Register>> call(RegisterParams params) {
-    return authRepo.register(params);
+  Future<Either<Failure, SignUp>> call(SignUpParams params) {
+    return authRepo.signUp(params);
   }
 }
 
-class RegisterParams extends Equatable {
+class SignUpParams extends Equatable {
   final String name;
   final String email;
   final String password;
 
-  const RegisterParams({
+  const SignUpParams({
     required this.name,
     required this.email,
     required this.password,

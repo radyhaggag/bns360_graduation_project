@@ -13,6 +13,19 @@
   "forgotPassword": "هل نسيت كلمة المرور؟",
   "notHaveAccountMsg": "ليس لديك حساب؟",
   "validateEmpty": "الحقل مطلوب",
-  "validateEmail": "البريد الإلكتروني مطلوب",
-  "validatePassword": "يجب أن تكون كلمة المرور على الأقل 6 أحرف"
+  "validateEmail": "البريد الإلكتروني غير صحيح",
+  "validatePassword": "يجب أن تكون كلمة المرور على الأقل 6 أحرف",
+  "validatePhone": "رقم هاتف غير صحيح",
+  "fullName": "اسمك بالكامل",
+  "enterName": "ادخل اسمك بالكامل",
+  "haveAccountMsg": "هل لديك حساب بالفعل؟",
+  "createYourAccount": "أنشئ حسابك",
+  "signUpMsg": "قم بملئ المعلومات التاليه أو قم بالتسجيل بحسابك على مواقع التواصل الاجتماعى",
+  "pleaseChoose": "اختر من فضلك",
+  "phoneNumber": "رقم الهاتف",
+  "enterPhoneNumber": "ادخل رقم هاتفك",
+  "optional": "اختيارى",
+  "user": "مستخدم",
+  "serviceProvider": "مقدم خدمة",
+  "businessOwner": "صاحب نشاط تجارى"
 }

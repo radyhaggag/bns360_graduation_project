@@ -170,10 +170,10 @@ class S {
     );
   }
 
-  /// `don't have an account?`
+  /// `Don't have an account?`
   String get notHaveAccountMsg {
     return Intl.message(
-      'don\'t have an account?',
+      'Don\'t have an account?',
       name: 'notHaveAccountMsg',
       desc: '',
       args: [],
@@ -190,10 +190,10 @@ class S {
     );
   }
 
-  /// `Email is required`
+  /// `Enter a valid email address`
   String get validateEmail {
     return Intl.message(
-      'Email is required',
+      'Enter a valid email address',
       name: 'validateEmail',
       desc: '',
       args: [],
@@ -205,6 +205,136 @@ class S {
     return Intl.message(
       'Password must be at least 6 characters',
       name: 'validatePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid phone number`
+  String get validatePhone {
+    return Intl.message(
+      'Invalid phone number',
+      name: 'validatePhone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full name`
+  String get fullName {
+    return Intl.message(
+      'Full name',
+      name: 'fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your name`
+  String get enterName {
+    return Intl.message(
+      'Enter your name',
+      name: 'enterName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account?`
+  String get haveAccountMsg {
+    return Intl.message(
+      'Already have an account?',
+      name: 'haveAccountMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create your Account`
+  String get createYourAccount {
+    return Intl.message(
+      'Create your Account',
+      name: 'createYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fill your information below or register with your social account`
+  String get signUpMsg {
+    return Intl.message(
+      'Fill your information below or register with your social account',
+      name: 'signUpMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please choose`
+  String get pleaseChoose {
+    return Intl.message(
+      'Please choose',
+      name: 'pleaseChoose',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your phone number`
+  String get enterPhoneNumber {
+    return Intl.message(
+      'Enter your phone number',
+      name: 'enterPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Optional`
+  String get optional {
+    return Intl.message(
+      'Optional',
+      name: 'optional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User`
+  String get user {
+    return Intl.message(
+      'User',
+      name: 'user',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service provider`
+  String get serviceProvider {
+    return Intl.message(
+      'Service provider',
+      name: 'serviceProvider',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business owner`
+  String get businessOwner {
+    return Intl.message(
+      'Business owner',
+      name: 'businessOwner',
       desc: '',
       args: [],
     );

@@ -21,6 +21,7 @@ class BNS360App extends StatelessWidget {
       child: BlocBuilder<LocalizationBloc, LocalizationState>(
         builder: (context, state) {
           ScreenUtil.init(context);
+          ThemeConfig.configureStatusBarColor();
           if (state is ChangeLocalState) {
             return ScreenUtilInit(
               designSize: const Size(360, 800),

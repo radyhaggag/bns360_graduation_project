@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../extensions/validators.dart';
+import '../../../generated/l10n.dart';
+import '../../helpers/form_validators.dart';
+import 'custom_input_field.dart';
 
 class EmailInputField extends StatelessWidget {
   final TextEditingController controller;
@@ -14,20 +16,13 @@ class EmailInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    return CustomInputField(
       controller: controller,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please enter an email address';
-        }
-        if (value.isValidEmail()) {
-          return 'Please enter a valid email address';
-        }
-        return null;
-      },
-      decoration: const InputDecoration(
-        hintText: 'Email',
-      ),
+      keyboardType: TextInputType.emailAddress,
+      title: S.of(context).email,
+      hint: S.of(context).enterEmail,
+      initialValue: initialValue,
+      validator: (value) => FormValidator.validateEmail(value),
     );
   }
 }

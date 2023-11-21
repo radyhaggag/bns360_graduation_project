@@ -1,5 +1,7 @@
 import 'package:intl/intl.dart';
 
+import '../extensions/validators.dart';
+
 class FormValidator {
   static String? validateEmpty(String? value) {
     if (value == null || value.trim().isEmpty) {
@@ -14,21 +16,16 @@ class FormValidator {
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return Intl.message(
-        'Email is required',
-        name: 'validateEmail',
+        'Field is required',
+        name: 'validateEmpty',
       );
-    } else if (!_isEmailValid(value)) {
+    } else if (!value.isValidEmail()) {
       return Intl.message(
         'Enter a valid email address',
         name: 'validateEmail',
       );
     }
     return null;
-  }
-
-  static bool _isEmailValid(String value) {
-    final emailRegExp = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
-    return emailRegExp.hasMatch(value);
   }
 
   static String? validatePassword(String? value) {
@@ -38,6 +35,25 @@ class FormValidator {
         name: 'validatePassword',
       );
     }
+    return null;
+  }
+
+  static String? validatePhoneNumber(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return null;
+    }
+
+    // Regular expression for Egypt phone number
+    // The format: +2001XXXXXXXXX
+    RegExp regex = RegExp(r'^\+20(10|11|12|15)\d{8}$');
+
+    if (!regex.hasMatch(value)) {
+      return Intl.message(
+        'Invalid phone number',
+        name: 'validatePhone',
+      );
+    }
+
     return null;
   }
 }

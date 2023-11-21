@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../utils/app_colors.dart';
+import '../utils/app_fonts.dart';
 
 enum ToastType { success, error }
 

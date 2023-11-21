@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utils/enums.dart';
 import '../../domain/usecases/create_new_password_use_case.dart';
 import '../../domain/usecases/login_use_case.dart';
 import '../../domain/usecases/reset_password_usecase.dart';
@@ -35,6 +36,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<ResetPasswordEvent>(_resetPassword);
     on<CreateNewPasswordEvent>(_createNewPassword);
     on<SendEmailVerificationEvent>(_sendEmailVerification);
+    on<ChangeUserType>(_changeUserType);
   }
 
   Future<void> _loginUser(
@@ -137,5 +139,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (l) => emit(SendEmailVerificationErrorState(message: l.message)),
       (r) => emit(SendEmailVerificationSuccessState()),
     );
+  }
+
+  UserType? userType;
+
+  _changeUserType(ChangeUserType event, Emitter<AuthState> emit) {
+    userType = event.userType;
+    emit(UserTypeChanged(userType: event.userType));
   }
 }

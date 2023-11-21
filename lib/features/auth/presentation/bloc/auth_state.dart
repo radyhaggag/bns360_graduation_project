@@ -65,3 +65,14 @@ class CreateNewPasswordSuccessState extends AuthState {}
 class CreateNewPasswordErrorState extends ErrorState {
   const CreateNewPasswordErrorState({required super.message});
 }
+
+class UserTypeChanged extends AuthState {
+  final UserType userType;
+
+  const UserTypeChanged({
+    required this.userType,
+  });
+
+  @override
+  List<Object> get props => [userType];
+}

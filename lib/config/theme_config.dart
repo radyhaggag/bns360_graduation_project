@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../core/utils/app_colors.dart';
 import '../core/utils/app_fonts.dart';
@@ -56,13 +57,17 @@ abstract class ThemeConfig {
       indicatorColor: AppColors.primary,
       scaffoldBackgroundColor: AppColors.white,
       inputDecorationTheme: InputDecorationTheme(
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
         border: outlineInputBorder,
         focusedBorder: outlineInputBorder,
         enabledBorder: outlineInputBorder,
         errorBorder: outlineInputBorder.copyWith(
           borderSide: const BorderSide(color: AppColors.red),
         ),
-        hintStyle: AppStyles.getMediumStyle(color: AppColors.hint),
+        hintStyle: AppStyles.getRegularStyle(color: AppColors.black25),
         labelStyle: AppStyles.getRegularStyle(fontSize: AppFontSize.body),
       ),
     );
@@ -70,5 +75,11 @@ abstract class ThemeConfig {
 
   static ThemeData getDarkTheme() {
     return ThemeData();
+  }
+
+  static void configureStatusBarColor() {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: AppColors.primary,
+    ));
   }
 }

@@ -55,3 +55,14 @@ class CreateNewPasswordEvent extends AuthEvent {
     required this.password,
   });
 }
+
+class ChangeUserType extends AuthEvent {
+  final UserType userType;
+
+  const ChangeUserType({
+    required this.userType,
+  });
+
+  @override
+  List<Object> get props => [userType];
+}

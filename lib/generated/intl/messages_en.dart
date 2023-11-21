@@ -23,28 +23,47 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("BNS360"),
+        "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
+        "createYourAccount":
+            MessageLookupByLibrary.simpleMessage("Create your Account"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "enterName": MessageLookupByLibrary.simpleMessage("Enter your name"),
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "enterPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Enter your phone number"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
+        "haveAccountMsg":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
         "notHaveAccountMsg":
-            MessageLookupByLibrary.simpleMessage("don\'t have an account?"),
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
+        "serviceProvider":
+            MessageLookupByLibrary.simpleMessage("Service provider"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
+        "signUpMsg": MessageLookupByLibrary.simpleMessage(
+            "Fill your information below or register with your social account"),
+        "user": MessageLookupByLibrary.simpleMessage("User"),
         "validateEmail":
-            MessageLookupByLibrary.simpleMessage("Email is required"),
+            MessageLookupByLibrary.simpleMessage("Enter a valid email address"),
         "validateEmpty":
             MessageLookupByLibrary.simpleMessage("Field is required"),
         "validatePassword": MessageLookupByLibrary.simpleMessage(
             "Password must be at least 6 characters"),
+        "validatePhone":
+            MessageLookupByLibrary.simpleMessage("Invalid phone number"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,")
       };
 }

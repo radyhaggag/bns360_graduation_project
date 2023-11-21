@@ -19,7 +19,7 @@ class FormValidator {
         'Field is required',
         name: 'validateEmpty',
       );
-    } else if (!value.isValidEmail()) {
+    } else if (!value.isEmail()) {
       return Intl.message(
         'Enter a valid email address',
         name: 'validateEmail',
@@ -45,9 +45,8 @@ class FormValidator {
 
     // Regular expression for Egypt phone number
     // The format: +2001XXXXXXXXX
-    RegExp regex = RegExp(r'^\+20(10|11|12|15)\d{8}$');
 
-    if (!regex.hasMatch(value)) {
+    if (!value.isPhone()) {
       return Intl.message(
         'Invalid phone number',
         name: 'validatePhone',

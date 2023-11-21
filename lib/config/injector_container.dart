@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../core/errors/api/dio_manager/api_consumer.dart';
-import '../core/errors/api/dio_manager/dio_consumer.dart';
+import '../core/api/api_consumer.dart';
+import '../core/api/dio_consumer.dart';
 import '../core/helpers/cache_helper.dart';
 import '../core/localization/localization_bloc.dart';
 import '../features/auth/auth_injector.dart';

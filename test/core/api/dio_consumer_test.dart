@@ -23,29 +23,32 @@ void main() {
     dioConsumer = DioConsumer(dio: dio);
   });
 
+  void setUpDioClientWithStatusCode(int code) {
+    final responsePayload = jsonEncode({"response_code": "1000"});
+
+    final httpResponse = ResponseBody.fromString(
+      responsePayload,
+      code,
+      headers: {
+        Headers.contentTypeHeader: [Headers.jsonContentType],
+      },
+    );
+
+    when(mockHttpClientAdapter.fetch(any, any, any)).thenAnswer(
+      (_) async => httpResponse,
+    );
+  }
+
   group('DioConsumer Success requests', () {
     test(
         'Should make a successful request when call dioConsumer.get for any request',
         () async {
       // arrange
-      final responsePayload = jsonEncode({"response_code": "1000"});
-
-      final httpResponse = ResponseBody.fromString(
-        responsePayload,
-        200,
-        headers: {
-          Headers.contentTypeHeader: [Headers.jsonContentType],
-        },
-      );
-
-      when(mockHttpClientAdapter.fetch(any, any, any)).thenAnswer(
-        (_) async => httpResponse,
-      );
+      setUpDioClientWithStatusCode(200);
       // act
       final response = await dioConsumer.get(
         endpoint: 'endpoint',
       );
-
       // assert
       final expected = {"response_code": "1000"};
       expect(response.data, expected);
@@ -54,19 +57,7 @@ void main() {
         'Should make a successful request when call dioConsumer.post for any request with body',
         () async {
       // arrange
-      final responsePayload = jsonEncode({"response_code": "1000"});
-
-      final httpResponse = ResponseBody.fromString(
-        responsePayload,
-        200,
-        headers: {
-          Headers.contentTypeHeader: [Headers.jsonContentType],
-        },
-      );
-
-      when(mockHttpClientAdapter.fetch(any, any, any)).thenAnswer(
-        (_) async => httpResponse,
-      );
+      setUpDioClientWithStatusCode(200);
       // act
       final response = await dioConsumer.post(
         endpoint: 'endpoint',
@@ -81,25 +72,12 @@ void main() {
         'Should make a successful request when call dioConsumer.patch for any request with body',
         () async {
       // arrange
-      final responsePayload = jsonEncode({"response_code": "1000"});
-
-      final httpResponse = ResponseBody.fromString(
-        responsePayload,
-        200,
-        headers: {
-          Headers.contentTypeHeader: [Headers.jsonContentType],
-        },
-      );
-
-      when(mockHttpClientAdapter.fetch(any, any, any)).thenAnswer(
-        (_) async => httpResponse,
-      );
+      setUpDioClientWithStatusCode(200);
       // act
       final response = await dioConsumer.patch(
         endpoint: 'endpoint',
         data: {'name': "Rady"},
       );
-
       // assert
       final expected = {"response_code": "1000"};
       expect(response.data, expected);
@@ -112,71 +90,39 @@ void main() {
           'Should throw DioException when call dioConsumer.get for any request',
           () async {
         // arrange
-        final responsePayload = jsonEncode({"response_code": "1000"});
-
-        final httpResponse = ResponseBody.fromString(
-          responsePayload,
-          400,
-          headers: {
-            Headers.contentTypeHeader: [Headers.jsonContentType],
-          },
-        );
-
-        when(mockHttpClientAdapter.fetch(any, any, any)).thenAnswer(
-          (_) async => httpResponse,
-        );
-
+        setUpDioClientWithStatusCode(400);
+        // arrange
+        final call = dioConsumer.get;
         // assert
         expect(
-          () => dioConsumer.get(endpoint: 'endpoint'),
-          throwsA(isA<DioException>()),
+          () => call(endpoint: 'endpoint'),
+          throwsA(const TypeMatcher<DioException>()),
         );
       });
       test(
           'Should throw DioException when call dioConsumer.post for any request with body',
           () async {
         // arrange
-        final responsePayload = jsonEncode({"response_code": "1000"});
-
-        final httpResponse = ResponseBody.fromString(
-          responsePayload,
-          400,
-          headers: {
-            Headers.contentTypeHeader: [Headers.jsonContentType],
-          },
-        );
-
-        when(mockHttpClientAdapter.fetch(any, any, any)).thenAnswer(
-          (_) async => httpResponse,
-        );
-
+        setUpDioClientWithStatusCode(400);
+        // arrange
+        final call = dioConsumer.post;
         // assert
         expect(
-          () => dioConsumer.post(endpoint: 'endpoint', data: {'': ""}),
-          throwsA(isA<DioException>()),
+          () => call(endpoint: 'endpoint', data: {'': ""}),
+          throwsA(const TypeMatcher<DioException>()),
         );
       });
       test(
         'Should throw DioException when call dioConsumer.patch for any request with body',
         () async {
           // arrange
-          final responsePayload = jsonEncode({"response_code": "1000"});
-
-          final httpResponse = ResponseBody.fromString(
-            responsePayload,
-            400,
-            headers: {
-              Headers.contentTypeHeader: [Headers.jsonContentType],
-            },
-          );
-
-          when(mockHttpClientAdapter.fetch(any, any, any)).thenAnswer(
-            (_) async => httpResponse,
-          );
+          setUpDioClientWithStatusCode(400);
+          // arrange
+          final call = dioConsumer.patch;
           // assert
           expect(
-            () => dioConsumer.patch(endpoint: 'endpoint', data: {'': ""}),
-            throwsA(isA<DioException>()),
+            () => call(endpoint: 'endpoint', data: {'': ""}),
+            throwsA(const TypeMatcher<DioException>()),
           );
         },
       );

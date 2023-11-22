@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../config/shared_preferences.dart';
+import '../../../../core/databases/secure_storage/secure_storage_manager.dart';
 import '../../../../core/errors/error_handler.dart';
 import '../../../../core/errors/failure.dart';
 import '../../domain/entities/login.dart';
@@ -15,7 +15,7 @@ import '../datasources/remote/auth_remote_data_source.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final AuthRemoteDataSource authRemoteDataSource;
-  final AppShared appShared;
+  final SecureStorageManager appShared;
 
   AuthRepoImpl({
     required this.authRemoteDataSource,

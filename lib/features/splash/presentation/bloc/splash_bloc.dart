@@ -1,0 +1,26 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/helpers/cache_helper.dart';
+
+part 'splash_event.dart';
+part 'splash_state.dart';
+
+class SplashBloc extends Bloc<SplashEvent, SplashState> {
+  final CacheHelper cacheHelper;
+  SplashBloc({
+    required this.cacheHelper,
+  }) : super(SplashInitial()) {
+    on<CheckUserLoginStatusEvent>(_checkUseLoginStatus);
+  }
+
+  _checkUseLoginStatus(
+    CheckUserLoginStatusEvent event,
+    Emitter<SplashState> emit,
+  ) async {
+    final token = await cacheHelper.getToken();
+
+    if (token == null) emit(UserNotLoggedInState());
+    if (token != null) emit(UserLoggedInState());
+  }
+}

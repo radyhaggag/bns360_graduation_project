@@ -8,7 +8,6 @@ import 'config/route_config.dart';
 import 'config/theme_config.dart';
 import 'core/localization/localization_bloc.dart';
 import 'core/utils/app_strings.dart';
-import 'core/utils/constants.dart';
 import 'generated/l10n.dart';
 
 class BNS360App extends StatelessWidget {
@@ -40,7 +39,7 @@ class BNS360App extends StatelessWidget {
                 title: AppStrings.appName,
                 theme: ThemeConfig.getLightTheme(),
                 onGenerateRoute: RouteConfig.getRoute,
-                initialRoute: token != null ? Routes.home : Routes.welcome,
+                initialRoute: Routes.splash,
               ),
             );
           }

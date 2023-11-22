@@ -1,14 +1,15 @@
-import '../../config/shared_preferences.dart';
+import '../databases/local_storage/hive_manager.dart';
+import '../databases/secure_storage/secure_storage_manager.dart';
 
 class CacheHelper {
-  final AppShared appShared;
+  final SecureStorageManager storage;
 
-  CacheHelper(this.appShared);
+  CacheHelper(this.storage);
 
   static const String _cachedLangCode = "cachedLangCode";
 
   String getCachedLanguage() {
-    final code = appShared.getString(key: _cachedLangCode);
+    final code = HiveBoxes.languageBox.get(_cachedLangCode);
     if (code != null) {
       return code;
     } else {
@@ -17,6 +18,19 @@ class CacheHelper {
   }
 
   Future<void> cacheLanguage(String code) async {
-    await appShared.setString(key: _cachedLangCode, value: code);
+    await HiveBoxes.languageBox.put(_cachedLangCode, code);
+  }
+
+  Future<String?> getToken() async {
+    final token = await storage.read(key: 'token');
+    return token;
+  }
+
+  Future<void> saveToken(String token) async {
+    await storage.write(key: 'token', value: token);
+  }
+
+  Future<void> deleteToken(String token) async {
+    await storage.delete(key: 'token');
   }
 }

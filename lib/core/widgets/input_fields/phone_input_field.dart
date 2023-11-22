@@ -1,12 +1,12 @@
-import 'package:bns360_graduation_project/core/extensions/language.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
+import '../../extensions/language.dart';
 import '../../helpers/form_validators.dart';
 import '../../utils/app_colors.dart';
 import '../../utils/app_fonts.dart';
 import '../../utils/app_styles.dart';
+import '../../utils/enums.dart';
 
 class PhoneInputField extends StatelessWidget {
   final TextEditingController controller;

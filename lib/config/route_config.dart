@@ -7,9 +7,12 @@ import '../features/auth/presentation/screens/sign_up_screen.dart';
 import '../features/auth/presentation/screens/welcome_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
+import '../features/splash/presentation/bloc/splash_bloc.dart';
+import '../features/splash/presentation/screens/splash_screen.dart';
 import 'injector_container.dart';
 
 abstract class Routes {
+  static const splash = '/splash';
   static const welcome = '/welcome';
   static const login = '/login';
   static const signUp = '/signUp';
@@ -19,6 +22,16 @@ abstract class Routes {
 abstract class RouteConfig {
   static Route? getRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.splash:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<SplashBloc>()
+              ..add(
+                CheckUserLoginStatusEvent(),
+              ),
+            child: const SplashScreen(),
+          ),
+        );
       case Routes.welcome:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(

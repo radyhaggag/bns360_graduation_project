@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/api/api_consumer.dart';
 import '../core/api/dio_consumer.dart';
+import '../core/databases/secure_storage/secure_storage_manager.dart';
 import '../core/helpers/cache_helper.dart';
 import '../core/localization/localization_bloc.dart';
 import '../features/auth/auth_injector.dart';
-import 'shared_preferences.dart';
+import '../features/splash/splash_injector.dart';
 
 final sl = GetIt.instance; // Service Locator
 
@@ -29,15 +30,13 @@ Future<void> initCore() async {
   sl.registerLazySingleton<APIConsumer>(
     () => DioConsumer(dio: sl()),
   );
-
-  // Shared Preferences
-  final sharedPreferences = await SharedPreferences.getInstance();
-  sl.registerLazySingleton<SharedPreferences>(
-    () => sharedPreferences,
+  // Flutter Secure Storage
+  sl.registerLazySingleton(
+    () => const FlutterSecureStorage(),
   );
-  // App Shared
-  sl.registerLazySingleton<AppShared>(
-    () => AppShared(sharedPreferences: sl()),
+  // Secure Storage Manager
+  sl.registerLazySingleton<SecureStorageManager>(
+    () => SecureStorageManager(storage: sl()),
   );
   // Cache Helper
   sl.registerLazySingleton(
@@ -51,5 +50,6 @@ Future<void> initCore() async {
 
 Future<void> initAppDependencies() async {
   await initCore();
+  initSplash();
   initAuth();
 }

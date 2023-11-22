@@ -6,4 +6,5 @@ abstract class AppAssets {
   static const success = "$imagePath/success.png";
   static const googleIcon = "$imagePath/google.png";
   static const facebook = "$imagePath/facebook.png";
+  static const forgotPassword = "$imagePath/forgot_password.png";
 }

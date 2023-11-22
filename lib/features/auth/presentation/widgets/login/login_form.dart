@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/widgets/input_fields/email_input_field.dart';
 import '../../../../../core/widgets/input_fields/password_input_field.dart';
@@ -30,13 +29,13 @@ class _LoginFormState extends State<LoginForm> {
           EmailInputField(
             controller: _emailController,
           ),
-          SizedBox(height: 15.h),
+          const SizedBox(height: 15),
           PasswordInputField(
             controller: _passwordController,
           ),
           const SizedBox(height: 5),
           const ForgotPasswordBtn(),
-          SizedBox(height: 40.h),
+          const SizedBox(height: 50),
           LoginBtn(
             onPressed: () {
               if (_formKey.currentState!.validate()) {

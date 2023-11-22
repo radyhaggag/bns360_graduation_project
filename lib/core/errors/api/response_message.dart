@@ -21,5 +21,5 @@ class APIResponseMessages {
   static const String cashError = "Cache error, Try again later";
   static const String noInternetConnection =
       "Please check your internet connection";
-  static const String unknown = "Some thing went wrong, Try again later";
+  static const String unknown = "Something went wrong, Try again later";
 }

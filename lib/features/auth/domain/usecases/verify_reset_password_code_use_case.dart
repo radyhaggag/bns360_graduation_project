@@ -5,22 +5,23 @@ import '../../../../core/errors/failure.dart';
 import '../../../../core/usecase/base_use_case.dart';
 import '../repositories/auth_repo.dart';
 
-class VerifyEmailUseCase extends UseCase<bool, VerifyEmailParams> {
+class VerifyResetPasswordCodeUseCase
+    extends UseCase<bool, VerifyResetPasswordParams> {
   final AuthRepo authRepo;
 
-  VerifyEmailUseCase({required this.authRepo});
+  VerifyResetPasswordCodeUseCase({required this.authRepo});
 
   @override
-  Future<Either<Failure, bool>> call(VerifyEmailParams params) {
-    return authRepo.verifyEmail(params);
+  Future<Either<Failure, bool>> call(VerifyResetPasswordParams params) {
+    return authRepo.verifyResetPasswordCode(params);
   }
 }
 
-class VerifyEmailParams extends Equatable {
+class VerifyResetPasswordParams extends Equatable {
   final String email;
   final String otpCode;
 
-  const VerifyEmailParams({
+  const VerifyResetPasswordParams({
     required this.email,
     required this.otpCode,
   });

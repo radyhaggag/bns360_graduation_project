@@ -27,5 +27,7 @@
   "optional": "اختيارى",
   "user": "مستخدم",
   "serviceProvider": "مقدم خدمة",
-  "businessOwner": "صاحب نشاط تجارى"
+  "businessOwner": "صاحب نشاط تجارى",
+  "sendCode": "إرسال رمز التحقق",
+  "forgotPasswordMsg": "لا تقلق! يحدث ذلك. الرجاء إدخال البريد الإلكتروني المرتبط بحسابك."
 }

@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
+            "Don’t worry! It happens. Please enter the email associated with your account."),
         "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
+        "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
         "serviceProvider":
             MessageLookupByLibrary.simpleMessage("Service provider"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),

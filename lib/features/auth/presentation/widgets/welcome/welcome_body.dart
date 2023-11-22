@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
 import '../../../../../core/extensions/language.dart';
@@ -35,34 +34,34 @@ class WelcomeBody extends StatelessWidget {
               style: AppStyles.getBoldStyle(color: AppColors.primary),
             ),
           ),
-          SizedBox(height: 30.h),
+          const SizedBox(height: 30),
           Image.asset(
             AppAssets.welcomeVector,
             width: context.width,
-            height: context.height / 3,
+            height: context.height / 2.4,
           ),
-          SizedBox(height: 30.h),
+          const SizedBox(height: 30),
           CustomElevatedButton(
             onPressed: () => Navigator.of(context).popAndPushNamed(
               Routes.login,
             ),
             label: S.of(context).login,
           ),
-          SizedBox(height: 15.h),
+          const SizedBox(height: 15),
           CustomOutlinedButton(
             onPressed: () => Navigator.of(context).popAndPushNamed(
               Routes.signUp,
             ),
             label: S.of(context).signUp,
           ),
-          SizedBox(height: 15.h),
+          const SizedBox(height: 15),
           CustomTextButton(
             onPressed: () => Navigator.of(context).popAndPushNamed(
               Routes.home,
             ),
             label: S.of(context).continueAsGuest,
           ),
-          SizedBox(height: 20.h),
+          const SizedBox(height: 10),
           const OrSeparator(),
           const SocialIconsButtons(),
         ],

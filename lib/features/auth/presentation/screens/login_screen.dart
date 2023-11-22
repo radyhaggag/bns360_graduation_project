@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/route_config.dart';
-import '../../../../core/helpers/custom_toast.dart';
+import '../../../../core/helpers/common_dialogs.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/login/login_body.dart';
 
@@ -15,7 +15,8 @@ class LoginScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is ErrorState) {
-            showToast(state.message, ToastType.error);
+            // showToast(state.message, ToastType.error);
+            CommonDialogs.showErrorDialog(context, message: state.message);
           }
           if (state is LoginSuccessState) {
             Navigator.of(context).pushNamedAndRemoveUntil(

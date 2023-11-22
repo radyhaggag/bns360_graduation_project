@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../features/auth/presentation/bloc/auth_bloc.dart';
+import '../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/sign_up_screen.dart';
 import '../features/auth/presentation/screens/welcome_screen.dart';
@@ -16,6 +17,7 @@ abstract class Routes {
   static const welcome = '/welcome';
   static const login = '/login';
   static const signUp = '/signUp';
+  static const forgotPassword = '/forgotPassword';
   static const home = '/home';
 }
 
@@ -51,6 +53,13 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<AuthBloc>(),
             child: const SignUpScreen(),
+          ),
+        );
+      case Routes.forgotPassword:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<AuthBloc>(),
+            child: const ForgotPasswordScreen(),
           ),
         );
       case Routes.home:

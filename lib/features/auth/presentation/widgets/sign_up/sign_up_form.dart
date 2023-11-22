@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/widgets/input_fields/email_input_field.dart';
 import '../../../../../core/widgets/input_fields/name_input_field.dart';
@@ -34,21 +33,21 @@ class _SignUpFormState extends State<SignUpForm> {
           NameInputField(
             controller: _nameController,
           ),
-          SizedBox(height: 15.h),
+          const SizedBox(height: 15),
           EmailInputField(
             controller: _emailController,
           ),
-          SizedBox(height: 15.h),
+          const SizedBox(height: 15),
           PasswordInputField(
             controller: _passwordController,
           ),
-          SizedBox(height: 15.h),
+          const SizedBox(height: 15),
           const UserTypeDropdown(),
-          SizedBox(height: 15.h),
+          const SizedBox(height: 15),
           PhoneInputField(
             controller: _phoneController,
           ),
-          SizedBox(height: 15.h),
+          const SizedBox(height: 15),
           SignUpBtn(
             onPressed: () {
               if (_formKey.currentState!.validate()) {

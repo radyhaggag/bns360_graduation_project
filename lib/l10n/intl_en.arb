@@ -27,5 +27,7 @@
   "optional": "Optional",
   "user": "User",
   "serviceProvider": "Service provider",
-  "businessOwner": "Business owner"
+  "businessOwner": "Business owner",
+  "sendCode": "Send code",
+  "forgotPasswordMsg": "Don’t worry! It happens. Please enter the email associated with your account."
 }

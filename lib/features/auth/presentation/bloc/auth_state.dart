@@ -42,6 +42,14 @@ class SendEmailVerificationErrorState extends ErrorState {
   const SendEmailVerificationErrorState({required super.message});
 }
 
+class SendResetPasswordCodeLoadingState extends AuthState {}
+
+class SendResetPasswordCodeSuccessState extends AuthState {}
+
+class SendResetPasswordCodeErrorState extends ErrorState {
+  const SendResetPasswordCodeErrorState({required super.message});
+}
+
 class VerifyEmailLoadingState extends AuthState {}
 
 class VerifyEmailSuccessState extends AuthState {}
@@ -56,14 +64,6 @@ class ResetPasswordSuccessState extends AuthState {}
 
 class ResetPasswordErrorState extends ErrorState {
   const ResetPasswordErrorState({required super.message});
-}
-
-class CreateNewPasswordLoadingState extends AuthState {}
-
-class CreateNewPasswordSuccessState extends AuthState {}
-
-class CreateNewPasswordErrorState extends ErrorState {
-  const CreateNewPasswordErrorState({required super.message});
 }
 
 class UserTypeChanged extends AuthState {

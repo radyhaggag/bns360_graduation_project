@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -23,19 +22,19 @@ class LoginBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const SizedBox(height: 100),
+            const SizedBox(height: 120),
             Text(
               S.of(context).loginMsg,
               style: AppStyles.getBoldStyle(color: AppColors.primary),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 50.h),
+            const SizedBox(height: 50),
             const LoginForm(),
-            SizedBox(height: 20.h),
+            const SizedBox(height: 20),
             const NotHaveAccountTile(),
-            SizedBox(height: 30.h),
+            const SizedBox(height: 30),
             const OrSeparator(),
-            SizedBox(height: 15.h),
+            const SizedBox(height: 15),
             const SocialIconsButtons(),
             const SizedBox(height: 30),
           ],

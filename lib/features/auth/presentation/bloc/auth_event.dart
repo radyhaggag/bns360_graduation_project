@@ -32,27 +32,29 @@ class SendEmailVerificationEvent extends AuthEvent {
   const SendEmailVerificationEvent({required this.email});
 }
 
-class VerifyEmailEvent extends AuthEvent {
+class SendResetPasswordCodeEvent extends AuthEvent {
+  final String email;
+
+  const SendResetPasswordCodeEvent({required this.email});
+}
+
+class VerifyResetPasswordCodeEvent extends AuthEvent {
   final String email;
   final String otpCode;
 
-  const VerifyEmailEvent({required this.email, required this.otpCode});
+  const VerifyResetPasswordCodeEvent({
+    required this.email,
+    required this.otpCode,
+  });
 }
 
 class ResetPasswordEvent extends AuthEvent {
   final String email;
   final String newPassword;
 
-  const ResetPasswordEvent({required this.email, required this.newPassword});
-}
-
-class CreateNewPasswordEvent extends AuthEvent {
-  final String email;
-  final String password;
-
-  const CreateNewPasswordEvent({
+  const ResetPasswordEvent({
     required this.email,
-    required this.password,
+    required this.newPassword,
   });
 }
 

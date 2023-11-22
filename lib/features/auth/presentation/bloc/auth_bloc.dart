@@ -4,12 +4,12 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/enums.dart';
-import '../../domain/usecases/create_new_password_use_case.dart';
 import '../../domain/usecases/login_use_case.dart';
 import '../../domain/usecases/reset_password_usecase.dart';
 import '../../domain/usecases/send_email_verification.dart';
+import '../../domain/usecases/send_reset_password_code_use_case.dart';
 import '../../domain/usecases/sign_up_use_case.dart';
-import '../../domain/usecases/verify_email_use_case.dart';
+import '../../domain/usecases/verify_reset_password_code_use_case.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -17,29 +17,29 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginUseCase loginUseCase;
   final SignUpUseCase signUpUseCase;
-  final VerifyEmailUseCase verifyEmailUseCase;
+  final VerifyResetPasswordCodeUseCase verifyResetPasswordCodeUseCase;
   final ResetPasswordUseCase resetPasswordUseCase;
-  final CreateNewPasswordUseCase createNewPasswordUseCase;
   final SendEmailVerificationUseCase sendEmailVerificationUseCase;
+  final SendResetPasswordCodeUseCase sendResetPasswordCodeUseCase;
 
   AuthBloc({
     required this.loginUseCase,
     required this.signUpUseCase,
-    required this.verifyEmailUseCase,
+    required this.verifyResetPasswordCodeUseCase,
     required this.resetPasswordUseCase,
-    required this.createNewPasswordUseCase,
     required this.sendEmailVerificationUseCase,
+    required this.sendResetPasswordCodeUseCase,
   }) : super(AuthInitial()) {
-    on<LoginEvent>(_loginUser);
-    on<SignUpEvent>(_signUpUser);
-    on<VerifyEmailEvent>(_verifyEmail);
-    on<ResetPasswordEvent>(_resetPassword);
-    on<CreateNewPasswordEvent>(_createNewPassword);
+    on<LoginEvent>(_login);
+    on<SignUpEvent>(_signUp);
     on<SendEmailVerificationEvent>(_sendEmailVerification);
+    on<SendResetPasswordCodeEvent>(_sendResetPasswordCode);
+    on<VerifyResetPasswordCodeEvent>(_verifyResetPasswordCode);
+    on<ResetPasswordEvent>(_resetPassword);
     on<ChangeUserType>(_changeUserType);
   }
 
-  Future<void> _loginUser(
+  Future<void> _login(
     LoginEvent event,
     Emitter<AuthState> emit,
   ) async {
@@ -54,7 +54,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Future<void> _signUpUser(
+  Future<void> _signUp(
     SignUpEvent event,
     Emitter<AuthState> emit,
   ) async {
@@ -73,17 +73,45 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Future<void> _verifyEmail(
-    VerifyEmailEvent event,
+  Future<void> _sendEmailVerification(
+    SendEmailVerificationEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(SendEmailVerificationLoadingState());
+
+    final res = await sendEmailVerificationUseCase(event.email);
+
+    res.fold(
+      (l) => emit(SendEmailVerificationErrorState(message: l.message)),
+      (r) => emit(SendEmailVerificationSuccessState()),
+    );
+  }
+
+  _sendResetPasswordCode(
+    SendResetPasswordCodeEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(SendResetPasswordCodeLoadingState());
+
+    final res = await sendResetPasswordCodeUseCase(event.email);
+
+    res.fold(
+      (l) => emit(SendResetPasswordCodeErrorState(message: l.message)),
+      (r) => emit(SendResetPasswordCodeSuccessState()),
+    );
+  }
+
+  Future<void> _verifyResetPasswordCode(
+    VerifyResetPasswordCodeEvent event,
     Emitter<AuthState> emit,
   ) async {
     emit(VerifyEmailLoadingState());
 
-    final params = VerifyEmailParams(
+    final params = VerifyResetPasswordParams(
       email: event.email,
       otpCode: event.otpCode,
     );
-    final res = await verifyEmailUseCase(params);
+    final res = await verifyResetPasswordCodeUseCase(params);
 
     res.fold(
       (l) => emit(VerifyEmailErrorState(message: l.message)),
@@ -106,38 +134,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     res.fold(
       (l) => emit(LoginErrorState(message: l.message)),
       (r) => emit(LoginSuccessState()),
-    );
-  }
-
-  Future<void> _createNewPassword(
-    CreateNewPasswordEvent event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(CreateNewPasswordLoadingState());
-
-    final params = CreateNewPasswordParams(
-      email: event.email,
-      password: event.password,
-    );
-    final res = await createNewPasswordUseCase(params);
-
-    res.fold(
-      (l) => emit(CreateNewPasswordErrorState(message: l.message)),
-      (r) => emit(CreateNewPasswordSuccessState()),
-    );
-  }
-
-  FutureOr _sendEmailVerification(
-    SendEmailVerificationEvent event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(SendEmailVerificationLoadingState());
-
-    final res = await sendEmailVerificationUseCase(event.email);
-
-    res.fold(
-      (l) => emit(SendEmailVerificationErrorState(message: l.message)),
-      (r) => emit(SendEmailVerificationSuccessState()),
     );
   }
 

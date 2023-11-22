@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل رقم هاتفك"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
+        "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
+            "لا تقلق! يحدث ذلك. الرجاء إدخال البريد الإلكتروني المرتبط بحسابك."),
         "fullName": MessageLookupByLibrary.simpleMessage("اسمك بالكامل"),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
@@ -51,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("اختر من فضلك"),
+        "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
         "serviceProvider": MessageLookupByLibrary.simpleMessage("مقدم خدمة"),
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(

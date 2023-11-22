@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
@@ -37,9 +36,9 @@ class SignUpBody extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 30.h),
+            const SizedBox(height: 30),
             const SignUpForm(),
-            SizedBox(height: 20.h),
+            const SizedBox(height: 20),
             const HaveAccountTile(),
             const SizedBox(height: 30),
           ],

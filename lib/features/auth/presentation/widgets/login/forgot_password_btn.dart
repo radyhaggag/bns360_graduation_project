@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../config/route_config.dart';
 import '../../../../../core/extensions/language.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -12,7 +13,7 @@ class ForgotPasswordBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => Navigator.of(context).pushNamed(Routes.forgotPassword),
       child: Align(
         alignment: context.currentLanguage == Language.english
             ? Alignment.centerRight

@@ -6,11 +6,10 @@ import '../../../../core/errors/failure.dart';
 import '../../domain/entities/login.dart';
 import '../../domain/entities/sign_up.dart';
 import '../../domain/repositories/auth_repo.dart';
-import '../../domain/usecases/create_new_password_use_case.dart';
 import '../../domain/usecases/login_use_case.dart';
 import '../../domain/usecases/reset_password_usecase.dart';
 import '../../domain/usecases/sign_up_use_case.dart';
-import '../../domain/usecases/verify_email_use_case.dart';
+import '../../domain/usecases/verify_reset_password_code_use_case.dart';
 import '../datasources/remote/auth_remote_data_source.dart';
 
 class AuthRepoImpl implements AuthRepo {
@@ -47,11 +46,11 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, bool>> verifyEmail(
-    VerifyEmailParams params,
+  Future<Either<Failure, bool>> verifyResetPasswordCode(
+    VerifyResetPasswordParams params,
   ) async {
     try {
-      final result = await authRemoteDataSource.verifyEmail(params);
+      final result = await authRemoteDataSource.verifyResetPasswordCode(params);
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e).failure);
@@ -71,11 +70,9 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, bool>> createNewPassword(
-    CreateNewPasswordParams params,
-  ) async {
+  Future<Either<Failure, bool>> sendEmailVerification(String params) async {
     try {
-      final result = await authRemoteDataSource.createNewPassword(params);
+      final result = await authRemoteDataSource.sendEmailVerification(params);
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e).failure);
@@ -83,9 +80,9 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, bool>> sendEmailVerification(String params) async {
+  Future<Either<Failure, bool>> sendResetPasswordCode(String params) async {
     try {
-      final result = await authRemoteDataSource.sendEmailVerification(params);
+      final result = await authRemoteDataSource.sendResetPasswordCode(params);
       return Right(result);
     } catch (e) {
       return Left(ErrorHandler.handle(e).failure);

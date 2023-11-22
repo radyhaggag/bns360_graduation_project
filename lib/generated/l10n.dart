@@ -339,6 +339,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Send code`
+  String get sendCode {
+    return Intl.message(
+      'Send code',
+      name: 'sendCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don’t worry! It happens. Please enter the email associated with your account.`
+  String get forgotPasswordMsg {
+    return Intl.message(
+      'Don’t worry! It happens. Please enter the email associated with your account.',
+      name: 'forgotPasswordMsg',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

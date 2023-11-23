@@ -22,7 +22,7 @@ class NameInputField extends StatelessWidget {
       title: S.of(context).fullName,
       hint: S.of(context).enterName,
       initialValue: initialValue,
-      validator: (value) => FormValidator.validateEmpty(value),
+      validator: (value) => FormValidator.validateName(value),
     );
   }
 }

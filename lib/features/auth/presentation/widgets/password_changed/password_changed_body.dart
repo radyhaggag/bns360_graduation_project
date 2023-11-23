@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../config/route_config.dart';
+import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../core/widgets/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
-import 'verify_reset_password_code_form.dart';
 
-class VerifyResetPasswordCodeBody extends StatelessWidget {
-  final String email;
-  const VerifyResetPasswordCodeBody({super.key, required this.email});
+class PasswordChangedBody extends StatelessWidget {
+  const PasswordChangedBody({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,25 +25,34 @@ class VerifyResetPasswordCodeBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 100),
+            Image.asset(AppAssets.success),
+            const SizedBox(height: 50),
             Text(
-              S.of(context).checkEmailMsg,
+              S.of(context).passwordChanged,
               style: AppStyles.getSemiBoldStyle(
-                fontSize: AppFontSize.title,
+                fontSize: AppFontSize.large,
                 color: AppColors.primary,
               ),
-              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
-              "${S.of(context).sentCodeTo} $email",
+              S.of(context).passwordChangedMsg,
               style: AppStyles.getCaptionsStyle(
                 fontSize: AppFontSize.body,
                 color: AppColors.black,
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 50),
-            VerifyResetPasswordCodeForm(email: email),
+            const SizedBox(height: 100),
+            CustomElevatedButton(
+              label: S.of(context).backToLogin,
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  Routes.login,
+                  (route) => false,
+                );
+              },
+            ),
             const SizedBox(height: 30),
           ],
         ),

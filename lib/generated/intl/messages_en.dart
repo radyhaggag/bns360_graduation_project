@@ -23,9 +23,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("BNS360"),
+        "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
         "checkEmailMsg":
-            MessageLookupByLibrary.simpleMessage("please check your email"),
+            MessageLookupByLibrary.simpleMessage("Please check your email"),
+        "confirmNewPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
         "createYourAccount":
@@ -33,6 +36,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter your name"),
+        "enterNewPassword":
+            MessageLookupByLibrary.simpleMessage("Enter new password"),
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "enterPhoneNumber":
@@ -47,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "notReceiveCode":
@@ -54,9 +60,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "passwordChanged":
+            MessageLookupByLibrary.simpleMessage("Password changed"),
+        "passwordChangedMsg": MessageLookupByLibrary.simpleMessage(
+            "Your password has been changed successfully"),
+        "passwordsDoNotMatch":
+            MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+        "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
+        "resetPasswordMsg": MessageLookupByLibrary.simpleMessage(
+            "Please type something you’ll remember"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
         "sentCodeTo":
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to"),
@@ -70,10 +85,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter a valid email address"),
         "validateEmpty":
             MessageLookupByLibrary.simpleMessage("Field is required"),
+        "validateInvalidNameFormat": MessageLookupByLibrary.simpleMessage(
+            "Invalid name format. Use English or Arabic letters only."),
         "validatePassword": MessageLookupByLibrary.simpleMessage(
-            "Password must be at least 6 characters"),
+            "Password must be at least 8 characters"),
         "validatePhone":
             MessageLookupByLibrary.simpleMessage("Invalid phone number"),
+        "validateTwoNames": MessageLookupByLibrary.simpleMessage(
+            "Please enter at least two names (first and last)."),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,")
       };

@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/features/auth/presentation/screens/password_changed_screen.dart';
+import 'package:bns360_graduation_project/features/auth/presentation/screens/reset_password_screen.dart';
 import 'package:bns360_graduation_project/features/auth/presentation/screens/verify_reset_password_code_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +22,8 @@ abstract class Routes {
   static const signUp = '/signUp';
   static const forgotPassword = '/forgotPassword';
   static const verifyResetPasswordCode = '/verifyResetPasswordCode';
+  static const resetPassword = '/resetPassword';
+  static const passwordChanged = '/passwordChanged';
   static const home = '/home';
 }
 
@@ -72,6 +76,19 @@ abstract class RouteConfig {
               email: settings.arguments as String,
             ),
           ),
+        );
+      case Routes.resetPassword:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<AuthBloc>(),
+            child: ResetPasswordScreen(
+              email: settings.arguments as String,
+            ),
+          ),
+        );
+      case Routes.passwordChanged:
+        return MaterialPageRoute(
+          builder: (context) => const PasswordChangedScreen(),
         );
       case Routes.home:
         return MaterialPageRoute(

@@ -14,6 +14,7 @@ class CustomInputField extends StatelessWidget {
   final String? initialValue;
   final bool isSecure;
   final TextInputType? keyboardType;
+  final Widget? suffixIcon;
 
   const CustomInputField({
     super.key,
@@ -26,6 +27,7 @@ class CustomInputField extends StatelessWidget {
     this.initialValue,
     this.isSecure = false,
     this.keyboardType,
+    this.suffixIcon,
   });
 
   @override
@@ -56,6 +58,7 @@ class CustomInputField extends StatelessWidget {
             hintText: hint,
             labelText: label,
             prefixText: prefixText,
+            suffixIcon: suffixIcon,
           ),
         ),
       ],

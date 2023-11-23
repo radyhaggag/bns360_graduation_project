@@ -4,10 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../config/route_config.dart';
 import '../../../../core/widgets/custom_back_button.dart';
 import '../bloc/auth_bloc.dart';
-import '../widgets/forgot_password/forgot_password_body.dart';
+import '../widgets/reset_password/reset_password_body.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class ResetPasswordScreen extends StatelessWidget {
+  final String email;
+
+  const ResetPasswordScreen({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +22,20 @@ class ForgotPasswordScreen extends StatelessWidget {
           if (state is ErrorState) {
             // showToast(state.message, ToastType.error);
             // CommonDialogs.showErrorDialog(context, message: state.message);
-            // TODO: DELETE THIS NAVIGATION
-            Navigator.of(context).pushNamed(
-              Routes.verifyResetPasswordCode,
-              arguments: "radyhaggag@gmail.com",
+            // TODO: REMOVE THIS NAVIGATION
+            Navigator.of(context).popAndPushNamed(
+              Routes.passwordChanged,
             );
           }
-          if (state is SendResetPasswordCodeSuccessState) {
-            // TODO: REDIRECT USER TO VERIFY RESET PASSWORD CODE SCREEN
-            Navigator.of(context).pushNamed(
-              Routes.verifyResetPasswordCode,
-              arguments: state.email,
+          if (state is ResetPasswordSuccessState) {
+            // TODO: REDIRECT USER TO SUCCESS SCREEN
+            Navigator.of(context).popAndPushNamed(
+              Routes.passwordChanged,
             );
           }
         },
-        child: const SafeArea(
-          child: ForgotPasswordBody(),
+        child: SafeArea(
+          child: ResetPasswordBody(email: email),
         ),
       ),
     );

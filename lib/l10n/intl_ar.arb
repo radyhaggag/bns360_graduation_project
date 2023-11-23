@@ -14,7 +14,9 @@
   "notHaveAccountMsg": "ليس لديك حساب؟",
   "validateEmpty": "الحقل مطلوب",
   "validateEmail": "البريد الإلكتروني غير صحيح",
-  "validatePassword": "يجب أن تكون كلمة المرور على الأقل 6 أحرف",
+  "validatePassword": "يجب أن تكون كلمة المرور على الأقل 8 أحرف",
+  "validateTwoNames": "الرجاء إدخال اسمين على الأقل (الأول والأخير).",
+  "validateInvalidNameFormat": "تنسيق الاسم غير صالح. استخدم الحروف الإنجليزية أو العربية فقط.",
   "validatePhone": "رقم هاتف غير صحيح",
   "fullName": "اسمك بالكامل",
   "enterName": "ادخل اسمك بالكامل",
@@ -34,5 +36,14 @@
   "sentCodeTo": "لقدم قمنا بإرسال كود التحقق الى",
   "notReceiveCode": "لم تتلقى رمز التحقق!",
   "resend": "إعادة الارسال",
-  "verify": "تحقق"
+  "verify": "تحقق",
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "resetPasswordMsg": "يرجى كتابة شيء سوف تتذكره",
+  "newPassword": "كلمة مرور جديدة",
+  "enterNewPassword": "اكتب كلمة مرور جديدة",
+  "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+  "passwordChanged": "تم تغيير كلمة المرور",
+  "passwordChangedMsg": "تم تغيير كلمة مرورك بنجاح",
+  "backToLogin": "العودة الى تسجيل الدخول",
+  "passwordsDoNotMatch": "كلمات المرور غير متطابقة"
 }

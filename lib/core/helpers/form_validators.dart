@@ -29,9 +29,9 @@ class FormValidator {
   }
 
   static String? validatePassword(String? value) {
-    if (value == null || value.length < 6) {
+    if (value == null || value.length <= 8) {
       return Intl.message(
-        'Password must be at least 6 characters',
+        'Password must be at least 8 characters',
         name: 'validatePassword',
       );
     }
@@ -54,5 +54,43 @@ class FormValidator {
     }
 
     return null;
+  }
+
+  static String? validateName(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return Intl.message(
+        'Field is required',
+        name: 'validateEmpty',
+      );
+    }
+
+    // Split the full name into individual names
+    List<String> names = value.split(' ');
+
+    // Check if there are at least two names
+    if (names.length < 2) {
+      return Intl.message(
+        'Please enter at least two names (first and last)',
+        name: 'validateTwoNames',
+      );
+    }
+
+    // Check if each name is valid (English letters or Arabic)
+    for (String name in names) {
+      if (!_isEnglishOrArabic(name)) {
+        return Intl.message(
+          'Invalid name format. Use English or Arabic letters only.',
+          name: 'validateInvalidNameFormat',
+        );
+      }
+    }
+
+    return null;
+  }
+
+  static bool _isEnglishOrArabic(String value) {
+    // Regular expression to match English and Arabic letters
+    final RegExp regex = RegExp(r'^[a-zA-Z\u0600-\u06FF]+$');
+    return regex.hasMatch(value);
   }
 }

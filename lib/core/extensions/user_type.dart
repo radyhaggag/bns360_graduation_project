@@ -14,4 +14,15 @@ extension UserTypeExtension on UserType {
         return S.of(context).serviceProvider;
     }
   }
+
+  int getID() {
+    switch (this) {
+      case UserType.user:
+        return 0;
+      case UserType.businessOwner:
+        return 1;
+      case UserType.serviceProvider:
+        return 2;
+    }
+  }
 }

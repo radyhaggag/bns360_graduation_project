@@ -5,11 +5,12 @@ import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
-import 'verify_reset_password_code_form.dart';
+import 'reset_password_form.dart';
 
-class VerifyResetPasswordCodeBody extends StatelessWidget {
+class ResetPasswordBody extends StatelessWidget {
   final String email;
-  const VerifyResetPasswordCodeBody({super.key, required this.email});
+
+  const ResetPasswordBody({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +24,22 @@ class VerifyResetPasswordCodeBody extends StatelessWidget {
           children: [
             const SizedBox(height: 100),
             Text(
-              S.of(context).checkEmailMsg,
+              S.of(context).resetPassword,
               style: AppStyles.getSemiBoldStyle(
                 fontSize: AppFontSize.title,
                 color: AppColors.primary,
               ),
-              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
-              "${S.of(context).sentCodeTo} $email",
+              S.of(context).resetPasswordMsg,
               style: AppStyles.getCaptionsStyle(
                 fontSize: AppFontSize.body,
                 color: AppColors.black,
               ),
-              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 50),
-            VerifyResetPasswordCodeForm(email: email),
+            ResetPasswordForm(email: email),
             const SizedBox(height: 30),
           ],
         ),

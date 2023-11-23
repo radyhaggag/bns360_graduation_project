@@ -200,11 +200,31 @@ class S {
     );
   }
 
-  /// `Password must be at least 6 characters`
+  /// `Password must be at least 8 characters`
   String get validatePassword {
     return Intl.message(
-      'Password must be at least 6 characters',
+      'Password must be at least 8 characters',
       name: 'validatePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter at least two names (first and last).`
+  String get validateTwoNames {
+    return Intl.message(
+      'Please enter at least two names (first and last).',
+      name: 'validateTwoNames',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid name format. Use English or Arabic letters only.`
+  String get validateInvalidNameFormat {
+    return Intl.message(
+      'Invalid name format. Use English or Arabic letters only.',
+      name: 'validateInvalidNameFormat',
       desc: '',
       args: [],
     );
@@ -360,10 +380,10 @@ class S {
     );
   }
 
-  /// `please check your email`
+  /// `Please check your email`
   String get checkEmailMsg {
     return Intl.message(
-      'please check your email',
+      'Please check your email',
       name: 'checkEmailMsg',
       desc: '',
       args: [],
@@ -405,6 +425,96 @@ class S {
     return Intl.message(
       'Verify',
       name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset password`
+  String get resetPassword {
+    return Intl.message(
+      'Reset password',
+      name: 'resetPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please type something you’ll remember`
+  String get resetPasswordMsg {
+    return Intl.message(
+      'Please type something you’ll remember',
+      name: 'resetPasswordMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New password`
+  String get newPassword {
+    return Intl.message(
+      'New password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter new password`
+  String get enterNewPassword {
+    return Intl.message(
+      'Enter new password',
+      name: 'enterNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm new password`
+  String get confirmNewPassword {
+    return Intl.message(
+      'Confirm new password',
+      name: 'confirmNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password changed`
+  String get passwordChanged {
+    return Intl.message(
+      'Password changed',
+      name: 'passwordChanged',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your password has been changed successfully`
+  String get passwordChangedMsg {
+    return Intl.message(
+      'Your password has been changed successfully',
+      name: 'passwordChangedMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to log in`
+  String get backToLogin {
+    return Intl.message(
+      'Back to log in',
+      name: 'backToLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Passwords do not match`
+  String get passwordsDoNotMatch {
+    return Intl.message(
+      'Passwords do not match',
+      name: 'passwordsDoNotMatch',
       desc: '',
       args: [],
     );

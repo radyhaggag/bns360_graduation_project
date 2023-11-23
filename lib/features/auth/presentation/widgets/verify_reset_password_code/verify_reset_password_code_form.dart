@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -37,21 +38,26 @@ class _VerifyResetPasswordCodeFormState
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          BlocListener<AuthBloc, AuthState>(
-            listener: (BuildContext context, AuthState state) {
-              if (state is VerifyResetPasswordCodeErrorState) {
-                setState(() => borderColor = AppColors.error);
-              }
-              if (state is VerifyResetPasswordCodeSuccessState) {
-                setState(() => borderColor = AppColors.success);
-                // TODO: REDIRECT USER TO RESET PASSWORD SCREEN
-              }
-            },
-            child: PinCodeTextField(
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is VerifyResetPasswordCodeErrorState) {
+          setState(() => borderColor = AppColors.error);
+          // TODO: DELETE THIS NAVIGATION
+          Navigator.of(context).popAndPushNamed(
+            Routes.resetPassword,
+            arguments: widget.email,
+          );
+        }
+        if (state is VerifyResetPasswordCodeSuccessState) {
+          setState(() => borderColor = AppColors.success);
+          // TODO: REDIRECT USER TO RESET PASSWORD SCREEN
+        }
+      },
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            PinCodeTextField(
               appContext: context,
               length: 6,
               keyboardType: TextInputType.number,
@@ -60,13 +66,13 @@ class _VerifyResetPasswordCodeFormState
               errorTextSpace: 25,
               pinTheme: getPinTheme(borderColor),
             ),
-          ),
-          NotReceiveTile(email: widget.email),
-          const SizedBox(height: 30),
-          VerifyOtpCodeBtn(
-            onPressed: otp.length == 6 ? () => _verifyCode(context) : null,
-          ),
-        ],
+            NotReceiveTile(email: widget.email),
+            const SizedBox(height: 30),
+            VerifyOtpCodeBtn(
+              onPressed: otp.length == 6 ? () => _verifyCode(context) : null,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -44,6 +44,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(LoginLoadingState());
+    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = LoginParams(email: event.email, password: event.password);
     final res = await loginUseCase(params);
@@ -59,6 +60,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(SignUpLoadingState());
+    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = SignUpParams(
       email: event.email,
@@ -78,6 +80,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(SendEmailVerificationLoadingState());
+    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await sendEmailVerificationUseCase(event.email);
 
@@ -92,12 +95,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(SendResetPasswordCodeLoadingState());
+    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await sendResetPasswordCodeUseCase(event.email);
 
     res.fold(
       (l) => emit(SendResetPasswordCodeErrorState(message: l.message)),
-      (r) => emit(SendResetPasswordCodeSuccessState()),
+      (r) => emit(SendResetPasswordCodeSuccessState(email: event.email)),
     );
   }
 
@@ -105,17 +109,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     VerifyResetPasswordCodeEvent event,
     Emitter<AuthState> emit,
   ) async {
-    emit(VerifyEmailLoadingState());
+    emit(VerifyResetPasswordCodeLoadingState());
+    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = VerifyResetPasswordParams(
       email: event.email,
       otpCode: event.otpCode,
     );
+
     final res = await verifyResetPasswordCodeUseCase(params);
 
     res.fold(
-      (l) => emit(VerifyEmailErrorState(message: l.message)),
-      (r) => emit(VerifyEmailSuccessState()),
+      (l) => emit(VerifyResetPasswordCodeErrorState(message: l.message)),
+      (r) => emit(VerifyResetPasswordCodeSuccessState()),
     );
   }
 
@@ -124,6 +130,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(ResetPasswordLoadingState());
+    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = ResetPasswordParams(
       email: event.email,

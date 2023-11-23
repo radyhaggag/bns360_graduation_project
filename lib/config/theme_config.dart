@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../core/utils/app_colors.dart';
 import '../core/utils/app_fonts.dart';
@@ -12,7 +13,7 @@ abstract class ThemeConfig {
       borderSide: const BorderSide(color: AppColors.primary),
     );
     return ThemeData(
-      fontFamily: 'Poppins',
+      fontFamily: GoogleFonts.poppins().fontFamily,
       textTheme: TextTheme(
         titleLarge: AppStyles.getBlackStyle(),
         titleMedium: AppStyles.getBoldStyle(),
@@ -52,7 +53,11 @@ abstract class ThemeConfig {
       appBarTheme: AppBarTheme(
         centerTitle: true,
         titleTextStyle: AppStyles.getRegularStyle(),
-        backgroundColor: AppColors.white,
+        // backgroundColor: AppColors.white,
+        color: AppColors.white,
+        foregroundColor: Colors.white,
+        systemOverlayStyle: _systemUiOverlayStyle,
+        scrolledUnderElevation: 0.0,
       ),
       indicatorColor: AppColors.primary,
       scaffoldBackgroundColor: AppColors.white,
@@ -77,9 +82,12 @@ abstract class ThemeConfig {
     return ThemeData();
   }
 
+  static const _systemUiOverlayStyle = SystemUiOverlayStyle(
+    statusBarColor: AppColors.primary,
+    statusBarIconBrightness: Brightness.light,
+  );
+
   static void configureStatusBarColor() {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: AppColors.primary,
-    ));
+    SystemChrome.setSystemUIOverlayStyle(_systemUiOverlayStyle);
   }
 }

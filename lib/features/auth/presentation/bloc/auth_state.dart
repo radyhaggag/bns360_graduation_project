@@ -44,18 +44,23 @@ class SendEmailVerificationErrorState extends ErrorState {
 
 class SendResetPasswordCodeLoadingState extends AuthState {}
 
-class SendResetPasswordCodeSuccessState extends AuthState {}
+class SendResetPasswordCodeSuccessState extends AuthState {
+  final String email;
+  const SendResetPasswordCodeSuccessState({
+    required this.email,
+  });
+}
 
 class SendResetPasswordCodeErrorState extends ErrorState {
   const SendResetPasswordCodeErrorState({required super.message});
 }
 
-class VerifyEmailLoadingState extends AuthState {}
+class VerifyResetPasswordCodeLoadingState extends AuthState {}
 
-class VerifyEmailSuccessState extends AuthState {}
+class VerifyResetPasswordCodeSuccessState extends AuthState {}
 
-class VerifyEmailErrorState extends ErrorState {
-  const VerifyEmailErrorState({required super.message});
+class VerifyResetPasswordCodeErrorState extends ErrorState {
+  const VerifyResetPasswordCodeErrorState({required super.message});
 }
 
 class ResetPasswordLoadingState extends AuthState {}

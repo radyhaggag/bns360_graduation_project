@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 import 'app_fonts.dart';
@@ -79,6 +80,17 @@ abstract class AppStyles {
       fontSize ?? AppFontSize.light,
       FontWeight.w300,
       color ?? AppColors.black,
+    );
+  }
+
+  static TextStyle getCaptionsStyle({
+    double? fontSize,
+    Color? color,
+  }) {
+    return GoogleFonts.inter(
+      fontSize: fontSize ?? AppFontSize.body,
+      fontWeight: FontWeight.w400,
+      color: color ?? AppColors.black,
     );
   }
 }

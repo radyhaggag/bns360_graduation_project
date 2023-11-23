@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/helpers/common_dialogs.dart';
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +19,18 @@ class ForgotPasswordScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is ErrorState) {
             // showToast(state.message, ToastType.error);
-            CommonDialogs.showErrorDialog(context, message: state.message);
+            // CommonDialogs.showErrorDialog(context, message: state.message);
+            Navigator.of(context).pushNamed(
+              Routes.verifyResetPasswordCode,
+              arguments: "radyhaggag@gmail.com",
+            );
           }
           if (state is SendResetPasswordCodeSuccessState) {
             // TODO: REDIRECT USER TO VERIFY RESET PASSWORD CODE SCREEN
+            Navigator.of(context).pushNamed(
+              Routes.verifyResetPasswordCode,
+              arguments: state.email,
+            );
           }
         },
         child: const SafeArea(

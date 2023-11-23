@@ -29,5 +29,10 @@
   "serviceProvider": "Service provider",
   "businessOwner": "Business owner",
   "sendCode": "Send code",
-  "forgotPasswordMsg": "Don’t worry! It happens. Please enter the email associated with your account."
+  "forgotPasswordMsg": "Don’t worry! It happens. Please enter the email associated with your account.",
+  "checkEmailMsg": "please check your email",
+  "sentCodeTo": "We’ve sent a code to",
+  "notReceiveCode": "I didn't receive a code!",
+  "resend": "Resend",
+  "verify": "Verify"
 }

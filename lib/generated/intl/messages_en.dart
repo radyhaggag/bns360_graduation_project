@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("BNS360"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
+        "checkEmailMsg":
+            MessageLookupByLibrary.simpleMessage("please check your email"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
         "createYourAccount":
@@ -47,12 +49,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Welcome back to Login to your Account"),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "notReceiveCode":
+            MessageLookupByLibrary.simpleMessage("I didn\'t receive a code!"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
+        "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
+        "sentCodeTo":
+            MessageLookupByLibrary.simpleMessage("We’ve sent a code to"),
         "serviceProvider":
             MessageLookupByLibrary.simpleMessage("Service provider"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
@@ -67,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Password must be at least 6 characters"),
         "validatePhone":
             MessageLookupByLibrary.simpleMessage("Invalid phone number"),
+        "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,")
       };
 }

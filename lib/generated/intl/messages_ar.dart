@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("BNS360"),
         "businessOwner":
             MessageLookupByLibrary.simpleMessage("صاحب نشاط تجارى"),
+        "checkEmailMsg": MessageLookupByLibrary.simpleMessage(
+            "من فضلك قم بفحص بريدك اللالكترونى"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
@@ -48,12 +50,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "notReceiveCode":
+            MessageLookupByLibrary.simpleMessage("لم تتلقى رمز التحقق!"),
         "optional": MessageLookupByLibrary.simpleMessage("اختيارى"),
         "or": MessageLookupByLibrary.simpleMessage("أو"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("اختر من فضلك"),
+        "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),
         "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
+        "sentCodeTo": MessageLookupByLibrary.simpleMessage(
+            "لقدم قمنا بإرسال كود التحقق الى"),
         "serviceProvider": MessageLookupByLibrary.simpleMessage("مقدم خدمة"),
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
@@ -66,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "يجب أن تكون كلمة المرور على الأقل 6 أحرف"),
         "validatePhone":
             MessageLookupByLibrary.simpleMessage("رقم هاتف غير صحيح"),
+        "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،")
       };
 }

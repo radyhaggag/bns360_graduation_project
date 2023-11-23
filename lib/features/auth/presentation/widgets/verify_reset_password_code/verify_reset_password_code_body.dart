@@ -1,16 +1,15 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
-import '../../../../../core/extensions/media_query.dart';
-import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
-import 'forgot_password_form.dart';
+import 'verify_reset_password_code_form.dart';
 
-class ForgotPasswordBody extends StatelessWidget {
-  const ForgotPasswordBody({super.key});
+class VerifyResetPasswordCodeBody extends StatelessWidget {
+  final String email;
+  const VerifyResetPasswordCodeBody({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +19,11 @@ class ForgotPasswordBody extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              AppAssets.forgotPassword,
-              alignment: Alignment.center,
-              width: context.width,
-              height: context.height / 2.4,
-            ),
+            const SizedBox(height: 100),
             Text(
-              S.of(context).forgotPassword,
+              S.of(context).checkEmailMsg,
               style: AppStyles.getSemiBoldStyle(
                 fontSize: AppFontSize.title,
                 color: AppColors.primary,
@@ -37,14 +31,15 @@ class ForgotPasswordBody extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              S.of(context).forgotPasswordMsg,
+              "${S.of(context).sentCodeTo} $email",
               style: AppStyles.getCaptionsStyle(
                 fontSize: AppFontSize.body,
-                color: AppColors.black.withOpacity(.7),
+                color: AppColors.black,
               ),
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 30),
-            const ForgotPasswordForm(),
+            const SizedBox(height: 50),
+            VerifyResetPasswordCodeForm(email: email),
             const SizedBox(height: 30),
           ],
         ),

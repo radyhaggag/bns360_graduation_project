@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/enums.dart';
 import '../../domain/usecases/login_use_case.dart';
-import '../../domain/usecases/reset_password_usecase.dart';
-import '../../domain/usecases/send_email_verification.dart';
+import '../../domain/usecases/reset_password_use_case.dart';
+import '../../domain/usecases/send_email_verification_use_case.dart';
 import '../../domain/usecases/send_reset_password_code_use_case.dart';
 import '../../domain/usecases/sign_up_use_case.dart';
 import '../../domain/usecases/verify_reset_password_code_use_case.dart';

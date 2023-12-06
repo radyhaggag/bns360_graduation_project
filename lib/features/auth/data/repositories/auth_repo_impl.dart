@@ -7,7 +7,7 @@ import '../../domain/entities/login.dart';
 import '../../domain/entities/sign_up.dart';
 import '../../domain/repositories/auth_repo.dart';
 import '../../domain/usecases/login_use_case.dart';
-import '../../domain/usecases/reset_password_usecase.dart';
+import '../../domain/usecases/reset_password_use_case.dart';
 import '../../domain/usecases/sign_up_use_case.dart';
 import '../../domain/usecases/verify_reset_password_code_use_case.dart';
 import '../datasources/remote/auth_remote_data_source.dart';
@@ -29,7 +29,8 @@ class AuthRepoImpl implements AuthRepo {
       final result = await authRemoteDataSource.login(params);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e).failure);
+      final failure = ErrorHandler.handle(e).failure;
+      return Left(failure);
     }
   }
 
@@ -41,7 +42,8 @@ class AuthRepoImpl implements AuthRepo {
       final result = await authRemoteDataSource.signUp(params);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e).failure);
+      final failure = ErrorHandler.handle(e).failure;
+      return Left(failure);
     }
   }
 
@@ -53,7 +55,8 @@ class AuthRepoImpl implements AuthRepo {
       final result = await authRemoteDataSource.verifyResetPasswordCode(params);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e).failure);
+      final failure = ErrorHandler.handle(e).failure;
+      return Left(failure);
     }
   }
 
@@ -65,7 +68,8 @@ class AuthRepoImpl implements AuthRepo {
       final result = await authRemoteDataSource.resetPassword(params);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e).failure);
+      final failure = ErrorHandler.handle(e).failure;
+      return Left(failure);
     }
   }
 
@@ -75,7 +79,8 @@ class AuthRepoImpl implements AuthRepo {
       final result = await authRemoteDataSource.sendEmailVerification(params);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e).failure);
+      final failure = ErrorHandler.handle(e).failure;
+      return Left(failure);
     }
   }
 
@@ -85,7 +90,8 @@ class AuthRepoImpl implements AuthRepo {
       final result = await authRemoteDataSource.sendResetPasswordCode(params);
       return Right(result);
     } catch (e) {
-      return Left(ErrorHandler.handle(e).failure);
+      final failure = ErrorHandler.handle(e).failure;
+      return Left(failure);
     }
   }
 }

@@ -4,7 +4,7 @@ import '../../../../core/errors/failure.dart';
 import '../entities/login.dart';
 import '../entities/sign_up.dart';
 import '../usecases/login_use_case.dart';
-import '../usecases/reset_password_usecase.dart';
+import '../usecases/reset_password_use_case.dart';
 import '../usecases/sign_up_use_case.dart';
 import '../usecases/verify_reset_password_code_use_case.dart';
 

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/errors/error_handler.dart';
 import '../../../../core/errors/failure.dart';
+import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../domain/entities/banner_entity.dart';
 import '../../domain/entities/category_entity.dart';
 import '../../domain/repositories/home_repo.dart';
@@ -19,23 +19,15 @@ class HomeRepoImpl implements HomeRepo {
 
   @override
   Future<Either<Failure, List<BannerEntity>>> getBanners() async {
-    try {
-      final result = await homeRemoteDataSource.getBanners();
-      return Right(result);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return Left(failure);
-    }
+    return executeAndHandleError<List<BannerEntity>>(
+      () => homeRemoteDataSource.getBanners(),
+    );
   }
 
   @override
   Future<Either<Failure, List<CategoryEntity>>> getCategories() async {
-    try {
-      final result = await homeRemoteDataSource.getCategories();
-      return Right(result);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return Left(failure);
-    }
+    return executeAndHandleError<List<CategoryEntity>>(
+      () => homeRemoteDataSource.getCategories(),
+    );
   }
 }

@@ -11,8 +11,8 @@ import '../usecases/verify_reset_password_code_use_case.dart';
 abstract class AuthRepo {
   Future<Either<Failure, Login>> login(LoginParams params);
   Future<Either<Failure, SignUp>> signUp(SignUpParams params);
-  Future<Either<Failure, bool>> sendEmailVerification(String params);
-  Future<Either<Failure, bool>> sendResetPasswordCode(String params);
+  Future<Either<Failure, bool>> sendEmailVerification(String email);
+  Future<Either<Failure, bool>> sendResetPasswordCode(String email);
   Future<Either<Failure, bool>> resetPassword(ResetPasswordParams params);
   Future<Either<Failure, bool>> verifyResetPasswordCode(
     VerifyResetPasswordParams params,

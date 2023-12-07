@@ -9,8 +9,8 @@ import '../../models/sign_up.dart';
 abstract class AuthRemoteDataSource {
   Future<LoginModel> login(LoginParams params);
   Future<SignUpModel> signUp(SignUpParams params);
-  Future<bool> sendEmailVerification(String params);
-  Future<bool> sendResetPasswordCode(String params);
+  Future<bool> sendEmailVerification(String email);
+  Future<bool> sendResetPasswordCode(String email);
   Future<bool> verifyResetPasswordCode(VerifyResetPasswordParams params);
   Future<bool> resetPassword(ResetPasswordParams params);
 }

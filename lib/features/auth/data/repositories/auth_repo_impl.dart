@@ -1,7 +1,7 @@
+import 'package:bns360_graduation_project/core/helpers/execute_and_handle_error.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/databases/secure_storage/secure_storage_manager.dart';
-import '../../../../core/errors/error_handler.dart';
 import '../../../../core/errors/failure.dart';
 import '../../domain/entities/login.dart';
 import '../../domain/entities/sign_up.dart';
@@ -14,84 +14,60 @@ import '../datasources/remote/auth_remote_data_source.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final AuthRemoteDataSource authRemoteDataSource;
-  final SecureStorageManager appShared;
+  final SecureStorageManager secureStorageManager;
 
   AuthRepoImpl({
     required this.authRemoteDataSource,
-    required this.appShared,
+    required this.secureStorageManager,
   });
 
   @override
   Future<Either<Failure, Login>> login(
     LoginParams params,
   ) async {
-    try {
-      final result = await authRemoteDataSource.login(params);
-      return Right(result);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return Left(failure);
-    }
+    return executeAndHandleError<Login>(
+      () => authRemoteDataSource.login(params),
+    );
   }
 
   @override
   Future<Either<Failure, SignUp>> signUp(
     SignUpParams params,
   ) async {
-    try {
-      final result = await authRemoteDataSource.signUp(params);
-      return Right(result);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return Left(failure);
-    }
+    return executeAndHandleError<SignUp>(
+      () => authRemoteDataSource.signUp(params),
+    );
   }
 
   @override
   Future<Either<Failure, bool>> verifyResetPasswordCode(
     VerifyResetPasswordParams params,
   ) async {
-    try {
-      final result = await authRemoteDataSource.verifyResetPasswordCode(params);
-      return Right(result);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return Left(failure);
-    }
+    return executeAndHandleError<bool>(
+      () => authRemoteDataSource.verifyResetPasswordCode(params),
+    );
   }
 
   @override
   Future<Either<Failure, bool>> resetPassword(
     ResetPasswordParams params,
   ) async {
-    try {
-      final result = await authRemoteDataSource.resetPassword(params);
-      return Right(result);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return Left(failure);
-    }
+    return executeAndHandleError<bool>(
+      () => authRemoteDataSource.resetPassword(params),
+    );
   }
 
   @override
-  Future<Either<Failure, bool>> sendEmailVerification(String params) async {
-    try {
-      final result = await authRemoteDataSource.sendEmailVerification(params);
-      return Right(result);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return Left(failure);
-    }
+  Future<Either<Failure, bool>> sendEmailVerification(String email) async {
+    return executeAndHandleError<bool>(
+      () => authRemoteDataSource.sendEmailVerification(email),
+    );
   }
 
   @override
-  Future<Either<Failure, bool>> sendResetPasswordCode(String params) async {
-    try {
-      final result = await authRemoteDataSource.sendResetPasswordCode(params);
-      return Right(result);
-    } catch (e) {
-      final failure = ErrorHandler.handle(e).failure;
-      return Left(failure);
-    }
+  Future<Either<Failure, bool>> sendResetPasswordCode(String email) async {
+    return executeAndHandleError<bool>(
+      () => authRemoteDataSource.sendResetPasswordCode(email),
+    );
   }
 }

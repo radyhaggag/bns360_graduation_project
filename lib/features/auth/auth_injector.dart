@@ -34,7 +34,7 @@ void initAuth() {
   sl.registerLazySingleton<AuthRepo>(
     () => AuthRepoImpl(
       authRemoteDataSource: sl(),
-      appShared: sl(),
+      secureStorageManager: sl(),
     ),
   );
 

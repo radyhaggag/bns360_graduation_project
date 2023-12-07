@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
+import '../../../../../config/route_config.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../bloc/auth_bloc.dart';
 import 'not_receive_code_tile.dart';

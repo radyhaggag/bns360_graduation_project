@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/widgets/input_fields/password_input_field.dart';
+import '../../../../../generated/l10n.dart';
 import '../../bloc/auth_bloc.dart';
 import 'reset_password_btn.dart';
 

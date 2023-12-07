@@ -1,6 +1,4 @@
-import 'package:dartz/dartz.dart';
-
-import '../../../../core/errors/failure.dart';
+import '../../../../core/utils/custom_types.dart';
 import '../entities/banner_entity.dart';
 import '../entities/category_entity.dart';
 

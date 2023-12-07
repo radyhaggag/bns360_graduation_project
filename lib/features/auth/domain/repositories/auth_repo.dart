@@ -1,6 +1,4 @@
-import 'package:dartz/dartz.dart';
-
-import '../../../../core/errors/failure.dart';
+import '../../../../core/utils/custom_types.dart';
 import '../entities/login.dart';
 import '../entities/sign_up.dart';
 import '../usecases/login_use_case.dart';

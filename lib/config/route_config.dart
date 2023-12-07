@@ -1,13 +1,13 @@
-import 'package:bns360_graduation_project/features/auth/presentation/screens/password_changed_screen.dart';
-import 'package:bns360_graduation_project/features/auth/presentation/screens/reset_password_screen.dart';
-import 'package:bns360_graduation_project/features/auth/presentation/screens/verify_reset_password_code_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
+import '../features/auth/presentation/screens/password_changed_screen.dart';
+import '../features/auth/presentation/screens/reset_password_screen.dart';
 import '../features/auth/presentation/screens/sign_up_screen.dart';
+import '../features/auth/presentation/screens/verify_reset_password_code_screen.dart';
 import '../features/auth/presentation/screens/welcome_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';

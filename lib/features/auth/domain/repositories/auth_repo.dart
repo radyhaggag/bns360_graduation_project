@@ -9,12 +9,12 @@ import '../usecases/sign_up_use_case.dart';
 import '../usecases/verify_reset_password_code_use_case.dart';
 
 abstract class AuthRepo {
-  Future<Either<Failure, Login>> login(LoginParams params);
-  Future<Either<Failure, SignUp>> signUp(SignUpParams params);
-  Future<Either<Failure, bool>> sendEmailVerification(String email);
-  Future<Either<Failure, bool>> sendResetPasswordCode(String email);
-  Future<Either<Failure, bool>> resetPassword(ResetPasswordParams params);
-  Future<Either<Failure, bool>> verifyResetPasswordCode(
+  Future<ResultOrFailure<Login>> login(LoginParams params);
+  Future<ResultOrFailure<SignUp>> signUp(SignUpParams params);
+  Future<ResultOrFailure<bool>> sendEmailVerification(String email);
+  Future<ResultOrFailure<bool>> sendResetPasswordCode(String email);
+  Future<ResultOrFailure<bool>> resetPassword(ResetPasswordParams params);
+  Future<ResultOrFailure<bool>> verifyResetPasswordCode(
     VerifyResetPasswordParams params,
   );
 }

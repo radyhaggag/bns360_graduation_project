@@ -1,7 +1,5 @@
-import 'package:dartz/dartz.dart';
-
-import '../../../../core/errors/failure.dart';
 import '../../../../core/helpers/execute_and_handle_error.dart';
+import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/banner_entity.dart';
 import '../../domain/entities/category_entity.dart';
 import '../../domain/repositories/home_repo.dart';
@@ -18,14 +16,14 @@ class HomeRepoImpl implements HomeRepo {
   });
 
   @override
-  Future<Either<Failure, List<BannerEntity>>> getBanners() async {
+  Future<ResultOrFailure<List<BannerEntity>>> getBanners() async {
     return executeAndHandleError<List<BannerEntity>>(
       () => homeRemoteDataSource.getBanners(),
     );
   }
 
   @override
-  Future<Either<Failure, List<CategoryEntity>>> getCategories() async {
+  Future<ResultOrFailure<List<CategoryEntity>>> getCategories() async {
     return executeAndHandleError<List<CategoryEntity>>(
       () => homeRemoteDataSource.getCategories(),
     );

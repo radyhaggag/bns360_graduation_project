@@ -1,8 +1,6 @@
-import 'package:bns360_graduation_project/core/helpers/execute_and_handle_error.dart';
-import 'package:dartz/dartz.dart';
-
 import '../../../../core/databases/secure_storage/secure_storage_manager.dart';
-import '../../../../core/errors/failure.dart';
+import '../../../../core/helpers/execute_and_handle_error.dart';
+import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/login.dart';
 import '../../domain/entities/sign_up.dart';
 import '../../domain/repositories/auth_repo.dart';
@@ -22,7 +20,7 @@ class AuthRepoImpl implements AuthRepo {
   });
 
   @override
-  Future<Either<Failure, Login>> login(
+  Future<ResultOrFailure<Login>> login(
     LoginParams params,
   ) async {
     return executeAndHandleError<Login>(
@@ -31,7 +29,7 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, SignUp>> signUp(
+  Future<ResultOrFailure<SignUp>> signUp(
     SignUpParams params,
   ) async {
     return executeAndHandleError<SignUp>(
@@ -40,7 +38,7 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, bool>> verifyResetPasswordCode(
+  Future<ResultOrFailure<bool>> verifyResetPasswordCode(
     VerifyResetPasswordParams params,
   ) async {
     return executeAndHandleError<bool>(
@@ -49,7 +47,7 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, bool>> resetPassword(
+  Future<ResultOrFailure<bool>> resetPassword(
     ResetPasswordParams params,
   ) async {
     return executeAndHandleError<bool>(
@@ -58,14 +56,14 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, bool>> sendEmailVerification(String email) async {
+  Future<ResultOrFailure<bool>> sendEmailVerification(String email) async {
     return executeAndHandleError<bool>(
       () => authRemoteDataSource.sendEmailVerification(email),
     );
   }
 
   @override
-  Future<Either<Failure, bool>> sendResetPasswordCode(String email) async {
+  Future<ResultOrFailure<bool>> sendResetPasswordCode(String email) async {
     return executeAndHandleError<bool>(
       () => authRemoteDataSource.sendResetPasswordCode(email),
     );

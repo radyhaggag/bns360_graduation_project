@@ -11,7 +11,7 @@ class GetBannersUseCase extends UseCase<List<BannerEntity>, void> {
   GetBannersUseCase(this.homeRepo);
 
   @override
-  Future<Either<Failure, List<BannerEntity>>> call(void params) {
+  Future<ResultOrFailure<List<BannerEntity>>> call(void params) {
     return homeRepo.getBanners();
   }
 }

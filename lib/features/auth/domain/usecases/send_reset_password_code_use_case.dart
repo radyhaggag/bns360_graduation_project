@@ -10,7 +10,7 @@ class SendResetPasswordCodeUseCase extends UseCase<bool, String> {
   SendResetPasswordCodeUseCase({required this.authRepo});
 
   @override
-  Future<Either<Failure, bool>> call(String params) {
+  Future<ResultOrFailure<bool>> call(String params) {
     return authRepo.sendResetPasswordCode(params);
   }
 }

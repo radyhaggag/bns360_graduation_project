@@ -12,7 +12,7 @@ class SignUpUseCase extends UseCase<SignUp, SignUpParams> {
   SignUpUseCase({required this.authRepo});
 
   @override
-  Future<Either<Failure, SignUp>> call(SignUpParams params) {
+  Future<ResultOrFailure<SignUp>> call(SignUpParams params) {
     return authRepo.signUp(params);
   }
 }

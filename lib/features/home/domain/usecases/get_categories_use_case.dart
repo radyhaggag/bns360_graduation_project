@@ -11,7 +11,7 @@ class GetCategoriesUseCase extends UseCase<List<CategoryEntity>, void> {
   GetCategoriesUseCase(this.homeRepo);
 
   @override
-  Future<Either<Failure, List<CategoryEntity>>> call(void params) {
+  Future<ResultOrFailure<List<CategoryEntity>>> call(void params) {
     return homeRepo.getCategories();
   }
 }

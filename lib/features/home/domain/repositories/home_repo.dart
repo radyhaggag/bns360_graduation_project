@@ -5,6 +5,6 @@ import '../entities/banner_entity.dart';
 import '../entities/category_entity.dart';
 
 abstract class HomeRepo {
-  Future<Either<Failure, List<BannerEntity>>> getBanners();
-  Future<Either<Failure, List<CategoryEntity>>> getCategories();
+  Future<ResultOrFailure<List<BannerEntity>>> getBanners();
+  Future<ResultOrFailure<List<CategoryEntity>>> getCategories();
 }

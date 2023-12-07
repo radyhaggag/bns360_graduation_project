@@ -12,7 +12,7 @@ class VerifyResetPasswordCodeUseCase
   VerifyResetPasswordCodeUseCase({required this.authRepo});
 
   @override
-  Future<Either<Failure, bool>> call(VerifyResetPasswordParams params) {
+  Future<ResultOrFailure<bool>> call(VerifyResetPasswordParams params) {
     return authRepo.verifyResetPasswordCode(params);
   }
 }

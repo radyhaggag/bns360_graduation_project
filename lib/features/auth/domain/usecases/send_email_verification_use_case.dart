@@ -10,7 +10,7 @@ class SendEmailVerificationUseCase extends UseCase<bool, String> {
   SendEmailVerificationUseCase({required this.authRepo});
 
   @override
-  Future<Either<Failure, bool>> call(String params) {
+  Future<ResultOrFailure<bool>> call(String params) {
     return authRepo.sendEmailVerification(params);
   }
 }

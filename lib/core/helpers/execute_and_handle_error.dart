@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
 import '../errors/error_handler.dart';
-import '../errors/failure.dart';
+import '../utils/custom_types.dart';
 
-Future<Either<Failure, T>> executeAndHandleError<T>(
+Future<ResultOrFailure<T>> executeAndHandleError<T>(
   Future<T> Function() function,
 ) async {
   try {

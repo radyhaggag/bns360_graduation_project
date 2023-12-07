@@ -12,7 +12,7 @@ class LoginUseCase extends UseCase<Login, LoginParams> {
   LoginUseCase({required this.authRepo});
 
   @override
-  Future<Either<Failure, Login>> call(LoginParams params) {
+  Future<ResultOrFailure<Login>> call(LoginParams params) {
     return authRepo.login(params);
   }
 }

@@ -11,7 +11,7 @@ class ResetPasswordUseCase extends UseCase<bool, ResetPasswordParams> {
   ResetPasswordUseCase({required this.authRepo});
 
   @override
-  Future<Either<Failure, bool>> call(ResetPasswordParams params) {
+  Future<ResultOrFailure<bool>> call(ResetPasswordParams params) {
     return authRepo.resetPassword(params);
   }
 }

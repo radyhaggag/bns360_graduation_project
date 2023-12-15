@@ -7,6 +7,7 @@ import 'data/repositories/home_repo_impl.dart';
 import 'domain/repositories/home_repo.dart';
 import 'domain/usecases/get_banners_use_case.dart';
 import 'domain/usecases/get_categories_use_case.dart';
+import 'domain/usecases/get_places_to_explore_use_case.dart';
 import 'presentation/bloc/home_bloc.dart';
 
 void initHome() {
@@ -28,11 +29,15 @@ void initHome() {
   sl.registerLazySingleton<GetCategoriesUseCase>(
     () => GetCategoriesUseCase(sl()),
   );
+  sl.registerLazySingleton<GetPlacesToExploreUseCase>(
+    () => GetPlacesToExploreUseCase(sl()),
+  );
   // Bloc
   sl.registerFactory(
     () => HomeBloc(
       getBannersUseCase: sl(),
       getCategoriesUseCase: sl(),
+      getPlacesToExploreUseCase: sl(),
     ),
   );
 }

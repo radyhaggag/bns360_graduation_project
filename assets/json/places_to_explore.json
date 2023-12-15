@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "category_id": 1,
+      "name_ar": "بويلفار",
+      "name_en": "Bolivar",
+      "description_ar": "مطعم تركي يقدم العديد من الآكلات العالمية",
+      "description_en": "A Turkish restaurant serving many international dishes",
+      "image_url": "https://scontent.fcai20-3.fna.fbcdn.net/v/t39.30808-6/301952567_386853396955387_4906645968787235383_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=bZSXCjaWhMgAX_3-sNp&_nc_ht=scontent.fcai20-3.fna&oh=00_AfC1KIpncwrXTMExPjgXjT_HQpu29QOHawTr75b4lFyCgw&oe=6580FE6F",
+      "stars_count": 4.5,
+      "num_of_ratings": 25
+    },
+    {
+      "id": 2,
+      "category_id": 1,
+      "name_ar": "أوزي",
+      "name_en": "Oozy",
+      "description_ar": "كافيه أوزي أحلي لمه لأجمل ناس",
+      "description_en": "Cafe Ozzy is the best gathering for the most beautiful people",
+      "image_url": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+      "stars_count": 3,
+      "num_of_ratings": 25
+    }
+  ]
+}

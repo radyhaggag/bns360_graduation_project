@@ -52,8 +52,7 @@ abstract class ThemeConfig {
       ),
       appBarTheme: AppBarTheme(
         centerTitle: true,
-        titleTextStyle: AppStyles.getRegularStyle(),
-        // backgroundColor: AppColors.white,
+        titleTextStyle: AppStyles.getSemiBoldStyle(),
         color: AppColors.white,
         foregroundColor: Colors.white,
         systemOverlayStyle: _systemUiOverlayStyle,

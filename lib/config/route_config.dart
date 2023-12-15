@@ -93,7 +93,7 @@ abstract class RouteConfig {
       case Routes.home:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => sl<HomeBloc>(),
+            create: (context) => sl<HomeBloc>()..add(GetPlacesToExploreEvent()),
             child: const HomeScreen(),
           ),
         );

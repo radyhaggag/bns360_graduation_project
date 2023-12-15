@@ -8,9 +8,17 @@ import '../core/databases/secure_storage/secure_storage_manager.dart';
 import '../core/helpers/cache_helper.dart';
 import '../core/localization/localization_bloc.dart';
 import '../features/auth/auth_injector.dart';
+import '../features/home/home_injector.dart';
 import '../features/splash/splash_injector.dart';
 
 final sl = GetIt.instance; // Service Locator
+
+Future<void> initAppDependencies() async {
+  await initCore();
+  initSplash();
+  initAuth();
+  initHome();
+}
 
 Future<void> initCore() async {
   // Dio
@@ -46,10 +54,4 @@ Future<void> initCore() async {
   sl.registerFactory(
     () => LocalizationBloc(sl()),
   );
-}
-
-Future<void> initAppDependencies() async {
-  await initCore();
-  initSplash();
-  initAuth();
 }

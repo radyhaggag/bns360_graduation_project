@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/category_details_entity.dart';
+
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/banner_entity.dart';
@@ -26,6 +28,13 @@ class HomeRepoImpl implements HomeRepo {
   Future<ResultOrFailure<List<CategoryEntity>>> getCategories() async {
     return executeAndHandleError<List<CategoryEntity>>(
       () => homeRemoteDataSource.getCategories(),
+    );
+  }
+
+  @override
+  Future<ResultOrFailure<List<CategoryDetailsEntity>>> getPlacesToExplore() {
+    return executeAndHandleError<List<CategoryDetailsEntity>>(
+      () => homeRemoteDataSource.getPlacesToExplore(),
     );
   }
 }

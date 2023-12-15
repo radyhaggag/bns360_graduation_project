@@ -39,7 +39,8 @@ class BNS360App extends StatelessWidget {
                 title: AppStrings.appName,
                 theme: ThemeConfig.getLightTheme(),
                 onGenerateRoute: RouteConfig.getRoute,
-                initialRoute: Routes.splash,
+                // initialRoute: Routes.splash,
+                initialRoute: Routes.home,
               ),
             );
           }

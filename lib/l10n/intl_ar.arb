@@ -45,5 +45,6 @@
   "passwordChanged": "تم تغيير كلمة المرور",
   "passwordChangedMsg": "تم تغيير كلمة مرورك بنجاح",
   "backToLogin": "العودة الى تسجيل الدخول",
-  "passwordsDoNotMatch": "كلمات المرور غير متطابقة"
+  "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+  "home": "الصفحة الرئيسية"
 }

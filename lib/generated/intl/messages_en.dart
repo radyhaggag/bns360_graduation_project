@@ -49,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),

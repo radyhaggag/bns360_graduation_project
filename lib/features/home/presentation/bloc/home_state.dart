@@ -36,3 +36,26 @@ class GetCategoriesErrorState extends HomeState {
 
   const GetCategoriesErrorState({required this.message});
 }
+
+class BottomNavbarIndexChanged extends HomeState {
+  final int index;
+
+  const BottomNavbarIndexChanged(this.index);
+
+  @override
+  List<Object> get props => [index];
+}
+
+class GetPlacesToExploreLoadingState extends HomeState {}
+
+class GetPlacesToExploreSuccessState extends HomeState {
+  final List<CategoryDetailsEntity> placesToExplore;
+
+  const GetPlacesToExploreSuccessState({required this.placesToExplore});
+}
+
+class GetPlacesToExploreErrorState extends HomeState {
+  final String message;
+
+  const GetPlacesToExploreErrorState({required this.message});
+}

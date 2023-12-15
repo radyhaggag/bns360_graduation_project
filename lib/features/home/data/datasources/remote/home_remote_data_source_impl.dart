@@ -1,3 +1,6 @@
+import 'package:bns360_graduation_project/core/helpers/load_json_from_asset.dart';
+import 'package:bns360_graduation_project/core/shared_data/models/category_details_model.dart';
+
 import '../../../../../core/api/api_consumer.dart';
 import '../../models/banner_model.dart';
 import '../../models/category_model.dart';
@@ -18,5 +21,14 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   Future<List<CategoryModel>> getCategories() async {
     // TODO: implement getCategories
     throw UnimplementedError();
+  }
+
+  @override
+  Future<List<CategoryDetailsModel>> getPlacesToExplore() async {
+    final res = await loadJsonFromAsset('places_to_explore.json');
+    final places = List<CategoryDetailsModel>.from(res['data'].map(
+      (place) => CategoryDetailsModel.fromJson(place),
+    ));
+    return places;
   }
 }

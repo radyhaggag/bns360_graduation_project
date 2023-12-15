@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "no_places_to_explore":
+            MessageLookupByLibrary.simpleMessage("No places to explore"),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "notReceiveCode":
@@ -68,6 +70,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "places_to_explore":
+            MessageLookupByLibrary.simpleMessage("Places to explore"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),

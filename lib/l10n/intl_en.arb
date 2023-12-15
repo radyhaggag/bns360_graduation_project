@@ -46,5 +46,7 @@
   "passwordChangedMsg": "Your password has been changed successfully",
   "backToLogin": "Back to log in",
   "passwordsDoNotMatch": "Passwords do not match",
-  "home": "Home"
+  "home": "Home",
+  "places_to_explore": "Places to explore",
+  "no_places_to_explore": "No places to explore"
 }

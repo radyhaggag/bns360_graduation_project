@@ -529,6 +529,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Places to explore`
+  String get places_to_explore {
+    return Intl.message(
+      'Places to explore',
+      name: 'places_to_explore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No places to explore`
+  String get no_places_to_explore {
+    return Intl.message(
+      'No places to explore',
+      name: 'no_places_to_explore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

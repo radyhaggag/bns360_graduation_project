@@ -1,6 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/category_details_entity.dart';
-
 import '../../../../core/helpers/execute_and_handle_error.dart';
+import '../../../../core/shared_data/entities/category_details_entity.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/banner_entity.dart';
 import '../../domain/entities/category_entity.dart';

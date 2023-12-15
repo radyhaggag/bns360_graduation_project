@@ -1,7 +1,6 @@
-import 'package:bns360_graduation_project/core/helpers/load_json_from_asset.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/category_details_model.dart';
-
 import '../../../../../core/api/api_consumer.dart';
+import '../../../../../core/helpers/load_json_from_asset.dart';
+import '../../../../../core/shared_data/models/category_details_model.dart';
 import '../../models/banner_model.dart';
 import '../../models/category_model.dart';
 import 'home_remote_data_source.dart';

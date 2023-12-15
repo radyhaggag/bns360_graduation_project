@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-import 'places_builder.dart';
+import '../../../../core/utils/constants.dart';
+import 'explore_places_section.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -12,7 +12,7 @@ class HomeBody extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
       child: Column(
         children: [
-          PlacesBuilder(),
+          ExplorePlacesSection(),
         ],
       ),
     );

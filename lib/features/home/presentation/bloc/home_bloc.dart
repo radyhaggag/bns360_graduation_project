@@ -69,6 +69,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     );
   }
 
+  List<CategoryDetailsEntity> placesToExplore = [];
+
   _getPlacesToExplore(
     GetPlacesToExploreEvent event,
     Emitter<HomeState> emit,
@@ -80,7 +82,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
     res.fold(
       (l) => emit(GetPlacesToExploreErrorState(message: l.message)),
-      (r) => emit(GetPlacesToExploreSuccessState(placesToExplore: r)),
+      (r) {
+        placesToExplore = r;
+        emit(GetPlacesToExploreSuccessState(placesToExplore: r));
+      },
     );
   }
 }

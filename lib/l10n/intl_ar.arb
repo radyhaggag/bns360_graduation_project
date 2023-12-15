@@ -46,5 +46,7 @@
   "passwordChangedMsg": "تم تغيير كلمة مرورك بنجاح",
   "backToLogin": "العودة الى تسجيل الدخول",
   "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
-  "home": "الصفحة الرئيسية"
+  "home": "الصفحة الرئيسية",
+  "places_to_explore": "أماكن للاستكشاف",
+  "no_places_to_explore": "لا بوجد اماكن للاستكشاف"
 }

@@ -8,7 +8,7 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums.dart';
-import '../../../../../core/widgets/custom_buttons.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../or_separator.dart';
 import '../social_icons_buttons.dart';

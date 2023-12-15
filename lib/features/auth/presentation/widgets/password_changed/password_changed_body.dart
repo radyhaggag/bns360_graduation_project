@@ -6,7 +6,7 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
-import '../../../../../core/widgets/custom_buttons.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 
 class PasswordChangedBody extends StatelessWidget {

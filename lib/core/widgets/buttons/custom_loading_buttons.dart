@@ -20,7 +20,7 @@ class CustomElevatedButtonWithLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 50.h,
+      height: height ?? 45.h,
       child: AnimatedCrossFade(
         duration: const Duration(milliseconds: 250),
         firstChild: CustomElevatedButton(
@@ -52,7 +52,7 @@ class CustomOutlinedButtonWithLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 50.h,
+      height: height ?? 45.h,
       child: AnimatedCrossFade(
         duration: const Duration(milliseconds: 250),
         firstChild: CustomOutlinedButton(
@@ -84,7 +84,7 @@ class CustomTextButtonWithLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height ?? 50.h,
+      height: height ?? 45.h,
       child: AnimatedCrossFade(
         duration: const Duration(milliseconds: 250),
         firstChild: CustomTextButton(

@@ -36,31 +36,40 @@ class CategoryDetailsCard extends StatelessWidget {
       width: width ?? 240.w,
       child: Card(
         color: AppColors.white,
+        elevation: 2.0,
+        surfaceTintColor: AppColors.black25,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _CategoryDetailsImage(
               imageUrl: categoryDetailsEntity.imageUrl,
             ),
-            _CategoryDetailsNameAndDescriptionSection(
-              categoryDetailsEntity: categoryDetailsEntity,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: _CategoryDetailsRatingSection(
-                    numOfRatings: categoryDetailsEntity.numOfRatings,
-                    starsCount: categoryDetailsEntity.starsCount,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _CategoryDetailsNameAndDescriptionSection(
+                    categoryDetailsEntity: categoryDetailsEntity,
                   ),
-                ),
-                _CategoryFavoriteButton(
-                  onPressed: onIconPressed,
-                  isFavorite: isFavorite,
-                  useSetStateToChangeColor: useSetStateToChangeFavoriteColor,
-                ),
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: _CategoryDetailsRatingSection(
+                          numOfRatings: categoryDetailsEntity.numOfRatings,
+                          starsCount: categoryDetailsEntity.starsCount,
+                        ),
+                      ),
+                      _CategoryFavoriteButton(
+                        onPressed: onIconPressed,
+                        isFavorite: isFavorite,
+                        useSetStateToChangeColor:
+                            useSetStateToChangeFavoriteColor,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),

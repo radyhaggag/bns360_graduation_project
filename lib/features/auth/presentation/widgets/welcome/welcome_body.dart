@@ -39,7 +39,7 @@ class WelcomeBody extends StatelessWidget {
             Image.asset(
               AppAssets.welcomeVector,
               width: context.width,
-              height: context.height / 2.5,
+              height: context.height / 3,
             ),
             const SizedBox(height: 30),
             CustomElevatedButton(
@@ -57,8 +57,8 @@ class WelcomeBody extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             CustomTextButton(
-              onPressed: () => Navigator.of(context).popAndPushNamed(
-                Routes.home,
+              onPressed: () => Navigator.of(context).pushNamed(
+                Routes.bottomNavBar,
               ),
               label: S.of(context).continueAsGuest,
             ),

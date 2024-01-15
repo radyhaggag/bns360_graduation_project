@@ -23,7 +23,7 @@ class _CarouselSliderBuilder extends StatelessWidget {
         );
       },
       options: CarouselOptions(
-        height: 160.h,
+        height: 130.h,
         autoPlay: true,
         enlargeCenterPage: true,
         viewportFraction: .80,

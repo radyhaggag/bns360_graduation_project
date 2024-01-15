@@ -26,7 +26,7 @@ class ForgotPasswordBody extends StatelessWidget {
               AppAssets.forgotPassword,
               alignment: Alignment.center,
               width: context.width,
-              height: context.height / 2.4,
+              height: context.height / 3,
             ),
             Text(
               S.of(context).forgotPassword,

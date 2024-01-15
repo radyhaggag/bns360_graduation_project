@@ -17,7 +17,7 @@ class HomeBody extends StatelessWidget {
         child: Column(
           children: [
             HomeSliderSection(),
-            SizedBox(height: 30),
+            SizedBox(height: 50),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: kHorizontalPadding,

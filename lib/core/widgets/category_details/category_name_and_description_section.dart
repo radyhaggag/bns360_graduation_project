@@ -32,10 +32,11 @@ class _CategoryDetailsNameAndDescriptionSection extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             getLocalizedString(
-              context,
-              ar: categoryDetailsEntity.descriptionAR,
-              en: categoryDetailsEntity.descriptionEN,
-            ),
+                  context,
+                  ar: categoryDetailsEntity.descriptionAR,
+                  en: categoryDetailsEntity.descriptionEN,
+                ) *
+                3,
             style: AppStyles.getLightStyle(),
             maxLines: 3,
             overflow: TextOverflow.ellipsis,

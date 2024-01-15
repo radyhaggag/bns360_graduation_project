@@ -20,7 +20,7 @@ class NotHaveAccountTile extends StatelessWidget {
         ),
         const SizedBox(width: 10),
         InkWell(
-          onTap: () => Navigator.of(context).popAndPushNamed(
+          onTap: () => Navigator.of(context).pushNamed(
             Routes.signUp,
           ),
           child: Text(

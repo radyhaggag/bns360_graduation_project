@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_colors.dart';
 import '../utils/app_styles.dart';
@@ -38,7 +39,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 45.h,
       decoration: BoxDecoration(
         color: widget.dropdownColor ?? AppColors.hint,
         border: Border.all(color: AppColors.black25),

@@ -23,7 +23,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? context.width,
-      height: height ?? 50.h,
+      height: height ?? 45.h,
       child: ElevatedButton(
         onPressed: onPressed,
         style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
@@ -55,7 +55,7 @@ class CustomOutlinedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? context.width,
-      height: height ?? 50.h,
+      height: height ?? 45.h,
       child: OutlinedButton(
         onPressed: onPressed,
         style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
@@ -87,7 +87,7 @@ class CustomTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? context.width,
-      height: height ?? 50.h,
+      height: height ?? 45.h,
       child: TextButton(
         onPressed: onPressed,
         style: Theme.of(context).textButtonTheme.style?.copyWith(

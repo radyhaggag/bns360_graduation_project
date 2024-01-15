@@ -33,7 +33,7 @@ class _ExplorePlacesBuilder extends StatelessWidget {
             ),
             scrollDirection: Axis.horizontal,
             width: context.width,
-            height: 330.h,
+            height: 275.h,
           ),
         );
       },

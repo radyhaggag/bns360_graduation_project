@@ -17,16 +17,16 @@ class BNS360App extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<LocalizationBloc>(
       create: (context) => sl<LocalizationBloc>()..add(GetSavedLanguage()),
-      child: BlocBuilder<LocalizationBloc, LocalizationState>(
-        builder: (context, state) {
-          ScreenUtil.init(context);
-          ThemeConfig.configureStatusBarColor();
-          if (state is ChangeLocalState) {
-            return ScreenUtilInit(
-              designSize: const Size(360, 800),
-              minTextAdapt: true,
-              splitScreenMode: true,
-              child: MaterialApp(
+      child: ScreenUtilInit(
+        designSize: const Size(360, 800),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: BlocBuilder<LocalizationBloc, LocalizationState>(
+          builder: (context, state) {
+            ScreenUtil.init(context);
+            ThemeConfig.configureStatusBarColor();
+            if (state is ChangeLocalState) {
+              return MaterialApp(
                 supportedLocales: S.delegate.supportedLocales,
                 localizationsDelegates: const [
                   S.delegate,
@@ -40,11 +40,11 @@ class BNS360App extends StatelessWidget {
                 theme: ThemeConfig.getLightTheme(),
                 onGenerateRoute: RouteConfig.getRoute,
                 initialRoute: Routes.splash,
-              ),
-            );
-          }
-          return const SizedBox();
-        },
+              );
+            }
+            return const SizedBox();
+          },
+        ),
       ),
     );
   }

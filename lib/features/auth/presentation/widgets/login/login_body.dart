@@ -23,7 +23,7 @@ class LoginBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 100.h),
+            SizedBox(height: 80.h),
             Text(
               S.of(context).loginMsg,
               style: AppStyles.getBoldStyle(color: AppColors.primary),

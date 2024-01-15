@@ -14,8 +14,8 @@ class _CategoryDetailsImage extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: imageUrl,
         width: 250.w,
-        height: 150.h,
-        fit: BoxFit.fill,
+        height: 125.h,
+        fit: BoxFit.cover,
       ),
     );
   }

@@ -30,9 +30,11 @@ class _CategoryDetailsRatingSection extends StatelessWidget {
             ignoreGestures: true,
           ),
           const SizedBox(width: 5),
-          Text(
-            "($numOfRatings)",
-            style: AppStyles.getLightStyle(),
+          Expanded(
+            child: Text(
+              "($numOfRatings)",
+              style: AppStyles.getLightStyle(),
+            ),
           )
         ],
       ),

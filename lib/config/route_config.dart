@@ -9,6 +9,8 @@ import '../features/auth/presentation/screens/reset_password_screen.dart';
 import '../features/auth/presentation/screens/sign_up_screen.dart';
 import '../features/auth/presentation/screens/verify_reset_password_code_screen.dart';
 import '../features/auth/presentation/screens/welcome_screen.dart';
+import '../features/bottom_nav_bar/presentation/bloc/bottom_nav_bar_bloc.dart';
+import '../features/bottom_nav_bar/presentation/screens/bottom_nav_bar_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
@@ -25,6 +27,7 @@ abstract class Routes {
   static const resetPassword = '/resetPassword';
   static const passwordChanged = '/passwordChanged';
   static const home = '/home';
+  static const bottomNavBar = '/bottomNavBar';
 }
 
 abstract class RouteConfig {
@@ -95,6 +98,13 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<HomeBloc>()..add(GetPlacesToExploreEvent()),
             child: const HomeScreen(),
+          ),
+        );
+      case Routes.bottomNavBar:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => BottomNavBarBloc(),
+            child: const BottomNavBarScreen(),
           ),
         );
       default:

@@ -23,48 +23,50 @@ class WelcomeBody extends StatelessWidget {
         horizontal: kHorizontalPadding,
         vertical: 25,
       ),
-      child: Column(
-        children: [
-          Align(
-            alignment: context.currentLanguage == Language.english
-                ? Alignment.topLeft
-                : Alignment.topRight,
-            child: Text(
-              S.of(context).welcome,
-              style: AppStyles.getBoldStyle(color: AppColors.primary),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Align(
+              alignment: context.currentLanguage == Language.english
+                  ? Alignment.topLeft
+                  : Alignment.topRight,
+              child: Text(
+                S.of(context).welcome,
+                style: AppStyles.getBoldStyle(color: AppColors.primary),
+              ),
             ),
-          ),
-          const SizedBox(height: 30),
-          Image.asset(
-            AppAssets.welcomeVector,
-            width: context.width,
-            height: context.height / 2.4,
-          ),
-          const SizedBox(height: 30),
-          CustomElevatedButton(
-            onPressed: () => Navigator.of(context).popAndPushNamed(
-              Routes.login,
+            const SizedBox(height: 30),
+            Image.asset(
+              AppAssets.welcomeVector,
+              width: context.width,
+              height: context.height / 2.5,
             ),
-            label: S.of(context).login,
-          ),
-          const SizedBox(height: 15),
-          CustomOutlinedButton(
-            onPressed: () => Navigator.of(context).popAndPushNamed(
-              Routes.signUp,
+            const SizedBox(height: 30),
+            CustomElevatedButton(
+              onPressed: () => Navigator.of(context).popAndPushNamed(
+                Routes.login,
+              ),
+              label: S.of(context).login,
             ),
-            label: S.of(context).signUp,
-          ),
-          const SizedBox(height: 15),
-          CustomTextButton(
-            onPressed: () => Navigator.of(context).popAndPushNamed(
-              Routes.home,
+            const SizedBox(height: 15),
+            CustomOutlinedButton(
+              onPressed: () => Navigator.of(context).popAndPushNamed(
+                Routes.signUp,
+              ),
+              label: S.of(context).signUp,
             ),
-            label: S.of(context).continueAsGuest,
-          ),
-          const SizedBox(height: 10),
-          const OrSeparator(),
-          const SocialIconsButtons(),
-        ],
+            const SizedBox(height: 15),
+            CustomTextButton(
+              onPressed: () => Navigator.of(context).popAndPushNamed(
+                Routes.home,
+              ),
+              label: S.of(context).continueAsGuest,
+            ),
+            const SizedBox(height: 10),
+            const OrSeparator(),
+            const SocialIconsButtons(),
+          ],
+        ),
       ),
     );
   }

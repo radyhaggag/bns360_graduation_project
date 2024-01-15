@@ -22,21 +22,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     required this.getCategoriesUseCase,
     required this.getPlacesToExploreUseCase,
   }) : super(HomeInitial()) {
-    on<ChangeBottomNavbarIndex>(_changeBottomNavbarIndex);
     on<GetBannersEvent>(_getBanners);
     on<GetCategoriesEvent>(_getCatteries);
     on<GetPlacesToExploreEvent>(_getPlacesToExplore);
-  }
-
-  final views = [];
-  int bottomNavbarIndex = 0;
-
-  _changeBottomNavbarIndex(
-    ChangeBottomNavbarIndex event,
-    Emitter<HomeState> emit,
-  ) {
-    bottomNavbarIndex = event.index;
-    emit(BottomNavbarIndexChanged(bottomNavbarIndex));
   }
 
   _getBanners(

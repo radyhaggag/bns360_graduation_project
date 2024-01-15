@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import '../../../../core/utils/app_fonts.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';

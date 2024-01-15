@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/shared_data/entities/category_details_entity.dart';
-import '../../../../core/utils/app_styles.dart';
-import '../../../../core/widgets/category_details/category_details_card.dart';
-import '../../../../core/widgets/data_state_widget.dart';
-import '../../../../core/widgets/main_list_view_builder.dart';
-import '../../../../generated/l10n.dart';
-import '../bloc/home_bloc.dart';
+import '../../../../../core/extensions/media_query.dart';
+import '../../../../../core/shared_data/entities/category_details_entity.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/widgets/category_details/category_details_card.dart';
+import '../../../../../core/widgets/data_state_widget.dart';
+import '../../../../../core/widgets/main_list_view_builder.dart';
+import '../../../../../generated/l10n.dart';
+import '../../bloc/home_bloc.dart';
 
 part 'explore_places_builder.dart';
 

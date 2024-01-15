@@ -7,4 +7,7 @@ abstract class AppAssets {
   static const googleIcon = "$imagePath/google.png";
   static const facebook = "$imagePath/facebook.png";
   static const forgotPassword = "$imagePath/forgot_password.png";
+  static const sliderImg1 = "$imagePath/slider_image_1.jpg";
+  static const sliderImg2 = "$imagePath/slider_image_2.jpg";
+  static const sliderImg3 = "$imagePath/slider_image_3.png";
 }

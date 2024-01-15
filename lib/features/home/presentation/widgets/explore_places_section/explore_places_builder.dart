@@ -28,10 +28,12 @@ class _ExplorePlacesBuilder extends StatelessWidget {
             emptyMessage: S.of(context).no_places_to_explore,
             itemWidget: (item) => CategoryDetailsCard(
               categoryDetailsEntity: item,
+              onIconPressed: () {},
+              useSetStateToChangeFavoriteColor: true,
             ),
             scrollDirection: Axis.horizontal,
-            width: double.infinity,
-            height: 300.h,
+            width: context.width,
+            height: 330.h,
           ),
         );
       },

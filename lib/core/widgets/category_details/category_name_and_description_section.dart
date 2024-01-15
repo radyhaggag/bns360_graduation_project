@@ -10,8 +10,10 @@ class _CategoryDetailsNameAndDescriptionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250.w,
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 10,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,7 +23,11 @@ class _CategoryDetailsNameAndDescriptionSection extends StatelessWidget {
               ar: categoryDetailsEntity.nameAR,
               en: categoryDetailsEntity.nameEN,
             ),
-            style: AppStyles.getSemiBoldStyle(),
+            style: AppStyles.getSemiBoldStyle(
+              fontSize: AppFontSize.body,
+            ),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
           ),
           const SizedBox(height: 10),
           Text(
@@ -30,7 +36,9 @@ class _CategoryDetailsNameAndDescriptionSection extends StatelessWidget {
               ar: categoryDetailsEntity.descriptionAR,
               en: categoryDetailsEntity.descriptionEN,
             ),
-            style: AppStyles.getRegularStyle(),
+            style: AppStyles.getLightStyle(),
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

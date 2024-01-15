@@ -32,6 +32,15 @@ abstract class ThemeConfig {
           ),
         ),
       ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          // backgroundColor: AppColors.white,
+          foregroundColor: AppColors.black,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25),
+          ),
+        ),
+      ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           textStyle: AppStyles.getSemiBoldStyle(),
@@ -54,7 +63,6 @@ abstract class ThemeConfig {
         centerTitle: true,
         titleTextStyle: AppStyles.getSemiBoldStyle(),
         color: AppColors.white,
-        foregroundColor: Colors.white,
         systemOverlayStyle: _systemUiOverlayStyle,
         scrolledUnderElevation: 0.0,
       ),

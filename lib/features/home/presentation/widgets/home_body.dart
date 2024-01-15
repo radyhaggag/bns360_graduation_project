@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/constants.dart';
-import 'explore_places_section.dart';
+import 'explore_places_section/explore_places_section.dart';
+import 'home_slider/home_slider_section.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -9,11 +10,22 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-      child: Column(
-        children: [
-          ExplorePlacesSection(),
-        ],
+      padding: EdgeInsets.symmetric(
+        vertical: 20,
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            HomeSliderSection(),
+            SizedBox(height: 30),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: kHorizontalPadding,
+              ),
+              child: ExplorePlacesSection(),
+            ),
+          ],
+        ),
       ),
     );
   }

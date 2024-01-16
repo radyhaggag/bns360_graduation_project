@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../../../../../core/extensions/media_query.dart';
-import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -23,7 +23,7 @@ class ForgotPasswordBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              AppAssets.forgotPassword,
+              AppImages.forgotPassword,
               alignment: Alignment.center,
               width: context.width,
               height: context.height / 3,

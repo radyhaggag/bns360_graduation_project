@@ -13,7 +13,7 @@ class ProfileCircleIcon extends StatelessWidget {
         shape: BoxShape.circle,
         border: Border.all(
           color: AppColors.primary,
-          width: 1.5,
+          width: 2.5,
         ),
       ),
       child: const Icon(FeatherIcons.user),

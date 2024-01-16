@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/extensions/media_query.dart';
-import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/app_colors.dart';
 part 'slider_dots_builder.dart';
 part 'carousel_slider_builder.dart';
 
 List<String> get _sliderImagesPath => [
-      AppAssets.sliderImg1,
-      AppAssets.sliderImg2,
-      AppAssets.sliderImg3,
+      AppImages.sliderImg1,
+      AppImages.sliderImg2,
+      AppImages.sliderImg3,
     ];
 
 class HomeSliderSection extends StatefulWidget {

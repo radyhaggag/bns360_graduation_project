@@ -13,37 +13,46 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      centerTitle: false,
-      title: Text(
-        S.of(context).appName,
-        style: AppStyles.getBoldStyle(
-          color: AppColors.primary,
-          fontSize: AppFontSize.title,
-        ).copyWith(letterSpacing: 1),
+    return Container(
+      decoration: const BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            offset: Offset(0, 4),
+            blurRadius: 4,
+            spreadRadius: 0,
+          ),
+        ],
       ),
-      shape: Border(
-        bottom: BorderSide(color: AppColors.black25, width: 2.5),
+      child: AppBar(
+        centerTitle: false,
+        title: Text(
+          S.of(context).appName,
+          style: AppStyles.getBoldStyle(
+            color: AppColors.primary,
+            fontSize: AppFontSize.title,
+          ).copyWith(letterSpacing: .5),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              FeatherIcons.messageCircle,
+              size: 30,
+            ),
+            onPressed: () {},
+            style: IconButton.styleFrom(
+              foregroundColor: AppColors.primary,
+            ),
+          ),
+          IconButton(
+            icon: const ProfileCircleIcon(),
+            onPressed: () {},
+            style: IconButton.styleFrom(
+              foregroundColor: AppColors.primary,
+            ),
+          ),
+        ],
       ),
-      actions: [
-        IconButton(
-          icon: const Icon(
-            FeatherIcons.messageCircle,
-            size: 30,
-          ),
-          onPressed: () {},
-          style: IconButton.styleFrom(
-            foregroundColor: AppColors.primary,
-          ),
-        ),
-        IconButton(
-          icon: const ProfileCircleIcon(),
-          onPressed: () {},
-          style: IconButton.styleFrom(
-            foregroundColor: AppColors.primary,
-          ),
-        ),
-      ],
     );
   }
 

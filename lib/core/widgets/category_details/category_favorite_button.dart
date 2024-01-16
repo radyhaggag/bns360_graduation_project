@@ -2,11 +2,11 @@ part of 'category_details_card.dart';
 
 class _CategoryFavoriteButton extends StatefulWidget {
   const _CategoryFavoriteButton({
-    Key? key,
+    super.key,
     this.onPressed,
     this.isFavorite,
     this.useSetStateToChangeColor,
-  }) : super(key: key);
+  });
 
   final void Function()? onPressed;
   final bool? isFavorite;

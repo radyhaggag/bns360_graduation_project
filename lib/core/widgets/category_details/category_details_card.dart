@@ -36,8 +36,8 @@ class CategoryDetailsCard extends StatelessWidget {
       width: width ?? 240.w,
       child: Card(
         color: AppColors.white,
-        elevation: 2.0,
-        surfaceTintColor: AppColors.black25,
+        elevation: 5.0,
+        surfaceTintColor: AppColors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

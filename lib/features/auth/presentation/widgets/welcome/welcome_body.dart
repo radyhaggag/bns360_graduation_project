@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../config/route_config.dart';
 import '../../../../../core/extensions/language.dart';
 import '../../../../../core/extensions/media_query.dart';
-import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
@@ -37,28 +37,29 @@ class WelcomeBody extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Image.asset(
-              AppAssets.welcomeVector,
+              AppImages.welcomeVector,
               width: context.width,
               height: context.height / 3,
             ),
             const SizedBox(height: 30),
             CustomElevatedButton(
-              onPressed: () => Navigator.of(context).popAndPushNamed(
+              onPressed: () => Navigator.of(context).pushNamed(
                 Routes.login,
               ),
               label: S.of(context).login,
             ),
             const SizedBox(height: 15),
             CustomOutlinedButton(
-              onPressed: () => Navigator.of(context).popAndPushNamed(
+              onPressed: () => Navigator.of(context).pushNamed(
                 Routes.signUp,
               ),
               label: S.of(context).signUp,
             ),
             const SizedBox(height: 15),
             CustomTextButton(
-              onPressed: () => Navigator.of(context).pushNamed(
+              onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
                 Routes.bottomNavBar,
+                (route) => false,
               ),
               label: S.of(context).continueAsGuest,
             ),

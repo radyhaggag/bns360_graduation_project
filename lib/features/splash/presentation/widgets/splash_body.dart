@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/assets/app_images.dart';
 import '../../../../core/utils/constants.dart';
 
 class SplashBody extends StatefulWidget {
@@ -32,7 +32,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
           builder: (context, child) {
             return SlideTransition(
               position: _slidingAnimation,
-              child: Image.asset(AppAssets.appLogo),
+              child: Image.asset(AppImages.appLogo),
             );
           },
         ),

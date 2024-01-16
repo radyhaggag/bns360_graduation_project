@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/injector_container.dart';
 import '../bloc/home_bloc.dart';
+import '../widgets/floating_action_button/home_floating_action_button.dart';
 import '../widgets/home_body.dart';
 import '../widgets/home_screen_app_bar.dart';
 
@@ -21,6 +22,7 @@ class HomeScreen extends StatelessWidget {
     return const Scaffold(
       appBar: HomeScreenAppBar(),
       body: HomeBody(),
+      floatingActionButton: HomeFloatingActionButton(),
     );
   }
 }

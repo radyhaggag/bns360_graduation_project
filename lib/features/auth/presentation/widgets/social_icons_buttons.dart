@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/assets/app_images.dart';
 import '../../../../core/utils/app_colors.dart';
 
 class SocialIconsButtons extends StatelessWidget {
@@ -24,7 +24,7 @@ class SocialIconsButtons extends StatelessWidget {
           onPressed: () {},
           style: mainStyle,
           icon: Image.asset(
-            AppAssets.googleIcon,
+            AppImages.googleIcon,
             width: 45.w,
             height: 45.h,
           ),
@@ -34,7 +34,7 @@ class SocialIconsButtons extends StatelessWidget {
           onPressed: () {},
           style: mainStyle,
           icon: Image.asset(
-            AppAssets.facebook,
+            AppImages.facebook,
             width: 45.w,
             height: 45.h,
           ),

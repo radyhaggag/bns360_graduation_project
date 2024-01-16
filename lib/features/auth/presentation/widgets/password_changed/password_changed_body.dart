@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../config/route_config.dart';
-import '../../../../../core/utils/app_assets.dart';
+import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -25,7 +25,7 @@ class PasswordChangedBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 100),
-            Image.asset(AppAssets.success),
+            Image.asset(AppImages.success),
             const SizedBox(height: 50),
             Text(
               S.of(context).passwordChanged,

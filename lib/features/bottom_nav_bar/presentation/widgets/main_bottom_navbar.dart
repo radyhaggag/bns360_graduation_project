@@ -2,13 +2,15 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/assets/app_svg.dart';
 import '../bloc/bottom_nav_bar_bloc.dart';
 
 const _iconList = [
   Icons.home,
-  Icons.category,
+  AppSvg.category,
   Icons.favorite,
   Icons.handyman,
   FeatherIcons.settings,
@@ -24,23 +26,27 @@ class MainBottomNavbar extends StatelessWidget {
         return AnimatedBottomNavigationBar.builder(
           itemCount: _iconList.length,
           tabBuilder: (int index, bool isActive) {
+            Color iconColor = isActive ? AppColors.primary : AppColors.white;
+
             return Container(
               margin: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: isActive ? AppColors.white : Colors.transparent,
                 shape: BoxShape.circle,
               ),
-              child: Icon(
-                _iconList[index],
-                color: isActive
-                    ? AppColors.primary
-                    : AppColors.white.withOpacity(.8),
-              ),
+              child: index == 1
+                  ? SvgPicture.asset(
+                      _iconList[1] as String,
+                      fit: BoxFit.scaleDown,
+                      color: iconColor,
+                    )
+                  : Icon(
+                      (_iconList[index] as IconData),
+                      color: iconColor,
+                    ),
             );
           },
           backgroundColor: AppColors.primary,
-          // gapLocation: GapLocation.center,
-          // borderWidth: 10,
           gapWidth: 0,
           activeIndex: context.read<BottomNavBarBloc>().bottomNavbarIndex,
           notchSmoothness: NotchSmoothness.verySmoothEdge,

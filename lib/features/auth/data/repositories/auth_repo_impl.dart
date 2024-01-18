@@ -1,8 +1,8 @@
 import '../../../../core/databases/secure_storage/secure_storage_manager.dart';
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/utils/custom_types.dart';
-import '../../domain/entities/login.dart';
-import '../../domain/entities/sign_up.dart';
+import '../../domain/entities/login_entity.dart';
+import '../../domain/entities/sign_up_entity.dart';
 import '../../domain/repositories/auth_repo.dart';
 import '../../domain/usecases/login_use_case.dart';
 import '../../domain/usecases/reset_password_use_case.dart';
@@ -20,19 +20,19 @@ class AuthRepoImpl implements AuthRepo {
   });
 
   @override
-  Future<ResultOrFailure<Login>> login(
+  Future<ResultOrFailure<LoginEntity>> login(
     LoginParams params,
   ) async {
-    return executeAndHandleError<Login>(
+    return executeAndHandleError<LoginEntity>(
       () => authRemoteDataSource.login(params),
     );
   }
 
   @override
-  Future<ResultOrFailure<SignUp>> signUp(
+  Future<ResultOrFailure<SignUpEntity>> signUp(
     SignUpParams params,
   ) async {
-    return executeAndHandleError<SignUp>(
+    return executeAndHandleError<SignUpEntity>(
       () => authRemoteDataSource.signUp(params),
     );
   }

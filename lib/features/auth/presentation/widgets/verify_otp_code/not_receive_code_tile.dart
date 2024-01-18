@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
-import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/auth_bloc.dart';
 
@@ -18,7 +15,9 @@ class NotReceiveTile extends StatelessWidget {
       children: [
         Text(
           S.of(context).notReceiveCode,
-          style: AppStyles.getMediumStyle(color: AppColors.black25),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                color: Theme.of(context).hintColor,
+              ),
         ),
         const SizedBox(width: 10),
         InkWell(
@@ -29,10 +28,9 @@ class NotReceiveTile extends StatelessWidget {
           },
           child: Text(
             S.of(context).resend,
-            style: AppStyles.getSemiBoldStyle(
-              color: AppColors.primary,
-              fontSize: AppFontSize.body,
-            ),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).cardColor,
+                ),
           ),
         ),
       ],

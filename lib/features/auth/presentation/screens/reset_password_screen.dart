@@ -16,6 +16,7 @@ class ResetPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const CustomBackButton(),
+        backgroundColor: Colors.transparent,
       ),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
@@ -34,9 +35,7 @@ class ResetPasswordScreen extends StatelessWidget {
             );
           }
         },
-        child: SafeArea(
-          child: ResetPasswordBody(email: email),
-        ),
+        child: ResetPasswordBody(email: email),
       ),
     );
   }

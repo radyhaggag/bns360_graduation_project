@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../../../config/route_config.dart';
 import '../../../../../core/extensions/language.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/enums.dart';
 import '../../../../../generated/l10n.dart';
 
@@ -12,15 +10,17 @@ class ForgotPasswordBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => Navigator.of(context).pushNamed(Routes.forgotPassword),
-      child: Align(
-        alignment: context.currentLanguage == Language.english
-            ? Alignment.centerRight
-            : Alignment.centerLeft,
+    return Align(
+      alignment: context.currentLanguage == Language.english
+          ? Alignment.centerRight
+          : Alignment.centerLeft,
+      child: InkWell(
+        onTap: () => Navigator.of(context).pushNamed(Routes.forgotPassword),
         child: Text(
           S.of(context).forgotPassword,
-          style: AppStyles.getMediumStyle(color: AppColors.black25),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).hintColor,
+              ),
         ),
       ),
     );

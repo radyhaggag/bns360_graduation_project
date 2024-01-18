@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/core/extensions/media_query.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'center_progress_indicator.dart';
 import 'messages/error_message_widget.dart';
@@ -24,7 +26,11 @@ class DataStateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const CenterProgressIndicator();
+      return SizedBox(
+        width: context.width,
+        height: 150.r,
+        child: const CenterProgressIndicator(),
+      );
     } else if (isError) {
       return ErrorMessageWidget(message: errorMessage);
     } else {

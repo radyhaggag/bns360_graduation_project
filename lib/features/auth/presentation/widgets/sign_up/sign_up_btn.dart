@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widgets/buttons/custom_loading_buttons.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/auth_bloc.dart';
 
@@ -13,7 +13,7 @@ class SignUpBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
-        return CustomElevatedButtonWithLoading(
+        return CustomElevatedButton(
           onPressed: onPressed,
           label: S.of(context).signUp,
           isLoading: state is SignUpLoadingState,

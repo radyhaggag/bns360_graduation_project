@@ -15,6 +15,7 @@ class HomeBody extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HomeSliderSection(),
             SizedBox(height: 50),

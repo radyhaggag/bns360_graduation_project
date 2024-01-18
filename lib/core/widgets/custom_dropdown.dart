@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_colors.dart';
-import '../utils/app_styles.dart';
 
 typedef CustomOnTapCallback = Function(dynamic value);
 
@@ -38,11 +37,14 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
 
   @override
   Widget build(BuildContext context) {
+    final dropdownColor =
+        Theme.of(context).dropdownMenuTheme.inputDecorationTheme?.fillColor;
+
     return Container(
-      height: 45.h,
+      height: 50.h,
       decoration: BoxDecoration(
-        color: widget.dropdownColor ?? AppColors.hint,
-        border: Border.all(color: AppColors.black25),
+        color: widget.dropdownColor ?? dropdownColor,
+        border: Border.all(color: AppColors.primary),
         borderRadius: BorderRadius.circular(8),
       ),
       child: DropdownButton2<dynamic>(
@@ -50,10 +52,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
         onMenuStateChange: (state) => setState(() => isOpened = state),
         underline: const SizedBox(),
         value: widget.value,
-        hint: Text(
-          widget.label,
-          style: AppStyles.getMediumStyle(),
-        ),
+        hint: Text(widget.label),
         onChanged: (dynamic value) => widget.onTapCallback(value),
         items: List.generate(
           widget.items.length,
@@ -65,14 +64,15 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
               margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color: widget.items[index] == widget.value
-                    ? AppColors.hint
-                    : AppColors.white,
-                border: Border.all(color: AppColors.primary, width: 2),
+                    ? Theme.of(context).primaryColor.withOpacity(.25)
+                    : Theme.of(context).highlightColor,
+                border:
+                    Border.all(color: Theme.of(context).cardColor, width: 2),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
                 widget.viewItems[index],
-                style: AppStyles.getMediumStyle(),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
           ),
@@ -85,13 +85,14 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
             children: [
               Text(
                 widget.textValue ?? widget.label,
-                style: AppStyles.getMediumStyle(),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               Icon(
                 isOpened
                     ? Icons.keyboard_arrow_up_rounded
                     : Icons.keyboard_arrow_down_rounded,
                 size: 25,
+                color: Theme.of(context).primaryColor,
               )
             ],
           ),
@@ -101,8 +102,8 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
-            border: Border.all(color: AppColors.hint),
-            color: widget.dropdownColor ?? AppColors.white,
+            border: Border.all(color: AppColors.black25),
+            color: widget.dropdownColor ?? Theme.of(context).highlightColor,
           ),
           elevation: 2,
         ),

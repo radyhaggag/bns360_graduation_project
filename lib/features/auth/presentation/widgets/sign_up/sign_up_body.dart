@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
@@ -14,8 +13,10 @@ class SignUpBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kHorizontalPadding,
+      padding: EdgeInsets.only(
+        left: kHorizontalPadding,
+        right: kHorizontalPadding,
+        top: 25.h,
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -24,16 +25,13 @@ class SignUpBody extends StatelessWidget {
             const SizedBox(height: 50),
             Text(
               S.of(context).createYourAccount,
-              style: AppStyles.getBoldStyle(color: AppColors.primary),
+              style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 5),
             Text(
               S.of(context).signUpMsg,
-              style: AppStyles.getMediumStyle(
-                color: AppColors.black25,
-                fontSize: AppFontSize.details,
-              ),
+              style: AppStyles.authScreensDetailsStyle(context),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),

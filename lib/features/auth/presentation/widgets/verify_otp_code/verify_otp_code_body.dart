@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
-import 'verify_reset_password_code_form.dart';
+import 'verify_otp_code_form.dart';
 
-class VerifyResetPasswordCodeBody extends StatelessWidget {
+class VerifyOtpCodeBody extends StatelessWidget {
   final String email;
-  const VerifyResetPasswordCodeBody({super.key, required this.email});
+  const VerifyOtpCodeBody({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +22,17 @@ class VerifyResetPasswordCodeBody extends StatelessWidget {
             const SizedBox(height: 100),
             Text(
               S.of(context).checkEmailMsg,
-              style: AppStyles.getSemiBoldStyle(
-                fontSize: AppFontSize.title,
-                color: AppColors.primary,
-              ),
+              style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
               "${S.of(context).sentCodeTo} $email",
-              style: AppStyles.getCaptionsStyle(
-                fontSize: AppFontSize.body,
-                color: AppColors.black,
-              ),
+              style: AppStyles.authScreensDetailsStyle(context),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 50),
-            VerifyResetPasswordCodeForm(email: email),
+            VerifyOtpCodeForm(email: email),
             const SizedBox(height: 30),
           ],
         ),

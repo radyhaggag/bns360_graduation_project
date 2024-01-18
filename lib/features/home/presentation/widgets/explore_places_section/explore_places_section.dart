@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/extensions/media_query.dart';
 import '../../../../../core/shared_data/entities/category_details_entity.dart';
-import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/widgets/category_details/category_details_card.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
@@ -23,7 +22,7 @@ class ExplorePlacesSection extends StatelessWidget {
       children: [
         Text(
           S.of(context).places_to_explore,
-          style: AppStyles.getSemiBoldStyle(),
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         const SizedBox(height: 15),
         const _ExplorePlacesBuilder(),

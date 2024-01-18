@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../config/route_config.dart';
-import '../../../../../core/utils/assets/app_images.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
@@ -29,18 +27,12 @@ class PasswordChangedBody extends StatelessWidget {
             const SizedBox(height: 50),
             Text(
               S.of(context).passwordChanged,
-              style: AppStyles.getSemiBoldStyle(
-                fontSize: AppFontSize.large,
-                color: AppColors.primary,
-              ),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 10),
             Text(
               S.of(context).passwordChangedMsg,
-              style: AppStyles.getCaptionsStyle(
-                fontSize: AppFontSize.body,
-                color: AppColors.black,
-              ),
+              style: AppStyles.authScreensDetailsStyle(context),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 100),

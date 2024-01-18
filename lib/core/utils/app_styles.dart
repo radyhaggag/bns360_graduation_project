@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 import 'app_fonts.dart';
@@ -14,6 +13,7 @@ abstract class AppStyles {
       fontSize: fontSize,
       fontWeight: fontWeight,
       color: color,
+      fontFamily: 'Poppins',
     );
   }
 
@@ -44,7 +44,7 @@ abstract class AppStyles {
     Color? color,
   }) {
     return _getTextStyle(
-      fontSize ?? AppFontSize.subTitle,
+      fontSize ?? AppFontSize.body,
       FontWeight.w600,
       color ?? AppColors.black,
     );
@@ -83,14 +83,9 @@ abstract class AppStyles {
     );
   }
 
-  static TextStyle getCaptionsStyle({
-    double? fontSize,
-    Color? color,
-  }) {
-    return GoogleFonts.inter(
-      fontSize: fontSize ?? AppFontSize.body,
-      fontWeight: FontWeight.w400,
-      color: color ?? AppColors.black,
-    );
+  static TextStyle? authScreensDetailsStyle(BuildContext context) {
+    return Theme.of(context).textTheme.bodyMedium?.copyWith(
+          color: Theme.of(context).primaryColor.withOpacity(.7),
+        );
   }
 }

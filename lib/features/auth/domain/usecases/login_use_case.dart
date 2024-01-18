@@ -2,16 +2,16 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/use_case/base_use_case.dart';
 import '../../../../core/utils/custom_types.dart';
-import '../entities/login.dart';
+import '../entities/login_entity.dart';
 import '../repositories/auth_repo.dart';
 
-class LoginUseCase extends UseCase<Login, LoginParams> {
+class LoginUseCase extends UseCase<LoginEntity, LoginParams> {
   final AuthRepo authRepo;
 
   LoginUseCase({required this.authRepo});
 
   @override
-  Future<ResultOrFailure<Login>> call(LoginParams params) {
+  Future<ResultOrFailure<LoginEntity>> call(LoginParams params) {
     return authRepo.login(params);
   }
 }

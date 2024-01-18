@@ -46,7 +46,8 @@ class MainBottomNavbar extends StatelessWidget {
                     ),
             );
           },
-          backgroundColor: AppColors.primary,
+          backgroundColor:
+              Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           gapWidth: 0,
           activeIndex: context.read<BottomNavBarBloc>().bottomNavbarIndex,
           notchSmoothness: NotchSmoothness.verySmoothEdge,

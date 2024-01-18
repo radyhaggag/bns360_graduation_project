@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
 import '../or_separator.dart';
@@ -26,7 +24,7 @@ class LoginBody extends StatelessWidget {
             SizedBox(height: 80.h),
             Text(
               S.of(context).loginMsg,
-              style: AppStyles.getBoldStyle(color: AppColors.primary),
+              style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 50.h),

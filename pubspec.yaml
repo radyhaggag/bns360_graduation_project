@@ -49,6 +49,7 @@ dependencies:
   fluttertoast: ^8.2.4
   get_it: ^7.6.4
   google_fonts: ^6.1.0
+  google_sign_in: ^6.2.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   intl: ^0.18.1
@@ -93,19 +94,21 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Poppins
-  #     fonts:
-  #       - asset: assets/fonts/Poppins-Bold.ttf
-  #         weight: 700
-  #       - asset: assets/fonts/Poppins-SemiBold.ttf
-  #         weight: 600
-  #       - asset: assets/fonts/Poppins-Regular.ttf
-  #         weight: 500
-  #       - asset: assets/fonts/Poppins-Medium.ttf
-  #         weight: 400
-  #       - asset: assets/fonts/Poppins-Light.ttf
-  #         weight: 300
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Light.ttf
+          weight: 300
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_intl:

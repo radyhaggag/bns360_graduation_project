@@ -7,7 +7,7 @@ import '../features/auth/presentation/screens/login_screen.dart';
 import '../features/auth/presentation/screens/password_changed_screen.dart';
 import '../features/auth/presentation/screens/reset_password_screen.dart';
 import '../features/auth/presentation/screens/sign_up_screen.dart';
-import '../features/auth/presentation/screens/verify_reset_password_code_screen.dart';
+import '../features/auth/presentation/screens/verify_otp_code_screen.dart';
 import '../features/auth/presentation/screens/welcome_screen.dart';
 import '../features/bottom_nav_bar/presentation/bloc/bottom_nav_bar_bloc.dart';
 import '../features/bottom_nav_bar/presentation/screens/bottom_nav_bar_screen.dart';
@@ -23,7 +23,7 @@ abstract class Routes {
   static const login = '/login';
   static const signUp = '/signUp';
   static const forgotPassword = '/forgotPassword';
-  static const verifyResetPasswordCode = '/verifyResetPasswordCode';
+  static const verifyOtpCode = '/verifyOtpCode';
   static const resetPassword = '/resetPassword';
   static const passwordChanged = '/passwordChanged';
   static const home = '/home';
@@ -71,7 +71,7 @@ abstract class RouteConfig {
             child: const ForgotPasswordScreen(),
           ),
         );
-      case Routes.verifyResetPasswordCode:
+      case Routes.verifyOtpCode:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => sl<AuthBloc>(),

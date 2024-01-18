@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/app_styles.dart';
 import '../../../../generated/l10n.dart';
 
 class OrSeparator extends StatelessWidget {
@@ -23,7 +22,9 @@ class OrSeparator extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Text(
             S.of(context).or,
-            style: AppStyles.getSemiBoldStyle(color: AppColors.black25),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: Theme.of(context).hoverColor,
+                ),
           ),
         ),
         Expanded(

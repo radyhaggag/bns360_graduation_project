@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
 import '../../helpers/form_validators.dart';
-import '../../utils/app_colors.dart';
 import 'custom_input_field.dart';
 
 class PasswordInputField extends StatefulWidget {
@@ -11,11 +10,11 @@ class PasswordInputField extends StatefulWidget {
   final String? hint;
 
   const PasswordInputField({
-    Key? key,
+    super.key,
     required this.controller,
     this.title,
     this.hint,
-  }) : super(key: key);
+  });
 
   @override
   State<PasswordInputField> createState() => _PasswordInputFieldState();
@@ -39,10 +38,10 @@ class ConfirmPasswordInputField extends StatefulWidget {
   final TextEditingController passwordController;
 
   const ConfirmPasswordInputField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.passwordController,
-  }) : super(key: key);
+  });
 
   @override
   State<ConfirmPasswordInputField> createState() =>
@@ -77,12 +76,12 @@ class SharedPasswordInputField extends StatefulWidget {
   final String? Function(String?)? validator; // Added validator parameter
 
   const SharedPasswordInputField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.title,
     required this.hint,
     this.validator,
-  }) : super(key: key);
+  });
 
   @override
   State<SharedPasswordInputField> createState() =>
@@ -109,12 +108,6 @@ class _SharedPasswordInputFieldState extends State<SharedPasswordInputField> {
   }
 
   Widget _getSuffixIcon() => isSecure
-      ? Icon(
-          Icons.remove_red_eye,
-          color: AppColors.black25,
-        )
-      : Icon(
-          Icons.remove_red_eye_outlined,
-          color: AppColors.black25,
-        );
+      ? const Icon(Icons.remove_red_eye)
+      : const Icon(Icons.remove_red_eye_outlined);
 }

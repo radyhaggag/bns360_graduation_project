@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-class Login extends Equatable {
+class SignUpEntity extends Equatable {
   final String token;
 
-  const Login({
+  const SignUpEntity({
     required this.token,
   });
 

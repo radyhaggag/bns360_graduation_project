@@ -3,11 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/helpers/get_localized_string.dart';
 import '../../../../../core/shared_data/entities/category_details_entity.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_styles.dart';
-import '../../utils/app_fonts.dart';
+import '../../helpers/localization_helper.dart';
 
 part 'category_details_image.dart';
 part 'category_details_rating_section.dart';
@@ -35,9 +32,6 @@ class CategoryDetailsCard extends StatelessWidget {
     return SizedBox(
       width: width ?? 240.w,
       child: Card(
-        color: AppColors.white,
-        elevation: 5.0,
-        surfaceTintColor: AppColors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -48,8 +42,10 @@ class CategoryDetailsCard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _CategoryDetailsNameAndDescriptionSection(
-                    categoryDetailsEntity: categoryDetailsEntity,
+                  Expanded(
+                    child: _CategoryDetailsNameAndDescriptionSection(
+                      categoryDetailsEntity: categoryDetailsEntity,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

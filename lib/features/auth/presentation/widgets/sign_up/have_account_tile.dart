@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../config/route_config.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
-import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class HaveAccountTile extends StatelessWidget {
@@ -16,7 +13,9 @@ class HaveAccountTile extends StatelessWidget {
       children: [
         Text(
           S.of(context).haveAccountMsg,
-          style: AppStyles.getMediumStyle(color: AppColors.black25),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).hintColor,
+              ),
         ),
         const SizedBox(width: 10),
         InkWell(
@@ -25,10 +24,9 @@ class HaveAccountTile extends StatelessWidget {
           ),
           child: Text(
             S.of(context).login,
-            style: AppStyles.getSemiBoldStyle(
-              color: AppColors.primary,
-              fontSize: AppFontSize.body,
-            ),
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).cardColor,
+                ),
           ),
         ),
       ],

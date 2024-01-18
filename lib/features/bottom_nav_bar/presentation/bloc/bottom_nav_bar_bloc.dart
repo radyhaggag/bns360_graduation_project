@@ -1,7 +1,8 @@
-import 'package:bloc/bloc.dart';
-import '../../../home/presentation/screens/home_screen.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../home/presentation/screens/home_screen.dart';
 
 part 'bottom_nav_bar_event.dart';
 part 'bottom_nav_bar_state.dart';

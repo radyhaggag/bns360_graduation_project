@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
@@ -25,18 +23,12 @@ class ResetPasswordBody extends StatelessWidget {
             const SizedBox(height: 100),
             Text(
               S.of(context).resetPassword,
-              style: AppStyles.getSemiBoldStyle(
-                fontSize: AppFontSize.title,
-                color: AppColors.primary,
-              ),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 10),
             Text(
               S.of(context).resetPasswordMsg,
-              style: AppStyles.getCaptionsStyle(
-                fontSize: AppFontSize.body,
-                color: AppColors.black,
-              ),
+              style: AppStyles.authScreensDetailsStyle(context),
             ),
             const SizedBox(height: 50),
             ResetPasswordForm(email: email),

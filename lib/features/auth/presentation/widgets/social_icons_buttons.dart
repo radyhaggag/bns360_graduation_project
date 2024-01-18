@@ -1,15 +1,17 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/utils/assets/app_images.dart';
-import '../../../../core/utils/app_colors.dart';
 
 class SocialIconsButtons extends StatelessWidget {
   const SocialIconsButtons({super.key});
 
-  ButtonStyle get mainStyle => IconButton.styleFrom(
+  ButtonStyle mainStyle(context) => IconButton.styleFrom(
         padding: EdgeInsets.zero,
-        backgroundColor: AppColors.black.withOpacity(.05),
+        backgroundColor: Theme.of(context).hintColor.withOpacity(.1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -21,8 +23,12 @@ class SocialIconsButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
-          onPressed: () {},
-          style: mainStyle,
+          onPressed: () async {
+            await GoogleSignIn().signOut();
+            final user = await GoogleSignIn().signIn();
+            log(user.toString());
+          },
+          style: mainStyle(context),
           icon: Image.asset(
             AppImages.googleIcon,
             width: 45.w,
@@ -32,7 +38,7 @@ class SocialIconsButtons extends StatelessWidget {
         const SizedBox(width: 16),
         IconButton(
           onPressed: () {},
-          style: mainStyle,
+          style: mainStyle(context),
           icon: Image.asset(
             AppImages.facebook,
             width: 45.w,

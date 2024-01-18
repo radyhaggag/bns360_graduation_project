@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/center_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,6 +10,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final String label;
   final void Function()? onPressed;
+  final bool isLoading;
 
   const CustomElevatedButton({
     super.key,
@@ -17,6 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.backgroundColor,
     required this.label,
     this.onPressed,
+    this.isLoading = false,
   });
 
   @override
@@ -25,11 +28,11 @@ class CustomElevatedButton extends StatelessWidget {
       width: width ?? context.width,
       height: height ?? 45.h,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: !isLoading ? onPressed : null,
         style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
               backgroundColor: MaterialStatePropertyAll(backgroundColor),
             ),
-        child: Text(label),
+        child: isLoading ? const CenterProgressIndicator() : Text(label),
       ),
     );
   }
@@ -41,6 +44,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final Color? foregroundColor;
   final String label;
   final void Function()? onPressed;
+  final bool isLoading;
 
   const CustomOutlinedButton({
     super.key,
@@ -49,6 +53,7 @@ class CustomOutlinedButton extends StatelessWidget {
     this.foregroundColor,
     required this.label,
     this.onPressed,
+    this.isLoading = false,
   });
 
   @override
@@ -57,11 +62,11 @@ class CustomOutlinedButton extends StatelessWidget {
       width: width ?? context.width,
       height: height ?? 45.h,
       child: OutlinedButton(
-        onPressed: onPressed,
+        onPressed: !isLoading ? onPressed : null,
         style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
               foregroundColor: MaterialStatePropertyAll(foregroundColor),
             ),
-        child: Text(label),
+        child: isLoading ? const CenterProgressIndicator() : Text(label),
       ),
     );
   }
@@ -73,7 +78,7 @@ class CustomTextButton extends StatelessWidget {
   final Color? foregroundColor;
   final String label;
   final void Function()? onPressed;
-
+  final bool isLoading;
   const CustomTextButton({
     super.key,
     this.width,
@@ -81,6 +86,7 @@ class CustomTextButton extends StatelessWidget {
     this.foregroundColor,
     required this.label,
     this.onPressed,
+    this.isLoading = false,
   });
 
   @override
@@ -89,11 +95,11 @@ class CustomTextButton extends StatelessWidget {
       width: width ?? context.width,
       height: height ?? 45.h,
       child: TextButton(
-        onPressed: onPressed,
+        onPressed: !isLoading ? onPressed : null,
         style: Theme.of(context).textButtonTheme.style?.copyWith(
               foregroundColor: MaterialStatePropertyAll(foregroundColor),
             ),
-        child: Text(label),
+        child: isLoading ? const CenterProgressIndicator() : Text(label),
       ),
     );
   }

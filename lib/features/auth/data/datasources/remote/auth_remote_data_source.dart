@@ -4,7 +4,7 @@ import '../../../domain/usecases/reset_password_use_case.dart';
 import '../../../domain/usecases/sign_up_use_case.dart';
 import '../../../domain/usecases/verify_reset_password_code_use_case.dart';
 import '../../models/login_model.dart';
-import '../../models/sign_up.dart';
+import '../../models/sign_up_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<LoginModel> login(LoginParams params);

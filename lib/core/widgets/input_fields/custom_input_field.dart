@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../utils/app_colors.dart';
-import '../../utils/app_fonts.dart';
-import '../../utils/app_styles.dart';
-
 class CustomInputField extends StatelessWidget {
   final String? title;
   final String? label;
@@ -40,10 +36,9 @@ class CustomInputField extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               title!,
-              style: AppStyles.getSemiBoldStyle(
-                fontSize: AppFontSize.body,
-                color: AppColors.primary,
-              ),
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    color: Theme.of(context).cardColor,
+                  ),
             ),
           ),
           const SizedBox(height: 5),

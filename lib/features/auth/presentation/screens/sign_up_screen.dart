@@ -25,9 +25,7 @@ class SignUpScreen extends StatelessWidget {
             );
           }
         },
-        child: const SafeArea(
-          child: SignUpBody(),
-        ),
+        child: const SignUpBody(),
       ),
     );
   }

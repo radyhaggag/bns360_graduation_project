@@ -2,7 +2,6 @@ part of 'category_details_card.dart';
 
 class _CategoryFavoriteButton extends StatefulWidget {
   const _CategoryFavoriteButton({
-    super.key,
     this.onPressed,
     this.isFavorite,
     this.useSetStateToChangeColor,
@@ -31,7 +30,7 @@ class _CategoryFavoriteButtonState extends State<_CategoryFavoriteButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       child: IconButton(
         onPressed: () {
           widget.onPressed?.call();
@@ -40,13 +39,12 @@ class _CategoryFavoriteButtonState extends State<_CategoryFavoriteButton> {
           }
         },
         style: IconButton.styleFrom(
-          backgroundColor: Colors.white54,
+          backgroundColor: Theme.of(context).hintColor.withOpacity(.05),
           padding: EdgeInsets.zero,
         ),
         icon: Icon(
           isFavorite ? Icons.favorite : Icons.favorite_border,
-          color: isFavorite ? Colors.red : Colors.black,
-          // size: 30,
+          color: isFavorite ? Colors.red : null,
         ),
       ),
     );

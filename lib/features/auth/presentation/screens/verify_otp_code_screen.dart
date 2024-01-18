@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/custom_back_button.dart';
-import '../widgets/verify_reset_password_code/verify_reset_password_code_body.dart';
+import '../widgets/verify_otp_code/verify_otp_code_body.dart';
 
 class VerifyResetPasswordCodeScreen extends StatelessWidget {
   final String email;
@@ -12,10 +12,9 @@ class VerifyResetPasswordCodeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const CustomBackButton(),
+        backgroundColor: Colors.transparent,
       ),
-      body: SafeArea(
-        child: VerifyResetPasswordCodeBody(email: email),
-      ),
+      body: VerifyOtpCodeBody(email: email),
     );
   }
 }

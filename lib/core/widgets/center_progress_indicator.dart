@@ -6,11 +6,11 @@ class CenterProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 150.h,
-      child: const Center(
-        child: CircularProgressIndicator(),
-      ),
+    return Container(
+      height: 22.5.r,
+      width: 22.5.r,
+      alignment: Alignment.center,
+      child: const CircularProgressIndicator(),
     );
   }
 }

@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../generated/l10n.dart';
 import '../../extensions/language.dart';
 import '../../helpers/form_validators.dart';
-import '../../utils/app_colors.dart';
-import '../../utils/app_fonts.dart';
-import '../../utils/app_styles.dart';
 import '../../utils/enums.dart';
 
 class PhoneInputField extends StatelessWidget {
@@ -21,10 +18,9 @@ class PhoneInputField extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             "${S.of(context).phoneNumber} (${S.of(context).optional})",
-            style: AppStyles.getSemiBoldStyle(
-              fontSize: AppFontSize.body,
-              color: AppColors.primary.withOpacity(.6),
-            ),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                  color: Theme.of(context).primaryColor.withOpacity(.6),
+                ),
           ),
         ),
         const SizedBox(height: 5),
@@ -36,9 +32,9 @@ class PhoneInputField extends StatelessWidget {
                 width: 70,
                 child: TextFormField(
                   readOnly: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: '+20',
-                    hintStyle: AppStyles.getRegularStyle(),
+                    // hintStyle: AppStyles.getRegularStyle(),
                     helperText: "",
                   ),
                 ),

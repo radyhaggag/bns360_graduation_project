@@ -14,6 +14,7 @@ class ForgotPasswordScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const CustomBackButton(),
+        backgroundColor: Colors.transparent,
       ),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
@@ -22,21 +23,19 @@ class ForgotPasswordScreen extends StatelessWidget {
             // CommonDialogs.showErrorDialog(context, message: state.message);
             // TODO: DELETE THIS NAVIGATION
             Navigator.of(context).pushNamed(
-              Routes.verifyResetPasswordCode,
+              Routes.verifyOtpCode,
               arguments: "radyhaggag@gmail.com",
             );
           }
           if (state is SendResetPasswordCodeSuccessState) {
             // TODO: REDIRECT USER TO VERIFY RESET PASSWORD CODE SCREEN
             Navigator.of(context).pushNamed(
-              Routes.verifyResetPasswordCode,
+              Routes.verifyOtpCode,
               arguments: state.email,
             );
           }
         },
-        child: const SafeArea(
-          child: ForgotPasswordBody(),
-        ),
+        child: const ForgotPasswordBody(),
       ),
     );
   }

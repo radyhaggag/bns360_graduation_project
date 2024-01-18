@@ -8,17 +8,15 @@ import '../../bloc/auth_bloc.dart';
 import 'not_receive_code_tile.dart';
 import 'verify_otp_code_btn.dart';
 
-class VerifyResetPasswordCodeForm extends StatefulWidget {
+class VerifyOtpCodeForm extends StatefulWidget {
   final String email;
-  const VerifyResetPasswordCodeForm({super.key, required this.email});
+  const VerifyOtpCodeForm({super.key, required this.email});
 
   @override
-  State<VerifyResetPasswordCodeForm> createState() =>
-      _VerifyResetPasswordCodeFormState();
+  State<VerifyOtpCodeForm> createState() => _VerifyOtpCodeFormState();
 }
 
-class _VerifyResetPasswordCodeFormState
-    extends State<VerifyResetPasswordCodeForm> {
+class _VerifyOtpCodeFormState extends State<VerifyOtpCodeForm> {
   final _formKey = GlobalKey<FormState>();
 
   bool isFilled = false;
@@ -27,7 +25,7 @@ class _VerifyResetPasswordCodeFormState
 
   getPinTheme(Color borderColor) => PinTheme(
         shape: PinCodeFieldShape.box,
-        inactiveColor: AppColors.black,
+        inactiveColor: Theme.of(context).primaryColor.withOpacity(.7),
         borderRadius: BorderRadius.circular(8),
         activeBorderWidth: 1,
         fieldWidth: 50,
@@ -65,6 +63,7 @@ class _VerifyResetPasswordCodeFormState
               onChanged: _onChanged,
               errorTextSpace: 25,
               pinTheme: getPinTheme(borderColor),
+              backgroundColor: Colors.transparent,
             ),
             NotReceiveTile(email: widget.email),
             const SizedBox(height: 30),

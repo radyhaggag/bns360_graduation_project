@@ -1,10 +1,8 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../core/extensions/media_query.dart';
-import '../../../../../core/utils/assets/app_images.dart';
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../generated/l10n.dart';
 import 'forgot_password_form.dart';
@@ -30,18 +28,12 @@ class ForgotPasswordBody extends StatelessWidget {
             ),
             Text(
               S.of(context).forgotPassword,
-              style: AppStyles.getSemiBoldStyle(
-                fontSize: AppFontSize.title,
-                color: AppColors.primary,
-              ),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 10),
             Text(
               S.of(context).forgotPasswordMsg,
-              style: AppStyles.getCaptionsStyle(
-                fontSize: AppFontSize.body,
-                color: AppColors.black.withOpacity(.7),
-              ),
+              style: AppStyles.authScreensDetailsStyle(context),
             ),
             const SizedBox(height: 30),
             const ForgotPasswordForm(),

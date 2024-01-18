@@ -15,12 +15,12 @@ class BNS360App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<LocalizationBloc>(
-      create: (context) => sl<LocalizationBloc>()..add(GetSavedLanguage()),
-      child: ScreenUtilInit(
-        designSize: const Size(360, 800),
-        minTextAdapt: true,
-        splitScreenMode: true,
+    return ScreenUtilInit(
+      designSize: const Size(360, 800),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: BlocProvider<LocalizationBloc>(
+        create: (context) => sl<LocalizationBloc>()..add(GetSavedLanguage()),
         child: BlocBuilder<LocalizationBloc, LocalizationState>(
           builder: (context, state) {
             ScreenUtil.init(context);
@@ -37,7 +37,8 @@ class BNS360App extends StatelessWidget {
                 locale: state.locale,
                 debugShowCheckedModeBanner: false,
                 title: AppStrings.appName,
-                theme: ThemeConfig.getLightTheme(),
+                // theme: ThemeConfig.getLightTheme(),
+                theme: ThemeConfig.getDarkTheme(),
                 onGenerateRoute: RouteConfig.getRoute,
                 initialRoute: Routes.splash,
               );

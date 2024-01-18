@@ -33,7 +33,7 @@ class _CategoryDetailsRatingSection extends StatelessWidget {
           Expanded(
             child: Text(
               "($numOfRatings)",
-              style: AppStyles.getLightStyle(),
+              style: Theme.of(context).textTheme.bodySmall,
             ),
           )
         ],

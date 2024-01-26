@@ -1,7 +1,7 @@
-part of 'category_details_card.dart';
+part of 'category_item_card.dart';
 
-class _CategoryDetailsNameAndDescriptionSection extends StatelessWidget {
-  const _CategoryDetailsNameAndDescriptionSection({
+class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
+  const _CategoryItemNameAndDescriptionSection({
     required this.categoryDetailsEntity,
   });
 

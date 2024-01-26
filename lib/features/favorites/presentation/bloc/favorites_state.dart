@@ -36,3 +36,12 @@ class GetFavoriteCraftsmenErrorState extends FavoritesState {
 
   const GetFavoriteCraftsmenErrorState({required this.message});
 }
+
+class CurrentViewChanged extends FavoritesState {
+  final int index;
+
+  const CurrentViewChanged({required this.index});
+
+  @override
+  List<Object> get props => [index];
+}

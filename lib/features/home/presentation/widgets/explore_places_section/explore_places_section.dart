@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/extensions/media_query.dart';
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
-import '../../../../../core/widgets/category_details/category_details_card.dart';
+import '../../../../../core/widgets/category_item/category_item_card.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
 import '../../../../../generated/l10n.dart';

@@ -1,9 +1,11 @@
+import 'package:bns360_graduation_project/core/shared_data/models/category_model.dart';
+
 import '../entities/category_item_entity.dart';
 
 class CategoryItemModel extends CategoryItemEntity {
   const CategoryItemModel({
     required super.id,
-    required super.categoryId,
+    required super.category,
     required super.nameAR,
     required super.nameEN,
     required super.descriptionAR,
@@ -16,7 +18,7 @@ class CategoryItemModel extends CategoryItemEntity {
   factory CategoryItemModel.fromJson(Map<String, dynamic> json) {
     return CategoryItemModel(
       id: json['id'],
-      categoryId: json['category_id'],
+      category: CategoryModel.fromJson(json['category']),
       nameAR: json['name_ar'],
       nameEN: json['name_en'],
       descriptionAR: json['description_ar'],

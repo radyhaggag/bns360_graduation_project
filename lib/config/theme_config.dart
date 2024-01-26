@@ -141,7 +141,6 @@ abstract class ThemeConfig {
       ),
       iconButtonTheme: IconButtonThemeData(
         style: IconButton.styleFrom(
-          // backgroundColor: AppColors.white,
           foregroundColor: AppColors.white80,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),
@@ -168,18 +167,18 @@ abstract class ThemeConfig {
       appBarTheme: AppBarTheme(
         centerTitle: true,
         titleTextStyle: AppStyles.getBoldStyle(
-          color: AppColors.white80,
+          color: AppColors.white,
           fontSize: AppFontSize.title,
         ).copyWith(letterSpacing: .5),
         color: AppColors.surface,
         systemOverlayStyle: _systemUiOverlayStyle,
         scrolledUnderElevation: 0.0,
       ),
-      indicatorColor: AppColors.primary,
+      indicatorColor: AppColors.white, //todo: review this
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: AppColors.white,
       ),
-      scaffoldBackgroundColor: AppColors.background,
+      scaffoldBackgroundColor: AppColors.darkBackground,
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,

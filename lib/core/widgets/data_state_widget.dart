@@ -26,11 +26,14 @@ class DataStateWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return SizedBox(
-        width: context.width,
-        height: 150.r,
-        child: const CenterProgressIndicator(),
-      );
+      return loadingWidget ??
+          SizedBox(
+            width: context.width,
+            height: 150.r,
+            child: CenterProgressIndicator(
+              color: Theme.of(context).indicatorColor,
+            ),
+          );
     } else if (isError) {
       return ErrorMessageWidget(message: errorMessage);
     } else {

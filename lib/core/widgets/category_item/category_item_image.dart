@@ -1,8 +1,8 @@
-part of 'category_details_card.dart';
+part of 'category_item_card.dart';
 
-class _CategoryDetailsImage extends StatelessWidget {
+class _CategoryItemImage extends StatelessWidget {
   final String imageUrl;
-  const _CategoryDetailsImage({required this.imageUrl});
+  const _CategoryItemImage({required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class _CategoryDetailsImage extends StatelessWidget {
         topLeft: Radius.circular(10),
         topRight: Radius.circular(10),
       ),
-      child: CachedNetworkImage(
+      child: MainNetworkImage(
         imageUrl: imageUrl,
         width: 250.w,
         height: 125.h,

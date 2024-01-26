@@ -1,7 +1,8 @@
-part of 'category_details_card.dart';
+import 'package:flutter/material.dart';
 
-class _CategoryFavoriteButton extends StatefulWidget {
-  const _CategoryFavoriteButton({
+class CategoryFavoriteButton extends StatefulWidget {
+  const CategoryFavoriteButton({
+    super.key,
     this.onPressed,
     this.isFavorite,
     this.useSetStateToChangeColor,
@@ -12,11 +13,10 @@ class _CategoryFavoriteButton extends StatefulWidget {
   final bool? useSetStateToChangeColor;
 
   @override
-  State<_CategoryFavoriteButton> createState() =>
-      _CategoryFavoriteButtonState();
+  State<CategoryFavoriteButton> createState() => CategoryFavoriteButtonState();
 }
 
-class _CategoryFavoriteButtonState extends State<_CategoryFavoriteButton> {
+class CategoryFavoriteButtonState extends State<CategoryFavoriteButton> {
   late bool isFavorite;
   late bool useSetStateToChangeColor;
 

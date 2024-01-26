@@ -50,5 +50,9 @@
   "places_to_explore": "أماكن للاستكشاف",
   "no_places_to_explore": "لا بوجد اماكن للاستكشاف",
   "categories": "الفئات",
-  "favorites": "لمفضلة"
+  "favorites": "لمفضلة",
+  "craftsmen": "الحرفيين",
+  "craftsman": "حرفى",
+  "no_favorite_items": "لا يوجد عناصر ف المفضلة!",
+  "no_craftsmen_found": "لم يتم العثور على حرفيين!"
 }

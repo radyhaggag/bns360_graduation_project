@@ -17,6 +17,8 @@ initFavorites() {
   );
   // Bloc
   sl.registerFactory(
-    () => FavoritesBloc(sl()),
+    () => FavoritesBloc(
+      favoritesRepo: sl(),
+    ),
   );
 }

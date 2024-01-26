@@ -14,10 +14,11 @@ abstract class AppColors {
   static const details = Color(0xfB321212);
   static const success = Color(0xff4A875F);
   static const error = Color(0xffFF6767);
+  static const lightBackground = Color(0xFFF5F5F5);
 
   // Colors for dark theme
   static const surface = Color(0xff222222);
-  static const background = Color(0xff121212);
+  static const darkBackground = Color(0xff121212);
   static const white80 = Color(0xccffffff);
   static const white50 = Color(0x80ffffff);
   static const white25 = Color(0x40ffffff);

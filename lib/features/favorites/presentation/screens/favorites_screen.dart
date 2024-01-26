@@ -1,16 +1,19 @@
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/injector_container.dart';
 import '../bloc/favorites_bloc.dart';
 import '../widgets/favorites_body.dart';
+import '../widgets/favorites_screen_app_bar.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
 
   static Widget getWithBlocProvider() {
     return BlocProvider(
-      create: (context) => sl<FavoritesBloc>(),
+      create: (context) =>
+          sl<FavoritesBloc>()..add(GetFavoriteCategoriesEvent()),
       child: const FavoritesScreen(),
     );
   }
@@ -18,6 +21,8 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: AppColors.lightBackground,
+      appBar: FavoritesScreenAppBar(),
       body: FavoritesBody(),
     );
   }

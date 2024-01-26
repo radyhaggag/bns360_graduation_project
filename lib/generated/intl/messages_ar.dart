@@ -34,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
+        "craftsman": MessageLookupByLibrary.simpleMessage("حرفى"),
+        "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكترونى"),
         "enterEmail":
@@ -58,6 +60,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
+        "no_craftsmen_found":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على حرفيين!"),
+        "no_favorite_items":
+            MessageLookupByLibrary.simpleMessage("لا يوجد عناصر ف المفضلة!"),
         "no_places_to_explore":
             MessageLookupByLibrary.simpleMessage("لا بوجد اماكن للاستكشاف"),
         "notHaveAccountMsg":

@@ -20,9 +20,9 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
 
   @override
   Future<List<CraftsmanModel>> getFavoriteCraftsmen() async {
-    final res = await loadJsonFromAsset('crafts.json');
+    final res = await loadJsonFromAsset('craftsmen.json');
     final craftsmen = List<CraftsmanModel>.from(res['data'].map(
-      (place) => CraftsmanModel.fromJson(place),
+      (craftsman) => CraftsmanModel.fromJson(craftsman),
     ));
     return craftsmen;
   }

@@ -1,8 +1,10 @@
 import 'package:equatable/equatable.dart';
 
+import 'category_entity.dart';
+
 class CategoryItemEntity extends Equatable {
   final int id;
-  final int categoryId;
+  final CategoryEntity category;
   final String nameAR;
   final String nameEN;
   final String descriptionAR;
@@ -13,7 +15,7 @@ class CategoryItemEntity extends Equatable {
 
   const CategoryItemEntity({
     required this.id,
-    required this.categoryId,
+    required this.category,
     required this.nameAR,
     required this.nameEN,
     required this.descriptionAR,
@@ -27,7 +29,7 @@ class CategoryItemEntity extends Equatable {
   List<Object> get props {
     return [
       id,
-      categoryId,
+      category,
       nameAR,
       nameEN,
       descriptionAR,

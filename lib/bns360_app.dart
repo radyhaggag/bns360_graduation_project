@@ -37,8 +37,8 @@ class BNS360App extends StatelessWidget {
                 locale: state.locale,
                 debugShowCheckedModeBanner: false,
                 title: AppStrings.appName,
-                // theme: ThemeConfig.getLightTheme(),
-                theme: ThemeConfig.getDarkTheme(),
+                theme: ThemeConfig.getLightTheme(),
+                // theme: ThemeConfig.getDarkTheme(),
                 onGenerateRoute: RouteConfig.getRoute,
                 initialRoute: Routes.splash,
               );

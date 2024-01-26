@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/features/categories/categories_injector.dart';
+import 'package:bns360_graduation_project/features/crafts/crafts_injector.dart';
 import 'package:bns360_graduation_project/features/favorites/favorites_injector.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -22,6 +23,7 @@ Future<void> initAppDependencies() async {
   initHome();
   initFavorites();
   initCategories();
+  initCrafts();
 }
 
 Future<void> initCore() async {

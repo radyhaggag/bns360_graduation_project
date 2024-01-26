@@ -50,5 +50,9 @@
   "places_to_explore": "Places to explore",
   "no_places_to_explore": "No places to explore",
   "categories": "Categories",
-  "favorites": "Favorites"
+  "favorites": "Favorites",
+  "craftsmen": "Craftsmen",
+  "craftsman": "Craftsman",
+  "no_favorite_items": "No favorite items!",
+  "no_craftsmen_found": "No craftsmen found!"
 }

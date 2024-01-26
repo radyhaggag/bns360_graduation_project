@@ -569,6 +569,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Craftsmen`
+  String get craftsmen {
+    return Intl.message(
+      'Craftsmen',
+      name: 'craftsmen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Craftsman`
+  String get craftsman {
+    return Intl.message(
+      'Craftsman',
+      name: 'craftsman',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No favorite items!`
+  String get no_favorite_items {
+    return Intl.message(
+      'No favorite items!',
+      name: 'no_favorite_items',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No craftsmen found!`
+  String get no_craftsmen_found {
+    return Intl.message(
+      'No craftsmen found!',
+      name: 'no_craftsmen_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
+        "craftsman": MessageLookupByLibrary.simpleMessage("Craftsman"),
+        "craftsmen": MessageLookupByLibrary.simpleMessage("Craftsmen"),
         "createYourAccount":
             MessageLookupByLibrary.simpleMessage("Create your Account"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -56,6 +58,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "no_craftsmen_found":
+            MessageLookupByLibrary.simpleMessage("No craftsmen found!"),
+        "no_favorite_items":
+            MessageLookupByLibrary.simpleMessage("No favorite items!"),
         "no_places_to_explore":
             MessageLookupByLibrary.simpleMessage("No places to explore"),
         "notHaveAccountMsg":

@@ -9,6 +9,7 @@ class MainListViewBuilder<T> extends StatelessWidget {
   final Axis scrollDirection;
   final double width;
   final double height;
+  final double? separatingSpace;
   const MainListViewBuilder({
     super.key,
     required this.list,
@@ -17,6 +18,7 @@ class MainListViewBuilder<T> extends StatelessWidget {
     required this.scrollDirection,
     required this.width,
     required this.height,
+    this.separatingSpace,
   });
 
   @override
@@ -34,7 +36,7 @@ class MainListViewBuilder<T> extends StatelessWidget {
           itemBuilder: (_, index) {
             return itemWidget(list[index]);
           },
-          separatorBuilder: (_, __) => const SizedBox(width: 10),
+          separatorBuilder: (_, __) => SizedBox(width: separatingSpace ?? 10),
           itemCount: list.length,
         ),
       );

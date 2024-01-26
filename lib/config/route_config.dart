@@ -13,6 +13,8 @@ import '../features/bottom_navigation/presentation/bloc/bottom_navigation_bloc.d
 import '../features/bottom_navigation/presentation/screens/bottom_navigation_screen.dart';
 import '../features/categories/presentation/bloc/categories_bloc.dart';
 import '../features/categories/presentation/screens/categories_screen.dart';
+import '../features/crafts/presentation/bloc/crafts_bloc.dart';
+import '../features/crafts/presentation/screens/crafts_screen.dart';
 import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
@@ -34,6 +36,7 @@ abstract class Routes {
   static const bottomNavBar = '/bottomNavBar';
   static const favorites = '/favorites';
   static const categories = '/categories';
+  static const crafts = '/crafts';
 }
 
 abstract class RouteConfig {
@@ -125,6 +128,13 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<CategoriesBloc>(),
             child: const CategoriesScreen(),
+          ),
+        );
+      case Routes.crafts:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<CraftsBloc>(),
+            child: const CraftsScreen(),
           ),
         );
       default:

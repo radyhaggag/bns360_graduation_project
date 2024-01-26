@@ -13,9 +13,10 @@ part 'favorites_state.dart';
 class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   final FavoritesRepo favoritesRepo;
 
-  FavoritesBloc(this.favoritesRepo) : super(FavoritesInitial()) {
+  FavoritesBloc({required this.favoritesRepo}) : super(FavoritesInitial()) {
     on<GetFavoriteCategoriesEvent>(_getFavoriteCategories);
     on<GetFavoriteCraftsmenEvent>(_getFavoriteCraftsmen);
+    on<ChangeCurrentView>(_changeCurrentView);
   }
 
   List<CategoryItemEntity> favoriteCategories = [];
@@ -24,6 +25,8 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     GetFavoriteCategoriesEvent event,
     Emitter<FavoritesState> emit,
   ) async {
+    if (favoriteCategories.isNotEmpty) return;
+
     emit(GetFavoriteCategoriesLoadingState());
     await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
@@ -44,6 +47,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     GetFavoriteCraftsmenEvent event,
     Emitter<FavoritesState> emit,
   ) async {
+    if (favoriteCraftsmen.isNotEmpty) return;
     emit(GetFavoriteCraftsmenLoadingState());
     await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
@@ -56,5 +60,21 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
         emit(GetFavoriteCraftsmenSuccessState(favorites: r));
       },
     );
+  }
+
+  int activeTabIndex = 0;
+
+  _changeCurrentView(
+    ChangeCurrentView event,
+    Emitter<FavoritesState> emit,
+  ) {
+    activeTabIndex = event.index;
+    if (activeTabIndex == 0) {
+      add(GetFavoriteCategoriesEvent());
+    }
+    if (activeTabIndex == 1) {
+      add(GetFavoriteCraftsmenEvent());
+    }
+    emit(CurrentViewChanged(index: activeTabIndex));
   }
 }

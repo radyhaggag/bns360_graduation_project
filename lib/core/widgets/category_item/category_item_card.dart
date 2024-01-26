@@ -1,27 +1,26 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../shared_data/entities/category_item_entity.dart';
 import '../../helpers/localization_helper.dart';
+import '../../shared_data/entities/category_item_entity.dart';
+import '../category_favorite_button.dart';
+import '../main_network_image.dart';
+import '../ratings_item_with_count.dart';
 
-part 'category_details_image.dart';
-part 'category_details_rating_section.dart';
-part 'category_favorite_button.dart';
-part 'category_name_and_description_section.dart';
+part 'category_item_image.dart';
+part 'category_item_name_and_description_section.dart';
 
-class CategoryDetailsCard extends StatelessWidget {
-  const CategoryDetailsCard({
+class CategoryItemCard extends StatelessWidget {
+  const CategoryItemCard({
     super.key,
-    required this.categoryDetailsEntity,
+    required this.categoryItemEntity,
     this.onIconPressed,
     this.width,
     this.isFavorite,
     this.useSetStateToChangeFavoriteColor,
   });
 
-  final CategoryItemEntity categoryDetailsEntity;
+  final CategoryItemEntity categoryItemEntity;
   final void Function()? onIconPressed;
   final double? width;
   final bool? isFavorite;
@@ -35,28 +34,29 @@ class CategoryDetailsCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _CategoryDetailsImage(
-              imageUrl: categoryDetailsEntity.imageUrl,
+            _CategoryItemImage(
+              imageUrl: categoryItemEntity.imageUrl,
             ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Expanded(
-                    child: _CategoryDetailsNameAndDescriptionSection(
-                      categoryDetailsEntity: categoryDetailsEntity,
+                    child: _CategoryItemNameAndDescriptionSection(
+                      categoryDetailsEntity: categoryItemEntity,
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: _CategoryDetailsRatingSection(
-                          numOfRatings: categoryDetailsEntity.numOfRatings,
-                          starsCount: categoryDetailsEntity.starsCount,
+                        child: RatingsItemWithCount(
+                          numOfRatings: categoryItemEntity.numOfRatings,
+                          starsCount: categoryItemEntity.starsCount,
+                          size: 19.r,
                         ),
                       ),
-                      _CategoryFavoriteButton(
+                      CategoryFavoriteButton(
                         onPressed: onIconPressed,
                         isFavorite: isFavorite,
                         useSetStateToChangeColor:

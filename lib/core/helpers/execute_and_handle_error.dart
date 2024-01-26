@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 
 import '../errors/error_handler.dart';
@@ -11,6 +13,7 @@ Future<ResultOrFailure<T>> executeAndHandleError<T>(
     return Right(result);
   } catch (e) {
     final failure = ErrorHandler.handle(e).failure;
+    log(e.toString());
     return Left(failure);
   }
 }

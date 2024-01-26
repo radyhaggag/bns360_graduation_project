@@ -3,7 +3,12 @@
   "data": [
     {
       "id": 1,
-      "category_id": 1,
+      "category": {
+        "id": 1,
+        "name_ar": "مطاعم وكافيهات",
+        "name_en": "Restaurants & Café",
+        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
+      },
       "name_ar": "بيل كانتو",
       "name_en": "Bel Canto",
       "description_ar": "مطعم تركي يقدم العديد من الآكلات العالمية",
@@ -14,7 +19,12 @@
     },
     {
       "id": 2,
-      "category_id": 2,
+      "category": {
+        "id": 1,
+        "name_ar": "مطاعم وكافيهات",
+        "name_en": "Restaurants & Café",
+        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
+      },
       "name_ar": "أوزي",
       "name_en": "Oozy",
       "description_ar": "كافيه أوزي أحلي لمه لأجمل ناس",
@@ -25,7 +35,12 @@
     },
     {
       "id": 1,
-      "category_id": 1,
+      "category": {
+        "id": 1,
+        "name_ar": "مطاعم وكافيهات",
+        "name_en": "Restaurants & Café",
+        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
+      },
       "name_ar": "بيل كانتو",
       "name_en": "Bel Canto",
       "description_ar": "مطعم تركي يقدم العديد من الآكلات العالمية",
@@ -36,7 +51,12 @@
     },
     {
       "id": 2,
-      "category_id": 2,
+      "category": {
+        "id": 1,
+        "name_ar": "مطاعم وكافيهات",
+        "name_en": "Restaurants & Café",
+        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
+      },
       "name_ar": "أوزي",
       "name_en": "Oozy",
       "description_ar": "كافيه أوزي أحلي لمه لأجمل ناس",
@@ -47,7 +67,12 @@
     },
     {
       "id": 1,
-      "category_id": 1,
+      "category": {
+        "id": 1,
+        "name_ar": "مطاعم وكافيهات",
+        "name_en": "Restaurants & Café",
+        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
+      },
       "name_ar": "بيل كانتو",
       "name_en": "Bel Canto",
       "description_ar": "مطعم تركي يقدم العديد من الآكلات العالمية",
@@ -58,7 +83,12 @@
     },
     {
       "id": 2,
-      "category_id": 2,
+      "category": {
+        "id": 1,
+        "name_ar": "مطاعم وكافيهات",
+        "name_en": "Restaurants & Café",
+        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
+      },
       "name_ar": "أوزي",
       "name_en": "Oozy",
       "description_ar": "كافيه أوزي أحلي لمه لأجمل ناس",

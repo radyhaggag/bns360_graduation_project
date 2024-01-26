@@ -3,11 +3,11 @@ import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/login_entity.dart';
 import '../../domain/entities/sign_up_entity.dart';
+import '../../domain/params/login_params.dart';
+import '../../domain/params/reset_password_params.dart';
+import '../../domain/params/sign_up_params.dart';
+import '../../domain/params/verify_reset_password_params.dart';
 import '../../domain/repositories/auth_repo.dart';
-import '../../domain/usecases/login_use_case.dart';
-import '../../domain/usecases/reset_password_use_case.dart';
-import '../../domain/usecases/sign_up_use_case.dart';
-import '../../domain/usecases/verify_reset_password_code_use_case.dart';
 import '../datasources/remote/auth_remote_data_source.dart';
 
 class AuthRepoImpl implements AuthRepo {

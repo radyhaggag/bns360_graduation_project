@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("العودة الى تسجيل الدخول"),
         "businessOwner":
             MessageLookupByLibrary.simpleMessage("صاحب نشاط تجارى"),
+        "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
         "checkEmailMsg": MessageLookupByLibrary.simpleMessage(
             "من فضلك قم بفحص بريدك اللالكترونى"),
         "confirmNewPassword":
@@ -44,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل كلمة المرور"),
         "enterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("ادخل رقم هاتفك"),
+        "favorites": MessageLookupByLibrary.simpleMessage("لمفضلة"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(

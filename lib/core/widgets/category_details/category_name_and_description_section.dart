@@ -5,7 +5,7 @@ class _CategoryDetailsNameAndDescriptionSection extends StatelessWidget {
     required this.categoryDetailsEntity,
   });
 
-  final CategoryDetailsEntity categoryDetailsEntity;
+  final CategoryItemEntity categoryDetailsEntity;
 
   @override
   Widget build(BuildContext context) {

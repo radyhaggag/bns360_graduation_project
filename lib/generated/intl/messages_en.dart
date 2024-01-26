@@ -25,6 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
+        "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "checkEmailMsg":
             MessageLookupByLibrary.simpleMessage("Please check your email"),
         "confirmNewPassword":
@@ -42,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "enterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
+        "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(

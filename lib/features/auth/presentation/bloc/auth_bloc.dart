@@ -1,34 +1,23 @@
 import 'dart:async';
 
+import 'package:bns360_graduation_project/features/auth/domain/repositories/auth_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/enums.dart';
-import '../../domain/usecases/login_use_case.dart';
-import '../../domain/usecases/reset_password_use_case.dart';
-import '../../domain/usecases/send_email_verification_use_case.dart';
-import '../../domain/usecases/send_reset_password_code_use_case.dart';
-import '../../domain/usecases/sign_up_use_case.dart';
-import '../../domain/usecases/verify_reset_password_code_use_case.dart';
+import '../../domain/params/login_params.dart';
+import '../../domain/params/reset_password_params.dart';
+import '../../domain/params/sign_up_params.dart';
+import '../../domain/params/verify_reset_password_params.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final LoginUseCase loginUseCase;
-  final SignUpUseCase signUpUseCase;
-  final VerifyResetPasswordCodeUseCase verifyResetPasswordCodeUseCase;
-  final ResetPasswordUseCase resetPasswordUseCase;
-  final SendEmailVerificationUseCase sendEmailVerificationUseCase;
-  final SendResetPasswordCodeUseCase sendResetPasswordCodeUseCase;
+  final AuthRepo authRepo;
 
   AuthBloc({
-    required this.loginUseCase,
-    required this.signUpUseCase,
-    required this.verifyResetPasswordCodeUseCase,
-    required this.resetPasswordUseCase,
-    required this.sendEmailVerificationUseCase,
-    required this.sendResetPasswordCodeUseCase,
+    required this.authRepo,
   }) : super(AuthInitial()) {
     on<LoginEvent>(_login);
     on<SignUpEvent>(_signUp);
@@ -47,7 +36,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = LoginParams(email: event.email, password: event.password);
-    final res = await loginUseCase(params);
+    final res = await authRepo.login(params);
 
     res.fold(
       (l) => emit(LoginErrorState(message: l.message)),
@@ -67,7 +56,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       password: event.password,
       name: event.name,
     );
-    final res = await signUpUseCase(params);
+    final res = await authRepo.signUp(params);
 
     res.fold(
       (l) => emit(SignUpErrorState(message: l.message)),
@@ -82,7 +71,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(SendEmailVerificationLoadingState());
     await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
-    final res = await sendEmailVerificationUseCase(event.email);
+    final res = await authRepo.sendEmailVerification(event.email);
 
     res.fold(
       (l) => emit(SendEmailVerificationErrorState(message: l.message)),
@@ -97,7 +86,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(SendResetPasswordCodeLoadingState());
     await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
-    final res = await sendResetPasswordCodeUseCase(event.email);
+    final res = await authRepo.sendResetPasswordCode(event.email);
 
     res.fold(
       (l) => emit(SendResetPasswordCodeErrorState(message: l.message)),
@@ -117,7 +106,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       otpCode: event.otpCode,
     );
 
-    final res = await verifyResetPasswordCodeUseCase(params);
+    final res = await authRepo.verifyResetPasswordCode(params);
 
     res.fold(
       (l) => emit(VerifyResetPasswordCodeErrorState(message: l.message)),
@@ -136,7 +125,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       email: event.email,
       newPassword: event.newPassword,
     );
-    final res = await resetPasswordUseCase(params);
+    final res = await authRepo.resetPassword(params);
 
     res.fold(
       (l) => emit(LoginErrorState(message: l.message)),

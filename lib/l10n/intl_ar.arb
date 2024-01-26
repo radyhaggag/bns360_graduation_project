@@ -48,5 +48,7 @@
   "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
   "home": "الصفحة الرئيسية",
   "places_to_explore": "أماكن للاستكشاف",
-  "no_places_to_explore": "لا بوجد اماكن للاستكشاف"
+  "no_places_to_explore": "لا بوجد اماكن للاستكشاف",
+  "categories": "الفئات",
+  "favorites": "لمفضلة"
 }

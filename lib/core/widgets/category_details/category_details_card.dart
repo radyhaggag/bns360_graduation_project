@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/shared_data/entities/category_details_entity.dart';
+import '../../shared_data/entities/category_item_entity.dart';
 import '../../helpers/localization_helper.dart';
 
 part 'category_details_image.dart';
@@ -21,7 +21,7 @@ class CategoryDetailsCard extends StatelessWidget {
     this.useSetStateToChangeFavoriteColor,
   });
 
-  final CategoryDetailsEntity categoryDetailsEntity;
+  final CategoryItemEntity categoryDetailsEntity;
   final void Function()? onIconPressed;
   final double? width;
   final bool? isFavorite;

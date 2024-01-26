@@ -23,24 +23,10 @@ class GetBannersErrorState extends HomeState {
   const GetBannersErrorState({required this.message});
 }
 
-class GetCategoriesLoadingState extends HomeState {}
-
-class GetCategoriesSuccessState extends HomeState {
-  final List<CategoryEntity> categories;
-
-  const GetCategoriesSuccessState({required this.categories});
-}
-
-class GetCategoriesErrorState extends HomeState {
-  final String message;
-
-  const GetCategoriesErrorState({required this.message});
-}
-
 class GetPlacesToExploreLoadingState extends HomeState {}
 
 class GetPlacesToExploreSuccessState extends HomeState {
-  final List<CategoryDetailsEntity> placesToExplore;
+  final List<CategoryItemEntity> placesToExplore;
 
   const GetPlacesToExploreSuccessState({required this.placesToExplore});
 }

@@ -1,8 +1,8 @@
 import '../../../../../core/api/api_consumer.dart';
-import '../../../domain/usecases/login_use_case.dart';
-import '../../../domain/usecases/reset_password_use_case.dart';
-import '../../../domain/usecases/sign_up_use_case.dart';
-import '../../../domain/usecases/verify_reset_password_code_use_case.dart';
+import '../../../domain/params/login_params.dart';
+import '../../../domain/params/reset_password_params.dart';
+import '../../../domain/params/sign_up_params.dart';
+import '../../../domain/params/verify_reset_password_params.dart';
 import '../../models/login_model.dart';
 import '../../models/sign_up_model.dart';
 

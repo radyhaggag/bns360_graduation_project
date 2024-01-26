@@ -1,8 +1,7 @@
 import '../../../../core/helpers/execute_and_handle_error.dart';
-import '../../../../core/shared_data/entities/category_details_entity.dart';
+import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/banner_entity.dart';
-import '../../domain/entities/category_entity.dart';
 import '../../domain/repositories/home_repo.dart';
 import '../datasources/local/home_local_data_source.dart';
 import '../datasources/remote/home_remote_data_source.dart';
@@ -24,15 +23,8 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<ResultOrFailure<List<CategoryEntity>>> getCategories() async {
-    return executeAndHandleError<List<CategoryEntity>>(
-      () => homeRemoteDataSource.getCategories(),
-    );
-  }
-
-  @override
-  Future<ResultOrFailure<List<CategoryDetailsEntity>>> getPlacesToExplore() {
-    return executeAndHandleError<List<CategoryDetailsEntity>>(
+  Future<ResultOrFailure<List<CategoryItemEntity>>> getPlacesToExplore() {
+    return executeAndHandleError<List<CategoryItemEntity>>(
       () => homeRemoteDataSource.getPlacesToExplore(),
     );
   }

@@ -9,8 +9,12 @@ import '../features/auth/presentation/screens/reset_password_screen.dart';
 import '../features/auth/presentation/screens/sign_up_screen.dart';
 import '../features/auth/presentation/screens/verify_otp_code_screen.dart';
 import '../features/auth/presentation/screens/welcome_screen.dart';
-import '../features/bottom_nav_bar/presentation/bloc/bottom_nav_bar_bloc.dart';
-import '../features/bottom_nav_bar/presentation/screens/bottom_nav_bar_screen.dart';
+import '../features/bottom_navigation/presentation/bloc/bottom_navigation_bloc.dart';
+import '../features/bottom_navigation/presentation/screens/bottom_navigation_screen.dart';
+import '../features/categories/presentation/bloc/categories_bloc.dart';
+import '../features/categories/presentation/screens/categories_screen.dart';
+import '../features/favorites/presentation/bloc/favorites_bloc.dart';
+import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
@@ -28,6 +32,8 @@ abstract class Routes {
   static const passwordChanged = '/passwordChanged';
   static const home = '/home';
   static const bottomNavBar = '/bottomNavBar';
+  static const favorites = '/favorites';
+  static const categories = '/categories';
 }
 
 abstract class RouteConfig {
@@ -104,7 +110,21 @@ abstract class RouteConfig {
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => BottomNavBarBloc(),
-            child: const BottomNavBarScreen(),
+            child: const BottomNavigationScreen(),
+          ),
+        );
+      case Routes.favorites:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<FavoritesBloc>(),
+            child: const FavoritesScreen(),
+          ),
+        );
+      case Routes.categories:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<CategoriesBloc>(),
+            child: const CategoriesScreen(),
           ),
         );
       default:

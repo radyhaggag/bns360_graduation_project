@@ -23,7 +23,7 @@ class _ExplorePlacesBuilder extends StatelessWidget {
           isLoaded: state is GetPlacesToExploreSuccessState,
           errorMessage:
               state is GetPlacesToExploreErrorState ? state.message : "",
-          loadedWidget: MainListViewBuilder<CategoryDetailsEntity>(
+          loadedWidget: MainListViewBuilder<CategoryItemEntity>(
             list: placesToExplore,
             emptyMessage: S.of(context).no_places_to_explore,
             itemWidget: (item) => CategoryDetailsCard(

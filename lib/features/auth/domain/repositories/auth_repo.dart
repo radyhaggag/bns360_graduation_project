@@ -1,10 +1,10 @@
 import '../../../../core/utils/custom_types.dart';
 import '../entities/login_entity.dart';
 import '../entities/sign_up_entity.dart';
-import '../usecases/login_use_case.dart';
-import '../usecases/reset_password_use_case.dart';
-import '../usecases/sign_up_use_case.dart';
-import '../usecases/verify_reset_password_code_use_case.dart';
+import '../params/login_params.dart';
+import '../params/reset_password_params.dart';
+import '../params/sign_up_params.dart';
+import '../params/verify_reset_password_params.dart';
 
 abstract class AuthRepo {
   Future<ResultOrFailure<LoginEntity>> login(LoginParams params);

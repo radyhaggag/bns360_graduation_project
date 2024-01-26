@@ -50,10 +50,10 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `BNS360`
+  /// `BNS 360`
   String get appName {
     return Intl.message(
-      'BNS360',
+      'BNS 360',
       name: 'appName',
       desc: '',
       args: [],
@@ -545,6 +545,26 @@ class S {
     return Intl.message(
       'No places to explore',
       name: 'no_places_to_explore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Categories`
+  String get categories {
+    return Intl.message(
+      'Categories',
+      name: 'categories',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorites`
+  String get favorites {
+    return Intl.message(
+      'Favorites',
+      name: 'favorites',
       desc: '',
       args: [],
     );

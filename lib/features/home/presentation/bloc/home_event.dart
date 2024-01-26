@@ -9,6 +9,4 @@ abstract class HomeEvent extends Equatable {
 
 class GetBannersEvent extends HomeEvent {}
 
-class GetCategoriesEvent extends HomeEvent {}
-
 class GetPlacesToExploreEvent extends HomeEvent {}

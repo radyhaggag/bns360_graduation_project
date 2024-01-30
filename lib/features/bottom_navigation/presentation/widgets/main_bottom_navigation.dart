@@ -9,6 +9,7 @@ import '../../../../core/utils/assets/app_svg.dart';
 import '../bloc/bottom_navigation_bloc.dart';
 
 const _iconList = [
+  // Icons.home,
   Icons.home,
   AppSvg.category,
   Icons.favorite,
@@ -43,6 +44,7 @@ class MainBottomNavbar extends StatelessWidget {
                   : Icon(
                       (_iconList[index] as IconData),
                       color: iconColor,
+                      size: 30,
                     ),
             );
           },

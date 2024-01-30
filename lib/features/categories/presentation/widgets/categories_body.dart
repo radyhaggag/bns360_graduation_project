@@ -28,7 +28,7 @@ class CategoriesBody extends StatelessWidget {
                   isError: state is GetCategoriesErrorState,
                   errorMessage:
                       (state is GetCategoriesErrorState) ? state.message : "",
-                  isLoaded: state is GetCategoriesSuccessState,
+                  isLoaded: bloc.categories != null,
                   loadedWidget: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
@@ -37,12 +37,11 @@ class CategoriesBody extends StatelessWidget {
                       crossAxisSpacing: 16,
                       mainAxisExtent: 160.h,
                     ),
-                    itemCount: (state is GetCategoriesSuccessState)
-                        ? state.categories.length
-                        : 0,
+                    itemCount:
+                        (bloc.categories != null) ? bloc.categories!.length : 0,
                     itemBuilder: (context, index) {
                       return CategoryCard(
-                        categoryEntity: bloc.categories[index],
+                        categoryEntity: bloc.categories![index],
                       );
                     },
                   ),

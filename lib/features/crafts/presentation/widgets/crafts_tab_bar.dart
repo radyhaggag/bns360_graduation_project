@@ -39,13 +39,13 @@ class CraftsTabBar extends StatelessWidget {
           final selectedCraftId = bloc.selectedCraftId;
 
           return DataStateWidget(
-            isLoading: state is GetCraftsLoadingState,
+            isLoading: crafts == null,
             isError: state is GetCraftsErrorState,
             isLoaded: state is GetCraftsSuccessState,
             errorMessage: state is GetCraftsErrorState ? state.message : "",
             loadingWidget: const _LoadingWidget(),
             loadedWidget: _LoadedWidget(
-              crafts: crafts,
+              crafts: crafts ?? [],
               selectedCraftId: selectedCraftId,
             ),
           );

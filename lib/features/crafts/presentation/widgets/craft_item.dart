@@ -30,7 +30,10 @@ class CraftItem extends StatelessWidget {
                   ));
             },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 5,
+        ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: isSelected ? AppColors.primary : AppColors.white,
@@ -56,10 +59,10 @@ class CraftItem extends StatelessWidget {
   static Widget empty() {
     return Container(
       padding: const EdgeInsets.all(5),
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      width: 200.w,
+      // margin: const EdgeInsets.symmetric(horizontal: 5),
+      width: 100.w,
       decoration: BoxDecoration(
-        color: AppColors.black.withOpacity(.1),
+        color: AppColors.black.withOpacity(.05),
         borderRadius: BorderRadius.circular(16),
       ),
     );

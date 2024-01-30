@@ -20,7 +20,7 @@ class CraftsmenBuilder extends StatelessWidget {
         final states = [
           GetCraftsmenLoadingState,
           GetCraftsmenErrorState,
-          GetCraftsmenSuccessState
+          GetCraftsmenSuccessState,
         ];
         return states.contains(current.runtimeType);
       },

@@ -19,3 +19,7 @@ class GetCraftItemsByIdEvent extends CraftsEvent {
   @override
   List<Object> get props => [id];
 }
+
+class ToggleSearchIcon extends CraftsEvent {}
+
+class SearchOnCrafts extends CraftsEvent {}

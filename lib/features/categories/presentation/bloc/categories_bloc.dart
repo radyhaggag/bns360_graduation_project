@@ -1,5 +1,7 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/shared_data/entities/category_entity.dart';
 import '../../domain/repositories/categories_repo.dart';
@@ -13,7 +15,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     on<GetCategoriesEvent>(_getCatteries);
   }
 
-  List<CategoryEntity> categories = [];
+  List<CategoryEntity>? categories;
 
   _getCatteries(
     GetCategoriesEvent event,

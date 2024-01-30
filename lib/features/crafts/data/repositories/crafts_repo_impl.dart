@@ -30,4 +30,23 @@ class CraftsRepoImpl implements CraftsRepo {
       () => craftsRemoteDataSource.getCraftItemsById(id),
     );
   }
+
+  @override
+  FutureEither<List<CraftsmanEntity>> searchOnAllCrafts(
+    String text,
+  ) async {
+    return executeAndHandleError(
+      () => craftsRemoteDataSource.searchOnAllCrafts(text),
+    );
+  }
+
+  @override
+  FutureEither<List<CraftsmanEntity>> searchOnCraftsById(
+    int id,
+    String text,
+  ) async {
+    return executeAndHandleError(
+      () => craftsRemoteDataSource.searchOnCraftsById(id, text),
+    );
+  }
 }

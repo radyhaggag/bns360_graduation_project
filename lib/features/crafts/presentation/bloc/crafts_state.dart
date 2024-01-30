@@ -36,3 +36,12 @@ class GetCraftsErrorState extends CraftsState {
 
   const GetCraftsErrorState({required this.message});
 }
+
+class SearchIconToggled extends CraftsState {
+  final bool isSearchEnabled;
+
+  const SearchIconToggled({required this.isSearchEnabled});
+
+  @override
+  List<Object> get props => [isSearchEnabled];
+}

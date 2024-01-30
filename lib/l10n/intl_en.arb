@@ -54,5 +54,6 @@
   "craftsmen": "Craftsmen",
   "craftsman": "Craftsman",
   "no_favorite_items": "No favorite items!",
-  "no_craftsmen_found": "No craftsmen found!"
+  "no_craftsmen_found": "No craftsmen found!",
+  "settings": "Settings"
 }

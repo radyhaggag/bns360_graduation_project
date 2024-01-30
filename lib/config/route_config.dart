@@ -19,6 +19,8 @@ import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
+import '../features/settings/presentation/bloc/settings_bloc.dart';
+import '../features/settings/presentation/screens/settings_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
 import '../features/splash/presentation/screens/splash_screen.dart';
 import 'injector_container.dart';
@@ -37,6 +39,7 @@ abstract class Routes {
   static const favorites = '/favorites';
   static const categories = '/categories';
   static const crafts = '/crafts';
+  static const settings = '/settings';
 }
 
 abstract class RouteConfig {
@@ -135,6 +138,13 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<CraftsBloc>(),
             child: const CraftsScreen(),
+          ),
+        );
+      case Routes.settings:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<SettingsBloc>(),
+            child: const SettingsScreen(),
           ),
         );
       default:

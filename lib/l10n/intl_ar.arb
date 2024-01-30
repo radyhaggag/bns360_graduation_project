@@ -54,5 +54,6 @@
   "craftsmen": "الحرفيين",
   "craftsman": "حرفى",
   "no_favorite_items": "لا يوجد عناصر ف المفضلة!",
-  "no_craftsmen_found": "لم يتم العثور على حرفيين!"
+  "no_craftsmen_found": "لم يتم العثور على حرفيين!",
+  "settings": "الإعدادات"
 }

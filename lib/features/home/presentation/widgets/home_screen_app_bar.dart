@@ -37,6 +37,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: const ProfileCircleIcon(),
             onPressed: () {},
           ),
+          const SizedBox(width: 10),
         ],
       ),
     );

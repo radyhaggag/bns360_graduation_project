@@ -90,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to"),
         "serviceProvider":
             MessageLookupByLibrary.simpleMessage("Service provider"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "Fill your information below or register with your social account"),

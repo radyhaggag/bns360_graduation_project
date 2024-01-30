@@ -92,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sentCodeTo": MessageLookupByLibrary.simpleMessage(
             "لقدم قمنا بإرسال كود التحقق الى"),
         "serviceProvider": MessageLookupByLibrary.simpleMessage("مقدم خدمة"),
+        "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "قم بملئ المعلومات التاليه أو قم بالتسجيل بحسابك على مواقع التواصل الاجتماعى"),

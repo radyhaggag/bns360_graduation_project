@@ -6,6 +6,7 @@ import '../../../categories/presentation/screens/categories_screen.dart';
 import '../../../crafts/presentation/screens/crafts_screen.dart';
 import '../../../favorites/presentation/screens/favorites_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
+import '../../../settings/presentation/screens/settings_screen.dart';
 
 part 'bottom_navigation_event.dart';
 part 'bottom_navigation_state.dart';
@@ -20,9 +21,7 @@ class BottomNavBarBloc extends Bloc<BottomNavBarEvent, BottomNavBarState> {
     CategoriesScreen.getWithBlocProvider(),
     FavoritesScreen.getWithBlocProvider(),
     CraftsScreen.getWithBlocProvider(),
-    const Center(
-      child: Text('Settings'),
-    ),
+    SettingsScreen.getWithBlocProvider(),
   ];
   int bottomNavbarIndex = 0;
 

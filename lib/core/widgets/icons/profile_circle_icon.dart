@@ -1,20 +1,22 @@
+import 'package:bns360_graduation_project/core/utils/constants.dart';
+import 'package:bns360_graduation_project/core/widgets/main_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileCircleIcon extends StatelessWidget {
-  const ProfileCircleIcon({super.key});
+  const ProfileCircleIcon({super.key, this.imageUrl});
+
+  final String? imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(
-          color: Theme.of(context).cardColor,
-          width: 2.5,
-        ),
       ),
-      child: const Icon(FeatherIcons.user),
+      width: 30.r,
+      height: 30.r,
+      child: MainNetworkImage(imageUrl: imageUrl ?? kDefaultImgUrl),
     );
   }
 }

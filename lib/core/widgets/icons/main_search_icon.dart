@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../utils/app_colors.dart';
-
 class MainSearchIcon extends StatelessWidget {
   const MainSearchIcon({
     super.key,
@@ -22,10 +20,11 @@ class MainSearchIcon extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: CircleAvatar(
-          backgroundColor: AppColors.lightBackground,
+          backgroundColor: Theme.of(context).listTileTheme.tileColor,
           child: Icon(
             FeatherIcons.search,
             size: 25.r,
+            color: Theme.of(context).cardColor,
           ),
         ),
       ),

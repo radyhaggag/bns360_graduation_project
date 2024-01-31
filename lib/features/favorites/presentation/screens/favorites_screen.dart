@@ -1,4 +1,3 @@
-import '../../../../core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,10 +19,10 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.lightBackground,
-      appBar: FavoritesScreenAppBar(),
-      body: FavoritesBody(),
+    return Scaffold(
+      backgroundColor: Theme.of(context).listTileTheme.tileColor,
+      appBar: const FavoritesScreenAppBar(),
+      body: const FavoritesBody(),
     );
   }
 }

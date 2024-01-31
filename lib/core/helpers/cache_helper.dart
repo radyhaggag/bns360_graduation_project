@@ -1,8 +1,8 @@
-import '../utils/enums.dart';
 import 'package:flutter/material.dart';
 
 import '../databases/local_storage/hive_manager.dart';
 import '../databases/secure_storage/secure_storage_manager.dart';
+import '../utils/enums.dart';
 
 class CacheHelper {
   final SecureStorageManager storage;

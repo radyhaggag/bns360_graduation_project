@@ -1,6 +1,5 @@
-import 'category_model.dart';
-
 import '../entities/category_item_entity.dart';
+import 'category_model.dart';
 
 class CategoryItemModel extends CategoryItemEntity {
   const CategoryItemModel({

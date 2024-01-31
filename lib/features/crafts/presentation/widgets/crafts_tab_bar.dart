@@ -91,9 +91,7 @@ class _LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainListViewBuilder<Null>(
       list: List.filled(8, null),
-      itemWidget: (_) {
-        return CraftItem.empty();
-      },
+      itemWidget: (_) => CraftItem.empty(context),
       scrollDirection: Axis.horizontal,
       width: context.width,
       height: 35.h,

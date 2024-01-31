@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
 
 class SettingsItemTile extends StatelessWidget {
@@ -30,29 +29,29 @@ class SettingsItemTile extends StatelessWidget {
       leading: (isSvg && svgPath != null)
           ? SvgPicture.asset(
               svgPath!,
-              color: _mainColor,
+              color: _mainColor(context),
             )
           : Icon(
               icon,
-              color: _mainColor,
+              color: _mainColor(context),
               size: 24.r,
             ),
       title: Text(
         title,
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontSize: AppFontSize.details,
-              color: _mainColor,
+              color: _mainColor(context),
             ),
       ),
       trailing: trailing ??
           Icon(
             Icons.arrow_forward_ios,
-            color: _mainColor,
+            color: _mainColor(context),
           ),
     );
   }
 
-  Color get _mainColor {
-    return AppColors.black.withOpacity(.4);
+  Color _mainColor(context) {
+    return Theme.of(context).primaryColor.withOpacity(.4);
   }
 }

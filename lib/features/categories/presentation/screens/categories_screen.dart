@@ -1,4 +1,3 @@
-import '../../../../core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,10 +18,10 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.lightBackground,
-      appBar: CategoriesScreenAppBar(),
-      body: CategoriesBody(),
+    return Scaffold(
+      backgroundColor: Theme.of(context).listTileTheme.tileColor,
+      appBar: const CategoriesScreenAppBar(),
+      body: const CategoriesBody(),
     );
   }
 }

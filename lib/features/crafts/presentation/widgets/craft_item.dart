@@ -36,7 +36,9 @@ class CraftItem extends StatelessWidget {
         ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary : AppColors.white,
+          color: isSelected
+              ? AppColors.primary
+              : Theme.of(context).cardTheme.color,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
@@ -49,20 +51,19 @@ class CraftItem extends StatelessWidget {
                 fontSize: AppFontSize.light,
                 color: isSelected
                     ? AppColors.white
-                    : AppColors.black.withOpacity(.4),
+                    : Theme.of(context).primaryColor.withOpacity(.4),
               ),
         ),
       ),
     );
   }
 
-  static Widget empty() {
+  static Widget empty(context) {
     return Container(
       padding: const EdgeInsets.all(5),
-      // margin: const EdgeInsets.symmetric(horizontal: 5),
       width: 100.w,
       decoration: BoxDecoration(
-        color: AppColors.black.withOpacity(.05),
+        color: Theme.of(context).cardTheme.color?.withOpacity(.5),
         borderRadius: BorderRadius.circular(16),
       ),
     );

@@ -1,8 +1,8 @@
-import '../../config/injector_container.dart';
-import 'cache_helper.dart';
 import 'package:flutter/material.dart';
 
+import '../../config/injector_container.dart';
 import '../utils/enums.dart';
+import 'cache_helper.dart';
 
 abstract class LocalizationHelper {
   static Language get currentLanguage {

@@ -1,7 +1,6 @@
-import 'data/datasources/remote/favorites_remote_data_source_impl.dart';
-
 import '../../config/injector_container.dart';
 import 'data/datasources/remote/favorites_remote_data_source.dart';
+import 'data/datasources/remote/favorites_remote_data_source_impl.dart';
 import 'data/repositories/favorites_repo_impl.dart';
 import 'domain/repositories/favorites_repo.dart';
 import 'presentation/bloc/favorites_bloc.dart';

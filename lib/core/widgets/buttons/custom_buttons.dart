@@ -1,8 +1,8 @@
-import '../center_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../extensions/media_query.dart';
+import '../center_progress_indicator.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final double? width;

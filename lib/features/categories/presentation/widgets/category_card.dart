@@ -17,7 +17,7 @@ class CategoryCard extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).highlightColor,
+          color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(

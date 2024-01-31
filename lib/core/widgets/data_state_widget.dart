@@ -1,7 +1,7 @@
-import '../extensions/media_query.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../extensions/media_query.dart';
 import 'center_progress_indicator.dart';
 import 'messages/error_message_widget.dart';
 

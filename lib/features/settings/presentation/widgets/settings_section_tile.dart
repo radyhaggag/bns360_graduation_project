@@ -1,10 +1,12 @@
+import '../../../../core/utils/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/app/app_bloc.dart';
 import '../../../../core/extensions/media_query.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/utils/app_colors.dart';
 
 class SettingsSectionTile extends StatelessWidget {
   const SettingsSectionTile({super.key, required this.title});
@@ -22,19 +24,21 @@ class SettingsSectionTile extends StatelessWidget {
       alignment: LocalizationHelper.currentLanguage == Language.english
           ? Alignment.centerLeft
           : Alignment.centerRight,
-      decoration: const BoxDecoration(
-        color: AppColors.white,
+      decoration: BoxDecoration(
+        color: context.read<AppBloc>().state.theme == AppTheme.light
+            ? AppColors.white
+            : AppColors.black,
       ),
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: _mainColor,
+              color: _mainColor(context),
             ),
       ),
     );
   }
 
-  Color get _mainColor {
-    return AppColors.black.withOpacity(.25);
+  Color _mainColor(context) {
+    return Theme.of(context).primaryColor.withOpacity(.25);
   }
 }

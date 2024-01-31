@@ -1,8 +1,7 @@
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utils/app_fonts.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/favorites_bloc.dart';
 
@@ -16,12 +15,12 @@ class FavoritesTabBar extends StatelessWidget {
       dividerColor: Colors.transparent,
       padding: const EdgeInsets.only(top: 8),
       labelStyle: TextStyle(
-        color: AppColors.primary,
+        color: Theme.of(context).cardColor,
         fontSize: AppFontSize.details,
         fontWeight: FontWeight.w500,
       ),
       unselectedLabelStyle: TextStyle(
-        color: Colors.black38,
+        color: Theme.of(context).primaryColor.withOpacity(.38),
         fontSize: AppFontSize.details,
         fontWeight: FontWeight.w500,
       ),

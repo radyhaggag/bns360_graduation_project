@@ -1,7 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -9,12 +8,12 @@ import '../../../../core/utils/assets/app_svg.dart';
 import '../bloc/bottom_navigation_bloc.dart';
 
 const _iconList = [
-  // Icons.home,
-  Icons.home,
-  AppSvg.category,
+  AppSvg.home,
+  AppSvg.categoryFilled,
+  // AppSvg.favorite,
   Icons.favorite,
-  Icons.handyman,
-  FeatherIcons.settings,
+  AppSvg.construction,
+  AppSvg.settings,
 ];
 
 class MainBottomNavbar extends StatelessWidget {
@@ -35,16 +34,18 @@ class MainBottomNavbar extends StatelessWidget {
                 color: isActive ? AppColors.white : Colors.transparent,
                 shape: BoxShape.circle,
               ),
-              child: index == 1
-                  ? SvgPicture.asset(
-                      _iconList[1] as String,
-                      fit: BoxFit.scaleDown,
+              alignment: Alignment.center,
+              child: index == 2
+                  ? Icon(
+                      _iconList[index] as IconData,
+                      size: 33,
                       color: iconColor,
                     )
-                  : Icon(
-                      (_iconList[index] as IconData),
+                  : SvgPicture.asset(
+                      _iconList[index] as String,
+                      fit: BoxFit.scaleDown,
                       color: iconColor,
-                      size: 30,
+                      height: 30,
                     ),
             );
           },

@@ -39,7 +39,9 @@ class SwitchModeTile extends StatelessWidget {
               borderWidth: 3,
               customStyleBuilder: (context, local, global) {
                 return ToggleStyle(
-                  backgroundColor: AppColors.light,
+                  backgroundColor: state.theme == AppTheme.light
+                      ? AppColors.light
+                      : AppColors.primary,
                   borderColor: AppColors.black.withOpacity(.06),
                   indicatorColor: AppColors.white,
                 );

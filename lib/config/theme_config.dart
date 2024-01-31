@@ -113,6 +113,9 @@ abstract class ThemeConfig {
       splashColor: AppColors.white,
       highlightColor: AppColors.white,
       primaryColor: AppColors.black,
+      listTileTheme: const ListTileThemeData(
+        tileColor: AppColors.lightBackground,
+      ),
     );
   }
 
@@ -217,6 +220,9 @@ abstract class ThemeConfig {
       splashColor: AppColors.surface,
       highlightColor: AppColors.surface,
       primaryColor: AppColors.white,
+      listTileTheme: ListTileThemeData(
+        tileColor: AppColors.surface.withOpacity(.9),
+      ),
     );
   }
 

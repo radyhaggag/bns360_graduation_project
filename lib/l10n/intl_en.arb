@@ -67,5 +67,7 @@
   "privacy_policy": "Privacy policy",
   "about_us": "About Us",
   "logout": "Log out",
-  "app_settings": "App settings"
+  "app_settings": "App settings",
+  "search_on": "Search on",
+  "search": "Search"
 }

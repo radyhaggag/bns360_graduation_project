@@ -1,12 +1,13 @@
 import 'dart:async';
 
-import '../../../../core/utils/custom_types.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:equatable/equatable.dart';
 
+import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/craft_entity.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../core/utils/custom_types.dart';
 import '../../domain/repositories/crafts_repo.dart';
 
 part 'crafts_event.dart';
@@ -43,9 +44,34 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     );
   }
 
-  List<CraftEntity>? crafts;
+  final craftAllEntity = const CraftEntity(
+    id: -1,
+    nameAR: 'الجميع',
+    nameEN: 'All',
+  );
+
+  List<CraftEntity>? _crafts;
+  List<CraftEntity>? get crafts {
+    if (_crafts != null) {
+      return [craftAllEntity, ..._crafts!];
+    }
+    return null;
+  }
 
   int selectedCraftId = -1;
+
+  String? selectedCraftName(context) {
+    var selectedCraft = crafts?.firstWhere(
+      (craft) => craft.id == selectedCraftId,
+      orElse: () => craftAllEntity,
+    );
+    selectedCraft ??= craftAllEntity;
+    return LocalizationHelper.getLocalizedString(
+      context,
+      ar: selectedCraft.nameAR,
+      en: selectedCraft.nameEN,
+    );
+  }
 
   _getCrafts(
     GetCraftsEvent event,
@@ -60,7 +86,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     res.fold(
       (l) => emit(GetCraftsErrorState(message: l.message)),
       (r) {
-        crafts = r;
+        _crafts = r;
         emit(GetCraftsSuccessState(crafts: r));
       },
     );
@@ -112,6 +138,10 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
   ) {
     isSearchEnabled = !isSearchEnabled;
     emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
+    if (!isSearchEnabled && searchController.text.isNotEmpty) {
+      searchController.clear();
+      add(GetCraftsmenEvent());
+    }
   }
 
   @override

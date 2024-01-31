@@ -67,10 +67,7 @@ class _LoadedWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainListViewBuilder<CraftEntity>(
-      list: [
-        const CraftEntity(id: -1, nameAR: 'الجميع', nameEN: 'All'),
-        ...crafts
-      ],
+      list: crafts,
       emptyMessage: "",
       itemWidget: (item) => CraftItem(
         craftEntity: item,

@@ -101,6 +101,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "resetPasswordMsg":
             MessageLookupByLibrary.simpleMessage("يرجى كتابة شيء سوف تتذكره"),
+        "search": MessageLookupByLibrary.simpleMessage("أبحث"),
+        "search_on": MessageLookupByLibrary.simpleMessage("البحث في"),
         "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
         "sentCodeTo": MessageLookupByLibrary.simpleMessage(
             "لقدم قمنا بإرسال كود التحقق الى"),

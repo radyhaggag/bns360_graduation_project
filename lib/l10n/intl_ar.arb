@@ -67,5 +67,7 @@
   "privacy_policy": "سياسة الخصوصية",
   "about_us": "معلومات عنا",
   "logout": "تسجيل الخروج",
-  "app_settings": "إعدادات التطبيق"
+  "app_settings": "إعدادات التطبيق",
+  "search_on": "البحث في",
+  "search": "أبحث"
 }

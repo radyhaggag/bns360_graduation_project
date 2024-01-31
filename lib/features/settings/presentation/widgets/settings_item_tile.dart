@@ -52,6 +52,6 @@ class SettingsItemTile extends StatelessWidget {
   }
 
   Color _mainColor(context) {
-    return Theme.of(context).primaryColor.withOpacity(.4);
+    return Theme.of(context).cardColor;
   }
 }

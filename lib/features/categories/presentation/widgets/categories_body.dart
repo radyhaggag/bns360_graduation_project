@@ -33,7 +33,7 @@ class CategoriesBody extends StatelessWidget {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       // todo: maybe need to reduce to be as cross spacing
-                      mainAxisSpacing: 30,
+                      mainAxisSpacing: 16,
                       crossAxisSpacing: 16,
                       mainAxisExtent: 160.h,
                     ),

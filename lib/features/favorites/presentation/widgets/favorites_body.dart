@@ -17,7 +17,7 @@ class FavoritesBody extends StatelessWidget {
       child: Column(
         children: [
           const FavoritesTabBar(),
-          const SizedBox(height: 15),
+          const SizedBox(height: 9),
           Expanded(
             child: Padding(
               padding:

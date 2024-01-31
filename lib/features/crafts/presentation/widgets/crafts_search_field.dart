@@ -1,10 +1,9 @@
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_fonts.dart';
-import '../../../../core/utils/app_styles.dart';
+import '../../../../generated/l10n.dart';
 import '../bloc/crafts_bloc.dart';
 
 class CraftsSearchField extends StatelessWidget {
@@ -23,7 +22,9 @@ class CraftsSearchField extends StatelessWidget {
         builder: (context, state) {
           final bloc = context.read<CraftsBloc>();
           return TextFormField(
-            style: AppStyles.getBoldStyle(fontSize: AppFontSize.light),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontSize: AppFontSize.light,
+                ),
             controller: bloc.searchController,
             textAlign: TextAlign.start,
             maxLines: 1,
@@ -43,9 +44,11 @@ class CraftsSearchField extends StatelessWidget {
               contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
+                borderSide: BorderSide.none,
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
+                borderSide: BorderSide.none,
               ),
               hintText: getHintText(context),
             ),

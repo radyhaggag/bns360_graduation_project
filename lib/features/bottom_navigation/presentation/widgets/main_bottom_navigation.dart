@@ -10,7 +10,6 @@ import '../bloc/bottom_navigation_bloc.dart';
 const _iconList = [
   AppSvg.home,
   AppSvg.categoryFilled,
-  // AppSvg.favorite,
   Icons.favorite,
   AppSvg.construction,
   AppSvg.settings,
@@ -45,7 +44,7 @@ class MainBottomNavbar extends StatelessWidget {
                       _iconList[index] as String,
                       fit: BoxFit.scaleDown,
                       color: iconColor,
-                      height: 30,
+                      height: index == 0 ? 26 : 30,
                     ),
             );
           },

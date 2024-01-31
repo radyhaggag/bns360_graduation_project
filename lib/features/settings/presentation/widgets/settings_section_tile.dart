@@ -39,6 +39,6 @@ class SettingsSectionTile extends StatelessWidget {
   }
 
   Color _mainColor(context) {
-    return Theme.of(context).primaryColor.withOpacity(.25);
+    return Theme.of(context).cardColor;
   }
 }

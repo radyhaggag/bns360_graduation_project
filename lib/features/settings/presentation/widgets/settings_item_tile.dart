@@ -13,6 +13,7 @@ class SettingsItemTile extends StatelessWidget {
     this.svgPath,
     this.isSvg = true,
     this.trailing,
+    this.onTap,
   });
 
   final IconData? icon;
@@ -20,12 +21,17 @@ class SettingsItemTile extends StatelessWidget {
   final String title;
   final bool isSvg;
   final Widget? trailing;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: (isSvg && svgPath != null)
-          ? SvgPicture.asset(svgPath!)
+          ? SvgPicture.asset(
+              svgPath!,
+              color: _mainColor,
+            )
           : Icon(
               icon,
               color: _mainColor,

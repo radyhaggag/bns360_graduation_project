@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/features/favorites/data/datasources/remote/favorites_remote_data_source_impl.dart';
+import 'data/datasources/remote/favorites_remote_data_source_impl.dart';
 
 import '../../config/injector_container.dart';
 import 'data/datasources/remote/favorites_remote_data_source.dart';

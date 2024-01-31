@@ -1,16 +1,16 @@
-import 'package:bns360_graduation_project/features/categories/categories_injector.dart';
-import 'package:bns360_graduation_project/features/crafts/crafts_injector.dart';
-import 'package:bns360_graduation_project/features/favorites/favorites_injector.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
 import '../core/api/api_consumer.dart';
 import '../core/api/dio_consumer.dart';
+import '../core/app/app_bloc.dart';
 import '../core/databases/secure_storage/secure_storage_manager.dart';
 import '../core/helpers/cache_helper.dart';
-import '../core/localization/localization_bloc.dart';
 import '../features/auth/auth_injector.dart';
+import '../features/categories/categories_injector.dart';
+import '../features/crafts/crafts_injector.dart';
+import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
 import '../features/splash/splash_injector.dart';
 
@@ -58,6 +58,6 @@ Future<void> initCore() async {
   );
   // Localization Bloc
   sl.registerFactory(
-    () => LocalizationBloc(sl()),
+    () => AppBloc(sl()),
   );
 }

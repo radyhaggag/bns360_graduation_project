@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/shared_data/models/category_model.dart';
+import 'category_model.dart';
 
 import '../entities/category_item_entity.dart';
 

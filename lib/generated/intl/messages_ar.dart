@@ -22,21 +22,30 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+        "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
+        "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
         "backToLogin":
             MessageLookupByLibrary.simpleMessage("العودة الى تسجيل الدخول"),
         "businessOwner":
             MessageLookupByLibrary.simpleMessage("صاحب نشاط تجارى"),
         "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
+        "change_password":
+            MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "checkEmailMsg": MessageLookupByLibrary.simpleMessage(
             "من فضلك قم بفحص بريدك اللالكترونى"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
+        "contact_us": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
         "craftsman": MessageLookupByLibrary.simpleMessage("حرفى"),
         "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
+        "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
+        "edit_profile":
+            MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكترونى"),
         "enterEmail":
             MessageLookupByLibrary.simpleMessage("ادخل بريدك الإلكترونى"),
@@ -56,9 +65,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسحيل الدخول"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
+        "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على حرفيين!"),
@@ -83,6 +94,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "places_to_explore":
             MessageLookupByLibrary.simpleMessage("أماكن للاستكشاف"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("اختر من فضلك"),
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
@@ -96,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "قم بملئ المعلومات التاليه أو قم بالتسجيل بحسابك على مواقع التواصل الاجتماعى"),
+        "support": MessageLookupByLibrary.simpleMessage("الدعم"),
+        "terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
         "validateEmail":
             MessageLookupByLibrary.simpleMessage("البريد الإلكتروني غير صحيح"),

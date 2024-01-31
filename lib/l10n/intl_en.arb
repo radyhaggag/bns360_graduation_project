@@ -55,5 +55,17 @@
   "craftsman": "Craftsman",
   "no_favorite_items": "No favorite items!",
   "no_craftsmen_found": "No craftsmen found!",
-  "settings": "Settings"
+  "settings": "Settings",
+  "edit_profile": "Edit Profile",
+  "change_password": "Change password",
+  "language": "Language",
+  "dark_mode": "Dark mode",
+  "support": "Support",
+  "account": "Account",
+  "terms_of_service": "Terms of service",
+  "contact_us": "Contact Us",
+  "privacy_policy": "Privacy policy",
+  "about_us": "About Us",
+  "logout": "Log out",
+  "app_settings": "App settings"
 }

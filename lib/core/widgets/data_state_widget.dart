@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/extensions/media_query.dart';
+import '../extensions/media_query.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

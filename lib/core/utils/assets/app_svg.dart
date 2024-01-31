@@ -12,4 +12,5 @@ abstract class AppSvg {
   static const aboutCircle = "$_svgPath/about_circle.svg";
   static const termsOfService = "$_svgPath/terms_of_service.svg";
   static const settings = "$_svgPath/settings.svg";
+  static const ellipse = "$_svgPath/ellipse.svg";
 }

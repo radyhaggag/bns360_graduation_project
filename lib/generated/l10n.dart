@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -615,6 +616,126 @@ class S {
     return Intl.message(
       'Settings',
       name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Profile`
+  String get edit_profile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'edit_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change password`
+  String get change_password {
+    return Intl.message(
+      'Change password',
+      name: 'change_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark mode`
+  String get dark_mode {
+    return Intl.message(
+      'Dark mode',
+      name: 'dark_mode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Support`
+  String get support {
+    return Intl.message(
+      'Support',
+      name: 'support',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account`
+  String get account {
+    return Intl.message(
+      'Account',
+      name: 'account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms of service`
+  String get terms_of_service {
+    return Intl.message(
+      'Terms of service',
+      name: 'terms_of_service',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us`
+  String get contact_us {
+    return Intl.message(
+      'Contact Us',
+      name: 'contact_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy policy`
+  String get privacy_policy {
+    return Intl.message(
+      'Privacy policy',
+      name: 'privacy_policy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Us`
+  String get about_us {
+    return Intl.message(
+      'About Us',
+      name: 'about_us',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log out`
+  String get logout {
+    return Intl.message(
+      'Log out',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App settings`
+  String get app_settings {
+    return Intl.message(
+      'App settings',
+      name: 'app_settings',
       desc: '',
       args: [],
     );

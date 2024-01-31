@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/utils/constants.dart';
-import 'package:bns360_graduation_project/core/widgets/main_network_image.dart';
+import '../../utils/constants.dart';
+import '../main_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/api/api_consumer.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/category_model.dart';
+import '../../../../../core/api/api_consumer.dart';
+import '../../../../../core/shared_data/models/category_model.dart';
 
 import '../../../../../core/helpers/load_json_from_asset.dart';
 import 'categories_remote_data_source.dart';

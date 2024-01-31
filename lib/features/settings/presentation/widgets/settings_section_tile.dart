@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
+import '../../../../core/extensions/media_query.dart';
+import '../../../../core/helpers/localization_helper.dart';
+import '../../../../core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,6 +35,6 @@ class SettingsSectionTile extends StatelessWidget {
   }
 
   Color get _mainColor {
-    return AppColors.black.withOpacity(.4);
+    return AppColors.black.withOpacity(.25);
   }
 }

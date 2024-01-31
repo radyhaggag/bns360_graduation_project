@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

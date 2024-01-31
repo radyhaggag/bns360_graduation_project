@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bns360_graduation_project/features/auth/domain/repositories/auth_repo.dart';
+import '../../domain/repositories/auth_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

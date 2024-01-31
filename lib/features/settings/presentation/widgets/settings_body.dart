@@ -1,66 +1,68 @@
-import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/assets/app_svg.dart';
+import '../../../../generated/l10n.dart';
+import 'log_out_btn.dart';
 import 'settings_item_tile.dart';
 import 'settings_section_tile.dart';
+import 'switch_mode_tile.dart';
 
 class SettingsBody extends StatelessWidget {
   const SettingsBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kHorizontalPadding,
-      ),
+    return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 30.h),
-          const SettingsSectionTile(title: 'Account'),
-          SizedBox(height: 8.h),
-          const SettingsItemTile(
-            title: 'Edit Profile',
-            svgPath: AppSvg.profileVector,
-          ),
-          const SettingsItemTile(
-            title: 'Change password',
-            svgPath: AppSvg.key,
-          ),
-          const SettingsSectionTile(title: 'App settings'),
-          SizedBox(height: 8.h),
-          const SettingsItemTile(
-            title: 'Language',
-            svgPath: AppSvg.language,
+          SizedBox(height: 20.h),
+          SettingsSectionTile(
+            title: S.of(context).account,
           ),
           SettingsItemTile(
-            title: 'Dark mode',
-            svgPath: AppSvg.darkMode,
-            trailing: Switch(
-              value: false,
-              onChanged: (value) {},
-            ),
+            title: S.of(context).edit_profile,
+            svgPath: AppSvg.profileVector,
+            onTap: () {},
           ),
-          const SettingsSectionTile(title: 'Support'),
-          SizedBox(height: 8.h),
-          const SettingsItemTile(
-            title: 'Terms of service',
+          SettingsItemTile(
+            title: S.of(context).change_password,
+            svgPath: AppSvg.key,
+            onTap: () {},
+          ),
+          SettingsSectionTile(
+            title: S.of(context).app_settings,
+          ),
+          SettingsItemTile(
+            title: S.of(context).language,
+            svgPath: AppSvg.language,
+            onTap: () {},
+          ),
+          const SwitchModeTile(),
+          SettingsSectionTile(
+            title: S.of(context).support,
+          ),
+          SettingsItemTile(
+            title: S.of(context).terms_of_service,
             svgPath: AppSvg.termsOfService,
+            onTap: () {},
           ),
-          const SettingsItemTile(
-            title: 'Contact Us',
+          SettingsItemTile(
+            title: S.of(context).contact_us,
             svgPath: AppSvg.message,
+            onTap: () {},
           ),
-          const SettingsItemTile(
-            title: 'Privacy policy',
+          SettingsItemTile(
+            title: S.of(context).privacy_policy,
             svgPath: AppSvg.privacyTip,
+            onTap: () {},
           ),
-          const SettingsItemTile(
-            title: 'About Us',
+          SettingsItemTile(
+            title: S.of(context).about_us,
             svgPath: AppSvg.aboutCircle,
+            onTap: () {},
           ),
+          const LogOutBtn(),
         ],
       ),
     );

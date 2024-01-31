@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/widgets/center_progress_indicator.dart';
+import '../center_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

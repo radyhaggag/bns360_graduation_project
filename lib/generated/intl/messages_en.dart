@@ -22,20 +22,28 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
+        "account": MessageLookupByLibrary.simpleMessage("Account"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
+        "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+        "change_password":
+            MessageLookupByLibrary.simpleMessage("Change password"),
         "checkEmailMsg":
             MessageLookupByLibrary.simpleMessage("Please check your email"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
+        "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
         "craftsman": MessageLookupByLibrary.simpleMessage("Craftsman"),
         "craftsmen": MessageLookupByLibrary.simpleMessage("Craftsmen"),
         "createYourAccount":
             MessageLookupByLibrary.simpleMessage("Create your Account"),
+        "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter your name"),
@@ -54,9 +62,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
+        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("No craftsmen found!"),
@@ -81,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "places_to_explore":
             MessageLookupByLibrary.simpleMessage("Places to explore"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("Privacy policy"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resetPasswordMsg": MessageLookupByLibrary.simpleMessage(
@@ -94,6 +106,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "Fill your information below or register with your social account"),
+        "support": MessageLookupByLibrary.simpleMessage("Support"),
+        "terms_of_service":
+            MessageLookupByLibrary.simpleMessage("Terms of service"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "validateEmail":
             MessageLookupByLibrary.simpleMessage("Enter a valid email address"),

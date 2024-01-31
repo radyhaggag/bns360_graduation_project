@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:bns360_graduation_project/core/utils/custom_types.dart';
+import '../../../../core/utils/custom_types.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';

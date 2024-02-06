@@ -9,18 +9,18 @@ class DataStateWidget extends StatelessWidget {
   final bool isLoading;
   final Widget? loadingWidget;
   final bool isError;
-  final String errorMessage;
+  final String? errorMessage;
   final bool isLoaded;
-  final Widget loadedWidget;
+  final Widget? loadedWidget;
 
   const DataStateWidget({
     super.key,
     required this.isLoading,
     this.loadingWidget,
     required this.isError,
-    required this.errorMessage,
+    this.errorMessage,
     required this.isLoaded,
-    required this.loadedWidget,
+    this.loadedWidget,
   });
 
   @override
@@ -35,9 +35,9 @@ class DataStateWidget extends StatelessWidget {
             ),
           );
     } else if (isError) {
-      return ErrorMessageWidget(message: errorMessage);
+      return ErrorMessageWidget(message: errorMessage ?? "");
     } else {
-      return loadedWidget;
+      return loadedWidget!;
     }
   }
 }

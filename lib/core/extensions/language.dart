@@ -15,3 +15,16 @@ extension MediaQueryExtension on BuildContext {
     }
   }
 }
+
+extension LanguageLocale on Language {
+  Locale? get locale {
+    switch (this) {
+      case Language.arabic:
+        return const Locale("ar");
+      case Language.english:
+        return const Locale("en");
+      default:
+        return null;
+    }
+  }
+}

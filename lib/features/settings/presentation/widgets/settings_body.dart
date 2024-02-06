@@ -1,8 +1,12 @@
+import 'package:bns360_graduation_project/features/settings/presentation/bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../config/route_config.dart';
 import '../../../../core/utils/assets/app_svg.dart';
 import '../../../../generated/l10n.dart';
+import 'language_bottom_sheet/change_language_bottom_sheet.dart';
 import 'log_out_btn.dart';
 import 'settings_item_tile.dart';
 import 'settings_section_tile.dart';
@@ -23,7 +27,9 @@ class SettingsBody extends StatelessWidget {
           SettingsItemTile(
             title: S.of(context).edit_profile,
             svgPath: AppSvg.profileVector,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.editProfile);
+            },
           ),
           SettingsItemTile(
             title: S.of(context).change_password,
@@ -36,7 +42,12 @@ class SettingsBody extends StatelessWidget {
           SettingsItemTile(
             title: S.of(context).language,
             svgPath: AppSvg.language,
-            onTap: () {},
+            onTap: () {
+              ChangeLanguageBottomSheet.show(
+                context: context,
+                settingsBloc: context.read<SettingsBloc>(),
+              );
+            },
           ),
           const SwitchModeTile(),
           SettingsSectionTile(

@@ -4,9 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProfileCircleIcon extends StatelessWidget {
-  const ProfileCircleIcon({super.key, this.imageUrl});
+  const ProfileCircleIcon({
+    super.key,
+    this.imageUrl,
+    this.width,
+    this.height,
+  });
 
   final String? imageUrl;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +21,8 @@ class ProfileCircleIcon extends StatelessWidget {
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
       ),
-      width: 30.r,
-      height: 30.r,
+      width: width ?? 30.r,
+      height: height ?? 30.r,
       child: MainNetworkImage(imageUrl: imageUrl ?? kDefaultImgUrl),
     );
   }

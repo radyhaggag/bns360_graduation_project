@@ -29,6 +29,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+        "change": MessageLookupByLibrary.simpleMessage("Change"),
+        "change_language":
+            MessageLookupByLibrary.simpleMessage("Change language"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change password"),
         "checkEmailMsg":
@@ -93,10 +96,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy policy"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resetPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "Please type something you’ll remember"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_on": MessageLookupByLibrary.simpleMessage("Search on"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
@@ -112,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "terms_of_service":
             MessageLookupByLibrary.simpleMessage("Terms of service"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
+        "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "validateEmail":
             MessageLookupByLibrary.simpleMessage("Enter a valid email address"),
         "validateEmpty":

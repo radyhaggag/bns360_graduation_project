@@ -12,6 +12,8 @@ import '../features/categories/categories_injector.dart';
 import '../features/crafts/crafts_injector.dart';
 import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
+import '../features/profile/profile_injector.dart';
+import '../features/settings/settings_injector.dart';
 import '../features/splash/splash_injector.dart';
 
 final sl = GetIt.instance; // Service Locator
@@ -24,6 +26,8 @@ Future<void> initAppDependencies() async {
   initFavorites();
   initCategories();
   initCrafts();
+  initProfile();
+  initSettings();
 }
 
 Future<void> initCore() async {

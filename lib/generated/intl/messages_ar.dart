@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "businessOwner":
             MessageLookupByLibrary.simpleMessage("صاحب نشاط تجارى"),
         "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
+        "change": MessageLookupByLibrary.simpleMessage("تغيير"),
+        "change_language": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "checkEmailMsg": MessageLookupByLibrary.simpleMessage(
@@ -96,11 +98,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("اختر من فضلك"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
+        "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "resetPasswordMsg":
             MessageLookupByLibrary.simpleMessage("يرجى كتابة شيء سوف تتذكره"),
+        "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "search": MessageLookupByLibrary.simpleMessage("أبحث"),
         "search_on": MessageLookupByLibrary.simpleMessage("البحث في"),
         "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
@@ -114,6 +118,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "support": MessageLookupByLibrary.simpleMessage("الدعم"),
         "terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
+        "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "validateEmail":
             MessageLookupByLibrary.simpleMessage("البريد الإلكتروني غير صحيح"),
         "validateEmpty": MessageLookupByLibrary.simpleMessage("الحقل مطلوب"),

@@ -19,6 +19,8 @@ import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
+import '../features/profile/presentation/bloc/profile_bloc.dart';
+import '../features/profile/presentation/screen/edit_profile_screen.dart';
 import '../features/settings/presentation/bloc/settings_bloc.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
@@ -40,6 +42,7 @@ abstract class Routes {
   static const categories = '/categories';
   static const crafts = '/crafts';
   static const settings = '/settings';
+  static const editProfile = '/editProfile';
 }
 
 abstract class RouteConfig {
@@ -145,6 +148,13 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<SettingsBloc>(),
             child: const SettingsScreen(),
+          ),
+        );
+      case Routes.editProfile:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<ProfileBloc>()..add(GetProfileEvent()),
+            child: const EditProfileScreen(),
           ),
         );
       default:

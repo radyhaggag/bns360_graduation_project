@@ -16,4 +16,8 @@ abstract class AppSvg {
   static const construction = "$_svgPath/construction.svg";
   static const favorite = "$_svgPath/favorite.svg";
   static const home = "$_svgPath/home.svg";
+  static const edit = "$_svgPath/edit.svg";
+  static const check = "$_svgPath/check.svg";
+  static const done = "$_svgPath/done_outline.svg";
+  static const checkCircle = "$_svgPath/check_circle.svg";
 }

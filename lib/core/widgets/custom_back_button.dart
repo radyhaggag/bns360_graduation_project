@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomBackButton extends StatelessWidget {
-  final VoidCallback? onPressed;
+  const CustomBackButton({
+    super.key,
+    this.onPressed,
+    this.color,
+  });
 
-  const CustomBackButton({super.key, this.onPressed});
+  final VoidCallback? onPressed;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +16,7 @@ class CustomBackButton extends StatelessWidget {
       icon: Icon(
         Icons.arrow_back_ios,
         size: 24,
-        color: Theme.of(context).primaryColor,
+        color: color ?? Theme.of(context).primaryColor,
       ),
       onPressed: onPressed ?? () => Navigator.of(context).pop(),
     );

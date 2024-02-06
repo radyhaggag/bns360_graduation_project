@@ -69,5 +69,10 @@
   "logout": "Log out",
   "app_settings": "App settings",
   "search_on": "Search on",
-  "search": "Search"
+  "search": "Search",
+  "profile": "Profile",
+  "user_name": "User Name",
+  "save": "Save",
+  "change": "Change",
+  "change_language": "Change language"
 }

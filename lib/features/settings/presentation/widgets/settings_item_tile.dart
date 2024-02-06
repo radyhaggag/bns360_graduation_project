@@ -26,6 +26,7 @@ class SettingsItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
+      tileColor: Theme.of(context).listTileTheme.tileColor,
       leading: (isSvg && svgPath != null)
           ? SvgPicture.asset(
               svgPath!,

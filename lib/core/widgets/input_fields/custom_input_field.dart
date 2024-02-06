@@ -11,6 +11,10 @@ class CustomInputField extends StatelessWidget {
   final bool isSecure;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
+  final double? fontSize;
+  final double? heightBetweenLabelAndField;
+  final InputDecoration? inputDecoration;
+  final TextStyle? textStyle;
 
   const CustomInputField({
     super.key,
@@ -24,6 +28,10 @@ class CustomInputField extends StatelessWidget {
     this.isSecure = false,
     this.keyboardType,
     this.suffixIcon,
+    this.fontSize,
+    this.heightBetweenLabelAndField,
+    this.inputDecoration,
+    this.textStyle,
   });
 
   @override
@@ -38,10 +46,11 @@ class CustomInputField extends StatelessWidget {
               title!,
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
                     color: Theme.of(context).cardColor,
+                    fontSize: fontSize,
                   ),
             ),
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: heightBetweenLabelAndField ?? 5),
         ],
         TextFormField(
           controller: controller,
@@ -49,12 +58,14 @@ class CustomInputField extends StatelessWidget {
           initialValue: initialValue,
           obscureText: isSecure,
           keyboardType: keyboardType,
-          decoration: InputDecoration(
-            hintText: hint,
-            labelText: label,
-            prefixText: prefixText,
-            suffixIcon: suffixIcon,
-          ),
+          style: textStyle,
+          decoration: inputDecoration ??
+              InputDecoration(
+                hintText: hint,
+                labelText: title != null ? null : label,
+                prefixText: prefixText,
+                suffixIcon: suffixIcon,
+              ),
         ),
       ],
     );

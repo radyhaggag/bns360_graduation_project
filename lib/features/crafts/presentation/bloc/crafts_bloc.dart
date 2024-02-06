@@ -144,12 +144,6 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     }
   }
 
-  @override
-  Future<void> close() {
-    searchController.dispose();
-    return super.close();
-  }
-
   _searchOnCrafts(
     SearchOnCrafts event,
     Emitter<CraftsState> emit,
@@ -178,5 +172,11 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
         emit(GetCraftsmenSuccessState(craftsmen: r));
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    searchController.dispose();
+    return super.close();
   }
 }

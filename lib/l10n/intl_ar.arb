@@ -69,5 +69,10 @@
   "logout": "تسجيل الخروج",
   "app_settings": "إعدادات التطبيق",
   "search_on": "البحث في",
-  "search": "أبحث"
+  "search": "أبحث",
+  "profile": "الملف الشخصي",
+  "user_name": "اسم المستخدم",
+  "save": "حفظ",
+  "change": "تغيير",
+  "change_language": "تغيير اللغة"
 }

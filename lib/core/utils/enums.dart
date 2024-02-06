@@ -1,4 +1,11 @@
-enum Language { arabic, english }
+enum Language {
+  arabic("اللغة العربية"),
+  english("English");
+
+  const Language(this.message);
+
+  final String message;
+}
 
 enum UserType { user, businessOwner, serviceProvider }
 

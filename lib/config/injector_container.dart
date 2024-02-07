@@ -9,6 +9,7 @@ import '../core/databases/secure_storage/secure_storage_manager.dart';
 import '../core/helpers/cache_helper.dart';
 import '../features/auth/auth_injector.dart';
 import '../features/categories/categories_injector.dart';
+import '../features/category_item/category_item_injector.dart';
 import '../features/crafts/crafts_injector.dart';
 import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
@@ -28,6 +29,7 @@ Future<void> initAppDependencies() async {
   initCrafts();
   initProfile();
   initSettings();
+  initCategoryItem();
 }
 
 Future<void> initCore() async {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/route_config.dart';
 import '../../helpers/localization_helper.dart';
 import '../../shared_data/entities/category_item_entity.dart';
 import '../category_favorite_button.dart';
@@ -14,14 +15,14 @@ class CategoryItemCard extends StatelessWidget {
   const CategoryItemCard({
     super.key,
     required this.categoryItemEntity,
-    this.onIconPressed,
+    this.onFavoriteIconPressed,
     this.width,
     this.isFavorite,
     this.useSetStateToChangeFavoriteColor,
   });
 
   final CategoryItemEntity categoryItemEntity;
-  final void Function()? onIconPressed;
+  final void Function()? onFavoriteIconPressed;
   final double? width;
   final bool? isFavorite;
   final bool? useSetStateToChangeFavoriteColor;
@@ -35,7 +36,7 @@ class CategoryItemCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _CategoryItemImage(
-              imageUrl: categoryItemEntity.imageUrl,
+              categoryItemEntity: categoryItemEntity,
             ),
             Expanded(
               child: Column(
@@ -43,7 +44,7 @@ class CategoryItemCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _CategoryItemNameAndDescriptionSection(
-                      categoryDetailsEntity: categoryItemEntity,
+                      categoryItemEntity: categoryItemEntity,
                     ),
                   ),
                   Row(
@@ -57,7 +58,7 @@ class CategoryItemCard extends StatelessWidget {
                         ),
                       ),
                       CategoryFavoriteButton(
-                        onPressed: onIconPressed,
+                        onPressed: onFavoriteIconPressed,
                         isFavorite: isFavorite,
                         useSetStateToChangeColor:
                             useSetStateToChangeFavoriteColor,

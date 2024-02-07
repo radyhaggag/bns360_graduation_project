@@ -2,10 +2,10 @@ part of 'category_item_card.dart';
 
 class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
   const _CategoryItemNameAndDescriptionSection({
-    required this.categoryDetailsEntity,
+    required this.categoryItemEntity,
   });
 
-  final CategoryItemEntity categoryDetailsEntity;
+  final CategoryItemEntity categoryItemEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -14,23 +14,31 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            LocalizationHelper.getLocalizedString(
-              context,
-              ar: categoryDetailsEntity.nameAR,
-              en: categoryDetailsEntity.nameEN,
+          InkWell(
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                Routes.categoryItem,
+                arguments: categoryItemEntity,
+              );
+            },
+            child: Text(
+              LocalizationHelper.getLocalizedString(
+                context,
+                ar: categoryItemEntity.nameAR,
+                en: categoryItemEntity.nameEN,
+              ),
+              style: Theme.of(context).textTheme.titleSmall,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
             ),
-            style: Theme.of(context).textTheme.titleSmall,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
           ),
           const SizedBox(height: 10),
           Flexible(
             child: Text(
               LocalizationHelper.getLocalizedString(
                 context,
-                ar: categoryDetailsEntity.descriptionAR,
-                en: categoryDetailsEntity.descriptionEN,
+                ar: categoryItemEntity.descriptionAR,
+                en: categoryItemEntity.descriptionEN,
               ),
               style: Theme.of(context).textTheme.bodySmall,
               maxLines: 2,

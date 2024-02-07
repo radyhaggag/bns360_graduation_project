@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../core/shared_data/entities/category_item_entity.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
@@ -13,6 +14,8 @@ import '../features/bottom_navigation/presentation/bloc/bottom_navigation_bloc.d
 import '../features/bottom_navigation/presentation/screens/bottom_navigation_screen.dart';
 import '../features/categories/presentation/bloc/categories_bloc.dart';
 import '../features/categories/presentation/screens/categories_screen.dart';
+import '../features/category_item/presentation/bloc/category_item_bloc.dart';
+import '../features/category_item/presentation/screens/category_item_screen.dart';
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
 import '../features/crafts/presentation/screens/crafts_screen.dart';
 import '../features/favorites/presentation/bloc/favorites_bloc.dart';
@@ -43,6 +46,7 @@ abstract class Routes {
   static const crafts = '/crafts';
   static const settings = '/settings';
   static const editProfile = '/editProfile';
+  static const categoryItem = '/categoryItem';
 }
 
 abstract class RouteConfig {
@@ -155,6 +159,15 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<ProfileBloc>()..add(GetProfileEvent()),
             child: const EditProfileScreen(),
+          ),
+        );
+      case Routes.categoryItem:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<CategoryItemBloc>(),
+            child: CategoryItemScreen(
+              categoryItemEntity: settings.arguments as CategoryItemEntity,
+            ),
           ),
         );
       default:

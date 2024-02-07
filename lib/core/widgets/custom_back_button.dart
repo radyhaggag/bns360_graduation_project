@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
@@ -16,6 +17,37 @@ class CustomBackButton extends StatelessWidget {
       icon: Icon(
         Icons.arrow_back_ios,
         size: 24,
+        color: color ?? Theme.of(context).primaryColor,
+      ),
+      onPressed: onPressed ?? () => Navigator.of(context).pop(),
+    );
+  }
+}
+
+class CustomBackButtonWithCircle extends StatelessWidget {
+  const CustomBackButtonWithCircle({
+    super.key,
+    this.onPressed,
+    this.color,
+  });
+
+  final VoidCallback? onPressed;
+  final Color? color;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      style: IconButton.styleFrom(
+        backgroundColor: Theme.of(context).highlightColor.withOpacity(.5),
+        alignment: Alignment.center,
+        shape: const CircleBorder(),
+        padding: const EdgeInsets.only(left: 6),
+        elevation: 0,
+      ),
+      alignment: Alignment.center,
+      icon: Icon(
+        Icons.arrow_back_ios,
+        size: 18.r,
         color: color ?? Theme.of(context).primaryColor,
       ),
       onPressed: onPressed ?? () => Navigator.of(context).pop(),

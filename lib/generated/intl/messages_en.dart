@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createYourAccount":
             MessageLookupByLibrary.simpleMessage("Create your Account"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "description": MessageLookupByLibrary.simpleMessage("Description"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),

@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/app/app_bloc.dart';
-import 'package:bns360_graduation_project/core/extensions/language.dart';
+import '../../../../../core/app/app_bloc.dart';
+import '../../../../../core/extensions/language.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../config/route_config.dart';
 import '../../helpers/localization_helper.dart';
 import '../../shared_data/entities/category_item_entity.dart';
-import '../category_favorite_button.dart';
+import '../icons/favorite_icon.dart';
 import '../main_network_image.dart';
 import '../ratings_item_with_count.dart';
 
@@ -57,7 +57,7 @@ class CategoryItemCard extends StatelessWidget {
                           size: 19.r,
                         ),
                       ),
-                      CategoryFavoriteButton(
+                      FavoriteIcon(
                         onPressed: onFavoriteIconPressed,
                         isFavorite: isFavorite,
                         useSetStateToChangeColor:

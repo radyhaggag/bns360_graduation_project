@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/features/settings/presentation/bloc/settings_bloc.dart';
+import '../bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

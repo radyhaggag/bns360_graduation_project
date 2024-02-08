@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/extensions/media_query.dart';
-import '../../../../../core/widgets/category_favorite_button.dart';
 import '../../utils/app_fonts.dart';
+import '../icons/favorite_icon.dart';
 import '../main_network_image.dart';
 import '../ratings_item_with_count.dart';
 
@@ -68,7 +68,7 @@ class HorizontalItemCard extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                CategoryFavoriteButton(
+                FavoriteIcon(
                   onPressed: onIconPressed,
                   isFavorite: isFavorite,
                   useSetStateToChangeColor: useSetStateToChangeFavoriteColor,

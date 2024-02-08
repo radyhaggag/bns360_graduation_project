@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
+        "description": MessageLookupByLibrary.simpleMessage("الوصف"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكترونى"),

@@ -1,5 +1,6 @@
-import 'package:bns360_graduation_project/features/profile/domain/entities/profile_entity.dart';
 import 'package:equatable/equatable.dart';
+
+import '../entities/profile_entity.dart';
 
 class EditProfileParams extends Equatable {
   final String? name;

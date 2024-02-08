@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_back_button.dart';
-import 'category_item_images_section.dart';
+import 'category_item_description.dart';
 import 'category_item_profile_section.dart';
+import 'category_item_slider/category_item_slider_section.dart';
 
 class CategoryItemBody extends StatelessWidget {
   const CategoryItemBody({
@@ -21,11 +23,11 @@ class CategoryItemBody extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: 250.h,
+            expandedHeight: 225.h,
             primary: true,
             flexibleSpace: FlexibleSpaceBar(
-              background: CategoryItemImagesSection(
-                imagesUrls: [
+              background: CategoryItemSliderSection(
+                images: [
                   categoryItemEntity.imageUrl,
                   categoryItemEntity.imageUrl,
                   categoryItemEntity.imageUrl,
@@ -45,43 +47,21 @@ class CategoryItemBody extends StatelessWidget {
           SliverPadding(
             padding: const EdgeInsets.all(16.0),
             sliver: SliverList(
-              delegate: SliverChildListDelegate([
-                CategoryItemProfileSection(
-                  categoryItemEntity: categoryItemEntity,
-                ),
-                const SizedBox(height: 8.0),
-                const Text(
-                  'Some details about the place',
-                  style: TextStyle(
-                    fontSize: 16.0,
+              delegate: SliverChildListDelegate(
+                [
+                  CategoryItemProfileSection(
+                    categoryItemEntity: categoryItemEntity,
                   ),
-                ),
-                const SizedBox(height: 16.0),
-                const Text(
-                  'Description:',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
+                  const SizedBox(height: 20),
+                  CategoryItemDescription(
+                    description: LocalizationHelper.getLocalizedString(
+                      context,
+                      ar: categoryItemEntity.descriptionAR,
+                      en: categoryItemEntity.descriptionEN,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 8.0),
-                const Text(
-                  'Some description text goes here...',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                  ),
-                ),
-                const SizedBox(height: 16.0),
-                const Text(
-                  'Review Summary:',
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                // Add review summary widgets here
-              ]),
+                ],
+              ),
             ),
           ),
         ],

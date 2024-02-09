@@ -1,7 +1,7 @@
 part of 'main_review_card.dart';
 
 class _ViewReviewsHintBtn extends StatelessWidget {
-  const _ViewReviewsHintBtn({super.key});
+  const _ViewReviewsHintBtn();
 
   @override
   Widget build(BuildContext context) {

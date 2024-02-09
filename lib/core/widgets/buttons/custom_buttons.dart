@@ -11,6 +11,7 @@ class CustomElevatedButton extends StatelessWidget {
   final String label;
   final void Function()? onPressed;
   final bool isLoading;
+  final BorderRadius? borderRadius;
 
   const CustomElevatedButton({
     super.key,
@@ -20,6 +21,7 @@ class CustomElevatedButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.isLoading = false,
+    this.borderRadius,
   });
 
   @override
@@ -29,9 +31,12 @@ class CustomElevatedButton extends StatelessWidget {
       height: height ?? 45.h,
       child: ElevatedButton(
         onPressed: !isLoading ? onPressed : null,
-        style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-              backgroundColor: MaterialStatePropertyAll(backgroundColor),
-            ),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          shape: borderRadius != null
+              ? RoundedRectangleBorder(borderRadius: borderRadius!)
+              : null,
+        ),
         child: isLoading
             ? const CenterProgressIndicator()
             : FittedBox(

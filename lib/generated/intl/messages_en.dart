@@ -107,9 +107,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resetPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "Please type something you’ll remember"),
+        "review_summary":
+            MessageLookupByLibrary.simpleMessage("Review summary"),
+        "reviewer": MessageLookupByLibrary.simpleMessage("Reviewer"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_on": MessageLookupByLibrary.simpleMessage("Search on"),
+        "send": MessageLookupByLibrary.simpleMessage("Send"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
         "sentCodeTo":
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to"),
@@ -120,6 +124,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "Fill your information below or register with your social account"),
         "support": MessageLookupByLibrary.simpleMessage("Support"),
+        "tap_to_rate": MessageLookupByLibrary.simpleMessage("Tap to Rate"),
         "terms_of_service":
             MessageLookupByLibrary.simpleMessage("Terms of service"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
@@ -137,6 +142,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "validateTwoNames": MessageLookupByLibrary.simpleMessage(
             "Please enter at least two names (first and last)."),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
-        "welcome": MessageLookupByLibrary.simpleMessage("Welcome,")
+        "view_reviews": MessageLookupByLibrary.simpleMessage("View reviews"),
+        "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
+        "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),
+        "write_your_review":
+            MessageLookupByLibrary.simpleMessage("Write your review")
       };
 }

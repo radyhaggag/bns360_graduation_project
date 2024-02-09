@@ -80,5 +80,12 @@
   "closed_now": "Closed now",
   "map": "Map",
   "am": "AM",
-  "pm": "PM"
+  "pm": "PM",
+  "review_summary": "Review summary",
+  "view_reviews": "View reviews",
+  "reviewer": "Reviewer",
+  "write_review": "write a Review",
+  "tap_to_rate": "Tap to Rate",
+  "write_your_review": "Write your review",
+  "send": "Send"
 }

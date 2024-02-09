@@ -80,5 +80,12 @@
   "closed_now": "مغلق الآن",
   "map": "الخريطة",
   "am": "ص",
-  "pm": "م"
+  "pm": "م",
+  "review_summary": "ملخص المراجعات",
+  "view_reviews": "عرض المراجعات",
+  "reviewer": "مراجع",
+  "write_review": "أكتب مراجعة",
+  "tap_to_rate": "انقر للتقييم",
+  "write_your_review": "أكتب تقييمك",
+  "send": "إرسال"
 }

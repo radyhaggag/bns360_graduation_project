@@ -1,7 +1,13 @@
 part of 'main_review_card.dart';
 
 class _LeftSection extends StatelessWidget {
-  const _LeftSection({super.key});
+  const _LeftSection({
+    required this.starsCount,
+    required this.numOfRatings,
+  });
+
+  final num starsCount;
+  final int numOfRatings;
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +15,7 @@ class _LeftSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Review summary",
+          S.of(context).review_summary,
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
                 color: Theme.of(context).cardColor,
                 fontSize: AppFontSize.body,
@@ -19,7 +25,7 @@ class _LeftSection extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 60.w),
           child: Text(
-            "4.5",
+            starsCount.toString(),
             style: Theme.of(context).textTheme.titleSmall?.copyWith(
                   fontSize: AppFontSize.subTitle,
                 ),
@@ -27,9 +33,9 @@ class _LeftSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        const RatingsItemWithCount(
-          starsCount: 4.5,
-          numOfRatings: 60,
+        RatingsItemWithCount(
+          starsCount: starsCount,
+          numOfRatings: numOfRatings,
           addReviewerTxt: true,
           horizontalPadding: 0,
         ),

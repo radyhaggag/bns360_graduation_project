@@ -17,7 +17,6 @@ class WelcomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(context.currentLanguage);
     return Padding(
       padding: EdgeInsets.only(
         left: kHorizontalPadding,

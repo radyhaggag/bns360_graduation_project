@@ -5,11 +5,12 @@ import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_back_button.dart';
+import '../../../../core/widgets/main_review_card/main_review_card.dart';
 import 'category_item_description.dart';
 import 'category_item_info/category_item_info_section.dart';
 import 'category_item_profile_section.dart';
-import '../../../../core/widgets/main_review_card/main_review_card.dart';
 import 'category_item_slider/category_item_slider_section.dart';
+import 'write_review_btn.dart';
 
 class CategoryItemBody extends StatelessWidget {
   const CategoryItemBody({
@@ -47,7 +48,11 @@ class CategoryItemBody extends StatelessWidget {
             leadingWidth: 50.r,
           ),
           SliverPadding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 16,
+            ),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
@@ -67,9 +72,21 @@ class CategoryItemBody extends StatelessWidget {
                     categoryItemEntity: categoryItemEntity,
                   ),
                   const SizedBox(height: 20),
-                  const MainReviewCard(),
+                  MainReviewCard(
+                    numOfRatings: categoryItemEntity.numOfRatings,
+                    starsCount: categoryItemEntity.starsCount,
+                  ),
                 ],
               ),
+            ),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 50.w,
+              vertical: 20,
+            ),
+            sliver: const SliverToBoxAdapter(
+              child: WriteReviewBtn(),
             ),
           ),
         ],

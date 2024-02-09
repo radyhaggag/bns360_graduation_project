@@ -110,9 +110,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "resetPasswordMsg":
             MessageLookupByLibrary.simpleMessage("يرجى كتابة شيء سوف تتذكره"),
+        "review_summary":
+            MessageLookupByLibrary.simpleMessage("ملخص المراجعات"),
+        "reviewer": MessageLookupByLibrary.simpleMessage("مراجع"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "search": MessageLookupByLibrary.simpleMessage("أبحث"),
         "search_on": MessageLookupByLibrary.simpleMessage("البحث في"),
+        "send": MessageLookupByLibrary.simpleMessage("إرسال"),
         "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
         "sentCodeTo": MessageLookupByLibrary.simpleMessage(
             "لقدم قمنا بإرسال كود التحقق الى"),
@@ -122,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "قم بملئ المعلومات التاليه أو قم بالتسجيل بحسابك على مواقع التواصل الاجتماعى"),
         "support": MessageLookupByLibrary.simpleMessage("الدعم"),
+        "tap_to_rate": MessageLookupByLibrary.simpleMessage("انقر للتقييم"),
         "terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
@@ -137,6 +142,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "validateTwoNames": MessageLookupByLibrary.simpleMessage(
             "الرجاء إدخال اسمين على الأقل (الأول والأخير)."),
         "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
-        "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،")
+        "view_reviews": MessageLookupByLibrary.simpleMessage("عرض المراجعات"),
+        "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
+        "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
+        "write_your_review": MessageLookupByLibrary.simpleMessage("أكتب تقييمك")
       };
 }

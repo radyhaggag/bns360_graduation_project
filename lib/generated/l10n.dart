@@ -869,6 +869,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Review summary`
+  String get review_summary {
+    return Intl.message(
+      'Review summary',
+      name: 'review_summary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View reviews`
+  String get view_reviews {
+    return Intl.message(
+      'View reviews',
+      name: 'view_reviews',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reviewer`
+  String get reviewer {
+    return Intl.message(
+      'Reviewer',
+      name: 'reviewer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `write a Review`
+  String get write_review {
+    return Intl.message(
+      'write a Review',
+      name: 'write_review',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tap to Rate`
+  String get tap_to_rate {
+    return Intl.message(
+      'Tap to Rate',
+      name: 'tap_to_rate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write your review`
+  String get write_your_review {
+    return Intl.message(
+      'Write your review',
+      name: 'write_your_review',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send`
+  String get send {
+    return Intl.message(
+      'Send',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

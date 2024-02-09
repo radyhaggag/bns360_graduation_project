@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../generated/l10n.dart';
+
 class RatingsItemWithCount extends StatelessWidget {
   final num starsCount;
   final int numOfRatings;
@@ -42,7 +44,7 @@ class RatingsItemWithCount extends StatelessWidget {
           const SizedBox(width: 5),
           if (addReviewerTxt)
             Text(
-              "$numOfRatings Reviewer",
+              "$numOfRatings ${S.of(context).reviewer}",
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Theme.of(context).primaryColor.withOpacity(.3),
                     fontSize: AppFontSize.details,

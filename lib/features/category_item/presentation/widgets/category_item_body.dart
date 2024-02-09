@@ -8,6 +8,7 @@ import '../../../../core/widgets/custom_back_button.dart';
 import 'category_item_description.dart';
 import 'category_item_info/category_item_info_section.dart';
 import 'category_item_profile_section.dart';
+import '../../../../core/widgets/main_review_card/main_review_card.dart';
 import 'category_item_slider/category_item_slider_section.dart';
 
 class CategoryItemBody extends StatelessWidget {
@@ -65,6 +66,8 @@ class CategoryItemBody extends StatelessWidget {
                   CategoryItemInfoSection(
                     categoryItemEntity: categoryItemEntity,
                   ),
+                  const SizedBox(height: 20),
+                  const MainReviewCard(),
                 ],
               ),
             ),

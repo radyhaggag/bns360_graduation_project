@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,17 +7,21 @@ class RatingsItemWithCount extends StatelessWidget {
   final num starsCount;
   final int numOfRatings;
   final double? size;
+  final bool addReviewerTxt;
+  final double? horizontalPadding;
   const RatingsItemWithCount({
     super.key,
     required this.starsCount,
     required this.numOfRatings,
     this.size,
+    this.addReviewerTxt = false,
+    this.horizontalPadding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding ?? 10),
       child: Row(
         children: [
           RatingBar.builder(
@@ -35,10 +40,19 @@ class RatingsItemWithCount extends StatelessWidget {
             ignoreGestures: true,
           ),
           const SizedBox(width: 5),
-          Text(
-            "($numOfRatings)",
-            style: Theme.of(context).textTheme.bodySmall,
-          )
+          if (addReviewerTxt)
+            Text(
+              "$numOfRatings Reviewer",
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).primaryColor.withOpacity(.3),
+                    fontSize: AppFontSize.details,
+                  ),
+            )
+          else
+            Text(
+              "($numOfRatings)",
+              style: Theme.of(context).textTheme.bodySmall,
+            )
         ],
       ),
     );

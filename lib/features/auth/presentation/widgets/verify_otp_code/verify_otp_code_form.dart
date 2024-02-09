@@ -47,7 +47,7 @@ class _VerifyOtpCodeFormState extends State<VerifyOtpCodeForm> {
           );
         }
         if (state is VerifyResetPasswordCodeSuccessState) {
-          setState(() => borderColor = AppColors.success);
+          setState(() => borderColor = AppColors.green);
           // TODO: REDIRECT USER TO RESET PASSWORD SCREEN
         }
       },

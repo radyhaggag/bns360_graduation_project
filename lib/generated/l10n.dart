@@ -819,6 +819,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Open now`
+  String get open_now {
+    return Intl.message(
+      'Open now',
+      name: 'open_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Closed now`
+  String get closed_now {
+    return Intl.message(
+      'Closed now',
+      name: 'closed_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Map`
+  String get map {
+    return Intl.message(
+      'Map',
+      name: 'map',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AM`
+  String get am {
+    return Intl.message(
+      'AM',
+      name: 'am',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PM`
+  String get pm {
+    return Intl.message(
+      'PM',
+      name: 'pm',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

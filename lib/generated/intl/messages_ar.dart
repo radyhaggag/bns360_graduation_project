@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+        "am": MessageLookupByLibrary.simpleMessage("ص"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
         "backToLogin":
@@ -37,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "checkEmailMsg": MessageLookupByLibrary.simpleMessage(
             "من فضلك قم بفحص بريدك اللالكترونى"),
+        "closed_now": MessageLookupByLibrary.simpleMessage("مغلق الآن"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
         "contact_us": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
@@ -73,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "map": MessageLookupByLibrary.simpleMessage("الخريطة"),
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على حرفيين!"),
@@ -84,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("لم تتلقى رمز التحقق!"),
+        "open_now": MessageLookupByLibrary.simpleMessage("مفتوح الان"),
         "optional": MessageLookupByLibrary.simpleMessage("اختيارى"),
         "or": MessageLookupByLibrary.simpleMessage("أو"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -97,6 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "places_to_explore":
             MessageLookupByLibrary.simpleMessage("أماكن للاستكشاف"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("اختر من فضلك"),
+        "pm": MessageLookupByLibrary.simpleMessage("م"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),

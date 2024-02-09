@@ -75,5 +75,10 @@
   "save": "حفظ",
   "change": "تغيير",
   "change_language": "تغيير اللغة",
-  "description": "الوصف"
+  "description": "الوصف",
+  "open_now": "مفتوح الان",
+  "closed_now": "مغلق الآن",
+  "map": "الخريطة",
+  "am": "ص",
+  "pm": "م"
 }

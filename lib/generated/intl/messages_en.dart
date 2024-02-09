@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "am": MessageLookupByLibrary.simpleMessage("AM"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
@@ -36,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change password"),
         "checkEmailMsg":
             MessageLookupByLibrary.simpleMessage("Please check your email"),
+        "closed_now": MessageLookupByLibrary.simpleMessage("Closed now"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
@@ -71,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
+        "map": MessageLookupByLibrary.simpleMessage("Map"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("No craftsmen found!"),
@@ -82,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code!"),
+        "open_now": MessageLookupByLibrary.simpleMessage("Open now"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -95,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "places_to_explore":
             MessageLookupByLibrary.simpleMessage("Places to explore"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
+        "pm": MessageLookupByLibrary.simpleMessage("PM"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy policy"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),

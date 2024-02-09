@@ -32,7 +32,11 @@ class CustomElevatedButton extends StatelessWidget {
         style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
               backgroundColor: MaterialStatePropertyAll(backgroundColor),
             ),
-        child: isLoading ? const CenterProgressIndicator() : Text(label),
+        child: isLoading
+            ? const CenterProgressIndicator()
+            : FittedBox(
+                child: Text(label),
+              ),
       ),
     );
   }
@@ -66,7 +70,11 @@ class CustomOutlinedButton extends StatelessWidget {
         style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
               foregroundColor: MaterialStatePropertyAll(foregroundColor),
             ),
-        child: isLoading ? const CenterProgressIndicator() : Text(label),
+        child: isLoading
+            ? const CenterProgressIndicator()
+            : FittedBox(
+                child: Text(label),
+              ),
       ),
     );
   }
@@ -99,7 +107,11 @@ class CustomTextButton extends StatelessWidget {
         style: Theme.of(context).textButtonTheme.style?.copyWith(
               foregroundColor: MaterialStatePropertyAll(foregroundColor),
             ),
-        child: isLoading ? const CenterProgressIndicator() : Text(label),
+        child: isLoading
+            ? const CenterProgressIndicator()
+            : FittedBox(
+                child: Text(label),
+              ),
       ),
     );
   }

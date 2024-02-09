@@ -5,6 +5,7 @@ abstract class AppColors {
   static const white = Color(0xffffffff);
   static const grey = Color(0xff808080);
   static const red = Color(0xffB00020);
+  static const green = Color(0xff4A875F);
 
   // Color platte [Changing according to the app ui]
   static const primary = Color(0xff222043);
@@ -12,7 +13,6 @@ abstract class AppColors {
   static const light = Color(0xffD9D9D9);
   static const black25 = Color(0x40121212);
   static const details = Color(0xfB321212);
-  static const success = Color(0xff4A875F);
   static const error = Color(0xffFF6767);
   static const lightBackground = Color(0xFFF5F5F5);
 

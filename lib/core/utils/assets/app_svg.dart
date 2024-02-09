@@ -20,4 +20,7 @@ abstract class AppSvg {
   static const check = "$_svgPath/check.svg";
   static const done = "$_svgPath/done_outline.svg";
   static const checkCircle = "$_svgPath/check_circle.svg";
+  static const clock = "$_svgPath/clock.svg";
+  static const marker = "$_svgPath/marker.svg";
+  static const phone = "$_svgPath/phone.svg";
 }

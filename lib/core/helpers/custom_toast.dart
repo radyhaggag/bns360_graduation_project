@@ -10,7 +10,7 @@ void showToast(String message, ToastType type) => Fluttertoast.showToast(
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       backgroundColor:
-          type == ToastType.success ? AppColors.success : AppColors.red,
+          type == ToastType.success ? AppColors.green : AppColors.red,
       textColor: AppColors.white,
       fontSize: AppFontSize.body,
     );

@@ -6,6 +6,7 @@ import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_back_button.dart';
 import 'category_item_description.dart';
+import 'category_item_info/category_item_info_section.dart';
 import 'category_item_profile_section.dart';
 import 'category_item_slider/category_item_slider_section.dart';
 
@@ -59,6 +60,10 @@ class CategoryItemBody extends StatelessWidget {
                       ar: categoryItemEntity.descriptionAR,
                       en: categoryItemEntity.descriptionEN,
                     ),
+                  ),
+                  const SizedBox(height: 20),
+                  CategoryItemInfoSection(
+                    categoryItemEntity: categoryItemEntity,
                   ),
                 ],
               ),

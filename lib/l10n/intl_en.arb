@@ -75,5 +75,10 @@
   "save": "Save",
   "change": "Change",
   "change_language": "Change language",
-  "description": "Description"
+  "description": "Description",
+  "open_now": "Open now",
+  "closed_now": "Closed now",
+  "map": "Map",
+  "am": "AM",
+  "pm": "PM"
 }

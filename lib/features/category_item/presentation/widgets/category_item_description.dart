@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_fonts.dart';
@@ -13,7 +14,7 @@ class CategoryItemDescription extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: 20,
-        horizontal: 20,
+        horizontal: kHorizontalPadding,
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).listTileTheme.tileColor,

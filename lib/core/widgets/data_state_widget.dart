@@ -12,6 +12,7 @@ class DataStateWidget extends StatelessWidget {
   final String? errorMessage;
   final bool isLoaded;
   final Widget? loadedWidget;
+  final Color? errorMsgBackground;
 
   const DataStateWidget({
     super.key,
@@ -21,6 +22,7 @@ class DataStateWidget extends StatelessWidget {
     this.errorMessage,
     required this.isLoaded,
     this.loadedWidget,
+    this.errorMsgBackground,
   });
 
   @override
@@ -35,7 +37,10 @@ class DataStateWidget extends StatelessWidget {
             ),
           );
     } else if (isError) {
-      return ErrorMessageWidget(message: errorMessage ?? "");
+      return ErrorMessageWidget(
+        message: errorMessage ?? "",
+        backgroundColor: errorMsgBackground,
+      );
     } else {
       return loadedWidget!;
     }

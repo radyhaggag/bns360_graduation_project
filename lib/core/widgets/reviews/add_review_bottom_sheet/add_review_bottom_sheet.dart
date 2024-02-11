@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../utils/app_fonts.dart';
-import '../../../generated/l10n.dart';
+import '../../../utils/app_fonts.dart';
+import '../../../../generated/l10n.dart';
 import 'add_review_rating_bar.dart';
 import 'add_review_text_field.dart';
 import 'submit_review_btn.dart';

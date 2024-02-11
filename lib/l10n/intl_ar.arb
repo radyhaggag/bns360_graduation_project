@@ -87,5 +87,12 @@
   "write_review": "أكتب مراجعة",
   "tap_to_rate": "انقر للتقييم",
   "write_your_review": "أكتب تقييمك",
-  "send": "إرسال"
+  "send": "إرسال",
+  "day_ago": "قبل يوم",
+  "hour_ago": "قبل ساعة",
+  "min_ago": "قبل دقيقة",
+  "just_now": "الآن",
+  "days_ago": "قبل {days} أيام",
+  "hours_ago": "قبل {hours} ساعات",
+  "mins_ago": "قبل {mins} دقائق"
 }

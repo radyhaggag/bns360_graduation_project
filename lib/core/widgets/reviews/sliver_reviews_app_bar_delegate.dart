@@ -3,8 +3,8 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/constants.dart';
-import '../../../../../core/widgets/main_review_summary_card/main_review_summary_card.dart';
+import '../../utils/constants.dart';
+import 'main_review_summary_card/main_review_summary_card.dart';
 
 class SliverReviewsAppBarDelegate extends SliverPersistentHeaderDelegate {
   final int numOfRatings;

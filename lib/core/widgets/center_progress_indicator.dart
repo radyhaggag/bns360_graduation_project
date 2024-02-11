@@ -22,14 +22,19 @@ class CenterProgressIndicator extends StatelessWidget {
 }
 
 class FullScreenLoadingIndicator extends StatelessWidget {
-  const FullScreenLoadingIndicator({super.key, this.color});
+  const FullScreenLoadingIndicator({
+    super.key,
+    this.color,
+    this.height,
+  });
 
   final Color? color;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height,
+      height: height ?? context.height,
       width: context.width,
       alignment: Alignment.center,
       child: Column(

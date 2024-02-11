@@ -7,8 +7,8 @@ class MainListViewBuilder<T> extends StatelessWidget {
   final Widget Function(T) itemWidget;
   final String? emptyMessage;
   final Axis scrollDirection;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final double? separatingSpace;
   const MainListViewBuilder({
     super.key,
@@ -16,8 +16,8 @@ class MainListViewBuilder<T> extends StatelessWidget {
     this.emptyMessage,
     required this.itemWidget,
     required this.scrollDirection,
-    required this.width,
-    required this.height,
+    this.width,
+    this.height,
     this.separatingSpace,
   });
 

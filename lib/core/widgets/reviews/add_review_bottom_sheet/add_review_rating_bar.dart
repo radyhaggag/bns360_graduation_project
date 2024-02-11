@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 class AddReviewRatingBar extends StatelessWidget {
   const AddReviewRatingBar({super.key, required this.onRatingUpdate});

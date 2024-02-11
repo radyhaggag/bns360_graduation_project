@@ -6,7 +6,7 @@ import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_back_button.dart';
-import '../../../../core/widgets/main_review_summary_card/main_review_summary_card.dart';
+import '../../../../core/widgets/reviews/main_review_summary_card/main_review_summary_card.dart';
 import 'category_item_description.dart';
 import 'category_item_info/category_item_info_section.dart';
 import 'category_item_profile_section.dart';

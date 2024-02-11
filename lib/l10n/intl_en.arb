@@ -87,5 +87,12 @@
   "write_review": "write a Review",
   "tap_to_rate": "Tap to Rate",
   "write_your_review": "Write your review",
-  "send": "Send"
+  "send": "Send",
+  "day_ago": "day ago",
+  "hour_ago": "hour ago",
+  "min_ago": "min ago",
+  "just_now": "Just now",
+  "days_ago": "{days} days ago",
+  "hours_ago": "{hours} hours ago",
+  "mins_ago": "{mins} mins ago"
 }

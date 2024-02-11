@@ -20,6 +20,12 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(days) => "${days} days ago";
+
+  static String m1(hours) => "${hours} hours ago";
+
+  static String m2(mins) => "${mins} mins ago";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
@@ -48,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "createYourAccount":
             MessageLookupByLibrary.simpleMessage("Create your Account"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "day_ago": MessageLookupByLibrary.simpleMessage("day ago"),
+        "days_ago": m0,
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -68,12 +76,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "hour_ago": MessageLookupByLibrary.simpleMessage("hour ago"),
+        "hours_ago": m1,
+        "just_now": MessageLookupByLibrary.simpleMessage("Just now"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "map": MessageLookupByLibrary.simpleMessage("Map"),
+        "min_ago": MessageLookupByLibrary.simpleMessage("min ago"),
+        "mins_ago": m2,
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("No craftsmen found!"),

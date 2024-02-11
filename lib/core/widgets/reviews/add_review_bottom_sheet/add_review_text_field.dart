@@ -1,7 +1,7 @@
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 
-import '../../../generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 class AddReviewTextField extends StatelessWidget {
   const AddReviewTextField({

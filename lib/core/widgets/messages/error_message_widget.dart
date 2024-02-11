@@ -22,7 +22,8 @@ class ErrorMessageWidget extends StatelessWidget {
         horizontal: 10,
       ),
       decoration: BoxDecoration(
-        color: backgroundColor ?? AppColors.black.withOpacity(.08),
+        color:
+            backgroundColor ?? Theme.of(context).primaryColor.withOpacity(.08),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(

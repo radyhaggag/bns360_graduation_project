@@ -1,9 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../generated/l10n.dart';
+import '../utils/app_fonts.dart';
+import 'main_rating_bar.dart';
 
 class RatingsItemWithCount extends StatelessWidget {
   final num starsCount;
@@ -26,20 +25,9 @@ class RatingsItemWithCount extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: horizontalPadding ?? 10),
       child: Row(
         children: [
-          RatingBar.builder(
-            initialRating: starsCount.toDouble(),
-            minRating: 0,
-            direction: Axis.horizontal,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemSize: size ?? 15.r,
-            itemBuilder: (context, _) => const Icon(
-              Icons.star,
-              color: Colors.amber,
-            ),
-            onRatingUpdate: (_) {},
-            glow: false,
-            ignoreGestures: true,
+          MainRatingBar(
+            starsCount: starsCount,
+            size: size,
           ),
           const SizedBox(width: 5),
           if (addReviewerTxt)

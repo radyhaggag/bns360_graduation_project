@@ -20,6 +20,12 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
+  static String m0(days) => "قبل ${days} أيام";
+
+  static String m1(hours) => "قبل ${hours} ساعات";
+
+  static String m2(mins) => "قبل ${mins} دقائق";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
@@ -48,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
+        "day_ago": MessageLookupByLibrary.simpleMessage("قبل يوم"),
+        "days_ago": m0,
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
@@ -70,12 +78,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
+        "hour_ago": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
+        "hours_ago": m1,
+        "just_now": MessageLookupByLibrary.simpleMessage("الآن"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسحيل الدخول"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "map": MessageLookupByLibrary.simpleMessage("الخريطة"),
+        "min_ago": MessageLookupByLibrary.simpleMessage("قبل دقيقة"),
+        "mins_ago": m2,
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على حرفيين!"),

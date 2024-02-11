@@ -5,7 +5,7 @@ class ReviewEntity extends Equatable {
   final String userName;
   final String userImage;
   final String reviewText;
-  final int starCount;
+  final num starCount;
 
   const ReviewEntity({
     required this.date,

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/features/category_item/presentation/screens/category_item_review_summary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,6 +48,7 @@ abstract class Routes {
   static const settings = '/settings';
   static const editProfile = '/editProfile';
   static const categoryItem = '/categoryItem';
+  static const categoryItemReviewSummary = '/categoryItemReviewSummary';
 }
 
 abstract class RouteConfig {
@@ -169,6 +171,21 @@ abstract class RouteConfig {
               categoryItemEntity: settings.arguments as CategoryItemEntity,
             ),
           ),
+        );
+      case Routes.categoryItemReviewSummary:
+        return MaterialPageRoute(
+          builder: (context) {
+            final item = settings.arguments as CategoryItemEntity;
+            return BlocProvider(
+              create: (context) => sl<CategoryItemBloc>()
+                ..add(GetCategoryItemReviewsEvent(
+                  itemId: item.id.toString(),
+                )),
+              child: CategoryItemReviewSummaryScreen(
+                categoryItemEntity: item,
+              ),
+            );
+          },
         );
       default:
         return null;

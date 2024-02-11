@@ -12,9 +12,9 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
   @override
   Future<List<CategoryModel>> getCategories() async {
     final res = await loadJsonFromAsset('categories.json');
-    final places = List<CategoryModel>.from(res['data'].map(
-      (place) => CategoryModel.fromJson(place),
+    final categories = List<CategoryModel>.from(res['data'].map(
+      (category) => CategoryModel.fromJson(category),
     ));
-    return places;
+    return categories;
   }
 }

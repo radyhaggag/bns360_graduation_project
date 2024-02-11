@@ -1,12 +1,16 @@
-part of 'main_review_card.dart';
+part of 'main_review_summary_card.dart';
 
 class _ViewReviewsHintBtn extends StatelessWidget {
-  const _ViewReviewsHintBtn();
+  const _ViewReviewsHintBtn({
+    this.onViewAllTap,
+  });
+
+  final void Function()? onViewAllTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onViewAllTap,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

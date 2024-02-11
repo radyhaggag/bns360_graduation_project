@@ -12,15 +12,23 @@ part 'left_section.dart';
 part 'right_section.dart';
 part 'view_reviews_btn.dart';
 
-class MainReviewCard extends StatelessWidget {
-  const MainReviewCard({
+class MainReviewSummaryCard extends StatelessWidget {
+  const MainReviewSummaryCard({
     super.key,
     required this.starsCount,
     required this.numOfRatings,
+    this.showViewAllBtn = true,
+    this.showReviewSummaryTxt = true,
+    this.onViewAllTap,
+    this.mainColor,
   });
 
   final num starsCount;
   final int numOfRatings;
+  final bool showViewAllBtn;
+  final bool showReviewSummaryTxt;
+  final void Function()? onViewAllTap;
+  final Color? mainColor;
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +38,23 @@ class MainReviewCard extends StatelessWidget {
         horizontal: kHorizontalPadding,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).listTileTheme.tileColor,
+        color: mainColor ?? Theme.of(context).listTileTheme.tileColor,
         borderRadius: BorderRadius.circular(16),
       ),
       width: context.width,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _LeftSection(
             starsCount: starsCount,
             numOfRatings: numOfRatings,
+            showReviewSummaryTxt: showReviewSummaryTxt,
           ),
-          const _RightSection(),
+          _RightSection(
+            showViewAllBtn: showViewAllBtn,
+            onViewAllTap: onViewAllTap,
+          ),
         ],
       ),
     );

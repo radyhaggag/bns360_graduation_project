@@ -1,3 +1,4 @@
+import '../../../../config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -5,7 +6,7 @@ import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/custom_back_button.dart';
-import '../../../../core/widgets/main_review_card/main_review_card.dart';
+import '../../../../core/widgets/main_review_summary_card/main_review_summary_card.dart';
 import 'category_item_description.dart';
 import 'category_item_info/category_item_info_section.dart';
 import 'category_item_profile_section.dart';
@@ -72,9 +73,15 @@ class CategoryItemBody extends StatelessWidget {
                     categoryItemEntity: categoryItemEntity,
                   ),
                   const SizedBox(height: 20),
-                  MainReviewCard(
+                  MainReviewSummaryCard(
                     numOfRatings: categoryItemEntity.numOfRatings,
                     starsCount: categoryItemEntity.starsCount,
+                    onViewAllTap: () {
+                      Navigator.of(context).pushNamed(
+                        Routes.categoryItemReviewSummary,
+                        arguments: categoryItemEntity,
+                      );
+                    },
                   ),
                 ],
               ),

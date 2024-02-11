@@ -1,35 +1,45 @@
-part of 'main_review_card.dart';
+part of 'main_review_summary_card.dart';
 
 class _RightSection extends StatelessWidget {
-  const _RightSection();
+  const _RightSection({
+    required this.showViewAllBtn,
+    this.onViewAllTap,
+  });
+  final bool showViewAllBtn;
+  final void Function()? onViewAllTap;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _ViewReviewsHintBtn(),
-        SizedBox(height: 15),
-        _RatingProgressRow(
+        if (showViewAllBtn) ...[
+          _ViewReviewsHintBtn(
+            onViewAllTap: onViewAllTap,
+          ),
+          const SizedBox(height: 15),
+        ],
+        const _RatingProgressRow(
           totalRating: 25,
           numOfRating: 25,
           starNumber: 5,
         ),
-        _RatingProgressRow(
+        const _RatingProgressRow(
           totalRating: 25,
           numOfRating: 20,
           starNumber: 4,
         ),
-        _RatingProgressRow(
+        const _RatingProgressRow(
           totalRating: 25,
           numOfRating: 15,
           starNumber: 3,
         ),
-        _RatingProgressRow(
+        const _RatingProgressRow(
           totalRating: 25,
           numOfRating: 10,
           starNumber: 2,
         ),
-        _RatingProgressRow(
+        const _RatingProgressRow(
           totalRating: 25,
           numOfRating: 5,
           starNumber: 1,

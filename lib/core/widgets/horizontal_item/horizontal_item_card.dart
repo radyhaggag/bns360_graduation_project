@@ -14,14 +14,15 @@ class HorizontalItemCard extends StatelessWidget {
   const HorizontalItemCard({
     super.key,
     required this.title,
-    this.onIconPressed,
-    this.width,
-    this.isFavorite,
-    this.useSetStateToChangeFavoriteColor,
     required this.subTitle,
     required this.starsCount,
     required this.numOfRatings,
     required this.imageUrl,
+    this.onFavoriteIconPressed,
+    this.onPressed,
+    this.width,
+    this.isFavorite,
+    this.useSetStateToChangeFavoriteColor,
   });
 
   final String title;
@@ -32,7 +33,8 @@ class HorizontalItemCard extends StatelessWidget {
   final double? width;
   final bool? isFavorite;
   final bool? useSetStateToChangeFavoriteColor;
-  final void Function()? onIconPressed;
+  final void Function()? onFavoriteIconPressed;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +46,11 @@ class HorizontalItemCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(width: 15),
-            _CategoryItemImage(
-              imageUrl: imageUrl,
+            InkWell(
+              onTap: onPressed,
+              child: _CategoryItemImage(
+                imageUrl: imageUrl,
+              ),
             ),
             const SizedBox(width: 5),
             Expanded(
@@ -53,9 +58,12 @@ class HorizontalItemCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _TitleAndSubTitleSection(
-                    title: title,
-                    subTitle: subTitle,
+                  InkWell(
+                    onTap: onPressed,
+                    child: _TitleAndSubTitleSection(
+                      title: title,
+                      subTitle: subTitle,
+                    ),
                   ),
                   RatingsItemWithCount(
                     numOfRatings: numOfRatings,
@@ -69,7 +77,7 @@ class HorizontalItemCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 FavoriteIcon(
-                  onPressed: onIconPressed,
+                  onPressed: onFavoriteIconPressed,
                   isFavorite: isFavorite,
                   useSetStateToChangeColor: useSetStateToChangeFavoriteColor,
                 ),

@@ -48,7 +48,7 @@ class FavoriteCraftsmenBuilder extends StatelessWidget {
               numOfRatings: item.numOfRatings,
               starsCount: item.averageRatings,
               isFavorite: true,
-              onIconPressed: () {},
+              onFavoriteIconPressed: () {},
               useSetStateToChangeFavoriteColor: true,
             ),
             scrollDirection: Axis.vertical,

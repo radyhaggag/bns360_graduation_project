@@ -52,7 +52,7 @@ class FavoriteCategoriesBuilder extends StatelessWidget {
               numOfRatings: item.numOfRatings,
               starsCount: item.starsCount,
               isFavorite: true,
-              onIconPressed: () {},
+              onFavoriteIconPressed: () {},
               useSetStateToChangeFavoriteColor: true,
             ),
             scrollDirection: Axis.vertical,

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
 import 'package:bns360_graduation_project/features/category_item/presentation/screens/category_item_review_summary_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,9 @@ import '../features/category_item/presentation/bloc/category_item_bloc.dart';
 import '../features/category_item/presentation/screens/category_item_screen.dart';
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
 import '../features/crafts/presentation/screens/crafts_screen.dart';
+import '../features/craftsman/presentation/bloc/craftsman_bloc.dart';
+import '../features/craftsman/presentation/screens/category_item_review_summary_screen.dart';
+import '../features/craftsman/presentation/screens/craftsman_screen.dart';
 import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
@@ -49,6 +53,8 @@ abstract class Routes {
   static const editProfile = '/editProfile';
   static const categoryItem = '/categoryItem';
   static const categoryItemReviewSummary = '/categoryItemReviewSummary';
+  static const craftsman = '/craftsman';
+  static const craftsmanReviewSummary = '/craftsmanReviewSummary';
 }
 
 abstract class RouteConfig {
@@ -183,6 +189,31 @@ abstract class RouteConfig {
                 )),
               child: CategoryItemReviewSummaryScreen(
                 categoryItemEntity: item,
+              ),
+            );
+          },
+        );
+      case Routes.craftsman:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<CraftsmanBloc>(),
+            child: CraftsmanScreen(
+              craftsmanEntity: settings.arguments as CraftsmanEntity,
+            ),
+          ),
+        );
+
+      case Routes.craftsmanReviewSummary:
+        return MaterialPageRoute(
+          builder: (context) {
+            final item = settings.arguments as CraftsmanEntity;
+            return BlocProvider(
+              create: (context) => sl<CraftsmanBloc>()
+                ..add(GetCraftsmanReviewsEvent(
+                  itemId: item.id.toString(),
+                )),
+              child: CraftsmanReviewSummaryScreen(
+                craftsmanEntity: item,
               ),
             );
           },

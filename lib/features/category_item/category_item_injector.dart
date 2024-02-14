@@ -1,5 +1,5 @@
 import '../../config/injector_container.dart';
-import 'data/datasources/category_item_remote_data_source%20_impl.dart';
+import 'data/datasources/category_item_remote_data_source_impl.dart';
 import 'data/datasources/category_item_remote_data_source.dart';
 import 'data/repositories/category_item_repo_impl.dart';
 import 'domain/repositories/category_item_repo.dart';

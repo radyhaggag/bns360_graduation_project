@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -46,8 +47,14 @@ class CraftsmenBuilder extends StatelessWidget {
               numOfRatings: item.numOfRatings,
               starsCount: item.averageRatings,
               isFavorite: true,
-              onIconPressed: () {},
+              onFavoriteIconPressed: () {},
               useSetStateToChangeFavoriteColor: true,
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  Routes.craftsman,
+                  arguments: item,
+                );
+              },
             ),
             scrollDirection: Axis.vertical,
             width: context.width,

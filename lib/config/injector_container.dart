@@ -11,6 +11,7 @@ import '../features/auth/auth_injector.dart';
 import '../features/categories/categories_injector.dart';
 import '../features/category_item/category_item_injector.dart';
 import '../features/crafts/crafts_injector.dart';
+import '../features/craftsman/craftsman_injector.dart';
 import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
 import '../features/profile/profile_injector.dart';
@@ -30,6 +31,7 @@ Future<void> initAppDependencies() async {
   initProfile();
   initSettings();
   initCategoryItem();
+  initCraftsman();
 }
 
 Future<void> initCore() async {

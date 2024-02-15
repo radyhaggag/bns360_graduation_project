@@ -12,7 +12,7 @@ class CraftsmanHeadSliver extends SliverPersistentHeaderDelegate {
     required this.craftsmanEntity,
   });
 
-  final _minHeight = 205.h;
+  final _minHeight = 200.h;
   final _maxHeight = 225.h;
 
   @override

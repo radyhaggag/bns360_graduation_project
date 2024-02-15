@@ -80,7 +80,7 @@ class _BuildBackground extends StatelessWidget {
         color: Theme.of(context).highlightColor,
       ),
       width: context.width * .9,
-      height: 120.h,
+      height: 110.h,
       margin: EdgeInsets.only(top: 47.5.r, bottom: 10),
     );
   }

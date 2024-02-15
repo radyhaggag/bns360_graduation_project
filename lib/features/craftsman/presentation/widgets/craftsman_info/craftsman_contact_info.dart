@@ -11,7 +11,9 @@ class _CraftsmanContactInfo extends StatelessWidget {
     return Column(
       children: List.generate(contactInfo.length, (index) {
         return Container(
-          margin: const EdgeInsets.only(bottom: 10),
+          margin: EdgeInsets.only(
+            bottom: index == contactInfo.length - 1 ? 0 : 10,
+          ),
           child: _ContactRow(phone: contactInfo[index]),
         );
       }),

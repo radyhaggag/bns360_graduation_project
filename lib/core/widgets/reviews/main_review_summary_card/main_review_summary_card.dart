@@ -38,7 +38,7 @@ class MainReviewSummaryCard extends StatelessWidget {
         horizontal: kHorizontalPadding,
       ),
       decoration: BoxDecoration(
-        color: mainColor ?? Theme.of(context).listTileTheme.tileColor,
+        color: mainColor ?? Theme.of(context).highlightColor,
         borderRadius: BorderRadius.circular(16),
       ),
       width: context.width,

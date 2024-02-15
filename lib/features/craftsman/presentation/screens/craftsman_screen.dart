@@ -14,6 +14,7 @@ class CraftsmanScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).listTileTheme.tileColor,
       body: CraftsmanBody(
         craftsmanEntity: craftsmanEntity,
       ),

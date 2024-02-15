@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 import 'craft_entity.dart';
@@ -10,6 +9,8 @@ class CraftsmanEntity extends Equatable {
   final int numOfRatings;
   final num averageRatings;
   final CraftEntity craft;
+  final String descriptionAR;
+  final String descriptionEN;
 
   const CraftsmanEntity({
     required this.id,
@@ -18,6 +19,8 @@ class CraftsmanEntity extends Equatable {
     required this.numOfRatings,
     required this.averageRatings,
     required this.craft,
+    required this.descriptionAR,
+    required this.descriptionEN,
   });
 
   @override

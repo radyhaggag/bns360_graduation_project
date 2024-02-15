@@ -17,7 +17,7 @@ class CraftsmanDescription extends StatelessWidget {
         horizontal: kHorizontalPadding,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).listTileTheme.tileColor,
+        color: Theme.of(context).highlightColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: _DescriptionWidget(

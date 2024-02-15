@@ -4,13 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../config/route_config.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/widgets/custom_back_button.dart';
 import '../../../../core/widgets/reviews/main_review_summary_card/main_review_summary_card.dart';
 import 'craftsman_description.dart';
+import 'craftsman_head/craftsman_head_sliver.dart';
 import 'craftsman_info/craftsman_info_section.dart';
-import 'craftsman_profile_section.dart';
-import 'craftsman_slider/craftsman_slider_section.dart';
 import 'write_review_btn.dart';
 
 class CraftsmanBody extends StatelessWidget {
@@ -26,55 +23,29 @@ class CraftsmanBody extends StatelessWidget {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            expandedHeight: 225.h,
-            primary: true,
-            flexibleSpace: FlexibleSpaceBar(
-              background: CraftsmanSliderSection(
-                images: [
-                  craftsmanEntity.imageUrl,
-                  craftsmanEntity.imageUrl,
-                  craftsmanEntity.imageUrl,
-                  craftsmanEntity.imageUrl,
-                  craftsmanEntity.imageUrl,
-                ],
-              ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: CraftsmanHeadSliver(
+              craftsmanEntity: craftsmanEntity,
             ),
-            leading: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: const CustomBackButtonWithCircle(
-                color: AppColors.black,
-              ),
-            ),
-            leadingWidth: 50.r,
           ),
           SliverPadding(
-            padding: const EdgeInsets.only(
-              left: 16,
-              right: 16,
-              top: 16,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  CraftsmanProfileSection(
-                    craftsmanEntity: craftsmanEntity,
-                  ),
-                  const SizedBox(height: 20),
                   CraftsmanDescription(
                     description: LocalizationHelper.getLocalizedString(
                       context,
-                      // ar: craftsmanEntity.descriptionAR,
-                      // en: craftsmanEntity.descriptionEN,
-                      ar: craftsmanEntity.name,
-                      en: craftsmanEntity.name,
+                      ar: craftsmanEntity.descriptionAR,
+                      en: craftsmanEntity.descriptionEN,
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   CraftsmanInfoSection(
                     craftsmanEntity: craftsmanEntity,
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   MainReviewSummaryCard(
                     numOfRatings: craftsmanEntity.numOfRatings,
                     starsCount: craftsmanEntity.averageRatings,

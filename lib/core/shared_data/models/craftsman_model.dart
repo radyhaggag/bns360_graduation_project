@@ -9,6 +9,8 @@ class CraftsmanModel extends CraftsmanEntity {
     required super.numOfRatings,
     required super.averageRatings,
     required super.craft,
+    required super.descriptionAR,
+    required super.descriptionEN,
   });
 
   factory CraftsmanModel.fromJson(Map<String, dynamic> json) {
@@ -18,6 +20,8 @@ class CraftsmanModel extends CraftsmanEntity {
       imageUrl: json['image_url'] as String,
       numOfRatings: json['num_of_ratings'] as int,
       averageRatings: json['stars_count'] as num,
+      descriptionAR: json['description_ar'] as String,
+      descriptionEN: json['description_en'] as String,
       craft: CraftModel.fromJson(json['craft'] as Map<String, dynamic>),
     );
   }

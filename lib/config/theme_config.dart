@@ -71,6 +71,7 @@ abstract class ThemeConfig {
         color: AppColors.white,
         systemOverlayStyle: _systemUiOverlayStyle,
         scrolledUnderElevation: 0.0,
+        titleSpacing: 0.0,
       ),
       indicatorColor: AppColors.primary,
       progressIndicatorTheme: const ProgressIndicatorThemeData(
@@ -176,6 +177,7 @@ abstract class ThemeConfig {
         color: AppColors.surface,
         systemOverlayStyle: _systemUiOverlayStyle,
         scrolledUnderElevation: 0.0,
+        titleSpacing: 0.0,
       ),
       indicatorColor: AppColors.white, //todo: review this
       progressIndicatorTheme: const ProgressIndicatorThemeData(

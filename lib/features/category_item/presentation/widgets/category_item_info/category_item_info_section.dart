@@ -1,6 +1,5 @@
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
@@ -10,11 +9,12 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../core/widgets/buttons/map_btn.dart';
 import '../../../../../generated/l10n.dart';
 
+part 'category_item_contact_info.dart';
 part 'category_item_location.dart';
 part 'category_item_status.dart';
-part 'category_item_contact_info.dart';
 
 class CategoryItemInfoSection extends StatelessWidget {
   const CategoryItemInfoSection({super.key, required this.categoryItemEntity});

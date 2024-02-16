@@ -29,6 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+        "access_camera_permissions_msg": MessageLookupByLibrary.simpleMessage(
+            "To pick images for your business or work, please grant camera permission in settings."),
+        "access_location_permission_msg": MessageLookupByLibrary.simpleMessage(
+            "نحتاج إلى إذن الوصول إلى موقعك لتحسين الخدمات وحساب المسافة بين موقعك والأماكن التي تشاهدها."),
+        "access_storage_permissions_msg": MessageLookupByLibrary.simpleMessage(
+            "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "am": MessageLookupByLibrary.simpleMessage("ص"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
@@ -37,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("العودة الى تسجيل الدخول"),
         "businessOwner":
             MessageLookupByLibrary.simpleMessage("صاحب نشاط تجارى"),
+        "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
         "change": MessageLookupByLibrary.simpleMessage("تغيير"),
         "change_language": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
@@ -100,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("لم تتلقى رمز التحقق!"),
+        "ok": MessageLookupByLibrary.simpleMessage("حسنا"),
         "open_now": MessageLookupByLibrary.simpleMessage("مفتوح الان"),
         "optional": MessageLookupByLibrary.simpleMessage("اختيارى"),
         "or": MessageLookupByLibrary.simpleMessage("أو"),
@@ -110,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة مرورك بنجاح"),
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("كلمات المرور غير متطابقة"),
+        "permission_denied":
+            MessageLookupByLibrary.simpleMessage("الإذن مرفوض"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
         "places": MessageLookupByLibrary.simpleMessage("الأماكن"),
         "places_to_explore":

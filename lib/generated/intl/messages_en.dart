@@ -29,12 +29,19 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
+        "access_camera_permissions_msg": MessageLookupByLibrary.simpleMessage(
+            "To pick images for your business or work, please grant camera permission in settings."),
+        "access_location_permission_msg": MessageLookupByLibrary.simpleMessage(
+            "We need access to your location to enhance services and calculate distances between places you view."),
+        "access_storage_permissions_msg": MessageLookupByLibrary.simpleMessage(
+            "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "am": MessageLookupByLibrary.simpleMessage("AM"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "change": MessageLookupByLibrary.simpleMessage("Change"),
         "change_language":
@@ -98,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code!"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "open_now": MessageLookupByLibrary.simpleMessage("Open now"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
@@ -108,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your password has been changed successfully"),
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
+        "permission_denied":
+            MessageLookupByLibrary.simpleMessage("Permission Denied"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
         "places": MessageLookupByLibrary.simpleMessage("Places"),
         "places_to_explore":

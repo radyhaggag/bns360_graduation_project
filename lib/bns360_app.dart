@@ -11,13 +11,23 @@ import 'core/utils/app_strings.dart';
 import 'core/utils/enums.dart';
 import 'generated/l10n.dart';
 
-class BNS360App extends StatelessWidget {
+class BNS360App extends StatefulWidget {
   const BNS360App({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    ThemeConfig.configureStatusBarColor();
+  State<BNS360App> createState() => _BNS360AppState();
+}
 
+class _BNS360AppState extends State<BNS360App> {
+  @override
+  void initState() {
+    super.initState();
+
+    ThemeConfig.configureStatusBarColor();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(360, 800),
       minTextAdapt: true,
@@ -42,6 +52,7 @@ class BNS360App extends StatelessWidget {
                   ? ThemeConfig.getLightTheme()
                   : ThemeConfig.getDarkTheme(),
               onGenerateRoute: RouteConfig.getRoute,
+              // initialRoute: Routes.splash,
               initialRoute: Routes.splash,
             );
           },

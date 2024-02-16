@@ -24,22 +24,14 @@ class _CraftsmanLocation extends StatelessWidget {
                 ),
           ),
         ),
-        const _MapBtn(),
+        const MapBtn(
+          mapParams: MapParams(
+            location: 'Beni Madi',
+            lat: 28.9826537,
+            lng: 31.0087249,
+          ),
+        ),
       ],
-    );
-  }
-}
-
-class _MapBtn extends StatelessWidget {
-  const _MapBtn();
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomElevatedButton(
-      label: S.of(context).map,
-      width: 90.w,
-      height: 35.h,
-      onPressed: () {},
     );
   }
 }

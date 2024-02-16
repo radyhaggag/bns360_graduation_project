@@ -1019,6 +1019,66 @@ class S {
       args: [],
     );
   }
+
+  /// `We need access to your location to enhance services and calculate distances between places you view.`
+  String get access_location_permission_msg {
+    return Intl.message(
+      'We need access to your location to enhance services and calculate distances between places you view.',
+      name: 'access_location_permission_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To pick images for your business or work, please grant camera permission in settings.`
+  String get access_camera_permissions_msg {
+    return Intl.message(
+      'To pick images for your business or work, please grant camera permission in settings.',
+      name: 'access_camera_permissions_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To upload images for your business or work, please grant storage permission in settings.`
+  String get access_storage_permissions_msg {
+    return Intl.message(
+      'To upload images for your business or work, please grant storage permission in settings.',
+      name: 'access_storage_permissions_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Permission Denied`
+  String get permission_denied {
+    return Intl.message(
+      'Permission Denied',
+      name: 'permission_denied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

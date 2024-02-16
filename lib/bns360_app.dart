@@ -16,6 +16,8 @@ class BNS360App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeConfig.configureStatusBarColor();
+
     return ScreenUtilInit(
       designSize: const Size(360, 800),
       minTextAdapt: true,
@@ -25,7 +27,6 @@ class BNS360App extends StatelessWidget {
         child: BlocBuilder<AppBloc, AppState>(
           builder: (context, state) {
             ScreenUtil.init(context);
-            ThemeConfig.configureStatusBarColor();
             return MaterialApp(
               supportedLocales: S.delegate.supportedLocales,
               localizationsDelegates: const [

@@ -28,8 +28,8 @@ class CacheHelper {
 
   AppTheme getTheme() {
     final themeName = HiveBoxes.languageBox.get(CacheKeys.cachedTheme);
-    if (themeName == AppTheme.light.name) return AppTheme.light;
-    return AppTheme.dark;
+    if (themeName == AppTheme.dark.name) return AppTheme.dark;
+    return AppTheme.light;
   }
 
   Future<String?> getToken() async {

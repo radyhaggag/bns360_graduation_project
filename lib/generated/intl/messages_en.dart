@@ -109,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+        "places": MessageLookupByLibrary.simpleMessage("Places"),
         "places_to_explore":
             MessageLookupByLibrary.simpleMessage("Places to explore"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),

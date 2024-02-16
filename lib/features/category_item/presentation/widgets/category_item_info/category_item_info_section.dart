@@ -23,9 +23,14 @@ class CategoryItemInfoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: kHorizontalPadding - 10,
+        horizontal: kHorizontalPadding,
+        vertical: 16,
+      ),
+      decoration: BoxDecoration(
+        color: Theme.of(context).highlightColor,
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Column(
         children: [

@@ -1,17 +1,16 @@
-import '../../../../config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../config/route_config.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
-import '../../../../core/utils/app_colors.dart';
+import '../../../../core/widgets/buttons/write_review_btn.dart';
 import '../../../../core/widgets/custom_back_button.dart';
 import '../../../../core/widgets/reviews/main_review_summary_card/main_review_summary_card.dart';
 import 'category_item_description.dart';
 import 'category_item_info/category_item_info_section.dart';
 import 'category_item_profile_section.dart';
 import 'category_item_slider/category_item_slider_section.dart';
-import 'write_review_btn.dart';
 
 class CategoryItemBody extends StatelessWidget {
   const CategoryItemBody({
@@ -42,8 +41,8 @@ class CategoryItemBody extends StatelessWidget {
             ),
             leading: Container(
               margin: const EdgeInsets.symmetric(horizontal: 10),
-              child: const CustomBackButtonWithCircle(
-                color: AppColors.black,
+              child: CustomBackButtonWithCircle(
+                color: Theme.of(context).primaryColor,
               ),
             ),
             leadingWidth: 50.r,
@@ -92,8 +91,10 @@ class CategoryItemBody extends StatelessWidget {
               horizontal: 50.w,
               vertical: 20,
             ),
-            sliver: const SliverToBoxAdapter(
-              child: WriteReviewBtn(),
+            sliver: SliverToBoxAdapter(
+              child: WriteReviewBtn(
+                addReviewCallback: (rating, value) {},
+              ),
             ),
           ),
         ],

@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../../core/widgets/buttons/write_review_btn.dart';
 import '../../../../../core/widgets/reviews/sliver_reviews_app_bar_delegate.dart';
-import '../../../../category_item/presentation/widgets/write_review_btn.dart';
 import 'craftsman_review_summary_app_bar.dart';
 import 'reviews_builder.dart';
 
@@ -32,8 +32,10 @@ class CraftsmanReviewSummaryBody extends StatelessWidget {
           ),
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 50.w),
-            sliver: const SliverToBoxAdapter(
-              child: WriteReviewBtn(),
+            sliver: SliverToBoxAdapter(
+              child: WriteReviewBtn(
+                addReviewCallback: (rating, value) {},
+              ),
             ),
           ),
           SliverPadding(

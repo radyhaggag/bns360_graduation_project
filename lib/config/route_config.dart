@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/category_entity.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
 import 'package:bns360_graduation_project/features/category_item/presentation/screens/category_item_review_summary_screen.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ import '../features/bottom_navigation/presentation/bloc/bottom_navigation_bloc.d
 import '../features/bottom_navigation/presentation/screens/bottom_navigation_screen.dart';
 import '../features/categories/presentation/bloc/categories_bloc.dart';
 import '../features/categories/presentation/screens/categories_screen.dart';
+import '../features/categories/presentation/screens/category_items_screen.dart';
 import '../features/category_item/presentation/bloc/category_item_bloc.dart';
 import '../features/category_item/presentation/screens/category_item_screen.dart';
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
@@ -55,6 +57,7 @@ abstract class Routes {
   static const categoryItemReviewSummary = '/categoryItemReviewSummary';
   static const craftsman = '/craftsman';
   static const craftsmanReviewSummary = '/craftsmanReviewSummary';
+  static const categoryItems = '/categoryItems';
 }
 
 abstract class RouteConfig {
@@ -146,6 +149,19 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<CategoriesBloc>(),
             child: const CategoriesScreen(),
+          ),
+        );
+      case Routes.categoryItems:
+        final item = settings.arguments as CategoryEntity;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<CategoriesBloc>()
+              ..add(GetCategoryItemsByIdEvent(
+                categoryId: item.id,
+              )),
+            child: CategoryItemsScreen(
+              categoryEntity: settings.arguments as CategoryEntity,
+            ),
           ),
         );
       case Routes.crafts:

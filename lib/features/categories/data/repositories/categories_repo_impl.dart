@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/category_item_entity.dart';
+
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/shared_data/entities/category_entity.dart';
 import '../../../../core/utils/custom_types.dart';
@@ -13,6 +15,25 @@ class CategoriesRepoImpl implements CategoriesRepo {
   FutureEither<List<CategoryEntity>> getCategories() async {
     return executeAndHandleError<List<CategoryEntity>>(
       () => categoriesRemoteDataSource.getCategories(),
+    );
+  }
+
+  @override
+  FutureEither<List<CategoryItemEntity>> getCategoryItemsById(
+    int id,
+  ) async {
+    return executeAndHandleError<List<CategoryItemEntity>>(
+      () => categoriesRemoteDataSource.getCategoryItemsById(id),
+    );
+  }
+
+  @override
+  FutureEither<List<CategoryItemEntity>> searchOnCategoryItemsById(
+    int id,
+    String text,
+  ) async {
+    return executeAndHandleError<List<CategoryItemEntity>>(
+      () => categoriesRemoteDataSource.searchOnCategoryItemsById(id, text),
     );
   }
 }

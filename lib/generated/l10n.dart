@@ -1009,6 +1009,16 @@ class S {
       args: [mins],
     );
   }
+
+  /// `Places`
+  String get places {
+    return Intl.message(
+      'Places',
+      name: 'places',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

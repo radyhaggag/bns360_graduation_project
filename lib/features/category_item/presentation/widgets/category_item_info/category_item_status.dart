@@ -13,7 +13,10 @@ class _ItemStatusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(AppSvg.clock),
+        SvgPicture.asset(
+          AppSvg.clock,
+          color: Theme.of(context).cardColor,
+        ),
         const SizedBox(width: 15),
         Text(
           status(context),

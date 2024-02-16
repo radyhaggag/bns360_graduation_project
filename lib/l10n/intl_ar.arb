@@ -94,5 +94,6 @@
   "just_now": "الآن",
   "days_ago": "قبل {days} أيام",
   "hours_ago": "قبل {hours} ساعات",
-  "mins_ago": "قبل {mins} دقائق"
+  "mins_ago": "قبل {mins} دقائق",
+  "places": "الأماكن"
 }

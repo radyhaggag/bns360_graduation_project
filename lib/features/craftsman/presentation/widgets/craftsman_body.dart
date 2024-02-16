@@ -8,7 +8,7 @@ import '../../../../core/widgets/reviews/main_review_summary_card/main_review_su
 import 'craftsman_description.dart';
 import 'craftsman_head/craftsman_head_sliver.dart';
 import 'craftsman_info/craftsman_info_section.dart';
-import 'write_review_btn.dart';
+import '../../../../core/widgets/buttons/write_review_btn.dart';
 
 class CraftsmanBody extends StatelessWidget {
   const CraftsmanBody({
@@ -65,8 +65,10 @@ class CraftsmanBody extends StatelessWidget {
               horizontal: 50.w,
               vertical: 20,
             ),
-            sliver: const SliverToBoxAdapter(
-              child: WriteReviewBtn(),
+            sliver: SliverToBoxAdapter(
+              child: WriteReviewBtn(
+                addReviewCallback: (rating, value) {},
+              ),
             ),
           ),
         ],

@@ -12,7 +12,6 @@ class FavoritesTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBar(
-      // indicatorColor: Colors.transparent,
       dividerColor: Colors.transparent,
       padding: const EdgeInsets.only(top: 8),
       indicatorColor: AppColors.primary,
@@ -28,7 +27,7 @@ class FavoritesTabBar extends StatelessWidget {
         fontWeight: FontWeight.w600,
       ),
       tabs: [
-        Tab(text: S.of(context).categories),
+        Tab(text: S.of(context).places),
         Tab(text: S.of(context).craftsmen),
       ],
       onTap: (index) {

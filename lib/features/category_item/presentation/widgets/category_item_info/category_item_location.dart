@@ -10,7 +10,10 @@ class _CategoryItemLocation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(AppSvg.marker),
+        SvgPicture.asset(
+          AppSvg.marker,
+          color: Theme.of(context).cardColor,
+        ),
         const SizedBox(width: 15),
         Expanded(
           child: Text(

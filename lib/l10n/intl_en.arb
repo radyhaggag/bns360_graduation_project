@@ -94,5 +94,6 @@
   "just_now": "Just now",
   "days_ago": "{days} days ago",
   "hours_ago": "{hours} hours ago",
-  "mins_ago": "{mins} mins ago"
+  "mins_ago": "{mins} mins ago",
+  "places": "Places"
 }

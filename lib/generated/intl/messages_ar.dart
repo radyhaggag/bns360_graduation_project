@@ -111,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("كلمات المرور غير متطابقة"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "places": MessageLookupByLibrary.simpleMessage("الأماكن"),
         "places_to_explore":
             MessageLookupByLibrary.simpleMessage("أماكن للاستكشاف"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("اختر من فضلك"),

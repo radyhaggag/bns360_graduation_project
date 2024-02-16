@@ -1,12 +1,17 @@
 import 'package:flutter/widgets.dart';
 
-import '../../../../core/utils/main_logger.dart';
-import '../../../../core/widgets/buttons/custom_buttons.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../core/widgets/reviews/add_review_bottom_sheet/add_review_bottom_sheet.dart';
+import '../../utils/main_logger.dart';
+import 'custom_buttons.dart';
+import '../../../generated/l10n.dart';
+import '../reviews/add_review_bottom_sheet/add_review_bottom_sheet.dart';
 
 class WriteReviewBtn extends StatelessWidget {
-  const WriteReviewBtn({super.key});
+  const WriteReviewBtn({
+    super.key,
+    required this.addReviewCallback,
+  });
+
+  final void Function(double, String) addReviewCallback;
 
   @override
   Widget build(BuildContext context) {

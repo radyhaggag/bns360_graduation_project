@@ -22,3 +22,26 @@ class GetCategoriesErrorState extends CategoriesState {
 
   const GetCategoriesErrorState({required this.message});
 }
+
+class SearchIconToggled extends CategoriesState {
+  final bool isSearchEnabled;
+
+  const SearchIconToggled({required this.isSearchEnabled});
+
+  @override
+  List<Object> get props => [isSearchEnabled];
+}
+
+class GetCategoryItemsLoadingState extends CategoriesState {}
+
+class GetCategoryItemsSuccessState extends CategoriesState {
+  final List<CategoryItemEntity> items;
+
+  const GetCategoryItemsSuccessState({required this.items});
+}
+
+class GetCategoryItemsErrorState extends CategoriesState {
+  final String message;
+
+  const GetCategoryItemsErrorState({required this.message});
+}

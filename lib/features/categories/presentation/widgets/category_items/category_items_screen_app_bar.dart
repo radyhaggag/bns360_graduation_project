@@ -1,24 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/extensions/media_query.dart';
-import '../../../../core/widgets/icons/main_search_icon.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../core/widgets/input_fields/search_field.dart';
-import '../bloc/crafts_bloc.dart';
+import '../../../../../core/extensions/media_query.dart';
+import '../../../../../core/helpers/localization_helper.dart';
+import '../../../../../core/shared_data/entities/category_entity.dart';
+import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../../core/widgets/icons/main_search_icon.dart';
+import '../../../../../core/widgets/input_fields/search_field.dart';
+import '../../bloc/categories_bloc.dart';
 
-class CraftsScreenAppBar extends StatelessWidget
+class CategoryItemsScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const CraftsScreenAppBar({super.key});
+  const CategoryItemsScreenAppBar({
+    super.key,
+    required this.categoryEntity,
+  });
+
+  final CategoryEntity categoryEntity;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CraftsBloc, CraftsState>(
+    return BlocBuilder<CategoriesBloc, CategoriesState>(
       buildWhen: (previous, current) {
         return current is SearchIconToggled;
       },
       builder: (context, state) {
-        final bloc = context.read<CraftsBloc>();
+        final bloc = context.read<CategoriesBloc>();
         return Container(
           width: context.width,
           decoration: BoxDecoration(
@@ -39,7 +47,9 @@ class CraftsScreenAppBar extends StatelessWidget
                   firstChild: Row(
                     children: [
                       InkWell(
-                        onTap: () => bloc.add(ToggleSearchIcon()),
+                        onTap: () => bloc.add(ToggleSearchIcon(
+                          categoryId: categoryEntity.id,
+                        )),
                         child: Icon(
                           Icons.arrow_back_ios,
                           size: 24,
@@ -50,16 +60,28 @@ class CraftsScreenAppBar extends StatelessWidget
                         child: SearchField(
                           searchController: bloc.searchController,
                           onFieldSubmitted: () {
-                            bloc.add(SearchOnCrafts());
+                            bloc.add(SearchOnCategoryItems(
+                              categoryId: categoryEntity.id,
+                            ));
                           },
-                          hintText: getHintText(context),
+                          hintText: getItemTxt(context),
                         ),
                       ),
                     ],
                   ),
-                  secondChild: Text(
-                    S.of(context).craftsmen,
-                    style: Theme.of(context).appBarTheme.titleTextStyle,
+                  secondChild: Row(
+                    children: [
+                      const CustomBackButton(),
+                      Text(
+                        getItemTxt(context),
+                        style: Theme.of(context)
+                            .appBarTheme
+                            .titleTextStyle
+                            ?.copyWith(
+                              fontSize: AppFontSize.subTitle,
+                            ),
+                      ),
+                    ],
                   ),
                   crossFadeState: bloc.isSearchEnabled
                       ? CrossFadeState.showFirst
@@ -71,9 +93,13 @@ class CraftsScreenAppBar extends StatelessWidget
                 horizontalPadding: 0.0,
                 onTap: () {
                   if (!bloc.isSearchEnabled) {
-                    bloc.add(ToggleSearchIcon());
+                    bloc.add(ToggleSearchIcon(
+                      categoryId: categoryEntity.id,
+                    ));
                   } else {
-                    bloc.add(SearchOnCrafts());
+                    bloc.add(SearchOnCategoryItems(
+                      categoryId: categoryEntity.id,
+                    ));
                   }
                 },
               ),
@@ -87,13 +113,11 @@ class CraftsScreenAppBar extends StatelessWidget
   @override
   Size get preferredSize => const Size.fromHeight(60);
 
-  String getHintText(BuildContext context) {
-    final bloc = context.read<CraftsBloc>();
-
-    if (bloc.selectedCraftId == -1) {
-      return S.of(context).search;
-    } else {
-      return '${S.of(context).search_on} ${bloc.selectedCraftName(context)}';
-    }
+  String getItemTxt(BuildContext context) {
+    return LocalizationHelper.getLocalizedString(
+      context,
+      ar: categoryEntity.nameAR,
+      en: categoryEntity.nameEN,
+    );
   }
 }

@@ -1,10 +1,9 @@
-import 'package:bns360_graduation_project/core/extensions/language.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/extensions/language.dart';
+import '../../../../../core/utils/enums.dart';
 
 class CraftsmanHeadActions extends StatelessWidget {
   const CraftsmanHeadActions({super.key});
@@ -46,7 +45,7 @@ class _BuildBtn extends StatelessWidget {
       icon: Icon(
         iconData,
         size: 20.r,
-        color: AppColors.primary,
+        color: Theme.of(context).cardColor,
       ),
       padding: EdgeInsets.zero,
       constraints: BoxConstraints(minHeight: 30.r, minWidth: 30.r),

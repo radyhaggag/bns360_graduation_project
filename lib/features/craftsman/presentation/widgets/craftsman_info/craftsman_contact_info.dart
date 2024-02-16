@@ -32,7 +32,10 @@ class _ContactRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(AppSvg.phone),
+        SvgPicture.asset(
+          AppSvg.phone,
+          color: Theme.of(context).cardColor,
+        ),
         const SizedBox(width: 15),
         Text(
           phone,

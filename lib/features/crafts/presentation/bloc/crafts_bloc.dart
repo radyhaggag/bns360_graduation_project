@@ -148,18 +148,21 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     SearchOnCrafts event,
     Emitter<CraftsState> emit,
   ) async {
+    final searchVal = searchController.text.trim();
+    if (searchVal.isEmpty) return;
+
     emit(GetCraftsmenLoadingState());
     await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     ResultOrFailure<List<CraftsmanEntity>> res;
     if (selectedCraftId == -1) {
       res = await craftsRepo.searchOnAllCrafts(
-        searchController.text,
+        searchVal,
       );
     } else {
       res = await craftsRepo.searchOnCraftsById(
         selectedCraftId,
-        searchController.text,
+        searchVal,
       );
     }
 

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/config/app_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,8 @@ import 'my_bloc_observer.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await AppConfig().init(environment: Environment.prod);
 
   /// `ScreenUtil.ensureScreenSize()` To fix text hidden issues on release mode
   await Future.wait([

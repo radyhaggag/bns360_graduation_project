@@ -5,8 +5,8 @@ import '../../utils/main_logger.dart';
 import 'permissions_dialogs.dart';
 
 class MainPermissionHandler {
-  static final MainPermissionHandler _instance = MainPermissionHandler._();
   MainPermissionHandler._();
+  static final MainPermissionHandler _instance = MainPermissionHandler._();
   factory MainPermissionHandler() => _instance;
 
   Future<bool> requestLocationPermission(BuildContext context) async {

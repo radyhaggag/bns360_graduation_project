@@ -32,11 +32,13 @@ dependencies:
   animated_toggle_switch: ^0.8.0
   cached_network_image: ^3.3.0
   carousel_slider: ^4.2.1
+  cloud_firestore: ^4.15.4
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   dio: ^5.3.3
   dropdown_button2: ^2.3.9
   equatable: ^2.0.5
+  firebase_core: ^2.25.4
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3

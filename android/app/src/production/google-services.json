@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "812364701886",
+    "project_id": "bns360-prod",
+    "storage_bucket": "bns360-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812364701886:android:d719cd878fafcc336f3eef",
+        "android_client_info": {
+          "package_name": "com.example.bns360_graduation_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-UvUtzuhnk4VL7Gak8x7NnUCxQDyOVxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

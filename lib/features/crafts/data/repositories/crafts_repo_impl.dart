@@ -12,21 +12,21 @@ class CraftsRepoImpl implements CraftsRepo {
 
   @override
   FutureEither<List<CraftEntity>> getCrafts() async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => craftsRemoteDataSource.getCrafts(),
     );
   }
 
   @override
   FutureEither<List<CraftsmanEntity>> getCraftsmen() async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => craftsRemoteDataSource.getCraftsmen(),
     );
   }
 
   @override
   FutureEither<List<CraftsmanEntity>> getCraftItemsById(int id) async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => craftsRemoteDataSource.getCraftItemsById(id),
     );
   }
@@ -35,7 +35,7 @@ class CraftsRepoImpl implements CraftsRepo {
   FutureEither<List<CraftsmanEntity>> searchOnAllCrafts(
     String text,
   ) async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => craftsRemoteDataSource.searchOnAllCrafts(text),
     );
   }
@@ -45,7 +45,7 @@ class CraftsRepoImpl implements CraftsRepo {
     int id,
     String text,
   ) async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => craftsRemoteDataSource.searchOnCraftsById(id, text),
     );
   }

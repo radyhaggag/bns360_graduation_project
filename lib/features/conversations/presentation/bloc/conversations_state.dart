@@ -18,3 +18,17 @@ class SendMessageErrorState extends ConversationsState {
 
   const SendMessageErrorState({required this.message});
 }
+
+class GetConversationsLoadingState extends ConversationsState {}
+
+class GetConversationsSuccessState extends ConversationsState {
+  final List<ConversationEntity> conversations;
+
+  const GetConversationsSuccessState({required this.conversations});
+}
+
+class GetConversationsErrorState extends ConversationsState {
+  final String message;
+
+  const GetConversationsErrorState({required this.message});
+}

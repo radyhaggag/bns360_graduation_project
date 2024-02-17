@@ -7,12 +7,14 @@ import 'unread_count_entity.dart';
 class ConversationEntity extends Equatable {
   final String id;
   final List<ParticipantEntity> participants;
+  final List<String> participantIds;
   final MessageEntity lastMessage;
   final List<UnreadCountEntity> unreadCount;
 
   const ConversationEntity({
     required this.id,
     required this.participants,
+    required this.participantIds,
     required this.lastMessage,
     required this.unreadCount,
   });
@@ -21,6 +23,7 @@ class ConversationEntity extends Equatable {
   List<Object?> get props => [
         id,
         participants,
+        participantIds,
         unreadCount,
         lastMessage,
       ];

@@ -17,14 +17,14 @@ class HomeRepoImpl implements HomeRepo {
 
   @override
   Future<ResultOrFailure<List<BannerEntity>>> getBanners() async {
-    return executeAndHandleError<List<BannerEntity>>(
+    return executeAndHandleErrorAsync<List<BannerEntity>>(
       () => homeRemoteDataSource.getBanners(),
     );
   }
 
   @override
   Future<ResultOrFailure<List<CategoryItemEntity>>> getPlacesToExplore() {
-    return executeAndHandleError<List<CategoryItemEntity>>(
+    return executeAndHandleErrorAsync<List<CategoryItemEntity>>(
       () => homeRemoteDataSource.getPlacesToExplore(),
     );
   }

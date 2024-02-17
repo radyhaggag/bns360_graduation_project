@@ -11,7 +11,7 @@ class CraftsmanRepoImpl implements CraftsmanRepo {
 
   @override
   FutureEither<List<ReviewEntity>> getReviews(String itemId) {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => craftsmanRemoteDataSource.getReviews(itemId),
     );
   }

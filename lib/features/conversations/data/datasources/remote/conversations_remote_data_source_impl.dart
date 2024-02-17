@@ -45,6 +45,7 @@ class ConversationsRemoteDataSourceImpl
 
     final conversation = ConversationModel(
       id: conversationId,
+      participantIds: [currentParticipant.id, otherParticipant.id],
       participants: [currentParticipant, otherParticipant],
       lastMessage: message,
       unreadCount: [
@@ -58,5 +59,22 @@ class ConversationsRemoteDataSourceImpl
     );
 
     return conversationId;
+  }
+
+  @override
+  Stream<List<ConversationModel>> getConversations() {
+    final currentUserId = ParticipantModel.currentParticipant().id;
+    final snapshots = FirestoreCollections.conversations
+        .where('participantIds', arrayContains: currentUserId)
+        .snapshots();
+
+    return snapshots.map((event) {
+      final conversations = event.docs.map((e) {
+        final data = e.data() as Map<String, dynamic>;
+        final conversation = ConversationModel.fromMap(data);
+        return conversation;
+      }).toList();
+      return conversations;
+    });
   }
 }

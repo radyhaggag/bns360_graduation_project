@@ -6,6 +6,7 @@ import 'unread_count_model.dart';
 class ConversationModel extends ConversationEntity {
   const ConversationModel({
     required super.id,
+    required super.participantIds,
     required super.participants,
     required super.lastMessage,
     required super.unreadCount,
@@ -14,6 +15,7 @@ class ConversationModel extends ConversationEntity {
   static ConversationModel fromMap(Map<String, dynamic> map) {
     return ConversationModel(
       id: map['id'] as String,
+      participantIds: map['participantIds'] as List<String>,
       participants: (map['participants'] as List<dynamic>)
           .map((e) => ParticipantModel.fromMap(e as Map<String, dynamic>))
           .toList(),
@@ -27,7 +29,8 @@ class ConversationModel extends ConversationEntity {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'participants': participants,
+      'participantIds': participantIds,
+      'participants': participants.map((e) => e.toMap()),
       'lastMessage': lastMessage,
       'unreadCount': unreadCount.map((e) => e.toMap()).toList(),
     };

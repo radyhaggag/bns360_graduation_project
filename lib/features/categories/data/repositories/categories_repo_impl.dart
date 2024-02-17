@@ -13,7 +13,7 @@ class CategoriesRepoImpl implements CategoriesRepo {
 
   @override
   FutureEither<List<CategoryEntity>> getCategories() async {
-    return executeAndHandleError<List<CategoryEntity>>(
+    return executeAndHandleErrorAsync<List<CategoryEntity>>(
       () => categoriesRemoteDataSource.getCategories(),
     );
   }
@@ -22,7 +22,7 @@ class CategoriesRepoImpl implements CategoriesRepo {
   FutureEither<List<CategoryItemEntity>> getCategoryItemsById(
     int id,
   ) async {
-    return executeAndHandleError<List<CategoryItemEntity>>(
+    return executeAndHandleErrorAsync<List<CategoryItemEntity>>(
       () => categoriesRemoteDataSource.getCategoryItemsById(id),
     );
   }
@@ -32,7 +32,7 @@ class CategoriesRepoImpl implements CategoriesRepo {
     int id,
     String text,
   ) async {
-    return executeAndHandleError<List<CategoryItemEntity>>(
+    return executeAndHandleErrorAsync<List<CategoryItemEntity>>(
       () => categoriesRemoteDataSource.searchOnCategoryItemsById(id, text),
     );
   }

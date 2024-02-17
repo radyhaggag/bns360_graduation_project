@@ -15,3 +15,11 @@ class SendMessageEvent extends ConversationsEvent {
   @override
   List<Object> get props => [sendMessageParams];
 }
+
+class GetConversationsEvent extends ConversationsEvent {}
+
+class UpdateConversationsEvent extends ConversationsEvent {
+  final List<ConversationEntity> conversations;
+
+  const UpdateConversationsEvent({required this.conversations});
+}

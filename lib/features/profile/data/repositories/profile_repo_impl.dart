@@ -11,14 +11,14 @@ class ProfileRepoImpl implements ProfileRepo {
 
   @override
   FutureEither<void> editProfile(EditProfileParams editProfileParams) async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => remoteProfileDataSource.editProfile(editProfileParams),
     );
   }
 
   @override
   FutureEither<ProfileEntity> getProfile() async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => remoteProfileDataSource.getProfile(),
     );
   }

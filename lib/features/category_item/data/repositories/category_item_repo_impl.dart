@@ -13,7 +13,7 @@ class CategoryItemRepoImpl implements CategoryItemRepo {
 
   @override
   FutureEither<List<ReviewEntity>> getReviews(String itemId) {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => categoryItemRemoteDataSource.getReviews(itemId),
     );
   }

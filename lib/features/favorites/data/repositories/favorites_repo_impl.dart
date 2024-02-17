@@ -12,14 +12,14 @@ class FavoritesRepoImpl implements FavoritesRepo {
 
   @override
   FutureEither<List<CategoryItemEntity>> getFavoriteCategories() async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => favoritesRemoteDataSource.getFavoriteCategories(),
     );
   }
 
   @override
   FutureEither<List<CraftsmanEntity>> getFavoriteCraftsmen() async {
-    return executeAndHandleError(
+    return executeAndHandleErrorAsync(
       () => favoritesRemoteDataSource.getFavoriteCraftsmen(),
     );
   }

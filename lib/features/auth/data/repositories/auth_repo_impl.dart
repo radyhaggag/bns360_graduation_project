@@ -23,7 +23,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<ResultOrFailure<LoginEntity>> login(
     LoginParams params,
   ) async {
-    return executeAndHandleError<LoginEntity>(
+    return executeAndHandleErrorAsync<LoginEntity>(
       () => authRemoteDataSource.login(params),
     );
   }
@@ -32,7 +32,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<ResultOrFailure<SignUpEntity>> signUp(
     SignUpParams params,
   ) async {
-    return executeAndHandleError<SignUpEntity>(
+    return executeAndHandleErrorAsync<SignUpEntity>(
       () => authRemoteDataSource.signUp(params),
     );
   }
@@ -41,7 +41,7 @@ class AuthRepoImpl implements AuthRepo {
   Future<ResultOrFailure<bool>> verifyResetPasswordCode(
     VerifyResetPasswordParams params,
   ) async {
-    return executeAndHandleError<bool>(
+    return executeAndHandleErrorAsync<bool>(
       () => authRemoteDataSource.verifyResetPasswordCode(params),
     );
   }
@@ -50,21 +50,21 @@ class AuthRepoImpl implements AuthRepo {
   Future<ResultOrFailure<bool>> resetPassword(
     ResetPasswordParams params,
   ) async {
-    return executeAndHandleError<bool>(
+    return executeAndHandleErrorAsync<bool>(
       () => authRemoteDataSource.resetPassword(params),
     );
   }
 
   @override
   Future<ResultOrFailure<bool>> sendEmailVerification(String email) async {
-    return executeAndHandleError<bool>(
+    return executeAndHandleErrorAsync<bool>(
       () => authRemoteDataSource.sendEmailVerification(email),
     );
   }
 
   @override
   Future<ResultOrFailure<bool>> sendResetPasswordCode(String email) async {
-    return executeAndHandleError<bool>(
+    return executeAndHandleErrorAsync<bool>(
       () => authRemoteDataSource.sendResetPasswordCode(email),
     );
   }

@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/firebase/firebase_auth_manager.dart';
+
 import '../../../../../core/api/api_consumer.dart';
 import '../../../domain/params/login_params.dart';
 import '../../../domain/params/reset_password_params.dart';
@@ -26,6 +28,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<LoginModel> login(
     LoginParams params,
   ) async {
+    await FirebaseAuthManager.signInWithEmailAndPassword(
+      params.email,
+      params.password,
+    );
     // TODO: implement login
     throw UnimplementedError();
   }

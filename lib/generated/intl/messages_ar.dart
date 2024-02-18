@@ -96,6 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "map": MessageLookupByLibrary.simpleMessage("الخريطة"),
         "min_ago": MessageLookupByLibrary.simpleMessage("قبل دقيقة"),
         "mins_ago": m2,
+        "must_be_more_than_minimum_number_of_characters":
+            MessageLookupByLibrary.simpleMessage(
+                "يجب أن تكون كلمة المرور أكثر من الحد الأدنى لطول الأحرف"),
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على حرفيين!"),
@@ -152,6 +155,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "support": MessageLookupByLibrary.simpleMessage("الدعم"),
         "tap_to_rate": MessageLookupByLibrary.simpleMessage("انقر للتقييم"),
         "terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
+        "the_image_size_is_too_large_the_maximum_allowed_size_is_mp":
+            MessageLookupByLibrary.simpleMessage(
+                "حجم الصورة كبير جدا ، والحد الأقصى للحجم المسموح به هو"),
+        "there_are_no_messages_yet":
+            MessageLookupByLibrary.simpleMessage("لا توجد رسائل حتى الآن"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "validateEmail":
@@ -169,6 +177,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "view_reviews": MessageLookupByLibrary.simpleMessage("عرض المراجعات"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
+        "write_your_message":
+            MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),
         "write_your_review": MessageLookupByLibrary.simpleMessage("أكتب تقييمك")
       };
 }

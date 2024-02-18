@@ -101,5 +101,9 @@
   "access_storage_permissions_msg": "To upload images for your business or work, please grant storage permission in settings.",
   "ok": "حسنا",
   "permission_denied": "الإذن مرفوض",
-  "cancel": "إلغاء"
+  "cancel": "إلغاء",
+  "there_are_no_messages_yet": "لا توجد رسائل حتى الآن",
+  "write_your_message": "اكتب رسالتك",
+  "the_image_size_is_too_large_the_maximum_allowed_size_is_mp": "حجم الصورة كبير جدا ، والحد الأقصى للحجم المسموح به هو",
+  "must_be_more_than_minimum_number_of_characters": "يجب أن تكون كلمة المرور أكثر من الحد الأدنى لطول الأحرف"
 }

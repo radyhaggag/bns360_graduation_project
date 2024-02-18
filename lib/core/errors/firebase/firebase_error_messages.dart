@@ -1,4 +1,4 @@
-abstract class general {
+abstract class FirebaseErrorMessages {
   // FIRESTORE
   static const aborted =
       "The operation was aborted, typically due to a concurrency issue like transaction aborts, etc.";

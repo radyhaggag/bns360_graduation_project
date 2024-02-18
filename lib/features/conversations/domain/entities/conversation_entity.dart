@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import 'message_entity.dart';
-import 'participant_entity.dart';
+import '../../../../core/shared_data/entities/participant_entity.dart';
 import 'unread_count_entity.dart';
 
 class ConversationEntity extends Equatable {

@@ -1,14 +1,17 @@
-import '../../domain/entities/profile_entity.dart';
+import '../../../databases/local_storage/hive_manager.dart';
+import '../../entities/profile/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {
-  const ProfileModel({
-    required super.name,
+  ProfileModel({
+    required super.id,
     required super.email,
-    required super.imageUrl,
+    required super.name,
+    super.imageUrl,
   });
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
+      'id': id,
       'name': name,
       'email': email,
       'image_url': imageUrl,
@@ -17,9 +20,14 @@ class ProfileModel extends ProfileEntity {
 
   factory ProfileModel.fromJson(Map<String, dynamic> map) {
     return ProfileModel(
+      id: map['id'] as String,
       name: map['name'] as String,
       email: map['email'] as String,
       imageUrl: map['image_url'] as String,
     );
+  }
+
+  Future<void> saveToCache() async {
+    await HiveBoxes.profile.put('profile', this);
   }
 }

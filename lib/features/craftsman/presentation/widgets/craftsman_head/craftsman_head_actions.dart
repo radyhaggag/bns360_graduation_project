@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../config/route_config.dart';
 import '../../../../../core/extensions/language.dart';
+import '../../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../conversations/domain/params/conversation_screen_params.dart';
 
 class CraftsmanHeadActions extends StatelessWidget {
-  const CraftsmanHeadActions({super.key});
+  const CraftsmanHeadActions({super.key, required this.craftsmanEntity});
+
+  final CraftsmanEntity craftsmanEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,20 @@ class CraftsmanHeadActions extends StatelessWidget {
         children: [
           _BuildBtn(
             iconData: FeatherIcons.messageCircle,
-            onPressed: () {},
+            onPressed: () {
+              final params = ConversationScreenParams(
+                participantEntity: ParticipantEntity(
+                  id: craftsmanEntity.id.toString(),
+                  nameEN: craftsmanEntity.name,
+                  nameAR: craftsmanEntity.name,
+                  imageUrl: craftsmanEntity.imageUrl,
+                ),
+              );
+              Navigator.of(context).pushNamed(
+                Routes.conversation,
+                arguments: params,
+              );
+            },
           ),
           _BuildBtn(
             iconData: FeatherIcons.heart,

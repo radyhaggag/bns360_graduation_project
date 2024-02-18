@@ -101,5 +101,9 @@
   "access_storage_permissions_msg": "To upload images for your business or work, please grant storage permission in settings.",
   "ok": "Ok",
   "permission_denied": "Permission Denied",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "there_are_no_messages_yet": "There are no messages yet",
+  "write_your_message": "Write your message",
+  "the_image_size_is_too_large_the_maximum_allowed_size_is_mp": "The image size is too large, the maximum allowed size is",
+  "must_be_more_than_minimum_number_of_characters": "Password must be more than the minimum length of characters"
 }

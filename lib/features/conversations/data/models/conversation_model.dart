@@ -1,6 +1,6 @@
 import '../../domain/entities/conversation_entity.dart';
 import 'message_model.dart';
-import 'participant_model.dart';
+import '../../../../core/shared_data/models/participant_model.dart';
 import 'unread_count_model.dart';
 
 class ConversationModel extends ConversationEntity {

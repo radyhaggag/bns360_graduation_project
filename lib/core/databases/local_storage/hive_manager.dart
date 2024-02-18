@@ -1,28 +1,42 @@
-import 'package:flutter/foundation.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../helpers/execute_and_handle_error.dart';
+import '../../shared_data/entities/profile/profile_entity.dart';
+import '../../utils/custom_types.dart';
 
 abstract class HiveBoxes {
   // Boxes Names
-  static const language = 'language';
-  static const theme = 'theme';
+  static const _language = 'language';
+  static const _theme = 'theme';
+  static const _profile = 'profile';
 
   // Boxes
-  static Box<String> get languageBox => Hive.box<String>(language);
-  static Box<String> get themeBox => Hive.box<String>(theme);
+  static Box<String> get language => Hive.box<String>(_language);
+  static Box<String> get theme => Hive.box<String>(_theme);
+  static Box<ProfileEntity> get profile => Hive.box<ProfileEntity>(_profile);
 }
 
 abstract class HiveManager {
-  static Future<void> openBoxes() async {
-    try {
-      final boxes = [
-        Hive.openBox<String>(HiveBoxes.language),
-        Hive.openBox<String>(HiveBoxes.theme),
-      ];
-      await Future.wait(boxes);
-    } catch (e) {
-      debugPrint('Error opening Hive boxes: $e');
-    }
+  static FutureEither<void> init() async {
+    return executeAndHandleErrorAsync(() async {
+      await Hive.initFlutter();
+      _registerAdapters();
+      await _openBoxes();
+    });
   }
 
-  static registerAdapters() {}
+  static FutureEither<void> _openBoxes() async {
+    return executeAndHandleErrorAsync(() async {
+      final boxes = [
+        Hive.openBox<String>(HiveBoxes._language),
+        Hive.openBox<String>(HiveBoxes._theme),
+        Hive.openBox<ProfileEntity>(HiveBoxes._profile),
+      ];
+      await Future.wait(boxes);
+    });
+  }
+
+  static void _registerAdapters() {
+    Hive.registerAdapter(ProfileEntityAdapter());
+  }
 }

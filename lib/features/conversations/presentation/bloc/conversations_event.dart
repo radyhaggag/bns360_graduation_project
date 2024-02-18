@@ -23,3 +23,23 @@ class UpdateConversationsEvent extends ConversationsEvent {
 
   const UpdateConversationsEvent({required this.conversations});
 }
+
+class CheckIfConversationExistEvent extends ConversationsEvent {
+  final String participantId;
+
+  const CheckIfConversationExistEvent({required this.participantId});
+}
+
+class GetConversationMessagesEvent extends ConversationsEvent {
+  final ConversationEntity conversationEntity;
+
+  const GetConversationMessagesEvent({required this.conversationEntity});
+}
+
+class UpdateConversationMessagesEvent extends ConversationsEvent {
+  final List<MessageEntity> messages;
+
+  const UpdateConversationMessagesEvent({required this.messages});
+}
+
+class ClearCurrentSessionEvent extends ConversationsEvent {}

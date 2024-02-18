@@ -23,4 +23,7 @@ abstract class AppSvg {
   static const clock = "$_svgPath/clock.svg";
   static const marker = "$_svgPath/marker.svg";
   static const phone = "$_svgPath/phone.svg";
+  static const emptyList = '$_svgPath/empty_list.svg';
+  static const attachment = '$_svgPath/attachment.svg';
+  static const String sendArrow = '$_svgPath/send_arrow.svg';
 }

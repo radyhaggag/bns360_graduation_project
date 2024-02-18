@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../config/route_config.dart';
 import '../../../../../core/extensions/language.dart';
 import '../../../../../core/extensions/media_query.dart';
+import '../../../../../core/firebase/firebase_auth_manager.dart';
 import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums.dart';
@@ -57,10 +58,16 @@ class WelcomeBody extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             CustomTextButton(
-              onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
-                Routes.bottomNavBar,
-                (route) => false,
-              ),
+              onPressed: () async {
+                await _continueAsGuest();
+
+                if (!context.mounted) return;
+
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  Routes.bottomNavBar,
+                  (route) => false,
+                );
+              },
               label: S.of(context).continueAsGuest,
             ),
             const SizedBox(height: 10),
@@ -70,5 +77,9 @@ class WelcomeBody extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _continueAsGuest() async {
+    await FirebaseAuthManager.signInAnonymously();
   }
 }

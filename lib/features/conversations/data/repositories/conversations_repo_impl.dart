@@ -1,6 +1,7 @@
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/conversation_entity.dart';
+import '../../domain/entities/message_entity.dart';
 import '../../domain/params/send_message_params.dart';
 import '../../domain/repositories/conversations_repo.dart';
 import '../datasources/remote/conversations_remote_data_source.dart';
@@ -21,6 +22,27 @@ class ConversationsRepoImpl implements ConversationsRepo {
   ResultOrFailure<Stream<List<ConversationEntity>>> getConversations() {
     return executeAndHandleError(() {
       return conversationsRemoteDataSource.getConversations();
+    });
+  }
+
+  @override
+  FutureEither<ConversationEntity?> checkIfConversationExist(
+      String otherParticipantId) {
+    return executeAndHandleErrorAsync<ConversationEntity?>(() {
+      return conversationsRemoteDataSource.checkIfConversationExist(
+        otherParticipantId,
+      );
+    });
+  }
+
+  @override
+  FutureEither<Stream<List<MessageEntity>>> getConversationMessages(
+    ConversationEntity conversationEntity,
+  ) {
+    return executeAndHandleErrorAsync(() {
+      return conversationsRemoteDataSource.getConversationMessages(
+        conversationEntity,
+      );
     });
   }
 }

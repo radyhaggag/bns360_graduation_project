@@ -9,6 +9,13 @@ class UnreadCountEntity extends Equatable {
     required this.count,
   });
 
+  UnreadCountEntity copyWith(int? count) {
+    return UnreadCountEntity(
+      userId: userId,
+      count: count ?? this.count,
+    );
+  }
+
   @override
   List<Object> get props => [userId, count];
 }

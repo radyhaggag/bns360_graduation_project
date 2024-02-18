@@ -1,12 +1,12 @@
-import '../../../../../core/utils/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/shared_data/entities/profile/profile_entity.dart';
+import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/center_progress_indicator.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
-import '../../../domain/entities/profile_entity.dart';
 import '../../bloc/profile_bloc.dart';
 import 'edit_profile_bottom_section.dart';
 import 'edit_profile_screen_app_bar.dart';

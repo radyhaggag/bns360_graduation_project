@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../entities/profile_entity.dart';
+import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 
 class EditProfileParams extends Equatable {
   final String? name;

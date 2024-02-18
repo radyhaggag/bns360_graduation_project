@@ -1,7 +1,7 @@
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/helpers/load_json_from_asset.dart';
 import '../../../domain/params/edit_profile_params.dart';
-import '../../models/profile_model.dart';
+import '../../../../../core/shared_data/models/profile/profile_model.dart';
 import 'remote_profile_data_source.dart';
 
 class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {

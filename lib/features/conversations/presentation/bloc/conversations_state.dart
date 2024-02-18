@@ -32,3 +32,25 @@ class GetConversationsErrorState extends ConversationsState {
 
   const GetConversationsErrorState({required this.message});
 }
+
+class ConversationExistsState extends ConversationsState {
+  final bool isExist;
+
+  const ConversationExistsState({required this.isExist});
+}
+
+class GetConversationMessagesLoadingState extends ConversationsState {}
+
+class GetConversationMessagesSuccessState extends ConversationsState {
+  final List<MessageEntity> messages;
+
+  const GetConversationMessagesSuccessState({required this.messages});
+}
+
+class GetConversationMessagesErrorState extends ConversationsState {
+  final String message;
+
+  const GetConversationMessagesErrorState({required this.message});
+}
+
+class CurrentSessionClearedState extends ConversationsState {}

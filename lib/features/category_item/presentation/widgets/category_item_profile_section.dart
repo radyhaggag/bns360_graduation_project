@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../config/route_config.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../core/utils/app_fonts.dart';
 import '../../../../core/widgets/icons/favorite_icon.dart';
 import '../../../../core/widgets/icons/profile_circle_icon.dart';
 import '../../../../core/widgets/icons/rounded_icon_btn.dart';
+import '../../../conversations/domain/params/conversation_screen_params.dart';
 
 class CategoryItemProfileSection extends StatelessWidget {
   const CategoryItemProfileSection({
@@ -33,9 +36,23 @@ class CategoryItemProfileSection extends StatelessWidget {
           child: _TitleAndTypeSection(categoryItemEntity: categoryItemEntity),
         ),
         const SizedBox(width: 10),
-        const RoundedIconBtn(
-          icon: Icon(FeatherIcons.messageCircle),
+        RoundedIconBtn(
+          icon: const Icon(FeatherIcons.messageCircle),
           addMargin: false,
+          onPressed: () {
+            final params = ConversationScreenParams(
+              participantEntity: ParticipantEntity(
+                id: categoryItemEntity.id.toString(),
+                nameEN: categoryItemEntity.nameEN,
+                nameAR: categoryItemEntity.nameAR,
+                imageUrl: categoryItemEntity.imageUrl,
+              ),
+            );
+            Navigator.of(context).pushNamed(
+              Routes.conversation,
+              arguments: params,
+            );
+          },
         ),
         const FavoriteIcon(addMargin: false),
       ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domain/entities/profile_entity.dart';
 import 'change_profile_image_widget.dart';
 
 class EditProfileTopSection extends StatelessWidget {

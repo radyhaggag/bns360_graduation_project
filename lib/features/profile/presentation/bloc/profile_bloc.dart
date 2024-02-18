@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/entities/profile_entity.dart';
+import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../domain/params/edit_profile_params.dart';
 import '../../domain/repositories/profile_repo.dart';
 

@@ -10,24 +10,24 @@ class CacheHelper {
   CacheHelper(this.storage);
 
   Locale getCachedLanguage() {
-    final code = HiveBoxes.languageBox.get(CacheKeys.cachedLangCode);
+    final code = HiveBoxes.language.get(CacheKeys.cachedLangCode);
     if (code != null) return Locale(code);
     return const Locale('en');
   }
 
   Future<void> cacheLanguage(Locale local) async {
-    await HiveBoxes.languageBox.put(
+    await HiveBoxes.language.put(
       CacheKeys.cachedLangCode,
       local.languageCode,
     );
   }
 
   Future<void> cacheTheme(AppTheme theme) async {
-    await HiveBoxes.languageBox.put(CacheKeys.cachedTheme, theme.name);
+    await HiveBoxes.language.put(CacheKeys.cachedTheme, theme.name);
   }
 
   AppTheme getTheme() {
-    final themeName = HiveBoxes.languageBox.get(CacheKeys.cachedTheme);
+    final themeName = HiveBoxes.language.get(CacheKeys.cachedTheme);
     if (themeName == AppTheme.dark.name) return AppTheme.dark;
     return AppTheme.light;
   }

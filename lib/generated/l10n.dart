@@ -1079,6 +1079,46 @@ class S {
       args: [],
     );
   }
+
+  /// `There are no messages yet`
+  String get there_are_no_messages_yet {
+    return Intl.message(
+      'There are no messages yet',
+      name: 'there_are_no_messages_yet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Write your message`
+  String get write_your_message {
+    return Intl.message(
+      'Write your message',
+      name: 'write_your_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The image size is too large, the maximum allowed size is`
+  String get the_image_size_is_too_large_the_maximum_allowed_size_is_mp {
+    return Intl.message(
+      'The image size is too large, the maximum allowed size is',
+      name: 'the_image_size_is_too_large_the_maximum_allowed_size_is_mp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be more than the minimum length of characters`
+  String get must_be_more_than_minimum_number_of_characters {
+    return Intl.message(
+      'Password must be more than the minimum length of characters',
+      name: 'must_be_more_than_minimum_number_of_characters',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

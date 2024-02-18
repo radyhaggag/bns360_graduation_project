@@ -94,6 +94,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "map": MessageLookupByLibrary.simpleMessage("Map"),
         "min_ago": MessageLookupByLibrary.simpleMessage("min ago"),
         "mins_ago": m2,
+        "must_be_more_than_minimum_number_of_characters":
+            MessageLookupByLibrary.simpleMessage(
+                "Password must be more than the minimum length of characters"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("No craftsmen found!"),
@@ -151,6 +154,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "tap_to_rate": MessageLookupByLibrary.simpleMessage("Tap to Rate"),
         "terms_of_service":
             MessageLookupByLibrary.simpleMessage("Terms of service"),
+        "the_image_size_is_too_large_the_maximum_allowed_size_is_mp":
+            MessageLookupByLibrary.simpleMessage(
+                "The image size is too large, the maximum allowed size is"),
+        "there_are_no_messages_yet":
+            MessageLookupByLibrary.simpleMessage("There are no messages yet"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "validateEmail":
@@ -169,6 +177,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "view_reviews": MessageLookupByLibrary.simpleMessage("View reviews"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
         "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),
+        "write_your_message":
+            MessageLookupByLibrary.simpleMessage("Write your message"),
         "write_your_review":
             MessageLookupByLibrary.simpleMessage("Write your review")
       };

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/utils/enums/message_type.dart';
-import '../entities/participant_entity.dart';
+import '../../../../core/shared_data/entities/participant_entity.dart';
 
 class SendMessageParams extends Equatable {
   final String? conversationId;

@@ -1,12 +1,9 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/category_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
-import 'package:bns360_graduation_project/features/category_item/presentation/screens/category_item_review_summary_screen.dart';
-import 'package:bns360_graduation_project/features/map/presentation/bloc/map_bloc.dart';
-import 'package:bns360_graduation_project/features/map/presentation/screens/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../core/shared_data/entities/category_entity.dart';
 import '../core/shared_data/entities/category_item_entity.dart';
+import '../core/shared_data/entities/craftsman_entity.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
@@ -21,7 +18,11 @@ import '../features/categories/presentation/bloc/categories_bloc.dart';
 import '../features/categories/presentation/screens/categories_screen.dart';
 import '../features/categories/presentation/screens/category_items_screen.dart';
 import '../features/category_item/presentation/bloc/category_item_bloc.dart';
+import '../features/category_item/presentation/screens/category_item_review_summary_screen.dart';
 import '../features/category_item/presentation/screens/category_item_screen.dart';
+import '../features/conversations/domain/params/conversation_screen_params.dart';
+import '../features/conversations/presentation/bloc/conversations_bloc.dart';
+import '../features/conversations/presentation/screens/conversation_screen.dart';
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
 import '../features/crafts/presentation/screens/crafts_screen.dart';
 import '../features/craftsman/presentation/bloc/craftsman_bloc.dart';
@@ -32,6 +33,8 @@ import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 import '../features/map/domain/params/map_params.dart';
+import '../features/map/presentation/bloc/map_bloc.dart';
+import '../features/map/presentation/screens/map_screen.dart';
 import '../features/profile/presentation/bloc/profile_bloc.dart';
 import '../features/profile/presentation/screen/edit_profile_screen.dart';
 import '../features/settings/presentation/bloc/settings_bloc.dart';
@@ -62,6 +65,8 @@ abstract class Routes {
   static const craftsmanReviewSummary = '/craftsmanReviewSummary';
   static const categoryItems = '/categoryItems';
   static const map = '/map';
+  static const conversations = '/conversations';
+  static const conversation = '/conversation';
 }
 
 abstract class RouteConfig {
@@ -243,6 +248,16 @@ abstract class RouteConfig {
             create: (context) => sl<MapBloc>(),
             child: MapScreen(
               mapParams: settings.arguments as MapParams,
+            ),
+          ),
+        );
+      case Routes.conversation:
+        final params = settings.arguments as ConversationScreenParams;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<ConversationsBloc>(),
+            child: ConversationScreen(
+              conversationParams: params,
             ),
           ),
         );

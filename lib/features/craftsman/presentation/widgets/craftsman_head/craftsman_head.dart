@@ -23,7 +23,9 @@ class CraftsmanHead extends StatelessWidget {
       child: Stack(
         children: [
           const CraftsmanHeadBackground(),
-          const CraftsmanHeadActions(),
+          CraftsmanHeadActions(
+            craftsmanEntity: craftsmanEntity,
+          ),
           Container(
             margin: EdgeInsets.only(top: 50.h),
             child: CraftsmanMainCard(

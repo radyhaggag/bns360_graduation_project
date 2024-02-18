@@ -11,87 +11,87 @@ abstract class FirebaseErrorHandler {
       case FirebaseErrorCodes.aborted:
         return const Failure(
           FirebaseErrorCodes.aborted,
-          general.aborted,
+          FirebaseErrorMessages.aborted,
         );
       case FirebaseErrorCodes.alreadyExists:
         return const Failure(
           FirebaseErrorCodes.alreadyExists,
-          general.alreadyExists,
+          FirebaseErrorMessages.alreadyExists,
         );
       case FirebaseErrorCodes.cancelled:
         return const Failure(
           FirebaseErrorCodes.cancelled,
-          general.cancelled,
+          FirebaseErrorMessages.cancelled,
         );
       case FirebaseErrorCodes.dataLoss:
         return const Failure(
           FirebaseErrorCodes.dataLoss,
-          general.dataLoss,
+          FirebaseErrorMessages.dataLoss,
         );
       case FirebaseErrorCodes.deadlineExceeded:
         return const Failure(
           FirebaseErrorCodes.deadlineExceeded,
-          general.deadlineExceeded,
+          FirebaseErrorMessages.deadlineExceeded,
         );
       case FirebaseErrorCodes.failedPrecondition:
         return const Failure(
           FirebaseErrorCodes.failedPrecondition,
-          general.failedPrecondition,
+          FirebaseErrorMessages.failedPrecondition,
         );
       case FirebaseErrorCodes.internal:
         return const Failure(
           FirebaseErrorCodes.internal,
-          general.internal,
+          FirebaseErrorMessages.internal,
         );
       case FirebaseErrorCodes.invalidArgument:
         return const Failure(
           FirebaseErrorCodes.invalidArgument,
-          general.invalidArgument,
+          FirebaseErrorMessages.invalidArgument,
         );
       case FirebaseErrorCodes.notFound:
         return const Failure(
           FirebaseErrorCodes.notFound,
-          general.notFound,
+          FirebaseErrorMessages.notFound,
         );
       case FirebaseErrorCodes.ok:
         return const Failure(
           FirebaseErrorCodes.ok,
-          general.ok,
+          FirebaseErrorMessages.ok,
         );
       case FirebaseErrorCodes.outOfRange:
         return const Failure(
           FirebaseErrorCodes.outOfRange,
-          general.outOfRange,
+          FirebaseErrorMessages.outOfRange,
         );
       case FirebaseErrorCodes.permissionDenied:
         return const Failure(
           FirebaseErrorCodes.permissionDenied,
-          general.permissionDenied,
+          FirebaseErrorMessages.permissionDenied,
         );
       case FirebaseErrorCodes.resourceExhausted:
         return const Failure(
           FirebaseErrorCodes.resourceExhausted,
-          general.resourceExhausted,
+          FirebaseErrorMessages.resourceExhausted,
         );
       case FirebaseErrorCodes.unauthenticated:
         return const Failure(
           FirebaseErrorCodes.unauthenticated,
-          general.unauthenticated,
+          FirebaseErrorMessages.unauthenticated,
         );
       case FirebaseErrorCodes.unavailable:
         return const Failure(
           FirebaseErrorCodes.unavailable,
-          general.unavailable,
+          FirebaseErrorMessages.unavailable,
         );
       case FirebaseErrorCodes.unimplemented:
         return const Failure(
           FirebaseErrorCodes.unimplemented,
-          general.unimplemented,
+          FirebaseErrorMessages.unimplemented,
         );
       case FirebaseErrorCodes.unknown:
         return const Failure(
           FirebaseErrorCodes.unknown,
-          general.unknown,
+          FirebaseErrorMessages.unknown,
         );
       //* FIRESTORE SECTION END *//
 
@@ -100,77 +100,77 @@ abstract class FirebaseErrorHandler {
       case FirebaseErrorCodes.objectNotFoundError:
         return const Failure(
           FirebaseErrorCodes.objectNotFoundError,
-          general.objectNotFoundError,
+          FirebaseErrorMessages.objectNotFoundError,
         );
       case FirebaseErrorCodes.bucketNotFoundError:
         return const Failure(
           FirebaseErrorCodes.bucketNotFoundError,
-          general.bucketNotFoundError,
+          FirebaseErrorMessages.bucketNotFoundError,
         );
       case FirebaseErrorCodes.projectNotFoundError:
         return const Failure(
           FirebaseErrorCodes.projectNotFoundError,
-          general.projectNotFoundError,
+          FirebaseErrorMessages.projectNotFoundError,
         );
       case FirebaseErrorCodes.quotaExceededError:
         return const Failure(
           FirebaseErrorCodes.quotaExceededError,
-          general.quotaExceededError,
+          FirebaseErrorMessages.quotaExceededError,
         );
       case FirebaseErrorCodes.unauthenticatedError:
         return const Failure(
           FirebaseErrorCodes.unauthenticatedError,
-          general.unauthenticatedError,
+          FirebaseErrorMessages.unauthenticatedError,
         );
       case FirebaseErrorCodes.unauthorizedError:
         return const Failure(
           FirebaseErrorCodes.unauthorizedError,
-          general.unauthorizedError,
+          FirebaseErrorMessages.unauthorizedError,
         );
       case FirebaseErrorCodes.retryLimitExceededError:
         return const Failure(
           FirebaseErrorCodes.retryLimitExceededError,
-          general.retryLimitExceededError,
+          FirebaseErrorMessages.retryLimitExceededError,
         );
       case FirebaseErrorCodes.invalidChecksumError:
         return const Failure(
           FirebaseErrorCodes.invalidChecksumError,
-          general.invalidChecksumError,
+          FirebaseErrorMessages.invalidChecksumError,
         );
       case FirebaseErrorCodes.canceledError:
         return const Failure(
           FirebaseErrorCodes.canceledError,
-          general.canceledError,
+          FirebaseErrorMessages.canceledError,
         );
       case FirebaseErrorCodes.invalidEventNameError:
         return const Failure(
           FirebaseErrorCodes.invalidEventNameError,
-          general.invalidEventNameError,
+          FirebaseErrorMessages.invalidEventNameError,
         );
       case FirebaseErrorCodes.invalidUrlError:
         return const Failure(
           FirebaseErrorCodes.invalidUrlError,
-          general.invalidUrlError,
+          FirebaseErrorMessages.invalidUrlError,
         );
       case FirebaseErrorCodes.invalidArgumentError:
         return const Failure(
           FirebaseErrorCodes.invalidArgumentError,
-          general.invalidArgumentError,
+          FirebaseErrorMessages.invalidArgumentError,
         );
       case FirebaseErrorCodes.noDefaultBucketError:
         return const Failure(
           FirebaseErrorCodes.noDefaultBucketError,
-          general.noDefaultBucketError,
+          FirebaseErrorMessages.noDefaultBucketError,
         );
       case FirebaseErrorCodes.cannotSliceBlobError:
         return const Failure(
           FirebaseErrorCodes.cannotSliceBlobError,
-          general.cannotSliceBlobError,
+          FirebaseErrorMessages.cannotSliceBlobError,
         );
       case FirebaseErrorCodes.serverFileWrongSizeError:
         return const Failure(
           FirebaseErrorCodes.serverFileWrongSizeError,
-          general.serverFileWrongSizeError,
+          FirebaseErrorMessages.serverFileWrongSizeError,
         );
 
       //* CLOUD STORAGE SECTION END *//
@@ -178,7 +178,7 @@ abstract class FirebaseErrorHandler {
       default:
         return const Failure(
           FirebaseErrorCodes.unexpectedError,
-          general.unexpectedError,
+          FirebaseErrorMessages.unexpectedError,
         );
     }
   }

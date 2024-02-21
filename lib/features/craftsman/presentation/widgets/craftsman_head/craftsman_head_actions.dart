@@ -30,6 +30,7 @@ class CraftsmanHeadActions extends StatelessWidget {
                   nameEN: craftsmanEntity.name,
                   nameAR: craftsmanEntity.name,
                   imageUrl: craftsmanEntity.imageUrl,
+                  userType: UserType.serviceProvider.id,
                 ),
               );
               Navigator.of(context).pushNamed(

@@ -10,7 +10,9 @@ abstract class ConversationsEvent extends Equatable {
 class SendMessageEvent extends ConversationsEvent {
   final SendMessageParams sendMessageParams;
 
-  const SendMessageEvent({required this.sendMessageParams});
+  const SendMessageEvent({
+    required this.sendMessageParams,
+  });
 
   @override
   List<Object> get props => [sendMessageParams];
@@ -31,9 +33,9 @@ class CheckIfConversationExistEvent extends ConversationsEvent {
 }
 
 class GetConversationMessagesEvent extends ConversationsEvent {
-  final ConversationEntity conversationEntity;
+  final String conversationId;
 
-  const GetConversationMessagesEvent({required this.conversationEntity});
+  const GetConversationMessagesEvent({required this.conversationId});
 }
 
 class UpdateConversationMessagesEvent extends ConversationsEvent {

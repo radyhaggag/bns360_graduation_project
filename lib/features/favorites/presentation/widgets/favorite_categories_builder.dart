@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -54,6 +55,12 @@ class FavoriteCategoriesBuilder extends StatelessWidget {
               isFavorite: true,
               onFavoriteIconPressed: () {},
               useSetStateToChangeFavoriteColor: true,
+              onPressed: () {
+                Navigator.of(context).pushNamed(
+                  Routes.categoryItem,
+                  arguments: item,
+                );
+              },
             ),
             scrollDirection: Axis.vertical,
             width: context.width,

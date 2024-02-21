@@ -1,10 +1,10 @@
 import 'package:bns360_graduation_project/core/firebase/firestore_manager.dart';
+import 'package:bns360_graduation_project/core/helpers/chat_params_helper.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/participant_entity.dart';
+import 'package:bns360_graduation_project/core/shared_data/models/participant_model.dart';
 import 'package:bns360_graduation_project/features/conversations/data/models/conversation_model.dart';
 import 'package:bns360_graduation_project/features/conversations/data/models/message_model.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/participant_model.dart';
 import 'package:bns360_graduation_project/features/conversations/data/models/unread_count_model.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/participant_entity.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/entities/conversation_entity.dart';
 import 'package:bns360_graduation_project/features/conversations/domain/params/send_message_params.dart';
 
 import '../../../../../core/firebase/firestore_collections.dart';
@@ -14,9 +14,12 @@ import 'conversations_remote_data_source.dart';
 class ConversationsRemoteDataSourceImpl
     implements ConversationsRemoteDataSource {
   final currentParticipant = ParticipantModel.currentParticipant();
+  final currentUserId = ParticipantModel.currentParticipant().id;
 
   @override
-  Future<void> sendMessage(SendMessageParams sendMessageParams) async {
+  Future<String?> sendMessage(
+    SendMessageParams sendMessageParams,
+  ) async {
     final message = MessageModel(
       senderId: currentParticipant.id,
       type: sendMessageParams.messageType,
@@ -24,30 +27,67 @@ class ConversationsRemoteDataSourceImpl
       date: DateTime.now(),
     );
 
-    String? conversationId = sendMessageParams.conversationId;
-
-    conversationId ??= await _createConversation(
-      message,
-      sendMessageParams.otherParticipant,
+    String conversationId = ChatParamsHelper.conversationId(
+      otherId: sendMessageParams.otherParticipant.id,
+      otherUserType: sendMessageParams.otherParticipant.userType,
     );
 
     final ref = FirestoreCollections.messages(conversationId);
+
+    if (sendMessageParams.isFirstMsg) {
+      await _createConversation(
+        message,
+        sendMessageParams.otherParticipant,
+      );
+    }
 
     await FirestoreManager.addDoc(
       reference: ref,
       data: message.toMap(),
     );
+
+    if (!sendMessageParams.isFirstMsg) {
+      final doc =
+          await FirestoreCollections.conversationDoc(conversationId).get();
+      ConversationModel conversation = ConversationModel.fromMap(
+        doc.data()! as Map<String, dynamic>,
+      );
+      final currentUnreadCount = _currentUnread(conversation.unreadCount);
+      final otherUnreadCount = _otherUnread(conversation.unreadCount);
+      conversation = conversation.copyWith(
+        lastMessage: message,
+        unreadCount: [
+          currentUnreadCount,
+          otherUnreadCount.copyWith(otherUnreadCount.count + 1),
+        ],
+      );
+      await FirestoreManager.updateDoc(
+        reference: FirestoreCollections.conversations,
+        data: conversation.updateToMap(),
+        docPath: conversation.id,
+      );
+    }
+
+    return conversationId;
   }
 
-  Future<String> _createConversation(
+  Future<ConversationModel> _createConversation(
     MessageModel message,
     ParticipantEntity otherParticipant,
   ) async {
-    final conversationId = FirestoreCollections.conversations.doc().id;
+    final participantIds = [currentParticipant.id, otherParticipant.id];
+    final model = await checkIfConversationExist(otherParticipant.id);
+
+    if (model != null) return model;
+
+    String conversationId = ChatParamsHelper.conversationId(
+      otherId: otherParticipant.id,
+      otherUserType: otherParticipant.userType,
+    );
 
     final conversation = ConversationModel(
       id: conversationId,
-      participantIds: [currentParticipant.id, otherParticipant.id],
+      participantIds: participantIds,
       participants: [currentParticipant, otherParticipant],
       lastMessage: message,
       unreadCount: [
@@ -60,12 +100,11 @@ class ConversationsRemoteDataSourceImpl
       conversation.toMap(),
     );
 
-    return conversationId;
+    return conversation;
   }
 
   @override
   Stream<List<ConversationModel>> getConversations() {
-    final currentUserId = ParticipantModel.currentParticipant().id;
     final snapshots = FirestoreCollections.conversations
         .where('participantIds', arrayContains: currentUserId)
         .snapshots();
@@ -82,15 +121,15 @@ class ConversationsRemoteDataSourceImpl
 
   @override
   Future<Stream<List<MessageModel>>> getConversationMessages(
-    ConversationEntity conversationEntity,
+    String conversationId,
   ) async {
-    final ref = FirestoreCollections.messages(conversationEntity.id);
+    final ref = FirestoreCollections.messages(conversationId);
     final query = ref.orderBy('date', descending: true);
 
-    updateUnreadIfRequired(
-      conversationEntity.unreadCount,
-      conversationEntity.id,
-    );
+    // updateUnreadIfRequired(
+    //   conversationEntity.unreadCount,
+    //   conversationEntity.id,
+    // );
 
     return query.snapshots().map((event) {
       final messages = event.docs.map((e) {
@@ -113,7 +152,6 @@ class ConversationsRemoteDataSourceImpl
   Future<ConversationModel?> _getConversation(
     String otherParticipantId,
   ) async {
-    final currentUserId = ParticipantModel.currentParticipant().id;
     final collection = await FirestoreCollections.conversations.where(
       'participantIds',
       arrayContains: [
@@ -131,26 +169,38 @@ class ConversationsRemoteDataSourceImpl
     }
   }
 
-  Future<void> updateUnreadIfRequired(
+  Future<void> _updateUnreadCount(
     List<UnreadCountEntity> unreadCounts,
     String conversationId,
+    int currentCount,
+    int otherCount,
   ) async {
-    final currentUserId = ParticipantModel.currentParticipant().id;
-
-    final index = unreadCounts.indexWhere(
+    final currentIdx = unreadCounts.indexWhere(
       (model) => model.userId == currentUserId,
     );
+    final otherIdx = currentIdx == 0 ? 1 : 0;
 
-    final currentCount = unreadCounts[index].count;
+    unreadCounts[currentIdx] = unreadCounts[currentIdx].copyWith(currentCount);
+    unreadCounts[otherIdx] = unreadCounts[otherIdx].copyWith(otherCount);
 
-    if (currentCount > 0) {
-      unreadCounts[index] = unreadCounts[index].copyWith(0);
+    final doc = FirestoreCollections.conversationDoc(conversationId);
 
-      final doc = FirestoreCollections.conversationDoc(conversationId);
+    await doc.update({
+      'unreadCount': unreadCounts.map((e) => e.toMap()).toList(),
+    });
+  }
 
-      await doc.update({
-        'unreadCount': unreadCounts.map((e) => e.toMap()).toList(),
-      });
-    }
+  UnreadCountEntity _currentUnread(List<UnreadCountEntity> unreadCounts) {
+    final data = unreadCounts.firstWhere(
+      (model) => model.userId == currentUserId,
+    );
+    return data;
+  }
+
+  UnreadCountEntity _otherUnread(List<UnreadCountEntity> unreadCounts) {
+    final data = unreadCounts.firstWhere(
+      (model) => model.userId != currentUserId,
+    );
+    return data;
   }
 }

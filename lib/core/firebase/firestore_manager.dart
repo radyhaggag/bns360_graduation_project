@@ -47,6 +47,20 @@ abstract class FirestoreManager {
     await ref.doc(docPath).set(data);
   }
 
+  static Future<void> updateDoc({
+    String? collection,
+    required String docPath,
+    required Map<String, dynamic> data,
+    CollectionReference? reference,
+  }) async {
+    assert(
+      reference != null || collection != null,
+      'At least one parameter must not be null.',
+    );
+    final ref = reference ?? db.collection(collection!);
+    await ref.doc(docPath).update(data);
+  }
+
   static Future<void> addDoc({
     String? collection,
     required Map<String, dynamic> data,
@@ -71,6 +85,7 @@ abstract class FirestoreManager {
         .collection(collection)
         .where('userId', isEqualTo: userId)
         .get();
+
     return querySnapshot.docs;
   }
 }

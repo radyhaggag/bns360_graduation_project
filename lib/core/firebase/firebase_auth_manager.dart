@@ -2,6 +2,7 @@
 import 'package:bns360_graduation_project/core/helpers/execute_and_handle_error.dart';
 import 'package:bns360_graduation_project/core/shared_data/models/profile/profile_model.dart';
 import 'package:bns360_graduation_project/core/utils/custom_types.dart';
+import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -36,6 +37,7 @@ abstract class FirebaseAuthManager {
         name: email.split("@").first,
         email: email,
         imageUrl: dummyImageUrl,
+        userType: UserType.user.id,
       );
       await profileModel.saveToCache();
       return user;
@@ -77,6 +79,7 @@ abstract class FirebaseAuthManager {
         name: userCredential.user?.displayName ?? "Anonymous",
         email: userCredential.user?.email ?? "anonymous@gmail.com",
         imageUrl: dummyImageUrl,
+        userType: UserType.user.id,
       );
 
       await users.doc(userCredential.user!.uid).set({

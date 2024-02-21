@@ -6,6 +6,7 @@ class ProfileModel extends ProfileEntity {
     required super.id,
     required super.email,
     required super.name,
+    required super.userType,
     super.imageUrl,
   });
 
@@ -15,6 +16,7 @@ class ProfileModel extends ProfileEntity {
       'name': name,
       'email': email,
       'image_url': imageUrl,
+      'userType': userType,
     };
   }
 
@@ -23,7 +25,8 @@ class ProfileModel extends ProfileEntity {
       id: map['id'] as String,
       name: map['name'] as String,
       email: map['email'] as String,
-      imageUrl: map['image_url'] as String,
+      imageUrl: map['image_url'] as String?,
+      userType: map['userType'] as int,
     );
   }
 

@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       body: BlocListener<SplashBloc, SplashState>(
         listener: (context, state) {
           if (state is UserLoggedInState) {
-            _navigateToNext(context, Routes.home);
+            _navigateToNext(context, Routes.bottomNavBar);
           }
           if (state is UserNotLoggedInState) {
             _navigateToNext(context, Routes.welcome);

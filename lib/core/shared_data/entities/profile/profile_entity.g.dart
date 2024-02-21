@@ -20,6 +20,7 @@ class ProfileEntityAdapter extends TypeAdapter<ProfileEntity> {
       id: fields[0] as String,
       email: fields[1] as String,
       name: fields[2] as String,
+      userType: fields[4] as int,
       imageUrl: fields[3] as String?,
     );
   }
@@ -27,7 +28,7 @@ class ProfileEntityAdapter extends TypeAdapter<ProfileEntity> {
   @override
   void write(BinaryWriter writer, ProfileEntity obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class ProfileEntityAdapter extends TypeAdapter<ProfileEntity> {
       ..writeByte(2)
       ..write(obj.name)
       ..writeByte(3)
-      ..write(obj.imageUrl);
+      ..write(obj.imageUrl)
+      ..writeByte(4)
+      ..write(obj.userType);
   }
 
   @override

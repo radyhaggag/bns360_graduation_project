@@ -12,8 +12,8 @@ class ConversationsRepoImpl implements ConversationsRepo {
   ConversationsRepoImpl(this.conversationsRemoteDataSource);
 
   @override
-  FutureEither<void> sendMessage(SendMessageParams sendMessageParams) async {
-    return executeAndHandleErrorAsync(() {
+  FutureEither<String?> sendMessage(SendMessageParams sendMessageParams) async {
+    return executeAndHandleErrorAsync<String?>(() {
       return conversationsRemoteDataSource.sendMessage(sendMessageParams);
     });
   }
@@ -37,11 +37,11 @@ class ConversationsRepoImpl implements ConversationsRepo {
 
   @override
   FutureEither<Stream<List<MessageEntity>>> getConversationMessages(
-    ConversationEntity conversationEntity,
+    String conversationId,
   ) {
     return executeAndHandleErrorAsync(() {
       return conversationsRemoteDataSource.getConversationMessages(
-        conversationEntity,
+        conversationId,
       );
     });
   }

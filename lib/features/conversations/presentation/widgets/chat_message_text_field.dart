@@ -12,7 +12,7 @@ class ChatMessageTextField extends StatefulWidget {
     this.onChange,
   });
 
-  final Future<bool> Function(String message)? onPressSendIcon;
+  final Function(String message)? onPressSendIcon;
   final VoidCallback? onPressPrefixIcon;
   final Function(String text)? onChange;
 
@@ -52,6 +52,7 @@ class ChatMessageTextFieldState extends State<ChatMessageTextField> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 key: overlayAnchorKey,
@@ -59,11 +60,11 @@ class ChatMessageTextFieldState extends State<ChatMessageTextField> {
                 margin: EdgeInsetsDirectional.only(
                   top: 8.h,
                   bottom: 8.h,
-                  start: 18.w,
+                  start: 15.w,
                 ),
                 decoration: BoxDecoration(
                   color: Theme.of(context).listTileTheme.tileColor,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(50),
                 ),
                 width: 1.sw - 18.w - (44.r + 18.w + 8.w),
                 child: Stack(

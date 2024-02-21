@@ -17,10 +17,14 @@ class ProfileEntity extends HiveObject with EquatableMixin {
   @HiveField(3)
   final String? imageUrl;
 
+  @HiveField(4)
+  final int userType;
+
   ProfileEntity({
     required this.id,
     required this.email,
     required this.name,
+    required this.userType,
     this.imageUrl,
   });
 
@@ -29,12 +33,14 @@ class ProfileEntity extends HiveObject with EquatableMixin {
     String? name,
     String? email,
     String? imageUrl,
+    int? userType,
   }) {
     return ProfileEntity(
       id: id ?? this.id,
       name: name ?? this.name,
       email: email ?? this.email,
       imageUrl: imageUrl ?? this.imageUrl,
+      userType: userType ?? this.userType,
     );
   }
 

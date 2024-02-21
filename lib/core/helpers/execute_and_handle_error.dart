@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:bns360_graduation_project/core/utils/main_logger.dart';
 import 'package:dartz/dartz.dart';
 
 import '../errors/error_handler.dart';
@@ -13,7 +12,7 @@ Future<ResultOrFailure<T>> executeAndHandleErrorAsync<T>(
     return Right(result);
   } catch (e) {
     final failure = ErrorHandler.handle(e).failure;
-    log(e.toString());
+    logger.e(e);
     return Left(failure);
   }
 }
@@ -26,7 +25,7 @@ ResultOrFailure<T> executeAndHandleError<T>(
     return Right(result);
   } catch (e) {
     final failure = ErrorHandler.handle(e).failure;
-    log(e.toString());
+    logger.e(e);
     return Left(failure);
   }
 }

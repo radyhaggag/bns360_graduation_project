@@ -11,35 +11,32 @@ class SendMessageIconBtn extends StatelessWidget {
     required this.textEditingController,
   });
 
-  final Future<bool> Function(String)? onPressSendIcon;
+  final Function(String)? onPressSendIcon;
   final TextEditingController textEditingController;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        bool isDone =
-            await onPressSendIcon?.call(textEditingController.text) ?? false;
-        if (isDone) {
-          textEditingController.clear();
-        }
+        onPressSendIcon?.call(textEditingController.text);
+        textEditingController.clear();
       },
       child: Container(
         height: 44.r,
         width: 44.r,
         alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: textEditingController.text.isEmpty
-              ? AppColors.light
-              : AppColors.lightBackground,
-          borderRadius: BorderRadius.circular(8.r),
-        ),
+        // decoration: BoxDecoration(
+        //   color: textEditingController.text.isEmpty
+        //       ? AppColors.light
+        //       : AppColors.lightBackground,
+        //   borderRadius: BorderRadius.circular(8.r),
+        // ),
         child: Center(
           child: SvgPicture.asset(
             AppSvg.sendArrow,
             color: AppColors.white,
-            width: 24.r,
-            height: 24.r,
+            width: 30.r,
+            height: 30.r,
           ),
         ),
       ),

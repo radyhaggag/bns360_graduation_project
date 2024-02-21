@@ -5,12 +5,14 @@ class ParticipantEntity extends Equatable {
   final String? imageUrl;
   final String? nameAR;
   final String? nameEN;
+  final int userType;
 
   const ParticipantEntity({
     required this.id,
     this.imageUrl,
     this.nameAR,
     this.nameEN,
+    required this.userType,
   });
 
   @override

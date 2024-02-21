@@ -43,7 +43,9 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
 
     res.fold(
       (l) => emit(SendMessageErrorState(message: l.message)),
-      (r) => SendMessageSuccessState(),
+      (r) {
+        emit(SendMessageSuccessState());
+      },
     );
   }
 
@@ -90,9 +92,10 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
       (l) => emit(const ConversationExistsState(isExist: false)),
       (r) {
         if (r != null) {
-          add(GetConversationMessagesEvent(conversationEntity: r));
+          add(GetConversationMessagesEvent(conversationId: r.id));
         } else {
           _isInitialized = true;
+          _currentConversation = r;
           emit(GetConversationMessagesSuccessState(messages: messages));
         }
         // emit(ConversationExistsState(isExist: r != null));
@@ -112,7 +115,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     emit(GetConversationMessagesLoadingState());
 
     final res = await conversationsRepo.getConversationMessages(
-      event.conversationEntity,
+      event.conversationId,
     );
 
     _isInitialized = true;

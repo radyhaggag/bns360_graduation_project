@@ -31,3 +31,14 @@ class MessageModel extends MessageEntity {
     };
   }
 }
+
+extension MessageEntityToMap on MessageEntity {
+  Map<String, dynamic> toMap() {
+    return {
+      'senderId': senderId,
+      'type': type.value,
+      'content': content,
+      'date': Timestamp.fromDate(date),
+    };
+  }
+}

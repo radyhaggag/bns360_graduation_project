@@ -4,10 +4,10 @@ import '../entities/message_entity.dart';
 import '../params/send_message_params.dart';
 
 abstract class ConversationsRepo {
-  FutureEither<void> sendMessage(SendMessageParams sendMessageParams);
+  FutureEither<String?> sendMessage(SendMessageParams sendMessageParams);
   ResultOrFailure<Stream<List<ConversationEntity>>> getConversations();
   FutureEither<Stream<List<MessageEntity>>> getConversationMessages(
-    ConversationEntity conversationEntity,
+    String conversationId,
   );
   FutureEither<ConversationEntity?> checkIfConversationExist(
     String otherParticipantId,

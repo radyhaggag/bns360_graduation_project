@@ -1,7 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
-import 'message_entity.dart';
 import '../../../../core/shared_data/entities/participant_entity.dart';
+import 'message_entity.dart';
 import 'unread_count_entity.dart';
 
 class ConversationEntity extends Equatable {
@@ -27,4 +28,20 @@ class ConversationEntity extends Equatable {
         unreadCount,
         lastMessage,
       ];
+
+  ConversationEntity copyWith({
+    String? id,
+    List<ParticipantEntity>? participants,
+    List<String>? participantIds,
+    MessageEntity? lastMessage,
+    List<UnreadCountEntity>? unreadCount,
+  }) {
+    return ConversationEntity(
+      id: id ?? this.id,
+      participants: participants ?? this.participants,
+      participantIds: participantIds ?? this.participantIds,
+      lastMessage: lastMessage ?? this.lastMessage,
+      unreadCount: unreadCount ?? this.unreadCount,
+    );
+  }
 }

@@ -1,11 +1,12 @@
 import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 
-import '../entities/profile/profile_entity.dart';
 import '../entities/participant_entity.dart';
+import '../entities/profile/profile_entity.dart';
 
 class ParticipantModel extends ParticipantEntity {
   const ParticipantModel({
     required super.id,
+    required super.userType,
     super.nameAR,
     super.nameEN,
     super.imageUrl,
@@ -17,6 +18,7 @@ class ParticipantModel extends ParticipantEntity {
       nameEN: map['nameEN'] as String?,
       nameAR: map['nameAR'] as String?,
       imageUrl: map['imageUrl'] as String?,
+      userType: map['userType'] as int,
     );
   }
 
@@ -26,6 +28,7 @@ class ParticipantModel extends ParticipantEntity {
       'nameAR': nameAR,
       'nameEN': nameEN,
       'imageUrl': imageUrl,
+      'userType': userType,
     };
   }
 
@@ -42,6 +45,7 @@ extension ParticipantEntityToMap on ParticipantEntity {
       'nameAR': nameAR,
       'nameEN': nameEN,
       'imageUrl': imageUrl,
+      'userType': userType,
     };
   }
 }
@@ -53,6 +57,7 @@ extension ProfileEntityToParticipant on ProfileEntity {
       nameEN: name,
       nameAR: name,
       imageUrl: imageUrl,
+      userType: userType,
     );
   }
 }

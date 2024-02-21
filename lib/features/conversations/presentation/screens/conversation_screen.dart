@@ -1,15 +1,11 @@
+import 'package:bns360_graduation_project/core/helpers/chat_params_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/utils/main_logger.dart';
-import '../../../../core/widgets/data_state_widget.dart';
-import '../../../../core/widgets/empty_card.dart';
-import '../../../../generated/l10n.dart';
 import '../../domain/params/conversation_screen_params.dart';
 import '../bloc/conversations_bloc.dart';
-import '../widgets/chat_message_text_field.dart';
 import '../widgets/conversation_screen_app_bar.dart';
-import '../widgets/messages/messages_builder.dart';
+import '../widgets/conversation_screen_body.dart';
 
 class ConversationScreen extends StatefulWidget {
   const ConversationScreen({
@@ -32,18 +28,13 @@ class _ConversationScreenState extends State<ConversationScreen> {
     conversationsBloc = context.read<ConversationsBloc>();
 
     final params = widget.conversationParams;
-
-    logger.i(params);
-
-    if (params.conversation == null) {
-      conversationsBloc.add(CheckIfConversationExistEvent(
-        participantId: params.participantEntity.id,
-      ));
-    } else {
-      conversationsBloc.add(GetConversationMessagesEvent(
-        conversationEntity: params.conversation!,
-      ));
-    }
+    final conversationId = ChatParamsHelper.conversationId(
+      otherId: params.participantEntity.id,
+      otherUserType: params.participantEntity.userType,
+    );
+    conversationsBloc.add(GetConversationMessagesEvent(
+      conversationId: conversationId,
+    ));
   }
 
   @override
@@ -59,54 +50,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
       appBar: ConversationsScreenAppBar(
         otherParticipant: widget.conversationParams.participantEntity,
       ),
-      body: BlocConsumer<ConversationsBloc, ConversationsState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          final bloc = context.read<ConversationsBloc>();
-          final errorMsg =
-              (state is GetConversationMessagesErrorState) ? state.message : "";
-          return DataStateWidget(
-            isError: state is GetConversationMessagesErrorState,
-            errorMessage: errorMsg,
-            isLoaded: bloc.isInitialized,
-            isLoading: !bloc.isInitialized,
-            loadedWidget: Column(
-              children: [
-                Expanded(
-                  child: bloc.messages.isEmpty
-                      ? const _EmptyWidget()
-                      : const MessagesBuilder(),
-                ),
-                const ChatMessageTextField(),
-              ],
-            ),
-          );
-        },
+      body: ConversationScreenBody(
+        conversationParams: widget.conversationParams,
       ),
     );
-  }
-}
-
-class _EmptyWidget extends StatelessWidget {
-  const _EmptyWidget();
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: EmptyCard(
-        title: S.of(context).there_are_no_messages_yet,
-      ),
-    );
-  }
-}
-
-class LoadedWidget extends StatelessWidget {
-  const LoadedWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

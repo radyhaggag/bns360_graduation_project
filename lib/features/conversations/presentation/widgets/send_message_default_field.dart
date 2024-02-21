@@ -18,7 +18,6 @@ class SendMessageDefaultField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      key: const ValueKey('default'),
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         if (onPressPrefixIcon != null)
@@ -51,8 +50,6 @@ class SendMessageDefaultField extends StatelessWidget {
               border: withOutBorder,
               focusedBorder: withOutBorder,
               enabledBorder: withOutBorder,
-              errorBorder: withOutBorder,
-              focusedErrorBorder: withOutBorder,
               prefixIconConstraints: BoxConstraints(
                 maxHeight: 16.r,
                 maxWidth: 11.r,

@@ -46,6 +46,7 @@ class _ConversationScreenBodyState extends State<ConversationScreenBody> {
               ),
               ChatMessageTextField(
                 onPressSendIcon: _sendMessage,
+                onSuffixIconPressed: () => bloc.add(PicKMessageImageEvent()),
               ),
             ],
           ),

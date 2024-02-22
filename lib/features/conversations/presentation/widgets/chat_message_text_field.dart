@@ -8,12 +8,12 @@ class ChatMessageTextField extends StatefulWidget {
   const ChatMessageTextField({
     super.key,
     this.onPressSendIcon,
-    this.onPressPrefixIcon,
+    this.onSuffixIconPressed,
     this.onChange,
   });
 
   final Function(String message)? onPressSendIcon;
-  final VoidCallback? onPressPrefixIcon;
+  final VoidCallback? onSuffixIconPressed;
   final Function(String text)? onChange;
 
   @override
@@ -73,7 +73,7 @@ class ChatMessageTextFieldState extends State<ChatMessageTextField> {
                       duration: const Duration(milliseconds: 300),
                       child: SendMessageDefaultField(
                         textEditingController: textEditingController,
-                        onPressPrefixIcon: widget.onPressPrefixIcon,
+                        onSuffixIconPressed: widget.onSuffixIconPressed,
                       ),
                     ),
                   ],

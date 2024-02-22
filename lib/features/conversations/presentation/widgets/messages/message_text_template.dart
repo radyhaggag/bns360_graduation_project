@@ -24,10 +24,10 @@ class MessageTextTemplate extends StatelessWidget {
         decoration: BoxDecoration(
           color: isFromMe ? AppColors.primary : AppColors.light,
           borderRadius: BorderRadiusDirectional.only(
-            topEnd: Radius.circular(10.r),
-            topStart: Radius.circular(10.r),
-            bottomEnd: Radius.circular(isFromMe ? 4.r : 10.r),
-            bottomStart: Radius.circular(isFromMe ? 10.r : 4.r),
+            bottomEnd: Radius.circular(10.r),
+            bottomStart: Radius.circular(10.r),
+            topEnd: Radius.circular(isFromMe ? 0.r : 10.r),
+            topStart: Radius.circular(isFromMe ? 10.r : 0.r),
           ),
         ),
         child: Column(

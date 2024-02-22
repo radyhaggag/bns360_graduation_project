@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,19 +11,22 @@ class MessagesBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ConversationsBloc, ConversationsState>(
-      builder: (context, state) {
-        final bloc = context.read<ConversationsBloc>();
-        return MainListViewBuilder(
-          list: bloc.messages,
-          itemWidget: (message) {
-            return ChatMessageItem(
-              message: message,
-            );
-          },
-          scrollDirection: Axis.vertical,
-        );
-      },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      child: BlocBuilder<ConversationsBloc, ConversationsState>(
+        builder: (context, state) {
+          final bloc = context.read<ConversationsBloc>();
+          return MainListViewBuilder(
+            list: bloc.messages,
+            itemWidget: (message) {
+              return ChatMessageItem(
+                message: message,
+              );
+            },
+            scrollDirection: Axis.vertical,
+          );
+        },
+      ),
     );
   }
 }

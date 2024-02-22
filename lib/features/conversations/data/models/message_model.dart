@@ -5,19 +5,21 @@ import '../../domain/entities/message_entity.dart';
 
 class MessageModel extends MessageEntity {
   const MessageModel({
-    super.id,
     required super.senderId,
     required super.type,
-    required super.content,
     required super.date,
+    super.id,
+    super.content,
+    super.imageUrl,
   });
 
   factory MessageModel.fromMap(Map<String, dynamic> map) {
     return MessageModel(
       id: map['id'] as String?,
       senderId: map['senderId'] as String,
-      type: MessageType.fromTypeText(map['type'] as String),
-      content: map['content'] as String,
+      type: MessageType.parse(map['type'] as int),
+      content: map['content'] as String?,
+      imageUrl: map['imageUrl'] as String?,
       date: (map['date'] as Timestamp).toDate(),
     );
   }
@@ -25,8 +27,9 @@ class MessageModel extends MessageEntity {
   Map<String, dynamic> toMap() {
     return {
       'senderId': senderId,
-      'type': type.value,
+      'type': type.id,
       'content': content,
+      'imageUrl': imageUrl,
       'date': Timestamp.fromDate(date),
     };
   }
@@ -36,8 +39,9 @@ extension MessageEntityToMap on MessageEntity {
   Map<String, dynamic> toMap() {
     return {
       'senderId': senderId,
-      'type': type.value,
+      'type': type.id,
       'content': content,
+      'imageUrl': imageUrl,
       'date': Timestamp.fromDate(date),
     };
   }

@@ -27,7 +27,8 @@ class ConversationsRepoImpl implements ConversationsRepo {
 
   @override
   FutureEither<ConversationEntity?> checkIfConversationExist(
-      String otherParticipantId) {
+    String otherParticipantId,
+  ) {
     return executeAndHandleErrorAsync<ConversationEntity?>(() {
       return conversationsRemoteDataSource.checkIfConversationExist(
         otherParticipantId,
@@ -42,6 +43,17 @@ class ConversationsRepoImpl implements ConversationsRepo {
     return executeAndHandleErrorAsync(() {
       return conversationsRemoteDataSource.getConversationMessages(
         conversationId,
+      );
+    });
+  }
+
+  @override
+  FutureEither<void> resetUnreadCountForCurrentUser(
+    ConversationEntity conversation,
+  ) async {
+    return executeAndHandleErrorAsync(() {
+      return conversationsRemoteDataSource.resetUnreadCountForCurrentUser(
+        conversation,
       );
     });
   }

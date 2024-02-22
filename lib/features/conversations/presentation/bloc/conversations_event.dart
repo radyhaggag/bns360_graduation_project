@@ -45,3 +45,7 @@ class UpdateConversationMessagesEvent extends ConversationsEvent {
 }
 
 class ClearCurrentSessionEvent extends ConversationsEvent {}
+
+class PicKMessageImageEvent extends ConversationsEvent {}
+
+class RemovePickedImageEvent extends ConversationsEvent {}

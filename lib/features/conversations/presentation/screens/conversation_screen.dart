@@ -48,7 +48,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).listTileTheme.tileColor,
       appBar: ConversationsScreenAppBar(
-        otherParticipant: widget.conversationParams.participantEntity,
+        conversationParams: widget.conversationParams,
       ),
       body: ConversationScreenBody(
         conversationParams: widget.conversationParams,

@@ -12,4 +12,7 @@ abstract class ConversationsRepo {
   FutureEither<ConversationEntity?> checkIfConversationExist(
     String otherParticipantId,
   );
+  FutureEither<void> resetUnreadCountForCurrentUser(
+    ConversationEntity conversation,
+  );
 }

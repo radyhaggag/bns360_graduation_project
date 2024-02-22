@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../extensions/media_query.dart';
 
 class CenterProgressIndicator extends StatelessWidget {
-  const CenterProgressIndicator({super.key, this.color});
+  const CenterProgressIndicator({super.key, this.color, this.value});
 
   final Color? color;
+  final double? value;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class CenterProgressIndicator extends StatelessWidget {
       alignment: Alignment.center,
       child: CircularProgressIndicator(
         color: color,
+        value: value,
       ),
     );
   }

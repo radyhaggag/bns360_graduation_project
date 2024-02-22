@@ -1,19 +1,22 @@
 enum MessageType {
-  text("Text"),
-  image("Image");
+  text(0),
+  image(1),
+  textAndImage(2);
 
-  const MessageType(this.value);
+  const MessageType(this.id);
 
-  final String value;
+  final int id;
 
-  static MessageType fromTypeText(String typeText) {
-    switch (typeText.toLowerCase()) {
-      case 'text':
+  static MessageType parse(int id) {
+    switch (id) {
+      case 0:
         return MessageType.text;
-      case 'image':
+      case 1:
+        return MessageType.image;
+      case 2:
         return MessageType.image;
       default:
-        throw ArgumentError('Unknown message type: $typeText');
+        throw ArgumentError('Unknown message type with id: $id');
     }
   }
 }

@@ -1,14 +1,14 @@
-import 'package:bns360_graduation_project/core/utils/enums/message_type.dart';
-import 'package:bns360_graduation_project/core/widgets/data_state_widget.dart';
-import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/params/conversation_screen_params.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/params/send_message_params.dart';
-import 'package:bns360_graduation_project/features/conversations/presentation/bloc/conversations_bloc.dart';
-import 'package:bns360_graduation_project/features/conversations/presentation/widgets/chat_message_text_field.dart';
-import 'package:bns360_graduation_project/features/conversations/presentation/widgets/messages/messages_builder.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/widgets/data_state_widget.dart';
+import '../../../../core/widgets/empty_card.dart';
+import '../../../../generated/l10n.dart';
+import '../../domain/params/conversation_screen_params.dart';
+import '../../domain/params/send_message_params.dart';
+import '../bloc/conversations_bloc.dart';
+import 'chat_message_text_field.dart';
+import 'messages/messages_builder.dart';
 
 class ConversationScreenBody extends StatefulWidget {
   const ConversationScreenBody({
@@ -59,7 +59,6 @@ class _ConversationScreenBodyState extends State<ConversationScreenBody> {
     bloc.add(SendMessageEvent(
       sendMessageParams: SendMessageParams(
         content: content,
-        messageType: MessageType.text,
         otherParticipant: widget.conversationParams.participantEntity,
         isFirstMsg: bloc.messages.isEmpty,
         unreadCountEntity: bloc.currentConversation?.unreadCount,

@@ -47,4 +47,30 @@ abstract class DateFormatter {
     final formattedDate = DateFormat('d MMM yyyy').format(parsedDate);
     return formattedDate;
   }
+
+  /// get the date with time in 12 hour format and with morning/evening
+  static String getDateWithTime12HourMorningOrEvening({
+    required BuildContext context,
+    required DateTime date,
+    bool justTime = false,
+  }) {
+    final am = S.of(context).am;
+    final pm = S.of(context).pm;
+    final hour = date.hour;
+    final minute = date.minute;
+    final meridian = hour < 12 ? am : pm;
+    final hour12 = hour % 12 == 0 ? 12 : hour % 12;
+    final time = '$hour12:$minute $meridian';
+    if (justTime) {
+      return time;
+    }
+    return '${format(date, "yyyy-MM-dd")} - $time';
+  }
+
+  static String format(DateTime date, String pattern, [String? local]) {
+    String? currentLocal = local;
+    // if (local == null) currentLocal = AppProvider().getLanguageCode;
+    final formatter = DateFormat(pattern, currentLocal);
+    return formatter.format(date);
+  }
 }

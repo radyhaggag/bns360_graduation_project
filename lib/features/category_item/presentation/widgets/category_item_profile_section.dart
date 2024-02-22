@@ -49,6 +49,7 @@ class CategoryItemProfileSection extends StatelessWidget {
                 imageUrl: categoryItemEntity.imageUrl,
                 userType: UserType.businessOwner.id,
               ),
+              categoryItemEntity: categoryItemEntity,
             );
             Navigator.of(context).pushNamed(
               Routes.conversation,

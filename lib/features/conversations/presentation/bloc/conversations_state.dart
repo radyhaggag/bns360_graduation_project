@@ -54,3 +54,7 @@ class GetConversationMessagesErrorState extends ConversationsState {
 }
 
 class CurrentSessionClearedState extends ConversationsState {}
+
+class MessageImagePickedSuccessState extends ConversationsState {}
+
+class MessagePickedImageRemovedSuccessState extends ConversationsState {}

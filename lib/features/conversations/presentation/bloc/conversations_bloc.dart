@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:bns360_graduation_project/core/utils/main_logger.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../domain/entities/conversation_entity.dart';
 import '../../domain/entities/message_entity.dart';
@@ -24,6 +27,8 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     on<GetConversationMessagesEvent>(_getConversationMessages);
     on<UpdateConversationMessagesEvent>(_updateConversationMessages);
     on<ClearCurrentSessionEvent>(_clearCurrentSession);
+    on<PicKMessageImageEvent>(_pickImage);
+    on<RemovePickedImageEvent>(_removePickedImage);
   }
 
   bool _isInitialized = false;
@@ -106,7 +111,8 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   List<MessageEntity> _messages = [];
   List<MessageEntity> get messages => _messages;
 
-  StreamSubscription? _messagesStream;
+  StreamSubscription<List<MessageEntity>>? _messagesStream;
+  Stream<List<MessageEntity>>? messagesStream;
 
   _getConversationMessages(
     GetConversationMessagesEvent event,
@@ -118,12 +124,16 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
       event.conversationId,
     );
 
-    _isInitialized = true;
-
     res.fold(
-      (l) => emit(GetConversationMessagesErrorState(message: l.message)),
+      (l) {
+        _isInitialized = true;
+        emit(GetConversationMessagesErrorState(message: l.message));
+      },
       (r) {
+        messagesStream = r;
+
         _messagesStream = r.listen((messages) {
+          _isInitialized = true;
           add(UpdateConversationMessagesEvent(messages: messages));
         });
       },
@@ -155,10 +165,43 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     emit(CurrentSessionClearedState());
   }
 
+  File? _pickedFile;
+  File? get pickedFile => _pickedFile;
+
   @override
-  Future<void> close() {
+  Future<void> close() async {
     _conversationsStream?.cancel();
     _messagesStream?.cancel();
+    await _resetUnreadCountForCurrentUser();
+
     return super.close();
+  }
+
+  _pickImage(
+    PicKMessageImageEvent event,
+    Emitter<ConversationsState> emit,
+  ) async {
+    final ImagePicker picker = ImagePicker();
+
+    final image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      _pickedFile = File(image.path);
+      emit(MessageImagePickedSuccessState());
+    }
+  }
+
+  _removePickedImage(
+    RemovePickedImageEvent event,
+    Emitter<ConversationsState> emit,
+  ) {
+    _pickedFile = null;
+    emit(MessagePickedImageRemovedSuccessState());
+  }
+
+  _resetUnreadCountForCurrentUser() {
+    if (currentConversation == null) return;
+    conversationsRepo.resetUnreadCountForCurrentUser(currentConversation!);
+    logger.i("Unread count reset done for ${currentConversation?.id}");
   }
 }

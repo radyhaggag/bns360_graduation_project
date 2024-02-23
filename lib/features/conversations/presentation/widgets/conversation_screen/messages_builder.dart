@@ -9,14 +9,37 @@ import '../../../../../core/widgets/main_list_view_builder.dart';
 import '../../bloc/conversations_bloc.dart';
 import '../messages/chat_message_item.dart';
 
-class MessagesBuilder extends StatelessWidget {
+class MessagesBuilder extends StatefulWidget {
   const MessagesBuilder({super.key, required this.otherParticipant});
 
   final ParticipantEntity otherParticipant;
 
   @override
+  State<MessagesBuilder> createState() => _MessagesBuilderState();
+}
+
+class _MessagesBuilderState extends State<MessagesBuilder> {
+  late final ConversationsBloc bloc;
+
+  void _scrollToBottom() {
+    bloc.scrollController.animateTo(
+      bloc.scrollController.position.maxScrollExtent,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    bloc = context.read<ConversationsBloc>();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToBottom();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final bloc = context.read<ConversationsBloc>();
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: kHorizontalPadding,
@@ -48,7 +71,7 @@ class MessagesBuilder extends StatelessWidget {
                     ),
                   ChatMessageItem(
                     message: message,
-                    otherParticipant: otherParticipant,
+                    otherParticipant: widget.otherParticipant,
                   ),
                   const SizedBox(height: 10),
                 ],

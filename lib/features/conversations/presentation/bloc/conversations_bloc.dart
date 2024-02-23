@@ -149,7 +149,6 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
         messagesStream = r;
 
         _messagesStream = r.listen((messages) {
-          _isInitialized = true;
           add(UpdateConversationMessagesEvent(messages: messages));
         });
       },
@@ -160,6 +159,14 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     UpdateConversationMessagesEvent event,
     Emitter<ConversationsState> emit,
   ) {
+    if (isInitialized && messages.isNotEmpty && scrollController.hasClients) {
+      emit(GetConversationMessagesSuccessState(
+        messages: messages,
+        scrollToDown: true,
+      ));
+    }
+    _isInitialized = true;
+
     _messages = event.messages;
     emit(GetConversationMessagesSuccessState(messages: messages));
   }

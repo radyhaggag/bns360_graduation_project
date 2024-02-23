@@ -1,7 +1,8 @@
-import '../../utils/constants.dart';
-import '../main_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../utils/constants.dart';
+import '../main_network_image.dart';
 
 class ProfileCircleIcon extends StatelessWidget {
   const ProfileCircleIcon({
@@ -17,13 +18,12 @@ class ProfileCircleIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
+    return ClipOval(
+      child: MainNetworkImage(
+        imageUrl: imageUrl ?? kDefaultImgUrl,
+        width: width ?? 30.r,
+        height: height ?? 30.r,
       ),
-      width: width ?? 30.r,
-      height: height ?? 30.r,
-      child: MainNetworkImage(imageUrl: imageUrl ?? kDefaultImgUrl),
     );
   }
 }

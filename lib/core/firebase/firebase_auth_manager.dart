@@ -1,4 +1,3 @@
-// This class will use for test the app by dummy users
 import 'package:bns360_graduation_project/core/helpers/execute_and_handle_error.dart';
 import 'package:bns360_graduation_project/core/shared_data/models/profile/profile_model.dart';
 import 'package:bns360_graduation_project/core/utils/custom_types.dart';
@@ -6,10 +5,12 @@ import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-const dummyImageUrl = 'https://static.dw.com/image/44777236_804.jpg';
+// const dummyImageUrl = 'https://static.dw.com/image/44777236_804.jpg';
+const dummyImageUrl =
+    "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg";
 
 abstract class FirebaseAuthManager {
-  static final _firestore = FirebaseFirestore.instance;
+  static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
   static CollectionReference get users => _firestore.collection('users');
@@ -33,11 +34,12 @@ abstract class FirebaseAuthManager {
       }
 
       final ProfileModel profileModel = ProfileModel(
-        id: user!.uid,
+        // id: user!.uid,
+        id: '1',
         name: email.split("@").first,
         email: email,
         imageUrl: dummyImageUrl,
-        userType: UserType.user.id,
+        userType: UserType.businessOwner.id,
       );
       await profileModel.saveToCache();
       return user;
@@ -75,17 +77,19 @@ abstract class FirebaseAuthManager {
       final userCredential = await _auth.signInAnonymously();
 
       final ProfileModel profileModel = ProfileModel(
-        id: userCredential.user!.uid,
+        // id: userCredential.user!.uid,
+        id: '1',
         name: userCredential.user?.displayName ?? "Anonymous",
         email: userCredential.user?.email ?? "anonymous@gmail.com",
         imageUrl: dummyImageUrl,
-        userType: UserType.user.id,
+        // userType: UserType.user.id,
+        userType: UserType.businessOwner.id,
       );
 
       await users.doc(userCredential.user!.uid).set({
         'id': profileModel.id,
         'email': profileModel.email,
-        'imageUrl': dummyImageUrl,
+        "image_url": dummyImageUrl,
       });
 
       await profileModel.saveToCache();

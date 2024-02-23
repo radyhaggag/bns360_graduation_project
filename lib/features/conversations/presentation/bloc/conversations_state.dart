@@ -40,8 +40,12 @@ class GetConversationMessagesLoadingState extends ConversationsState {}
 
 class GetConversationMessagesSuccessState extends ConversationsState {
   final List<MessageEntity> messages;
+  final bool scrollToDown;
 
-  const GetConversationMessagesSuccessState({required this.messages});
+  const GetConversationMessagesSuccessState({
+    required this.messages,
+    this.scrollToDown = false,
+  });
 }
 
 class GetConversationMessagesErrorState extends ConversationsState {

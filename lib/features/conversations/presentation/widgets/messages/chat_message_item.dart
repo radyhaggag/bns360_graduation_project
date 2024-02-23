@@ -28,18 +28,20 @@ class ChatMessageItem extends StatelessWidget {
     return InkWell(
       highlightColor: Theme.of(context).listTileTheme.tileColor,
       splashColor: Theme.of(context).listTileTheme.tileColor,
-      onLongPress: () {
-        if (!isFromMe) return;
-        ConfirmationDialog.show(
-          context,
-          onConfirm: () {
-            context.read<ConversationsBloc>().add(DeleteMessageEvent(
-                  deleteMessageParams: deleteMessageParams,
-                ));
-            Navigator.of(context).pop();
-          },
-        );
-      },
+      onLongPress: !message.isDeleted
+          ? () {
+              if (!isFromMe) return;
+              ConfirmationDialog.show(
+                context,
+                onConfirm: () {
+                  context.read<ConversationsBloc>().add(DeleteMessageEvent(
+                        deleteMessageParams: deleteMessageParams,
+                      ));
+                  Navigator.of(context).pop();
+                },
+              );
+            }
+          : null,
       child: Container(
         margin: EdgeInsets.only(top: 5.h),
         child: Row(

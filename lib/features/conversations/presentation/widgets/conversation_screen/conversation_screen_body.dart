@@ -26,7 +26,8 @@ class ConversationScreenBody extends StatelessWidget {
           _scrollToBottom(bloc);
         }
 
-        if (state is ConversationLoadedState) {
+        if (state is GetConversationMessagesSuccessState &&
+            state.scrollToDown) {
           Future.delayed(const Duration(milliseconds: 500)).then((_) {
             _scrollToBottom(bloc);
           });

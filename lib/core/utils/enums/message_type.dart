@@ -14,7 +14,7 @@ enum MessageType {
       case 1:
         return MessageType.image;
       case 2:
-        return MessageType.image;
+        return MessageType.textAndImage;
       default:
         throw ArgumentError('Unknown message type with id: $id');
     }

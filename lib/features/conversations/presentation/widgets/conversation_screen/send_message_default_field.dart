@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../generated/l10n.dart';
+import '../../../../../generated/l10n.dart';
 
 class SendMessageDefaultField extends StatelessWidget {
   const SendMessageDefaultField({
@@ -30,14 +30,6 @@ class SendMessageDefaultField extends StatelessWidget {
         border: withOutBorder,
         focusedBorder: withOutBorder,
         enabledBorder: withOutBorder,
-        prefixIconConstraints: BoxConstraints(
-          maxHeight: 16.r,
-          maxWidth: 11.r,
-        ),
-        suffixIconConstraints: BoxConstraints(
-          maxHeight: 32.r,
-          maxWidth: 32.r,
-        ),
         suffixIcon: InkWell(
           onTap: onSuffixIconPressed,
           child: Container(
@@ -46,7 +38,7 @@ class SendMessageDefaultField extends StatelessWidget {
             ),
             child: Icon(
               Icons.photo_camera_outlined,
-              size: 22.r,
+              size: 25.r,
             ),
           ),
         ),

@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact_us": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
+        "conversations": MessageLookupByLibrary.simpleMessage("المحادثات"),
         "craftsman": MessageLookupByLibrary.simpleMessage("حرفى"),
         "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
@@ -106,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا يوجد عناصر ف المفضلة!"),
         "no_places_to_explore":
             MessageLookupByLibrary.simpleMessage("لا بوجد اماكن للاستكشاف"),
+        "no_results": MessageLookupByLibrary.simpleMessage("لا توجد نتائج."),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":
@@ -160,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "حجم الصورة كبير جدا ، والحد الأقصى للحجم المسموح به هو"),
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("لا توجد رسائل حتى الآن"),
+        "today": MessageLookupByLibrary.simpleMessage("اليوم"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "validateEmail":
@@ -179,6 +182,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),
-        "write_your_review": MessageLookupByLibrary.simpleMessage("أكتب تقييمك")
+        "write_your_review":
+            MessageLookupByLibrary.simpleMessage("أكتب تقييمك"),
+        "yesterday": MessageLookupByLibrary.simpleMessage("الأمس")
       };
 }

@@ -1,10 +1,7 @@
 part of 'conversations_bloc.dart';
 
-abstract class ConversationsState extends Equatable {
+abstract class ConversationsState {
   const ConversationsState();
-
-  @override
-  List<Object> get props => [];
 }
 
 class ConversationsInitial extends ConversationsState {}
@@ -58,3 +55,5 @@ class CurrentSessionClearedState extends ConversationsState {}
 class MessageImagePickedSuccessState extends ConversationsState {}
 
 class MessagePickedImageRemovedSuccessState extends ConversationsState {}
+
+class ConversationLoadedState extends ConversationsState {}

@@ -1,17 +1,16 @@
-import 'package:bns360_graduation_project/core/firebase/firestore_manager.dart';
-import 'package:bns360_graduation_project/core/helpers/chat_params_helper.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/participant_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/participant_model.dart';
-import 'package:bns360_graduation_project/features/conversations/data/models/conversation_model.dart';
-import 'package:bns360_graduation_project/features/conversations/data/models/message_model.dart';
-import 'package:bns360_graduation_project/features/conversations/data/models/unread_count_model.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/entities/conversation_entity.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/params/send_message_params.dart';
-
 import '../../../../../core/firebase/firebase_storage_manager.dart';
 import '../../../../../core/firebase/firestore_collections.dart';
+import '../../../../../core/firebase/firestore_manager.dart';
+import '../../../../../core/helpers/chat_params_helper.dart';
+import '../../../../../core/shared_data/entities/participant_entity.dart';
+import '../../../../../core/shared_data/models/participant_model.dart';
 import '../../../domain/entities/message_entity.dart';
 import '../../../domain/entities/unread_count_entity.dart';
+import '../../../domain/params/reset_unread_count_params.dart';
+import '../../../domain/params/send_message_params.dart';
+import '../../models/conversation_model.dart';
+import '../../models/message_model.dart';
+import '../../models/unread_count_model.dart';
 import 'conversations_remote_data_source.dart';
 
 class ConversationsRemoteDataSourceImpl
@@ -104,6 +103,7 @@ class ConversationsRemoteDataSourceImpl
   Stream<List<ConversationModel>> getConversations() {
     final snapshots = FirestoreCollections.conversations
         .where('participantIds', arrayContains: currentUserId)
+        .orderBy("lastMessage", descending: true)
         .snapshots();
 
     return snapshots.map((event) {
@@ -135,35 +135,39 @@ class ConversationsRemoteDataSourceImpl
 
   @override
   Future<ConversationModel?> checkIfConversationExist(
-    String otherParticipantId,
+    String conversationId,
   ) async {
-    final conversation = await _getConversation(otherParticipantId);
+    final conversation = await _getConversation(conversationId);
     return conversation;
   }
 
   Future<ConversationModel?> _getConversation(
-    String otherParticipantId,
+    String conversationId,
   ) async {
-    final collection = await FirestoreCollections.conversations.where(
-      'participantIds',
-      arrayContains: [
-        currentUserId,
-        otherParticipantId,
-      ],
-    ).get();
+    final doc =
+        await FirestoreCollections.conversationDoc(conversationId).get();
 
-    if (collection.docs.isEmpty) {
+    if (doc.data() == null) {
       return null;
     } else {
-      final data = collection.docs.first.data() as Map<String, dynamic>;
+      final data = doc.data() as Map<String, dynamic>;
       final conversation = ConversationModel.fromMap(data);
       return conversation;
     }
   }
 
+  @override
   Future<void> resetUnreadCountForCurrentUser(
-    ConversationEntity conversation,
+    ResetUnreadCountParams resetUnreadCountParams,
   ) async {
+    if (resetUnreadCountParams.numOfMessages == 0) return;
+    String conversationId = ChatParamsHelper.conversationId(
+      otherId: resetUnreadCountParams.otherParticipantId,
+      otherUserType: resetUnreadCountParams.otherParticipantType,
+    );
+
+    final conversation = await _getConversation(conversationId);
+    if (conversation == null) return;
     final currentUnreadCount = _currentUnread(conversation.unreadCount);
     final otherUnreadCount = _otherUnread(conversation.unreadCount);
 

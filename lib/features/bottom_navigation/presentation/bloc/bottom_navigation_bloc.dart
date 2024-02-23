@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/features/conversations/presentation/screens/conversations_screen.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,7 @@ class BottomNavBarBloc extends Bloc<BottomNavBarEvent, BottomNavBarState> {
     FavoritesScreen.getWithBlocProvider(),
     CraftsScreen.getWithBlocProvider(),
     SettingsScreen.getWithBlocProvider(),
+    ConversationsScreen.getWithBlocProvider(), // Not on nav bar
   ];
   int bottomNavbarIndex = 0;
 

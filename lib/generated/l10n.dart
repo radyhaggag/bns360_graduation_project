@@ -1119,6 +1119,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Conversations`
+  String get conversations {
+    return Intl.message(
+      'Conversations',
+      name: 'conversations',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Today`
+  String get today {
+    return Intl.message(
+      'Today',
+      name: 'today',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yesterday`
+  String get yesterday {
+    return Intl.message(
+      'Yesterday',
+      name: 'yesterday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No results found.`
+  String get no_results {
+    return Intl.message(
+      'No results found.',
+      name: 'no_results',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

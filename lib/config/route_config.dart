@@ -23,6 +23,7 @@ import '../features/category_item/presentation/screens/category_item_screen.dart
 import '../features/conversations/domain/params/conversation_screen_params.dart';
 import '../features/conversations/presentation/bloc/conversations_bloc.dart';
 import '../features/conversations/presentation/screens/conversation_screen.dart';
+import '../features/conversations/presentation/screens/conversations_screen.dart';
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
 import '../features/crafts/presentation/screens/crafts_screen.dart';
 import '../features/craftsman/presentation/bloc/craftsman_bloc.dart';
@@ -259,6 +260,14 @@ abstract class RouteConfig {
             child: ConversationScreen(
               conversationParams: params,
             ),
+          ),
+        );
+      case Routes.conversations:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<ConversationsBloc>()..add(GetConversationsEvent()),
+            child: const ConversationsScreen(),
           ),
         );
 

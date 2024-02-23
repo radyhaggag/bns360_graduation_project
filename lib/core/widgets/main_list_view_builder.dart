@@ -4,12 +4,14 @@ import 'messages/empty_message_widget.dart';
 
 class MainListViewBuilder<T> extends StatelessWidget {
   final List<T> list;
-  final Widget Function(T) itemWidget;
+  final Widget Function(T, int) itemWidget;
   final String? emptyMessage;
   final Axis scrollDirection;
   final double? width;
   final double? height;
   final double? separatingSpace;
+  final ScrollController? scrollController;
+
   const MainListViewBuilder({
     super.key,
     required this.list,
@@ -19,6 +21,7 @@ class MainListViewBuilder<T> extends StatelessWidget {
     this.width,
     this.height,
     this.separatingSpace,
+    this.scrollController,
   });
 
   @override
@@ -32,9 +35,10 @@ class MainListViewBuilder<T> extends StatelessWidget {
         width: width,
         height: height,
         child: ListView.separated(
+          controller: scrollController,
           scrollDirection: scrollDirection,
           itemBuilder: (_, index) {
-            return itemWidget(list[index]);
+            return itemWidget(list[index], index);
           },
           separatorBuilder: (_, __) => SizedBox(width: separatingSpace ?? 10),
           itemCount: list.length,

@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
+        "conversations": MessageLookupByLibrary.simpleMessage("Conversations"),
         "craftsman": MessageLookupByLibrary.simpleMessage("Craftsman"),
         "craftsmen": MessageLookupByLibrary.simpleMessage("Craftsmen"),
         "createYourAccount":
@@ -104,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No favorite items!"),
         "no_places_to_explore":
             MessageLookupByLibrary.simpleMessage("No places to explore"),
+        "no_results": MessageLookupByLibrary.simpleMessage("No results found."),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "notReceiveCode":
@@ -159,6 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "The image size is too large, the maximum allowed size is"),
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("There are no messages yet"),
+        "today": MessageLookupByLibrary.simpleMessage("Today"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "validateEmail":
@@ -180,6 +183,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("Write your message"),
         "write_your_review":
-            MessageLookupByLibrary.simpleMessage("Write your review")
+            MessageLookupByLibrary.simpleMessage("Write your review"),
+        "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday")
       };
 }

@@ -1,6 +1,7 @@
 import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/category_item_entity.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
+import 'package:bns360_graduation_project/features/conversations/domain/entities/conversation_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
@@ -8,6 +9,7 @@ import '../../../../core/shared_data/entities/participant_entity.dart';
 
 class ConversationScreenParams extends Equatable {
   final ParticipantEntity participantEntity;
+  final ConversationEntity? conversationEntity;
   final CraftsmanEntity? craftsmanEntity;
   final CategoryItemEntity? categoryItemEntity;
 
@@ -15,6 +17,7 @@ class ConversationScreenParams extends Equatable {
     required this.participantEntity,
     this.craftsmanEntity,
     this.categoryItemEntity,
+    this.conversationEntity,
   });
 
   void navigationRoute(BuildContext context) {

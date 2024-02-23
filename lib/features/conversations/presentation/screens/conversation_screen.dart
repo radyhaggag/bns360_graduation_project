@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/params/conversation_screen_params.dart';
 import '../bloc/conversations_bloc.dart';
-import '../widgets/conversation_screen_app_bar.dart';
-import '../widgets/conversation_screen_body.dart';
+import '../widgets/conversation_screen/conversation_screen_app_bar.dart';
+import '../widgets/conversation_screen/conversation_screen_body.dart';
 
 class ConversationScreen extends StatefulWidget {
   const ConversationScreen({
@@ -39,6 +39,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   @override
   void deactivate() {
+    final otherParticipant = widget.conversationParams.participantEntity;
+    conversationsBloc.add(ResetCurrentUnreadCountEvent(
+      otherParticipantId: otherParticipant.id,
+      otherParticipantType: otherParticipant.userType,
+    ));
     conversationsBloc.add(ClearCurrentSessionEvent());
     super.deactivate();
   }
@@ -47,7 +52,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).listTileTheme.tileColor,
-      appBar: ConversationsScreenAppBar(
+      appBar: ConversationScreenAppBar(
         conversationParams: widget.conversationParams,
       ),
       body: ConversationScreenBody(

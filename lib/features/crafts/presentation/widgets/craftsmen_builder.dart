@@ -36,7 +36,7 @@ class CraftsmenBuilder extends StatelessWidget {
           loadedWidget: MainListViewBuilder<CraftsmanEntity>(
             list: favoriteCraftsmen,
             emptyMessage: S.of(context).no_craftsmen_found,
-            itemWidget: (item) => HorizontalItemCard(
+            itemWidget: (item, _) => HorizontalItemCard(
               title: item.name,
               subTitle: LocalizationHelper.getLocalizedString(
                 context,

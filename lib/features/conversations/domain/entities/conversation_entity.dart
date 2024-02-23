@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/shared_data/entities/participant_entity.dart';
@@ -43,5 +44,20 @@ class ConversationEntity extends Equatable {
       lastMessage: lastMessage ?? this.lastMessage,
       unreadCount: unreadCount ?? this.unreadCount,
     );
+  }
+
+  ParticipantEntity get otherParticipant {
+    final currentUserId = AppProvider().getProfile()!.id;
+    return participants.firstWhere(
+      (participant) => participant.id != currentUserId,
+    );
+  }
+
+  int get currentUserUnreadCount {
+    final currentUserId = AppProvider().getProfile()!.id;
+    final unread = unreadCount.firstWhere(
+      (participant) => participant.userId == currentUserId,
+    );
+    return unread.count;
   }
 }

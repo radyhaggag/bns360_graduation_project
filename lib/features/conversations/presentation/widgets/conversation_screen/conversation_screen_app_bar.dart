@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/helpers/localization_helper.dart';
-import '../../../../core/widgets/custom_back_button.dart';
-import '../../../../core/widgets/icons/profile_circle_icon.dart';
-import '../../domain/params/conversation_screen_params.dart';
+import '../../../../../core/helpers/localization_helper.dart';
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../../core/widgets/icons/profile_circle_icon.dart';
+import '../../../domain/params/conversation_screen_params.dart';
 
-class ConversationsScreenAppBar extends StatelessWidget
+class ConversationScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const ConversationsScreenAppBar({
+  const ConversationScreenAppBar({
     super.key,
     required this.conversationParams,
   });

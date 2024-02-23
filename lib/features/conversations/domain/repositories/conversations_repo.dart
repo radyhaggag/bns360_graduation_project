@@ -1,6 +1,7 @@
 import '../../../../core/utils/custom_types.dart';
 import '../entities/conversation_entity.dart';
 import '../entities/message_entity.dart';
+import '../params/reset_unread_count_params.dart';
 import '../params/send_message_params.dart';
 
 abstract class ConversationsRepo {
@@ -13,6 +14,6 @@ abstract class ConversationsRepo {
     String otherParticipantId,
   );
   FutureEither<void> resetUnreadCountForCurrentUser(
-    ConversationEntity conversation,
+    ResetUnreadCountParams resetUnreadCountParams,
   );
 }

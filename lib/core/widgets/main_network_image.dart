@@ -7,18 +7,68 @@ class MainNetworkImage extends StatelessWidget {
     this.width,
     this.height,
     this.fit,
-    required this.imageUrl,
+    this.imageUrl,
+    this.name,
+    this.isCircular = false,
   });
 
   final double? width;
   final double? height;
   final BoxFit? fit;
-  final String imageUrl;
+  final String? imageUrl;
+  final String? name;
+  final bool isCircular;
+
+  @override
+  Widget build(BuildContext context) {
+    if (imageUrl != null) {
+      if (isCircular) {
+        return ClipOval(
+          child: _BuildImage(
+            imageUrl: imageUrl,
+            width: width,
+            height: height,
+          ),
+        );
+      }
+      return _BuildImage(
+        imageUrl: imageUrl,
+        width: width,
+        height: height,
+      );
+    } else {
+      return Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor.withAlpha(20),
+          shape: isCircular ? BoxShape.circle : BoxShape.rectangle,
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          name![0].toUpperCase(),
+          style: Theme.of(context).textTheme.titleMedium,
+        ),
+      );
+    }
+  }
+}
+
+class _BuildImage extends StatelessWidget {
+  const _BuildImage({
+    required this.imageUrl,
+    required this.width,
+    required this.height,
+  });
+
+  final String? imageUrl;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: imageUrl,
+      imageUrl: imageUrl!,
       width: width,
       height: height,
       fit: BoxFit.cover,

@@ -38,7 +38,7 @@ class FavoriteCategoriesBuilder extends StatelessWidget {
           loadedWidget: MainListViewBuilder<CategoryItemEntity>(
             list: favoriteCategories,
             emptyMessage: S.of(context).no_favorite_items,
-            itemWidget: (item) => HorizontalItemCard(
+            itemWidget: (item, _) => HorizontalItemCard(
               title: LocalizationHelper.getLocalizedString(
                 context,
                 ar: item.nameAR,

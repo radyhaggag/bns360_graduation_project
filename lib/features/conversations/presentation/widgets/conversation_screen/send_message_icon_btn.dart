@@ -22,8 +22,8 @@ class SendMessageIconBtn extends StatelessWidget {
         textEditingController.clear();
       },
       child: Container(
-        height: 44.r,
-        width: 44.r,
+        height: 30.r,
+        width: 30.r,
         alignment: Alignment.center,
         // decoration: BoxDecoration(
         //   color: textEditingController.text.isEmpty

@@ -25,33 +25,34 @@ class ChatMessageItem extends StatelessWidget {
       child: Row(
         mainAxisAlignment: mainAxisAlignment,
         children: [
-          Row(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: isFromMe
                 ? [
                     // reorder this to make the date behind
-                    MessageDateWidget(date: message.date),
                     Container(
                       margin: EdgeInsetsDirectional.only(
                         start: isFromMe ? 8.w : 0.w,
                         end: isFromMe ? 0.w : 8.w,
+                        bottom: 5,
                       ),
                       child: MessageContentWidget(
                         message: message,
                       ),
                     ),
+                    MessageDateWidget(date: message.date),
                   ]
                 : [
                     Container(
                       margin: EdgeInsetsDirectional.only(
                         start: isFromMe ? 8.w : 0.w,
                         end: isFromMe ? 0.w : 8.w,
+                        bottom: 5,
                       ),
                       child: MessageContentWidget(
                         message: message,
                       ),
                     ),
-                    MessageDateWidget(date: message.date),
                   ],
           ),
         ],

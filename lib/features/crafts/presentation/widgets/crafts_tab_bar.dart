@@ -69,7 +69,7 @@ class _LoadedWidget extends StatelessWidget {
     return MainListViewBuilder<CraftEntity>(
       list: crafts,
       emptyMessage: "",
-      itemWidget: (item) => CraftItem(
+      itemWidget: (item, _) => CraftItem(
         craftEntity: item,
         isSelected: item.id == selectedCraftId,
       ),
@@ -88,7 +88,7 @@ class _LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainListViewBuilder<Null>(
       list: List.filled(8, null),
-      itemWidget: (_) => CraftItem.empty(context),
+      itemWidget: (_, __) => CraftItem.empty(context),
       scrollDirection: Axis.horizontal,
       width: context.width,
       height: 35.h,

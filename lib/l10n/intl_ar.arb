@@ -105,5 +105,9 @@
   "there_are_no_messages_yet": "لا توجد رسائل حتى الآن",
   "write_your_message": "اكتب رسالتك",
   "the_image_size_is_too_large_the_maximum_allowed_size_is_mp": "حجم الصورة كبير جدا ، والحد الأقصى للحجم المسموح به هو",
-  "must_be_more_than_minimum_number_of_characters": "يجب أن تكون كلمة المرور أكثر من الحد الأدنى لطول الأحرف"
+  "must_be_more_than_minimum_number_of_characters": "يجب أن تكون كلمة المرور أكثر من الحد الأدنى لطول الأحرف",
+  "conversations": "المحادثات",
+  "today": "اليوم",
+  "yesterday": "الأمس",
+  "no_results": "لا توجد نتائج."
 }

@@ -105,5 +105,9 @@
   "there_are_no_messages_yet": "There are no messages yet",
   "write_your_message": "Write your message",
   "the_image_size_is_too_large_the_maximum_allowed_size_is_mp": "The image size is too large, the maximum allowed size is",
-  "must_be_more_than_minimum_number_of_characters": "Password must be more than the minimum length of characters"
+  "must_be_more_than_minimum_number_of_characters": "Password must be more than the minimum length of characters",
+  "conversations": "Conversations",
+  "today": "Today",
+  "yesterday": "Yesterday",
+  "no_results": "No results found."
 }

@@ -73,4 +73,50 @@ abstract class DateFormatter {
     final formatter = DateFormat(pattern, currentLocal);
     return formatter.format(date);
   }
+
+  static String dateFormatForDisplay({
+    required BuildContext context,
+    required DateTime dateTime,
+    bool showTimeIfToday = false,
+    bool showHoursAgoIfToday = false,
+    bool showMinutesAgoIfToday = false,
+  }) {
+    String formattedDate = '';
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final yesterday = DateTime(now.year, now.month, now.day - 1);
+    final aDate = DateTime(dateTime.year, dateTime.month, dateTime.day);
+    if (aDate == today) {
+      int diffHours = _differenceInHours(dateTime, now);
+      int diffMinutes = _differenceInMinutes(dateTime, now);
+
+      if (showHoursAgoIfToday || showMinutesAgoIfToday) {
+        if (diffMinutes < 60 && showMinutesAgoIfToday) {
+          formattedDate = '${S.of(context).mins_ago(diffMinutes)}}';
+        } else {
+          formattedDate = "${S.of(context).hours_ago(diffHours)} ";
+        }
+      } else if (showTimeIfToday) {
+        formattedDate = format(dateTime, "HH:mm a");
+      } else {
+        return S.of(context).today;
+      }
+    } else if (aDate == yesterday) {
+      formattedDate = S.of(context).yesterday;
+    } else {
+      formattedDate = format(dateTime, "yyyy/MM/dd");
+    }
+
+    return formattedDate;
+  }
+
+  static int _differenceInHours(DateTime start, DateTime end) {
+    final diff = end.difference(start);
+    return diff.inHours;
+  }
+
+  static int _differenceInMinutes(DateTime start, DateTime end) {
+    final diff = end.difference(start);
+    return diff.inMinutes;
+  }
 }

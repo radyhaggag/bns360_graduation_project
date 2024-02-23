@@ -39,7 +39,7 @@ class CategoryItemsBody extends StatelessWidget {
             loadedWidget: MainListViewBuilder<CategoryItemEntity>(
               list: items,
               emptyMessage: S.of(context).no_places_to_explore,
-              itemWidget: (item) => HorizontalItemCard(
+              itemWidget: (item, index) => HorizontalItemCard(
                 title: LocalizationHelper.getLocalizedString(
                   context,
                   ar: item.nameAR,

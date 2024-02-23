@@ -1,10 +1,7 @@
 part of 'conversations_bloc.dart';
 
-abstract class ConversationsEvent extends Equatable {
+abstract class ConversationsEvent {
   const ConversationsEvent();
-
-  @override
-  List<Object> get props => [];
 }
 
 class SendMessageEvent extends ConversationsEvent {
@@ -13,9 +10,6 @@ class SendMessageEvent extends ConversationsEvent {
   const SendMessageEvent({
     required this.sendMessageParams,
   });
-
-  @override
-  List<Object> get props => [sendMessageParams];
 }
 
 class GetConversationsEvent extends ConversationsEvent {}
@@ -49,3 +43,13 @@ class ClearCurrentSessionEvent extends ConversationsEvent {}
 class PicKMessageImageEvent extends ConversationsEvent {}
 
 class RemovePickedImageEvent extends ConversationsEvent {}
+
+class ResetCurrentUnreadCountEvent extends ConversationsEvent {
+  final String otherParticipantId;
+  final int otherParticipantType;
+
+  ResetCurrentUnreadCountEvent({
+    required this.otherParticipantId,
+    required this.otherParticipantType,
+  });
+}

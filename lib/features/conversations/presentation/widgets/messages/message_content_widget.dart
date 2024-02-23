@@ -21,18 +21,12 @@ class MessageContentWidget extends StatelessWidget {
       builder: (context, state) {
         // final bloc = context.read<ConversationsBloc>();
         bool isTextMessage = message.type == MessageType.text;
-        bool isImage = message.type == MessageType.image;
-        if (isTextMessage || isImage) {
+        if (isTextMessage) {
           return MessageTextTemplate(message: message);
         } else if (message.type == MessageType.image) {
-          return MessageImageTemplate(message: message);
+          return MessageImageTemplate(imageUrl: message.imageUrl!);
         } else {
-          return Column(
-            children: [
-              MessageImageTemplate(message: message),
-              MessageTextTemplate(message: message),
-            ],
-          );
+          return MessageImageWithTextTemplate(message: message);
         }
       },
     );

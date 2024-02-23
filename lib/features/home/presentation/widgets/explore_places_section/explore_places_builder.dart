@@ -26,7 +26,7 @@ class _ExplorePlacesBuilder extends StatelessWidget {
           loadedWidget: MainListViewBuilder<CategoryItemEntity>(
             list: placesToExplore,
             emptyMessage: S.of(context).no_places_to_explore,
-            itemWidget: (item) => CategoryItemCard(
+            itemWidget: (item, _) => CategoryItemCard(
               categoryItemEntity: item,
               onFavoriteIconPressed: () {},
               useSetStateToChangeFavoriteColor: true,

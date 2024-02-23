@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:bns360_graduation_project/core/utils/main_logger.dart';
-import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../domain/entities/conversation_entity.dart';
 import '../../domain/entities/message_entity.dart';
+import '../../domain/params/reset_unread_count_params.dart';
 import '../../domain/params/send_message_params.dart';
 import '../../domain/repositories/conversations_repo.dart';
 
@@ -20,15 +20,16 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   ConversationsBloc({
     required this.conversationsRepo,
   }) : super(ConversationsInitial()) {
+    initSearchListener();
     on<SendMessageEvent>(_sendMessage);
     on<GetConversationsEvent>(_getConversations);
     on<UpdateConversationsEvent>(_updateConversations);
-    on<CheckIfConversationExistEvent>(_checkIfConversationExist);
     on<GetConversationMessagesEvent>(_getConversationMessages);
     on<UpdateConversationMessagesEvent>(_updateConversationMessages);
     on<ClearCurrentSessionEvent>(_clearCurrentSession);
     on<PicKMessageImageEvent>(_pickImage);
     on<RemovePickedImageEvent>(_removePickedImage);
+    on<ResetCurrentUnreadCountEvent>(_resetUnreadCountForCurrentUser);
   }
 
   bool _isInitialized = false;
@@ -40,37 +41,64 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     SendMessageEvent event,
     Emitter<ConversationsState> emit,
   ) async {
+    SendMessageParams sendMessageParams = event.sendMessageParams;
+
+    if ((sendMessageParams.content ?? "").isEmpty && pickedFile == null) {
+      return;
+    }
     emit(SendMessageLoadingState());
 
+    sendMessageParams = sendMessageParams.copyWith(
+      pickedFile: pickedFile,
+    );
+
     final res = await conversationsRepo.sendMessage(
-      event.sendMessageParams,
+      sendMessageParams,
     );
 
     res.fold(
       (l) => emit(SendMessageErrorState(message: l.message)),
       (r) {
+        _pickedFile = null;
         emit(SendMessageSuccessState());
       },
     );
   }
 
-  List<ConversationEntity> _conversations = [];
-  List<ConversationEntity> get conversations => _conversations;
+  List<ConversationEntity> _allConversations = [];
+  List<ConversationEntity> _conversationsSearchResult = [];
+
+  List<ConversationEntity> get conversations {
+    if (searchController.text.isNotEmpty) {
+      return _conversationsSearchResult;
+    } else {
+      return _allConversations;
+    }
+  }
+
+  bool get isSearchActive => searchController.text.isNotEmpty;
 
   StreamSubscription? _conversationsStream;
 
   _getConversations(
     GetConversationsEvent event,
     Emitter<ConversationsState> emit,
-  ) {
+  ) async {
     emit(GetConversationsLoadingState());
+
+    // await Future.delayed(const Duration(seconds: 100));
 
     final res = conversationsRepo.getConversations();
 
     res.fold(
-      (l) => emit(GetConversationsErrorState(message: l.message)),
+      (l) {
+        _isInitialized = true;
+
+        emit(GetConversationsErrorState(message: l.message));
+      },
       (r) {
         _conversationsStream = r.listen((conversations) {
+          _allConversations = conversations;
           add(UpdateConversationsEvent(conversations: conversations));
         });
       },
@@ -81,31 +109,9 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     UpdateConversationsEvent event,
     Emitter<ConversationsState> emit,
   ) {
-    _conversations = event.conversations;
+    if (!_isInitialized) _isInitialized = true;
+
     emit(GetConversationsSuccessState(conversations: conversations));
-  }
-
-  _checkIfConversationExist(
-    CheckIfConversationExistEvent event,
-    Emitter<ConversationsState> emit,
-  ) async {
-    final res = await conversationsRepo.checkIfConversationExist(
-      event.participantId,
-    );
-
-    res.fold(
-      (l) => emit(const ConversationExistsState(isExist: false)),
-      (r) {
-        if (r != null) {
-          add(GetConversationMessagesEvent(conversationId: r.id));
-        } else {
-          _isInitialized = true;
-          _currentConversation = r;
-          emit(GetConversationMessagesSuccessState(messages: messages));
-        }
-        // emit(ConversationExistsState(isExist: r != null));
-      },
-    );
   }
 
   List<MessageEntity> _messages = [];
@@ -130,6 +136,8 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
         emit(GetConversationMessagesErrorState(message: l.message));
       },
       (r) {
+        emit(ConversationLoadedState());
+
         messagesStream = r;
 
         _messagesStream = r.listen((messages) {
@@ -148,11 +156,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     emit(GetConversationMessagesSuccessState(messages: messages));
   }
 
-  ConversationEntity? _currentConversation;
-  ConversationEntity? get currentConversation => _currentConversation;
-
   clearCurrentSession() {
-    _currentConversation = null;
     _messages = [];
     _messagesStream?.cancel();
   }
@@ -167,15 +171,6 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
 
   File? _pickedFile;
   File? get pickedFile => _pickedFile;
-
-  @override
-  Future<void> close() async {
-    _conversationsStream?.cancel();
-    _messagesStream?.cancel();
-    await _resetUnreadCountForCurrentUser();
-
-    return super.close();
-  }
 
   _pickImage(
     PicKMessageImageEvent event,
@@ -199,9 +194,62 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     emit(MessagePickedImageRemovedSuccessState());
   }
 
-  _resetUnreadCountForCurrentUser() {
-    if (currentConversation == null) return;
-    conversationsRepo.resetUnreadCountForCurrentUser(currentConversation!);
-    logger.i("Unread count reset done for ${currentConversation?.id}");
+  _resetUnreadCountForCurrentUser(
+    ResetCurrentUnreadCountEvent event,
+    Emitter<ConversationsState> emit,
+  ) async {
+    final params = ResetUnreadCountParams(
+      otherParticipantId: event.otherParticipantId,
+      otherParticipantType: event.otherParticipantType,
+      numOfMessages: messages.length,
+    );
+    await conversationsRepo.resetUnreadCountForCurrentUser(params);
+  }
+
+  final searchController = TextEditingController();
+  final ScrollController scrollController = ScrollController();
+
+  initSearchListener() {
+    searchController.addListener(() {
+      final value = searchController.text.toLowerCase();
+      _conversationsSearchResult = _allConversations
+          .where((conversation) => _searchConditions(conversation, value))
+          .toList();
+      add(UpdateConversationsEvent(conversations: _conversationsSearchResult));
+    });
+  }
+
+  bool _searchConditions(ConversationEntity conversation, String value) {
+    final nameAR = conversation.otherParticipant.nameAR?.toLowerCase();
+    final nameEN = conversation.otherParticipant.nameEN?.toLowerCase();
+
+    final containAR = nameAR?.contains(value);
+    final containEN = nameEN?.contains(value);
+
+    if ((containEN ?? false) || (containAR ?? false)) return true;
+    if (identical(nameAR, value) || identical(nameEN, value)) return true;
+
+    bool containARReversed = false;
+    bool containENReversed = false;
+
+    if (nameAR != null) containARReversed = value.contains(nameAR);
+    if (nameEN != null) containENReversed = value.contains(nameEN);
+
+    if ((containARReversed) || (containENReversed)) return true;
+
+    if (identical(containARReversed, value) ||
+        identical(containENReversed, value)) return true;
+
+    return false;
+  }
+
+  @override
+  Future<void> close() async {
+    _conversationsStream?.cancel();
+    _messagesStream?.cancel();
+    searchController.dispose();
+    scrollController.dispose();
+
+    return super.close();
   }
 }

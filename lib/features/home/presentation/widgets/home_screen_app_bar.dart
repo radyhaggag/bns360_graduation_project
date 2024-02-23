@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 import '../../../../core/widgets/icons/profile_circle_icon.dart';
 import '../../../../generated/l10n.dart';
+import '../../../bottom_navigation/presentation/bloc/bottom_navigation_bloc.dart';
 
 class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HomeScreenAppBar({super.key});
@@ -31,7 +33,14 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               FeatherIcons.messageCircle,
               size: 30,
             ),
-            onPressed: () {},
+            onPressed: () {
+              // Navigator.of(context).pushNamed(Routes.conversations);
+              context.read<BottomNavBarBloc>().add(
+                    ChangeBottomNavbarIndex(
+                      index: context.read<BottomNavBarBloc>().views.length - 1,
+                    ),
+                  );
+            },
           ),
           IconButton(
             icon: const ProfileCircleIcon(),

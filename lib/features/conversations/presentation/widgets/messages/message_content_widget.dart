@@ -17,11 +17,14 @@ class MessageContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final bloc = context.read<ConversationsBloc>();
+
     return BlocBuilder<ConversationsBloc, ConversationsState>(
       builder: (context, state) {
-        // final bloc = context.read<ConversationsBloc>();
         bool isTextMessage = message.type == MessageType.text;
-        if (isTextMessage) {
+        if (message.isDeleted) {
+          return MessageTextTemplate(message: message);
+        } else if (isTextMessage) {
           return MessageTextTemplate(message: message);
         } else if (message.type == MessageType.image) {
           return MessageImageTemplate(imageUrl: message.imageUrl!);

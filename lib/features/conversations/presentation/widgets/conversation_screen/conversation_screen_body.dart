@@ -5,7 +5,6 @@ import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/empty_card.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/params/conversation_screen_params.dart';
-import '../../../domain/params/send_message_params.dart';
 import '../../bloc/conversations_bloc.dart';
 import 'chat_message_text_field.dart';
 import 'messages_builder.dart';
@@ -54,14 +53,12 @@ class ConversationScreenBody extends StatelessWidget {
               Expanded(
                 child: bloc.messages.isEmpty
                     ? const _EmptyWidget()
-                    : const MessagesBuilder(),
+                    : MessagesBuilder(
+                        otherParticipant: conversationParams.participantEntity,
+                      ),
               ),
-              const SizedBox(height: 10),
               ChatMessageTextField(
-                onPressSendIcon: (content) {
-                  _sendMessage(context: context, content: content);
-                },
-                onSuffixIconPressed: () => bloc.add(PicKMessageImageEvent()),
+                otherParticipant: conversationParams.participantEntity,
               ),
             ],
           ),
@@ -74,22 +71,8 @@ class ConversationScreenBody extends StatelessWidget {
     bloc.scrollController.animateTo(
       bloc.scrollController.position.maxScrollExtent,
       duration: const Duration(milliseconds: 300),
-      curve: Curves.easeOut,
+      curve: Curves.fastOutSlowIn,
     );
-  }
-
-  _sendMessage({
-    required BuildContext context,
-    required String content,
-  }) {
-    final bloc = context.read<ConversationsBloc>();
-    bloc.add(SendMessageEvent(
-      sendMessageParams: SendMessageParams(
-        content: content,
-        otherParticipant: conversationParams.participantEntity,
-        isFirstMsg: bloc.messages.isEmpty,
-      ),
-    ));
   }
 }
 

@@ -89,6 +89,7 @@ class CustomTextButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? foregroundColor;
+  final Color? backgroundColor;
   final String label;
   final void Function()? onPressed;
   final bool isLoading;
@@ -97,6 +98,7 @@ class CustomTextButton extends StatelessWidget {
     this.width,
     this.height,
     this.foregroundColor,
+    this.backgroundColor,
     required this.label,
     this.onPressed,
     this.isLoading = false,
@@ -111,6 +113,7 @@ class CustomTextButton extends StatelessWidget {
         onPressed: !isLoading ? onPressed : null,
         style: Theme.of(context).textButtonTheme.style?.copyWith(
               foregroundColor: MaterialStatePropertyAll(foregroundColor),
+              backgroundColor: MaterialStatePropertyAll(backgroundColor),
             ),
         child: isLoading
             ? const CenterProgressIndicator()

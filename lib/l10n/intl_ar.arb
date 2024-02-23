@@ -109,5 +109,9 @@
   "conversations": "المحادثات",
   "today": "اليوم",
   "yesterday": "الأمس",
-  "no_results": "لا توجد نتائج."
+  "no_results": "لا توجد نتائج.",
+  "you_deleted_this_message": "لقد حذفت هذه الرسالة",
+  "delete_by_sender": "تم حذف هذه الرسالة من قبل المرسل.",
+  "confirm_delete_message": "هل أنت متأكد أنك تريد حذف هذه الرسالة؟",
+  "delete": "حذف"
 }

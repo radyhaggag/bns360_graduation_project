@@ -1,5 +1,6 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -50,13 +51,18 @@ class MessageTextTemplate extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
+                if (message.isDeleted) ...[
+                  Icon(
+                    Icons.not_interested,
+                    color: getColor(context),
+                  ),
+                  SizedBox(width: 5.w),
+                ],
                 Flexible(
                   child: Text(
-                    message.content!,
+                    _getContent(context),
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: isFromMe
-                              ? AppColors.white
-                              : Theme.of(context).primaryColor,
+                          color: getColor(context),
                           fontSize: AppFontSize.details,
                         ),
                   ),
@@ -67,5 +73,26 @@ class MessageTextTemplate extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color getColor(BuildContext context) {
+    final color =
+        message.isFromMe ? AppColors.white : Theme.of(context).primaryColor;
+    if (message.isDeleted) {
+      return color.withOpacity(.7);
+    }
+    return color;
+  }
+
+  String _getContent(BuildContext context) {
+    if (!message.isDeleted) {
+      return message.content!;
+    }
+    final isFromMe = message.isFromMe;
+    if (isFromMe) {
+      return S.of(context).you_deleted_this_message;
+    } else {
+      return S.of(context).delete_by_sender;
+    }
   }
 }

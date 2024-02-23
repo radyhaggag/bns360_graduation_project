@@ -10,6 +10,7 @@ class MessageEntity extends Equatable {
   final String? content;
   final DateTime date;
   final String? imageUrl;
+  final bool isDeleted;
 
   const MessageEntity({
     required this.senderId,
@@ -18,6 +19,7 @@ class MessageEntity extends Equatable {
     this.id,
     this.content,
     this.imageUrl,
+    this.isDeleted = false,
   });
 
   bool get isFromMe {

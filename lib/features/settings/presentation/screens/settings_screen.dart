@@ -1,10 +1,10 @@
-import '../bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/injector_container.dart';
+import '../bloc/settings_bloc.dart';
 import '../widgets/settings_body.dart';
-import '../widgets/settings_search_app_bar.dart';
+import '../widgets/settings_screen_app_bar.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/features/conversations/domain/params/delete_message_params.dart';
+
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/conversation_entity.dart';
@@ -55,6 +57,15 @@ class ConversationsRepoImpl implements ConversationsRepo {
     return executeAndHandleErrorAsync(() {
       return conversationsRemoteDataSource.resetUnreadCountForCurrentUser(
         resetUnreadCountParams,
+      );
+    });
+  }
+
+  @override
+  FutureEither<void> deleteMessage(DeleteMessageParams deleteMessageParams) {
+    return executeAndHandleErrorAsync(() {
+      return conversationsRemoteDataSource.deleteMessage(
+        deleteMessageParams,
       );
     });
   }

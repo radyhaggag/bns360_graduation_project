@@ -22,6 +22,7 @@ class SettingsScreenAppBar extends StatelessWidget
         S.of(context).settings,
       ),
       centerTitle: false,
+      titleSpacing: 20,
       actions: [
         ProfileCircleIcon(imageUrl: imageUrl),
         const SizedBox(width: 20),

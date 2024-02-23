@@ -70,7 +70,7 @@ class _LoadedWidget extends StatelessWidget {
           SizedBox(height: 15.h),
           Expanded(
             child: ConversationsListBuilder(
-              conversations: conversationsBloc.conversations,
+              conversations: conversationsBloc.sortedConversations,
             ),
           ),
           if (conversationsBloc.conversations.isEmpty &&

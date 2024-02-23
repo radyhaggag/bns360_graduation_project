@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/features/conversations/domain/params/delete_message_params.dart';
+
 import '../../../../../core/firebase/firebase_storage_manager.dart';
 import '../../../../../core/firebase/firestore_collections.dart';
 import '../../../../../core/firebase/firestore_manager.dart';
@@ -103,7 +105,6 @@ class ConversationsRemoteDataSourceImpl
   Stream<List<ConversationModel>> getConversations() {
     final snapshots = FirestoreCollections.conversations
         .where('participantIds', arrayContains: currentUserId)
-        .orderBy("lastMessage", descending: true)
         .snapshots();
 
     return snapshots.map((event) {
@@ -220,5 +221,18 @@ class ConversationsRemoteDataSourceImpl
       (model) => model.userId != currentUserId,
     );
     return data;
+  }
+
+  @override
+  Future<void> deleteMessage(DeleteMessageParams deleteMessageParams) async {
+    final messagesRef = FirestoreCollections.messages(
+      deleteMessageParams.conversationId,
+    );
+
+    await FirestoreManager.updateDoc(
+      reference: messagesRef,
+      docPath: deleteMessageParams.messageId,
+      data: MessageModel.deleteMap(),
+    );
   }
 }

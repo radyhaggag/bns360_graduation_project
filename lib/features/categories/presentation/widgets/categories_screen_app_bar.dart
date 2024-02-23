@@ -19,6 +19,7 @@ class CategoriesScreenAppBar extends StatelessWidget
         S.of(context).categories,
       ),
       centerTitle: false,
+      titleSpacing: 20,
     );
   }
 

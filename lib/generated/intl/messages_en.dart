@@ -53,6 +53,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "closed_now": MessageLookupByLibrary.simpleMessage("Closed now"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
+        "confirm_delete_message": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this message?"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
@@ -64,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
         "day_ago": MessageLookupByLibrary.simpleMessage("day ago"),
         "days_ago": m0,
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "delete_by_sender": MessageLookupByLibrary.simpleMessage(
+            "This message has been deleted by the sender."),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -184,6 +189,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Write your message"),
         "write_your_review":
             MessageLookupByLibrary.simpleMessage("Write your review"),
-        "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday")
+        "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
+        "you_deleted_this_message":
+            MessageLookupByLibrary.simpleMessage("You deleted this message")
       };
 }

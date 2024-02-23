@@ -1159,6 +1159,46 @@ class S {
       args: [],
     );
   }
+
+  /// `You deleted this message`
+  String get you_deleted_this_message {
+    return Intl.message(
+      'You deleted this message',
+      name: 'you_deleted_this_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This message has been deleted by the sender.`
+  String get delete_by_sender {
+    return Intl.message(
+      'This message has been deleted by the sender.',
+      name: 'delete_by_sender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this message?`
+  String get confirm_delete_message {
+    return Intl.message(
+      'Are you sure you want to delete this message?',
+      name: 'confirm_delete_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

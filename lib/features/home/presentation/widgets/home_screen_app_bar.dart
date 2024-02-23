@@ -27,6 +27,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: Text(
           S.of(context).appName,
         ),
+        titleSpacing: 20,
         actions: [
           IconButton(
             icon: const Icon(

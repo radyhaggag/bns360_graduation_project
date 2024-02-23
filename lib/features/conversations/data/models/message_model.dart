@@ -11,6 +11,7 @@ class MessageModel extends MessageEntity {
     super.id,
     super.content,
     super.imageUrl,
+    super.isDeleted,
   });
 
   factory MessageModel.fromMap(Map<String, dynamic> map) {
@@ -21,6 +22,7 @@ class MessageModel extends MessageEntity {
       content: map['content'] as String?,
       imageUrl: map['imageUrl'] as String?,
       date: (map['date'] as Timestamp).toDate(),
+      isDeleted: (map['isDeleted'] as bool?) ?? false,
     );
   }
 
@@ -31,6 +33,12 @@ class MessageModel extends MessageEntity {
       'content': content,
       'imageUrl': imageUrl,
       'date': Timestamp.fromDate(date),
+    };
+  }
+
+  static Map<String, dynamic> deleteMap() {
+    return {
+      'isDeleted': true,
     };
   }
 }

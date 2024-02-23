@@ -53,3 +53,11 @@ class ResetCurrentUnreadCountEvent extends ConversationsEvent {
     required this.otherParticipantType,
   });
 }
+
+class DeleteMessageEvent extends ConversationsEvent {
+  final DeleteMessageParams deleteMessageParams;
+
+  DeleteMessageEvent({
+    required this.deleteMessageParams,
+  });
+}

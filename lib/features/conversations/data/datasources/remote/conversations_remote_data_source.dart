@@ -1,3 +1,4 @@
+import '../../../domain/params/delete_message_params.dart';
 import '../../../domain/params/reset_unread_count_params.dart';
 import '../../../domain/params/send_message_params.dart';
 import '../../models/conversation_model.dart';
@@ -14,5 +15,8 @@ abstract class ConversationsRemoteDataSource {
   );
   Future<void> resetUnreadCountForCurrentUser(
     ResetUnreadCountParams resetUnreadCountParams,
+  );
+  Future<void> deleteMessage(
+    DeleteMessageParams deleteMessageParams,
   );
 }

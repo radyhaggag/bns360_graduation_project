@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "closed_now": MessageLookupByLibrary.simpleMessage("مغلق الآن"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
+        "confirm_delete_message": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد حذف هذه الرسالة؟"),
         "contact_us": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
@@ -64,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
         "day_ago": MessageLookupByLibrary.simpleMessage("قبل يوم"),
         "days_ago": m0,
+        "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+        "delete_by_sender": MessageLookupByLibrary.simpleMessage(
+            "تم حذف هذه الرسالة من قبل المرسل."),
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
@@ -184,6 +189,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),
         "write_your_review":
             MessageLookupByLibrary.simpleMessage("أكتب تقييمك"),
-        "yesterday": MessageLookupByLibrary.simpleMessage("الأمس")
+        "yesterday": MessageLookupByLibrary.simpleMessage("الأمس"),
+        "you_deleted_this_message":
+            MessageLookupByLibrary.simpleMessage("لقد حذفت هذه الرسالة")
       };
 }

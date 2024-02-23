@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../domain/entities/conversation_entity.dart';
 import '../../domain/entities/message_entity.dart';
+import '../../domain/params/delete_message_params.dart';
 import '../../domain/params/reset_unread_count_params.dart';
 import '../../domain/params/send_message_params.dart';
 import '../../domain/repositories/conversations_repo.dart';
@@ -30,6 +31,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     on<PicKMessageImageEvent>(_pickImage);
     on<RemovePickedImageEvent>(_removePickedImage);
     on<ResetCurrentUnreadCountEvent>(_resetUnreadCountForCurrentUser);
+    on<DeleteMessageEvent>(_deleteMessage);
   }
 
   bool _isInitialized = false;
@@ -76,6 +78,14 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     }
   }
 
+  List<ConversationEntity> get sortedConversations {
+    final temp = [...conversations];
+    temp.sort(
+      (a, b) => b.lastMessage.date.compareTo(a.lastMessage.date),
+    );
+    return temp;
+  }
+
   bool get isSearchActive => searchController.text.isNotEmpty;
 
   StreamSubscription? _conversationsStream;
@@ -85,8 +95,6 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     Emitter<ConversationsState> emit,
   ) async {
     emit(GetConversationsLoadingState());
-
-    // await Future.delayed(const Duration(seconds: 100));
 
     final res = conversationsRepo.getConversations();
 
@@ -251,5 +259,14 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     scrollController.dispose();
 
     return super.close();
+  }
+
+  _deleteMessage(
+    DeleteMessageEvent event,
+    Emitter<ConversationsState> emit,
+  ) async {
+    await conversationsRepo.deleteMessage(
+      event.deleteMessageParams,
+    );
   }
 }

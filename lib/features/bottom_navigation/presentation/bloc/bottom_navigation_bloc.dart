@@ -1,13 +1,14 @@
-import 'package:bns360_graduation_project/features/conversations/presentation/screens/conversations_screen.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../categories/presentation/screens/categories_screen.dart';
+import '../../../conversations/presentation/screens/conversations_screen.dart';
 import '../../../crafts/presentation/screens/crafts_screen.dart';
-import '../../../favorites/presentation/screens/favorites_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
-import '../../../settings/presentation/screens/settings_screen.dart';
+import '../../../jobs/presentation/screens/jobs_screen.dart';
+import '../../../profile/presentation/screen/profile_screen.dart';
+import '../../../real_estate/presentation/screens/real_estate_screen.dart';
 
 part 'bottom_navigation_event.dart';
 part 'bottom_navigation_state.dart';
@@ -20,10 +21,11 @@ class BottomNavBarBloc extends Bloc<BottomNavBarEvent, BottomNavBarState> {
   final views = [
     HomeScreen.getWithBlocProvider(),
     CategoriesScreen.getWithBlocProvider(),
-    FavoritesScreen.getWithBlocProvider(),
+    JobsScreen.getWithBlocProvider(),
     CraftsScreen.getWithBlocProvider(),
-    SettingsScreen.getWithBlocProvider(),
+    RealEstateScreen.getWithBlocProvider(),
     ConversationsScreen.getWithBlocProvider(), // Not on nav bar
+    ProfileScreen.getWithBlocProvider(), // Not on nav bar
   ];
   int bottomNavbarIndex = 0;
 

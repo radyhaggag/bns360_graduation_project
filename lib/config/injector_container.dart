@@ -15,7 +15,9 @@ import '../features/crafts/crafts_injector.dart';
 import '../features/craftsman/craftsman_injector.dart';
 import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
+import '../features/jobs/jobs_injector.dart';
 import '../features/profile/profile_injector.dart';
+import '../features/real_estate/real_estate_injector.dart';
 import '../features/settings/settings_injector.dart';
 import '../features/splash/splash_injector.dart';
 
@@ -34,6 +36,8 @@ Future<void> initAppDependencies() async {
   initCategoryItem();
   initCraftsman();
   initConversations();
+  initJobs();
+  initRealEstate();
 }
 
 Future<void> initCore() async {

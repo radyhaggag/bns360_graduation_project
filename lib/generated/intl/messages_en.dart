@@ -103,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "must_be_more_than_minimum_number_of_characters":
             MessageLookupByLibrary.simpleMessage(
                 "Password must be more than the minimum length of characters"),
+        "my_posts": MessageLookupByLibrary.simpleMessage("My posts"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("No craftsmen found!"),
@@ -154,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "serviceProvider":
             MessageLookupByLibrary.simpleMessage("Service provider"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "share_this_app":
+            MessageLookupByLibrary.simpleMessage("Share this App"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "Fill your information below or register with your social account"),
@@ -182,6 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validateTwoNames": MessageLookupByLibrary.simpleMessage(
             "Please enter at least two names (first and last)."),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+        "view_profile": MessageLookupByLibrary.simpleMessage("View profile"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("View reviews"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
         "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),

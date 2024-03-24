@@ -10,9 +10,9 @@ import '../bloc/bottom_navigation_bloc.dart';
 const _iconList = [
   AppSvg.home,
   AppSvg.categoryFilled,
-  Icons.favorite,
+  AppSvg.jobs,
   AppSvg.construction,
-  AppSvg.settings,
+  AppSvg.realEstate,
 ];
 
 class MainBottomNavbar extends StatelessWidget {
@@ -34,18 +34,12 @@ class MainBottomNavbar extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               alignment: Alignment.center,
-              child: index == 2
-                  ? Icon(
-                      _iconList[index] as IconData,
-                      size: 33,
-                      color: iconColor,
-                    )
-                  : SvgPicture.asset(
-                      _iconList[index] as String,
-                      fit: BoxFit.scaleDown,
-                      color: iconColor,
-                      height: index == 0 ? 26 : 30,
-                    ),
+              child: SvgPicture.asset(
+                _iconList[index],
+                fit: BoxFit.scaleDown,
+                color: iconColor,
+                height: (index == 0 || index == 2) ? 26 : 30,
+              ),
             );
           },
           backgroundColor:

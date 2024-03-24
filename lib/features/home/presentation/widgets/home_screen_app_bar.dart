@@ -39,7 +39,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               // Navigator.of(context).pushNamed(Routes.conversations);
               context.read<BottomNavBarBloc>().add(
                     ChangeBottomNavbarIndex(
-                      index: context.read<BottomNavBarBloc>().views.length - 1,
+                      index: context.read<BottomNavBarBloc>().views.length - 2,
                     ),
                   );
             },
@@ -48,7 +48,13 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             icon: ProfileCircleIcon(
               imageUrl: AppProvider().getProfile()?.imageUrl,
             ),
-            onPressed: () {},
+            onPressed: () {
+              context.read<BottomNavBarBloc>().add(
+                    ChangeBottomNavbarIndex(
+                      index: context.read<BottomNavBarBloc>().views.length - 1,
+                    ),
+                  );
+            },
           ),
           const SizedBox(width: 10),
         ],

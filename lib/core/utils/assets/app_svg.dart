@@ -25,5 +25,9 @@ abstract class AppSvg {
   static const phone = "$_svgPath/phone.svg";
   static const emptyList = '$_svgPath/empty_list.svg';
   static const attachment = '$_svgPath/attachment.svg';
-  static const String sendArrow = '$_svgPath/send_arrow.svg';
+  static const sendArrow = '$_svgPath/send_arrow.svg';
+  static const realEstate = '$_svgPath/real_estate.svg';
+  static const posts = '$_svgPath/posts.svg';
+  static const jobs = '$_svgPath/jobs.svg';
+  static const share = '$_svgPath/share.svg';
 }

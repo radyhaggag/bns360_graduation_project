@@ -113,5 +113,8 @@
   "you_deleted_this_message": "لقد حذفت هذه الرسالة",
   "delete_by_sender": "تم حذف هذه الرسالة من قبل المرسل.",
   "confirm_delete_message": "هل أنت متأكد أنك تريد حذف هذه الرسالة؟",
-  "delete": "حذف"
+  "delete": "حذف",
+  "view_profile": "عرض الملف الشخصي",
+  "my_posts": "منشوراتي",
+  "share_this_app": "شارك التطبيق"
 }

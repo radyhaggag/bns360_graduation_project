@@ -1199,6 +1199,36 @@ class S {
       args: [],
     );
   }
+
+  /// `View profile`
+  String get view_profile {
+    return Intl.message(
+      'View profile',
+      name: 'view_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My posts`
+  String get my_posts {
+    return Intl.message(
+      'My posts',
+      name: 'my_posts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share this App`
+  String get share_this_app {
+    return Intl.message(
+      'Share this App',
+      name: 'share_this_app',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

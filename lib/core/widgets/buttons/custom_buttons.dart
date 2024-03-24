@@ -8,6 +8,7 @@ class CustomElevatedButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? backgroundColor;
+  final Color? foregroundColor;
   final String label;
   final void Function()? onPressed;
   final bool isLoading;
@@ -18,6 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.width,
     this.height,
     this.backgroundColor,
+    this.foregroundColor,
     required this.label,
     this.onPressed,
     this.isLoading = false,
@@ -33,6 +35,7 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: !isLoading ? onPressed : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
           shape: borderRadius != null
               ? RoundedRectangleBorder(borderRadius: borderRadius!)
               : null,
@@ -119,6 +122,63 @@ class CustomTextButton extends StatelessWidget {
             ? const CenterProgressIndicator()
             : FittedBox(
                 child: Text(label),
+              ),
+      ),
+    );
+  }
+}
+
+class CustomElevatedButtonWithLeading extends StatelessWidget {
+  final double? width;
+  final double? height;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final String label;
+  final void Function()? onPressed;
+  final bool isLoading;
+  final BorderRadius? borderRadius;
+  final Widget leading;
+
+  const CustomElevatedButtonWithLeading({
+    super.key,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.foregroundColor,
+    required this.label,
+    this.onPressed,
+    this.isLoading = false,
+    this.borderRadius,
+    required this.leading,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width ?? context.width,
+      height: height ?? 45.h,
+      child: ElevatedButton(
+        onPressed: !isLoading ? onPressed : null,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
+          shape: borderRadius != null
+              ? RoundedRectangleBorder(borderRadius: borderRadius!)
+              : null,
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+        ),
+        child: isLoading
+            ? const CenterProgressIndicator()
+            : Row(
+                children: [
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      label,
+                    ),
+                  ),
+                  leading,
+                ],
               ),
       ),
     );

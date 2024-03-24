@@ -105,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "must_be_more_than_minimum_number_of_characters":
             MessageLookupByLibrary.simpleMessage(
                 "يجب أن تكون كلمة المرور أكثر من الحد الأدنى لطول الأحرف"),
+        "my_posts": MessageLookupByLibrary.simpleMessage("منشوراتي"),
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على حرفيين!"),
@@ -156,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "لقدم قمنا بإرسال كود التحقق الى"),
         "serviceProvider": MessageLookupByLibrary.simpleMessage("مقدم خدمة"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
+        "share_this_app": MessageLookupByLibrary.simpleMessage("شارك التطبيق"),
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "قم بملئ المعلومات التاليه أو قم بالتسجيل بحسابك على مواقع التواصل الاجتماعى"),
@@ -182,6 +184,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "validateTwoNames": MessageLookupByLibrary.simpleMessage(
             "الرجاء إدخال اسمين على الأقل (الأول والأخير)."),
         "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
+        "view_profile":
+            MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("عرض المراجعات"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),

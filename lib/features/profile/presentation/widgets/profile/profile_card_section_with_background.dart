@@ -32,12 +32,13 @@ class ProfileCardSectionWithBackground extends StatelessWidget {
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         return Container(
-          height: context.height * .4,
+          height: context.height * .37,
           width: context.width,
           decoration: boxDecoration,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(height: 30.h),
               ProfileImageWithRadius(
                 imageUrl: context.read<ProfileBloc>().profile?.imageUrl,
               ),

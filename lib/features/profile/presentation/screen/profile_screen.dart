@@ -19,7 +19,9 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       // backgroundColor: AppColors.primary,
-      body: ProfileBody(),
+      body: SafeArea(
+        child: ProfileBody(),
+      ),
     );
   }
 }

@@ -13,8 +13,8 @@ class ProfileListItemsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: context.width * .92,
-      height: context.height * .5,
+      width: context.width * .93,
+      height: context.height * .45,
       padding: EdgeInsetsDirectional.only(start: 6.w, top: 12.h),
       decoration: BoxDecoration(
         color: Theme.of(context).highlightColor,

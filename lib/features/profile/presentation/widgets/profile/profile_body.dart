@@ -16,7 +16,7 @@ class ProfileBody extends StatelessWidget {
         children: [
           const ProfileCardSectionWithBackground(),
           Positioned(
-            top: context.height * .33,
+            top: context.height * .31,
             child: const ProfileListItemsSection(),
           ),
         ],

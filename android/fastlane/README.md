@@ -31,6 +31,22 @@ Lane for Firebase distribution - Development
 
 Lane for Firebase distribution - Production
 
+### android increment_development_version
+
+```sh
+[bundle exec] fastlane android increment_development_version
+```
+
+Lane for Increment the app version - Development
+
+### android increment_production_version
+
+```sh
+[bundle exec] fastlane android increment_production_version
+```
+
+Lane for Increment the app version - Production
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

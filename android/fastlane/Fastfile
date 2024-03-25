@@ -2,14 +2,15 @@
 #   - Move into android directory
 #   - Run [fastlane android $lane_name]
 
-# Last version for development: 1.0.1+1
-# Last version for production: 1.0.1+1
+# Last version for development: 1.0.1+3
+# Last version for production: 1.0.1+3
 
 default_platform(:android)
 
 platform :android do
   desc "Lane for Firebase distribution - Development"
   lane :distribute_development do
+    increment_development_version
     sh "flutter clean"
     sh "flutter build apk --release --flavor development --target lib/main_development.dart --no-tree-shake-icons"
     firebase_app_distribution(
@@ -24,6 +25,7 @@ platform :android do
 
   desc "Lane for Firebase distribution - Production"
   lane :distribute_production do
+    increment_production_version
     sh "flutter clean"
     sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
     firebase_app_distribution(
@@ -35,4 +37,29 @@ platform :android do
       release_notes: "First Firebase Fastlane distribution for production"
     )  
   end
+
+  desc "Lane for Increment the app version - Development"
+  lane :increment_development_version do
+    latest_release = firebase_app_distribution_get_latest_release(
+      app: "1:79562440860:android:e4234de1e749268a74ad59"
+    )
+    # This to update version code on android/app/build.gradle
+    increment_version_code(
+      version_code: latest_release[:buildVersion].to_i + 1,
+    )
+    flutter_build_increment # This to update version code on pubspec.yaml
+  end
+
+  desc "Lane for Increment the app version - Production"
+  lane :increment_production_version do
+    latest_release = firebase_app_distribution_get_latest_release(
+      app: "1:185023782037:android:1e42d36edc1c7eab8dcf9c"
+    )
+    # This to update version code on android/app/build.gradle
+    increment_version_code(
+      version_code: latest_release[:buildVersion].to_i + 1,
+    )
+    flutter_build_increment # This to update version code on pubspec.yaml
+  end
+
 end

@@ -2,7 +2,7 @@
 // ignore_for_file: lines_longer_than_80_chars, avoid_classes_with_only_static_members
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show defaultTargetPlatform, TargetPlatform;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -16,26 +16,11 @@ import 'package:flutter/foundation.dart'
 /// ```
 class DevelopmentFirebaseOptions {
   static FirebaseOptions get currentPlatform {
-    if (kIsWeb) {
-      return web;
-    }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
         return ios;
-      case TargetPlatform.macOS:
-        return macos;
-      case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DevelopmentFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
-      case TargetPlatform.linux:
-        throw UnsupportedError(
-          'DevelopmentFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
       default:
         throw UnsupportedError(
           'DevelopmentFirebaseOptions are not supported for this platform.',
@@ -43,38 +28,20 @@ class DevelopmentFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBjv7ezMC-5zIlORvkAbho_UQZtA82PJaw',
-    appId: '1:151635374177:web:c8f537ab86d0ed13b7ba20',
-    messagingSenderId: '151635374177',
-    projectId: 'bns360-dev',
-    authDomain: 'bns360-dev.firebaseapp.com',
-    storageBucket: 'bns360-dev.appspot.com',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAd_JgVQ6seldd4pkwrCiZHcUGhYOFZKgQ',
-    appId: '1:151635374177:android:46226648d9a1b28bb7ba20',
-    messagingSenderId: '151635374177',
-    projectId: 'bns360-dev',
-    storageBucket: 'bns360-dev.appspot.com',
+    apiKey: 'AIzaSyC4bec-Lm2xtG4-U7-eGQMcJLYFOXwNd4E',
+    appId: '1:79562440860:android:e4234de1e749268a74ad59',
+    messagingSenderId: '79562440860',
+    projectId: 'bns360-dev-f06f3',
+    storageBucket: 'bns360-dev-f06f3.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyADiqUDcRPGDeqDKkexjlCu7g6vN1CpHKU',
-    appId: '1:151635374177:ios:56202ac6e635916eb7ba20',
-    messagingSenderId: '151635374177',
-    projectId: 'bns360-dev',
-    storageBucket: 'bns360-dev.appspot.com',
+    apiKey: 'AIzaSyCSRXF09SacfoT54XHqhnFsleXNyO5hZGk',
+    appId: '1:79562440860:ios:610c7e96657749fc74ad59',
+    messagingSenderId: '79562440860',
+    projectId: 'bns360-dev-f06f3',
+    storageBucket: 'bns360-dev-f06f3.appspot.com',
     iosBundleId: 'com.example.bns360GraduationProject',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyADiqUDcRPGDeqDKkexjlCu7g6vN1CpHKU',
-    appId: '1:151635374177:ios:09a19f5d49a4a215b7ba20',
-    messagingSenderId: '151635374177',
-    projectId: 'bns360-dev',
-    storageBucket: 'bns360-dev.appspot.com',
-    iosBundleId: 'com.example.bns360GraduationProject.RunnerTests',
   );
 }

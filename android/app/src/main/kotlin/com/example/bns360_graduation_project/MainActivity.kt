@@ -1,4 +1,4 @@
-package com.example.bns360_graduation_project
+package com.bns360.bns360
 
 import io.flutter.embedding.android.FlutterActivity
 

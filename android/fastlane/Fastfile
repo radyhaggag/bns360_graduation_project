@@ -1,0 +1,38 @@
+# For execute lan:
+#   - Move into android directory
+#   - Run [fastlane android $lane_name]
+
+# Last version for development: 1.0.1+1
+# Last version for production: 1.0.1+1
+
+default_platform(:android)
+
+platform :android do
+  desc "Lane for Firebase distribution - Development"
+  lane :distribute_development do
+    sh "flutter clean"
+    sh "flutter build apk --release --flavor development --target lib/main_development.dart --no-tree-shake-icons"
+    firebase_app_distribution(
+      app: "1:79562440860:android:e4234de1e749268a74ad59",
+      firebase_cli_token: "1//03OO00dvjipjjCgYIARAAGAMSNwF-L9Iri2PQMcgSLl5xRPs9w6wZ6iQgKs5PJlXb7kpy2SX0GliRTGXqs1IlCEEduFzMW_C2Gy8",
+      android_artifact_type: "APK",
+      android_artifact_path: "../build/app/outputs/flutter-apk/app-development-release.apk",
+      testers: "radyhaggag11@gmail.com, radyhaggag50@gmail.com",
+      release_notes: "First Firebase Fastlane distribution for development"
+    )  
+  end
+
+  desc "Lane for Firebase distribution - Production"
+  lane :distribute_production do
+    sh "flutter clean"
+    sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
+    firebase_app_distribution(
+      app: "1:185023782037:android:1e42d36edc1c7eab8dcf9c",
+      firebase_cli_token: "1//03OO00dvjipjjCgYIARAAGAMSNwF-L9Iri2PQMcgSLl5xRPs9w6wZ6iQgKs5PJlXb7kpy2SX0GliRTGXqs1IlCEEduFzMW_C2Gy8",
+      android_artifact_type: "APK",
+      android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
+      testers: "radyhaggag11@gmail.com, radyhaggag50@gmail.com",
+      release_notes: "First Firebase Fastlane distribution for production"
+    )  
+  end
+end

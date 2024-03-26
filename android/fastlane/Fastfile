@@ -1,6 +1,170 @@
-# For execute lan:
+#* For init fastlane:
 #   - Move into android directory
-#   - Run [fastlane android $lane_name]
+#   - Run ```fastlane init```
+
+#* For execute lan:
+#   - Move into android directory
+#   - Run ```fastlane android $lane_name```
+
+
+#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#
+#*** Setup Firebase App Distribution For Android with fastlane Documentation ***#
+#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#
+# - Add firebase app distribution plugin first by running the following command:
+#   - fastlane add_plugin firebase_app_distribution.
+# - Get the `[firebase_cli_token]` by running the following command:
+#   - firebase login:ci
+# - finally setup the lane for upload the appliction on firebase app distribution.
+# - Before upload new release, we should increment the version code:
+#   - [firebase_app_distribution_get_latest_release]: This will fetch info about your app's latest release in App Distribution,
+#     including the version code and release notes, example to use this plugin and extract the version code:
+#     ```
+#       latest_release = firebase_app_distribution_get_latest_release(
+#         app: "1:79562440860:android:e4234de1e749268a74ad59"
+#       )
+#       last_version_code = latest_release[:buildVersion].to_i
+#      ```
+#   - [increment_version_code]: This will Increment the version code of your android project,
+#     We should add it by the following command [fastlane add_plugin increment_version_code],
+#     this plugin require a [version_code], example to use this plugin:
+#     ```
+#       increment_version_code(
+#         version_code: last_version_code + 1,
+#       )
+#     ```
+#   - [flutter_build_increment]: This will Increment the version code  on pubspec.yaml,
+#     We should add it by the following command [fastlane add_plugin flutter_build_increment],
+#     to use this plugin just write its name like that ```flutter_build_increment```
+#
+# - Most important parameters on [Using firebase_app_distribution] plugin:
+#   - [app]: Your app's Firebase App ID. You can find the App ID in the Firebase console.
+#   - [firebase_cli_token]: refresh token that's printed when you authenticate your CI environment with the Firebase CLI [on step number 2].
+#   - [android_artifact_type]: Specifies the Android file type (APK or AAB).
+#   - [android_artifact_path]: Absolute path to the APK or AAB file you want to upload.
+#       *-* It's always be here after build process: [../build/app/outputs/flutter-apk/*******]
+#   - [testers]: The email addresses of the testers you want to invite. example: (testers: "a@gmail.com, b@gmail.com").
+#   - [release_notes]: Release notes for this build.
+#
+#* Here is an example for increment the version code and upload the release on firebase app distribution *#
+#  ```
+# desc "Lane for Firebase distribution"
+# lane :distribute_development do
+#   increment_app_version
+#   sh "flutter clean"
+#   sh "flutter build apk --release --flavor development --target lib/main_development.dart --no-tree-shake-icons"
+#   firebase_app_distribution(
+#     app: "1:79562440860:android:e4234de1e749268a74ad59",
+#     firebase_cli_token: "1//03OO00dvjipjjCgYIARAAGAMSNwF-L9Iri2PQMcgSLl5xRPs9w6wZ6iQgKs5PJlXb7kpy2SX0GliRTGXqs1IlCEEduFzMW_C2Gy8",
+#     android_artifact_type: "APK",
+#     android_artifact_path: "../build/app/outputs/flutter-apk/app-development-release.apk",
+#     testers: "radyhaggag11@gmail.com, radyhaggag50@gmail.com",
+#     release_notes: "First Firebase Fastlane distribution for development"
+#   )  
+# end
+#
+# desc "Lane for Increment the app version code"
+# lane :increment_app_version do
+#   latest_release = firebase_app_distribution_get_latest_release(
+#     app: "1:79562440860:android:e4234de1e749268a74ad59"
+#   )
+#   # This to update version code on android/app/build.gradle
+#   increment_version_code(
+#     version_code: latest_release[:buildVersion].to_i + 1,
+#   )
+#   flutter_build_increment # This to update version code on pubspec.yaml
+# end
+# ```
+
+# *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* *-* # 
+
+##***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#
+#*** Setup Google play deployment with fastlane Documentation [https://docs.fastlane.tools/actions/upload_to_play_store/] ***#
+##***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#***#
+# - First step is "Collect your Google credentials" by creating a service account on google cloud.
+#   - Select the target project and if not exist create a new one.
+#   - Enable the Google Play Developer API by selecting an existing Google Cloud Project that fits your needs and pushing ENABLE,
+#     on this link -> [https://console.cloud.google.com/apis/api/androidpublisher.googleapis.com?hl=en].
+#   - Create service account, on this link -> [https://console.cloud.google.com/iam-admin/serviceaccounts?hl=en],
+#       and copy it for later use [will be added on the google play users and permissions later].
+#   - on service accounts list Click on the Actions vertical three-dot icon, and choost manage keys, then
+#     Create new key and choose a JSON Format, then a file will downloaded save it on safe location.
+#   - on service accounts list Click on the Actions vertical three-dot icon, and choost manage keys, then
+#   - Open the Google Play Console and select Users and Permissions, then Click Invite new users,
+#       and add the serivce account email which we created, then Click on Account Permissions, and Choose the Admin (all permissions).
+#   - finally click on Invite User.
+#
+# - to test the connection to google play store with the downloaded private key [json file for service account key],
+#     run the following command ```fastlane run validate_play_store_json_key json_key:/path/to/your/downloaded/file.json```
+#     and replace "/path/to/your/downloaded/file.json" with the file path.
+# - if the previous step worked, then add the path to the JSON file to your Appfile, by this way:
+#     ```json_key_file("path/to/your/play-store-credentials.json")```
+#* Now everything is ready, but before complete the followings steps, should be an uploaded release on google play store [or just a draft one]. *#
+# - Fetch your app metadata by running the following command ```fastlane supply init```
+# - The next step is to setup a lane for increment the version code, build and upload a release to google play.
+# - Before upload new release, we should increment the version code:
+#   - [google_play_track_version_codes]: This will fetch info about your app's latest release in google play,
+#     including the version code, example to use this plugin and extract the version code:
+#     ```
+#       latest_release = google_play_track_version_codes(
+#          package_name: "your package name",  # The package name of the application to use.
+#          track: "track-name",                # The track of the application to use. The default available tracks are: production, beta, alpha, internal.
+#          json_key: "json key file path",     # The path to a file containing service account JSON, used to authenticate with Google.
+#       )
+#       version_code_play_store = version_code[0].to_i
+#      ```
+#   - [increment_version_code]: This will Increment the version code of your android project,
+#     We should add it by the following command [fastlane add_plugin increment_version_code],
+#     this plugin require a [version_code], example to use this plugin:
+#     ```
+#       increment_version_code(
+#         version_code: last_version_code + 1,
+#       )
+#     ```
+#   - [flutter_build_increment]: This will Increment the version code  on pubspec.yaml,
+#     We should add it by the following command [fastlane add_plugin flutter_build_increment],
+#     to use this plugin just write its name like that ```flutter_build_increment```
+#
+# - Most important parameters on [Using upload_to_play_store] plugin:
+#   - [track]: The track of the application to use. The default available tracks are: production, beta, alpha, internal.
+#   - [aab]: Absolute path to the AAB file.
+#       *-* It's always be here after build process: [../build/app/outputs/flutter-apk/*******.aab]
+#   - [release_status]: Release status (used when uploading new apks/aabs) - valid values are completed, draft, halted, inProgress.
+#       If the app is not on production yet and there is a release on draft so it must be a draft, else you can remove it.
+#* Here is an example for increment the version code and upload the release to google play "internal" testing *#
+#  ```
+# desc "Lane for Firebase distribution"
+# upload to internal test to Google Play
+# lane :internal do 
+#   sh "flutter clean"
+#   increment_app_version
+#   # build the app bundle if you haven't already 
+#   sh "flutter build appbundle"
+#   gradle(task: 'bundleRelease')
+#   # Upload to internal test
+#   upload_to_play_store(
+#     track: 'internal',
+#     aab: '../build/app/outputs/bundle/release/app-release.aab',
+#     release_status: 'draft'
+#   )
+# end
+#
+# desc "Lane for Increment the app version code"
+# lane :increment_app_version do
+# version_code = google_play_track_version_codes(
+#   package_name: "com.bns360.bns360",
+#   track: "internal",
+#   json_key: "D:/keys/test-fastlane-418318-c0d07240e9ca.json"
+#  )
+ 
+#  version_code_play_store = version_code[0].to_i
+#  update_version_code = version_code_play_store + 1
+ 
+#  increment_version_code(
+#   version_code: update_version_code.to_i
+#  )
+# end
+# ```
+
 
 # Last version for development: 1.0.1+3
 # Last version for production: 1.0.1+3
@@ -61,5 +225,32 @@ platform :android do
     )
     flutter_build_increment # This to update version code on pubspec.yaml
   end
+  lane :increment_app_version_by_lastest_google_play_release do
+    version_code = google_play_track_version_codes(
+      package_name: "com.bns360.bns360",
+      track: "internal",
+      json_key: "Add the path here"
+    )
+    
+    version_code_play_store = version_code[0].to_i
+    update_version_code = version_code_play_store + 1
+    
+    increment_version_code(
+      version_code: update_version_code.to_i
+    )
+  end
 
+  lane :increment_app_version_by_lastest_google_play_release do 
+    sh "flutter clean"
+    flutter_build_increment
+    sh "flutter build appbundle"  
+    gradle(task: 'bundleRelease')
+    # Upload to internal test
+    upload_to_play_store(
+      track: 'internal',
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      skip_upload_apk: true,
+      release_status: 'draft'
+    )
+  end
 end

@@ -116,5 +116,8 @@
   "delete": "حذف",
   "view_profile": "عرض الملف الشخصي",
   "my_posts": "منشوراتي",
-  "share_this_app": "شارك التطبيق"
+  "share_this_app": "شارك التطبيق",
+  "find_your_job": "لنجد وظيفتك",
+  "search_for_job": "البحث عن وظيفة",
+  "no_jobs_found": "لم يتم العثور على وظائف"
 }

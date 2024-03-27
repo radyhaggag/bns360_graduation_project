@@ -1229,6 +1229,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Let''s find your job`
+  String get find_your_job {
+    return Intl.message(
+      'Let\'\'s find your job',
+      name: 'find_your_job',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search for job`
+  String get search_for_job {
+    return Intl.message(
+      'Search for job',
+      name: 'search_for_job',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No jobs found`
+  String get no_jobs_found {
+    return Intl.message(
+      'No jobs found',
+      name: 'no_jobs_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

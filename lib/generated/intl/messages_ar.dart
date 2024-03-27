@@ -83,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("ادخل رقم هاتفك"),
         "favorites": MessageLookupByLibrary.simpleMessage("لمفضلة"),
+        "find_your_job": MessageLookupByLibrary.simpleMessage("لنجد وظيفتك"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
@@ -111,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على حرفيين!"),
         "no_favorite_items":
             MessageLookupByLibrary.simpleMessage("لا يوجد عناصر ف المفضلة!"),
+        "no_jobs_found":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على وظائف"),
         "no_places_to_explore":
             MessageLookupByLibrary.simpleMessage("لا بوجد اماكن للاستكشاف"),
         "no_results": MessageLookupByLibrary.simpleMessage("لا توجد نتائج."),
@@ -150,6 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "reviewer": MessageLookupByLibrary.simpleMessage("مراجع"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "search": MessageLookupByLibrary.simpleMessage("أبحث"),
+        "search_for_job":
+            MessageLookupByLibrary.simpleMessage("البحث عن وظيفة"),
         "search_on": MessageLookupByLibrary.simpleMessage("البحث في"),
         "send": MessageLookupByLibrary.simpleMessage("إرسال"),
         "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),

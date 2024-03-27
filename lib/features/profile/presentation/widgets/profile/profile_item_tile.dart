@@ -47,7 +47,7 @@ class ProfileItemTile extends StatelessWidget {
         title,
         style: Theme.of(context).textTheme.titleSmall?.copyWith(
               fontSize: AppFontSize.details,
-              color: AppColors.primary,
+              color: Theme.of(context).cardColor,
             ),
       ),
       trailing: trailing ??
@@ -83,7 +83,7 @@ class LogoutTile extends StatelessWidget {
         S.of(context).logout,
         style: Theme.of(context).textTheme.titleSmall?.copyWith(
               fontSize: AppFontSize.details,
-              color: AppColors.primary,
+              color: Theme.of(context).cardColor,
             ),
       ),
     );

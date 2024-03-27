@@ -6,3 +6,18 @@ abstract class JobsEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetJobsEvent extends JobsEvent {}
+
+class GetJobByIdEvent extends JobsEvent {
+  final String id;
+
+  const GetJobByIdEvent({required this.id});
+
+  @override
+  List<Object> get props => [id];
+}
+
+class ToggleSearchIcon extends JobsEvent {}
+
+class SearchOnJobs extends JobsEvent {}

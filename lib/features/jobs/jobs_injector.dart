@@ -1,9 +1,24 @@
-import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
-
 import '../../config/injector_container.dart';
+import 'data/datasources/remote/jobs_remote_data_source.dart';
+import 'data/datasources/remote/jobs_remote_data_source_impl.dart';
+import 'data/repositories/jobs_repo_impl.dart';
+import 'domain/repositories/jobs_repo.dart';
+import 'presentation/bloc/jobs_bloc.dart';
 
 initJobs() {
+  // repos
+  sl.registerLazySingleton<JobsRemoteDataSource>(
+    () => JobsRemoteDataSourceImpl(sl()),
+  );
+
+  // repos
+  sl.registerLazySingleton<JobsRepo>(
+    () => JobsRepoImpl(sl()),
+  );
+
   sl.registerFactory(
-    () => JobsBloc(),
+    () => JobsBloc(
+      jobsRepo: sl(),
+    ),
   );
 }

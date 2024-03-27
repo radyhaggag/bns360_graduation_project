@@ -1,7 +1,10 @@
-import 'package:bns360_graduation_project/config/injector_container.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../config/injector_container.dart';
+import '../bloc/jobs_bloc.dart';
+import '../widgets/jobs_body.dart';
+import '../widgets/jobs_screen_app_bar.dart';
 
 class JobsScreen extends StatelessWidget {
   const JobsScreen({super.key});
@@ -15,6 +18,10 @@ class JobsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Theme.of(context).listTileTheme.tileColor,
+      appBar: const JobsScreenAppBar(),
+      body: const JobsBody(),
+    );
   }
 }

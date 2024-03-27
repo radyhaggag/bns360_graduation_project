@@ -81,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
+        "find_your_job":
+            MessageLookupByLibrary.simpleMessage("Let\'\'s find your job"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
@@ -109,6 +111,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No craftsmen found!"),
         "no_favorite_items":
             MessageLookupByLibrary.simpleMessage("No favorite items!"),
+        "no_jobs_found": MessageLookupByLibrary.simpleMessage("No jobs found"),
         "no_places_to_explore":
             MessageLookupByLibrary.simpleMessage("No places to explore"),
         "no_results": MessageLookupByLibrary.simpleMessage("No results found."),
@@ -147,6 +150,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "reviewer": MessageLookupByLibrary.simpleMessage("Reviewer"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "search_for_job":
+            MessageLookupByLibrary.simpleMessage("Search for job"),
         "search_on": MessageLookupByLibrary.simpleMessage("Search on"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),

@@ -34,15 +34,15 @@ class _ContactRow extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AppSvg.phone,
-          color: Theme.of(context).cardColor,
+          color: context.theme.cardColor,
         ),
         const SizedBox(width: 15),
         Text(
           phone,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontSize: AppFontSize.details,
-                fontWeight: FontWeight.w500,
-              ),
+          style: context.textTheme.titleMedium?.copyWith(
+            fontSize: AppFontSize.details,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ],
     );

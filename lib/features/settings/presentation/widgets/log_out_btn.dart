@@ -1,10 +1,11 @@
-import '../../../../core/app/app_bloc.dart';
-import '../../../../core/utils/enums.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/app/app_bloc.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/enums.dart';
 import '../../../../generated/l10n.dart';
 
 class LogOutBtn extends StatelessWidget {
@@ -19,10 +20,10 @@ class LogOutBtn extends StatelessWidget {
           : AppColors.black,
       title: Text(
         S.of(context).logout,
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontSize: AppFontSize.details,
-              color: _mainColor(context),
-            ),
+        style: context.textTheme.bodyLarge?.copyWith(
+          fontSize: AppFontSize.details,
+          color: _mainColor(context),
+        ),
       ),
       trailing: RotatedBox(
         quarterTurns: 2,
@@ -34,7 +35,7 @@ class LogOutBtn extends StatelessWidget {
     );
   }
 
-  Color _mainColor(context) {
-    return Theme.of(context).cardColor;
+  Color _mainColor(BuildContext context) {
+    return context.theme.cardColor;
   }
 }

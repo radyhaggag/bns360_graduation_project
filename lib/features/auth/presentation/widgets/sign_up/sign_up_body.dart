@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +26,7 @@ class SignUpBody extends StatelessWidget {
             const SizedBox(height: 50),
             Text(
               S.of(context).createYourAccount,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 5),

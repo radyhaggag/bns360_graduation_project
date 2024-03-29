@@ -2,11 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/extensions/media_query.dart';
-import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/app_colors.dart';
-part 'slider_dots_builder.dart';
+import '../../../../../core/utils/assets/app_images.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+
 part 'carousel_slider_builder.dart';
+part 'slider_dots_builder.dart';
 
 List<String> get _sliderImagesPath => [
       AppImages.sliderImg1,

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -63,7 +64,7 @@ class _BuildTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title ?? '',
-      style: Theme.of(context).textTheme.bodyLarge,
+      style: context.textTheme.bodyLarge,
       textAlign: TextAlign.center,
     );
   }
@@ -80,9 +81,9 @@ class _BuildSubtitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       subtitle ?? '',
-      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: Theme.of(context).primaryColor,
-          ),
+      style: context.textTheme.bodyLarge?.copyWith(
+        color: context.theme.primaryColor,
+      ),
       textAlign: TextAlign.center,
     );
   }

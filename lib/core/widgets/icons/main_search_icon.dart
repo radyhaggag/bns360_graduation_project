@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,11 +21,11 @@ class MainSearchIcon extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: CircleAvatar(
-          backgroundColor: Theme.of(context).listTileTheme.tileColor,
+          backgroundColor: context.theme.listTileTheme.tileColor,
           child: Icon(
             FeatherIcons.search,
             size: 25.r,
-            color: Theme.of(context).cardColor,
+            color: context.theme.cardColor,
           ),
         ),
       ),

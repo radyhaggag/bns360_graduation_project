@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,6 +14,7 @@ class SearchField extends StatelessWidget {
     this.onChanged,
     this.height,
     this.withPrefixIcon = false,
+    this.textFieldColor,
   });
 
   final TextEditingController searchController;
@@ -21,6 +23,7 @@ class SearchField extends StatelessWidget {
   final String? hintText;
   final double? height;
   final bool withPrefixIcon;
+  final Color? textFieldColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +35,9 @@ class SearchField extends StatelessWidget {
       ),
       height: height ?? 30.h,
       child: TextFormField(
-        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontSize: AppFontSize.light,
-            ),
+        style: context.textTheme.titleMedium?.copyWith(
+          fontSize: AppFontSize.light,
+        ),
         controller: searchController,
         textAlign: TextAlign.start,
         maxLines: 1,
@@ -50,7 +53,7 @@ class SearchField extends StatelessWidget {
         },
         onChanged: onChanged,
         decoration: InputDecoration(
-          fillColor: Theme.of(context).listTileTheme.tileColor,
+          fillColor: textFieldColor ?? context.theme.listTileTheme.tileColor,
           filled: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 20),
           enabledBorder: OutlineInputBorder(
@@ -62,7 +65,12 @@ class SearchField extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
           hintText: hintText,
-          prefixIcon: withPrefixIcon ? const Icon(FeatherIcons.search) : null,
+          prefixIcon: withPrefixIcon
+              ? Icon(
+                  FeatherIcons.search,
+                  color: context.theme.cardColor,
+                )
+              : null,
         ),
       ),
     );

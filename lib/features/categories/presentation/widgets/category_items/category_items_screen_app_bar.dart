@@ -1,10 +1,11 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/extensions/media_query.dart';
 import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/shared_data/entities/category_entity.dart';
 import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
 import '../../../../../core/widgets/icons/main_search_icon.dart';
 import '../../../../../core/widgets/input_fields/search_field.dart';
@@ -34,11 +35,11 @@ class CategoryItemsScreenAppBar extends StatelessWidget
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
             ),
-            color: Theme.of(context).appBarTheme.backgroundColor,
+            color: context.theme.appBarTheme.backgroundColor,
           ),
           padding: const EdgeInsets.only(left: 20, right: 20),
           height: 60,
-          margin: const EdgeInsets.only(top: 36),
+          margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           alignment: Alignment.center,
           child: Row(
             children: [
@@ -53,7 +54,7 @@ class CategoryItemsScreenAppBar extends StatelessWidget
                         child: Icon(
                           Icons.arrow_back_ios,
                           size: 24,
-                          color: Theme.of(context).primaryColor,
+                          color: context.theme.primaryColor,
                         ),
                       ),
                       Expanded(
@@ -74,12 +75,10 @@ class CategoryItemsScreenAppBar extends StatelessWidget
                       const CustomBackButton(),
                       Text(
                         getItemTxt(context),
-                        style: Theme.of(context)
-                            .appBarTheme
-                            .titleTextStyle
-                            ?.copyWith(
-                              fontSize: AppFontSize.subTitle,
-                            ),
+                        style:
+                            context.theme.appBarTheme.titleTextStyle?.copyWith(
+                          fontSize: AppFontSize.subTitle,
+                        ),
                       ),
                     ],
                   ),

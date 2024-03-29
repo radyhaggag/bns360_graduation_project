@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -59,9 +60,9 @@ class PickedImageSection extends StatelessWidget {
               Flexible(
                 child: Text(
                   textEditingController.text,
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Theme.of(context).highlightColor,
-                      ),
+                  style: context.textTheme.bodyMedium?.copyWith(
+                    color: context.theme.highlightColor,
+                  ),
                   maxLines: 5,
                   overflow: TextOverflow.ellipsis,
                 ),

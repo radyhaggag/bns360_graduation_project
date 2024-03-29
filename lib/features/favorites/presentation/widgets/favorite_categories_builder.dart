@@ -2,9 +2,9 @@ import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/extensions/media_query.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/data_state_widget.dart';
 import '../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
 import '../../../../core/widgets/main_list_view_builder.dart';

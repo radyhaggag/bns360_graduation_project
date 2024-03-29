@@ -1,9 +1,10 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/extensions/media_query.dart';
 import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/profile_bloc.dart';
@@ -45,9 +46,9 @@ class ProfileCardSectionWithBackground extends StatelessWidget {
               const SizedBox(height: 10),
               Text(
                 context.read<ProfileBloc>().profile?.name ?? "",
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      color: AppColors.white,
-                    ),
+                style: context.textTheme.titleSmall?.copyWith(
+                  color: AppColors.white,
+                ),
               ),
               const SizedBox(height: 20),
               const _ViewProfileButton(),

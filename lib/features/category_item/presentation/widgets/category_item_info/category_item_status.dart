@@ -15,23 +15,23 @@ class _ItemStatusWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AppSvg.clock,
-          color: Theme.of(context).cardColor,
+          color: context.theme.cardColor,
         ),
         const SizedBox(width: 15),
         Text(
           status(context),
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: statusColor,
-                fontSize: AppFontSize.details,
-              ),
+          style: context.textTheme.titleSmall?.copyWith(
+            color: statusColor,
+            fontSize: AppFontSize.details,
+          ),
         ),
         const Spacer(),
         Text(
           openAndClosedHours(context),
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).hintColor,
-                fontSize: AppFontSize.details,
-              ),
+          style: context.textTheme.bodyLarge?.copyWith(
+            color: context.theme.hintColor,
+            fontSize: AppFontSize.details,
+          ),
         ),
       ],
     );

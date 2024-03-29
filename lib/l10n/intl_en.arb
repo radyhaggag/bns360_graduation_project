@@ -119,5 +119,11 @@
   "share_this_app": "Share this App",
   "find_your_job": "Let''s find your job",
   "search_for_job": "Search for job",
-  "no_jobs_found": "No jobs found"
+  "no_jobs_found": "No jobs found",
+  "part_time": "Part time",
+  "full_time": "Full time",
+  "egypt_currency": "EGP",
+  "hr_work": "hr work",
+  "posted": "Posted",
+  "details": "Details"
 }

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +23,7 @@ class ConversationScreenAppBar extends StatelessWidget
     return Container(
       padding: EdgeInsets.only(top: statusBarHeight),
       decoration: BoxDecoration(
-        color: Theme.of(context).highlightColor,
+        color: context.theme.highlightColor,
       ),
       alignment: Alignment.center,
       child: Row(
@@ -44,7 +45,7 @@ class ConversationScreenAppBar extends StatelessWidget
                 SizedBox(width: 10.w),
                 Text(
                   title(context),
-                  style: Theme.of(context).textTheme.titleSmall,
+                  style: context.textTheme.titleSmall,
                 ),
               ],
             ),

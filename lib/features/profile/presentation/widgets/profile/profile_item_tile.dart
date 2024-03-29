@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,7 @@ class ProfileItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      tileColor: Theme.of(context).listTileTheme.tileColor,
+      tileColor: context.theme.listTileTheme.tileColor,
       leading: (isSvg && svgPath != null)
           ? SvgPicture.asset(
               svgPath!,
@@ -45,10 +46,10 @@ class ProfileItemTile extends StatelessWidget {
             ),
       title: Text(
         title,
-        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontSize: AppFontSize.details,
-              color: Theme.of(context).cardColor,
-            ),
+        style: context.textTheme.titleSmall?.copyWith(
+          fontSize: AppFontSize.details,
+          color: context.theme.cardColor,
+        ),
       ),
       trailing: trailing ??
           const Icon(
@@ -58,8 +59,8 @@ class ProfileItemTile extends StatelessWidget {
     );
   }
 
-  Color _iconColor(context) {
-    return Theme.of(context).primaryColor.withAlpha(90);
+  Color _iconColor(BuildContext context) {
+    return context.theme.primaryColor.withAlpha(90);
   }
 }
 
@@ -70,21 +71,21 @@ class LogoutTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {},
-      tileColor: Theme.of(context).listTileTheme.tileColor,
+      tileColor: context.theme.listTileTheme.tileColor,
       leading: RotatedBox(
         quarterTurns: 2,
         child: Icon(
           Icons.logout,
-          color: Theme.of(context).primaryColor.withAlpha(90),
+          color: context.theme.primaryColor.withAlpha(90),
           size: 24.r,
         ),
       ),
       title: Text(
         S.of(context).logout,
-        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              fontSize: AppFontSize.details,
-              color: Theme.of(context).cardColor,
-            ),
+        style: context.textTheme.titleSmall?.copyWith(
+          fontSize: AppFontSize.details,
+          color: context.theme.cardColor,
+        ),
       ),
     );
   }

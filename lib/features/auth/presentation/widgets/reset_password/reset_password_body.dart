@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_styles.dart';
@@ -23,7 +24,7 @@ class ResetPasswordBody extends StatelessWidget {
             const SizedBox(height: 100),
             Text(
               S.of(context).resetPassword,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.textTheme.titleMedium,
             ),
             const SizedBox(height: 10),
             Text(

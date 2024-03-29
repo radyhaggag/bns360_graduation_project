@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,13 +29,13 @@ class ConfirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Theme.of(context).highlightColor,
+      backgroundColor: context.theme.highlightColor,
       content: Text(
         S.of(context).confirm_delete_message,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).primaryColor,
-            ),
+        style: context.textTheme.bodyMedium?.copyWith(
+          fontWeight: FontWeight.bold,
+          color: context.theme.primaryColor,
+        ),
       ),
       actions: [
         CustomTextButton(

@@ -20,7 +20,9 @@ abstract class LocalizationHelper {
     required String ar,
     required String en,
   }) {
-    if (currentLanguage == Language.arabic) return ar;
+    if (currentLanguage == Language.arabic) {
+      return ar.isNotEmpty ? ar : en;
+    }
     return en;
   }
 }

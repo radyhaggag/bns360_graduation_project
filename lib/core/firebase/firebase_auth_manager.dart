@@ -1,9 +1,10 @@
-import 'package:bns360_graduation_project/core/helpers/execute_and_handle_error.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/profile/profile_model.dart';
-import 'package:bns360_graduation_project/core/utils/custom_types.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../helpers/execute_and_handle_error.dart';
+import '../shared_data/models/profile/profile_model.dart';
+import '../utils/custom_types.dart';
+import '../utils/enums/user_type.dart';
 
 // const dummyImageUrl = 'https://static.dw.com/image/44777236_804.jpg';
 const dummyImageUrl =

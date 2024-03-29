@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_input_field.dart';
@@ -22,7 +23,7 @@ class EditInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final labelStyle = Theme.of(context).inputDecorationTheme.labelStyle;
+    final labelStyle = context.theme.inputDecorationTheme.labelStyle;
     return CustomInputField(
       controller: controller,
       keyboardType: TextInputType.name,
@@ -37,7 +38,7 @@ class EditInputField extends StatelessWidget {
       heightBetweenLabelAndField: heightBetweenLabelAndField,
       inputDecoration: InputDecoration(
         hintText: label,
-        fillColor: Theme.of(context).listTileTheme.tileColor,
+        fillColor: context.theme.listTileTheme.tileColor,
         filled: true,
         contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         enabledBorder: OutlineInputBorder(

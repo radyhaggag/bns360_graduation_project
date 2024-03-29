@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,10 +38,10 @@ class EditProfileTopSection extends StatelessWidget {
     );
   }
 
-  TextStyle? _textStyle(context) {
-    return Theme.of(context).textTheme.titleMedium?.copyWith(
-          color: AppColors.white,
-          fontSize: AppFontSize.subTitle,
-        );
+  TextStyle? _textStyle(BuildContext context) {
+    return context.textTheme.titleMedium?.copyWith(
+      color: AppColors.white,
+      fontSize: AppFontSize.subTitle,
+    );
   }
 }

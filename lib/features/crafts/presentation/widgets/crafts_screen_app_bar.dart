@@ -1,10 +1,11 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/extensions/media_query.dart';
+import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/icons/main_search_icon.dart';
-import '../../../../generated/l10n.dart';
 import '../../../../core/widgets/input_fields/search_field.dart';
+import '../../../../generated/l10n.dart';
 import '../bloc/crafts_bloc.dart';
 
 class CraftsScreenAppBar extends StatelessWidget
@@ -26,11 +27,11 @@ class CraftsScreenAppBar extends StatelessWidget
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
             ),
-            color: Theme.of(context).appBarTheme.backgroundColor,
+            color: context.theme.appBarTheme.backgroundColor,
           ),
           padding: const EdgeInsets.only(left: 20, right: 20),
           height: 60,
-          margin: const EdgeInsets.only(top: 36),
+          margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           alignment: Alignment.center,
           child: Row(
             children: [
@@ -43,7 +44,7 @@ class CraftsScreenAppBar extends StatelessWidget
                         child: Icon(
                           Icons.arrow_back_ios,
                           size: 24,
-                          color: Theme.of(context).primaryColor,
+                          color: context.theme.primaryColor,
                         ),
                       ),
                       Expanded(
@@ -59,7 +60,7 @@ class CraftsScreenAppBar extends StatelessWidget
                   ),
                   secondChild: Text(
                     S.of(context).craftsmen,
-                    style: Theme.of(context).appBarTheme.titleTextStyle,
+                    style: context.theme.appBarTheme.titleTextStyle,
                   ),
                   crossFadeState: bloc.isSearchEnabled
                       ? CrossFadeState.showFirst

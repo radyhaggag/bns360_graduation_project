@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -50,7 +51,7 @@ class _Item extends StatelessWidget {
         right: 5.w,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withAlpha(4),
+        color: context.theme.primaryColor.withAlpha(4),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(

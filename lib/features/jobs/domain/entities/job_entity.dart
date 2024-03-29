@@ -8,8 +8,8 @@ class JobEntity extends Equatable {
   final String description;
   final String requirements;
   final String date;
-  final double salary;
-  final String location;
+  final num salary;
+  final int workHours;
   final UserEntity publisher;
 
   const JobEntity({
@@ -17,12 +17,12 @@ class JobEntity extends Equatable {
     required this.jobTitle,
     required this.description,
     required this.salary,
-    required this.location,
     required this.publisher,
     required this.requirements,
     required this.date,
+    required this.workHours,
   });
 
   @override
-  List<Object> get props => [id, jobTitle, description, salary, location];
+  List<Object> get props => [id, jobTitle, description, salary];
 }

@@ -235,8 +235,8 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   }
 
   bool _searchConditions(ConversationEntity conversation, String value) {
-    final nameAR = conversation.otherParticipant.nameAR?.toLowerCase();
-    final nameEN = conversation.otherParticipant.nameEN?.toLowerCase();
+    final nameAR = conversation.otherParticipant?.nameAR?.toLowerCase();
+    final nameEN = conversation.otherParticipant?.nameEN?.toLowerCase();
 
     final containAR = nameAR?.contains(value);
     final containEN = nameEN?.contains(value);

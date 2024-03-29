@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,7 +25,7 @@ class LoginBody extends StatelessWidget {
             SizedBox(height: 80.h),
             Text(
               S.of(context).loginMsg,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 50.h),

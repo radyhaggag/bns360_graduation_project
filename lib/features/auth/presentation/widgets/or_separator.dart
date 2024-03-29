@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -22,9 +23,9 @@ class OrSeparator extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Text(
             S.of(context).or,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: Theme.of(context).hoverColor,
-                ),
+            style: context.textTheme.titleSmall?.copyWith(
+              color: context.theme.hoverColor,
+            ),
           ),
         ),
         Expanded(

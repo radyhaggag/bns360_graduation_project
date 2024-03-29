@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/helpers/chat_params_helper.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,7 +52,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).listTileTheme.tileColor,
+      backgroundColor: context.theme.listTileTheme.tileColor,
       appBar: ConversationScreenAppBar(
         conversationParams: widget.conversationParams,
       ),

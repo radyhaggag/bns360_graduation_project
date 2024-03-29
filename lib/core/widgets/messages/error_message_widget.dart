@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,8 +23,7 @@ class ErrorMessageWidget extends StatelessWidget {
         horizontal: 10,
       ),
       decoration: BoxDecoration(
-        color:
-            backgroundColor ?? Theme.of(context).primaryColor.withOpacity(.08),
+        color: backgroundColor ?? context.theme.primaryColor.withOpacity(.08),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(

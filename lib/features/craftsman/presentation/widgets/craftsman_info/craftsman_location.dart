@@ -12,16 +12,16 @@ class _CraftsmanLocation extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AppSvg.marker,
-          color: Theme.of(context).cardColor,
+          color: context.theme.cardColor,
         ),
         const SizedBox(width: 15),
         Expanded(
           child: Text(
             location,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontSize: AppFontSize.details,
-                  fontWeight: FontWeight.w600,
-                ),
+            style: context.textTheme.titleMedium?.copyWith(
+              fontSize: AppFontSize.details,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
         const MapBtn(

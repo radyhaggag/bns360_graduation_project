@@ -1,7 +1,8 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../extensions/media_query.dart';
+import '../utils/extensions/media_query.dart';
 import 'center_progress_indicator.dart';
 import 'messages/error_message_widget.dart';
 
@@ -33,7 +34,7 @@ class DataStateWidget extends StatelessWidget {
             width: context.width,
             height: 150.r,
             child: CenterProgressIndicator(
-              color: Theme.of(context).indicatorColor,
+              color: context.theme.indicatorColor,
             ),
           );
     } else if (isError) {

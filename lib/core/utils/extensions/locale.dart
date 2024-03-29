@@ -1,5 +1,6 @@
-import '../utils/enums.dart';
 import 'package:flutter/material.dart';
+
+import '../enums.dart';
 
 extension LocalLanguageExtension on Locale {
   Language? get language {

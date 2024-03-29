@@ -7,10 +7,10 @@ class JobModel extends JobEntity {
     required super.jobTitle,
     required super.description,
     required super.salary,
-    required super.location,
     required super.requirements,
     required super.date,
     required super.publisher,
+    required super.workHours,
   });
 
   factory JobModel.fromJson(Map<String, dynamic> json) {
@@ -18,10 +18,10 @@ class JobModel extends JobEntity {
       id: json['id'],
       description: json['description'],
       jobTitle: json['jobTitle'],
-      location: json['location'],
       salary: json['salary'],
       requirements: json['requirements'],
       date: json['date'],
+      workHours: json['workHours'],
       publisher: UserModel.fromJson(json['publisher']),
     );
   }

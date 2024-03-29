@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -37,17 +38,20 @@ class MainNetworkImage extends StatelessWidget {
         height: height,
       );
     } else {
+      if ((name ?? "").isEmpty) {
+        return const SizedBox.shrink();
+      }
       return Container(
         width: width,
         height: height,
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor.withAlpha(20),
+          color: context.theme.primaryColor.withAlpha(20),
           shape: isCircular ? BoxShape.circle : BoxShape.rectangle,
         ),
         alignment: Alignment.center,
         child: Text(
           name![0].toUpperCase(),
-          style: Theme.of(context).textTheme.titleMedium,
+          style: context.textTheme.titleMedium,
         ),
       );
     }

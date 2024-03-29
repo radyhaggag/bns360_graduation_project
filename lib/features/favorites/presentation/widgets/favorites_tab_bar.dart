@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,12 +18,12 @@ class FavoritesTabBar extends StatelessWidget {
       indicatorColor: AppColors.primary,
       indicatorSize: TabBarIndicatorSize.label,
       labelStyle: TextStyle(
-        color: Theme.of(context).cardColor,
+        color: context.theme.cardColor,
         fontSize: AppFontSize.details,
         fontWeight: FontWeight.w600,
       ),
       unselectedLabelStyle: TextStyle(
-        color: Theme.of(context).primaryColor.withOpacity(.38),
+        color: context.theme.primaryColor.withOpacity(.38),
         fontSize: AppFontSize.details,
         fontWeight: FontWeight.w600,
       ),

@@ -1,7 +1,11 @@
+import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/widgets/icons/rounded_icon_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/extensions/media_query.dart';
+import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/input_fields/search_field.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/jobs_bloc.dart';
@@ -24,28 +28,41 @@ class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
             ),
-            color: Theme.of(context).appBarTheme.backgroundColor,
+            color: context.theme.listTileTheme.tileColor,
           ),
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          height: 60,
-          margin: const EdgeInsets.only(top: 36),
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+          margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           alignment: Alignment.center,
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     S.of(context).find_your_job,
-                    style: Theme.of(context).appBarTheme.titleTextStyle,
+                    style: context.theme.appBarTheme.titleTextStyle?.copyWith(
+                      fontSize: AppFontSize.subTitle,
+                    ),
+                  ),
+                  RoundedIconBtn(
+                    icon: Icon(
+                      Icons.add,
+                      color: context.theme.highlightColor,
+                    ),
+                    size: 30.r,
+                    backgroundColor: context.theme.cardColor,
                   ),
                 ],
               ),
+              const SizedBox(height: 10),
               Expanded(
                 child: SearchField(
                   searchController: bloc.searchController,
+                  textFieldColor: context.theme.highlightColor,
                   onFieldSubmitted: () {
                     bloc.add(SearchOnJobs());
                   },
+                  withPrefixIcon: true,
                   hintText: getHintText(context),
                 ),
               ),
@@ -57,7 +74,7 @@ class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(100);
+  Size get preferredSize => Size.fromHeight(110.h);
 
   String getHintText(BuildContext context) {
     return S.of(context).search_for_job;

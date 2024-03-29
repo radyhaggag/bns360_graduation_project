@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../config/route_config.dart';
@@ -27,7 +28,7 @@ class PasswordChangedBody extends StatelessWidget {
             const SizedBox(height: 50),
             Text(
               S.of(context).passwordChanged,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.textTheme.titleMedium,
             ),
             const SizedBox(height: 10),
             Text(

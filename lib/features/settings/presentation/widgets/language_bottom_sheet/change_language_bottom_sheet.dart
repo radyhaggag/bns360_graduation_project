@@ -1,11 +1,12 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/extensions/media_query.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/settings_bloc.dart';
 import 'change_language_btn.dart';
@@ -25,8 +26,8 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
         child: BottomSheet(
             onClosing: () {},
             enableDrag: false,
-            backgroundColor: Theme.of(context).highlightColor,
-            builder: (context) {
+            backgroundColor: context.theme.highlightColor,
+            builder: (BuildContext context) {
               return const ChangeLanguageBottomSheet();
             }),
       ),
@@ -37,7 +38,7 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).highlightColor,
+        color: context.theme.highlightColor,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
@@ -53,9 +54,9 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
         children: [
           Text(
             S.of(context).change_language,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontSize: AppFontSize.body,
-                ),
+            style: context.textTheme.titleMedium?.copyWith(
+              fontSize: AppFontSize.body,
+            ),
           ),
           const SizedBox(height: 30),
           ...List.generate(Language.values.length, (index) {

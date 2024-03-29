@@ -1,8 +1,9 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../utils/app_fonts.dart';
 import '../../../../generated/l10n.dart';
+import '../../../utils/app_fonts.dart';
 import 'add_review_rating_bar.dart';
 import 'add_review_text_field.dart';
 import 'submit_review_btn.dart';
@@ -27,7 +28,7 @@ class AddReviewBottomSheet extends StatefulWidget {
       builder: (_) => BottomSheet(
         onClosing: () {},
         enableDrag: false,
-        backgroundColor: Theme.of(context).highlightColor,
+        backgroundColor: context.theme.highlightColor,
         builder: (context) => AddReviewBottomSheet(
           addReviewCallback: addReviewCallback,
         ),
@@ -54,7 +55,7 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
         bottom: MediaQuery.of(context).viewInsets.bottom + 25.h,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).highlightColor,
+        color: context.theme.highlightColor,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
@@ -65,10 +66,10 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
         children: [
           Text(
             S.of(context).write_review,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: Theme.of(context).cardColor,
-                  fontSize: AppFontSize.subTitle,
-                ),
+            style: context.textTheme.titleMedium?.copyWith(
+              color: context.theme.cardColor,
+              fontSize: AppFontSize.subTitle,
+            ),
           ),
           const SizedBox(height: 30),
           AddReviewRatingBar(

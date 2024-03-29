@@ -1,9 +1,10 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
-import '../../../../../core/extensions/media_query.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../generated/l10n.dart';
 import 'profile_item_tile.dart';
 
@@ -17,7 +18,7 @@ class ProfileListItemsSection extends StatelessWidget {
       height: context.height * .45,
       padding: EdgeInsetsDirectional.only(start: 6.w, top: 12.h),
       decoration: BoxDecoration(
-        color: Theme.of(context).highlightColor,
+        color: context.theme.highlightColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(

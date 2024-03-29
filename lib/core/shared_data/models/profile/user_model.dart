@@ -14,8 +14,8 @@ class UserModel extends UserEntity {
     return UserModel(
       id: map['id'] as String,
       name: map['name'] as String,
-      userDescriptionAR: map['userDescriptionAR'] as String,
-      userDescriptionEN: map['userDescriptionEN'] as String,
+      userDescriptionAR: map['userDescriptionAR'] as String?,
+      userDescriptionEN: map['userDescriptionEN'] as String?,
       imageUrl: map['image_url'] as String?,
       userType: map['userType'] as int,
     );

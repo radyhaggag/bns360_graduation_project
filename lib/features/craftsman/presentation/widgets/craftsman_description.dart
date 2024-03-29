@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/constants.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_fonts.dart';
@@ -17,7 +18,7 @@ class CraftsmanDescription extends StatelessWidget {
         horizontal: kHorizontalPadding,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).highlightColor,
+        color: context.theme.highlightColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: _DescriptionWidget(
@@ -42,18 +43,18 @@ class _DescriptionWidget extends StatelessWidget {
       children: [
         Text(
           S.of(context).description,
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: Theme.of(context).cardColor,
-                fontSize: AppFontSize.details,
-              ),
+          style: context.textTheme.titleSmall?.copyWith(
+            color: context.theme.cardColor,
+            fontSize: AppFontSize.details,
+          ),
         ),
         const SizedBox(height: 5),
         Text(
           description,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).primaryColor.withOpacity(.5),
-                fontSize: AppFontSize.details,
-              ),
+          style: context.textTheme.bodyLarge?.copyWith(
+            color: context.theme.primaryColor.withOpacity(.5),
+            fontSize: AppFontSize.details,
+          ),
         ),
       ],
     );

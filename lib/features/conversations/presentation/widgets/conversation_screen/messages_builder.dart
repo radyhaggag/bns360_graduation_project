@@ -1,6 +1,7 @@
 import 'package:bns360_graduation_project/core/helpers/date_formatter.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/participant_entity.dart';
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -63,10 +64,9 @@ class _MessagesBuilderState extends State<MessagesBuilder> {
                           context: context,
                           dateTime: message.date,
                         ),
-                        style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontSize: AppFontSize.details,
-                                ),
+                        style: context.textTheme.titleMedium?.copyWith(
+                          fontSize: AppFontSize.details,
+                        ),
                       ),
                     ),
                   ChatMessageItem(

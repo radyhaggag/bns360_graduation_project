@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,7 +44,7 @@ class MainBottomNavbar extends StatelessWidget {
             );
           },
           backgroundColor:
-              Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+              context.theme.bottomNavigationBarTheme.backgroundColor,
           gapWidth: 0,
           activeIndex: context.read<BottomNavBarBloc>().bottomNavbarIndex,
           notchSmoothness: NotchSmoothness.verySmoothEdge,

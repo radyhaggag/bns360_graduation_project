@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +39,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
   @override
   Widget build(BuildContext context) {
     final dropdownColor =
-        Theme.of(context).dropdownMenuTheme.inputDecorationTheme?.fillColor;
+        context.theme.dropdownMenuTheme.inputDecorationTheme?.fillColor;
 
     return Container(
       height: 50.h,
@@ -64,15 +65,14 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
               margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color: widget.items[index] == widget.value
-                    ? Theme.of(context).primaryColor.withOpacity(.25)
-                    : Theme.of(context).highlightColor,
-                border:
-                    Border.all(color: Theme.of(context).cardColor, width: 2),
+                    ? context.theme.primaryColor.withOpacity(.25)
+                    : context.theme.highlightColor,
+                border: Border.all(color: context.theme.cardColor, width: 2),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
                 widget.viewItems[index],
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: context.textTheme.bodyLarge,
               ),
             ),
           ),
@@ -85,14 +85,14 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
             children: [
               Text(
                 widget.textValue ?? widget.label,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: context.textTheme.bodyLarge,
               ),
               Icon(
                 isOpened
                     ? Icons.keyboard_arrow_up_rounded
                     : Icons.keyboard_arrow_down_rounded,
                 size: 25,
-                color: Theme.of(context).primaryColor,
+                color: context.theme.primaryColor,
               )
             ],
           ),
@@ -103,7 +103,7 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             border: Border.all(color: AppColors.black25),
-            color: widget.dropdownColor ?? Theme.of(context).highlightColor,
+            color: widget.dropdownColor ?? context.theme.highlightColor,
           ),
           elevation: 2,
         ),

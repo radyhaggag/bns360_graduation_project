@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
+import '../providers/app_provider.dart';
+import '../utils/enums/user_type.dart';
 
 abstract class ChatParamsHelper {
   static String conversationId({

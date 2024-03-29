@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_back_button.dart';
@@ -13,12 +14,12 @@ class CategoryItemReviewSummaryAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       pinned: true,
-      backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+      backgroundColor: context.theme.appBarTheme.backgroundColor,
       title: Text(
         S.of(context).review_summary,
-        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontSize: AppFontSize.subTitle,
-            ),
+        style: context.textTheme.titleMedium?.copyWith(
+          fontSize: AppFontSize.subTitle,
+        ),
       ),
       centerTitle: false,
       primary: true,

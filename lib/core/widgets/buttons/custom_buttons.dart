@@ -1,7 +1,8 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../extensions/media_query.dart';
+import '../../utils/extensions/media_query.dart';
 import '../center_progress_indicator.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -75,9 +76,9 @@ class CustomOutlinedButton extends StatelessWidget {
       height: height ?? 45.h,
       child: OutlinedButton(
         onPressed: !isLoading ? onPressed : null,
-        style: Theme.of(context).outlinedButtonTheme.style?.copyWith(
-              foregroundColor: MaterialStatePropertyAll(foregroundColor),
-            ),
+        style: context.theme.outlinedButtonTheme.style?.copyWith(
+          foregroundColor: MaterialStatePropertyAll(foregroundColor),
+        ),
         child: isLoading
             ? const CenterProgressIndicator()
             : FittedBox(
@@ -114,10 +115,10 @@ class CustomTextButton extends StatelessWidget {
       height: height ?? 45.h,
       child: TextButton(
         onPressed: !isLoading ? onPressed : null,
-        style: Theme.of(context).textButtonTheme.style?.copyWith(
-              foregroundColor: MaterialStatePropertyAll(foregroundColor),
-              backgroundColor: MaterialStatePropertyAll(backgroundColor),
-            ),
+        style: context.theme.textButtonTheme.style?.copyWith(
+          foregroundColor: MaterialStatePropertyAll(foregroundColor),
+          backgroundColor: MaterialStatePropertyAll(backgroundColor),
+        ),
         child: isLoading
             ? const CenterProgressIndicator()
             : FittedBox(

@@ -70,8 +70,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "تم حذف هذه الرسالة من قبل المرسل."),
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
+        "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
+        "egypt_currency": MessageLookupByLibrary.simpleMessage("جنية"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكترونى"),
         "enterEmail":
             MessageLookupByLibrary.simpleMessage("ادخل بريدك الإلكترونى"),
@@ -89,11 +91,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "لا تقلق! يحدث ذلك. الرجاء إدخال البريد الإلكتروني المرتبط بحسابك."),
         "fullName": MessageLookupByLibrary.simpleMessage("اسمك بالكامل"),
+        "full_time": MessageLookupByLibrary.simpleMessage("دوام كامل"),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "hour_ago": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
         "hours_ago": m1,
+        "hr_work": MessageLookupByLibrary.simpleMessage("س عمل"),
         "just_now": MessageLookupByLibrary.simpleMessage("الآن"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسحيل الدخول"),
@@ -125,6 +129,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "open_now": MessageLookupByLibrary.simpleMessage("مفتوح الان"),
         "optional": MessageLookupByLibrary.simpleMessage("اختيارى"),
         "or": MessageLookupByLibrary.simpleMessage("أو"),
+        "part_time": MessageLookupByLibrary.simpleMessage("دوام جزئي"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordChanged":
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور"),
@@ -140,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أماكن للاستكشاف"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("اختر من فضلك"),
         "pm": MessageLookupByLibrary.simpleMessage("م"),
+        "posted": MessageLookupByLibrary.simpleMessage("نُشر"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),

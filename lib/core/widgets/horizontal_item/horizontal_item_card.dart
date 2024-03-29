@@ -1,8 +1,9 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/extensions/media_query.dart';
 import '../../utils/app_fonts.dart';
+import '../../utils/extensions/media_query.dart';
 import '../icons/favorite_icon.dart';
 import '../main_network_image.dart';
 import '../ratings_item_with_count.dart';

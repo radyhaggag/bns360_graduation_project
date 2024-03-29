@@ -1,14 +1,14 @@
 import 'dart:async';
 
-import '../../domain/repositories/auth_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/enums/user_type.dart';
 import '../../domain/params/login_params.dart';
 import '../../domain/params/reset_password_params.dart';
 import '../../domain/params/sign_up_params.dart';
 import '../../domain/params/verify_reset_password_params.dart';
+import '../../domain/repositories/auth_repo.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

@@ -1,12 +1,13 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../../core/extensions/media_query.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/input_fields/edit_input_field.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/profile_bloc.dart';
@@ -24,7 +25,7 @@ class EditProfileBottomSection extends StatelessWidget {
           topLeft: Radius.circular(50),
           topRight: Radius.circular(50),
         ),
-        color: Theme.of(context).highlightColor,
+        color: context.theme.highlightColor,
       ),
       padding: EdgeInsets.only(
         left: kHorizontalPadding,

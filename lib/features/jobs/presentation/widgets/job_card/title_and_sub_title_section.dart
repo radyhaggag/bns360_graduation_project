@@ -7,7 +7,7 @@ class _TitleAndSubTitleSection extends StatelessWidget {
   });
 
   final String title;
-  final String subTitle;
+  final String? subTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +18,23 @@ class _TitleAndSubTitleSection extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  fontSize: AppFontSize.subTitle,
-                ),
+            style: context.textTheme.titleSmall?.copyWith(
+              fontSize: AppFontSize.details,
+              color: context.theme.cardColor,
+            ),
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
-          Text(
-            subTitle,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontSize: AppFontSize.light,
-                  color: Theme.of(context).primaryColor.withOpacity(.25),
-                ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
+          if (subTitle != null)
+            Text(
+              subTitle!,
+              style: context.textTheme.bodyLarge?.copyWith(
+                fontSize: AppFontSize.light,
+                color: context.theme.primaryColor.withOpacity(.25),
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
         ],
       ),
     );

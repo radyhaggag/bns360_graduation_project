@@ -20,10 +20,10 @@ class _LeftSection extends StatelessWidget {
         if (showReviewSummaryTxt) ...[
           Text(
             S.of(context).review_summary,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: Theme.of(context).cardColor,
-                  fontSize: AppFontSize.body,
-                ),
+            style: context.textTheme.titleSmall?.copyWith(
+              color: context.theme.cardColor,
+              fontSize: AppFontSize.body,
+            ),
           ),
           const SizedBox(height: 10),
         ],
@@ -31,9 +31,9 @@ class _LeftSection extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 60.w),
           child: Text(
             starsCount.toString(),
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  fontSize: AppFontSize.subTitle,
-                ),
+            style: context.textTheme.titleSmall?.copyWith(
+              fontSize: AppFontSize.subTitle,
+            ),
             textAlign: TextAlign.center,
           ),
         ),

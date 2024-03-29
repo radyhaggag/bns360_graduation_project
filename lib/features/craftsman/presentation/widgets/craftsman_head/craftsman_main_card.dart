@@ -1,7 +1,8 @@
-import 'package:bns360_graduation_project/core/extensions/media_query.dart';
 import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:bns360_graduation_project/core/utils/constants.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
 import 'package:bns360_graduation_project/core/widgets/main_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,10 +42,10 @@ class CraftsmanMainCard extends StatelessWidget {
                 child: FittedBox(
                   child: Text(
                     craftsmanEntity.name,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          color: Theme.of(context).cardColor,
-                          fontSize: AppFontSize.subTitle,
-                        ),
+                    style: context.textTheme.titleSmall?.copyWith(
+                      color: context.theme.cardColor,
+                      fontSize: AppFontSize.subTitle,
+                    ),
                     textAlign: TextAlign.center,
                     maxLines: 1,
                   ),
@@ -56,10 +57,10 @@ class CraftsmanMainCard extends StatelessWidget {
                   ar: craftsmanEntity.craft.nameAR,
                   en: craftsmanEntity.craft.nameEN,
                 ),
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).hintColor,
-                      fontSize: AppFontSize.details,
-                    ),
+                style: context.textTheme.bodyLarge?.copyWith(
+                  color: context.theme.hintColor,
+                  fontSize: AppFontSize.details,
+                ),
               ),
             ],
           ),
@@ -77,7 +78,7 @@ class _BuildBackground extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: Theme.of(context).highlightColor,
+        color: context.theme.highlightColor,
       ),
       width: context.width * .9,
       height: 110.h,

@@ -1,8 +1,9 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../config/route_config.dart';
-import '../../../../../core/extensions/language.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/extensions/language.dart';
 import '../../../../../generated/l10n.dart';
 
 class ForgotPasswordBtn extends StatelessWidget {
@@ -18,9 +19,9 @@ class ForgotPasswordBtn extends StatelessWidget {
         onTap: () => Navigator.of(context).pushNamed(Routes.forgotPassword),
         child: Text(
           S.of(context).forgotPassword,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).hintColor,
-              ),
+          style: context.textTheme.bodyMedium?.copyWith(
+            color: context.theme.hintColor,
+          ),
         ),
       ),
     );

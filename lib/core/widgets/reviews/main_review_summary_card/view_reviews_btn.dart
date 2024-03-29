@@ -16,15 +16,15 @@ class _ViewReviewsHintBtn extends StatelessWidget {
         children: [
           Text(
             "View reviews",
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).primaryColor.withOpacity(.3),
-                  fontSize: AppFontSize.light,
-                ),
+            style: context.textTheme.bodyLarge?.copyWith(
+              color: context.theme.primaryColor.withOpacity(.3),
+              fontSize: AppFontSize.light,
+            ),
           ),
           const SizedBox(height: 10),
           Icon(
             Icons.arrow_forward_ios_outlined,
-            color: Theme.of(context).primaryColor.withOpacity(.3),
+            color: context.theme.primaryColor.withOpacity(.3),
             size: 15.r,
           ),
         ],

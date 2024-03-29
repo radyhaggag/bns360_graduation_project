@@ -1,5 +1,6 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,8 +30,7 @@ class MessageTextTemplate extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
-          color:
-              isFromMe ? AppColors.primary : Theme.of(context).highlightColor,
+          color: isFromMe ? AppColors.primary : context.theme.highlightColor,
           borderRadius: isUnderImage
               ? BorderRadiusDirectional.only(
                   bottomEnd: Radius.circular(10.r),
@@ -61,10 +61,10 @@ class MessageTextTemplate extends StatelessWidget {
                 Flexible(
                   child: Text(
                     _getContent(context),
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: getColor(context),
-                          fontSize: AppFontSize.details,
-                        ),
+                    style: context.textTheme.bodyLarge?.copyWith(
+                      color: getColor(context),
+                      fontSize: AppFontSize.details,
+                    ),
                   ),
                 ),
               ],
@@ -77,7 +77,7 @@ class MessageTextTemplate extends StatelessWidget {
 
   Color getColor(BuildContext context) {
     final color =
-        message.isFromMe ? AppColors.white : Theme.of(context).primaryColor;
+        message.isFromMe ? AppColors.white : context.theme.primaryColor;
     if (message.isDeleted) {
       return color.withOpacity(.7);
     }

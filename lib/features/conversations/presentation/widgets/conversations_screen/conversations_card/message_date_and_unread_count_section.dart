@@ -25,10 +25,10 @@ class _MessageDateAndUnreadCountSection extends StatelessWidget {
                     showTimeIfToday: true,
                   )
                 : "",
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).primaryColor.withOpacity(.4),
-                  fontSize: AppFontSize.light,
-                ),
+            style: context.textTheme.bodyLarge?.copyWith(
+              color: context.theme.primaryColor.withOpacity(.4),
+              fontSize: AppFontSize.light,
+            ),
           ),
           SizedBox(height: 5.h),
           if (unreadCount > 0)
@@ -37,16 +37,16 @@ class _MessageDateAndUnreadCountSection extends StatelessWidget {
               width: 20.r,
               height: 20.r,
               decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
+                color: context.theme.cardColor,
                 shape: BoxShape.circle,
               ),
               child: Center(
                 child: Text(
                   unreadCount.toString(),
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        color: Theme.of(context).highlightColor,
-                        fontSize: AppFontSize.light,
-                      ),
+                  style: context.textTheme.titleSmall?.copyWith(
+                    color: context.theme.highlightColor,
+                    fontSize: AppFontSize.light,
+                  ),
                 ),
               ),
             ),

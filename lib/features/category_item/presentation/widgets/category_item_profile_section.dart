@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/enums.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +8,7 @@ import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/enums/user_type.dart';
 import '../../../../core/widgets/icons/favorite_icon.dart';
 import '../../../../core/widgets/icons/profile_circle_icon.dart';
 import '../../../../core/widgets/icons/rounded_icon_btn.dart';
@@ -82,9 +83,9 @@ class _TitleAndTypeSection extends StatelessWidget {
             ar: categoryItemEntity.nameAR,
             en: categoryItemEntity.nameEN,
           ),
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                color: Theme.of(context).cardColor,
-              ),
+          style: context.textTheme.titleSmall?.copyWith(
+            color: context.theme.cardColor,
+          ),
         ),
         Text(
           LocalizationHelper.getLocalizedString(
@@ -92,10 +93,10 @@ class _TitleAndTypeSection extends StatelessWidget {
             ar: categoryItemEntity.category.nameAR,
             en: categoryItemEntity.category.nameEN,
           ),
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).hintColor,
-                fontSize: AppFontSize.light,
-              ),
+          style: context.textTheme.bodyLarge?.copyWith(
+            color: context.theme.hintColor,
+            fontSize: AppFontSize.light,
+          ),
         ),
       ],
     );

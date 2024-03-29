@@ -15,7 +15,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
 
   JobsBloc({required this.jobsRepo}) : super(JobsInitial()) {
     on<GetJobsEvent>(_getJobs);
-    on<GetJobByIdEvent>(_getCraftById);
+    on<GetJobByIdEvent>(_getJobById);
     on<ToggleSearchIcon>(_toggleSearchIcon);
     on<SearchOnJobs>(_searchOnJobs);
   }
@@ -61,7 +61,12 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     Emitter<JobsState> emit,
   ) async {
     final searchVal = searchController.text.trim();
-    if (searchVal.isEmpty) return;
+    if (searchVal.isEmpty) {
+      isSearchEnabled = false;
+      add(GetJobsEvent());
+      return;
+    }
+    isSearchEnabled = true;
 
     emit(GetJobsLoadingState());
     await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
@@ -85,7 +90,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     return super.close();
   }
 
-  _getCraftById(
+  _getJobById(
     GetJobByIdEvent event,
     Emitter<JobsState> emit,
   ) async {

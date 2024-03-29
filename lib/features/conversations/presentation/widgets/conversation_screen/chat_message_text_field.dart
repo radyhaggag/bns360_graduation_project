@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -47,7 +48,7 @@ class ChatMessageTextFieldState extends State<ChatMessageTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+      color: context.theme.bottomNavigationBarTheme.backgroundColor,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +66,7 @@ class ChatMessageTextFieldState extends State<ChatMessageTextField> {
                   start: 15.w,
                 ),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).listTileTheme.tileColor,
+                  color: context.theme.listTileTheme.tileColor,
                   borderRadius: BorderRadius.circular(25),
                 ),
                 width: 1.sw - 18.w - (44.r + 18.w + 8.w),

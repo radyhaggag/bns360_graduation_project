@@ -60,7 +60,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
 
   int selectedCraftId = -1;
 
-  String? selectedCraftName(context) {
+  String? selectedCraftName(BuildContext context) {
     var selectedCraft = crafts?.firstWhere(
       (craft) => craft.id == selectedCraftId,
       orElse: () => craftAllEntity,

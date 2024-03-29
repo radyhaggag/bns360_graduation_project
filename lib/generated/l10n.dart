@@ -1259,6 +1259,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Part time`
+  String get part_time {
+    return Intl.message(
+      'Part time',
+      name: 'part_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full time`
+  String get full_time {
+    return Intl.message(
+      'Full time',
+      name: 'full_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EGP`
+  String get egypt_currency {
+    return Intl.message(
+      'EGP',
+      name: 'egypt_currency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hr work`
+  String get hr_work {
+    return Intl.message(
+      'hr work',
+      name: 'hr_work',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Posted`
+  String get posted {
+    return Intl.message(
+      'Posted',
+      name: 'posted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Details`
+  String get details {
+    return Intl.message(
+      'Details',
+      name: 'details',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

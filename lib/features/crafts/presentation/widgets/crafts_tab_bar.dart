@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/extensions/media_query.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/craft_entity.dart';
 import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/data_state_widget.dart';
 import '../../../../core/widgets/main_list_view_builder.dart';
 import '../bloc/crafts_bloc.dart';

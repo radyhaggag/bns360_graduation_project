@@ -66,10 +66,10 @@ class _RatingProgressRow extends StatelessWidget {
       children: [
         Text(
           starNumber.toString(),
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).primaryColor.withOpacity(.3),
-                fontSize: 7.sp,
-              ),
+          style: context.textTheme.bodyLarge?.copyWith(
+            color: context.theme.primaryColor.withOpacity(.3),
+            fontSize: 7.sp,
+          ),
         ),
         const SizedBox(width: 5),
         _RatingProgressLine(

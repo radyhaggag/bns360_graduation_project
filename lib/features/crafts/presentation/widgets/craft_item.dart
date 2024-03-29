@@ -1,11 +1,13 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/craft_entity.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
 import '../bloc/crafts_bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CraftItem extends StatelessWidget {
   const CraftItem({
@@ -36,9 +38,7 @@ class CraftItem extends StatelessWidget {
         ),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.primary
-              : Theme.of(context).cardTheme.color,
+          color: isSelected ? AppColors.primary : context.theme.cardTheme.color,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
@@ -47,23 +47,23 @@ class CraftItem extends StatelessWidget {
             ar: craftEntity.nameAR,
             en: craftEntity.nameEN,
           ),
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                fontSize: AppFontSize.light,
-                color: isSelected
-                    ? AppColors.white
-                    : Theme.of(context).primaryColor.withOpacity(.4),
-              ),
+          style: context.textTheme.bodyLarge?.copyWith(
+            fontSize: AppFontSize.light,
+            color: isSelected
+                ? AppColors.white
+                : context.theme.primaryColor.withOpacity(.4),
+          ),
         ),
       ),
     );
   }
 
-  static Widget empty(context) {
+  static Widget empty(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(5),
       width: 100.w,
       decoration: BoxDecoration(
-        color: Theme.of(context).cardTheme.color?.withOpacity(.5),
+        color: context.theme.cardTheme.color?.withOpacity(.5),
         borderRadius: BorderRadius.circular(16),
       ),
     );

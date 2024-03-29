@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +20,7 @@ class CraftsmanHead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).listTileTheme.tileColor,
+      color: context.theme.listTileTheme.tileColor,
       child: Stack(
         children: [
           const CraftsmanHeadBackground(),

@@ -1,12 +1,14 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
-import '../../../../../core/extensions/language.dart';
 import '../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/enums/user_type.dart';
+import '../../../../../core/utils/extensions/language.dart';
 import '../../../../conversations/domain/params/conversation_screen_params.dart';
 
 class CraftsmanHeadActions extends StatelessWidget {
@@ -66,12 +68,12 @@ class _BuildBtn extends StatelessWidget {
       icon: Icon(
         iconData,
         size: 20.r,
-        color: Theme.of(context).cardColor,
+        color: context.theme.cardColor,
       ),
       padding: EdgeInsets.zero,
       constraints: BoxConstraints(minHeight: 30.r, minWidth: 30.r),
       style: IconButton.styleFrom(
-        backgroundColor: Theme.of(context).highlightColor,
+        backgroundColor: context.theme.highlightColor,
       ),
       onPressed: onPressed,
     );

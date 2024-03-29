@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/config/route_config.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/widgets/main_list_view_builder.dart';
 import 'package:bns360_graduation_project/features/conversations/domain/entities/conversation_entity.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +26,9 @@ class ConversationsListBuilder extends StatelessWidget {
             ConversationCard(
               conversationEntity: conversation,
               onPressed: () {
+                if (conversation.otherParticipant == null) return;
                 final params = ConversationScreenParams(
-                  participantEntity: conversation.otherParticipant,
+                  participantEntity: conversation.otherParticipant!,
                 );
                 Navigator.of(context).pushNamed(
                   Routes.conversation,
@@ -36,7 +38,7 @@ class ConversationsListBuilder extends StatelessWidget {
             ),
             if (index != conversations.length - 1)
               Divider(
-                color: Theme.of(context).primaryColor.withAlpha(20),
+                color: context.theme.primaryColor.withAlpha(20),
                 height: 15.h,
               ),
             if (index == conversations.length - 1)

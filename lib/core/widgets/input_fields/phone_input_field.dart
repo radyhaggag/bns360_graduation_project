@@ -1,9 +1,10 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
-import '../../extensions/language.dart';
 import '../../helpers/form_validators.dart';
 import '../../utils/enums.dart';
+import '../../utils/extensions/language.dart';
 
 class PhoneInputField extends StatelessWidget {
   final TextEditingController controller;
@@ -18,9 +19,9 @@ class PhoneInputField extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             "${S.of(context).phoneNumber} (${S.of(context).optional})",
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: Theme.of(context).primaryColor.withOpacity(.6),
-                ),
+            style: context.textTheme.titleSmall?.copyWith(
+              color: context.theme.primaryColor.withOpacity(.6),
+            ),
           ),
         ),
         const SizedBox(height: 5),

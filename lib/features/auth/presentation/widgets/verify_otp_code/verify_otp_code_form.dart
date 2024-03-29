@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -25,7 +26,7 @@ class _VerifyOtpCodeFormState extends State<VerifyOtpCodeForm> {
 
   getPinTheme(Color borderColor) => PinTheme(
         shape: PinCodeFieldShape.box,
-        inactiveColor: Theme.of(context).primaryColor.withOpacity(.7),
+        inactiveColor: context.theme.primaryColor.withOpacity(.7),
         borderRadius: BorderRadius.circular(8),
         activeBorderWidth: 1,
         fieldWidth: 50,

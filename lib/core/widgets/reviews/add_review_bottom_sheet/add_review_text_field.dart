@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
@@ -17,16 +18,16 @@ class AddReviewTextField extends StatelessWidget {
       controller: textController,
       maxLines: 5,
       textInputAction: TextInputAction.done,
-      style: Theme.of(context).textTheme.bodyMedium,
+      style: context.textTheme.bodyMedium,
       decoration: InputDecoration(
         hintText: S.of(context).write_your_review,
         enabledBorder: inputBorder,
         focusedBorder: inputBorder,
-        fillColor: Theme.of(context).listTileTheme.tileColor,
-        hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              color: Theme.of(context).primaryColor.withOpacity(.3),
-              fontSize: AppFontSize.details,
-            ),
+        fillColor: context.theme.listTileTheme.tileColor,
+        hintStyle: context.textTheme.bodyLarge?.copyWith(
+          color: context.theme.primaryColor.withOpacity(.3),
+          fontSize: AppFontSize.details,
+        ),
         filled: true,
       ),
     );

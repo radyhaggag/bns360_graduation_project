@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../extensions/media_query.dart';
+import '../utils/extensions/media_query.dart';
 
 class CenterProgressIndicator extends StatelessWidget {
   const CenterProgressIndicator({super.key, this.color, this.value});

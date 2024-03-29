@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/date_formatter.dart';
@@ -18,7 +19,7 @@ class MessageDateWidget extends StatelessWidget {
         date: date,
         justTime: true,
       ),
-      style: Theme.of(context).textTheme.bodySmall,
+      style: context.textTheme.bodySmall,
     );
   }
 }

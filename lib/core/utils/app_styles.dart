@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
@@ -84,8 +85,8 @@ abstract class AppStyles {
   }
 
   static TextStyle? authScreensDetailsStyle(BuildContext context) {
-    return Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: Theme.of(context).primaryColor.withOpacity(.7),
-        );
+    return context.textTheme.bodyMedium?.copyWith(
+      color: context.theme.primaryColor.withOpacity(.7),
+    );
   }
 }

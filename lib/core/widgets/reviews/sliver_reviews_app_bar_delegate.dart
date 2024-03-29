@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -40,13 +41,13 @@ class SliverReviewsAppBarDelegate extends SliverPersistentHeaderDelegate {
         horizontal: kHorizontalPadding,
         vertical: 10.h,
       ),
-      color: Theme.of(context).listTileTheme.tileColor,
+      color: context.theme.listTileTheme.tileColor,
       child: MainReviewSummaryCard(
         numOfRatings: numOfRatings,
         starsCount: starsCount,
         showReviewSummaryTxt: false,
         showViewAllBtn: false,
-        mainColor: Theme.of(context).highlightColor,
+        mainColor: context.theme.highlightColor,
       ),
     );
   }

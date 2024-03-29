@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 class CustomInputField extends StatelessWidget {
@@ -44,10 +45,10 @@ class CustomInputField extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               title!,
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    color: Theme.of(context).cardColor,
-                    fontSize: fontSize,
-                  ),
+              style: context.textTheme.titleSmall?.copyWith(
+                color: context.theme.cardColor,
+                fontSize: fontSize,
+              ),
             ),
           ),
           SizedBox(height: heightBetweenLabelAndField ?? 5),

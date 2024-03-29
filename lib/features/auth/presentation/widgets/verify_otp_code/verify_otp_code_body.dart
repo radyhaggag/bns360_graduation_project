@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_styles.dart';
@@ -22,7 +23,7 @@ class VerifyOtpCodeBody extends StatelessWidget {
             const SizedBox(height: 100),
             Text(
               S.of(context).checkEmailMsg,
-              style: Theme.of(context).textTheme.titleMedium,
+              style: context.textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),

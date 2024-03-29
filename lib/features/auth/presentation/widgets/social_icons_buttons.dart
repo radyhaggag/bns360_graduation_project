@@ -11,7 +11,7 @@ class SocialIconsButtons extends StatelessWidget {
 
   ButtonStyle mainStyle(context) => IconButton.styleFrom(
         padding: EdgeInsets.zero,
-        backgroundColor: Theme.of(context).hintColor.withOpacity(.1),
+        backgroundColor: context.theme.hintColor.withOpacity(.1),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),

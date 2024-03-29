@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/extensions/validators.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/validators.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

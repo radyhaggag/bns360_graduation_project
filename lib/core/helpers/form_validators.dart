@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-import '../extensions/validators.dart';
+import '../utils/extensions/validators.dart';
 
 class FormValidator {
   static String? validateEmpty(String? value) {

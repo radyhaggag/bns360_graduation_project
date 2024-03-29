@@ -1,4 +1,7 @@
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/widgets/icons/rounded_icon_btn.dart';
 
@@ -27,9 +30,11 @@ class SaveJobBtnState extends State<SaveJobBtn> {
   @override
   Widget build(BuildContext context) {
     return RoundedIconBtn(
+      backgroundColor: isSaved ? AppColors.primary : null,
+      size: 35.r,
       icon: Icon(
-        isSaved ? Icons.save : Icons.save_outlined,
-        color: isSaved ? Colors.yellow : null,
+        isSaved ? FeatherIcons.bookmark : FeatherIcons.bookmark,
+        color: isSaved ? AppColors.white : AppColors.primary,
       ),
       onPressed: () {
         setState(() => isSaved = !isSaved);

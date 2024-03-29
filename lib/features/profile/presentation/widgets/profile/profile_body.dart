@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/extensions/media_query.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
 import 'package:flutter/material.dart';
 
 import 'profile_card_section_with_background.dart';

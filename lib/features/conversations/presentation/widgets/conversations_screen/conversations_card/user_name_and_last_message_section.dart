@@ -23,9 +23,9 @@ class _UserNameAndLastMessageSection extends StatelessWidget {
               userName,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontSize: AppFontSize.details,
-                  ),
+              style: context.textTheme.titleSmall?.copyWith(
+                fontSize: AppFontSize.details,
+              ),
             ),
           ),
           SizedBox(height: 4.h),
@@ -34,10 +34,10 @@ class _UserNameAndLastMessageSection extends StatelessWidget {
               lastMessage,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).primaryColor.withOpacity(.4),
-                    fontSize: AppFontSize.light,
-                  ),
+              style: context.textTheme.bodyLarge?.copyWith(
+                color: context.theme.primaryColor.withOpacity(.4),
+                fontSize: AppFontSize.light,
+              ),
             ),
           ),
         ],

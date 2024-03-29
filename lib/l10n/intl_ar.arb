@@ -119,5 +119,11 @@
   "share_this_app": "شارك التطبيق",
   "find_your_job": "لنجد وظيفتك",
   "search_for_job": "البحث عن وظيفة",
-  "no_jobs_found": "لم يتم العثور على وظائف"
+  "no_jobs_found": "لم يتم العثور على وظائف",
+  "part_time": "دوام جزئي",
+  "full_time": "دوام كامل",
+  "egypt_currency": "جنية",
+  "hr_work": "س عمل",
+  "posted": "نُشر",
+  "details": "تفاصيل"
 }

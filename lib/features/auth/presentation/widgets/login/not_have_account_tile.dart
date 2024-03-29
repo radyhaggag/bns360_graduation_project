@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../config/route_config.dart';
@@ -13,9 +14,9 @@ class NotHaveAccountTile extends StatelessWidget {
       children: [
         Text(
           S.of(context).notHaveAccountMsg,
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).hintColor,
-              ),
+          style: context.textTheme.bodyMedium?.copyWith(
+            color: context.theme.hintColor,
+          ),
         ),
         const SizedBox(width: 10),
         InkWell(
@@ -24,9 +25,9 @@ class NotHaveAccountTile extends StatelessWidget {
           ),
           child: Text(
             S.of(context).signUp,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).cardColor,
-                ),
+            style: context.textTheme.bodyLarge?.copyWith(
+              color: context.theme.cardColor,
+            ),
           ),
         ),
       ],

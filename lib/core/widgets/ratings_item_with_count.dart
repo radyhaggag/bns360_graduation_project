@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../generated/l10n.dart';
@@ -33,15 +34,15 @@ class RatingsItemWithCount extends StatelessWidget {
           if (addReviewerTxt)
             Text(
               "$numOfRatings ${S.of(context).reviewer}",
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Theme.of(context).primaryColor.withOpacity(.3),
-                    fontSize: AppFontSize.details,
-                  ),
+              style: context.textTheme.bodyMedium?.copyWith(
+                color: context.theme.primaryColor.withOpacity(.3),
+                fontSize: AppFontSize.details,
+              ),
             )
           else
             Text(
               "($numOfRatings)",
-              style: Theme.of(context).textTheme.bodySmall,
+              style: context.textTheme.bodySmall,
             )
         ],
       ),

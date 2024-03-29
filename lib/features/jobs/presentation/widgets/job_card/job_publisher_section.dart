@@ -8,9 +8,8 @@ class _JobPublisherSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(width: 15),
         InkWell(
           onTap: () {},
           child: JobPublisherImage(
@@ -29,8 +28,8 @@ class _JobPublisherSection extends StatelessWidget {
                   title: jobEntity.publisher.name,
                   subTitle: LocalizationHelper.getLocalizedString(
                     context,
-                    ar: jobEntity.publisher.userDescriptionAR,
-                    en: jobEntity.publisher.userDescriptionEN,
+                    ar: jobEntity.publisher.userDescriptionAR ?? "",
+                    en: jobEntity.publisher.userDescriptionEN ?? "",
                   ),
                 ),
               ),

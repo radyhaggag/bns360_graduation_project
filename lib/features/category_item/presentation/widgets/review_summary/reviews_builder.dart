@@ -1,7 +1,8 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/extensions/media_query.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/center_progress_indicator.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/reviews/review_widget/review_widget.dart';
@@ -44,7 +45,7 @@ class _CategoryItemReviewsBuilderState
           errorMessage: errorMsg,
           errorMsgBackground: Colors.transparent,
           loadingWidget: FullScreenLoadingIndicator(
-            color: Theme.of(context).cardColor,
+            color: context.theme.cardColor,
             height: context.height / 2,
           ),
           loadedWidget: SingleChildScrollView(

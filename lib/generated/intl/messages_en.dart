@@ -70,7 +70,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "This message has been deleted by the sender."),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "details": MessageLookupByLibrary.simpleMessage("Details"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "egypt_currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter your name"),
@@ -88,11 +90,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "Don’t worry! It happens. Please enter the email associated with your account."),
         "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
+        "full_time": MessageLookupByLibrary.simpleMessage("Full time"),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hour_ago": MessageLookupByLibrary.simpleMessage("hour ago"),
         "hours_ago": m1,
+        "hr_work": MessageLookupByLibrary.simpleMessage("hr work"),
         "just_now": MessageLookupByLibrary.simpleMessage("Just now"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -123,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "open_now": MessageLookupByLibrary.simpleMessage("Open now"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),
+        "part_time": MessageLookupByLibrary.simpleMessage("Part time"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordChanged":
             MessageLookupByLibrary.simpleMessage("Password changed"),
@@ -138,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Places to explore"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
         "pm": MessageLookupByLibrary.simpleMessage("PM"),
+        "posted": MessageLookupByLibrary.simpleMessage("Posted"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy policy"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),

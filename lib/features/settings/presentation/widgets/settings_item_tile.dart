@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +27,7 @@ class SettingsItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
-      tileColor: Theme.of(context).listTileTheme.tileColor,
+      tileColor: context.theme.listTileTheme.tileColor,
       leading: (isSvg && svgPath != null)
           ? SvgPicture.asset(
               svgPath!,
@@ -39,10 +40,10 @@ class SettingsItemTile extends StatelessWidget {
             ),
       title: Text(
         title,
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontSize: AppFontSize.details,
-              color: _mainColor(context),
-            ),
+        style: context.textTheme.bodyLarge?.copyWith(
+          fontSize: AppFontSize.details,
+          color: _mainColor(context),
+        ),
       ),
       trailing: trailing ??
           Icon(
@@ -52,7 +53,7 @@ class SettingsItemTile extends StatelessWidget {
     );
   }
 
-  Color _mainColor(context) {
-    return Theme.of(context).cardColor;
+  Color _mainColor(BuildContext context) {
+    return context.theme.cardColor;
   }
 }

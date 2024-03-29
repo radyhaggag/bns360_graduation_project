@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,7 +23,7 @@ class ReviewWidget extends StatelessWidget {
         vertical: 5,
       ),
       decoration: BoxDecoration(
-        color: Theme.of(context).highlightColor,
+        color: context.theme.highlightColor,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(32),
           topRight: Radius.circular(32),
@@ -53,10 +54,9 @@ class ReviewWidget extends StatelessWidget {
                         child: Text(
                           review.userName,
                           maxLines: 1,
-                          style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    fontSize: AppFontSize.light,
-                                  ),
+                          style: context.textTheme.titleMedium?.copyWith(
+                            fontSize: AppFontSize.light,
+                          ),
                         ),
                       ),
                       MainRatingBar(
@@ -76,10 +76,10 @@ class ReviewWidget extends StatelessWidget {
                     date: review.date,
                     showFullDateHours: true,
                   ),
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontSize: AppFontSize.light,
-                        color: Theme.of(context).hintColor,
-                      ),
+                  style: context.textTheme.bodyLarge?.copyWith(
+                    fontSize: AppFontSize.light,
+                    color: context.theme.hintColor,
+                  ),
                 ),
               ),
             ],
@@ -87,9 +87,9 @@ class ReviewWidget extends StatelessWidget {
           const SizedBox(height: 5),
           Text(
             review.reviewText,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontSize: AppFontSize.light,
-                ),
+            style: context.textTheme.bodyLarge?.copyWith(
+              fontSize: AppFontSize.light,
+            ),
           ),
         ],
       ),

@@ -1,12 +1,13 @@
-import '../../../../core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/app/app_bloc.dart';
-import '../../../../core/extensions/media_query.dart';
 import '../../../../core/helpers/localization_helper.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/enums.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/utils/extensions/media_query.dart';
 
 class SettingsSectionTile extends StatelessWidget {
   const SettingsSectionTile({super.key, required this.title});
@@ -31,14 +32,14 @@ class SettingsSectionTile extends StatelessWidget {
       ),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: _mainColor(context),
-            ),
+        style: context.textTheme.titleSmall?.copyWith(
+          color: _mainColor(context),
+        ),
       ),
     );
   }
 
-  Color _mainColor(context) {
-    return Theme.of(context).cardColor;
+  Color _mainColor(BuildContext context) {
+    return context.theme.cardColor;
   }
 }

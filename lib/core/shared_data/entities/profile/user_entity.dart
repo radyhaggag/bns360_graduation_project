@@ -4,8 +4,8 @@ class UserEntity extends Equatable {
   final String id;
   final String name;
   final String? imageUrl;
-  final String userDescriptionAR;
-  final String userDescriptionEN;
+  final String? userDescriptionAR;
+  final String? userDescriptionEN;
   final int userType;
 
   const UserEntity({

@@ -1,9 +1,9 @@
-import '../../../../../core/app/app_bloc.dart';
-import '../../../../../core/extensions/language.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/app/app_bloc.dart';
+import '../../../../../core/utils/extensions/language.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/settings_bloc.dart';

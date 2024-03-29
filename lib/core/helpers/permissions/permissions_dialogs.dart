@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -15,7 +16,7 @@ abstract class PermissionsDialogs {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Theme.of(context).listTileTheme.tileColor,
+          backgroundColor: context.theme.listTileTheme.tileColor,
           title: Text(S.of(context).permission_denied),
           content: Text(
             msg,

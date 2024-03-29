@@ -1,5 +1,6 @@
 import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/widgets/main_network_image.dart';
 import 'package:bns360_graduation_project/features/conversations/domain/entities/conversation_entity.dart';
 import 'package:flutter/material.dart';
@@ -23,14 +24,22 @@ class ConversationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (conversationEntity.participants.isEmpty) {
+      return const SizedBox();
+    }
+
     final otherUser = conversationEntity.otherParticipant;
+
+    if (otherUser == null) {
+      return const SizedBox.shrink();
+    }
     return InkWell(
       onTap: () => onPressed.call(),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Theme.of(context).highlightColor,
+          color: context.theme.highlightColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Row(
@@ -47,7 +56,7 @@ class ConversationCard extends StatelessWidget {
             SizedBox(width: 15.w),
             Expanded(
               child: _UserNameAndLastMessageSection(
-                userName: name(context, otherUser),
+                userName: name(context, otherUser) ?? "",
                 lastMessage: conversationEntity.lastMessage.content ??
                     conversationEntity.lastMessage.imageUrl ??
                     "",
@@ -64,9 +73,9 @@ class ConversationCard extends StatelessWidget {
     );
   }
 
-  String name(BuildContext context, ParticipantEntity otherUser) {
-    final titleAR = otherUser.nameAR ?? otherUser.nameEN;
-    final titleEN = otherUser.nameEN ?? otherUser.nameAR;
+  String? name(BuildContext context, ParticipantEntity? otherUser) {
+    final titleAR = otherUser?.nameAR ?? otherUser?.nameEN;
+    final titleEN = otherUser?.nameEN ?? otherUser?.nameAR;
     return LocalizationHelper.getLocalizedString(
       context,
       ar: titleAR ?? "",

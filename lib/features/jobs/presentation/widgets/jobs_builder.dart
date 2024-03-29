@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/extensions/media_query.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +24,7 @@ class JobsBuilder extends StatelessWidget {
         return states.contains(current.runtimeType);
       },
       builder: (context, state) {
-        final favoriteJobs = context.read<JobsBloc>().jobs;
+        final jobsBloc = context.read<JobsBloc>();
 
         return DataStateWidget(
           isLoading: state is GetJobsLoadingState,
@@ -32,7 +32,9 @@ class JobsBuilder extends StatelessWidget {
           isLoaded: state is GetJobsSuccessState,
           errorMessage: state is GetJobsErrorState ? state.message : "",
           loadedWidget: MainListViewBuilder<JobEntity>(
-            list: favoriteJobs,
+            list: jobsBloc.isSearchEnabled
+                ? jobsBloc.searchResults
+                : jobsBloc.jobs,
             emptyMessage: S.of(context).no_jobs_found,
             itemWidget: (item, _) => JobCard(jobEntity: item),
             scrollDirection: Axis.vertical,

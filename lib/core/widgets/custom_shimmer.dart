@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -79,8 +80,8 @@ class ShimmerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       // baseColor: baseColor ?? AppColors.deactivatedButtonsColor,
-      baseColor: baseColor ?? Theme.of(context).listTileTheme.tileColor!,
-      highlightColor: Theme.of(context).listTileTheme.tileColor!,
+      baseColor: baseColor ?? context.theme.listTileTheme.tileColor!,
+      highlightColor: context.theme.listTileTheme.tileColor!,
       direction: ShimmerDirection.rtl,
       enabled: enabled,
       child: customShape ??
@@ -88,7 +89,7 @@ class ShimmerWidget extends StatelessWidget {
             width: width,
             height: height,
             decoration: ShapeDecoration(
-              color: Theme.of(context).hintColor,
+              color: context.theme.hintColor,
               shape: shapeBorder,
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,9 +16,9 @@ class NotReceiveTile extends StatelessWidget {
       children: [
         Text(
           S.of(context).notReceiveCode,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).hintColor,
-              ),
+          style: context.textTheme.bodyLarge?.copyWith(
+            color: context.theme.hintColor,
+          ),
         ),
         const SizedBox(width: 10),
         InkWell(
@@ -28,9 +29,9 @@ class NotReceiveTile extends StatelessWidget {
           },
           child: Text(
             S.of(context).resend,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).cardColor,
-                ),
+            style: context.textTheme.bodyLarge?.copyWith(
+              color: context.theme.cardColor,
+            ),
           ),
         ),
       ],

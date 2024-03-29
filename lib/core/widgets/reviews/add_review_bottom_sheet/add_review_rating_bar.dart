@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,9 +16,9 @@ class AddReviewRatingBar extends StatelessWidget {
       children: [
         Text(
           S.of(context).tap_to_rate,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Theme.of(context).primaryColor.withOpacity(.3),
-              ),
+          style: context.textTheme.bodyLarge?.copyWith(
+            color: context.theme.primaryColor.withOpacity(.3),
+          ),
         ),
         RatingBar(
           glowColor: Colors.white,

@@ -2,9 +2,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/extensions/locale.dart';
 import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/extensions/locale.dart';
 
 part 'settings_event.dart';
 part 'settings_state.dart';

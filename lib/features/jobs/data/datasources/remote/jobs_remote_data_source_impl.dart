@@ -29,7 +29,7 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
 
   @override
   Future<List<JobModel>> searchOnJobs(String text) async {
-    final res = await loadJsonFromAsset('craftsmen.json');
+    final res = await loadJsonFromAsset('jobs.json');
     final craftsmen = List<JobModel>.from(res['data'].map(
       (craftsman) => JobModel.fromJson(craftsman),
     ));

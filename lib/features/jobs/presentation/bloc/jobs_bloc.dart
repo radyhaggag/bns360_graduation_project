@@ -16,7 +16,6 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
   JobsBloc({required this.jobsRepo}) : super(JobsInitial()) {
     on<GetJobsEvent>(_getJobs);
     on<GetJobByIdEvent>(_getJobById);
-    on<ToggleSearchIcon>(_toggleSearchIcon);
     on<SearchOnJobs>(_searchOnJobs);
   }
 
@@ -43,18 +42,6 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
 
   bool isSearchEnabled = false;
   final searchController = TextEditingController();
-
-  _toggleSearchIcon(
-    ToggleSearchIcon event,
-    Emitter<JobsState> emit,
-  ) {
-    isSearchEnabled = !isSearchEnabled;
-    emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
-    if (!isSearchEnabled && searchController.text.isNotEmpty) {
-      searchController.clear();
-      add(GetJobsEvent());
-    }
-  }
 
   _searchOnJobs(
     SearchOnJobs event,

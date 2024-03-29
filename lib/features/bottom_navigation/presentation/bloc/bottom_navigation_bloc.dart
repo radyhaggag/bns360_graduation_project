@@ -8,7 +8,7 @@ import '../../../crafts/presentation/screens/crafts_screen.dart';
 import '../../../home/presentation/screens/home_screen.dart';
 import '../../../jobs/presentation/screens/jobs_screen.dart';
 import '../../../profile/presentation/screen/profile_screen.dart';
-import '../../../real_estate/presentation/screens/real_estate_screen.dart';
+import '../../../properties/presentation/screens/properties_screen.dart';
 
 part 'bottom_navigation_event.dart';
 part 'bottom_navigation_state.dart';
@@ -23,7 +23,7 @@ class BottomNavBarBloc extends Bloc<BottomNavBarEvent, BottomNavBarState> {
     CategoriesScreen.getWithBlocProvider(),
     JobsScreen.getWithBlocProvider(),
     CraftsScreen.getWithBlocProvider(),
-    RealEstateScreen.getWithBlocProvider(),
+    PropertiesScreen.getWithBlocProvider(),
     ConversationsScreen.getWithBlocProvider(), // Not on nav bar
     ProfileScreen.getWithBlocProvider(), // Not on nav bar
   ];

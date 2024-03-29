@@ -24,7 +24,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(hours) => "${hours} hours ago";
 
-  static String m2(mins) => "${mins} mins ago";
+  static String m2(number) => "Maximum upload of ${number} images";
+
+  static String m3(mins) => "${mins} mins ago";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -37,12 +39,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("Add a job"),
+        "add_location": MessageLookupByLibrary.simpleMessage("Add location"),
+        "add_property": MessageLookupByLibrary.simpleMessage("Add property"),
         "am": MessageLookupByLibrary.simpleMessage("AM"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
         "apply_now": MessageLookupByLibrary.simpleMessage("Apply now"),
+        "area": MessageLookupByLibrary.simpleMessage("Area"),
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
+        "buy_now": MessageLookupByLibrary.simpleMessage("Buy now"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "change": MessageLookupByLibrary.simpleMessage("Change"),
@@ -72,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "This message has been deleted by the sender."),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "description_of_property":
+            MessageLookupByLibrary.simpleMessage("Description of property"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("EGP"),
@@ -88,9 +96,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter job description"),
         "enter_job_title":
             MessageLookupByLibrary.simpleMessage("Enter job title"),
+        "enter_property_address":
+            MessageLookupByLibrary.simpleMessage("Enter property address"),
         "enter_the_requirements":
             MessageLookupByLibrary.simpleMessage("Enter the requirements"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
+        "find_your_home":
+            MessageLookupByLibrary.simpleMessage("Find your home"),
         "find_your_job":
             MessageLookupByLibrary.simpleMessage("Let\'\'s find your job"),
         "forgotPassword":
@@ -110,14 +122,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "job_title": MessageLookupByLibrary.simpleMessage("Job title"),
         "job_type": MessageLookupByLibrary.simpleMessage("Job type"),
         "just_now": MessageLookupByLibrary.simpleMessage("Just now"),
+        "killo_meter_lone": MessageLookupByLibrary.simpleMessage("Kilometer"),
+        "killo_meter_short": MessageLookupByLibrary.simpleMessage("km"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "map": MessageLookupByLibrary.simpleMessage("Map"),
+        "max_no_of_image_uploads": m2,
+        "meter_lone": MessageLookupByLibrary.simpleMessage("Meter"),
+        "meter_short": MessageLookupByLibrary.simpleMessage("m"),
         "min_ago": MessageLookupByLibrary.simpleMessage("min ago"),
-        "mins_ago": m2,
+        "mins_ago": m3,
         "must_be_more_than_minimum_number_of_characters":
             MessageLookupByLibrary.simpleMessage(
                 "Password must be more than the minimum length of characters"),
@@ -155,10 +172,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Places to explore"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("Please choose"),
         "pm": MessageLookupByLibrary.simpleMessage("PM"),
+        "post_now": MessageLookupByLibrary.simpleMessage("Post now"),
         "posted": MessageLookupByLibrary.simpleMessage("Posted"),
+        "price": MessageLookupByLibrary.simpleMessage("Price"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy policy"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "property_address":
+            MessageLookupByLibrary.simpleMessage("Property address"),
+        "rent": MessageLookupByLibrary.simpleMessage("Rent"),
         "requirements": MessageLookupByLibrary.simpleMessage("Requirements"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
@@ -168,11 +190,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Review summary"),
         "reviewer": MessageLookupByLibrary.simpleMessage("Reviewer"),
         "salary": MessageLookupByLibrary.simpleMessage("Salary"),
+        "sale": MessageLookupByLibrary.simpleMessage("Sale"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_for_job":
             MessageLookupByLibrary.simpleMessage("Search for job"),
         "search_on": MessageLookupByLibrary.simpleMessage("Search on"),
+        "search_on_properties":
+            MessageLookupByLibrary.simpleMessage("Search on properties"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
         "sentCodeTo":
@@ -195,6 +220,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("There are no messages yet"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "upload_property_images":
+            MessageLookupByLibrary.simpleMessage("Upload property images"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "validateEmail":

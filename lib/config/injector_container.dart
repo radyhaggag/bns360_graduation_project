@@ -17,7 +17,7 @@ import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
 import '../features/jobs/jobs_injector.dart';
 import '../features/profile/profile_injector.dart';
-import '../features/real_estate/real_estate_injector.dart';
+import '../features/properties/properties_injector.dart';
 import '../features/settings/settings_injector.dart';
 import '../features/splash/splash_injector.dart';
 
@@ -37,7 +37,7 @@ Future<void> initAppDependencies() async {
   initCraftsman();
   initConversations();
   initJobs();
-  initRealEstate();
+  initProperties();
 }
 
 Future<void> initCore() async {

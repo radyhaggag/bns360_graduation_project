@@ -1439,6 +1439,196 @@ class S {
       args: [],
     );
   }
+
+  /// `Find your home`
+  String get find_your_home {
+    return Intl.message(
+      'Find your home',
+      name: 'find_your_home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search on properties`
+  String get search_on_properties {
+    return Intl.message(
+      'Search on properties',
+      name: 'search_on_properties',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `m`
+  String get meter_short {
+    return Intl.message(
+      'm',
+      name: 'meter_short',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Meter`
+  String get meter_lone {
+    return Intl.message(
+      'Meter',
+      name: 'meter_lone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `km`
+  String get killo_meter_short {
+    return Intl.message(
+      'km',
+      name: 'killo_meter_short',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kilometer`
+  String get killo_meter_lone {
+    return Intl.message(
+      'Kilometer',
+      name: 'killo_meter_lone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sale`
+  String get sale {
+    return Intl.message(
+      'Sale',
+      name: 'sale',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rent`
+  String get rent {
+    return Intl.message(
+      'Rent',
+      name: 'rent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Buy now`
+  String get buy_now {
+    return Intl.message(
+      'Buy now',
+      name: 'buy_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add property`
+  String get add_property {
+    return Intl.message(
+      'Add property',
+      name: 'add_property',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description of property`
+  String get description_of_property {
+    return Intl.message(
+      'Description of property',
+      name: 'description_of_property',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Property address`
+  String get property_address {
+    return Intl.message(
+      'Property address',
+      name: 'property_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter property address`
+  String get enter_property_address {
+    return Intl.message(
+      'Enter property address',
+      name: 'enter_property_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add location`
+  String get add_location {
+    return Intl.message(
+      'Add location',
+      name: 'add_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Area`
+  String get area {
+    return Intl.message(
+      'Area',
+      name: 'area',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload property images`
+  String get upload_property_images {
+    return Intl.message(
+      'Upload property images',
+      name: 'upload_property_images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maximum upload of {number} images`
+  String max_no_of_image_uploads(Object number) {
+    return Intl.message(
+      'Maximum upload of $number images',
+      name: 'max_no_of_image_uploads',
+      desc: '',
+      args: [number],
+    );
+  }
+
+  /// `Post now`
+  String get post_now {
+    return Intl.message(
+      'Post now',
+      name: 'post_now',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

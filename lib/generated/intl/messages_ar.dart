@@ -24,7 +24,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(hours) => "قبل ${hours} ساعات";
 
-  static String m2(mins) => "قبل ${mins} دقائق";
+  static String m2(number) => "الحد الأقصى لتحميل ${number} صورة";
+
+  static String m3(mins) => "قبل ${mins} دقائق";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -37,14 +39,18 @@ class MessageLookup extends MessageLookupByLibrary {
             "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("إضافة وظيفة"),
+        "add_location": MessageLookupByLibrary.simpleMessage("إضافة موقع"),
+        "add_property": MessageLookupByLibrary.simpleMessage("إضافة عقار"),
         "am": MessageLookupByLibrary.simpleMessage("ص"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
         "apply_now": MessageLookupByLibrary.simpleMessage("قم بالتقديم الان"),
+        "area": MessageLookupByLibrary.simpleMessage("المساحة"),
         "backToLogin":
             MessageLookupByLibrary.simpleMessage("العودة الى تسجيل الدخول"),
         "businessOwner":
             MessageLookupByLibrary.simpleMessage("صاحب نشاط تجارى"),
+        "buy_now": MessageLookupByLibrary.simpleMessage("اشترِ الآن"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
         "change": MessageLookupByLibrary.simpleMessage("تغيير"),
@@ -72,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "تم حذف هذه الرسالة من قبل المرسل."),
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
+        "description_of_property":
+            MessageLookupByLibrary.simpleMessage("وصف العقار"),
         "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
@@ -89,9 +97,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_job_description":
             MessageLookupByLibrary.simpleMessage("ادخل الوظف"),
         "enter_job_title": MessageLookupByLibrary.simpleMessage("ادخل عنوان"),
+        "enter_property_address":
+            MessageLookupByLibrary.simpleMessage("أدخل عنوان العقار"),
         "enter_the_requirements":
             MessageLookupByLibrary.simpleMessage("ادخل المتطلبات"),
         "favorites": MessageLookupByLibrary.simpleMessage("لمفضلة"),
+        "find_your_home": MessageLookupByLibrary.simpleMessage("ابحث عن منزلك"),
         "find_your_job": MessageLookupByLibrary.simpleMessage("لنجد وظيفتك"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
@@ -109,14 +120,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "job_title": MessageLookupByLibrary.simpleMessage("عنوان الوظيفة"),
         "job_type": MessageLookupByLibrary.simpleMessage("نوع الوظيفه"),
         "just_now": MessageLookupByLibrary.simpleMessage("الآن"),
+        "killo_meter_lone": MessageLookupByLibrary.simpleMessage("كيلومتر"),
+        "killo_meter_short": MessageLookupByLibrary.simpleMessage("كم"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسحيل الدخول"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "map": MessageLookupByLibrary.simpleMessage("الخريطة"),
+        "max_no_of_image_uploads": m2,
+        "meter_lone": MessageLookupByLibrary.simpleMessage("متر"),
+        "meter_short": MessageLookupByLibrary.simpleMessage("م"),
         "min_ago": MessageLookupByLibrary.simpleMessage("قبل دقيقة"),
-        "mins_ago": m2,
+        "mins_ago": m3,
         "must_be_more_than_minimum_number_of_characters":
             MessageLookupByLibrary.simpleMessage(
                 "يجب أن تكون كلمة المرور أكثر من الحد الأدنى لطول الأحرف"),
@@ -155,10 +171,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أماكن للاستكشاف"),
         "pleaseChoose": MessageLookupByLibrary.simpleMessage("اختر من فضلك"),
         "pm": MessageLookupByLibrary.simpleMessage("م"),
+        "post_now": MessageLookupByLibrary.simpleMessage("نشر الآن"),
         "posted": MessageLookupByLibrary.simpleMessage("نُشر"),
+        "price": MessageLookupByLibrary.simpleMessage("السعر"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "property_address":
+            MessageLookupByLibrary.simpleMessage("عنوان العقار"),
+        "rent": MessageLookupByLibrary.simpleMessage("للإيجار"),
         "requirements": MessageLookupByLibrary.simpleMessage("المتطلبات"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),
         "resetPassword":
@@ -169,11 +190,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ملخص المراجعات"),
         "reviewer": MessageLookupByLibrary.simpleMessage("مراجع"),
         "salary": MessageLookupByLibrary.simpleMessage("المرتب"),
+        "sale": MessageLookupByLibrary.simpleMessage("للبيع"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "search": MessageLookupByLibrary.simpleMessage("أبحث"),
         "search_for_job":
             MessageLookupByLibrary.simpleMessage("البحث عن وظيفة"),
         "search_on": MessageLookupByLibrary.simpleMessage("البحث في"),
+        "search_on_properties":
+            MessageLookupByLibrary.simpleMessage("البحث في العقارات"),
         "send": MessageLookupByLibrary.simpleMessage("إرسال"),
         "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
         "sentCodeTo": MessageLookupByLibrary.simpleMessage(
@@ -193,6 +217,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("لا توجد رسائل حتى الآن"),
         "today": MessageLookupByLibrary.simpleMessage("اليوم"),
+        "upload_property_images":
+            MessageLookupByLibrary.simpleMessage("تحميل صور العقار"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "validateEmail":

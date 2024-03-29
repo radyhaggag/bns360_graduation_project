@@ -43,6 +43,11 @@ import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
 import '../features/profile/presentation/bloc/profile_bloc.dart';
 import '../features/profile/presentation/screen/edit_profile_screen.dart';
+import '../features/properties/domain/entities/property_entity.dart';
+import '../features/properties/presentation/bloc/properties_bloc.dart';
+import '../features/properties/presentation/screens/add_property_screen.dart';
+import '../features/properties/presentation/screens/properties_screen.dart';
+import '../features/properties/presentation/screens/property_details_screen.dart';
 import '../features/settings/presentation/bloc/settings_bloc.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
@@ -76,6 +81,9 @@ abstract class Routes {
   static const jobDetails = '/jobDetails';
   static const jobs = '/jobs';
   static const addJob = '/addJob';
+  static const propertyDetails = '/propertyDetails';
+  static const properties = '/properties';
+  static const addProperty = '/addProperty';
 }
 
 abstract class RouteConfig {
@@ -297,6 +305,27 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<JobsBloc>(),
             child: const AddJobScreen(),
+          ),
+        );
+      case Routes.properties:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<PropertiesBloc>()..add(GetPropertiesEvent()),
+            child: const PropertiesScreen(),
+          ),
+        );
+      case Routes.propertyDetails:
+        return MaterialPageRoute(
+          builder: (context) => PropertyDetailsScreen(
+            propertyEntity: settings.arguments as PropertyEntity,
+          ),
+        );
+      case Routes.addProperty:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<PropertiesBloc>(),
+            child: const AddPropertyScreen(),
           ),
         );
       default:

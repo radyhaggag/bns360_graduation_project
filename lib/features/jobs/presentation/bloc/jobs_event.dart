@@ -18,6 +18,4 @@ class GetJobByIdEvent extends JobsEvent {
   List<Object> get props => [id];
 }
 
-class ToggleSearchIcon extends JobsEvent {}
-
 class SearchOnJobs extends JobsEvent {}

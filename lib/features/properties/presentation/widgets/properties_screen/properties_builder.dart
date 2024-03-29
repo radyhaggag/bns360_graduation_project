@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/data_state_widget.dart';
+import '../../../../../core/widgets/main_list_view_builder.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../domain/entities/property_entity.dart';
+import '../../bloc/properties_bloc.dart';
+import '../property_card/property_card.dart';
+
+class PropertiesBuilder extends StatelessWidget {
+  const PropertiesBuilder({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PropertiesBloc, PropertiesState>(
+      buildWhen: (previous, current) {
+        final states = [
+          GetPropertiesLoadingState,
+          GetPropertiesErrorState,
+          GetPropertiesSuccessState,
+        ];
+        return states.contains(current.runtimeType);
+      },
+      builder: (context, state) {
+        final propertiesBloc = context.read<PropertiesBloc>();
+
+        return DataStateWidget(
+          isLoading: state is GetPropertiesLoadingState,
+          isError: state is GetPropertiesErrorState,
+          isLoaded: state is GetPropertiesSuccessState,
+          errorMessage: state is GetPropertiesErrorState ? state.message : "",
+          loadedWidget: MainListViewBuilder<PropertyEntity>(
+            list: propertiesBloc.isSearchEnabled
+                ? propertiesBloc.searchResults
+                : propertiesBloc.properties,
+            emptyMessage: S.of(context).no_jobs_found,
+            itemWidget: (item, _) => JobCard(propertyEntity: item),
+            scrollDirection: Axis.vertical,
+            width: context.width,
+            height: context.height,
+          ),
+        );
+      },
+    );
+  }
+}

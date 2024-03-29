@@ -1319,6 +1319,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Job type`
+  String get job_type {
+    return Intl.message(
+      'Job type',
+      name: 'job_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Work hours`
+  String get work_hours {
+    return Intl.message(
+      'Work hours',
+      name: 'work_hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salary`
+  String get salary {
+    return Intl.message(
+      'Salary',
+      name: 'salary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Requirements`
+  String get requirements {
+    return Intl.message(
+      'Requirements',
+      name: 'requirements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apply now`
+  String get apply_now {
+    return Intl.message(
+      'Apply now',
+      name: 'apply_now',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

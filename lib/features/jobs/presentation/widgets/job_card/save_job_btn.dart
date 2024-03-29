@@ -9,9 +9,11 @@ class SaveJobBtn extends StatefulWidget {
   const SaveJobBtn({
     super.key,
     this.isSaved,
+    this.notSavedColor,
   });
 
   final bool? isSaved;
+  final Color? notSavedColor;
 
   @override
   State<SaveJobBtn> createState() => SaveJobBtnState();
@@ -33,13 +35,17 @@ class SaveJobBtnState extends State<SaveJobBtn> {
       backgroundColor: isSaved ? AppColors.primary : null,
       size: 35.r,
       icon: Icon(
-        isSaved ? FeatherIcons.bookmark : FeatherIcons.bookmark,
-        color: isSaved ? AppColors.white : AppColors.primary,
+        isSaved ? Icons.bookmark : FeatherIcons.bookmark,
+        color: isSaved ? Colors.amber : notSavedColor,
       ),
       onPressed: () {
         setState(() => isSaved = !isSaved);
       },
       addMargin: true,
     );
+  }
+
+  Color get notSavedColor {
+    return widget.notSavedColor ?? AppColors.primary;
   }
 }

@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "am": MessageLookupByLibrary.simpleMessage("AM"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
+        "apply_now": MessageLookupByLibrary.simpleMessage("Apply now"),
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -97,6 +98,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage("hour ago"),
         "hours_ago": m1,
         "hr_work": MessageLookupByLibrary.simpleMessage("hr work"),
+        "job_type": MessageLookupByLibrary.simpleMessage("Job type"),
         "just_now": MessageLookupByLibrary.simpleMessage("Just now"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -147,6 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy policy"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "requirements": MessageLookupByLibrary.simpleMessage("Requirements"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resetPasswordMsg": MessageLookupByLibrary.simpleMessage(
@@ -154,6 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "review_summary":
             MessageLookupByLibrary.simpleMessage("Review summary"),
         "reviewer": MessageLookupByLibrary.simpleMessage("Reviewer"),
+        "salary": MessageLookupByLibrary.simpleMessage("Salary"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_for_job":
@@ -199,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "view_profile": MessageLookupByLibrary.simpleMessage("View profile"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("View reviews"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
+        "work_hours": MessageLookupByLibrary.simpleMessage("Work hours"),
         "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("Write your message"),

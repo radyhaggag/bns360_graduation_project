@@ -23,7 +23,12 @@ class _JobDateAndDetailsSection extends StatelessWidget {
           label: S.of(context).details,
           height: 35.h,
           borderRadius: BorderRadius.circular(8),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(
+              Routes.jobDetails,
+              arguments: jobEntity,
+            );
+          },
         ),
       ],
     );

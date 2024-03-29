@@ -125,5 +125,10 @@
   "egypt_currency": "EGP",
   "hr_work": "hr work",
   "posted": "Posted",
-  "details": "Details"
+  "details": "Details",
+  "job_type": "Job type",
+  "work_hours": "Work hours",
+  "salary": "Salary",
+  "requirements": "Requirements",
+  "apply_now": "Apply now"
 }

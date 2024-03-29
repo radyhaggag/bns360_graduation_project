@@ -125,5 +125,10 @@
   "egypt_currency": "جنية",
   "hr_work": "س عمل",
   "posted": "نُشر",
-  "details": "تفاصيل"
+  "details": "تفاصيل",
+  "job_type": "نوع الوظيفه",
+  "work_hours": "ساعات العمل",
+  "salary": "المرتب",
+  "requirements": "المتطلبات",
+  "apply_now": "قم بالتقديم الان"
 }

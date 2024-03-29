@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "am": MessageLookupByLibrary.simpleMessage("ص"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
+        "apply_now": MessageLookupByLibrary.simpleMessage("قم بالتقديم الان"),
         "backToLogin":
             MessageLookupByLibrary.simpleMessage("العودة الى تسجيل الدخول"),
         "businessOwner":
@@ -98,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
         "hours_ago": m1,
         "hr_work": MessageLookupByLibrary.simpleMessage("س عمل"),
+        "job_type": MessageLookupByLibrary.simpleMessage("نوع الوظيفه"),
         "just_now": MessageLookupByLibrary.simpleMessage("الآن"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "login": MessageLookupByLibrary.simpleMessage("تسحيل الدخول"),
@@ -149,6 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "requirements": MessageLookupByLibrary.simpleMessage("المتطلبات"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
@@ -157,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "review_summary":
             MessageLookupByLibrary.simpleMessage("ملخص المراجعات"),
         "reviewer": MessageLookupByLibrary.simpleMessage("مراجع"),
+        "salary": MessageLookupByLibrary.simpleMessage("المرتب"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "search": MessageLookupByLibrary.simpleMessage("أبحث"),
         "search_for_job":
@@ -199,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("عرض المراجعات"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
+        "work_hours": MessageLookupByLibrary.simpleMessage("ساعات العمل"),
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/features/jobs/domain/entities/job_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,6 +34,7 @@ import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
+import '../features/jobs/presentation/screens/job_details_screen.dart';
 import '../features/map/domain/params/map_params.dart';
 import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
@@ -68,6 +70,7 @@ abstract class Routes {
   static const map = '/map';
   static const conversations = '/conversations';
   static const conversation = '/conversation';
+  static const jobDetails = '/jobDetails';
 }
 
 abstract class RouteConfig {
@@ -268,6 +271,12 @@ abstract class RouteConfig {
             create: (context) =>
                 sl<ConversationsBloc>()..add(GetConversationsEvent()),
             child: const ConversationsScreen(),
+          ),
+        );
+      case Routes.jobDetails:
+        return MaterialPageRoute(
+          builder: (context) => JobDetailsScreen(
+            jobEntity: settings.arguments as JobEntity,
           ),
         );
 

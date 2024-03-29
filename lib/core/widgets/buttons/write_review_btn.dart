@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 
-import '../../utils/main_logger.dart';
-import 'custom_buttons.dart';
 import '../../../generated/l10n.dart';
+import '../../utils/main_logger.dart';
 import '../reviews/add_review_bottom_sheet/add_review_bottom_sheet.dart';
+import 'custom_buttons.dart';
 
 class WriteReviewBtn extends StatelessWidget {
   const WriteReviewBtn({
@@ -25,7 +25,7 @@ class WriteReviewBtn extends StatelessWidget {
           },
         );
       },
-      borderRadius: BorderRadius.circular(16),
+      borderRadius: BorderRadius.circular(24),
     );
   }
 }

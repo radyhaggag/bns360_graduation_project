@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/widgets/buttons/write_review_btn.dart';
-import 'category_item_review_summary_app_bar.dart';
 import '../../../../../core/widgets/reviews/sliver_reviews_app_bar_delegate.dart';
+import 'category_item_review_summary_app_bar.dart';
 import 'reviews_builder.dart';
 
 class CategoryItemReviewSummaryBody extends StatelessWidget {

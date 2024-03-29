@@ -130,5 +130,12 @@
   "work_hours": "ساعات العمل",
   "salary": "المرتب",
   "requirements": "المتطلبات",
-  "apply_now": "قم بالتقديم الان"
+  "apply_now": "قم بالتقديم الان",
+  "add_a_job": "إضافة وظيفة",
+  "job_title": "عنوان الوظيفة",
+  "job_description": "وصف الوظيفة",
+  "whatsapp": "واتساب",
+  "enter_the_requirements": "ادخل المتطلبات",
+  "enter_job_description": "ادخل الوظف",
+  "enter_job_title": "ادخل عنوان"
 }

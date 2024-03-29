@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/extensions/media_query.dart';
-import '../../../../core/widgets/input_fields/search_field.dart';
-import '../../../../generated/l10n.dart';
-import '../bloc/jobs_bloc.dart';
+import '../../../../../config/route_config.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/input_fields/search_field.dart';
+import '../../../../../generated/l10n.dart';
+import '../../bloc/jobs_bloc.dart';
 
 class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   const JobsScreenAppBar({super.key});
@@ -30,8 +31,13 @@ class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             color: context.theme.listTileTheme.tileColor,
           ),
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-          margin: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 20,
+            top: 20,
+          ),
+          margin: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top, bottom: 10.h),
           alignment: Alignment.center,
           child: Column(
             children: [
@@ -45,6 +51,9 @@ class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                   RoundedIconBtn(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(Routes.addJob);
+                    },
                     icon: Icon(
                       Icons.add,
                       color: context.theme.highlightColor,
@@ -58,7 +67,6 @@ class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
               Expanded(
                 child: SearchField(
                   searchController: bloc.searchController,
-                  textFieldColor: context.theme.highlightColor,
                   onFieldSubmitted: () {
                     bloc.add(SearchOnJobs());
                   },
@@ -74,7 +82,7 @@ class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(110.h);
+  Size get preferredSize => Size.fromHeight(120.h);
 
   String getHintText(BuildContext context) {
     return S.of(context).search_for_job;

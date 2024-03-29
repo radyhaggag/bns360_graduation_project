@@ -23,7 +23,7 @@ class AddReviewTextField extends StatelessWidget {
         hintText: S.of(context).write_your_review,
         enabledBorder: inputBorder,
         focusedBorder: inputBorder,
-        fillColor: context.theme.listTileTheme.tileColor,
+        fillColor: context.theme.scaffoldBackgroundColor,
         hintStyle: context.textTheme.bodyLarge?.copyWith(
           color: context.theme.primaryColor.withOpacity(.3),
           fontSize: AppFontSize.details,

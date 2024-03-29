@@ -20,7 +20,7 @@ class CraftsmanHead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.theme.listTileTheme.tileColor,
+      color: context.theme.scaffoldBackgroundColor,
       child: Stack(
         children: [
           const CraftsmanHeadBackground(),

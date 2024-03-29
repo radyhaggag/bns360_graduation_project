@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "access_storage_permissions_msg": MessageLookupByLibrary.simpleMessage(
             "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "add_a_job": MessageLookupByLibrary.simpleMessage("Add a job"),
         "am": MessageLookupByLibrary.simpleMessage("AM"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
@@ -83,6 +84,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "enterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
+        "enter_job_description":
+            MessageLookupByLibrary.simpleMessage("Enter job description"),
+        "enter_job_title":
+            MessageLookupByLibrary.simpleMessage("Enter job title"),
+        "enter_the_requirements":
+            MessageLookupByLibrary.simpleMessage("Enter the requirements"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
         "find_your_job":
             MessageLookupByLibrary.simpleMessage("Let\'\'s find your job"),
@@ -98,6 +105,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage("hour ago"),
         "hours_ago": m1,
         "hr_work": MessageLookupByLibrary.simpleMessage("hr work"),
+        "job_description":
+            MessageLookupByLibrary.simpleMessage("Job description"),
+        "job_title": MessageLookupByLibrary.simpleMessage("Job title"),
         "job_type": MessageLookupByLibrary.simpleMessage("Job type"),
         "just_now": MessageLookupByLibrary.simpleMessage("Just now"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
@@ -203,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "view_profile": MessageLookupByLibrary.simpleMessage("View profile"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("View reviews"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
+        "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "work_hours": MessageLookupByLibrary.simpleMessage("Work hours"),
         "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),
         "write_your_message":

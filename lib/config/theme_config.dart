@@ -91,8 +91,8 @@ abstract class ThemeConfig {
         ),
         hintStyle: AppStyles.getRegularStyle(color: AppColors.black25),
         labelStyle: AppStyles.getRegularStyle(fontSize: AppFontSize.body),
-        suffixIconColor: AppColors.black25,
-        prefixIconColor: AppColors.black25,
+        suffixIconColor: AppColors.black50,
+        prefixIconColor: AppColors.black50,
       ),
       cardTheme: const CardTheme(
         color: AppColors.white,
@@ -109,7 +109,7 @@ abstract class ThemeConfig {
         ),
       ),
       hintColor: AppColors.black25,
-      hoverColor: AppColors.black25,
+      hoverColor: AppColors.black50,
       cardColor: AppColors.primary,
       splashColor: AppColors.white,
       highlightColor: AppColors.white,
@@ -183,7 +183,7 @@ abstract class ThemeConfig {
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: AppColors.white,
       ),
-      scaffoldBackgroundColor: AppColors.darkBackground,
+      scaffoldBackgroundColor: AppColors.darkScaffoldBackground,
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -217,7 +217,7 @@ abstract class ThemeConfig {
         ),
       ),
       hintColor: AppColors.white25,
-      hoverColor: AppColors.white80,
+      hoverColor: AppColors.white50,
       cardColor: AppColors.white80,
       splashColor: AppColors.surface,
       highlightColor: AppColors.surface,

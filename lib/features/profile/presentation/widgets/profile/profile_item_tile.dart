@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -52,9 +51,9 @@ class ProfileItemTile extends StatelessWidget {
         ),
       ),
       trailing: trailing ??
-          const Icon(
+          Icon(
             Icons.arrow_forward_ios,
-            color: AppColors.primary,
+            color: context.theme.cardColor,
           ),
     );
   }

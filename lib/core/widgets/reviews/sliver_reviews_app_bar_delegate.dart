@@ -41,7 +41,7 @@ class SliverReviewsAppBarDelegate extends SliverPersistentHeaderDelegate {
         horizontal: kHorizontalPadding,
         vertical: 10.h,
       ),
-      color: context.theme.listTileTheme.tileColor,
+      color: context.theme.scaffoldBackgroundColor,
       child: MainReviewSummaryCard(
         numOfRatings: numOfRatings,
         starsCount: starsCount,

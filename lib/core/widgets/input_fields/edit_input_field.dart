@@ -33,7 +33,7 @@ class EditInputField extends StatelessWidget {
       label: label,
       fontSize: fontSize,
       textStyle: labelStyle?.copyWith(
-        color: labelStyle.color?.withOpacity(.4),
+        color: context.theme.hoverColor,
       ),
       heightBetweenLabelAndField: heightBetweenLabelAndField,
       inputDecoration: InputDecoration(

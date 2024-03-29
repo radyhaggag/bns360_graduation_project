@@ -130,5 +130,12 @@
   "work_hours": "Work hours",
   "salary": "Salary",
   "requirements": "Requirements",
-  "apply_now": "Apply now"
+  "apply_now": "Apply now",
+  "add_a_job": "Add a job",
+  "job_title": "Job title",
+  "job_description": "Job description",
+  "whatsapp": "Whatsapp",
+  "enter_the_requirements": "Enter the requirements",
+  "enter_job_description": "Enter job description",
+  "enter_job_title": "Enter job title"
 }

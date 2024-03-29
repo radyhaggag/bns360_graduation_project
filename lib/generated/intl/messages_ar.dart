@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "access_storage_permissions_msg": MessageLookupByLibrary.simpleMessage(
             "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+        "add_a_job": MessageLookupByLibrary.simpleMessage("إضافة وظيفة"),
         "am": MessageLookupByLibrary.simpleMessage("ص"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
@@ -85,6 +86,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل كلمة المرور"),
         "enterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("ادخل رقم هاتفك"),
+        "enter_job_description":
+            MessageLookupByLibrary.simpleMessage("ادخل الوظف"),
+        "enter_job_title": MessageLookupByLibrary.simpleMessage("ادخل عنوان"),
+        "enter_the_requirements":
+            MessageLookupByLibrary.simpleMessage("ادخل المتطلبات"),
         "favorites": MessageLookupByLibrary.simpleMessage("لمفضلة"),
         "find_your_job": MessageLookupByLibrary.simpleMessage("لنجد وظيفتك"),
         "forgotPassword":
@@ -99,6 +105,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
         "hours_ago": m1,
         "hr_work": MessageLookupByLibrary.simpleMessage("س عمل"),
+        "job_description": MessageLookupByLibrary.simpleMessage("وصف الوظيفة"),
+        "job_title": MessageLookupByLibrary.simpleMessage("عنوان الوظيفة"),
         "job_type": MessageLookupByLibrary.simpleMessage("نوع الوظيفه"),
         "just_now": MessageLookupByLibrary.simpleMessage("الآن"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
@@ -203,6 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("عرض المراجعات"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
+        "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
         "work_hours": MessageLookupByLibrary.simpleMessage("ساعات العمل"),
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
         "write_your_message":

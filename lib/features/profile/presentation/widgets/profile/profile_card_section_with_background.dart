@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/widgets/custom_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,12 +45,19 @@ class ProfileCardSectionWithBackground extends StatelessWidget {
                 imageUrl: context.read<ProfileBloc>().profile?.imageUrl,
               ),
               const SizedBox(height: 10),
-              Text(
-                context.read<ProfileBloc>().profile?.name ?? "",
-                style: context.textTheme.titleSmall?.copyWith(
-                  color: AppColors.white,
+              if (state is GetProfileLoadingState)
+                ShimmerWidget.rectangular(
+                  height: 30.h,
+                  width: 150.w,
+                  borderRadius: 16,
+                )
+              else
+                Text(
+                  context.read<ProfileBloc>().profile?.name ?? "",
+                  style: context.textTheme.titleSmall?.copyWith(
+                    color: AppColors.white,
+                  ),
                 ),
-              ),
               const SizedBox(height: 20),
               const _ViewProfileButton(),
             ],

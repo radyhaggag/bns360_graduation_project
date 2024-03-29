@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/features/jobs/domain/entities/job_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,13 +27,17 @@ import '../features/conversations/presentation/screens/conversations_screen.dart
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
 import '../features/crafts/presentation/screens/crafts_screen.dart';
 import '../features/craftsman/presentation/bloc/craftsman_bloc.dart';
-import '../features/craftsman/presentation/screens/category_item_review_summary_screen.dart';
+import '../features/craftsman/presentation/screens/craftsman_review_summary_screen.dart';
 import '../features/craftsman/presentation/screens/craftsman_screen.dart';
 import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
+import '../features/jobs/domain/entities/job_entity.dart';
+import '../features/jobs/presentation/bloc/jobs_bloc.dart';
+import '../features/jobs/presentation/screens/add_job_screen.dart';
 import '../features/jobs/presentation/screens/job_details_screen.dart';
+import '../features/jobs/presentation/screens/jobs_screen.dart';
 import '../features/map/domain/params/map_params.dart';
 import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
@@ -71,6 +74,8 @@ abstract class Routes {
   static const conversations = '/conversations';
   static const conversation = '/conversation';
   static const jobDetails = '/jobDetails';
+  static const jobs = '/jobs';
+  static const addJob = '/addJob';
 }
 
 abstract class RouteConfig {
@@ -153,7 +158,8 @@ abstract class RouteConfig {
       case Routes.favorites:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => sl<FavoritesBloc>(),
+            create: (context) =>
+                sl<FavoritesBloc>()..add(GetFavoriteCategoriesEvent()),
             child: const FavoritesScreen(),
           ),
         );
@@ -273,13 +279,26 @@ abstract class RouteConfig {
             child: const ConversationsScreen(),
           ),
         );
+      case Routes.jobs:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<JobsBloc>()..add(GetJobsEvent()),
+            child: const JobsScreen(),
+          ),
+        );
       case Routes.jobDetails:
         return MaterialPageRoute(
           builder: (context) => JobDetailsScreen(
             jobEntity: settings.arguments as JobEntity,
           ),
         );
-
+      case Routes.addJob:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<JobsBloc>(),
+            child: const AddJobScreen(),
+          ),
+        );
       default:
         return null;
     }

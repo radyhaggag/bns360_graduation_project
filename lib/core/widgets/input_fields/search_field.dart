@@ -53,7 +53,7 @@ class SearchField extends StatelessWidget {
         },
         onChanged: onChanged,
         decoration: InputDecoration(
-          fillColor: textFieldColor ?? context.theme.listTileTheme.tileColor,
+          fillColor: textFieldColor ?? context.theme.scaffoldBackgroundColor,
           filled: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 20),
           enabledBorder: OutlineInputBorder(

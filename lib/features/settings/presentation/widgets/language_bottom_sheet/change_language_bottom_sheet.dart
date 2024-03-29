@@ -26,7 +26,6 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
         child: BottomSheet(
             onClosing: () {},
             enableDrag: false,
-            backgroundColor: context.theme.highlightColor,
             builder: (BuildContext context) {
               return const ChangeLanguageBottomSheet();
             }),
@@ -38,7 +37,7 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: context.theme.highlightColor,
+        color: context.theme.scaffoldBackgroundColor,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),

@@ -24,7 +24,7 @@ class OrSeparator extends StatelessWidget {
           child: Text(
             S.of(context).or,
             style: context.textTheme.titleSmall?.copyWith(
-              color: context.theme.hoverColor,
+              color: context.theme.hintColor,
             ),
           ),
         ),

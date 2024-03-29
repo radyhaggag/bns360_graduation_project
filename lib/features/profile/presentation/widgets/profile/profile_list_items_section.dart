@@ -51,17 +51,13 @@ class ProfileListItemsSection extends StatelessWidget {
             title: S.of(context).my_posts,
             svgPath: AppSvg.posts,
             size: 19.5.r,
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.favorites);
-            },
+            onTap: () {},
           ),
           const SizedBox(height: 10),
           ProfileItemTile(
             title: S.of(context).share_this_app,
             svgPath: AppSvg.share,
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.favorites);
-            },
+            onTap: () {},
           ),
           const SizedBox(height: 10),
           const LogoutTile(),

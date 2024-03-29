@@ -17,7 +17,7 @@ class CategoryItemsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: BlocBuilder<CategoriesBloc, CategoriesState>(
         buildWhen: (previous, current) {
           final states = [

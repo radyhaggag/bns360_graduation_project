@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: context.theme.scaffoldBackgroundColor,
+          color: context.theme.listTileTheme.tileColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(

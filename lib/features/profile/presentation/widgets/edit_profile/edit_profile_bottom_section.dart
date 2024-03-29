@@ -25,7 +25,7 @@ class EditProfileBottomSection extends StatelessWidget {
           topLeft: Radius.circular(50),
           topRight: Radius.circular(50),
         ),
-        color: context.theme.highlightColor,
+        color: context.theme.scaffoldBackgroundColor,
       ),
       padding: EdgeInsets.only(
         left: kHorizontalPadding,
@@ -42,6 +42,7 @@ class EditProfileBottomSection extends StatelessWidget {
             suffixIcon: SvgPicture.asset(
               AppSvg.edit,
               fit: BoxFit.scaleDown,
+              color: context.theme.hoverColor,
             ),
             fontSize: AppFontSize.subTitle,
             heightBetweenLabelAndField: 15,
@@ -53,6 +54,7 @@ class EditProfileBottomSection extends StatelessWidget {
             suffixIcon: SvgPicture.asset(
               AppSvg.edit,
               fit: BoxFit.scaleDown,
+              color: context.theme.hoverColor,
             ),
             fontSize: AppFontSize.subTitle,
             heightBetweenLabelAndField: 15,

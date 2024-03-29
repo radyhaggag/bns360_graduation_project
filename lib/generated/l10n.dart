@@ -1369,6 +1369,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Add a job`
+  String get add_a_job {
+    return Intl.message(
+      'Add a job',
+      name: 'add_a_job',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Job title`
+  String get job_title {
+    return Intl.message(
+      'Job title',
+      name: 'job_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Job description`
+  String get job_description {
+    return Intl.message(
+      'Job description',
+      name: 'job_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Whatsapp`
+  String get whatsapp {
+    return Intl.message(
+      'Whatsapp',
+      name: 'whatsapp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the requirements`
+  String get enter_the_requirements {
+    return Intl.message(
+      'Enter the requirements',
+      name: 'enter_the_requirements',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter job description`
+  String get enter_job_description {
+    return Intl.message(
+      'Enter job description',
+      name: 'enter_job_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter job title`
+  String get enter_job_title {
+    return Intl.message(
+      'Enter job title',
+      name: 'enter_job_title',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

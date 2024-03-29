@@ -28,8 +28,8 @@ class CategoryItemProfileSection extends StatelessWidget {
       children: [
         ClipOval(
           child: ProfileCircleIcon(
-            height: 55.r,
-            width: 55.r,
+            height: 60.r,
+            width: 60.r,
             imageUrl: categoryItemEntity.imageUrl,
           ),
         ),

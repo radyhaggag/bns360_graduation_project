@@ -40,7 +40,7 @@ class JobDetailsBody extends StatelessWidget {
           left: 0,
           right: 0,
           child: SizedBox(
-            width: MediaQuery.of(context).size.width,
+            width: context.width,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: CustomElevatedButton(

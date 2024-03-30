@@ -1,6 +1,6 @@
 buildscript {
     // This working for java 19 version ['1.7.10']
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.9.23'
     repositories {
         google()
         mavenCentral()
@@ -8,7 +8,7 @@ buildscript {
 
     dependencies {
         // This working for java 19 version [com.android.tools.build:gradle:7.3.1]
-        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath 'com.android.tools.build:gradle:8.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }

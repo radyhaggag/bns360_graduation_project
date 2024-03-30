@@ -44,10 +44,10 @@ jobs:
 
       - name: Create key.properties
         run: |
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> key.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> key.properties
-          echo "${{ secrets.STORE_FILE }}" | base64 --decode >> key.properties
-          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/app/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/app/key.properties
+          echo "${{ secrets.STORE_FILE }}" | base64 --decode >> android/app/key.properties
+          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/app/key.properties
 
       - name: Build and distrubte
         env:

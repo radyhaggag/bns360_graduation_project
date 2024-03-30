@@ -42,6 +42,13 @@ jobs:
       - name: Print npm Version
         run: npm --version
 
+      - name: Create key.properties
+        run: |
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> key.properties
+          echo "${{ secrets.STORE_FILE }}" | base64 --decode >> key.properties
+          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> key.properties
+
       - name: Build and distrubte
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}

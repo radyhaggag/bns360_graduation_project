@@ -47,6 +47,22 @@ Lane for Increment the app version - Development
 
 Lane for Increment the app version - Production
 
+### android increment_app_version_by_lastest_google_play_release
+
+```sh
+[bundle exec] fastlane android increment_app_version_by_lastest_google_play_release
+```
+
+
+
+### android increment_version_and_upload_to_google_play
+
+```sh
+[bundle exec] fastlane android increment_version_and_upload_to_google_play
+```
+
+
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

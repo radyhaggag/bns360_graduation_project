@@ -151,6 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("لم تتلقى رمز التحقق!"),
+        "offer_type": MessageLookupByLibrary.simpleMessage("نوع العرض"),
         "ok": MessageLookupByLibrary.simpleMessage("حسنا"),
         "open_now": MessageLookupByLibrary.simpleMessage("مفتوح الان"),
         "optional": MessageLookupByLibrary.simpleMessage("اختيارى"),
@@ -177,6 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
+        "properties": MessageLookupByLibrary.simpleMessage("العقارات"),
         "property_address":
             MessageLookupByLibrary.simpleMessage("عنوان العقار"),
         "rent": MessageLookupByLibrary.simpleMessage("للإيجار"),

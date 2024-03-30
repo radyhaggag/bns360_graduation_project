@@ -156,5 +156,7 @@
   "area": "المساحة",
   "upload_property_images": "تحميل صور العقار",
   "max_no_of_image_uploads": "الحد الأقصى لتحميل {number} صورة",
-  "post_now": "نشر الآن"
+  "post_now": "نشر الآن",
+  "offer_type": "نوع العرض",
+  "properties": "العقارات"
 }

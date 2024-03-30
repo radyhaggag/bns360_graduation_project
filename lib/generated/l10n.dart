@@ -1230,10 +1230,10 @@ class S {
     );
   }
 
-  /// `Let''s find your job`
+  /// `Let's find your job`
   String get find_your_job {
     return Intl.message(
-      'Let\'\'s find your job',
+      'Let\'s find your job',
       name: 'find_your_job',
       desc: '',
       args: [],
@@ -1625,6 +1625,26 @@ class S {
     return Intl.message(
       'Post now',
       name: 'post_now',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Offer type`
+  String get offer_type {
+    return Intl.message(
+      'Offer type',
+      name: 'offer_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Properties`
+  String get properties {
+    return Intl.message(
+      'Properties',
+      name: 'properties',
       desc: '',
       args: [],
     );

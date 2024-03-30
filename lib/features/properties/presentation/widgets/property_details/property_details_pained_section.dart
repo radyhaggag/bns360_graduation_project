@@ -1,8 +1,9 @@
-import 'package:bns360_graduation_project/features/properties/domain/entities/property_entity.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/widgets/property_details/property_details_items_section.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/widgets/property_details/property_details_top_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../domain/entities/property_entity.dart';
+import 'property_details_items_section.dart';
+import 'property_details_top_section.dart';
 
 class PropertyDetailsPainedSection extends SliverPersistentHeaderDelegate {
   final PropertyEntity propertyEntity;
@@ -18,9 +19,9 @@ class PropertyDetailsPainedSection extends SliverPersistentHeaderDelegate {
     return Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: [
-        JobDetailsTopSection(jobEntity: propertyEntity),
-        JobDetailsItemsSection(
-          jobEntity: propertyEntity,
+        PropertyDetailsTopSection(propertyEntity: propertyEntity),
+        PropertyDetailsItemsSection(
+          propertyEntity: propertyEntity,
         ),
       ],
     );

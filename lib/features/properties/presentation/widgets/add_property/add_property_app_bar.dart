@@ -1,8 +1,7 @@
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/custom_back_button.dart';
-import '../../../../core/widgets/custom_back_button.dart';
-import '../../../../generated/l10n.dart';
 
 class AddPropertyScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -11,9 +10,8 @@ class AddPropertyScreenAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // backgroundColor: AppColors.primary,
       leading: const CustomBackButton(),
-      title: Text(S.of(context).add_a_job),
+      title: Text(S.of(context).find_your_home),
     );
   }
 

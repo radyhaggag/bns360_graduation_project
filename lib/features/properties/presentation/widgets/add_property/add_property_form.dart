@@ -1,24 +1,25 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/utils/enums/offer_type.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../generated/l10n.dart';
-import 'property_type_radio_tile.dart';
+import 'property_offer_type_radio_tile.dart';
 
 class AddPropertyForm extends StatelessWidget {
   const AddPropertyForm({
     super.key,
     required this.form,
-    this.selectedJobType,
-    this.onJobTypeChanged,
+    this.selectedOfferType,
+    this.onOfferTypeChanged,
   });
 
   final FormGroup form;
-  final JobType? selectedJobType;
-  final void Function(JobType?)? onJobTypeChanged;
+  final OfferType? selectedOfferType;
+  final void Function(OfferType?)? onOfferTypeChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +48,9 @@ class AddPropertyForm extends StatelessWidget {
             maxLines: 5,
           ),
           10.verticalSpace,
-          JobTypeRadioTile(
-            value: selectedJobType,
-            onChanged: onJobTypeChanged,
+          PropertyOfferTypeRadioTile(
+            value: selectedOfferType,
+            onChanged: onOfferTypeChanged,
           ),
           10.verticalSpace,
           CustomReactiveFormField(

@@ -1,4 +1,4 @@
-part of 'category_item_slider_section.dart';
+part of 'custom_slider.dart';
 
 class _SliderRectBuilder extends StatelessWidget {
   const _SliderRectBuilder({

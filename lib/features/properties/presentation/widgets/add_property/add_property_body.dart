@@ -3,6 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/enums/offer_type.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../../generated/l10n.dart';
 import 'add_property_form.dart';
 
 class AddPropertyBody extends StatefulWidget {
@@ -13,7 +18,7 @@ class AddPropertyBody extends StatefulWidget {
 }
 
 class _AddPropertyBodyState extends State<AddPropertyBody> {
-  JobType? selectedJobType;
+  OfferType? selectedOfferType;
   late final FormGroup form;
 
   @override
@@ -57,10 +62,10 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
             Expanded(
               child: AddPropertyForm(
                 form: form,
-                selectedJobType: selectedJobType,
-                onJobTypeChanged: (newValue) {
+                selectedOfferType: selectedOfferType,
+                onOfferTypeChanged: (newValue) {
                   setState(() {
-                    selectedJobType = newValue;
+                    selectedOfferType = newValue;
                   });
                 },
               ),
@@ -73,8 +78,8 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
                 child: ReactiveFormConsumer(
                   builder: (context, form, child) {
                     return CustomElevatedButton(
-                      label: S.of(context).apply_now,
-                      onPressed: (form.valid && selectedJobType != null)
+                      label: S.of(context).post_now,
+                      onPressed: (form.valid && selectedOfferType != null)
                           ? _submitForm
                           : null,
                       width: context.width,

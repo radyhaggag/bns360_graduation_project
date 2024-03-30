@@ -68,7 +68,7 @@ class PropertyDetailsTopSection extends StatelessWidget {
             ),
             SizedBox(height: 13.h),
             Text(
-              propertyEntity.location,
+              propertyEntity.address,
               style: _textStyle3(context),
             ),
           ],

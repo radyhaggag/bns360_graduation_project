@@ -1,7 +1,7 @@
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/features/jobs/domain/entities/job_entity.dart';
 import 'package:bns360_graduation_project/features/properties/domain/entities/property_entity.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,6 +12,7 @@ class PropertyDetailsItemsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final offerTypeStr = propertyEntity.offerType.getLocalizedString(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
@@ -25,15 +26,15 @@ class PropertyDetailsItemsSection extends StatelessWidget {
         children: [
           Expanded(
             child: _DetailsItem(
-              title: S.of(context).job_type,
-              value: jobType(context),
+              title: S.of(context).offer_type,
+              value: offerTypeStr,
             ),
           ),
           const _CustomDivider(),
           Expanded(
             child: _DetailsItem(
               title: S.of(context).work_hours,
-              value: "${propertyEntity.workHours} ${S.of(context).hr_work}",
+              value: offerTypeStr,
             ),
           ),
           const _CustomDivider(),
@@ -41,19 +42,12 @@ class PropertyDetailsItemsSection extends StatelessWidget {
             child: _DetailsItem(
               title: S.of(context).salary,
               value:
-                  "${S.of(context).egypt_currency} ${propertyEntity.salary.toString()}",
+                  "${S.of(context).egypt_currency} ${propertyEntity.price.toString()}/$offerTypeStr",
             ),
           ),
         ],
       ),
     );
-  }
-
-  String jobType(BuildContext context) {
-    if (propertyEntity.workHours > 4) {
-      return S.of(context).full_time;
-    }
-    return S.of(context).part_time;
   }
 }
 

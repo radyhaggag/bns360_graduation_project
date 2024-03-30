@@ -6,24 +6,29 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/main_network_image.dart';
 
+part '_images_section.dart';
 part 'carousel_slider_builder.dart';
-part 'category_item_images_section.dart';
 part 'slider_rect_builder.dart';
 
-class CategoryItemSliderSection extends StatefulWidget {
-  const CategoryItemSliderSection({
+class CustomSlider extends StatefulWidget {
+  const CustomSlider({
     super.key,
     required this.images,
+    this.height,
+    this.imagesRadius,
+    this.viewPaginationBars = true,
   });
 
   final List<String> images;
+  final double? height;
+  final bool viewPaginationBars;
+  final double? imagesRadius;
 
   @override
-  State<CategoryItemSliderSection> createState() =>
-      _CategoryItemSliderSectionState();
+  State<CustomSlider> createState() => _CustomSliderState();
 }
 
-class _CategoryItemSliderSectionState extends State<CategoryItemSliderSection> {
+class _CustomSliderState extends State<CustomSlider> {
   int activeIndex = 0;
 
   @override
@@ -36,11 +41,14 @@ class _CategoryItemSliderSectionState extends State<CategoryItemSliderSection> {
             setState(() => activeIndex = index);
           },
           images: widget.images,
+          height: widget.height,
+          imagesRadius: widget.imagesRadius,
         ),
-        _SliderRectBuilder(
-          length: widget.images.length,
-          activeIndex: activeIndex,
-        ),
+        if (widget.viewPaginationBars)
+          _SliderRectBuilder(
+            length: widget.images.length,
+            activeIndex: activeIndex,
+          ),
       ],
     );
   }

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
@@ -24,4 +25,11 @@ abstract class AppColors {
   static const white80 = Color(0xccffffff);
   static const white50 = Color(0x80ffffff);
   static const white25 = Color(0x40ffffff);
+
+  ///
+  static backgroundColor(BuildContext context) {
+    return context.theme.brightness == Brightness.light
+        ? context.theme.listTileTheme.tileColor
+        : context.theme.scaffoldBackgroundColor;
+  }
 }

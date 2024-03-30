@@ -104,7 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "find_your_home":
             MessageLookupByLibrary.simpleMessage("Find your home"),
         "find_your_job":
-            MessageLookupByLibrary.simpleMessage("Let\'\'s find your job"),
+            MessageLookupByLibrary.simpleMessage("Let\'s find your job"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
@@ -152,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code!"),
+        "offer_type": MessageLookupByLibrary.simpleMessage("Offer type"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "open_now": MessageLookupByLibrary.simpleMessage("Open now"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
@@ -178,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy policy"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "properties": MessageLookupByLibrary.simpleMessage("Properties"),
         "property_address":
             MessageLookupByLibrary.simpleMessage("Property address"),
         "rent": MessageLookupByLibrary.simpleMessage("Rent"),

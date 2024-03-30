@@ -1,12 +1,16 @@
-part of 'category_item_slider_section.dart';
+part of 'custom_slider.dart';
 
 class _CarouselSliderBuilder extends StatelessWidget {
   const _CarouselSliderBuilder({
     this.onPageChanged,
     required this.images,
+    this.height,
+    this.imagesRadius,
   });
   final dynamic Function(int, CarouselPageChangedReason)? onPageChanged;
   final List<String> images;
+  final double? height;
+  final double? imagesRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +19,16 @@ class _CarouselSliderBuilder extends StatelessWidget {
       itemBuilder: (BuildContext context, int itemIndex, int _) {
         return SizedBox(
           width: context.width,
-          child: _CategoryItemImage(
+          child: _ImagesSection(
             image: images[itemIndex],
+            imagesRadius: imagesRadius,
           ),
         );
       },
       options: CarouselOptions(
         autoPlay: true,
         viewportFraction: 1.0,
-        height: 225.h,
+        height: height ?? 225.h,
         autoPlayInterval: const Duration(seconds: 5),
         onPageChanged: onPageChanged,
       ),

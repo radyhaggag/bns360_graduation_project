@@ -41,7 +41,7 @@ class PropertiesRemoteDataSourceImpl implements PropertiesRemoteDataSource {
     }
 
     final filteredItems =
-        craftsmen.where((item) => isTrue(item.location)).toList();
+        craftsmen.where((item) => isTrue(item.address)).toList();
     return filteredItems;
   }
 }

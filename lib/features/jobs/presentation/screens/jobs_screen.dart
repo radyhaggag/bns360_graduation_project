@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,9 +19,12 @@ class JobsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: JobsScreenAppBar(),
-      body: JobsBody(),
+    return Scaffold(
+      backgroundColor: context.theme.brightness == Brightness.light
+          ? context.theme.listTileTheme.tileColor
+          : context.theme.scaffoldBackgroundColor,
+      appBar: const JobsScreenAppBar(),
+      body: const JobsBody(),
     );
   }
 }

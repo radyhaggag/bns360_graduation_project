@@ -10,10 +10,12 @@ class SaveJobBtn extends StatefulWidget {
     super.key,
     this.isSaved,
     this.notSavedColor,
+    this.notSavedBackgroundColor,
   });
 
   final bool? isSaved;
   final Color? notSavedColor;
+  final Color? notSavedBackgroundColor;
 
   @override
   State<SaveJobBtn> createState() => SaveJobBtnState();
@@ -32,7 +34,8 @@ class SaveJobBtnState extends State<SaveJobBtn> {
   @override
   Widget build(BuildContext context) {
     return RoundedIconBtn(
-      backgroundColor: isSaved ? AppColors.primary : null,
+      backgroundColor:
+          isSaved ? AppColors.primary : widget.notSavedBackgroundColor,
       size: 35.r,
       icon: Icon(
         isSaved ? Icons.bookmark : FeatherIcons.bookmark,

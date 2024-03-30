@@ -7,11 +7,11 @@ import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/widgets/buttons/write_review_btn.dart';
 import '../../../../core/widgets/custom_back_button.dart';
+import '../../../../core/widgets/custom_slider/custom_slider.dart';
 import '../../../../core/widgets/reviews/main_review_summary_card/main_review_summary_card.dart';
 import 'category_item_description.dart';
 import 'category_item_info/category_item_info_section.dart';
 import 'category_item_profile_section.dart';
-import 'category_item_slider/category_item_slider_section.dart';
 
 class CategoryItemBody extends StatelessWidget {
   const CategoryItemBody({
@@ -30,7 +30,7 @@ class CategoryItemBody extends StatelessWidget {
             expandedHeight: 225.h,
             primary: true,
             flexibleSpace: FlexibleSpaceBar(
-              background: CategoryItemSliderSection(
+              background: CustomSlider(
                 images: [
                   categoryItemEntity.imageUrl,
                   categoryItemEntity.imageUrl,

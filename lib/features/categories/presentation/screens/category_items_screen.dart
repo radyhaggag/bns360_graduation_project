@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/shared_data/entities/category_entity.dart';
@@ -15,6 +16,7 @@ class CategoryItemsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor(context),
       appBar: CategoryItemsScreenAppBar(
         categoryEntity: categoryEntity,
       ),

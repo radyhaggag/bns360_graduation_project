@@ -179,7 +179,7 @@ platform :android do
     sh "flutter build apk --release --flavor development --target lib/main_development.dart --no-tree-shake-icons"
     firebase_app_distribution(
       app: "1:79562440860:android:e4234de1e749268a74ad59",
-      firebase_cli_token: "1//03OO00dvjipjjCgYIARAAGAMSNwF-L9Iri2PQMcgSLl5xRPs9w6wZ6iQgKs5PJlXb7kpy2SX0GliRTGXqs1IlCEEduFzMW_C2Gy8",
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-development-release.apk",
       testers: "radyhaggag11@gmail.com, radyhaggag50@gmail.com",
@@ -240,7 +240,7 @@ platform :android do
     )
   end
 
-  lane :increment_app_version_by_lastest_google_play_release do 
+  lane :increment_version_and_upload_to_google_play do 
     sh "flutter clean"
     flutter_build_increment
     sh "flutter build appbundle"  

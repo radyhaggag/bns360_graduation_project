@@ -209,6 +209,7 @@ platform :android do
   lane :increment_development_version do
     latest_release = firebase_app_distribution_get_latest_release(
       app: "1:79562440860:android:e4234de1e749268a74ad59"
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
     )
     # This to update version code on android/app/build.gradle
     increment_version_code(

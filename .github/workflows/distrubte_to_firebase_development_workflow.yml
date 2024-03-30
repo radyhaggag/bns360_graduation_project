@@ -30,6 +30,18 @@ jobs:
           bundler-cache: true
           working-directory: android
 
+      - name: Print Flutter Version
+        run: flutter --version
+
+      - name: Print Java Version
+        run: java --version
+
+      - name: Print Ruby Version
+        run: ruby --version
+
+      - name: Print npm Version
+        run: npm --version
+
       - name: Build and distrubte
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}

@@ -175,6 +175,9 @@ platform :android do
   desc "Lane for Firebase distribution - Development"
   lane :distribute_development do
     increment_development_version
+    puts "ENV[FIREBASE_CLI_TOKEN]: #{ENV["FIREBASE_CLI_TOKEN"]}"
+    puts "FIREBASE_CLI_TOKEN: #{ENV["FIREBASE_CLI_TOKEN"]}"
+  
     sh "flutter clean"
     sh "flutter build apk --release --flavor development --target lib/main_development.dart --no-tree-shake-icons"
     firebase_app_distribution(

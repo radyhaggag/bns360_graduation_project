@@ -146,6 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على وظائف"),
         "no_places_to_explore":
             MessageLookupByLibrary.simpleMessage("لا بوجد اماكن للاستكشاف"),
+        "no_properties_found":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على عقارات"),
         "no_results": MessageLookupByLibrary.simpleMessage("لا توجد نتائج."),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),

@@ -1,37 +1,64 @@
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/widgets/custom_slider/custom_slider.dart';
 import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_card/save_job_btn.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../domain/entities/property_entity.dart';
 
 class PropertyCardImagesSection extends StatelessWidget {
-  const PropertyCardImagesSection({super.key, required this.propertyEntity});
+  const PropertyCardImagesSection({
+    super.key,
+    required this.propertyEntity,
+    this.isMiniMode = true,
+  });
 
   final PropertyEntity propertyEntity;
+  final bool isMiniMode;
+
+  AlignmentGeometry get alignment {
+    if (isMiniMode) {
+      return AlignmentDirectional.bottomEnd;
+    } else {
+      return AlignmentDirectional.topEnd;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: AlignmentDirectional.bottomEnd,
+      alignment: alignment,
       children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 15),
-          padding: const EdgeInsets.symmetric(horizontal: 3).copyWith(top: 8),
-          decoration: const BoxDecoration(),
-          child: CustomSlider(
-            images: propertyEntity.propertyImagesUrls,
-            height: 110.h,
-            viewPaginationBars: false,
-            imagesRadius: 16,
+        InkWell(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              Routes.propertyDetails,
+              arguments: propertyEntity,
+            );
+          },
+          child: Container(
+            margin: isMiniMode ? const EdgeInsets.only(bottom: 15) : null,
+            padding: isMiniMode
+                ? const EdgeInsets.symmetric(horizontal: 3).copyWith(top: 8)
+                : null,
+            decoration: const BoxDecoration(),
+            child: CustomSlider(
+              images: propertyEntity.propertyImagesUrls,
+              height: isMiniMode ? 110.h : 225.h,
+              viewPaginationBars: !isMiniMode,
+              imagesRadius: isMiniMode ? 16 : null,
+            ),
           ),
         ),
-        SaveJobBtn(
-          isSaved: true,
-          notSavedBackgroundColor: context.theme.highlightColor.withAlpha(150),
+        Padding(
+          padding: isMiniMode ? EdgeInsets.zero : const EdgeInsets.all(8.0),
+          child: SaveJobBtn(
+            isSaved: true,
+            notSavedBackgroundColor:
+                context.theme.highlightColor.withAlpha(150),
+            size: 30.r,
+          ),
         ),
       ],
     );

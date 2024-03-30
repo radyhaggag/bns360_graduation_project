@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:bns360_graduation_project/features/properties/domain/entities/property_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -10,9 +11,12 @@ class PropertyDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PropertyDetailsBody(
-        propertyEntity: propertyEntity,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundColor(context),
+        body: PropertyDetailsBody(
+          propertyEntity: propertyEntity,
+        ),
       ),
     );
   }

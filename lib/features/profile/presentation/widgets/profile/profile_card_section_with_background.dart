@@ -73,14 +73,14 @@ class _ViewProfileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomElevatedButtonWithLeading(
+    return CustomElevatedButtonWithIcon(
       label: S.of(context).view_profile,
-      width: context.width * .5,
+      width: context.width * .50,
       height: 35.h,
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.black,
       onPressed: () {},
-      leading: const Icon(Icons.arrow_forward_ios),
+      trailing: const Icon(Icons.arrow_forward_ios),
     );
   }
 }

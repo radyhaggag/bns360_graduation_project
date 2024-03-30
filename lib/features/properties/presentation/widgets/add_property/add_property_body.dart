@@ -25,14 +25,13 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
   void initState() {
     super.initState();
     form = FormGroup({
-      'title': FormControl<String>(validators: [Validators.required]),
-      'description': FormControl<String>(),
-      'requirements': FormControl<String>(validators: [Validators.required]),
-      'workHours': FormControl<String>(validators: [
+      'description': FormControl<String>(validators: [Validators.required]),
+      'address': FormControl<String>(validators: [Validators.required]),
+      'area': FormControl<String>(validators: [
         Validators.required,
         Validators.number,
       ]),
-      'salary': FormControl<String>(validators: [
+      'price': FormControl<String>(validators: [
         Validators.required,
         Validators.number,
       ]),
@@ -57,38 +56,31 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
       child: ReactiveFormBuilder(
         form: () => form,
         builder: (context, formGroup, child) => child!,
-        child: Column(
+        child: ListView(
+          shrinkWrap: true,
           children: [
-            Expanded(
-              child: AddPropertyForm(
-                form: form,
-                selectedOfferType: selectedOfferType,
-                onOfferTypeChanged: (newValue) {
-                  setState(() {
-                    selectedOfferType = newValue;
-                  });
-                },
-              ),
+            AddPropertyForm(
+              form: form,
+              selectedOfferType: selectedOfferType,
+              onOfferTypeChanged: (newValue) {
+                setState(() {
+                  selectedOfferType = newValue;
+                });
+              },
             ),
-            10.verticalSpace,
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ReactiveFormConsumer(
-                  builder: (context, form, child) {
-                    return CustomElevatedButton(
-                      label: S.of(context).post_now,
-                      onPressed: (form.valid && selectedOfferType != null)
-                          ? _submitForm
-                          : null,
-                      width: context.width,
-                      height: 50.h,
-                      borderRadius: BorderRadius.circular(8),
-                    );
-                  },
-                ),
-              ),
+            20.verticalSpace,
+            ReactiveFormConsumer(
+              builder: (context, form, child) {
+                return CustomElevatedButton(
+                  label: S.of(context).post_now,
+                  onPressed: (form.valid && selectedOfferType != null)
+                      ? _submitForm
+                      : null,
+                  width: context.width,
+                  height: 50.h,
+                  borderRadius: BorderRadius.circular(8),
+                );
+              },
             ),
           ],
         ),

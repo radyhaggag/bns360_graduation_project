@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/custom_back_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/icons/profile_circle_icon.dart';
@@ -27,6 +28,7 @@ class SettingsScreenAppBar extends StatelessWidget
         ProfileCircleIcon(imageUrl: imageUrl),
         const SizedBox(width: 20),
       ],
+      leading: const CustomBackButton(),
     );
   }
 

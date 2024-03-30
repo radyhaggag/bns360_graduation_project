@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +9,7 @@ import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../generated/l10n.dart';
 import 'property_offer_type_radio_tile.dart';
+import 'upload_proprty_images_section.dart';
 
 class AddPropertyForm extends StatelessWidget {
   const AddPropertyForm({
@@ -26,37 +28,29 @@ class AddPropertyForm extends StatelessWidget {
     final t = S.of(context);
     return ReactiveForm(
       formGroup: form,
-      child: ListView(
-        shrinkWrap: true,
+      child: Column(
         children: [
           CustomReactiveFormField(
-            title: t.job_title,
-            hint: t.enter_job_title,
-            formControlName: 'title',
-          ),
-          10.verticalSpace,
-          CustomReactiveFormField(
-            title: t.job_description,
-            hint: t.enter_job_description,
+            title: t.description_of_property,
+            hint: t.enter_property_address,
             formControlName: 'description',
           ),
           10.verticalSpace,
           CustomReactiveFormField(
-            title: t.requirements,
-            hint: t.enter_the_requirements,
-            formControlName: 'requirements',
-            maxLines: 5,
+            title: t.property_address,
+            hint: t.enter_property_address,
+            formControlName: 'address',
           ),
-          10.verticalSpace,
+          15.verticalSpace,
           PropertyOfferTypeRadioTile(
             value: selectedOfferType,
             onChanged: onOfferTypeChanged,
           ),
-          10.verticalSpace,
+          20.verticalSpace,
           CustomReactiveFormField(
-            title: t.work_hours,
-            hint: "00",
-            formControlName: 'workHours',
+            title: t.price,
+            hint: 00.toPrice(context),
+            formControlName: 'price',
             isHorizontally: true,
             textFieldWidth: 100.w,
             keyboardType: TextInputType.number,
@@ -68,16 +62,15 @@ class AddPropertyForm extends StatelessWidget {
           ),
           10.verticalSpace,
           CustomReactiveFormField(
-            title: t.salary,
-            hint: "${t.egypt_currency} 00,00",
-            formControlName: 'salary',
+            title: t.area,
+            hint: t.meter_short,
+            formControlName: 'area',
             isHorizontally: true,
             textFieldWidth: 100.w,
             keyboardType: TextInputType.number,
             isDigitsOnly: true,
             separatorWidget: const Spacer(),
             textAlign: TextAlign.center,
-            // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
           ),
           10.verticalSpace,
@@ -90,7 +83,6 @@ class AddPropertyForm extends StatelessWidget {
             keyboardType: TextInputType.number,
             isDigitsOnly: true,
             textFieldWidth: .5.sw,
-            // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
             maxLength: 10,
           ),
@@ -104,10 +96,11 @@ class AddPropertyForm extends StatelessWidget {
             keyboardType: TextInputType.number,
             isDigitsOnly: true,
             textFieldWidth: .5.sw,
-            // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
             maxLength: 10,
           ),
+          10.verticalSpace,
+          const UploadPropertyImagesSection(),
         ],
       ),
     );

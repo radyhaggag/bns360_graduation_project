@@ -11,39 +11,12 @@ class _PropertyLocationAndAreaSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            Icon(
-              Icons.location_on,
-              color: Colors.amberAccent,
-              size: 20.r,
-            ),
-            const SizedBox(width: 5),
-            Text(
-              propertyEntity.address,
-              style: context.textTheme.bodyLarge?.copyWith(
-                fontSize: AppFontSize.light,
-                color: context.theme.primaryColor.withOpacity(.6),
-              ),
-            ),
-          ],
+        PropertyAddressWidget(
+          address: propertyEntity.address,
+          markerColor: Colors.amberAccent,
         ),
-        Row(
-          children: [
-            Icon(
-              Icons.aspect_ratio_rounded,
-              color: context.theme.cardColor,
-              size: 20.r,
-            ),
-            const SizedBox(width: 5),
-            Text(
-              propertyEntity.area,
-              style: context.textTheme.bodyLarge?.copyWith(
-                fontSize: AppFontSize.light,
-                color: context.theme.primaryColor.withOpacity(.7),
-              ),
-            ),
-          ],
+        PropertyAreaWidget(
+          area: propertyEntity.area,
         ),
       ],
     );

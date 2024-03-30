@@ -23,8 +23,7 @@ class _JobDescriptionItems extends StatelessWidget {
         ),
         Expanded(
           child: _DetailsItem(
-            value:
-                "${S.of(context).egypt_currency} ${jobEntity.salary.toString()}",
+            value: jobEntity.salary.toPrice(context),
           ),
         ),
       ],

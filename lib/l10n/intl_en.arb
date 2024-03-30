@@ -158,5 +158,6 @@
   "max_no_of_image_uploads": "Maximum upload of {number} images",
   "post_now": "Post now",
   "offer_type": "Offer type",
-  "properties": "Properties"
+  "properties": "Properties",
+  "no_properties_found": "No properties found"
 }

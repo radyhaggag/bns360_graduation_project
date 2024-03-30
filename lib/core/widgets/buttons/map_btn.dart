@@ -7,16 +7,17 @@ import '../../../generated/l10n.dart';
 import 'custom_buttons.dart';
 
 class MapBtn extends StatelessWidget {
-  const MapBtn({super.key, required this.mapParams});
+  const MapBtn({super.key, required this.mapParams, this.borderRadius});
 
   final MapParams mapParams;
-
+  final BorderRadius? borderRadius;
   @override
   Widget build(BuildContext context) {
     return CustomElevatedButton(
       label: S.of(context).map,
       width: 90.w,
       height: 35.h,
+      borderRadius: borderRadius,
       onPressed: () {
         Navigator.of(context).pushNamed(
           Routes.map,

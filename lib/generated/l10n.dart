@@ -1649,6 +1649,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No properties found`
+  String get no_properties_found {
+    return Intl.message(
+      'No properties found',
+      name: 'no_properties_found',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

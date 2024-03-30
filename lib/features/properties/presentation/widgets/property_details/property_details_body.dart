@@ -44,7 +44,7 @@ class PropertyDetailsBody extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: CustomElevatedButton(
-                label: S.of(context).apply_now,
+                label: S.of(context).buy_now,
                 onPressed: () {},
                 width: context.width,
                 height: 50.h,

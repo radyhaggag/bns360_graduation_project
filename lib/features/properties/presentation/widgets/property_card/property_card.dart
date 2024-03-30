@@ -1,18 +1,14 @@
-import 'package:bns360_graduation_project/core/helpers/date_formatter.dart';
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/main_network_image.dart';
-import 'package:bns360_graduation_project/features/properties/domain/entities/property_entity.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/widgets/property_card/property_card_images_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'property_price_item.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../domain/entities/property_entity.dart';
+import '../propert_area_widget.dart';
+import '../property_address_widget.dart';
+import '../property_publisher_section.dart';
+import 'property_card_images_section.dart';
 
 part 'property_location_and_area_section.dart';
-part 'property_publisher_section.dart';
-part 'title_and_sub_title_section.dart';
 
 class JobCard extends StatelessWidget {
   const JobCard({super.key, required this.propertyEntity});
@@ -37,7 +33,7 @@ class JobCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: [
-                  _PropertyPublisherSection(propertyEntity: propertyEntity),
+                  PropertyPublisherSection(propertyEntity: propertyEntity),
                   const SizedBox(height: 5),
                   _PropertyLocationAndAreaSection(
                     propertyEntity: propertyEntity,

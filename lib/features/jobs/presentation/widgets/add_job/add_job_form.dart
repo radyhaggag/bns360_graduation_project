@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -63,13 +64,12 @@ class AddJobForm extends StatelessWidget {
             isDigitsOnly: true,
             separatorWidget: const Spacer(),
             textAlign: TextAlign.center,
-            // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
             title: t.salary,
-            hint: "${t.egypt_currency} 00,00",
+            hint: 00.toPrice(context),
             formControlName: 'salary',
             isHorizontally: true,
             textFieldWidth: 100.w,
@@ -77,7 +77,6 @@ class AddJobForm extends StatelessWidget {
             isDigitsOnly: true,
             separatorWidget: const Spacer(),
             textAlign: TextAlign.center,
-            // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
           ),
           10.verticalSpace,
@@ -90,7 +89,6 @@ class AddJobForm extends StatelessWidget {
             keyboardType: TextInputType.number,
             isDigitsOnly: true,
             textFieldWidth: .5.sw,
-            // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
             maxLength: 10,
           ),
@@ -104,7 +102,6 @@ class AddJobForm extends StatelessWidget {
             keyboardType: TextInputType.number,
             isDigitsOnly: true,
             textFieldWidth: .5.sw,
-            // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
             maxLength: 10,
           ),

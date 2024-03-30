@@ -35,7 +35,7 @@ class PropertiesBuilder extends StatelessWidget {
             list: propertiesBloc.isSearchEnabled
                 ? propertiesBloc.searchResults
                 : propertiesBloc.properties,
-            emptyMessage: S.of(context).no_jobs_found,
+            emptyMessage: S.of(context).no_properties_found,
             itemWidget: (item, _) => JobCard(propertyEntity: item),
             scrollDirection: Axis.vertical,
             width: context.width,

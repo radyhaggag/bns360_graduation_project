@@ -129,7 +129,7 @@ class CustomTextButton extends StatelessWidget {
   }
 }
 
-class CustomElevatedButtonWithLeading extends StatelessWidget {
+class CustomElevatedButtonWithIcon extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? backgroundColor;
@@ -138,9 +138,12 @@ class CustomElevatedButtonWithLeading extends StatelessWidget {
   final void Function()? onPressed;
   final bool isLoading;
   final BorderRadius? borderRadius;
-  final Widget leading;
+  final Widget? leading;
+  final Widget? trailing;
+  final double? fontSize;
+  final bool isExpanded;
 
-  const CustomElevatedButtonWithLeading({
+  const CustomElevatedButtonWithIcon({
     super.key,
     this.width,
     this.height,
@@ -150,7 +153,10 @@ class CustomElevatedButtonWithLeading extends StatelessWidget {
     this.onPressed,
     this.isLoading = false,
     this.borderRadius,
-    required this.leading,
+    this.leading,
+    this.trailing,
+    this.fontSize,
+    this.isExpanded = true,
   });
 
   @override
@@ -172,16 +178,27 @@ class CustomElevatedButtonWithLeading extends StatelessWidget {
             ? const CenterProgressIndicator()
             : Row(
                 children: [
+                  if (leading != null) ...[const SizedBox(width: 10), leading!],
                   const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      label,
-                    ),
-                  ),
-                  leading,
+                  if (isExpanded)
+                    Expanded(child: _textWidget(context))
+                  else
+                    _textWidget(context),
+                  if (trailing != null) trailing!,
                 ],
               ),
       ),
     );
   }
+
+  Widget _textWidget(BuildContext context) => FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          label,
+          style: context.textTheme.titleSmall?.copyWith(
+            fontSize: fontSize,
+            color: foregroundColor,
+          ),
+        ),
+      );
 }

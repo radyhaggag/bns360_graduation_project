@@ -1,9 +1,10 @@
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/widgets/custom_back_button.dart';
+import 'package:bns360_graduation_project/features/properties/presentation/widgets/property_card/property_card_images_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../domain/entities/property_entity.dart';
-import 'property_details_items_section.dart';
-import 'property_details_top_section.dart';
 
 class PropertyDetailsPainedSection extends SliverPersistentHeaderDelegate {
   final PropertyEntity propertyEntity;
@@ -17,21 +18,26 @@ class PropertyDetailsPainedSection extends SliverPersistentHeaderDelegate {
     bool overlapsContent,
   ) {
     return Stack(
-      alignment: AlignmentDirectional.bottomCenter,
       children: [
-        PropertyDetailsTopSection(propertyEntity: propertyEntity),
-        PropertyDetailsItemsSection(
+        PropertyCardImagesSection(
           propertyEntity: propertyEntity,
+          isMiniMode: false,
+        ),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: CustomBackButtonWithCircle(
+            color: AppColors.white,
+          ),
         ),
       ],
     );
   }
 
   @override
-  double get maxExtent => .45.sh;
+  double get maxExtent => 225.h;
 
   @override
-  double get minExtent => .40.sh;
+  double get minExtent => 200.h;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

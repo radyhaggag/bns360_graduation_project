@@ -1,7 +1,7 @@
 import 'package:bns360_graduation_project/core/utils/enums/offer_type.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PropertyOfferTypeRadioTile extends StatelessWidget {
   const PropertyOfferTypeRadioTile({super.key, this.value, this.onChanged});
@@ -11,26 +11,30 @@ class PropertyOfferTypeRadioTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          S.of(context).offer_type,
-          style: context.textTheme.bodyLarge?.copyWith(
-            color: Theme.of(context).cardColor,
+    return Center(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            alignment: Alignment.centerLeft,
+            margin: EdgeInsetsDirectional.only(start: 40.w),
+            child: _RadioItem(
+              selectedValue: value,
+              value: OfferType.sale,
+              onChanged: onChanged,
+            ),
           ),
-        ),
-        _RadioItem(
-          selectedValue: value,
-          value: OfferType.sale,
-          onChanged: onChanged,
-        ),
-        _RadioItem(
-          selectedValue: value,
-          value: OfferType.rent,
-          onChanged: onChanged,
-        ),
-      ],
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsetsDirectional.only(start: 125.w),
+            child: _RadioItem(
+              selectedValue: value,
+              value: OfferType.rent,
+              onChanged: onChanged,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -46,23 +50,31 @@ class _RadioItem extends StatelessWidget {
   final OfferType? selectedValue;
   final void Function(OfferType? p1)? onChanged;
 
+  bool get _isSelected {
+    return selectedValue == value;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Radio<OfferType?>(
-          value: value,
-          groupValue: selectedValue,
-          onChanged: onChanged,
+    return InkWell(
+      onTap: _isSelected ? null : () => onChanged?.call(value),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 10.h),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: _isSelected
+              ? context.theme.cardColor
+              : context.theme.cardColor.withOpacity(.3),
         ),
-        Text(
+        child: Text(
           value.getLocalizedString(context),
-          style: context.textTheme.bodyMedium?.copyWith(
-            color: Theme.of(context).cardColor,
+          style: context.textTheme.titleSmall?.copyWith(
+            color: _isSelected
+                ? context.theme.highlightColor
+                : context.theme.cardColor,
           ),
         ),
-      ],
+      ),
     );
   }
 }

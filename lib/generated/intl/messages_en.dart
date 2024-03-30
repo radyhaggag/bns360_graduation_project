@@ -147,6 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_jobs_found": MessageLookupByLibrary.simpleMessage("No jobs found"),
         "no_places_to_explore":
             MessageLookupByLibrary.simpleMessage("No places to explore"),
+        "no_properties_found":
+            MessageLookupByLibrary.simpleMessage("No properties found"),
         "no_results": MessageLookupByLibrary.simpleMessage("No results found."),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),

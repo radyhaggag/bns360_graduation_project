@@ -58,6 +58,7 @@ jobs:
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
         run: |
+          bundle exec fastlane android increment_android_version
           bundle exec fastlane android increment_firebase_app_distribution_android_version_code
           bundle exec fastlane android distribute_development
         working-directory: android

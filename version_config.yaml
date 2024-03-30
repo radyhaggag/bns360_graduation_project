@@ -1,5 +1,5 @@
 ---
-android_version_code: 8
-android_version_name: 1.0.8
+android_version_code: 5
+android_version_name: 1.0.5
 ios_version: 1.0.0
-firebase_app_distribution_android_version_code: 4
+firebase_app_distribution_android_version_code: 5

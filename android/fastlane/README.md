@@ -31,34 +31,26 @@ Lane for Firebase distribution - Development
 
 Lane for Firebase distribution - Production
 
-### android increment_development_version
+### android increment_android_version
 
 ```sh
-[bundle exec] fastlane android increment_development_version
-```
-
-Lane for Increment the app version - Development
-
-### android increment_production_version
-
-```sh
-[bundle exec] fastlane android increment_production_version
-```
-
-Lane for Increment the app version - Production
-
-### android increment_app_version_by_lastest_google_play_release
-
-```sh
-[bundle exec] fastlane android increment_app_version_by_lastest_google_play_release
+[bundle exec] fastlane android increment_android_version
 ```
 
 
 
-### android increment_version_and_upload_to_google_play
+### android increment_firebase_app_distribution_android_version_code
 
 ```sh
-[bundle exec] fastlane android increment_version_and_upload_to_google_play
+[bundle exec] fastlane android increment_firebase_app_distribution_android_version_code
+```
+
+
+
+### android increment_ios_version
+
+```sh
+[bundle exec] fastlane android increment_ios_version
 ```
 
 

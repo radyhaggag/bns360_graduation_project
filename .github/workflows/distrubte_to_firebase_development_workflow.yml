@@ -67,6 +67,7 @@ jobs:
         run: |
           git config --global user.email "radyhaggag11@github.com"
           git config --global user.name "Rady Haggag"
+          git pull origin development  # Pull changes from the remote development branch
           git add version_config.yaml
           git commit -m "Update version_config.yaml"
           git push origin HEAD:development

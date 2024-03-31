@@ -62,3 +62,11 @@ jobs:
           bundle exec fastlane android increment_firebase_app_distribution_android_version_code
           bundle exec fastlane android distribute_development
         working-directory: android
+
+      - name: Commit and push changes to version_config.yaml
+        run: |
+          git config --global user.email "radyhaggag11@github.com"
+          git config --global user.name "Rady Haggag"
+          git add ../../version_config.yaml
+          git commit -m "Update version_config.yaml"
+          git push origin HEAD:development

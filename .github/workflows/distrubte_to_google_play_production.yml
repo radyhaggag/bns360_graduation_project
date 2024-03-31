@@ -1,9 +1,9 @@
-name: Build and distrbute to firebase app distrubtion --Development (Android)
+name: Build and distrbute to Google play --Production (Android)
 
 on:
   push:
     branches:
-      - development
+      - main
 
 jobs:
   distrubte_to_firebase:
@@ -42,22 +42,24 @@ jobs:
       - name: Print npm Version
         run: npm --version
 
-      # - name: Create key.properties
-      #   run: |
-      #     echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-      #     echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
-      #     echo "${{ secrets.STORE_FILE }}" | base64 --decode >> android/upload-keystore.jks
-      #     echo "storeFile=../upload-keystore.jks" >> android/key.properties
-      #     echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
-      #     echo "Contents of key.properties:"
-      #     cat android/key.properties
-      #     echo "Contents of upload-keystore.jks:"
-      #     cat android/upload-keystore.jks
+      - name: Create key.properties
+        run: |
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "${{ secrets.STORE_FILE }}" | base64 --decode >> android/upload-keystore.jks
+          echo "storeFile=../upload-keystore.jks" >> android/key.properties
+          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
+          echo "Contents of key.properties:"
+          cat android/key.properties
+          echo "Contents of upload-keystore.jks:"
+          cat android/upload-keystore.jks
 
       - name: Build and distrubte
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
         run: |
-          bundle exec fastlane android increment_development_version
-          bundle exec fastlane android distribute_development
+          bundle exec fastlane android increment_production_version
+          bundle exec fastlane android distribute_production
         working-directory: android
+#   bundle exec fastlane android increment_app_version_by_lastest_google_play_release
+#   bundle exec fastlane android deploy_to_play_store

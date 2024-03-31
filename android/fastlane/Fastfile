@@ -1,13 +1,11 @@
-default_platform(:android)
-
 platform :android do
   desc "Lane for Firebase distribution - Development"
   lane :distribute_development do
     sh "flutter clean"
-    sh "flutter build apk --release --flavor development --target lib/main_development.dart --no-tree-shake-icons"
+    sh "flutter build apk --debug --flavor development --target lib/main_development.dart --no-tree-shake-icons"
     firebase_app_distribution(
       app: "1:79562440860:android:e4234de1e749268a74ad59",
-      firebase_cli_token: "1//03VQEi4e0jkrqCgYIARAAGAMSNwF-L9Ir9DOQfh86F941VNOV-WNk9inSua_EdkRw9587k9ZczoCt_7G3joLz-voRfH9qDyniKgs",
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-development-release.apk",
       testers: "radyhaggag11@gmail.com, radyhaggag50@gmail.com",
@@ -17,11 +15,12 @@ platform :android do
 
   desc "Lane for Firebase distribution - Production"
   lane :distribute_production do
+    increment_production_version
     sh "flutter clean"
     sh "flutter build apk --release --flavor production --target lib/main_production.dart --no-tree-shake-icons"
     firebase_app_distribution(
       app: "1:185023782037:android:1e42d36edc1c7eab8dcf9c",
-      firebase_cli_token: "1//03VQEi4e0jkrqCgYIARAAGAMSNwF-L9Ir9DOQfh86F941VNOV-WNk9inSua_EdkRw9587k9ZczoCt_7G3joLz-voRfH9qDyniKgs",
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
       testers: "radyhaggag11@gmail.com, radyhaggag50@gmail.com",
@@ -29,58 +28,54 @@ platform :android do
     )  
   end
 
-  lane :increment_android_version do
-    config_file_path = "../../version_config.yaml"
-    config = YAML.load_file(config_file_path)
-  
-    # Increment Android version code
-    new_version_code = config["android_version_code"] + 1
-    new_version_name = "1.0.#{new_version_code}"
-  
-    config["android_version_code"] = new_version_code
-    config["android_version_name"] = new_version_name
-  
-    # Update the version config file
-    File.write(config_file_path, YAML.dump(config))
-
+  desc "Lane for Increment the app version - Development"
+  lane :increment_development_version do
+    latest_release = firebase_app_distribution_get_latest_release(
+      app: "1:79562440860:android:e4234de1e749268a74ad59"
+    )
+    # This to update version code on android/app/build.gradle
     increment_version_code(
-      version_code: new_version_code,
+      version_code: latest_release[:buildVersion].to_i + 1,
+    )
+    flutter_build_increment # This to update version code on pubspec.yaml
+  end
+
+  desc "Lane for Increment the app version - Production"
+  lane :increment_production_version do
+    latest_release = firebase_app_distribution_get_latest_release(
+      app: "1:185023782037:android:1e42d36edc1c7eab8dcf9c"
+    )
+    # This to update version code on android/app/build.gradle
+    increment_version_code(
+      version_code: latest_release[:buildVersion].to_i + 1,
+    )
+    flutter_build_increment # This to update version code on pubspec.yaml
+  end
+  lane :increment_app_version_by_lastest_google_play_release do
+    version_code = google_play_track_version_codes(
+      package_name: "com.bns360.bns360",
+      track: "internal",
+      json_key: "Add the path here"
+    )
+    
+    version_code_play_store = version_code[0].to_i
+    update_version_code = version_code_play_store + 1
+    
+    increment_version_code(
+      version_code: update_version_code.to_i
     )
   end
 
-  lane :increment_firebase_app_distribution_android_version_code do
-    config_file_path = "../../version_config.yaml"
-    config = YAML.load_file(config_file_path)
-  
-    # Increment Android version code
-    new_version_code = config["firebase_app_distribution_android_version_code"] + 1
-  
-    config["firebase_app_distribution_android_version_code"] = new_version_code
-  
-    # Update the version config file
-    File.write(config_file_path, YAML.dump(config))
-
-    increment_version_code(
-      version_code: new_version_code,
+  lane :deploy_to_play_store do 
+    sh "flutter clean"
+    sh "flutter build appbundle"  
+    gradle(task: 'bundleRelease')
+    # Upload to internal test
+    upload_to_play_store(
+      track: 'internal',
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      skip_upload_apk: true,
+      release_status: 'draft'
     )
   end
-
-  
-  lane :increment_ios_version do
-    config_file_path = "../../version_config.yaml"
-    config = YAML.load_file(config_file_path)
-  
-    # Increment iOS version
-    version_parts = config["ios_version"].split(".")
-    version_parts[2] = version_parts[2].to_i + 1
-    new_version = version_parts.join(".")
-  
-    config["ios_version"] = new_version
-  
-    # Update the version config file
-    File.write(config_file_path, YAML.dump(config))
-  end
-  
 end
-
-

@@ -42,17 +42,17 @@ jobs:
       - name: Print npm Version
         run: npm --version
 
-      # - name: Create key.properties
-      #   run: |
-      #     echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-      #     echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
-      #     echo "${{ secrets.STORE_FILE }}" | base64 --decode >> android/upload-keystore.jks
-      #     echo "storeFile=../upload-keystore.jks" >> android/key.properties
-      #     echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
-      #     echo "Contents of key.properties:"
-      #     cat android/key.properties
-      #     echo "Contents of upload-keystore.jks:"
-      #     cat android/upload-keystore.jks
+      - name: Create key.properties
+        run: |
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+          echo "${{ secrets.STORE_FILE }}" | base64 --decode >> android/upload-keystore.jks
+          echo "storeFile=../upload-keystore.jks" >> android/key.properties
+          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
+          echo "Contents of key.properties:"
+          cat android/key.properties
+          echo "Contents of upload-keystore.jks:"
+          cat android/upload-keystore.jks
 
       - name: Build and distrubte
         env:

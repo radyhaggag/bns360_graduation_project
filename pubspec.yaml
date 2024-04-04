@@ -54,6 +54,7 @@ dependencies:
   flutter_secure_storage: ^9.0.0
   flutter_svg: ^2.0.9
   fluttertoast: ^8.2.4
+  geocoding: ^3.0.0
   geolocator: ^11.0.0
   get_it: ^7.6.4
   google_fonts: ^6.1.0

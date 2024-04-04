@@ -1,6 +1,7 @@
 import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:bns360_graduation_project/core/helpers/date_formatter.dart';
 import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
 import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';

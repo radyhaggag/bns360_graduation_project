@@ -3,6 +3,7 @@ import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../utils/app_colors.dart';
 
 class AddReviewTextField extends StatelessWidget {
   const AddReviewTextField({
@@ -23,7 +24,7 @@ class AddReviewTextField extends StatelessWidget {
         hintText: S.of(context).write_your_review,
         enabledBorder: inputBorder,
         focusedBorder: inputBorder,
-        fillColor: context.theme.scaffoldBackgroundColor,
+        fillColor: AppColors.backgroundColor(context),
         hintStyle: context.textTheme.bodyLarge?.copyWith(
           color: context.theme.primaryColor.withOpacity(.3),
           fontSize: AppFontSize.details,

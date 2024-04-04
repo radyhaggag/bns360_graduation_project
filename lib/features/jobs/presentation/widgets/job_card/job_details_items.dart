@@ -49,7 +49,7 @@ class _DetailsItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        color: context.theme.listTileTheme.tileColor,
+        color: AppColors.backgroundColor(context),
       ),
       margin: const EdgeInsets.symmetric(horizontal: 8),
       height: 40.h,

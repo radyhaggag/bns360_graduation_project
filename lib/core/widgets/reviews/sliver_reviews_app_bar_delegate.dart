@@ -4,6 +4,7 @@ import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../utils/app_colors.dart';
 import '../../utils/constants.dart';
 import 'main_review_summary_card/main_review_summary_card.dart';
 
@@ -41,7 +42,7 @@ class SliverReviewsAppBarDelegate extends SliverPersistentHeaderDelegate {
         horizontal: kHorizontalPadding,
         vertical: 10.h,
       ),
-      color: context.theme.scaffoldBackgroundColor,
+      color: AppColors.backgroundColor(context),
       child: MainReviewSummaryCard(
         numOfRatings: numOfRatings,
         starsCount: starsCount,

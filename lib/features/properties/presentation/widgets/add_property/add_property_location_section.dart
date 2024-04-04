@@ -6,7 +6,7 @@ import 'package:latlong2/latlong.dart';
 
 import '../../../../../core/helpers/location_helper.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
-import 'custom_marker.dart';
+import '../../../../../core/widgets/custom_marker.dart';
 
 class AddPropertyLocationSection extends StatefulWidget {
   const AddPropertyLocationSection({super.key});
@@ -20,7 +20,7 @@ class _AddPropertyLocationSectionState
     extends State<AddPropertyLocationSection> {
   late MapController _mapController;
   Position? currentLocation;
-  LatLng? initialCenter;
+  LatLng? centerPoint;
   List<Marker> markers = [];
 
   @override
@@ -31,19 +31,19 @@ class _AddPropertyLocationSectionState
   }
 
   _getCurrentLocation() async {
-    currentLocation = await LocationHelper.determinePosition();
+    currentLocation = await LocationHelper.determinePosition(context);
     if (currentLocation != null) {
-      initialCenter = LatLng(
+      centerPoint = LatLng(
         currentLocation!.latitude,
         currentLocation!.longitude,
       );
       markers.add(
         Marker(
-          point: initialCenter!,
+          point: centerPoint!,
           child: const CustomMarker(),
         ),
       );
-      _mapController.move(initialCenter!, 9);
+      _mapController.move(centerPoint!, 9);
       setState(() {});
     }
   }
@@ -64,11 +64,11 @@ class _AddPropertyLocationSectionState
         child: FlutterMap(
           mapController: _mapController,
           options: MapOptions(
-            initialCenter: initialCenter ?? const LatLng(50.5, 30.51),
+            initialCenter: centerPoint ?? const LatLng(50.5, 30.51),
             initialZoom: 9.2,
             onTap: (tapPosition, point) {
               markers.clear();
-              initialCenter = point;
+              centerPoint = point;
               markers.add(
                 Marker(
                   point: point,

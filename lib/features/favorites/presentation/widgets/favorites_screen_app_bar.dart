@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/custom_back_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
@@ -19,6 +20,7 @@ class FavoritesScreenAppBar extends StatelessWidget
         S.of(context).favorites,
       ),
       centerTitle: true,
+      leading: const CustomBackButton(),
     );
   }
 

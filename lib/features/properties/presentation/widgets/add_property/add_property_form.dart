@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
+import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_location_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,6 +42,8 @@ class AddPropertyForm extends StatelessWidget {
             hint: t.enter_property_address,
             formControlName: 'address',
           ),
+          15.verticalSpace,
+          const AddPropertyLocationSection(),
           15.verticalSpace,
           PropertyOfferTypeRadioTile(
             value: selectedOfferType,

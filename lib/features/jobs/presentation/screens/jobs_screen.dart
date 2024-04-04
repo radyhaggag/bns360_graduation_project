@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,9 +20,7 @@ class JobsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.theme.brightness == Brightness.light
-          ? context.theme.listTileTheme.tileColor
-          : context.theme.scaffoldBackgroundColor,
+      backgroundColor: AppColors.backgroundColor(context),
       appBar: const JobsScreenAppBar(),
       body: const JobsBody(),
     );

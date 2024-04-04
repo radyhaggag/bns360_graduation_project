@@ -28,7 +28,13 @@ abstract class AppColors {
 
   ///
   static backgroundColor(BuildContext context) {
-    return context.theme.brightness == Brightness.light
+    return context.brightness == Brightness.light
+        ? context.theme.listTileTheme.tileColor
+        : context.theme.scaffoldBackgroundColor;
+  }
+
+  static foregroundColor(BuildContext context) {
+    return context.brightness != Brightness.light
         ? context.theme.listTileTheme.tileColor
         : context.theme.scaffoldBackgroundColor;
   }

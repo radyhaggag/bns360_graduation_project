@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/injector_container.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../bloc/categories_bloc.dart';
 import '../widgets/categories_body.dart';
 import '../widgets/categories_screen_app_bar.dart';
@@ -18,9 +19,10 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CategoriesScreenAppBar(),
-      body: CategoriesBody(),
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor(context),
+      appBar: const CategoriesScreenAppBar(),
+      body: const CategoriesBody(),
     );
   }
 }

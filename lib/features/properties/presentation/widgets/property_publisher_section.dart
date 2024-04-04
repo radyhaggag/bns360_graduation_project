@@ -53,6 +53,7 @@ class PropertyPublisherSection extends StatelessWidget {
           Icon(
             Icons.arrow_forward_ios,
             size: 18.r,
+            color: context.theme.cardColor,
           ),
       ],
     );

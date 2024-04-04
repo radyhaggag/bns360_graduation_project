@@ -265,7 +265,7 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<MapBloc>(),
             child: MapScreen(
-              mapParams: settings.arguments as MapParams,
+              mapParams: settings.arguments as MapParams?,
             ),
           ),
         );

@@ -37,6 +37,20 @@ class PropertyOfferTypeRadioTile extends StatelessWidget {
       ),
     );
   }
+
+  double firstItemMargin(BuildContext context) {
+    if (context.brightness == Brightness.light) {
+      return 40.w;
+    }
+    return 25.w;
+  }
+
+  double secondItemMargin(BuildContext context) {
+    if (context.brightness == Brightness.light) {
+      return 125.w;
+    }
+    return 140.w;
+  }
 }
 
 class _RadioItem extends StatelessWidget {
@@ -62,9 +76,7 @@ class _RadioItem extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 50.w, vertical: 10.h),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: _isSelected
-              ? context.theme.cardColor
-              : context.theme.cardColor.withOpacity(.3),
+          color: color(context),
         ),
         child: Text(
           value.getLocalizedString(context),
@@ -76,5 +88,17 @@ class _RadioItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Color color(BuildContext context) {
+    const lightUnselectedColor = Color(0xffF5F5F5);
+    const darkUnselectedColor = Color.fromARGB(255, 71, 71, 71);
+    Color basedOnTheme() {
+      return context.brightness == Brightness.light
+          ? lightUnselectedColor
+          : darkUnselectedColor;
+    }
+
+    return _isSelected ? context.theme.cardColor : basedOnTheme();
   }
 }

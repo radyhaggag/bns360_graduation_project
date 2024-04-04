@@ -39,7 +39,6 @@ class PropertiesScreenAppBar extends StatelessWidget
           ),
           margin: EdgeInsets.only(
             top: MediaQuery.of(context).padding.top,
-            bottom: 10.h,
           ),
           alignment: Alignment.center,
           child: Column(
@@ -85,7 +84,7 @@ class PropertiesScreenAppBar extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(120.h);
+  Size get preferredSize => Size.fromHeight(110.h);
 
   String getHintText(BuildContext context) {
     return "${S.of(context).search_on} ${S.of(context).properties}";

@@ -10,8 +10,8 @@ import 'property_card_images_section.dart';
 
 part 'property_location_and_area_section.dart';
 
-class JobCard extends StatelessWidget {
-  const JobCard({super.key, required this.propertyEntity});
+class PropertyCard extends StatelessWidget {
+  const PropertyCard({super.key, required this.propertyEntity});
 
   final PropertyEntity propertyEntity;
 

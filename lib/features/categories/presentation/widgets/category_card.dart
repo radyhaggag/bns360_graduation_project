@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/config/route_config.dart';
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +25,7 @@ class CategoryCard extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: context.theme.listTileTheme.tileColor,
+          color: AppColors.foregroundColor(context),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Column(

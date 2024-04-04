@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/widgets/custom_shimmer.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,9 @@ class _ViewProfileButton extends StatelessWidget {
       height: 35.h,
       backgroundColor: AppColors.white,
       foregroundColor: AppColors.black,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pushNamed(Routes.editProfile);
+      },
       trailing: const Icon(Icons.arrow_forward_ios),
     );
   }

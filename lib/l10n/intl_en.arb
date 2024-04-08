@@ -159,5 +159,10 @@
   "post_now": "Post now",
   "offer_type": "Offer type",
   "properties": "Properties",
-  "no_properties_found": "No properties found"
+  "no_properties_found": "No properties found",
+  "remove_picked_images": "Remove picked images",
+  "add_property_success": "The property has been added successfully",
+  "add_job_success": "The job has been added successfully",
+  "call": "Call",
+  "send_message": "Send message"
 }

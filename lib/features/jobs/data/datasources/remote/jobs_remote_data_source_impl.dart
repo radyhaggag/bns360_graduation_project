@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
+
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/helpers/load_json_from_asset.dart';
 import '../../models/job_model.dart';
@@ -43,5 +45,11 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
     final filteredItems =
         craftsmen.where((item) => isTrue(item.jobTitle)).toList();
     return filteredItems;
+  }
+
+  @override
+  Future<void> addJob(AddJobParams addJobParams) {
+    // TODO: implement addJob
+    throw UnimplementedError();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
 import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import 'package:bns360_graduation_project/core/widgets/contact_with_bottom_sheet.dart';
 import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_details/job_details_pained_section.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,7 +46,13 @@ class JobDetailsBody extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: CustomElevatedButton(
                 label: S.of(context).apply_now,
-                onPressed: () {},
+                onPressed: () {
+                  ContactWithBottomSheet.show(
+                    context: context,
+                    whatsapp: "+201030096242",
+                    phoneNumber: "+201030096242",
+                  );
+                },
                 width: context.width,
                 height: 50.h,
                 borderRadius: BorderRadius.circular(8),

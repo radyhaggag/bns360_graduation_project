@@ -1,13 +1,14 @@
+import 'package:bns360_graduation_project/features/properties/params/add_property_params.dart';
+import 'package:bns360_graduation_project/features/properties/presentation/bloc/properties_bloc.dart';
+import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
-import '../../../../../core/utils/extensions/media_query.dart';
-import '../../../../../core/widgets/buttons/custom_buttons.dart';
-import '../../../../../generated/l10n.dart';
 import 'add_property_form.dart';
 
 class AddPropertyBody extends StatefulWidget {
@@ -69,18 +70,9 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
               },
             ),
             20.verticalSpace,
-            ReactiveFormConsumer(
-              builder: (context, form, child) {
-                return CustomElevatedButton(
-                  label: S.of(context).post_now,
-                  onPressed: (form.valid && selectedOfferType != null)
-                      ? _submitForm
-                      : null,
-                  width: context.width,
-                  height: 50.h,
-                  borderRadius: BorderRadius.circular(8),
-                );
-              },
+            AddPropertyButton(
+              onAdd: _submitForm,
+              isOfferTypeSelected: selectedOfferType != null,
             ),
           ],
         ),
@@ -88,7 +80,21 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
     );
   }
 
-  void _submitForm() {}
+  void _submitForm() {
+    final formControls = form.controls;
+    final params = AddPropertyParams(
+      address: formControls['address']!.value as String,
+      description: formControls['description']!.value as String,
+      area: double.parse(formControls['area']!.value as String),
+      offerType: selectedOfferType!,
+      price: double.parse(formControls['price']!.value as String),
+      phoneNumber: formControls['phoneNumber']!.value as String,
+      whatsapp: formControls['whatsapp']!.value as String,
+    );
+    context.read<PropertiesBloc>().add(AddPropertyEvent(
+          addPropertyParams: params,
+        ));
+  }
 
   @override
   void dispose() {

@@ -20,7 +20,7 @@ class JobDetailsItemsSection extends StatelessWidget {
         color: context.theme.highlightColor,
         borderRadius: BorderRadius.circular(8),
       ),
-      height: 70.h,
+      height: 80.h,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

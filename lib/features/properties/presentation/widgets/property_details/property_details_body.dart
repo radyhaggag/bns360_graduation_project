@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/widgets/contact_with_bottom_sheet.dart';
 import 'property_details_bottom_section.dart';
 import 'property_details_pained_section.dart';
 
@@ -45,7 +46,13 @@ class PropertyDetailsBody extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: CustomElevatedButton(
                 label: S.of(context).buy_now,
-                onPressed: () {},
+                onPressed: () {
+                  ContactWithBottomSheet.show(
+                    context: context,
+                    whatsapp: "+201030096242",
+                    phoneNumber: "+201030096242",
+                  );
+                },
                 width: context.width,
                 height: 50.h,
                 borderRadius: BorderRadius.circular(8),

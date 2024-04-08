@@ -1,11 +1,13 @@
 import 'dart:async';
+import 'dart:io';
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../domain/entities/property_entity.dart';
 import '../../domain/repositories/properties_repo.dart';
+import '../../params/add_property_params.dart';
 
 part 'properties_event.dart';
 part 'properties_state.dart';
@@ -16,7 +18,11 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   PropertiesBloc({required this.propertiesRepo}) : super(PropertiesInitial()) {
     on<GetPropertiesEvent>(_getProperties);
     on<GetPropertyByIdEvent>(_getPropertyById);
-    on<SearchOnProperties>(_searchOnProperties);
+    on<SearchOnPropertiesEvent>(_searchOnProperties);
+    on<SelectPropertyLocationEvent>(_selectPropertyLocation);
+    on<AddPropertyEvent>(_addProperty);
+    on<PickPropertyImagesEvent>(_pickPropertyImages);
+    on<RemovePickedPropertyImagesEvent>(_removePropertyImages);
   }
 
   List<PropertyEntity> properties = [];
@@ -44,7 +50,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   final searchController = TextEditingController();
 
   _searchOnProperties(
-    SearchOnProperties event,
+    SearchOnPropertiesEvent event,
     Emitter<PropertiesState> emit,
   ) async {
     final searchVal = searchController.text.trim();
@@ -92,5 +98,62 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
         emit(GetPropertyByIdSuccessState(property: r));
       },
     );
+  }
+
+  double? _propertyLat;
+  double? _propertyLng;
+
+  _selectPropertyLocation(
+    SelectPropertyLocationEvent event,
+    Emitter<PropertiesState> emit,
+  ) {
+    _propertyLat = event.lat;
+    _propertyLng = event.lng;
+  }
+
+  _addProperty(
+    AddPropertyEvent event,
+    Emitter<PropertiesState> emit,
+  ) async {
+    emit(AddPropertyLoadingState());
+    final params = event.addPropertyParams.copyWith(
+      lat: _propertyLat,
+      lng: _propertyLng,
+      images: _pickedImages,
+    );
+    final res = await propertiesRepo.addProperty(params);
+
+    res.fold(
+      (l) => emit(AddPropertyErrorState(message: l.message)),
+      (r) => emit(const AddPropertySuccessState()),
+    );
+  }
+
+  List<File> _pickedImages = [];
+  List<File> get pickedImages => _pickedImages;
+
+  _pickPropertyImages(
+    PickPropertyImagesEvent event,
+    Emitter<PropertiesState> emit,
+  ) async {
+    final ImagePicker picker = ImagePicker();
+
+    final images = await picker.pickMultiImage();
+
+    if (images.isNotEmpty) {
+      final length = images.length > 4 ? 4 : images.length;
+      for (var i = 0; i < length; i++) {
+        _pickedImages.add(File(images[i].path));
+      }
+      emit(PropertyImagesUpdatedState());
+    }
+  }
+
+  _removePropertyImages(
+    RemovePickedPropertyImagesEvent event,
+    Emitter<PropertiesState> emit,
+  ) {
+    _pickedImages = [];
+    emit(PropertyImagesUpdatedState());
   }
 }

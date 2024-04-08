@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
@@ -7,6 +8,7 @@ import 'package:latlong2/latlong.dart';
 import '../../../../../core/helpers/location_helper.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/custom_marker.dart';
+import '../../bloc/properties_bloc.dart';
 
 class AddPropertyLocationSection extends StatefulWidget {
   const AddPropertyLocationSection({super.key});
@@ -66,7 +68,15 @@ class _AddPropertyLocationSectionState
           options: MapOptions(
             initialCenter: centerPoint ?? const LatLng(50.5, 30.51),
             initialZoom: 9.2,
+            minZoom: 5.2,
+            maxZoom: 18.2,
             onTap: (tapPosition, point) {
+              context.read<PropertiesBloc>().add(
+                    SelectPropertyLocationEvent(
+                      lat: point.latitude,
+                      lng: point.longitude,
+                    ),
+                  );
               markers.clear();
               centerPoint = point;
               markers.add(

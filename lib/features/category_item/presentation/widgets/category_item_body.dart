@@ -76,6 +76,7 @@ class CategoryItemBody extends StatelessWidget {
                   MainReviewSummaryCard(
                     numOfRatings: categoryItemEntity.numOfRatings,
                     starsCount: categoryItemEntity.starsCount,
+                    mainColor: context.theme.listTileTheme.tileColor,
                     onViewAllTap: () {
                       Navigator.of(context).pushNamed(
                         Routes.categoryItemReviewSummary,

@@ -45,3 +45,13 @@ class SearchIconToggled extends JobsState {
   @override
   List<Object> get props => [isSearchEnabled];
 }
+
+class AddJobLoadingState extends JobsState {}
+
+class AddJobSuccessState extends JobsState {}
+
+class AddJobErrorState extends JobsState {
+  final String message;
+
+  const AddJobErrorState({required this.message});
+}

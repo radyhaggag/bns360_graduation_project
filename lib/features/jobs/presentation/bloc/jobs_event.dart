@@ -19,3 +19,9 @@ class GetJobByIdEvent extends JobsEvent {
 }
 
 class SearchOnJobs extends JobsEvent {}
+
+class AddJobEvent extends JobsEvent {
+  final AddJobParams addJobParams;
+
+  const AddJobEvent({required this.addJobParams});
+}

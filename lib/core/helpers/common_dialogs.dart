@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/app_colors.dart';
@@ -18,6 +20,34 @@ abstract class CommonDialogs {
           message,
           style: AppStyles.getMediumStyle(fontSize: AppFontSize.details),
         ),
+      ),
+    );
+  }
+
+  static Future<void> showSuccessDialog(
+    BuildContext context, {
+    required String message,
+  }) async {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(
+          Icons.check,
+          size: 50,
+          color: AppColors.green,
+        ),
+        title: Text(
+          message,
+          style: AppStyles.getMediumStyle(fontSize: AppFontSize.details),
+        ),
+        actions: [
+          CustomElevatedButton(
+            label: S.of(context).ok,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ],
       ),
     );
   }

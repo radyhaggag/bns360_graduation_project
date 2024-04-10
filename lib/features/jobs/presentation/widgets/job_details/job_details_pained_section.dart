@@ -27,7 +27,7 @@ class JobDetailsPainedSection extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => .45.sh;
+  double get maxExtent => .48.sh;
 
   @override
   double get minExtent => .40.sh;

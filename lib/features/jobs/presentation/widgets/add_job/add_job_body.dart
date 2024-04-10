@@ -1,13 +1,14 @@
+import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
+import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/job_type.dart';
-import '../../../../../core/utils/extensions/media_query.dart';
-import '../../../../../core/widgets/buttons/custom_buttons.dart';
-import '../../../../../generated/l10n.dart';
+import 'add_job_button.dart';
 import 'add_job_form.dart';
 
 class AddJobBody extends StatefulWidget {
@@ -71,24 +72,9 @@ class _AddJobBodyState extends State<AddJobBody> {
               ),
             ),
             10.verticalSpace,
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: ReactiveFormConsumer(
-                  builder: (context, form, child) {
-                    return CustomElevatedButton(
-                      label: S.of(context).apply_now,
-                      onPressed: (form.valid && selectedJobType != null)
-                          ? _submitForm
-                          : null,
-                      width: context.width,
-                      height: 50.h,
-                      borderRadius: BorderRadius.circular(8),
-                    );
-                  },
-                ),
-              ),
+            AddJobButton(
+              onAdd: _submitForm,
+              isJobTypeSelected: selectedJobType != null,
             ),
           ],
         ),
@@ -96,7 +82,20 @@ class _AddJobBodyState extends State<AddJobBody> {
     );
   }
 
-  void _submitForm() {}
+  void _submitForm() {
+    final formControls = form.controls;
+    final params = AddJobParams(
+      title: formControls['title']!.value as String,
+      description: formControls['description']!.value as String,
+      requirements: formControls['requirements']!.value as String,
+      jobType: selectedJobType!,
+      workHours: int.parse(formControls['workHours']!.value as String),
+      salary: double.parse(formControls['salary']!.value as String),
+      phoneNumber: formControls['phoneNumber']!.value as String,
+      whatsapp: formControls['whatsapp']!.value as String,
+    );
+    context.read<JobsBloc>().add(AddJobEvent(addJobParams: params));
+  }
 
   @override
   void dispose() {

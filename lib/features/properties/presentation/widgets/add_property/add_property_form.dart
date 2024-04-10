@@ -1,7 +1,6 @@
 import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_location_section.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -35,12 +34,14 @@ class AddPropertyForm extends StatelessWidget {
             title: t.description_of_property,
             hint: t.enter_property_address,
             formControlName: 'description',
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
             title: t.property_address,
             hint: t.enter_property_address,
             formControlName: 'address',
+            textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
           const AddPropertyLocationSection(),
@@ -62,6 +63,7 @@ class AddPropertyForm extends StatelessWidget {
             textAlign: TextAlign.center,
             // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
@@ -75,6 +77,7 @@ class AddPropertyForm extends StatelessWidget {
             separatorWidget: const Spacer(),
             textAlign: TextAlign.center,
             textStyle: context.textTheme.bodyMedium,
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
@@ -88,6 +91,7 @@ class AddPropertyForm extends StatelessWidget {
             textFieldWidth: .5.sw,
             textStyle: context.textTheme.bodyMedium,
             maxLength: 10,
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
@@ -101,6 +105,7 @@ class AddPropertyForm extends StatelessWidget {
             textFieldWidth: .5.sw,
             textStyle: context.textTheme.bodyMedium,
             maxLength: 10,
+            textInputAction: TextInputAction.done,
           ),
           10.verticalSpace,
           const UploadPropertyImagesSection(),

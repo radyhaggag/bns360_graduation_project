@@ -1659,6 +1659,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Remove picked images`
+  String get remove_picked_images {
+    return Intl.message(
+      'Remove picked images',
+      name: 'remove_picked_images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The property has been added successfully`
+  String get add_property_success {
+    return Intl.message(
+      'The property has been added successfully',
+      name: 'add_property_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The job has been added successfully`
+  String get add_job_success {
+    return Intl.message(
+      'The job has been added successfully',
+      name: 'add_job_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Call`
+  String get call {
+    return Intl.message(
+      'Call',
+      name: 'call',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send message`
+  String get send_message {
+    return Intl.message(
+      'Send message',
+      name: 'send_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove profile image`
+  String get remove_profile_image {
+    return Intl.message(
+      'Remove profile image',
+      name: 'remove_profile_image',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

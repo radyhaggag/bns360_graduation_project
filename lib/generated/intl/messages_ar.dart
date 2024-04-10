@@ -39,8 +39,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("إضافة وظيفة"),
+        "add_job_success":
+            MessageLookupByLibrary.simpleMessage("تم اضافة الوظيفة بنجاح"),
         "add_location": MessageLookupByLibrary.simpleMessage("إضافة موقع"),
         "add_property": MessageLookupByLibrary.simpleMessage("إضافة عقار"),
+        "add_property_success":
+            MessageLookupByLibrary.simpleMessage("تم اضافة العقار بنجاح"),
         "am": MessageLookupByLibrary.simpleMessage("ص"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
@@ -51,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "businessOwner":
             MessageLookupByLibrary.simpleMessage("صاحب نشاط تجارى"),
         "buy_now": MessageLookupByLibrary.simpleMessage("اشترِ الآن"),
+        "call": MessageLookupByLibrary.simpleMessage("اتصل"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "categories": MessageLookupByLibrary.simpleMessage("الفئات"),
         "change": MessageLookupByLibrary.simpleMessage("تغيير"),
@@ -183,6 +188,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "properties": MessageLookupByLibrary.simpleMessage("العقارات"),
         "property_address":
             MessageLookupByLibrary.simpleMessage("عنوان العقار"),
+        "remove_picked_images":
+            MessageLookupByLibrary.simpleMessage("إزالة الصور المختارة"),
+        "remove_profile_image":
+            MessageLookupByLibrary.simpleMessage("حذف صورة البروفايل"),
         "rent": MessageLookupByLibrary.simpleMessage("للإيجار"),
         "requirements": MessageLookupByLibrary.simpleMessage("المتطلبات"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),
@@ -204,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("البحث في العقارات"),
         "send": MessageLookupByLibrary.simpleMessage("إرسال"),
         "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
+        "send_message": MessageLookupByLibrary.simpleMessage("ارسال رسالة"),
         "sentCodeTo": MessageLookupByLibrary.simpleMessage(
             "لقدم قمنا بإرسال كود التحقق الى"),
         "serviceProvider": MessageLookupByLibrary.simpleMessage("مقدم خدمة"),

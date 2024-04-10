@@ -1,6 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -34,18 +33,21 @@ class AddJobForm extends StatelessWidget {
             title: t.job_title,
             hint: t.enter_job_title,
             formControlName: 'title',
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
             title: t.job_description,
             hint: t.enter_job_description,
             formControlName: 'description',
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
             title: t.requirements,
             hint: t.enter_the_requirements,
             formControlName: 'requirements',
+            textInputAction: TextInputAction.next,
             maxLines: 5,
           ),
           10.verticalSpace,
@@ -65,6 +67,7 @@ class AddJobForm extends StatelessWidget {
             separatorWidget: const Spacer(),
             textAlign: TextAlign.center,
             textStyle: context.textTheme.bodyMedium,
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
@@ -78,6 +81,7 @@ class AddJobForm extends StatelessWidget {
             separatorWidget: const Spacer(),
             textAlign: TextAlign.center,
             textStyle: context.textTheme.bodyMedium,
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
@@ -91,6 +95,7 @@ class AddJobForm extends StatelessWidget {
             textFieldWidth: .5.sw,
             textStyle: context.textTheme.bodyMedium,
             maxLength: 10,
+            textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
@@ -104,6 +109,7 @@ class AddJobForm extends StatelessWidget {
             textFieldWidth: .5.sw,
             textStyle: context.textTheme.bodyMedium,
             maxLength: 10,
+            textInputAction: TextInputAction.done,
           ),
         ],
       ),

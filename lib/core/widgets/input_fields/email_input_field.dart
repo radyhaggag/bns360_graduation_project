@@ -2,27 +2,24 @@ import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
 import '../../helpers/form_validators.dart';
-import 'custom_input_field.dart';
+import 'custom_reactive_input_field.dart';
 
 class EmailInputField extends StatelessWidget {
-  final TextEditingController controller;
-  final String? initialValue;
-
+  final TextInputAction? textInputAction;
   const EmailInputField({
     super.key,
-    required this.controller,
-    this.initialValue,
+    this.textInputAction,
   });
 
   @override
   Widget build(BuildContext context) {
-    return CustomInputField(
-      controller: controller,
+    return CustomReactiveFormField(
       keyboardType: TextInputType.emailAddress,
       title: S.of(context).email,
       hint: S.of(context).enterEmail,
-      initialValue: initialValue,
       validator: (value) => FormValidator.validateEmail(value),
+      formControlName: 'email',
+      textInputAction: textInputAction,
     );
   }
 }

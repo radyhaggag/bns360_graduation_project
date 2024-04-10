@@ -1,4 +1,3 @@
-import '../bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,10 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../config/route_config.dart';
 import '../../../../core/utils/assets/app_svg.dart';
 import '../../../../generated/l10n.dart';
+import '../bloc/settings_bloc.dart';
 import 'language_bottom_sheet/change_language_bottom_sheet.dart';
-import 'log_out_btn.dart';
 import 'settings_item_tile.dart';
 import 'settings_section_tile.dart';
+import 'settings_sign_out_btn.dart';
 import 'switch_mode_tile.dart';
 
 class SettingsBody extends StatelessWidget {
@@ -73,7 +73,7 @@ class SettingsBody extends StatelessWidget {
             svgPath: AppSvg.aboutCircle,
             onTap: () {},
           ),
-          const LogOutBtn(),
+          const SettingsSignOutBtn(),
         ],
       ),
     );

@@ -1,11 +1,10 @@
+import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/widgets/input_fields/email_input_field.dart';
 import '../../../../../core/widgets/input_fields/name_input_field.dart';
 import '../../../../../core/widgets/input_fields/password_input_field.dart';
-import '../../../../../core/widgets/input_fields/phone_input_field.dart';
-import '../../bloc/auth_bloc.dart';
 import 'sign_up_btn.dart';
 import 'user_type_dropdown.dart';
 
@@ -17,48 +16,50 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _phoneController = TextEditingController();
+  late final FormGroup form;
+
+  @override
+  void initState() {
+    super.initState();
+    form = FormGroup({
+      'email': FormControl<String>(
+        validators: [Validators.required, Validators.email],
+      ),
+      'password': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.minLength(kMinPasswordLength)
+        ],
+      ),
+      'name': FormControl<String>(
+        validators: [Validators.required],
+      ),
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
+    return ReactiveFormBuilder(
+      form: () => form,
+      builder: (context, formGroup, child) => child!,
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           NameInputField(
-            controller: _nameController,
+            textInputAction: TextInputAction.next,
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: 15),
           EmailInputField(
-            controller: _emailController,
+            textInputAction: TextInputAction.next,
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: 15),
           PasswordInputField(
-            controller: _passwordController,
+            textInputAction: TextInputAction.done,
           ),
-          const SizedBox(height: 15),
-          const UserTypeDropdown(),
-          const SizedBox(height: 15),
-          PhoneInputField(
-            controller: _phoneController,
-          ),
-          const SizedBox(height: 15),
-          SignUpBtn(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                context.read<AuthBloc>().add(SignUpEvent(
-                      email: _emailController.text,
-                      password: _passwordController.text,
-                      name: _nameController.text,
-                    ));
-              }
-            },
-          ),
+          SizedBox(height: 15),
+          UserTypeDropdown(),
+          SizedBox(height: 15),
+          SignUpBtn(),
         ],
       ),
     );
@@ -66,10 +67,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    _nameController.dispose();
-    _phoneController.dispose();
+    form.dispose();
     super.dispose();
   }
 }

@@ -7,12 +7,13 @@ import '../params/sign_up_params.dart';
 import '../params/verify_reset_password_params.dart';
 
 abstract class AuthRepo {
-  Future<ResultOrFailure<LoginEntity>> login(LoginParams params);
-  Future<ResultOrFailure<SignUpEntity>> signUp(SignUpParams params);
-  Future<ResultOrFailure<bool>> sendEmailVerification(String email);
-  Future<ResultOrFailure<bool>> sendResetPasswordCode(String email);
-  Future<ResultOrFailure<bool>> resetPassword(ResetPasswordParams params);
-  Future<ResultOrFailure<bool>> verifyResetPasswordCode(
+  FutureEither<LoginEntity> login(LoginParams params);
+  FutureEither<SignUpEntity> signUp(SignUpParams params);
+  FutureEither<bool> sendEmailVerification(String email);
+  FutureEither<bool> sendResetPasswordCode(String email);
+  FutureEither<bool> resetPassword(ResetPasswordParams params);
+  FutureEither<bool> verifyResetPasswordCode(
     VerifyResetPasswordParams params,
   );
+  FutureEither<void> continueAsGuest();
 }

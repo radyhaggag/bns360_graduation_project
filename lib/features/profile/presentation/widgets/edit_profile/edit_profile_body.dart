@@ -22,7 +22,7 @@ class EditProfileBody extends StatelessWidget {
         final profile = context.read<ProfileBloc>().profile;
 
         return DataStateWidget(
-          isLoading: state is GetProfileLoadingState || profile == null,
+          isLoading: state is GetProfileLoadingState ,
           isError: state is GetProfileErrorState,
           errorMessage: (state is GetProfileErrorState) ? state.message : "",
           isLoaded: profile != null,

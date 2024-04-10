@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -32,8 +33,15 @@ class _BNS360AppState extends State<BNS360App> {
       designSize: const Size(360, 800),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: BlocProvider<AppBloc>(
-        create: (context) => sl<AppBloc>(),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<AppBloc>(
+            create: (context) => sl<AppBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => sl<ProfileBloc>()..add(GetProfileEvent()),
+          ),
+        ],
         child: BlocBuilder<AppBloc, AppState>(
           builder: (context, state) {
             ScreenUtil.init(context);

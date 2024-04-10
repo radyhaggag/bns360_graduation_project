@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
@@ -11,17 +12,28 @@ class EditProfileDataBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: context.read<ProfileBloc>().isFormEdited,
-      builder: (BuildContext context, value, Widget? child) {
-        return CustomElevatedButton(
-          label: S.of(context).save,
-          width: 100.w,
-          onPressed: value
-              ? () {
-                  context.read<ProfileBloc>().add(EditProfileDataEvent());
-                }
-              : null,
+    return BlocBuilder<ProfileBloc, ProfileState>(
+      builder: (context, state) {
+        return ReactiveFormConsumer(
+          builder: (context, form, child) {
+            return CustomElevatedButton(
+              onPressed: form.valid ||
+                      context.read<ProfileBloc>().newImagePath != null
+                  ? () {
+                      final formControls = form.controls;
+
+                      final email = formControls['email']!.value as String;
+                      final name = formControls['name']!.value as String;
+
+                      context
+                          .read<ProfileBloc>()
+                          .add(EditProfileDataEvent(email: email, name: name));
+                    }
+                  : null,
+              label: S.of(context).save,
+              width: 100.w,
+            );
+          },
         );
       },
     );

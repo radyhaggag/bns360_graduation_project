@@ -159,5 +159,11 @@
   "post_now": "نشر الآن",
   "offer_type": "نوع العرض",
   "properties": "العقارات",
-  "no_properties_found": "لم يتم العثور على عقارات"
+  "no_properties_found": "لم يتم العثور على عقارات",
+  "remove_picked_images": "إزالة الصور المختارة",
+  "add_property_success": "تم اضافة العقار بنجاح",
+  "add_job_success": "تم اضافة الوظيفة بنجاح",
+  "call": "اتصل",
+  "send_message": "ارسال رسالة",
+  "remove_profile_image": "حذف صورة البروفايل"
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../databases/local_storage/hive_manager.dart';
@@ -10,9 +12,11 @@ class CacheHelper {
   CacheHelper(this.storage);
 
   Locale getCachedLanguage() {
-    final code = HiveBoxes.language.get(CacheKeys.cachedLangCode);
-    if (code != null) return Locale(code);
-    return const Locale('en');
+    final cachedCode = HiveBoxes.language.get(CacheKeys.cachedLangCode);
+    if (cachedCode != null) return Locale(cachedCode);
+    
+    final deviceLanguage = Platform.localeName.substring(0, 2);
+    return Locale(deviceLanguage);
   }
 
   Future<void> cacheLanguage(Locale local) async {
@@ -27,9 +31,22 @@ class CacheHelper {
   }
 
   AppTheme getTheme() {
-    final themeName = HiveBoxes.language.get(CacheKeys.cachedTheme);
-    if (themeName == AppTheme.dark.name) return AppTheme.dark;
+    final cachedTheme = HiveBoxes.language.get(CacheKeys.cachedTheme);
+    if (cachedTheme == null) {
+      return _deviceTheme;
+    }
+    if (cachedTheme == AppTheme.dark.name) return AppTheme.dark;
     return AppTheme.light;
+  }
+
+  AppTheme get _deviceTheme {
+    final deviceMode =
+        WidgetsBinding.instance.platformDispatcher.platformBrightness;
+    if (deviceMode == Brightness.dark) {
+      return AppTheme.dark;
+    } else {
+      return AppTheme.light;
+    }
   }
 
   Future<String?> getToken() async {

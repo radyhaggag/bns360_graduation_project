@@ -10,7 +10,6 @@ class CustomReactiveFormField extends StatelessWidget {
   final String? prefixText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final String? initialValue;
   final bool isSecure;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
@@ -28,6 +27,7 @@ class CustomReactiveFormField extends StatelessWidget {
   final double? fromStartMargin;
   final TextAlign? textAlign;
   final String formControlName;
+  final TextInputAction? textInputAction;
 
   const CustomReactiveFormField({
     super.key,
@@ -37,7 +37,6 @@ class CustomReactiveFormField extends StatelessWidget {
     this.validator,
     this.title,
     this.prefixText,
-    this.initialValue,
     this.isSecure = false,
     this.keyboardType,
     this.suffixIcon,
@@ -55,6 +54,7 @@ class CustomReactiveFormField extends StatelessWidget {
     this.textFieldHeight,
     this.maxLength,
     required this.formControlName,
+    this.textInputAction,
   });
 
   Widget get reactiveField {
@@ -69,12 +69,12 @@ class CustomReactiveFormField extends StatelessWidget {
       controller: controller,
       maxLength: maxLength,
       hint: hint,
-      initialValue: initialValue,
       isDigitsOnly: isDigitsOnly,
       label: label,
       prefixText: prefixText,
       suffixIcon: suffixIcon,
       title: title,
+      textInputAction: textInputAction,
     );
   }
 
@@ -139,7 +139,6 @@ class CustomReactiveFormField extends StatelessWidget {
 class _BuildTextField extends StatefulWidget {
   const _BuildTextField({
     this.controller,
-    this.initialValue,
     this.isSecure = false,
     this.keyboardType,
     this.textStyle,
@@ -154,10 +153,10 @@ class _BuildTextField extends StatefulWidget {
     this.isDigitsOnly = false,
     required this.formControlName,
     this.textAlign,
+    this.textInputAction,
   });
 
   final TextEditingController? controller;
-  final String? initialValue;
   final bool isSecure;
   final TextInputType? keyboardType;
   final TextStyle? textStyle;
@@ -172,6 +171,8 @@ class _BuildTextField extends StatefulWidget {
   final TextAlign? textAlign;
   final int? maxLength;
   final String formControlName;
+  final TextInputAction? textInputAction;
+
 
   @override
   State<_BuildTextField> createState() => _BuildTextFieldState();
@@ -218,9 +219,10 @@ class _BuildTextFieldState extends State<_BuildTextField> {
       decoration: widget.inputDecoration ?? defaultInputDecoration,
       keyboardType: widget.keyboardType,
       obscureText: widget.isSecure,
-      maxLines: widget.maxLines,
+      maxLines: widget.isSecure ? 1: widget.maxLines,
       maxLength: widget.maxLength,
       textAlign: widget.textAlign ?? TextAlign.start,
+      textInputAction: widget.textInputAction,
       style: widget.textStyle,
       onTap: (_) {
         String textValue = widget.controller?.text ?? "";

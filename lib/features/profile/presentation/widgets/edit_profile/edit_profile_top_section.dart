@@ -1,5 +1,8 @@
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import 'package:bns360_graduation_project/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/profile/profile_entity.dart';
@@ -33,7 +36,17 @@ class EditProfileTopSection extends StatelessWidget {
           profile.name,
           style: _textStyle(context),
         ),
-        SizedBox(height: 65.h),
+        const SizedBox(height: 12),
+        CustomElevatedButton(
+          label: S.of(context).remove_profile_image,
+          width: 200.w,
+          height: 30.h,
+          backgroundColor: AppColors.red,
+          onPressed: () {
+            context.read<ProfileBloc>().add(ClearProfileImageEvent());
+          },
+        ),
+        SizedBox(height: 30.h),
       ],
     );
   }

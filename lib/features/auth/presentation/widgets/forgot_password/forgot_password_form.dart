@@ -1,8 +1,7 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/widgets/input_fields/email_input_field.dart';
-import '../../bloc/auth_bloc.dart';
 import 'send_code_btn.dart';
 
 class ForgotPasswordForm extends StatefulWidget {
@@ -13,28 +12,30 @@ class ForgotPasswordForm extends StatefulWidget {
 }
 
 class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
-  final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  late final FormGroup form;
+
+  @override
+  void initState() {
+    super.initState();
+    form = FormGroup({
+      'email': FormControl<String>(
+        validators: [Validators.required, Validators.email],
+      ),
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
+    return ReactiveFormBuilder(
+      form: () => form,
+      builder: (context, formGroup, child) => child!,
+      child: const Column(
         children: [
           EmailInputField(
-            controller: _emailController,
+            textInputAction: TextInputAction.done,
           ),
-          const SizedBox(height: 40),
-          SendCodeBtn(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                context.read<AuthBloc>().add(SendResetPasswordCodeEvent(
-                      email: _emailController.text,
-                    ));
-              }
-            },
-          ),
+          SizedBox(height: 40),
+          SendCodeBtn(),
         ],
       ),
     );
@@ -42,7 +43,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
 
   @override
   void dispose() {
-    _emailController.dispose();
+    form.dispose();
     super.dispose();
   }
 }

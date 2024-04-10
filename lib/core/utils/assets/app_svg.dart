@@ -31,4 +31,5 @@ abstract class AppSvg {
   static const jobs = '$_svgPath/jobs.svg';
   static const share = '$_svgPath/share.svg';
   static const bookmark = '$_svgPath/bookmark.svg';
+  static const whatsapp = '$_svgPath/whatsapp.svg';
 }

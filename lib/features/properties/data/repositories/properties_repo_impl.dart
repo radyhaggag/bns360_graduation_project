@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/features/properties/params/add_property_params.dart';
+
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/property_entity.dart';
@@ -29,6 +31,13 @@ class PropertiesRepoImpl implements PropertiesRepo {
   ) async {
     return executeAndHandleErrorAsync(
       () => propertiesRemoteDataSource.searchOnProperties(text),
+    );
+  }
+
+  @override
+  FutureEither<void> addProperty(AddPropertyParams addPropertyParams) async {
+    return executeAndHandleErrorAsync(
+      () => propertiesRemoteDataSource.addProperty(addPropertyParams),
     );
   }
 }

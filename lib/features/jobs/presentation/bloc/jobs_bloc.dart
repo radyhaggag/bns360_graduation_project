@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/entities/job_entity.dart';
+import '../../domain/params/add_job_params.dart';
 import '../../domain/repositories/jobs_repo.dart';
 
 part 'jobs_event.dart';
@@ -17,6 +18,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     on<GetJobsEvent>(_getJobs);
     on<GetJobByIdEvent>(_getJobById);
     on<SearchOnJobs>(_searchOnJobs);
+    on<AddJobEvent>(_addJob);
   }
 
   List<JobEntity> jobs = [];
@@ -71,12 +73,6 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
-  @override
-  Future<void> close() {
-    searchController.dispose();
-    return super.close();
-  }
-
   _getJobById(
     GetJobByIdEvent event,
     Emitter<JobsState> emit,
@@ -92,5 +88,25 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
         emit(GetJobByIdSuccessState(job: r));
       },
     );
+  }
+
+  _addJob(
+    AddJobEvent event,
+    Emitter<JobsState> emit,
+  ) async {
+    emit(AddJobLoadingState());
+
+    final res = await jobsRepo.addJob(event.addJobParams);
+
+    res.fold(
+      (l) => emit(AddJobErrorState(message: l.message)),
+      (r) => emit(AddJobSuccessState()),
+    );
+  }
+
+  @override
+  Future<void> close() {
+    searchController.dispose();
+    return super.close();
   }
 }

@@ -1,10 +1,9 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/extensions/context.dart';
 
 class ProfileItemTile extends StatelessWidget {
   const ProfileItemTile({
@@ -60,32 +59,5 @@ class ProfileItemTile extends StatelessWidget {
 
   Color _iconColor(BuildContext context) {
     return context.theme.primaryColor.withAlpha(90);
-  }
-}
-
-class LogoutTile extends StatelessWidget {
-  const LogoutTile({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {},
-      tileColor: context.theme.listTileTheme.tileColor,
-      leading: RotatedBox(
-        quarterTurns: 2,
-        child: Icon(
-          Icons.logout,
-          color: context.theme.primaryColor.withAlpha(90),
-          size: 24.r,
-        ),
-      ),
-      title: Text(
-        S.of(context).logout,
-        style: context.textTheme.titleSmall?.copyWith(
-          fontSize: AppFontSize.details,
-          color: context.theme.cardColor,
-        ),
-      ),
-    );
   }
 }

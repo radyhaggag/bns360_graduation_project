@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../domain/params/edit_profile_params.dart';
@@ -17,27 +18,43 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     required this.profileRepo,
   }) : super(ProfileInitial()) {
     on<ChangeProfileImageEvent>(_changeProfileImage);
+    on<ClearProfileImageEvent>(_clearProfileImage);
     on<EditProfileDataEvent>(_editProfileImage);
     on<GetProfileEvent>(_getProfile);
     on<RemoveProfileImageEvent>(_removeProfileImage);
-    _initListener();
+    on<ChangePasswordEvent>(_changePassword);
+    on<SignOutEvent>(_signOut);
   }
-
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
 
   ProfileEntity? _profile;
   ProfileEntity? get profile => _profile;
 
   String? _newImagePath;
   String? get newImagePath => _newImagePath;
+  bool _isProfileImageCleared = false;
+  bool get isProfileImageCleared => _isProfileImageCleared;
 
   _changeProfileImage(
     ChangeProfileImageEvent event,
     Emitter<ProfileState> emit,
-  ) {
-    // imagePathNotifier.value = newImagePath != null;
-    imagePathNotifier.value = true;
+  ) async {
+    final ImagePicker picker = ImagePicker();
+
+    final image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      _newImagePath = image.path;
+      _isProfileImageCleared = false;
+      emit(ProfileImageChangedState());
+    }
+  }
+
+  _clearProfileImage(
+    ClearProfileImageEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
+    _newImagePath = null;
+    _isProfileImageCleared = true;
     emit(ProfileImageChangedState());
   }
 
@@ -49,9 +66,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final editParams = EditProfileParams(
-      email: emailController.text,
-      name: nameController.text,
-      imageUrl: _newImagePath ?? profile?.imageUrl,
+      email: event.email,
+      name: event.name,
+      newImagePath: _newImagePath,
+      isProfileImageCleared: _isProfileImageCleared,
     );
 
     final res = await profileRepo.editProfile(editParams);
@@ -77,38 +95,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       },
       (r) {
         _profile = r;
-        nameController.text = r.name;
-        emailController.text = r.email;
         emit(GetProfileSuccessState(profileEntity: r));
       },
     );
-  }
-
-  ValueNotifier<bool> isNameEdited = ValueNotifier(false);
-  ValueNotifier<bool> isEmailEdited = ValueNotifier(false);
-  ValueNotifier<bool> imagePathNotifier = ValueNotifier<bool>(false);
-
-  final ValueNotifier<bool> _isFormEdited = ValueNotifier<bool>(false);
-  ValueNotifier<bool> get isFormEdited => _isFormEdited;
-
-  void _onFieldChanged() {
-    final nameChanged = nameController.text != profile?.name;
-    final emailChanged = emailController.text != profile?.email;
-    final imagePathChanged = imagePathNotifier.value;
-    _isFormEdited.value = nameChanged || emailChanged || imagePathChanged;
-  }
-
-  void _onImagePathChanged() {
-    final imagePathChanged = imagePathNotifier.value;
-    _isFormEdited.value = imagePathChanged ||
-        nameController.text != profile?.name ||
-        emailController.text != profile?.email;
-  }
-
-  void _initListener() {
-    nameController.addListener(_onFieldChanged);
-    emailController.addListener(_onFieldChanged);
-    imagePathNotifier.addListener(_onImagePathChanged);
   }
 
   _removeProfileImage(
@@ -118,10 +107,42 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileImageChangedState());
   }
 
-  @override
-  close() async {
-    nameController.dispose();
-    emailController.dispose();
-    super.close();
+  _changePassword(
+    ChangePasswordEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
+    emit(ChangePasswordLoadingState());
+
+    final currentEmail = AppProvider().getProfile()?.email;
+    if (currentEmail == null) {
+      emit(const ChangePasswordErrorState(message: "You must logged in first"));
+      return;
+    }
+    final params = ChangePasswordParams(
+      email: currentEmail,
+      oldPassword: event.oldPassword,
+      newPassword: event.newPassword,
+    );
+
+    final res = await profileRepo.changePassword(params);
+
+    res.fold(
+      (l) => emit(ChangePasswordErrorState(message: l.message)),
+      (r) => emit(ChangePasswordSuccessState()),
+    );
+  }
+
+  _signOut(
+    SignOutEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
+    emit(SignOutLoadingState());
+
+    final res = await profileRepo.signOut();
+
+    res.fold(
+      (l) => emit(SignOutErrorState(message: l.message)),
+      (r) => emit(SignOutSuccessState()),
+    );
   }
 }

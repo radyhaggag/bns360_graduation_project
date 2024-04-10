@@ -16,14 +16,14 @@ class HomeRepoImpl implements HomeRepo {
   });
 
   @override
-  Future<ResultOrFailure<List<BannerEntity>>> getBanners() async {
+  FutureEither<List<BannerEntity>> getBanners() async {
     return executeAndHandleErrorAsync<List<BannerEntity>>(
       () => homeRemoteDataSource.getBanners(),
     );
   }
 
   @override
-  Future<ResultOrFailure<List<CategoryItemEntity>>> getPlacesToExplore() {
+  FutureEither<List<CategoryItemEntity>> getPlacesToExplore() {
     return executeAndHandleErrorAsync<List<CategoryItemEntity>>(
       () => homeRemoteDataSource.getPlacesToExplore(),
     );

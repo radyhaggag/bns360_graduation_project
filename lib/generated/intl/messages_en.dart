@@ -39,8 +39,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("Add a job"),
+        "add_job_success": MessageLookupByLibrary.simpleMessage(
+            "The job has been added successfully"),
         "add_location": MessageLookupByLibrary.simpleMessage("Add location"),
         "add_property": MessageLookupByLibrary.simpleMessage("Add property"),
+        "add_property_success": MessageLookupByLibrary.simpleMessage(
+            "The property has been added successfully"),
         "am": MessageLookupByLibrary.simpleMessage("AM"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
@@ -49,6 +53,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
         "buy_now": MessageLookupByLibrary.simpleMessage("Buy now"),
+        "call": MessageLookupByLibrary.simpleMessage("Call"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "change": MessageLookupByLibrary.simpleMessage("Change"),
@@ -184,6 +189,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "properties": MessageLookupByLibrary.simpleMessage("Properties"),
         "property_address":
             MessageLookupByLibrary.simpleMessage("Property address"),
+        "remove_picked_images":
+            MessageLookupByLibrary.simpleMessage("Remove picked images"),
+        "remove_profile_image":
+            MessageLookupByLibrary.simpleMessage("Remove profile image"),
         "rent": MessageLookupByLibrary.simpleMessage("Rent"),
         "requirements": MessageLookupByLibrary.simpleMessage("Requirements"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
@@ -204,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Search on properties"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
+        "send_message": MessageLookupByLibrary.simpleMessage("Send message"),
         "sentCodeTo":
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to"),
         "serviceProvider":

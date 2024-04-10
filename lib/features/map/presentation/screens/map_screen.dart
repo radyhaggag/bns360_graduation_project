@@ -92,7 +92,10 @@ class _MapScreenState extends State<MapScreen> {
         options: MapOptions(
           initialCenter: selectedPoint ?? const LatLng(50.5, 30.51),
           initialZoom: 9.2,
+          minZoom: 5.2,
+          maxZoom: 18.2,
           onTap: (tapPosition, point) {
+            widget.mapParams?.onTap?.call(point.latitude, point.longitude);
             markers.clear();
             selectedPoint = point;
             markers.add(

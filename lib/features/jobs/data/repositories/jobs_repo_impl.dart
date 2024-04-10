@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
+
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/job_entity.dart';
@@ -29,6 +31,15 @@ class JobsRepoImpl implements JobsRepo {
   ) async {
     return executeAndHandleErrorAsync(
       () => jobsRemoteDataSource.searchOnJobs(text),
+    );
+  }
+
+  @override
+  FutureEither<void> addJob(
+    AddJobParams addJobParams,
+  ) async {
+    return executeAndHandleErrorAsync(
+      () => jobsRemoteDataSource.addJob(addJobParams),
     );
   }
 }

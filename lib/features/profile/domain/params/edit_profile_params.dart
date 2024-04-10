@@ -5,23 +5,28 @@ import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 class EditProfileParams extends Equatable {
   final String? name;
   final String? email;
-  final String? imageUrl;
+  final String? newImagePath;
+  final bool isProfileImageCleared;
 
   const EditProfileParams({
     this.name,
     this.email,
-    this.imageUrl,
+    this.newImagePath,
+    required this.isProfileImageCleared,
   });
 
   EditProfileParams copyWith({
     String? name,
     String? email,
-    String? imageUrl,
+    String? newImagePath,
+    bool? isProfileImageCleared,
   }) {
     return EditProfileParams(
       name: name ?? this.name,
       email: email ?? this.email,
-      imageUrl: imageUrl ?? this.imageUrl,
+      newImagePath: newImagePath ?? this.newImagePath,
+      isProfileImageCleared:
+          isProfileImageCleared ?? this.isProfileImageCleared,
     );
   }
 
@@ -30,7 +35,7 @@ class EditProfileParams extends Equatable {
   ) {
     return copyWith(
       email: profileEntity.email,
-      imageUrl: profileEntity.imageUrl,
+      newImagePath: profileEntity.imageUrl,
       name: profileEntity.name,
     );
   }
@@ -39,10 +44,10 @@ class EditProfileParams extends Equatable {
     return <String, dynamic>{
       'name': name,
       'email': email,
-      'imageUrl': imageUrl,
+      'imageUrl': newImagePath,
     };
   }
 
   @override
-  List<Object?> get props => [name, email, imageUrl];
+  List<Object?> get props => [name, email, newImagePath];
 }

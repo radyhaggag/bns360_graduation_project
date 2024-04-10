@@ -25,7 +25,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SendResetPasswordCodeEvent>(_sendResetPasswordCode);
     on<VerifyResetPasswordCodeEvent>(_verifyResetPasswordCode);
     on<ResetPasswordEvent>(_resetPassword);
-    on<ChangeUserType>(_changeUserType);
+    on<ChangeUserTypeEvent>(_changeUserType);
+    on<ContinueAsGuestEvent>(_continueAsGuest);
   }
 
   Future<void> _login(
@@ -135,8 +136,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   UserType? userType;
 
-  _changeUserType(ChangeUserType event, Emitter<AuthState> emit) {
+  _changeUserType(ChangeUserTypeEvent event, Emitter<AuthState> emit) {
     userType = event.userType;
     emit(UserTypeChanged(userType: event.userType));
+  }
+
+  _continueAsGuest(ContinueAsGuestEvent event, Emitter<AuthState> emit) async {
+    emit(LoginLoadingState());
+    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
+
+    final res = await authRepo.continueAsGuest();
+
+    res.fold(
+      (l) => emit(LoginErrorState(message: l.message)),
+      (r) => emit(LoginSuccessState()),
+    );
   }
 }

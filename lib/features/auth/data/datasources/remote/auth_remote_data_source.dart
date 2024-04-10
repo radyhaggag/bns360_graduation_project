@@ -15,6 +15,7 @@ abstract class AuthRemoteDataSource {
   Future<bool> sendResetPasswordCode(String email);
   Future<bool> verifyResetPasswordCode(VerifyResetPasswordParams params);
   Future<bool> resetPassword(ResetPasswordParams params);
+  Future<void> continueAsGuest();
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -74,5 +75,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   ) async {
     // TODO: implement sendResetPasswordCode
     throw UnimplementedError();
+  }
+
+  @override
+  Future<void> continueAsGuest() async {
+    await FirebaseAuthManager.signInAnonymously();
   }
 }

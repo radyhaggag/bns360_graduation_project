@@ -70,7 +70,7 @@ class PropertiesScreenAppBar extends StatelessWidget
                 child: SearchField(
                   searchController: bloc.searchController,
                   onFieldSubmitted: () {
-                    bloc.add(SearchOnProperties());
+                    bloc.add(SearchOnPropertiesEvent());
                   },
                   withPrefixIcon: true,
                   hintText: getHintText(context),

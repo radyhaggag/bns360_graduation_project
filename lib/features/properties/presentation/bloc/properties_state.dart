@@ -1,10 +1,7 @@
 part of 'properties_bloc.dart';
 
-abstract class PropertiesState extends Equatable {
+abstract class PropertiesState {
   const PropertiesState();
-
-  @override
-  List<Object> get props => [];
 }
 
 class PropertiesInitial extends PropertiesState {}
@@ -41,7 +38,18 @@ class SearchIconToggled extends PropertiesState {
   final bool isSearchEnabled;
 
   const SearchIconToggled({required this.isSearchEnabled});
-
-  @override
-  List<Object> get props => [isSearchEnabled];
 }
+
+class AddPropertyLoadingState extends PropertiesState {}
+
+class AddPropertySuccessState extends PropertiesState {
+  const AddPropertySuccessState();
+}
+
+class AddPropertyErrorState extends PropertiesState {
+  final String message;
+
+  const AddPropertyErrorState({required this.message});
+}
+
+class PropertyImagesUpdatedState extends PropertiesState {}

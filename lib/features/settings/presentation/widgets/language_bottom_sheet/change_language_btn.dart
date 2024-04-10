@@ -27,13 +27,10 @@ class ChangeLanguageBtn extends StatelessWidget {
                         locale: settingsBloc.selectedLanguage!.locale,
                       ));
                   settingsBloc.add(ChangeAppLanguageEvent());
+                  Navigator.pop(context);
                 }
               : null,
-          //     () {
-          //   context.read<AppBloc>().add(ChangeAppState(
-          //         locale: settingsBloc.selectedLanguage!.locale,
-          //       ));
-          // },
+          
         );
       },
     );

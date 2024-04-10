@@ -41,7 +41,6 @@ import '../features/jobs/presentation/screens/jobs_screen.dart';
 import '../features/map/domain/params/map_params.dart';
 import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
-import '../features/profile/presentation/bloc/profile_bloc.dart';
 import '../features/profile/presentation/screen/edit_profile_screen.dart';
 import '../features/properties/domain/entities/property_entity.dart';
 import '../features/properties/presentation/bloc/properties_bloc.dart';
@@ -207,10 +206,7 @@ abstract class RouteConfig {
         );
       case Routes.editProfile:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => sl<ProfileBloc>()..add(GetProfileEvent()),
-            child: const EditProfileScreen(),
-          ),
+          builder: (context) => const EditProfileScreen(),
         );
       case Routes.categoryItem:
         return MaterialPageRoute(

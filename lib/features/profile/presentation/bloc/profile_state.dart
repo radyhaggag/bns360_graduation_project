@@ -34,3 +34,24 @@ class EditProfileErrorState extends ProfileState {
 
   const EditProfileErrorState({required this.message});
 }
+
+
+class ChangePasswordLoadingState extends ProfileState {}
+
+class ChangePasswordSuccessState extends ProfileState {}
+
+class ChangePasswordErrorState extends ProfileState {
+  final String message;
+
+  const ChangePasswordErrorState({required this.message});
+}
+
+class SignOutLoadingState extends ProfileState {}
+
+class SignOutSuccessState extends ProfileState {}
+
+class SignOutErrorState extends ProfileState {
+  final String message;
+
+  const SignOutErrorState({required this.message});
+}

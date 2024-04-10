@@ -209,7 +209,7 @@ class _BuildTextFieldState extends State<_BuildTextField> {
       obscureText: widget.isSecure,
       keyboardType: widget.keyboardType,
       style: widget.textStyle,
-      maxLines: widget.maxLines,
+      maxLines:widget.isSecure ? 1: widget.maxLines,
       maxLength: widget.maxLength,
       onTap: () {
         String textValue = widget.controller?.text ?? "";

@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,13 +10,19 @@ import '../../../../core/utils/app_fonts.dart';
 import '../../../../core/utils/enums.dart';
 import '../../../../generated/l10n.dart';
 
-class LogOutBtn extends StatelessWidget {
-  const LogOutBtn({super.key});
+class SettingsSignOutBtn extends StatelessWidget {
+  const SettingsSignOutBtn({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        context.read<ProfileBloc>().add(SignOutEvent());
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          Routes.login,
+          (route) => false,
+        );
+      },
       tileColor: context.read<AppBloc>().state.theme == AppTheme.light
           ? AppColors.white
           : AppColors.black,

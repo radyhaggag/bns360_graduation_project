@@ -28,6 +28,7 @@ class CustomReactiveFormField extends StatelessWidget {
   final double? fromStartMargin;
   final TextAlign? textAlign;
   final String formControlName;
+  final TextInputAction? textInputAction;
 
   const CustomReactiveFormField({
     super.key,
@@ -55,6 +56,7 @@ class CustomReactiveFormField extends StatelessWidget {
     this.textFieldHeight,
     this.maxLength,
     required this.formControlName,
+    this.textInputAction,
   });
 
   Widget get reactiveField {
@@ -75,6 +77,7 @@ class CustomReactiveFormField extends StatelessWidget {
       prefixText: prefixText,
       suffixIcon: suffixIcon,
       title: title,
+      textInputAction: textInputAction,
     );
   }
 
@@ -154,6 +157,7 @@ class _BuildTextField extends StatefulWidget {
     this.isDigitsOnly = false,
     required this.formControlName,
     this.textAlign,
+    this.textInputAction,
   });
 
   final TextEditingController? controller;
@@ -172,6 +176,8 @@ class _BuildTextField extends StatefulWidget {
   final TextAlign? textAlign;
   final int? maxLength;
   final String formControlName;
+  final TextInputAction? textInputAction;
+
 
   @override
   State<_BuildTextField> createState() => _BuildTextFieldState();
@@ -218,9 +224,10 @@ class _BuildTextFieldState extends State<_BuildTextField> {
       decoration: widget.inputDecoration ?? defaultInputDecoration,
       keyboardType: widget.keyboardType,
       obscureText: widget.isSecure,
-      maxLines: widget.maxLines,
+      maxLines: widget.isSecure ? 1: widget.maxLines,
       maxLength: widget.maxLength,
       textAlign: widget.textAlign ?? TextAlign.start,
+      textInputAction: widget.textInputAction,
       style: widget.textStyle,
       onTap: (_) {
         String textValue = widget.controller?.text ?? "";

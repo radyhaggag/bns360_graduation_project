@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
+
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../../../core/utils/custom_types.dart';
@@ -20,6 +22,20 @@ class ProfileRepoImpl implements ProfileRepo {
   FutureEither<ProfileEntity> getProfile() async {
     return executeAndHandleErrorAsync(
       () => remoteProfileDataSource.getProfile(),
+    );
+  }
+
+  @override
+  FutureEither<void> changePassword(ChangePasswordParams changePasswordParams) async{
+      return executeAndHandleErrorAsync(
+      () => remoteProfileDataSource.changePassword(changePasswordParams),
+    );
+  }
+
+  @override
+  FutureEither<void> signOut() async{
+      return executeAndHandleErrorAsync(
+      () => remoteProfileDataSource.signOut(),
     );
   }
 }

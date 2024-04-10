@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../generated/l10n.dart';
 import '../../helpers/form_validators.dart';
-import 'custom_input_field.dart';
+import 'custom_reactive_input_field.dart';
 
 class PasswordInputField extends StatefulWidget {
-  final TextEditingController controller;
   final String? title;
   final String? hint;
+  final TextInputAction? textInputAction;
 
   const PasswordInputField({
     super.key,
-    required this.controller,
     this.title,
     this.hint,
+    this.textInputAction,
   });
 
   @override
@@ -26,21 +27,21 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
   @override
   Widget build(BuildContext context) {
     return SharedPasswordInputField(
-      controller: widget.controller,
       title: widget.title ?? S.of(context).password,
       hint: widget.hint ?? S.of(context).enterPassword,
+      formControlName: 'password',
     );
   }
 }
 
 class ConfirmPasswordInputField extends StatefulWidget {
-  final TextEditingController controller;
-  final TextEditingController passwordController;
+  final FormGroup formGroup;
+  final TextInputAction? textInputAction;
 
   const ConfirmPasswordInputField({
     super.key,
-    required this.controller,
-    required this.passwordController,
+    required this.formGroup,
+    this.textInputAction,
   });
 
   @override
@@ -54,15 +55,19 @@ class _ConfirmPasswordInputFieldState extends State<ConfirmPasswordInputField> {
   @override
   Widget build(BuildContext context) {
     return SharedPasswordInputField(
-      controller: widget.controller,
       title: S.of(context).confirmNewPassword,
       hint: S.of(context).confirmNewPassword,
       validator: (value) => _validateConfirmationPassword(value),
+      formControlName: 'confirmPassword',
     );
   }
 
   String? _validateConfirmationPassword(String? value) {
-    if (value != widget.passwordController.text) {
+    final formControls = widget.formGroup.controls;
+
+    final password = formControls['title']!.value as String;
+
+    if (value != password) {
       return S.of(context).passwordsDoNotMatch;
     }
     return FormValidator.validatePassword(value);
@@ -70,17 +75,19 @@ class _ConfirmPasswordInputFieldState extends State<ConfirmPasswordInputField> {
 }
 
 class SharedPasswordInputField extends StatefulWidget {
-  final TextEditingController controller;
   final String title;
   final String hint;
-  final String? Function(String?)? validator; // Added validator parameter
+  final String? Function(String?)? validator;
+  final String formControlName;
+  final TextInputAction? textInputAction;
 
   const SharedPasswordInputField({
     super.key,
-    required this.controller,
     required this.title,
     required this.hint,
     this.validator,
+    required this.formControlName,
+    this.textInputAction,
   });
 
   @override
@@ -93,13 +100,14 @@ class _SharedPasswordInputFieldState extends State<SharedPasswordInputField> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomInputField(
-      controller: widget.controller,
+    return CustomReactiveFormField(
+      formControlName: widget.formControlName,
       keyboardType: TextInputType.visiblePassword,
       title: widget.title,
       hint: widget.hint,
       isSecure: isSecure,
       validator: widget.validator,
+      textInputAction: widget.textInputAction,
       suffixIcon: InkWell(
         onTap: () => setState(() => isSecure = !isSecure),
         child: _getSuffixIcon(),

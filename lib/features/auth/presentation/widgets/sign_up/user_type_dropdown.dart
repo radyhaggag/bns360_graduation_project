@@ -17,7 +17,7 @@ class UserTypeDropdown extends StatelessWidget {
         return CustomDropdown<UserType>(
           value: authBloc.userType,
           onTapCallback: (value) => authBloc.add(
-            ChangeUserType(userType: value),
+            ChangeUserTypeEvent(userType: value),
           ),
           items: UserType.values,
           viewItems: UserType.values.map((e) => e.getText(context)).toList(),

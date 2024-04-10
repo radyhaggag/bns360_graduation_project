@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/shared_data/entities/profile/profile_entity.dart';
@@ -24,11 +23,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<RemoveProfileImageEvent>(_removeProfileImage);
     on<ChangePasswordEvent>(_changePassword);
     on<SignOutEvent>(_signOut);
-    _initListener();
   }
-
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
 
   ProfileEntity? _profile;
   ProfileEntity? get profile => _profile;
@@ -41,7 +36,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) {
     // imagePathNotifier.value = newImagePath != null;
-    imagePathNotifier.value = true;
     emit(ProfileImageChangedState());
   }
 
@@ -53,8 +47,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final editParams = EditProfileParams(
-      email: emailController.text,
-      name: nameController.text,
+      email: event.email,
+      name: event.name,
       imageUrl: _newImagePath ?? profile?.imageUrl,
     );
 
@@ -81,52 +75,17 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       },
       (r) {
         _profile = r;
-        nameController.text = r.name;
-        emailController.text = r.email;
         emit(GetProfileSuccessState(profileEntity: r));
       },
     );
   }
 
-  ValueNotifier<bool> isNameEdited = ValueNotifier(false);
-  ValueNotifier<bool> isEmailEdited = ValueNotifier(false);
-  ValueNotifier<bool> imagePathNotifier = ValueNotifier<bool>(false);
-
-  final ValueNotifier<bool> _isFormEdited = ValueNotifier<bool>(false);
-  ValueNotifier<bool> get isFormEdited => _isFormEdited;
-
-  void _onFieldChanged() {
-    final nameChanged = nameController.text != profile?.name;
-    final emailChanged = emailController.text != profile?.email;
-    final imagePathChanged = imagePathNotifier.value;
-    _isFormEdited.value = nameChanged || emailChanged || imagePathChanged;
-  }
-
-  void _onImagePathChanged() {
-    final imagePathChanged = imagePathNotifier.value;
-    _isFormEdited.value = imagePathChanged ||
-        nameController.text != profile?.name ||
-        emailController.text != profile?.email;
-  }
-
-  void _initListener() {
-    nameController.addListener(_onFieldChanged);
-    emailController.addListener(_onFieldChanged);
-    imagePathNotifier.addListener(_onImagePathChanged);
-  }
 
   _removeProfileImage(
     RemoveProfileImageEvent event,
     Emitter<ProfileState> emit,
   ) {
     emit(ProfileImageChangedState());
-  }
-
-  @override
-  close() async {
-    nameController.dispose();
-    emailController.dispose();
-    super.close();
   }
 
   _changePassword(
@@ -145,7 +104,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       oldPassword: event.oldPassword,
       newPassword: event.newPassword,
     );
-    
+
     final res = await profileRepo.changePassword(params);
 
     res.fold(

@@ -11,7 +11,15 @@ class ChangeProfileImageEvent extends ProfileEvent {}
 
 class RemoveProfileImageEvent extends ProfileEvent {}
 
-class EditProfileDataEvent extends ProfileEvent {}
+class EditProfileDataEvent extends ProfileEvent {
+  final String email;
+  final String name;
+
+  const EditProfileDataEvent({
+    required this.email,
+    required this.name,
+  });
+}
 
 class GetProfileEvent extends ProfileEvent {}
 

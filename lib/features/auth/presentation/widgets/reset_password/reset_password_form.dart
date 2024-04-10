@@ -1,9 +1,9 @@
-import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bns360_graduation_project/core/utils/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/widgets/input_fields/password_input_field.dart';
 import '../../../../../generated/l10n.dart';
-import '../../bloc/auth_bloc.dart';
 import 'reset_password_btn.dart';
 
 class ResetPasswordForm extends StatefulWidget {
@@ -15,37 +15,46 @@ class ResetPasswordForm extends StatefulWidget {
 }
 
 class _ResetPasswordFormState extends State<ResetPasswordForm> {
-  final _formKey = GlobalKey<FormState>();
-  final _newPasswordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
+  late final FormGroup form;
+
+  @override
+  void initState() {
+    super.initState();
+    form = FormGroup({
+      'password': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.minLength(kMinPasswordLength)
+        ],
+      ),
+      'confirmPassword': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.minLength(kMinPasswordLength)
+        ],
+      ),
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
+    return ReactiveFormBuilder(
+      form: () => form,
+      builder: (context, formGroup, child) => child!,
       child: Column(
         children: [
           PasswordInputField(
-            controller: _newPasswordController,
             title: S.of(context).newPassword,
             hint: S.of(context).enterNewPassword,
+            textInputAction: TextInputAction.next,
           ),
           const SizedBox(height: 20),
           ConfirmPasswordInputField(
-            passwordController: _newPasswordController,
-            controller: _confirmPasswordController,
+            formGroup: form,
+            textInputAction: TextInputAction.done,
           ),
           const SizedBox(height: 50),
-          ResetPasswordBtn(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                context.read<AuthBloc>().add(ResetPasswordEvent(
-                      email: widget.email,
-                      newPassword: _newPasswordController.text,
-                    ));
-              }
-            },
-          ),
+          const ResetPasswordBtn(),
         ],
       ),
     );
@@ -53,8 +62,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
 
   @override
   void dispose() {
-    _newPasswordController.dispose();
-    _confirmPasswordController.dispose();
+    form.dispose();
     super.dispose();
   }
 }

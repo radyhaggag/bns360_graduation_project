@@ -1,9 +1,9 @@
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/features/auth/presentation/widgets/welcome/continue_as_guest_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
-import '../../../../../core/firebase/firebase_auth_manager.dart';
 import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums.dart';
@@ -58,19 +58,7 @@ class WelcomeBody extends StatelessWidget {
               label: S.of(context).signUp,
             ),
             const SizedBox(height: 15),
-            CustomTextButton(
-              onPressed: () async {
-                await _continueAsGuest();
-
-                if (!context.mounted) return;
-
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  Routes.bottomNavBar,
-                  (route) => false,
-                );
-              },
-              label: S.of(context).continueAsGuest,
-            ),
+            const ContinueAsGuestButton(),
             const SizedBox(height: 10),
             const OrSeparator(),
             const SocialIconsButtons(),
@@ -78,9 +66,5 @@ class WelcomeBody extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _continueAsGuest() async {
-    await FirebaseAuthManager.signInAnonymously();
   }
 }

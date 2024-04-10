@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
 
 import '../../../../../core/api/api_consumer.dart';
@@ -29,6 +30,7 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
 
   @override
   Future<void> signOut() async{
+  await  AppProvider().clearProfile();
     await Future.delayed(const Duration(seconds: 2));
   }
 }

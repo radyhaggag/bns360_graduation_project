@@ -58,13 +58,16 @@ class ResetPasswordEvent extends AuthEvent {
   });
 }
 
-class ChangeUserType extends AuthEvent {
+class ChangeUserTypeEvent extends AuthEvent {
   final UserType userType;
 
-  const ChangeUserType({
+  const ChangeUserTypeEvent({
     required this.userType,
   });
 
   @override
   List<Object> get props => [userType];
 }
+
+
+class ContinueAsGuestEvent extends AuthEvent {}

@@ -10,7 +10,6 @@ class CustomReactiveFormField extends StatelessWidget {
   final String? prefixText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final String? initialValue;
   final bool isSecure;
   final TextInputType? keyboardType;
   final Widget? suffixIcon;
@@ -38,7 +37,6 @@ class CustomReactiveFormField extends StatelessWidget {
     this.validator,
     this.title,
     this.prefixText,
-    this.initialValue,
     this.isSecure = false,
     this.keyboardType,
     this.suffixIcon,
@@ -71,7 +69,6 @@ class CustomReactiveFormField extends StatelessWidget {
       controller: controller,
       maxLength: maxLength,
       hint: hint,
-      initialValue: initialValue,
       isDigitsOnly: isDigitsOnly,
       label: label,
       prefixText: prefixText,
@@ -142,7 +139,6 @@ class CustomReactiveFormField extends StatelessWidget {
 class _BuildTextField extends StatefulWidget {
   const _BuildTextField({
     this.controller,
-    this.initialValue,
     this.isSecure = false,
     this.keyboardType,
     this.textStyle,
@@ -161,7 +157,6 @@ class _BuildTextField extends StatefulWidget {
   });
 
   final TextEditingController? controller;
-  final String? initialValue;
   final bool isSecure;
   final TextInputType? keyboardType;
   final TextStyle? textStyle;

@@ -1,32 +1,37 @@
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_input_field.dart';
+import 'custom_reactive_input_field.dart';
 
 class EditInputField extends StatelessWidget {
-  final TextEditingController controller;
+  final String formControlName;
   final String? label;
   final double? fontSize;
   final double? heightBetweenLabelAndField;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
+  final TextInputAction? textInputAction;
+  final TextInputType? keyboardType;
 
   const EditInputField({
     super.key,
-    required this.controller,
+    required this.formControlName,
     this.validator,
     this.label,
     this.fontSize,
     this.suffixIcon,
     this.heightBetweenLabelAndField,
+    this.textInputAction,
+    this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     final labelStyle = context.theme.inputDecorationTheme.labelStyle;
-    return CustomInputField(
-      controller: controller,
-      keyboardType: TextInputType.name,
+    return CustomReactiveFormField(
+      formControlName: formControlName,
+      keyboardType: keyboardType,
+      textInputAction: textInputAction,
       title: label,
       validator: validator,
       suffixIcon: suffixIcon,

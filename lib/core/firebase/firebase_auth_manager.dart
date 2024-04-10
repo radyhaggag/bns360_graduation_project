@@ -76,12 +76,13 @@ abstract class FirebaseAuthManager {
   static FutureEither<User?> signInAnonymously() {
     return executeAndHandleErrorAsync<User?>(() async {
       final userCredential = await _auth.signInAnonymously();
-
+      final name = userCredential.user?.displayName ?? "";
+      final email = userCredential.user?.email ?? "";
       final ProfileModel profileModel = ProfileModel(
         // id: userCredential.user!.uid,
         id: '1',
-        name: userCredential.user?.displayName ?? "Anonymous",
-        email: userCredential.user?.email ?? "anonymous@gmail.com",
+        name: (name.isEmpty) ? "Anonymous" : name,
+        email: (email.isEmpty) ? "anonymous@gmail.com" : email,
         imageUrl: dummyImageUrl,
         // userType: UserType.user.id,
         userType: UserType.businessOwner.id,

@@ -164,5 +164,6 @@
   "add_property_success": "تم اضافة العقار بنجاح",
   "add_job_success": "تم اضافة الوظيفة بنجاح",
   "call": "اتصل",
-  "send_message": "ارسال رسالة"
+  "send_message": "ارسال رسالة",
+  "remove_profile_image": "حذف صورة البروفايل"
 }

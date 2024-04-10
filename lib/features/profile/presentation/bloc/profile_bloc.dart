@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../domain/params/edit_profile_params.dart';
@@ -18,6 +18,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     required this.profileRepo,
   }) : super(ProfileInitial()) {
     on<ChangeProfileImageEvent>(_changeProfileImage);
+    on<ClearProfileImageEvent>(_clearProfileImage);
     on<EditProfileDataEvent>(_editProfileImage);
     on<GetProfileEvent>(_getProfile);
     on<RemoveProfileImageEvent>(_removeProfileImage);
@@ -30,12 +31,30 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   String? _newImagePath;
   String? get newImagePath => _newImagePath;
+  bool _isProfileImageCleared = false;
+  bool get isProfileImageCleared => _isProfileImageCleared;
 
   _changeProfileImage(
     ChangeProfileImageEvent event,
     Emitter<ProfileState> emit,
-  ) {
-    // imagePathNotifier.value = newImagePath != null;
+  ) async {
+    final ImagePicker picker = ImagePicker();
+
+    final image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      _newImagePath = image.path;
+      _isProfileImageCleared = false;
+      emit(ProfileImageChangedState());
+    }
+  }
+
+  _clearProfileImage(
+    ClearProfileImageEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
+    _newImagePath = null;
+    _isProfileImageCleared = true;
     emit(ProfileImageChangedState());
   }
 
@@ -49,7 +68,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     final editParams = EditProfileParams(
       email: event.email,
       name: event.name,
-      imageUrl: _newImagePath ?? profile?.imageUrl,
+      newImagePath: _newImagePath,
+      isProfileImageCleared: _isProfileImageCleared,
     );
 
     final res = await profileRepo.editProfile(editParams);
@@ -79,7 +99,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       },
     );
   }
-
 
   _removeProfileImage(
     RemoveProfileImageEvent event,

@@ -190,6 +190,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("عنوان العقار"),
         "remove_picked_images":
             MessageLookupByLibrary.simpleMessage("إزالة الصور المختارة"),
+        "remove_profile_image":
+            MessageLookupByLibrary.simpleMessage("حذف صورة البروفايل"),
         "rent": MessageLookupByLibrary.simpleMessage("للإيجار"),
         "requirements": MessageLookupByLibrary.simpleMessage("المتطلبات"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),

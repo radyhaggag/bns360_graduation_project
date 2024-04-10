@@ -164,5 +164,6 @@
   "add_property_success": "The property has been added successfully",
   "add_job_success": "The job has been added successfully",
   "call": "Call",
-  "send_message": "Send message"
+  "send_message": "Send message",
+  "remove_profile_image": "Remove profile image"
 }

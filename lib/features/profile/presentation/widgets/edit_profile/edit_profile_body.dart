@@ -17,23 +17,29 @@ class EditProfileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileBloc, ProfileState>(
-      builder: (context, state) {
-        final profile = context.read<ProfileBloc>().profile;
-
-        return DataStateWidget(
-          isLoading: state is GetProfileLoadingState ,
-          isError: state is GetProfileErrorState,
-          errorMessage: (state is GetProfileErrorState) ? state.message : "",
-          isLoaded: profile != null,
-          loadedWidget: profile != null
-              ? _LoadedWidget(profile: profile)
-              : const SizedBox.shrink(),
-          loadingWidget: const FullScreenLoadingIndicator(
-            color: AppColors.white,
-          ),
-        );
+    return PopScope(
+      onPopInvoked: (_) {
+        context.read<ProfileBloc>().isProfileImageCleared = false;
       },
+      canPop: true,
+      child: BlocBuilder<ProfileBloc, ProfileState>(
+        builder: (context, state) {
+          final profile = context.read<ProfileBloc>().profile;
+      
+          return DataStateWidget(
+            isLoading: state is GetProfileLoadingState ,
+            isError: state is GetProfileErrorState,
+            errorMessage: (state is GetProfileErrorState) ? state.message : "",
+            isLoaded: profile != null,
+            loadedWidget: profile != null
+                ? _LoadedWidget(profile: profile)
+                : const SizedBox.shrink(),
+            loadingWidget: const FullScreenLoadingIndicator(
+              color: AppColors.white,
+            ),
+          );
+        },
+      ),
     );
   }
 }

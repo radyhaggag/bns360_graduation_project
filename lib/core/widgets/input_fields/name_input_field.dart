@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
-import '../../helpers/form_validators.dart';
 import 'custom_reactive_input_field.dart';
 
 class NameInputField extends StatelessWidget {
@@ -21,7 +20,6 @@ class NameInputField extends StatelessWidget {
       keyboardType: TextInputType.name,
       title: label ?? S.of(context).fullName,
       hint: label ?? S.of(context).enterName,
-      validator: (value) => FormValidator.validateName(value),
       label: label,
       textInputAction: textInputAction,
     );

@@ -1,43 +1,11 @@
+import 'package:bns360_graduation_project/generated/l10n.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 import '../utils/extensions/validators.dart';
 
 class FormValidator {
-  static String? validateEmpty(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return Intl.message(
-        'Field is required',
-        name: 'validateEmpty',
-      );
-    }
-    return null;
-  }
-
-  static String? validateEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      return Intl.message(
-        'Field is required',
-        name: 'validateEmpty',
-      );
-    } else if (!value.isEmail()) {
-      return Intl.message(
-        'Enter a valid email address',
-        name: 'validateEmail',
-      );
-    }
-    return null;
-  }
-
-  static String? validatePassword(String? value) {
-    if (value == null || value.length <= 8) {
-      return Intl.message(
-        'Password must be at least 8 characters',
-        name: 'validatePassword',
-      );
-    }
-    return null;
-  }
-
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.trim().isEmpty) {
       return null;
@@ -92,5 +60,30 @@ class FormValidator {
     // Regular expression to match English and Arabic letters
     final RegExp regex = RegExp(r'^[a-zA-Z\u0600-\u06FF]+$');
     return regex.hasMatch(value);
+  }
+
+  static Map<String, String Function(Object)> validationMessages(
+    BuildContext context,
+  ) {
+    final s = S.of(context);
+    return {
+      ValidationMessage.required: (_) => s.required_field_validation_message,
+      ValidationMessage.pattern: (_) => s.pattern_validation_message,
+      ValidationMessage.number: (_) => s.number_validation_message,
+      ValidationMessage.mustMatch: (_) => s.mustMatch_validation_message,
+      ValidationMessage.minLength: (error) {
+        return s.minLength_validation_message((error as Map)['requiredLength']);
+      },
+      ValidationMessage.maxLength: (error) => s.maxLength_validation_message((error as Map)['requiredLength']),
+      ValidationMessage.email: (_) => s.email_validation_message,
+      ValidationMessage.creditCard: (_) => s.creditCard_validation_message,
+      // ValidationMessage.max: (_) => t.max_validation_message,
+      // ValidationMessage.min: (_) => t.min_validation_message,
+      ValidationMessage.equals: (_) => s.equals_validation_message,
+      ValidationMessage.requiredTrue: (_) => s.requiredTrue_validation_message,
+      ValidationMessage.compare: (_) => s.compare_validation_message,
+      ValidationMessage.contains: (_) => s.contains_validation_message,
+      ValidationMessage.any: (_) => s.any_validation_message,
+    };
   }
 }

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,18 +17,19 @@ class EditProfileDataBtn extends StatelessWidget {
       builder: (context, state) {
         return ReactiveFormConsumer(
           builder: (context, form, child) {
+            final formControls = form.controls;
+
+            final email = formControls['email']!.value as String;
+            final name = formControls['name']!.value as String;
+
             return CustomElevatedButton(
-              onPressed: form.valid ||
-                      context.read<ProfileBloc>().newImagePath != null
+              onPressed: (form.valid && isProfileDataChanged(email, name)) ||
+                      context.read<ProfileBloc>().newImagePath != null || context.read<ProfileBloc>().isProfileImageCleared
                   ? () {
-                      final formControls = form.controls;
-
-                      final email = formControls['email']!.value as String;
-                      final name = formControls['name']!.value as String;
-
-                      context
-                          .read<ProfileBloc>()
-                          .add(EditProfileDataEvent(email: email, name: name));
+                      context.read<ProfileBloc>().add(EditProfileDataEvent(
+                            email: email,
+                            name: name,
+                          ));
                     }
                   : null,
               label: S.of(context).save,
@@ -37,5 +39,10 @@ class EditProfileDataBtn extends StatelessWidget {
         );
       },
     );
+  }
+
+  bool isProfileDataChanged(String email, String name) {
+    final profile = AppProvider().getProfile();
+    return email != profile?.email || name != profile?.name;
   }
 }

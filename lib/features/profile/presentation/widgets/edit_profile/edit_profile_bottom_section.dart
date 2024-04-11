@@ -24,16 +24,17 @@ class EditProfileBottomSection extends StatefulWidget {
 
 class _EditProfileBottomSectionState extends State<EditProfileBottomSection> {
   late final FormGroup form;
-   ProfileEntity? profile;
+  ProfileEntity? profile;
 
   @override
   void initState() {
     super.initState();
-     profile = AppProvider().getProfile();
+    profile = AppProvider().getProfile();
     form = FormGroup({
       'email': FormControl<String>(
         validators: [Validators.required, Validators.email],
         value: profile?.email,
+        disabled: true,
       ),
       'name': FormControl<String>(
         validators: [Validators.required],
@@ -43,8 +44,13 @@ class _EditProfileBottomSectionState extends State<EditProfileBottomSection> {
   }
 
   @override
+  void dispose() {
+    form.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    print(profile);
     return Container(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(

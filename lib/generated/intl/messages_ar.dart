@@ -24,9 +24,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(hours) => "قبل ${hours} ساعات";
 
-  static String m2(number) => "الحد الأقصى لتحميل ${number} صورة";
+  static String m2(number) => "الحد الأقصى: ${number} أحرف.";
 
-  static String m3(mins) => "قبل ${mins} دقائق";
+  static String m3(number) => "الحد الأقصى لتحميل ${number} صورة";
+
+  static String m4(number) => "يجب أن يكون القيمة أقل من أو تساوي ${number}";
+
+  static String m5(number) => "الحد الأدنى: ${number} أحرف.";
+
+  static String m6(number) => "يجب أن تكون القيمة أكبر من أو تساوي ${number}";
+
+  static String m7(mins) => "قبل ${mins} دقائق";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -46,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_property_success":
             MessageLookupByLibrary.simpleMessage("تم اضافة العقار بنجاح"),
         "am": MessageLookupByLibrary.simpleMessage("ص"),
+        "any_validation_message":
+            MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
         "apply_now": MessageLookupByLibrary.simpleMessage("قم بالتقديم الان"),
@@ -65,17 +75,23 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkEmailMsg": MessageLookupByLibrary.simpleMessage(
             "من فضلك قم بفحص بريدك اللالكترونى"),
         "closed_now": MessageLookupByLibrary.simpleMessage("مغلق الآن"),
+        "compare_validation_message":
+            MessageLookupByLibrary.simpleMessage("القيم غير متطابقة"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
         "confirm_delete_message": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد أنك تريد حذف هذه الرسالة؟"),
         "contact_us": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
+        "contains_validation_message":
+            MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
         "conversations": MessageLookupByLibrary.simpleMessage("المحادثات"),
         "craftsman": MessageLookupByLibrary.simpleMessage("حرفى"),
         "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
+        "creditCard_validation_message": MessageLookupByLibrary.simpleMessage(
+            "يرجى إدخال رقم بطاقة ائتمان صالح"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع المظلم"),
         "day_ago": MessageLookupByLibrary.simpleMessage("قبل يوم"),
         "days_ago": m0,
@@ -90,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("جنية"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكترونى"),
+        "email_validation_message": MessageLookupByLibrary.simpleMessage(
+            "يرجى إدخال عنوان بريد إلكتروني صحيح"),
         "enterEmail":
             MessageLookupByLibrary.simpleMessage("ادخل بريدك الإلكترونى"),
         "enterName": MessageLookupByLibrary.simpleMessage("ادخل اسمك بالكامل"),
@@ -106,6 +124,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل عنوان العقار"),
         "enter_the_requirements":
             MessageLookupByLibrary.simpleMessage("ادخل المتطلبات"),
+        "equals_validation_message":
+            MessageLookupByLibrary.simpleMessage("الحقول يجب أن تكون متساوية"),
         "favorites": MessageLookupByLibrary.simpleMessage("لمفضلة"),
         "find_your_home": MessageLookupByLibrary.simpleMessage("ابحث عن منزلك"),
         "find_your_job": MessageLookupByLibrary.simpleMessage("لنجد وظيفتك"),
@@ -133,11 +153,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "map": MessageLookupByLibrary.simpleMessage("الخريطة"),
-        "max_no_of_image_uploads": m2,
+        "maxLength_validation_message": m2,
+        "max_no_of_image_uploads": m3,
+        "max_validation_message": m4,
         "meter_lone": MessageLookupByLibrary.simpleMessage("متر"),
         "meter_short": MessageLookupByLibrary.simpleMessage("م"),
+        "minLength_validation_message": m5,
         "min_ago": MessageLookupByLibrary.simpleMessage("قبل دقيقة"),
-        "mins_ago": m3,
+        "min_validation_message": m6,
+        "mins_ago": m7,
+        "mustMatch_validation_message":
+            MessageLookupByLibrary.simpleMessage("الحقول يجب أن تتطابق"),
         "must_be_more_than_minimum_number_of_characters":
             MessageLookupByLibrary.simpleMessage(
                 "يجب أن تكون كلمة المرور أكثر من الحد الأدنى لطول الأحرف"),
@@ -158,6 +184,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("لم تتلقى رمز التحقق!"),
+        "number_validation_message":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال رقم صحيح"),
         "offer_type": MessageLookupByLibrary.simpleMessage("نوع العرض"),
         "ok": MessageLookupByLibrary.simpleMessage("حسنا"),
         "open_now": MessageLookupByLibrary.simpleMessage("مفتوح الان"),
@@ -171,6 +199,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة مرورك بنجاح"),
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("كلمات المرور غير متطابقة"),
+        "pattern_validation_message":
+            MessageLookupByLibrary.simpleMessage("صيغة غير صالحة"),
         "permission_denied":
             MessageLookupByLibrary.simpleMessage("الإذن مرفوض"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
@@ -193,6 +223,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("حذف صورة البروفايل"),
         "rent": MessageLookupByLibrary.simpleMessage("للإيجار"),
+        "requiredTrue_validation_message":
+            MessageLookupByLibrary.simpleMessage("يجب تحديد هذا الحقل"),
+        "required_field_validation_message":
+            MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "requirements": MessageLookupByLibrary.simpleMessage("المتطلبات"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),
         "resetPassword":

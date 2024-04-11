@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../generated/l10n.dart';
-import '../../helpers/form_validators.dart';
 import 'custom_reactive_input_field.dart';
 
 class PasswordInputField extends StatefulWidget {
@@ -70,7 +69,7 @@ class _ConfirmPasswordInputFieldState extends State<ConfirmPasswordInputField> {
     if (value != password) {
       return S.of(context).passwordsDoNotMatch;
     }
-    return FormValidator.validatePassword(value);
+    return null;
   }
 }
 

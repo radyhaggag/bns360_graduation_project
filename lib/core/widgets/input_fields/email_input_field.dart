@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
-import '../../helpers/form_validators.dart';
 import 'custom_reactive_input_field.dart';
 
 class EmailInputField extends StatelessWidget {
@@ -17,7 +16,6 @@ class EmailInputField extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       title: S.of(context).email,
       hint: S.of(context).enterEmail,
-      validator: (value) => FormValidator.validateEmail(value),
       formControlName: 'email',
       textInputAction: textInputAction,
     );

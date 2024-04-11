@@ -24,9 +24,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m1(hours) => "${hours} hours ago";
 
-  static String m2(number) => "Maximum upload of ${number} images";
+  static String m2(number) => "Maximum length: ${number} characters.";
 
-  static String m3(mins) => "${mins} mins ago";
+  static String m3(number) => "Maximum upload of ${number} images";
+
+  static String m4(number) => "Value must be less than or equal to ${number}";
+
+  static String m5(number) => "Minimum length: ${number} characters.";
+
+  static String m6(number) =>
+      "Value must be greater than or equal to ${number}";
+
+  static String m7(mins) => "${mins} mins ago";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -46,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_property_success": MessageLookupByLibrary.simpleMessage(
             "The property has been added successfully"),
         "am": MessageLookupByLibrary.simpleMessage("AM"),
+        "any_validation_message":
+            MessageLookupByLibrary.simpleMessage("Invalid value"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
         "apply_now": MessageLookupByLibrary.simpleMessage("Apply now"),
@@ -64,11 +75,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "checkEmailMsg":
             MessageLookupByLibrary.simpleMessage("Please check your email"),
         "closed_now": MessageLookupByLibrary.simpleMessage("Closed now"),
+        "compare_validation_message":
+            MessageLookupByLibrary.simpleMessage("Values do not match"),
         "confirmNewPassword":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_delete_message": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this message?"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
+        "contains_validation_message":
+            MessageLookupByLibrary.simpleMessage("Invalid value"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
         "conversations": MessageLookupByLibrary.simpleMessage("Conversations"),
@@ -76,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "craftsmen": MessageLookupByLibrary.simpleMessage("Craftsmen"),
         "createYourAccount":
             MessageLookupByLibrary.simpleMessage("Create your Account"),
+        "creditCard_validation_message": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid credit card number"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
         "day_ago": MessageLookupByLibrary.simpleMessage("day ago"),
         "days_ago": m0,
@@ -89,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "email_validation_message": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid email address"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter your name"),
         "enterNewPassword":
@@ -105,11 +124,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter property address"),
         "enter_the_requirements":
             MessageLookupByLibrary.simpleMessage("Enter the requirements"),
+        "equals_validation_message":
+            MessageLookupByLibrary.simpleMessage("Fields must be equal"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
         "find_your_home":
             MessageLookupByLibrary.simpleMessage("Find your home"),
         "find_your_job":
-            MessageLookupByLibrary.simpleMessage("Let\'s find your job"),
+            MessageLookupByLibrary.simpleMessage("Let\'\'s find your job"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
@@ -135,11 +156,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Welcome back to Login to your Account"),
         "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "map": MessageLookupByLibrary.simpleMessage("Map"),
-        "max_no_of_image_uploads": m2,
+        "maxLength_validation_message": m2,
+        "max_no_of_image_uploads": m3,
+        "max_validation_message": m4,
         "meter_lone": MessageLookupByLibrary.simpleMessage("Meter"),
         "meter_short": MessageLookupByLibrary.simpleMessage("m"),
+        "minLength_validation_message": m5,
         "min_ago": MessageLookupByLibrary.simpleMessage("min ago"),
-        "mins_ago": m3,
+        "min_validation_message": m6,
+        "mins_ago": m7,
+        "mustMatch_validation_message":
+            MessageLookupByLibrary.simpleMessage("Fields must match"),
         "must_be_more_than_minimum_number_of_characters":
             MessageLookupByLibrary.simpleMessage(
                 "Password must be more than the minimum length of characters"),
@@ -156,9 +183,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No properties found"),
         "no_results": MessageLookupByLibrary.simpleMessage("No results found."),
         "notHaveAccountMsg":
-            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+            MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
         "notReceiveCode":
-            MessageLookupByLibrary.simpleMessage("I didn\'t receive a code!"),
+            MessageLookupByLibrary.simpleMessage("I didn\'\'t receive a code!"),
+        "number_validation_message":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid number"),
         "offer_type": MessageLookupByLibrary.simpleMessage("Offer type"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "open_now": MessageLookupByLibrary.simpleMessage("Open now"),
@@ -172,6 +201,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your password has been changed successfully"),
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
+        "pattern_validation_message":
+            MessageLookupByLibrary.simpleMessage("Invalid format"),
         "permission_denied":
             MessageLookupByLibrary.simpleMessage("Permission Denied"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
@@ -194,6 +225,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("Remove profile image"),
         "rent": MessageLookupByLibrary.simpleMessage("Rent"),
+        "requiredTrue_validation_message":
+            MessageLookupByLibrary.simpleMessage("This field must be checked"),
+        "required_field_validation_message":
+            MessageLookupByLibrary.simpleMessage("This field is required"),
         "requirements": MessageLookupByLibrary.simpleMessage("Requirements"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),

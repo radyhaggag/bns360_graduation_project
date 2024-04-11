@@ -2,7 +2,6 @@ import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
-import '../../helpers/form_validators.dart';
 import '../../utils/enums.dart';
 import '../../utils/extensions/language.dart';
 
@@ -51,9 +50,6 @@ class PhoneInputField extends StatelessWidget {
                   decoration: InputDecoration(
                     hintText: S.of(context).enterPhoneNumber,
                     helperText: "",
-                  ),
-                  validator: (value) => FormValidator.validatePhoneNumber(
-                    '+20$value',
                   ),
                 ),
               ),

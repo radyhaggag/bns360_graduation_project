@@ -165,5 +165,20 @@
   "add_job_success": "تم اضافة الوظيفة بنجاح",
   "call": "اتصل",
   "send_message": "ارسال رسالة",
-  "remove_profile_image": "حذف صورة البروفايل"
+  "remove_profile_image": "حذف صورة البروفايل",
+  "required_field_validation_message": "هذا الحقل مطلوب",
+  "pattern_validation_message": "صيغة غير صالحة",
+  "number_validation_message": "يرجى إدخال رقم صحيح",
+  "mustMatch_validation_message": "الحقول يجب أن تتطابق",
+  "minLength_validation_message": "الحد الأدنى: {number} أحرف.",
+  "maxLength_validation_message": "الحد الأقصى: {number} أحرف.",
+  "email_validation_message": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+  "creditCard_validation_message": "يرجى إدخال رقم بطاقة ائتمان صالح",
+  "max_validation_message": "يجب أن يكون القيمة أقل من أو تساوي {number}",
+  "min_validation_message": "يجب أن تكون القيمة أكبر من أو تساوي {number}",
+  "equals_validation_message": "الحقول يجب أن تكون متساوية",
+  "requiredTrue_validation_message": "يجب تحديد هذا الحقل",
+  "compare_validation_message": "القيم غير متطابقة",
+  "contains_validation_message": "قيمة غير صالحة",
+  "any_validation_message": "قيمة غير صالحة"
 }

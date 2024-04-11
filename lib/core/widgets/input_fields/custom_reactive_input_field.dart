@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/form_validators.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -235,6 +236,7 @@ class _BuildTextFieldState extends State<_BuildTextField> {
           }
         }
       },
+      validationMessages: FormValidator.validationMessages(context),
       inputFormatters: widget.isDigitsOnly
           ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
           : null,

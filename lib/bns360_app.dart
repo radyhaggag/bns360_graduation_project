@@ -60,7 +60,6 @@ class _BNS360AppState extends State<BNS360App> {
                   ? ThemeConfig.getLightTheme()
                   : ThemeConfig.getDarkTheme(),
               onGenerateRoute: RouteConfig.getRoute,
-              // initialRoute: Routes.splash,
               initialRoute: Routes.splash,
             );
           },

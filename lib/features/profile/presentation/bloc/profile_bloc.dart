@@ -31,8 +31,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   String? _newImagePath;
   String? get newImagePath => _newImagePath;
-  bool _isProfileImageCleared = false;
-  bool get isProfileImageCleared => _isProfileImageCleared;
+
+  bool isProfileImageCleared = false;
 
   _changeProfileImage(
     ChangeProfileImageEvent event,
@@ -44,7 +44,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     if (image != null) {
       _newImagePath = image.path;
-      _isProfileImageCleared = false;
+      isProfileImageCleared = false;
       emit(ProfileImageChangedState());
     }
   }
@@ -54,7 +54,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     _newImagePath = null;
-    _isProfileImageCleared = true;
+    isProfileImageCleared = true;
     emit(ProfileImageChangedState());
   }
 
@@ -69,7 +69,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       email: event.email,
       name: event.name,
       newImagePath: _newImagePath,
-      isProfileImageCleared: _isProfileImageCleared,
+      isProfileImageCleared: isProfileImageCleared,
     );
 
     final res = await profileRepo.editProfile(editParams);

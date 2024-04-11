@@ -170,10 +170,10 @@ class S {
     );
   }
 
-  /// `Don't have an account?`
+  /// `Don''t have an account?`
   String get notHaveAccountMsg {
     return Intl.message(
-      'Don\'t have an account?',
+      'Don\'\'t have an account?',
       name: 'notHaveAccountMsg',
       desc: '',
       args: [],
@@ -400,10 +400,10 @@ class S {
     );
   }
 
-  /// `I didn't receive a code!`
+  /// `I didn''t receive a code!`
   String get notReceiveCode {
     return Intl.message(
-      'I didn\'t receive a code!',
+      'I didn\'\'t receive a code!',
       name: 'notReceiveCode',
       desc: '',
       args: [],
@@ -1230,10 +1230,10 @@ class S {
     );
   }
 
-  /// `Let's find your job`
+  /// `Let''s find your job`
   String get find_your_job {
     return Intl.message(
-      'Let\'s find your job',
+      'Let\'\'s find your job',
       name: 'find_your_job',
       desc: '',
       args: [],
@@ -1715,6 +1715,156 @@ class S {
     return Intl.message(
       'Remove profile image',
       name: 'remove_profile_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field is required`
+  String get required_field_validation_message {
+    return Intl.message(
+      'This field is required',
+      name: 'required_field_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid format`
+  String get pattern_validation_message {
+    return Intl.message(
+      'Invalid format',
+      name: 'pattern_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid number`
+  String get number_validation_message {
+    return Intl.message(
+      'Please enter a valid number',
+      name: 'number_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fields must match`
+  String get mustMatch_validation_message {
+    return Intl.message(
+      'Fields must match',
+      name: 'mustMatch_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Minimum length: {number} characters.`
+  String minLength_validation_message(Object number) {
+    return Intl.message(
+      'Minimum length: $number characters.',
+      name: 'minLength_validation_message',
+      desc: '',
+      args: [number],
+    );
+  }
+
+  /// `Maximum length: {number} characters.`
+  String maxLength_validation_message(Object number) {
+    return Intl.message(
+      'Maximum length: $number characters.',
+      name: 'maxLength_validation_message',
+      desc: '',
+      args: [number],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get email_validation_message {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'email_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid credit card number`
+  String get creditCard_validation_message {
+    return Intl.message(
+      'Please enter a valid credit card number',
+      name: 'creditCard_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Value must be less than or equal to {number}`
+  String max_validation_message(Object number) {
+    return Intl.message(
+      'Value must be less than or equal to $number',
+      name: 'max_validation_message',
+      desc: '',
+      args: [number],
+    );
+  }
+
+  /// `Value must be greater than or equal to {number}`
+  String min_validation_message(Object number) {
+    return Intl.message(
+      'Value must be greater than or equal to $number',
+      name: 'min_validation_message',
+      desc: '',
+      args: [number],
+    );
+  }
+
+  /// `Fields must be equal`
+  String get equals_validation_message {
+    return Intl.message(
+      'Fields must be equal',
+      name: 'equals_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This field must be checked`
+  String get requiredTrue_validation_message {
+    return Intl.message(
+      'This field must be checked',
+      name: 'requiredTrue_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Values do not match`
+  String get compare_validation_message {
+    return Intl.message(
+      'Values do not match',
+      name: 'compare_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid value`
+  String get contains_validation_message {
+    return Intl.message(
+      'Invalid value',
+      name: 'contains_validation_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid value`
+  String get any_validation_message {
+    return Intl.message(
+      'Invalid value',
+      name: 'any_validation_message',
       desc: '',
       args: [],
     );

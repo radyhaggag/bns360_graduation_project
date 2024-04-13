@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'bns360_app.dart';
@@ -20,9 +18,6 @@ Future<void> main() async {
     initAppDependencies(),
     HiveManager.init(),
   ]);
-  if (!kIsWeb && defaultTargetPlatform == TargetPlatform.android) {
-    await InAppWebViewController.setWebContentsDebuggingEnabled(kDebugMode);
-  }
   Bloc.observer = MyBlocObserver();
   runApp(const BNS360App());
 }

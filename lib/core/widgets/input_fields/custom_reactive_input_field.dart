@@ -1,8 +1,10 @@
-import 'package:bns360_graduation_project/core/helpers/form_validators.dart';
+import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+
+typedef ValidationMessages = Map<String, String Function(Object)>?;
 
 class CustomReactiveFormField extends StatelessWidget {
   final String? title;
@@ -29,6 +31,7 @@ class CustomReactiveFormField extends StatelessWidget {
   final TextAlign? textAlign;
   final String formControlName;
   final TextInputAction? textInputAction;
+  final ValidationMessages? validationMessages;
 
   const CustomReactiveFormField({
     super.key,
@@ -56,6 +59,7 @@ class CustomReactiveFormField extends StatelessWidget {
     this.maxLength,
     required this.formControlName,
     this.textInputAction,
+    this.validationMessages,
   });
 
   Widget get reactiveField {
@@ -76,6 +80,7 @@ class CustomReactiveFormField extends StatelessWidget {
       suffixIcon: suffixIcon,
       title: title,
       textInputAction: textInputAction,
+      validationMessages: validationMessages,
     );
   }
 
@@ -155,6 +160,7 @@ class _BuildTextField extends StatefulWidget {
     required this.formControlName,
     this.textAlign,
     this.textInputAction,
+    this.validationMessages,
   });
 
   final TextEditingController? controller;
@@ -173,7 +179,7 @@ class _BuildTextField extends StatefulWidget {
   final int? maxLength;
   final String formControlName;
   final TextInputAction? textInputAction;
-
+  final ValidationMessages? validationMessages;
 
   @override
   State<_BuildTextField> createState() => _BuildTextFieldState();
@@ -220,7 +226,7 @@ class _BuildTextFieldState extends State<_BuildTextField> {
       decoration: widget.inputDecoration ?? defaultInputDecoration,
       keyboardType: widget.keyboardType,
       obscureText: widget.isSecure,
-      maxLines: widget.isSecure ? 1: widget.maxLines,
+      maxLines: widget.isSecure ? 1 : widget.maxLines,
       maxLength: widget.maxLength,
       textAlign: widget.textAlign ?? TextAlign.start,
       textInputAction: widget.textInputAction,
@@ -236,7 +242,8 @@ class _BuildTextFieldState extends State<_BuildTextField> {
           }
         }
       },
-      validationMessages: FormValidator.validationMessages(context),
+      validationMessages: widget.validationMessages ??
+          FormValidator.validationMessages(context),
       inputFormatters: widget.isDigitsOnly
           ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
           : null,

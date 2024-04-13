@@ -181,5 +181,6 @@
   "requiredTrue_validation_message": "This field must be checked",
   "compare_validation_message": "Values do not match",
   "contains_validation_message": "Invalid value",
-  "any_validation_message": "Invalid value"
+  "any_validation_message": "Invalid value",
+  "required": "Required"
 }

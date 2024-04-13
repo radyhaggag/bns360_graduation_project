@@ -20,20 +20,20 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
   @override
   void initState() {
     super.initState();
-    form = FormGroup({
-      'password': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.minLength(kMinPasswordLength)
-        ],
-      ),
-      'confirmPassword': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.minLength(kMinPasswordLength)
-        ],
-      ),
-    });
+    form = FormGroup(
+      {
+        'password': FormControl<String>(
+          validators: [
+            Validators.required,
+            Validators.minLength(kMinPasswordLength)
+          ],
+        ),
+        'confirmPassword': FormControl<String>(),
+      },
+      validators: [
+        Validators.mustMatch('password', 'confirmPassword'),
+      ],
+    );
   }
 
   @override

@@ -225,6 +225,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("Remove profile image"),
         "rent": MessageLookupByLibrary.simpleMessage("Rent"),
+        "required": MessageLookupByLibrary.simpleMessage("Required"),
         "requiredTrue_validation_message":
             MessageLookupByLibrary.simpleMessage("This field must be checked"),
         "required_field_validation_message":

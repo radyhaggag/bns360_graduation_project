@@ -180,5 +180,6 @@
   "requiredTrue_validation_message": "يجب تحديد هذا الحقل",
   "compare_validation_message": "القيم غير متطابقة",
   "contains_validation_message": "قيمة غير صالحة",
-  "any_validation_message": "قيمة غير صالحة"
+  "any_validation_message": "قيمة غير صالحة",
+  "required": "مطلوب"
 }

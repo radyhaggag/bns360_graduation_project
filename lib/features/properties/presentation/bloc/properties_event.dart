@@ -34,4 +34,8 @@ class AddPropertyEvent extends PropertiesEvent {
 
 class PickPropertyImagesEvent extends PropertiesEvent {}
 
-class RemovePickedPropertyImagesEvent extends PropertiesEvent {}
+class RemovePickedPropertyImageEvent extends PropertiesEvent {
+  final int index;
+
+  const RemovePickedPropertyImageEvent({required this.index});
+}

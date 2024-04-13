@@ -6,6 +6,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../../../core/utils/enums/job_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
+import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../generated/l10n.dart';
 import 'job_type_radio_tile.dart';
 
@@ -84,33 +85,7 @@ class AddJobForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
-          CustomReactiveFormField(
-            title: t.phoneNumber,
-            prefixText: "+20 ",
-            hint: "+20 ",
-            formControlName: 'phoneNumber',
-            isHorizontally: true,
-            keyboardType: TextInputType.number,
-            isDigitsOnly: true,
-            textFieldWidth: .5.sw,
-            textStyle: context.textTheme.bodyMedium,
-            maxLength: 10,
-            textInputAction: TextInputAction.next,
-          ),
-          10.verticalSpace,
-          CustomReactiveFormField(
-            title: t.whatsapp,
-            prefixText: "+20 ",
-            hint: "+20 ",
-            formControlName: 'whatsapp',
-            isHorizontally: true,
-            keyboardType: TextInputType.number,
-            isDigitsOnly: true,
-            textFieldWidth: .5.sw,
-            textStyle: context.textTheme.bodyMedium,
-            maxLength: 10,
-            textInputAction: TextInputAction.done,
-          ),
+          const WhatsappAndMobileFields(),
         ],
       ),
     );

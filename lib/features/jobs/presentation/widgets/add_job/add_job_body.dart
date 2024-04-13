@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
 import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
 import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
 import 'package:flutter/material.dart';
@@ -30,20 +31,22 @@ class _AddJobBodyState extends State<AddJobBody> {
       'description': FormControl<String>(),
       'requirements': FormControl<String>(validators: [Validators.required]),
       'workHours': FormControl<String>(validators: [
-        Validators.required,
+        Validators.requiredTrue,
         Validators.number,
       ]),
       'salary': FormControl<String>(validators: [
-        Validators.required,
+        Validators.requiredTrue,
         Validators.number,
       ]),
       'phoneNumber': FormControl<String>(validators: [
         Validators.required,
         Validators.number,
+        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
       ]),
       'whatsapp': FormControl<String>(validators: [
         Validators.required,
         Validators.number,
+        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
       ]),
     });
   }

@@ -223,6 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("حذف صورة البروفايل"),
         "rent": MessageLookupByLibrary.simpleMessage("للإيجار"),
+        "required": MessageLookupByLibrary.simpleMessage("مطلوب"),
         "requiredTrue_validation_message":
             MessageLookupByLibrary.simpleMessage("يجب تحديد هذا الحقل"),
         "required_field_validation_message":

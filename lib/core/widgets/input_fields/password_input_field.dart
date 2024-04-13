@@ -29,6 +29,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       title: widget.title ?? S.of(context).password,
       hint: widget.hint ?? S.of(context).enterPassword,
       formControlName: 'password',
+      textInputAction: widget.textInputAction,
     );
   }
 }
@@ -56,27 +57,15 @@ class _ConfirmPasswordInputFieldState extends State<ConfirmPasswordInputField> {
     return SharedPasswordInputField(
       title: S.of(context).confirmNewPassword,
       hint: S.of(context).confirmNewPassword,
-      validator: (value) => _validateConfirmationPassword(value),
       formControlName: 'confirmPassword',
+      textInputAction: widget.textInputAction,
     );
-  }
-
-  String? _validateConfirmationPassword(String? value) {
-    final formControls = widget.formGroup.controls;
-
-    final password = formControls['title']!.value as String;
-
-    if (value != password) {
-      return S.of(context).passwordsDoNotMatch;
-    }
-    return null;
   }
 }
 
 class SharedPasswordInputField extends StatefulWidget {
   final String title;
   final String hint;
-  final String? Function(String?)? validator;
   final String formControlName;
   final TextInputAction? textInputAction;
 
@@ -84,7 +73,6 @@ class SharedPasswordInputField extends StatefulWidget {
     super.key,
     required this.title,
     required this.hint,
-    this.validator,
     required this.formControlName,
     this.textInputAction,
   });
@@ -105,7 +93,6 @@ class _SharedPasswordInputFieldState extends State<SharedPasswordInputField> {
       title: widget.title,
       hint: widget.hint,
       isSecure: isSecure,
-      validator: widget.validator,
       textInputAction: widget.textInputAction,
       suffixIcon: InkWell(
         onTap: () => setState(() => isSecure = !isSecure),

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
 import 'package:bns360_graduation_project/features/properties/params/add_property_params.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/bloc/properties_bloc.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_button.dart';
@@ -10,6 +11,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
 import 'add_property_form.dart';
+import 'upload_proprty_images_section.dart';
 
 class AddPropertyBody extends StatefulWidget {
   const AddPropertyBody({super.key});
@@ -25,24 +27,27 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
   @override
   void initState() {
     super.initState();
+
     form = FormGroup({
       'description': FormControl<String>(validators: [Validators.required]),
       'address': FormControl<String>(validators: [Validators.required]),
       'area': FormControl<String>(validators: [
-        Validators.required,
+        Validators.requiredTrue,
         Validators.number,
       ]),
       'price': FormControl<String>(validators: [
-        Validators.required,
+        Validators.requiredTrue,
         Validators.number,
       ]),
       'phoneNumber': FormControl<String>(validators: [
         Validators.required,
         Validators.number,
+        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
       ]),
       'whatsapp': FormControl<String>(validators: [
         Validators.required,
         Validators.number,
+        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
       ]),
     });
   }
@@ -69,6 +74,8 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
                 });
               },
             ),
+            10.verticalSpace,
+            const UploadPropertyImagesSection(),
             20.verticalSpace,
             AddPropertyButton(
               onAdd: _submitForm,

@@ -22,7 +22,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     on<SelectPropertyLocationEvent>(_selectPropertyLocation);
     on<AddPropertyEvent>(_addProperty);
     on<PickPropertyImagesEvent>(_pickPropertyImages);
-    on<RemovePickedPropertyImagesEvent>(_removePropertyImages);
+    on<RemovePickedPropertyImageEvent>(_removePropertyImages);
   }
 
   List<PropertyEntity> properties = [];
@@ -129,7 +129,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     );
   }
 
-  List<File> _pickedImages = [];
+  final List<File> _pickedImages = [];
   List<File> get pickedImages => _pickedImages;
 
   _pickPropertyImages(
@@ -138,22 +138,31 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   ) async {
     final ImagePicker picker = ImagePicker();
 
-    final images = await picker.pickMultiImage();
-
-    if (images.isNotEmpty) {
-      final length = images.length > 4 ? 4 : images.length;
-      for (var i = 0; i < length; i++) {
-        _pickedImages.add(File(images[i].path));
+    if (_pickedImages.length == 3) {
+      final image = await picker.pickImage(source: ImageSource.gallery);
+      if (image != null) {
+        _pickedImages.add(File(image.path));
       }
       emit(PropertyImagesUpdatedState());
+    } else {
+      final images = await picker.pickMultiImage();
+
+      if (images.isNotEmpty) {
+        final length = images.length > 4 ? 4 : images.length;
+        for (int i = 0; i < length; i++) {
+          if (_pickedImages.length >= 4) break;
+          _pickedImages.add(File(images[i].path));
+        }
+        emit(PropertyImagesUpdatedState());
+      }
     }
   }
 
   _removePropertyImages(
-    RemovePickedPropertyImagesEvent event,
+    RemovePickedPropertyImageEvent event,
     Emitter<PropertiesState> emit,
   ) {
-    _pickedImages = [];
+    _pickedImages.removeAt(event.index);
     emit(PropertyImagesUpdatedState());
   }
 }

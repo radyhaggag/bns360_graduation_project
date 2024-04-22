@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "access_storage_permissions_msg": MessageLookupByLibrary.simpleMessage(
             "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
+        "add": MessageLookupByLibrary.simpleMessage("إضافة"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("إضافة وظيفة"),
         "add_job_success":
             MessageLookupByLibrary.simpleMessage("تم اضافة الوظيفة بنجاح"),
@@ -53,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_property": MessageLookupByLibrary.simpleMessage("إضافة عقار"),
         "add_property_success":
             MessageLookupByLibrary.simpleMessage("تم اضافة العقار بنجاح"),
+        "add_requirement":
+            MessageLookupByLibrary.simpleMessage("إضافة متطلب للوظيفه"),
         "am": MessageLookupByLibrary.simpleMessage("ص"),
         "any_validation_message":
             MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),
@@ -99,11 +102,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "تم حذف هذه الرسالة من قبل المرسل."),
         "delete_post": MessageLookupByLibrary.simpleMessage("حذف المنشور؟"),
+        "delete_property_images":
+            MessageLookupByLibrary.simpleMessage("هل تريد حذف صور العقارات؟"),
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
         "description_of_property":
             MessageLookupByLibrary.simpleMessage("وصف العقار"),
         "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
+        "edit_location": MessageLookupByLibrary.simpleMessage("تعديل الموقع"),
         "edit_post": MessageLookupByLibrary.simpleMessage("تعديل المنشور"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
@@ -226,6 +232,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove_images": MessageLookupByLibrary.simpleMessage("إزالة الصور"),
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("حذف صورة البروفايل"),
+        "remove_requirement":
+            MessageLookupByLibrary.simpleMessage("حذف المتطلب؟"),
         "rent": MessageLookupByLibrary.simpleMessage("للإيجار"),
         "required": MessageLookupByLibrary.simpleMessage("مطلوب"),
         "requiredTrue_validation_message":

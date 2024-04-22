@@ -1,13 +1,17 @@
 import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
+import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../../core/utils/enums/job_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../generated/l10n.dart';
+import 'add_requirements_section/add_requirements_section.dart';
 import 'job_type_radio_tile.dart';
 
 class AddJobForm extends StatelessWidget {
@@ -16,11 +20,22 @@ class AddJobForm extends StatelessWidget {
     required this.form,
     this.selectedJobType,
     this.onJobTypeChanged,
+    this.jobEntity,
   });
 
   final FormGroup form;
   final JobType? selectedJobType;
   final void Function(JobType?)? onJobTypeChanged;
+  final JobEntity? jobEntity;
+
+  void _onAddRequirement(
+    BuildContext context, {
+    required String requirement,
+  }) {
+    context.read<JobsBloc>().add(
+          AddRequirementEvent(requirement: requirement),
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +59,11 @@ class AddJobForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
-          CustomReactiveFormField(
-            title: t.requirements,
-            hint: t.enter_the_requirements,
-            formControlName: 'requirements',
-            textInputAction: TextInputAction.next,
-            maxLines: 5,
+          AddRequirementsSection(
+            onAdd: (value) => _onAddRequirement(context, requirement: value),
           ),
+          10.verticalSpace,
+          const WhatsappAndMobileFields(),
           10.verticalSpace,
           JobTypeRadioTile(
             value: selectedJobType,
@@ -84,8 +97,6 @@ class AddJobForm extends StatelessWidget {
             textStyle: context.textTheme.bodyMedium,
             textInputAction: TextInputAction.next,
           ),
-          10.verticalSpace,
-          const WhatsappAndMobileFields(),
         ],
       ),
     );

@@ -34,6 +34,11 @@ class _AddJobBodyState extends State<AddJobBody> {
     super.initState();
     if (widget.jobEntity != null) {
       selectedJobType = JobType.fromInteger(widget.jobEntity!.workHours);
+      context.read<JobsBloc>().add(
+            InitJobRequirementsEvent(
+              requirements: widget.jobEntity!.requirements,
+            ),
+          );
     }
     form = FormGroup({
       'title': FormControl<String>(
@@ -42,10 +47,6 @@ class _AddJobBodyState extends State<AddJobBody> {
       ),
       'description': FormControl<String>(
         value: widget.jobEntity?.description,
-      ),
-      'requirements': FormControl<String>(
-        validators: [Validators.required],
-        value: widget.jobEntity?.requirements,
       ),
       'workHours': FormControl<String>(
         validators: [
@@ -120,8 +121,8 @@ class _AddJobBodyState extends State<AddJobBody> {
     final params = AddJobParams(
       title: formControls['title']!.value as String,
       description: formControls['description']!.value as String,
-      requirements: formControls['requirements']!.value as String,
       jobType: selectedJobType!,
+      requirements: [], // Will edited on the bloc
       workHours: int.parse(formControls['workHours']!.value as String),
       salary: double.parse(formControls['salary']!.value as String),
       phoneNumber: formControls['phoneNumber']!.value as String,

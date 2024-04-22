@@ -70,10 +70,10 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
     Emitter<MyPostsState> emit,
   ) {
     activeTabIndex = event.index;
-    if (activeTabIndex == 0) {
+    if (activeTabIndex == 1) {
       add(GetMyPostsJobsEvent());
     }
-    if (activeTabIndex == 1) {
+    if (activeTabIndex == 0) {
       add(GetMyPostsPropertiesEvent());
     }
     emit(CurrentViewChangedState(index: activeTabIndex));

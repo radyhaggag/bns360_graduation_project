@@ -1,4 +1,8 @@
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
+import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -68,47 +72,74 @@ class _AddPropertyLocationSectionState
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: context.width * .9,
-      height: 150.h,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: FlutterMap(
-          mapController: _mapController,
-          options: MapOptions(
-            initialCenter: centerPoint ?? const LatLng(50.5, 30.51),
-            initialZoom: 9.2,
-            minZoom: 5.2,
-            maxZoom: 18.2,
-            onTap: (tapPosition, point) {
-              context.read<PropertiesBloc>().add(
-                    SelectPropertyLocationEvent(
-                      lat: point.latitude,
-                      lng: point.longitude,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        SizedBox(
+          width: context.width * .9,
+          height: 150.h,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                initialCenter: centerPoint ?? const LatLng(50.5, 30.51),
+                initialZoom: 9.2,
+                minZoom: 5.2,
+                maxZoom: 18.2,
+                onTap: (tapPosition, point) {
+                  context.read<PropertiesBloc>().add(
+                        SelectPropertyLocationEvent(
+                          lat: point.latitude,
+                          lng: point.longitude,
+                        ),
+                      );
+                  markers.clear();
+                  centerPoint = point;
+                  markers.add(
+                    Marker(
+                      point: point,
+                      child: const CustomMarker(),
                     ),
                   );
-              markers.clear();
-              centerPoint = point;
-              markers.add(
-                Marker(
-                  point: point,
-                  child: const CustomMarker(),
+                  setState(() {});
+                },
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate: urlTemplate,
                 ),
-              );
-              setState(() {});
-            },
+                MarkerLayer(
+                  markers: markers,
+                  alignment: Alignment.center,
+                ),
+              ],
+            ),
           ),
-          children: [
-            TileLayer(
-              urlTemplate: urlTemplate,
-            ),
-            MarkerLayer(
-              markers: markers,
-              alignment: Alignment.center,
-            ),
-          ],
         ),
-      ),
+        const SizedBox(height: 15),
+        CustomElevatedButton(
+          label: widget.propertyEntity != null
+              ? S.of(context).edit_location
+              : S.of(context).add_location,
+          width: 150.w,
+          onPressed: () {
+            MapParams? mapParams;
+            if (widget.propertyEntity != null) {
+              mapParams = MapParams(
+                location: widget.propertyEntity!.address,
+                lat: widget.propertyEntity!.lat,
+                lng: widget.propertyEntity!.lng,
+              );
+            }
+            Navigator.of(context).pushNamed(
+              Routes.map,
+              arguments: mapParams,
+            );
+          },
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+      ],
     );
   }
 

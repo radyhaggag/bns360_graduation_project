@@ -13,7 +13,11 @@
       },
       "jobTitle": "Electrician",
       "description": "Electrician wanted: Proficient in electrical systems, repairs, and installations. Attention to detail and safety essential. Apply now!",
-      "requirements": "Proficient in electrical systems, with experience in repairs and installations. Attention to detail, safety-conscious, and able to work independently.",
+      "requirements": [
+        "Proficiency in electrical systems, including experience in repairs and installations.",
+        "Attention to detail and safety consciousness are essential.",
+        "Ability to work independently."
+      ],
       "date": "2024-03-28T10:30:00Z",
       "salary": 17500,
       "workHours": 12
@@ -30,7 +34,11 @@
       },
       "jobTitle": "Plumber",
       "description": "Electrician wanted: Proficient in electrical systems, repairs, and installations. Attention to detail and safety essential. Apply now!",
-      "requirements": "Proficient in electrical systems, with experience in repairs and installations. Attention to detail, safety-conscious, and able to work independently.",
+      "requirements": [
+        "Proficiency in electrical systems, including experience in repairs and installations.",
+        "Attention to detail and safety consciousness are essential.",
+        "Ability to work independently."
+      ],
       "date": "2023-11-28T10:30:00Z",
       "salary": 25000,
       "workHours": 8
@@ -47,7 +55,9 @@
       },
       "jobTitle": "Casher",
       "description": "Specialists in installing, repairing, and maintaining pipes, fittings, and water systems.",
-      "requirements": "Specialists in installing, repairing, and maintaining pipes, fittings, and water systems.",
+      "requirements": [
+        "Specialization in installing, repairing, and maintaining pipes, fittings, and water systems."
+      ],
       "date": "2024-05-28T10:30:00Z",
       "salary": 35000,
       "workHours": 4

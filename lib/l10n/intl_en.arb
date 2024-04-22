@@ -189,5 +189,10 @@
   "edit": "Edit",
   "delete_post": "Delete post?",
   "edit_post": "Edit post",
-  "update": "Update"
+  "update": "Update",
+  "edit_location": "Edit location",
+  "delete_property_images": "Delete property images?",
+  "add_requirement": "Add requirement",
+  "add": "Add",
+  "remove_requirement": "Remove requirement?"
 }

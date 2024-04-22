@@ -188,5 +188,10 @@
   "edit": "تعديل",
   "delete_post": "حذف المنشور؟",
   "edit_post": "تعديل المنشور",
-  "update": "تحديث"
+  "update": "تحديث",
+  "edit_location": "تعديل الموقع",
+  "delete_property_images": "هل تريد حذف صور العقارات؟",
+  "add_requirement": "إضافة متطلب للوظيفه",
+  "add": "إضافة",
+  "remove_requirement": "حذف المتطلب؟"
 }

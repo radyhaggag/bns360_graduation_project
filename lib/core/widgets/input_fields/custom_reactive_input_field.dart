@@ -11,7 +11,6 @@ class CustomReactiveFormField extends StatelessWidget {
   final String? label;
   final String? hint;
   final String? prefixText;
-  final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool isSecure;
   final TextInputType? keyboardType;
@@ -37,7 +36,6 @@ class CustomReactiveFormField extends StatelessWidget {
     super.key,
     this.label,
     this.hint,
-    this.controller,
     this.validator,
     this.title,
     this.prefixText,
@@ -71,7 +69,6 @@ class CustomReactiveFormField extends StatelessWidget {
       maxLines: maxLines,
       textAlign: textAlign ?? TextAlign.start,
       textStyle: textStyle,
-      controller: controller,
       maxLength: maxLength,
       hint: hint,
       isDigitsOnly: isDigitsOnly,
@@ -144,7 +141,6 @@ class CustomReactiveFormField extends StatelessWidget {
 
 class _BuildTextField extends StatefulWidget {
   const _BuildTextField({
-    this.controller,
     this.isSecure = false,
     this.keyboardType,
     this.textStyle,
@@ -163,7 +159,6 @@ class _BuildTextField extends StatefulWidget {
     this.validationMessages,
   });
 
-  final TextEditingController? controller;
   final bool isSecure;
   final TextInputType? keyboardType;
   final TextStyle? textStyle;
@@ -197,16 +192,6 @@ class _BuildTextFieldState extends State<_BuildTextField> {
     if (hintText != null) {
       prefixText = null;
     }
-    widget.controller?.addListener(() {
-      String textValue = widget.controller?.text ?? "";
-      if (textValue.isNotEmpty && widget.prefixText != null) {
-        if (prefixText == null) {
-          prefixText = widget.prefixText;
-          hintText = null;
-          setState(() {});
-        }
-      }
-    });
   }
 
   InputDecoration get defaultInputDecoration => InputDecoration(
@@ -231,9 +216,10 @@ class _BuildTextFieldState extends State<_BuildTextField> {
       textAlign: widget.textAlign ?? TextAlign.start,
       textInputAction: widget.textInputAction,
       style: widget.textStyle,
-      onTap: (_) {
-        String textValue = widget.controller?.text ?? "";
-        if (textValue.isEmpty && widget.prefixText != null) {
+      onTap: (control) {
+        if (((control.value as String?) ?? "").isEmpty &&
+                widget.prefixText != null ||
+            widget.hint != null) {
           if (prefixText == null) {
             prefixText = widget.prefixText;
             hintText = null;
@@ -241,6 +227,17 @@ class _BuildTextFieldState extends State<_BuildTextField> {
             setState(() {});
           }
         }
+      },
+      onEditingComplete: (control) {
+        if (((control.value as String?) ?? "").isEmpty &&
+                widget.prefixText != null ||
+            widget.hint != null) {
+          prefixText = null;
+          hintText = widget.hint;
+
+          setState(() {});
+        }
+        FocusScope.of(context).unfocus();
       },
       validationMessages: widget.validationMessages ??
           FormValidator.validationMessages(context),

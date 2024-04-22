@@ -8,6 +8,7 @@ import 'package:latlong2/latlong.dart';
 
 import '../../../../../core/helpers/location_helper.dart';
 import '../../../../core/widgets/custom_marker.dart';
+import '../../../../generated/l10n.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key, this.mapParams});
@@ -82,7 +83,8 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       appBar: AppBar(
         title: FittedBox(
-          child: Text(title ?? ""),
+          fit: BoxFit.scaleDown,
+          child: Text(title ?? S.of(context).add_location),
         ),
         leading: const CustomBackButton(),
         actions: const [SizedBox(width: 20)],

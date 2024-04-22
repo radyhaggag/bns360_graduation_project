@@ -51,6 +51,8 @@ class AddPropertyForm extends StatelessWidget {
             propertyEntity: propertyEntity,
           ),
           15.verticalSpace,
+          const WhatsappAndMobileFields(),
+          15.verticalSpace,
           PropertyOfferTypeRadioTile(
             value: selectedOfferType,
             onChanged: onOfferTypeChanged,
@@ -73,7 +75,7 @@ class AddPropertyForm extends StatelessWidget {
           10.verticalSpace,
           CustomReactiveFormField(
             title: t.area,
-            hint: t.meter_short,
+            hint: t.meter_lone,
             formControlName: 'area',
             isHorizontally: true,
             textFieldWidth: 100.w,
@@ -84,8 +86,6 @@ class AddPropertyForm extends StatelessWidget {
             textStyle: context.textTheme.bodyMedium,
             textInputAction: TextInputAction.next,
           ),
-          10.verticalSpace,
-          const WhatsappAndMobileFields(),
         ],
       ),
     );

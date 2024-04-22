@@ -1949,6 +1949,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit location`
+  String get edit_location {
+    return Intl.message(
+      'Edit location',
+      name: 'edit_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete property images?`
+  String get delete_property_images {
+    return Intl.message(
+      'Delete property images?',
+      name: 'delete_property_images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add requirement`
+  String get add_requirement {
+    return Intl.message(
+      'Add requirement',
+      name: 'add_requirement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message(
+      'Add',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove requirement?`
+  String get remove_requirement {
+    return Intl.message(
+      'Remove requirement?',
+      name: 'remove_requirement',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

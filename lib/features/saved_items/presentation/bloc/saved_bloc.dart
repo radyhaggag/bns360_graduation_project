@@ -69,10 +69,10 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     Emitter<SavedState> emit,
   ) {
     activeTabIndex = event.index;
-    if (activeTabIndex == 0) {
+    if (activeTabIndex == 1) {
       add(GetSavedJobsEvent());
     }
-    if (activeTabIndex == 1) {
+    if (activeTabIndex == 0) {
       add(GetSavedPropertiesEvent());
     }
     emit(CurrentViewChanged(index: activeTabIndex));

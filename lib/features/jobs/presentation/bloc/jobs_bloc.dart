@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,6 +19,10 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     on<SearchOnJobs>(_searchOnJobs);
     on<AddJobEvent>(_addJob);
     on<EditJobEvent>(_editJon);
+    on<AddRequirementEvent>(_addRequirement);
+    on<RemoveRequirementEvent>(_removeRequirement);
+    on<EditRequirementEvent>(_editRequirement);
+    on<InitJobRequirementsEvent>(_initJobRequirements);
   }
 
   List<JobEntity> jobs = [];
@@ -97,7 +100,11 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
   ) async {
     emit(AddJobLoadingState());
 
-    final res = await jobsRepo.addJob(event.addJobParams);
+    final params = event.addJobParams.copyWith(
+      requirements: requirements,
+    );
+
+    final res = await jobsRepo.addJob(params);
 
     res.fold(
       (l) => emit(AddJobErrorState(message: l.message)),
@@ -119,9 +126,43 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
+  List<String> requirements = [];
+
+  _addRequirement(
+    AddRequirementEvent event,
+    Emitter<JobsState> emit,
+  ) {
+    requirements.add(event.requirement);
+    emit(JobRequirementUpdatedState());
+  }
+
+  _removeRequirement(
+    RemoveRequirementEvent event,
+    Emitter<JobsState> emit,
+  ) {
+    requirements.removeAt(event.index);
+    emit(JobRequirementUpdatedState());
+  }
+
   @override
   Future<void> close() {
     searchController.dispose();
     return super.close();
+  }
+
+  _initJobRequirements(
+    InitJobRequirementsEvent event,
+    Emitter<JobsState> emit,
+  ) {
+    requirements = event.requirements;
+    emit(JobRequirementUpdatedState());
+  }
+
+  _editRequirement(
+    EditRequirementEvent event,
+    Emitter<JobsState> emit,
+  ) {
+    requirements[event.index] = event.requirement;
+    emit(JobRequirementUpdatedState());
   }
 }

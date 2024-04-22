@@ -6,7 +6,7 @@ class JobEntity extends Equatable {
   final String id;
   final String jobTitle;
   final String description;
-  final String requirements;
+  final List<String> requirements;
   final String date;
   final num salary;
   final int workHours;

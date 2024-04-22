@@ -1,10 +1,7 @@
 part of 'jobs_bloc.dart';
 
-abstract class JobsState extends Equatable {
+abstract class JobsState {
   const JobsState();
-
-  @override
-  List<Object> get props => [];
 }
 
 class JobsInitial extends JobsState {}
@@ -41,9 +38,6 @@ class SearchIconToggled extends JobsState {
   final bool isSearchEnabled;
 
   const SearchIconToggled({required this.isSearchEnabled});
-
-  @override
-  List<Object> get props => [isSearchEnabled];
 }
 
 class AddJobLoadingState extends JobsState {}
@@ -65,3 +59,5 @@ class EditJobErrorState extends JobsState {
 
   const EditJobErrorState({required this.message});
 }
+
+class JobRequirementUpdatedState extends JobsState {}

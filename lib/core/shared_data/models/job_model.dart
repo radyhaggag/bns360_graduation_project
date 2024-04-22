@@ -21,7 +21,9 @@ class JobModel extends JobEntity {
       description: json['description'],
       jobTitle: json['jobTitle'],
       salary: json['salary'],
-      requirements: json['requirements'],
+      requirements: List<String>.from(
+        json['requirements'].map((e) => e.toString()),
+      ),
       date: json['date'],
       workHours: json['workHours'],
       phoneNumber: json['phoneNumber'],

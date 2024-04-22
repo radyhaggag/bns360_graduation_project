@@ -107,6 +107,7 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
             AddPropertyButton(
               onAdd: _submitForm,
               isOfferTypeSelected: selectedOfferType != null,
+              isUpdate: widget.propertyEntity != null,
             ),
           ],
         ),

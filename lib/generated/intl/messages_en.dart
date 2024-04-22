@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "access_storage_permissions_msg": MessageLookupByLibrary.simpleMessage(
             "To upload images for your business or work, please grant storage permission in settings."),
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("Add a job"),
         "add_job_success": MessageLookupByLibrary.simpleMessage(
             "The job has been added successfully"),
@@ -54,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_property": MessageLookupByLibrary.simpleMessage("Add property"),
         "add_property_success": MessageLookupByLibrary.simpleMessage(
             "The property has been added successfully"),
+        "add_requirement":
+            MessageLookupByLibrary.simpleMessage("Add requirement"),
         "am": MessageLookupByLibrary.simpleMessage("AM"),
         "any_validation_message":
             MessageLookupByLibrary.simpleMessage("Invalid value"),
@@ -100,11 +103,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "This message has been deleted by the sender."),
         "delete_post": MessageLookupByLibrary.simpleMessage("Delete post?"),
+        "delete_property_images":
+            MessageLookupByLibrary.simpleMessage("Delete property images?"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "description_of_property":
             MessageLookupByLibrary.simpleMessage("Description of property"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "edit_location": MessageLookupByLibrary.simpleMessage("Edit location"),
         "edit_post": MessageLookupByLibrary.simpleMessage("Edit post"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("EGP"),
@@ -228,6 +234,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove_images": MessageLookupByLibrary.simpleMessage("Remove images"),
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("Remove profile image"),
+        "remove_requirement":
+            MessageLookupByLibrary.simpleMessage("Remove requirement?"),
         "rent": MessageLookupByLibrary.simpleMessage("Rent"),
         "required": MessageLookupByLibrary.simpleMessage("Required"),
         "requiredTrue_validation_message":

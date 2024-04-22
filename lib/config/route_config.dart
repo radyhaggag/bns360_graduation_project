@@ -301,8 +301,11 @@ abstract class RouteConfig {
         );
       case Routes.jobDetails:
         return MaterialPageRoute(
-          builder: (context) => JobDetailsScreen(
-            jobEntity: settings.arguments as JobEntity,
+          builder: (context) => BlocProvider(
+            create: (context) => sl<JobsBloc>(),
+            child: JobDetailsScreen(
+              jobEntity: settings.arguments as JobEntity,
+            ),
           ),
         );
       case Routes.addJob:

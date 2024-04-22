@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,20 +25,14 @@ class UploadPropertyImagesSection extends StatelessWidget {
             CustomElevatedButtonWithIcon(
               onPressed: pickedImages.length < 4
                   ? () {
-                      if (networkImages.isNotEmpty) {
-                        context.read<PropertiesBloc>().add(
-                              ClearPropertyImagesEvent(),
-                            );
-                      } else {
-                        context.read<PropertiesBloc>().add(
-                              PickPropertyImagesEvent(),
-                            );
-                      }
+                      _onPressed(networkImages, context);
                     }
                   : null,
               isExpanded: false,
               borderRadius: BorderRadius.circular(8),
-              label: networkImages.isNotEmpty ? S.of(context).remove_images: S.of(context).upload_property_images,
+              label: networkImages.isNotEmpty
+                  ? S.of(context).remove_images
+                  : S.of(context).upload_property_images,
               leading: const Icon(Icons.file_upload_outlined),
               backgroundColor: networkImages.isNotEmpty
                   ? AppColors.red
@@ -64,5 +59,23 @@ class UploadPropertyImagesSection extends StatelessWidget {
         );
       },
     );
+  }
+
+  void _onPressed(List<String> networkImages, BuildContext context) {
+    if (networkImages.isNotEmpty) {
+      ConfirmationDialog.show(
+        context,
+        onConfirm: () {
+          context.read<PropertiesBloc>().add(
+                ClearPropertyImagesEvent(),
+              );
+        },
+        message: S.of(context).delete_property_images,
+      );
+    } else {
+      context.read<PropertiesBloc>().add(
+            PickPropertyImagesEvent(),
+          );
+    }
   }
 }

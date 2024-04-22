@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:bns360_graduation_project/core/utils/enums/job_type.dart';
 
 class AddJobParams {
   final String title;
   final String description;
-  final String requirements;
+  final List<String> requirements;
   final JobType jobType;
   final int workHours;
   final double salary;
@@ -27,7 +25,7 @@ class AddJobParams {
     return <String, dynamic>{
       'title': title,
       'description': description,
-      'requirements': requirements,
+      'requirements': requirements.map((e) => e).toList(),
       'jobType': jobType.id,
       'workHours': workHours,
       'salary': salary,
@@ -40,7 +38,9 @@ class AddJobParams {
     return AddJobParams(
       title: map['title'] as String,
       description: map['description'] as String,
-      requirements: map['requirements'] as String,
+      requirements: List<String>.from(map['requirements'].map(
+        (e) => e.toString(),
+      )),
       jobType: JobType.fromId(map['jobType'] as int),
       workHours: map['workHours'] as int,
       salary: map['salary'] as double,
@@ -49,8 +49,25 @@ class AddJobParams {
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory AddJobParams.fromJson(String source) =>
-      AddJobParams.fromMap(json.decode(source) as Map<String, dynamic>);
+  AddJobParams copyWith({
+    String? title,
+    String? description,
+    List<String>? requirements,
+    JobType? jobType,
+    int? workHours,
+    double? salary,
+    String? phoneNumber,
+    String? whatsapp,
+  }) {
+    return AddJobParams(
+      title: title ?? this.title,
+      description: description ?? this.description,
+      requirements: requirements ?? this.requirements,
+      jobType: jobType ?? this.jobType,
+      workHours: workHours ?? this.workHours,
+      salary: salary ?? this.salary,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      whatsapp: whatsapp ?? this.whatsapp,
+    );
+  }
 }

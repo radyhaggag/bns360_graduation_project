@@ -1,9 +1,12 @@
+import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../core/shared_data/entities/category_entity.dart';
 import '../core/shared_data/entities/category_item_entity.dart';
 import '../core/shared_data/entities/craftsman_entity.dart';
+import '../core/shared_data/entities/job_entity.dart';
+import '../core/shared_data/entities/property_entity.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
@@ -33,7 +36,6 @@ import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
-import '../features/jobs/domain/entities/job_entity.dart';
 import '../features/jobs/presentation/bloc/jobs_bloc.dart';
 import '../features/jobs/presentation/screens/add_job_screen.dart';
 import '../features/jobs/presentation/screens/job_details_screen.dart';
@@ -41,12 +43,16 @@ import '../features/jobs/presentation/screens/jobs_screen.dart';
 import '../features/map/domain/params/map_params.dart';
 import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
+import '../features/my_business/presentation/screens/my_business_screen.dart';
+import '../features/my_posts/presentation/bloc/my_posts_bloc.dart';
+import '../features/my_posts/presentation/screens/my_posts_screen.dart';
 import '../features/profile/presentation/screen/edit_profile_screen.dart';
-import '../features/properties/domain/entities/property_entity.dart';
 import '../features/properties/presentation/bloc/properties_bloc.dart';
 import '../features/properties/presentation/screens/add_property_screen.dart';
 import '../features/properties/presentation/screens/properties_screen.dart';
 import '../features/properties/presentation/screens/property_details_screen.dart';
+import '../features/saved_items/presentation/bloc/saved_bloc.dart';
+import '../features/saved_items/presentation/screens/saved_screen.dart';
 import '../features/settings/presentation/bloc/settings_bloc.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
@@ -83,6 +89,9 @@ abstract class Routes {
   static const propertyDetails = '/propertyDetails';
   static const properties = '/properties';
   static const addProperty = '/addProperty';
+  static const savedItems = '/savedItems';
+  static const myPosts = '/myPosts';
+  static const myBusiness = '/myBusiness';
 }
 
 abstract class RouteConfig {
@@ -297,10 +306,13 @@ abstract class RouteConfig {
           ),
         );
       case Routes.addJob:
+        final params = settings.arguments as JobEntity?;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => sl<JobsBloc>(),
-            child: const AddJobScreen(),
+            child: AddJobScreen(
+              jobEntity: params,
+            ),
           ),
         );
       case Routes.properties:
@@ -318,10 +330,37 @@ abstract class RouteConfig {
           ),
         );
       case Routes.addProperty:
+        final params = settings.arguments as PropertyEntity?;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => sl<PropertiesBloc>(),
-            child: const AddPropertyScreen(),
+            child: AddPropertyScreen(
+              propertyEntity: params,
+            ),
+          ),
+        );
+      case Routes.savedItems:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<SavedBloc>()..add(GetSavedPropertiesEvent()),
+            child: const SavedScreen(),
+          ),
+        );
+      case Routes.myPosts:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyPostsBloc>()..add(GetMyPostsPropertiesEvent()),
+            child: const MyPostsScreen(),
+          ),
+        );
+      case Routes.myBusiness:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyBusinessBloc>()..add(GetMyBusinessEvent()),
+            child: const MyBusinessScreen(),
           ),
         );
       default:

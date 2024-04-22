@@ -1660,11 +1660,11 @@ class S {
     );
   }
 
-  /// `Remove picked images`
-  String get remove_picked_images {
+  /// `Remove images`
+  String get remove_images {
     return Intl.message(
-      'Remove picked images',
-      name: 'remove_picked_images',
+      'Remove images',
+      name: 'remove_images',
       desc: '',
       args: [],
     );
@@ -1875,6 +1875,76 @@ class S {
     return Intl.message(
       'Required',
       name: 'required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saved`
+  String get saved {
+    return Intl.message(
+      'Saved',
+      name: 'saved',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Jobs`
+  String get jobs {
+    return Intl.message(
+      'Jobs',
+      name: 'jobs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My business`
+  String get my_business {
+    return Intl.message(
+      'My business',
+      name: 'my_business',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete post?`
+  String get delete_post {
+    return Intl.message(
+      'Delete post?',
+      name: 'delete_post',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit post`
+  String get edit_post {
+    return Intl.message(
+      'Edit post',
+      name: 'edit_post',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
       desc: '',
       args: [],
     );

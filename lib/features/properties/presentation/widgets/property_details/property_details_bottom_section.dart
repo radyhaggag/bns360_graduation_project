@@ -2,8 +2,8 @@ import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/widgets/description_widget.dart';
-import '../../../domain/entities/property_entity.dart';
 import '../property_publisher_section.dart';
 import 'property_details_area_and_price_section.dart';
 import 'property_details_location_section.dart';

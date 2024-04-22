@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
+import '../../../../../core/widgets/property_card/property_card.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domain/entities/property_entity.dart';
 import '../../bloc/properties_bloc.dart';
-import '../property_card/property_card.dart';
 
 class PropertiesBuilder extends StatelessWidget {
   const PropertiesBuilder({super.key});

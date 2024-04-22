@@ -3,9 +3,9 @@ import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../../core/widgets/description_widget.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domain/entities/job_entity.dart';
 
 class JobDetailsBottomSection extends StatelessWidget {
   const JobDetailsBottomSection({super.key, required this.jobEntity});

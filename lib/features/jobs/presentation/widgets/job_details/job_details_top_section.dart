@@ -1,16 +1,16 @@
 import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
 import 'package:bns360_graduation_project/core/widgets/custom_back_button.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_card/save_job_btn.dart';
+import 'package:bns360_graduation_project/core/widgets/job_card/save_job_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/localization_helper.dart';
+import '../../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/main_network_image.dart';
-import '../../../domain/entities/job_entity.dart';
 
 class JobDetailsTopSection extends StatelessWidget {
   const JobDetailsTopSection({

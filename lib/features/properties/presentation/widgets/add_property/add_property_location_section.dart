@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -11,7 +12,9 @@ import '../../../../../core/widgets/custom_marker.dart';
 import '../../bloc/properties_bloc.dart';
 
 class AddPropertyLocationSection extends StatefulWidget {
-  const AddPropertyLocationSection({super.key});
+  const AddPropertyLocationSection({super.key, this.propertyEntity});
+
+  final PropertyEntity? propertyEntity;
 
   @override
   State<AddPropertyLocationSection> createState() =>
@@ -29,7 +32,14 @@ class _AddPropertyLocationSectionState
   void initState() {
     super.initState();
     _mapController = MapController();
-    _getCurrentLocation();
+    if (widget.propertyEntity != null) {
+      centerPoint = LatLng(
+        widget.propertyEntity!.lat,
+        widget.propertyEntity!.lng,
+      );
+    } else {
+      _getCurrentLocation();
+    }
   }
 
   _getCurrentLocation() async {

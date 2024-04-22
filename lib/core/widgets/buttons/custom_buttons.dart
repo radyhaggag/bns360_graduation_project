@@ -55,6 +55,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? foregroundColor;
+  final Color? backgroundColor;
   final String label;
   final void Function()? onPressed;
   final bool isLoading;
@@ -64,6 +65,7 @@ class CustomOutlinedButton extends StatelessWidget {
     this.width,
     this.height,
     this.foregroundColor,
+    this.backgroundColor,
     required this.label,
     this.onPressed,
     this.isLoading = false,
@@ -78,6 +80,7 @@ class CustomOutlinedButton extends StatelessWidget {
         onPressed: !isLoading ? onPressed : null,
         style: context.theme.outlinedButtonTheme.style?.copyWith(
           foregroundColor: MaterialStatePropertyAll(foregroundColor),
+          backgroundColor: MaterialStatePropertyAll(backgroundColor),
         ),
         child: isLoading
             ? const CenterProgressIndicator()

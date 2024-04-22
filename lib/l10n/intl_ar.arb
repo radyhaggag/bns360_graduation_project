@@ -160,7 +160,7 @@
   "offer_type": "نوع العرض",
   "properties": "العقارات",
   "no_properties_found": "لم يتم العثور على عقارات",
-  "remove_picked_images": "إزالة الصور المختارة",
+  "remove_images": "إزالة الصور",
   "add_property_success": "تم اضافة العقار بنجاح",
   "add_job_success": "تم اضافة الوظيفة بنجاح",
   "call": "اتصل",
@@ -181,5 +181,12 @@
   "compare_validation_message": "القيم غير متطابقة",
   "contains_validation_message": "قيمة غير صالحة",
   "any_validation_message": "قيمة غير صالحة",
-  "required": "مطلوب"
+  "required": "مطلوب",
+  "saved": "العناصر المحفوظه",
+  "jobs": "الوظائف",
+  "my_business": "أعمالي",
+  "edit": "تعديل",
+  "delete_post": "حذف المنشور؟",
+  "edit_post": "تعديل المنشور",
+  "update": "تحديث"
 }

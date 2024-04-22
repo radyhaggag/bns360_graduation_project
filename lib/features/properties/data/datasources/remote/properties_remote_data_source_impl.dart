@@ -2,7 +2,7 @@ import 'package:bns360_graduation_project/features/properties/params/add_propert
 
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/helpers/load_json_from_asset.dart';
-import '../../models/property_model.dart';
+import '../../../../../core/shared_data/models/property_model.dart';
 import 'properties_remote_data_source.dart';
 
 class PropertiesRemoteDataSourceImpl implements PropertiesRemoteDataSource {
@@ -49,6 +49,12 @@ class PropertiesRemoteDataSourceImpl implements PropertiesRemoteDataSource {
 
   @override
   Future<void> addProperty(AddPropertyParams addPropertyParams) {
+    // TODO: implement addProperty
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> editProperty(AddPropertyParams addPropertyParams) {
     // TODO: implement addProperty
     throw UnimplementedError();
   }

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bns360_graduation_project/core/widgets/main_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,57 +11,88 @@ import '../../../../../core/widgets/main_list_view_builder.dart';
 import '../../bloc/properties_bloc.dart';
 
 class AddPropertyPickedImagesBuilder extends StatelessWidget {
-  const AddPropertyPickedImagesBuilder({super.key, required this.images});
+  const AddPropertyPickedImagesBuilder({
+    super.key,
+    required this.images,
+    required this.networkImages,
+  });
 
   final List<File> images;
+  final List<String> networkImages;
 
   @override
   Widget build(BuildContext context) {
-    if (images.isEmpty) {
+    if (images.isEmpty && networkImages.isEmpty) {
       return const SizedBox.shrink();
     }
     return MainListViewBuilder(
-      list: images,
+      list: images.isNotEmpty ? images : networkImages,
       height: 80.h,
       width: context.width,
-      itemWidget: (file, index) {
+      itemWidget: (object, index) {
         return Stack(
           alignment: AlignmentDirectional.topEnd,
           children: [
             Padding(
               padding: const EdgeInsetsDirectional.only(top: 5, end: 5),
-              child: Image.file(
-                file,
-                width: 80.w,
-                height: 80.h,
-                fit: BoxFit.cover,
-              ),
+              child: object is File
+                  ? Image.file(
+                      object,
+                      width: 80.w,
+                      height: 80.h,
+                      fit: BoxFit.cover,
+                    )
+                  : MainNetworkImage(
+                      imageUrl: object.toString(),
+                      width: 80.w,
+                      height: 80.h,
+                      fit: BoxFit.cover,
+                    ),
             ),
-            InkWell(
-              onTap: () {
-                context.read<PropertiesBloc>().add(
-                      RemovePickedPropertyImageEvent(index: index),
-                    );
-              },
-              child: Container(
-                height: 15.r,
-                width: 15.r,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: AppColors.red,
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.close,
-                  size: 10.r,
-                  color: AppColors.white,
-                ),
+            if (networkImages.isEmpty)
+              _RemoveIcon(
+                networkImages: networkImages,
+                onTap: () {
+                  context.read<PropertiesBloc>().add(
+                        RemovePickedPropertyImageEvent(index: index),
+                      );
+                },
               ),
-            ),
           ],
         );
       },
       scrollDirection: Axis.horizontal,
+    );
+  }
+}
+
+class _RemoveIcon extends StatelessWidget {
+  const _RemoveIcon({
+    required this.networkImages,
+    this.onTap,
+  });
+
+  final void Function()? onTap;
+  final List<String> networkImages;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 15.r,
+        width: 15.r,
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          color: AppColors.red,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          Icons.close,
+          size: 10.r,
+          color: AppColors.white,
+        ),
+      ),
     );
   }
 }

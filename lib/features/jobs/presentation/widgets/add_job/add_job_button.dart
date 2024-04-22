@@ -13,10 +13,12 @@ class AddJobButton extends StatelessWidget {
     super.key,
     required this.onAdd,
     this.isJobTypeSelected = false,
+    this.isUpdate = false,
   });
 
   final VoidCallback onAdd;
   final bool isJobTypeSelected;
+  final bool isUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,8 @@ class AddJobButton extends StatelessWidget {
             return BlocBuilder<JobsBloc, JobsState>(
               builder: (context, state) {
                 return CustomElevatedButton(
-                  label: S.of(context).post_now,
+                  label:
+                      isUpdate ? S.of(context).update : S.of(context).post_now,
                   onPressed: (form.valid && isJobTypeSelected) ? onAdd : null,
                   width: context.width,
                   height: 50.h,

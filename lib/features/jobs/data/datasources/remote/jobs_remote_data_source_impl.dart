@@ -2,7 +2,7 @@ import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_pa
 
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/helpers/load_json_from_asset.dart';
-import '../../models/job_model.dart';
+import '../../../../../core/shared_data/models/job_model.dart';
 import 'jobs_remote_data_source.dart';
 
 class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
@@ -49,6 +49,11 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
 
   @override
   Future<void> addJob(AddJobParams addJobParams) {
+    // TODO: implement addJob
+    throw UnimplementedError();
+  }
+  @override
+  Future<void> editJob(AddJobParams addJobParams) {
     // TODO: implement addJob
     throw UnimplementedError();
   }

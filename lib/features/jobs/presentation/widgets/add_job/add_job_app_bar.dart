@@ -5,14 +5,16 @@ import '../../../../../generated/l10n.dart';
 
 class AddJobScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const AddJobScreenAppBar({super.key});
+  const AddJobScreenAppBar({super.key, required this.isUpdate});
+
+  final bool isUpdate;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       // backgroundColor: AppColors.primary,
       leading: const CustomBackButton(),
-      title: Text(S.of(context).add_a_job),
+      title: Text(isUpdate ? S.of(context).edit_post : S.of(context).add_a_job),
     );
   }
 

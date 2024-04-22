@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../domain/entities/job_entity.dart';
+import '../../../../../core/shared_data/entities/job_entity.dart';
 import 'job_details_bottom_section.dart';
 
 class JobDetailsBody extends StatelessWidget {

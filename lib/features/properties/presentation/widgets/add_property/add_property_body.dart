@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
 import 'package:bns360_graduation_project/features/properties/params/add_property_params.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/bloc/properties_bloc.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_button.dart';
@@ -11,10 +12,12 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
 import 'add_property_form.dart';
-import 'upload_proprty_images_section.dart';
+import 'upload_property_images_section.dart';
 
 class AddPropertyBody extends StatefulWidget {
-  const AddPropertyBody({super.key});
+  const AddPropertyBody({super.key, this.propertyEntity});
+
+  final PropertyEntity? propertyEntity;
 
   @override
   State<AddPropertyBody> createState() => _AddPropertyBodyState();
@@ -27,29 +30,53 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
   @override
   void initState() {
     super.initState();
-
+    selectedOfferType = widget.propertyEntity?.offerType;
     form = FormGroup({
-      'description': FormControl<String>(validators: [Validators.required]),
-      'address': FormControl<String>(validators: [Validators.required]),
-      'area': FormControl<String>(validators: [
-        Validators.requiredTrue,
-        Validators.number,
-      ]),
-      'price': FormControl<String>(validators: [
-        Validators.requiredTrue,
-        Validators.number,
-      ]),
-      'phoneNumber': FormControl<String>(validators: [
-        Validators.required,
-        Validators.number,
-        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-      ]),
-      'whatsapp': FormControl<String>(validators: [
-        Validators.required,
-        Validators.number,
-        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-      ]),
+      'description': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.propertyEntity?.description,
+      ),
+      'address': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.propertyEntity?.address,
+      ),
+      'area': FormControl<String>(
+        validators: [
+          Validators.requiredTrue,
+          Validators.number,
+        ],
+        value: widget.propertyEntity?.area.split(" ").first,
+      ),
+      'price': FormControl<String>(
+        validators: [
+          Validators.requiredTrue,
+          Validators.number,
+        ],
+        value: widget.propertyEntity?.price.toString(),
+      ),
+      'phoneNumber': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number,
+          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+        ],
+        value: widget.propertyEntity?.phoneNumber,
+      ),
+      'whatsapp': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number,
+          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+        ],
+        value: widget.propertyEntity?.whatsapp,
+      ),
     });
+
+    if ((widget.propertyEntity?.propertyImagesUrls ?? []).isNotEmpty) {
+      context.read<PropertiesBloc>().add(InitNetworkPropertyImageEvent(
+            networkImages: widget.propertyEntity?.propertyImagesUrls ?? [],
+          ));
+    }
   }
 
   @override
@@ -98,9 +125,16 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
       phoneNumber: formControls['phoneNumber']!.value as String,
       whatsapp: formControls['whatsapp']!.value as String,
     );
-    context.read<PropertiesBloc>().add(AddPropertyEvent(
-          addPropertyParams: params,
-        ));
+
+    if (widget.propertyEntity != null) {
+      context.read<PropertiesBloc>().add(EditPropertyEvent(
+            addPropertyParams: params,
+          ));
+    } else {
+      context.read<PropertiesBloc>().add(AddPropertyEvent(
+            addPropertyParams: params,
+          ));
+    }
   }
 
   @override

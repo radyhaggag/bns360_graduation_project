@@ -99,10 +99,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "This message has been deleted by the sender."),
+        "delete_post": MessageLookupByLibrary.simpleMessage("Delete post?"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "description_of_property":
             MessageLookupByLibrary.simpleMessage("Description of property"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "edit_post": MessageLookupByLibrary.simpleMessage("Edit post"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -147,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Job description"),
         "job_title": MessageLookupByLibrary.simpleMessage("Job title"),
         "job_type": MessageLookupByLibrary.simpleMessage("Job type"),
+        "jobs": MessageLookupByLibrary.simpleMessage("Jobs"),
         "just_now": MessageLookupByLibrary.simpleMessage("Just now"),
         "killo_meter_lone": MessageLookupByLibrary.simpleMessage("Kilometer"),
         "killo_meter_short": MessageLookupByLibrary.simpleMessage("km"),
@@ -170,6 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "must_be_more_than_minimum_number_of_characters":
             MessageLookupByLibrary.simpleMessage(
                 "Password must be more than the minimum length of characters"),
+        "my_business": MessageLookupByLibrary.simpleMessage("My business"),
         "my_posts": MessageLookupByLibrary.simpleMessage("My posts"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "no_craftsmen_found":
@@ -220,8 +225,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "properties": MessageLookupByLibrary.simpleMessage("Properties"),
         "property_address":
             MessageLookupByLibrary.simpleMessage("Property address"),
-        "remove_picked_images":
-            MessageLookupByLibrary.simpleMessage("Remove picked images"),
+        "remove_images": MessageLookupByLibrary.simpleMessage("Remove images"),
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("Remove profile image"),
         "rent": MessageLookupByLibrary.simpleMessage("Rent"),
@@ -241,6 +245,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "salary": MessageLookupByLibrary.simpleMessage("Salary"),
         "sale": MessageLookupByLibrary.simpleMessage("Sale"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "saved": MessageLookupByLibrary.simpleMessage("Saved"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "search_for_job":
             MessageLookupByLibrary.simpleMessage("Search for job"),
@@ -270,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("There are no messages yet"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "update": MessageLookupByLibrary.simpleMessage("Update"),
         "upload_property_images":
             MessageLookupByLibrary.simpleMessage("Upload property images"),
         "user": MessageLookupByLibrary.simpleMessage("User"),

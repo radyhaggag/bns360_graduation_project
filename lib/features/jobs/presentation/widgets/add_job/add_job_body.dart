@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/job_entity.dart';
 import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
 import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,12 @@ import 'add_job_button.dart';
 import 'add_job_form.dart';
 
 class AddJobBody extends StatefulWidget {
-  const AddJobBody({super.key});
+  const AddJobBody({
+    super.key,
+    required this.jobEntity,
+  });
+
+  final JobEntity? jobEntity;
 
   @override
   State<AddJobBody> createState() => _AddJobBodyState();
@@ -26,28 +32,51 @@ class _AddJobBodyState extends State<AddJobBody> {
   @override
   void initState() {
     super.initState();
+    if (widget.jobEntity != null) {
+      selectedJobType = JobType.fromInteger(widget.jobEntity!.workHours);
+    }
     form = FormGroup({
-      'title': FormControl<String>(validators: [Validators.required]),
-      'description': FormControl<String>(),
-      'requirements': FormControl<String>(validators: [Validators.required]),
-      'workHours': FormControl<String>(validators: [
-        Validators.requiredTrue,
-        Validators.number,
-      ]),
-      'salary': FormControl<String>(validators: [
-        Validators.requiredTrue,
-        Validators.number,
-      ]),
-      'phoneNumber': FormControl<String>(validators: [
-        Validators.required,
-        Validators.number,
-        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-      ]),
-      'whatsapp': FormControl<String>(validators: [
-        Validators.required,
-        Validators.number,
-        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-      ]),
+      'title': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.jobEntity?.jobTitle,
+      ),
+      'description': FormControl<String>(
+        value: widget.jobEntity?.description,
+      ),
+      'requirements': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.jobEntity?.requirements,
+      ),
+      'workHours': FormControl<String>(
+        validators: [
+          Validators.requiredTrue,
+          Validators.number,
+        ],
+        value: widget.jobEntity?.workHours.toString(),
+      ),
+      'salary': FormControl<String>(
+        validators: [
+          Validators.requiredTrue,
+          Validators.number,
+        ],
+        value: widget.jobEntity?.salary.toString(),
+      ),
+      'phoneNumber': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number,
+          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+        ],
+        value: widget.jobEntity?.phoneNumber,
+      ),
+      'whatsapp': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number,
+          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+        ],
+        value: widget.jobEntity?.whatsapp,
+      ),
     });
   }
 
@@ -78,6 +107,7 @@ class _AddJobBodyState extends State<AddJobBody> {
             AddJobButton(
               onAdd: _submitForm,
               isJobTypeSelected: selectedJobType != null,
+              isUpdate: widget.jobEntity != null,
             ),
           ],
         ),
@@ -97,7 +127,11 @@ class _AddJobBodyState extends State<AddJobBody> {
       phoneNumber: formControls['phoneNumber']!.value as String,
       whatsapp: formControls['whatsapp']!.value as String,
     );
-    context.read<JobsBloc>().add(AddJobEvent(addJobParams: params));
+    if (widget.jobEntity != null) {
+      context.read<JobsBloc>().add(EditJobEvent(addJobParams: params));
+    } else {
+      context.read<JobsBloc>().add(AddJobEvent(addJobParams: params));
+    }
   }
 
   @override

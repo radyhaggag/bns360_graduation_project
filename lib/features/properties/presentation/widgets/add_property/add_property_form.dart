@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_location_section.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +18,13 @@ class AddPropertyForm extends StatelessWidget {
     required this.form,
     this.selectedOfferType,
     this.onOfferTypeChanged,
+    this.propertyEntity,
   });
 
   final FormGroup form;
   final OfferType? selectedOfferType;
   final void Function(OfferType?)? onOfferTypeChanged;
+  final PropertyEntity? propertyEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +47,9 @@ class AddPropertyForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
-          const AddPropertyLocationSection(),
+          AddPropertyLocationSection(
+            propertyEntity: propertyEntity,
+          ),
           15.verticalSpace,
           PropertyOfferTypeRadioTile(
             value: selectedOfferType,

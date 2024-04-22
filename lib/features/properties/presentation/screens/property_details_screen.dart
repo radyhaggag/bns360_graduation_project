@@ -1,5 +1,5 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/features/properties/domain/entities/property_entity.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/property_details/property_details_body.dart';

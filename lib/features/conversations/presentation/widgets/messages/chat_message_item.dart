@@ -1,13 +1,14 @@
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/participant_entity.dart';
+import '../../../../../core/widgets/confirm_delete_pop_up.dart';
 import '../../../domain/entities/message_entity.dart';
 import '../../../domain/params/delete_message_params.dart';
 import '../../bloc/conversations_bloc.dart';
-import 'confirm_delete_message_pop_up.dart';
 import 'message_content_widget.dart';
 import 'message_date_widget.dart';
 
@@ -32,15 +33,12 @@ class ChatMessageItem extends StatelessWidget {
       onLongPress: !message.isDeleted
           ? () {
               if (!isFromMe) return;
-              ConfirmationDialog.show(
-                context,
-                onConfirm: () {
-                  context.read<ConversationsBloc>().add(DeleteMessageEvent(
-                        deleteMessageParams: deleteMessageParams,
-                      ));
-                  Navigator.of(context).pop();
-                },
-              );
+              ConfirmationDialog.show(context, onConfirm: () {
+                context.read<ConversationsBloc>().add(DeleteMessageEvent(
+                      deleteMessageParams: deleteMessageParams,
+                    ));
+                Navigator.of(context).pop();
+              }, message: S.of(context).confirm_delete_message);
             }
           : null,
       child: Container(

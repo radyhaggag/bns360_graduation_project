@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/features/jobs/domain/entities/job_entity.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/job_entity.dart';
 import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_details/job_details_items_section.dart';
 import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_details/job_details_top_section.dart';
 import 'package:flutter/material.dart';

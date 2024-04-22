@@ -55,3 +55,13 @@ class AddJobErrorState extends JobsState {
 
   const AddJobErrorState({required this.message});
 }
+
+class EditJobLoadingState extends JobsState {}
+
+class EditJobSuccessState extends JobsState {}
+
+class EditJobErrorState extends JobsState {
+  final String message;
+
+  const EditJobErrorState({required this.message});
+}

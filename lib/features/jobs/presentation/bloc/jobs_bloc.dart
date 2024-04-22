@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/entities/job_entity.dart';
+import '../../../../core/shared_data/entities/job_entity.dart';
 import '../../domain/params/add_job_params.dart';
 import '../../domain/repositories/jobs_repo.dart';
 
@@ -19,6 +19,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     on<GetJobByIdEvent>(_getJobById);
     on<SearchOnJobs>(_searchOnJobs);
     on<AddJobEvent>(_addJob);
+    on<EditJobEvent>(_editJon);
   }
 
   List<JobEntity> jobs = [];
@@ -101,6 +102,20 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     res.fold(
       (l) => emit(AddJobErrorState(message: l.message)),
       (r) => emit(AddJobSuccessState()),
+    );
+  }
+
+  _editJon(
+    EditJobEvent event,
+    Emitter<JobsState> emit,
+  ) async {
+    emit(EditJobLoadingState());
+
+    final res = await jobsRepo.addJob(event.addJobParams);
+
+    res.fold(
+      (l) => emit(EditJobErrorState(message: l.message)),
+      (r) => emit(EditJobSuccessState()),
     );
   }
 

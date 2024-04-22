@@ -4,11 +4,14 @@ import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/shared_data/entities/job_entity.dart';
 import '../widgets/add_job/add_job_app_bar.dart';
 import '../widgets/add_job/add_job_body.dart';
 
 class AddJobScreen extends StatelessWidget {
-  const AddJobScreen({super.key});
+  const AddJobScreen({super.key, this.jobEntity});
+
+  final JobEntity? jobEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +27,13 @@ class AddJobScreen extends StatelessWidget {
           ).then((_) => Navigator.pop(context));
         }
       },
-      child: const Scaffold(
-        appBar: AddJobScreenAppBar(),
-        body: AddJobBody(),
+      child: Scaffold(
+        appBar: AddJobScreenAppBar(
+          isUpdate: jobEntity != null,
+        ),
+        body: AddJobBody(
+          jobEntity: jobEntity,
+        ),
       ),
     );
   }

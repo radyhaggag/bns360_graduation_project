@@ -7,14 +7,16 @@ import '../../../../../core/widgets/custom_back_button.dart';
 
 class AddPropertyScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const AddPropertyScreenAppBar({super.key});
+  const AddPropertyScreenAppBar({super.key, required this.isUpdate});
+
+  final bool isUpdate;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       leading: const CustomBackButton(),
       title: Text(
-        S.of(context).add_property,
+        isUpdate ? S.of(context).edit_post : S.of(context).add_property,
         style: context.textTheme.titleMedium?.copyWith(
           fontSize: AppFontSize.titleMedium,
         ),

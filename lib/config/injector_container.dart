@@ -16,8 +16,10 @@ import '../features/craftsman/craftsman_injector.dart';
 import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
 import '../features/jobs/jobs_injector.dart';
+import '../features/my_posts/my_posts_injector.dart';
 import '../features/profile/profile_injector.dart';
 import '../features/properties/properties_injector.dart';
+import '../features/saved_items/saved_injector.dart';
 import '../features/settings/settings_injector.dart';
 import '../features/splash/splash_injector.dart';
 
@@ -38,6 +40,8 @@ Future<void> initAppDependencies() async {
   initConversations();
   initJobs();
   initProperties();
+  initSaved();
+  initMyPosts();
 }
 
 Future<void> initCore() async {

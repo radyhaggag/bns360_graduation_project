@@ -25,3 +25,9 @@ class AddJobEvent extends JobsEvent {
 
   const AddJobEvent({required this.addJobParams});
 }
+
+class EditJobEvent extends JobsEvent {
+  final AddJobParams addJobParams;
+
+  const EditJobEvent({required this.addJobParams});
+}

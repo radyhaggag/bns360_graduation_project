@@ -98,10 +98,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("حذف"),
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "تم حذف هذه الرسالة من قبل المرسل."),
+        "delete_post": MessageLookupByLibrary.simpleMessage("حذف المنشور؟"),
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
         "description_of_property":
             MessageLookupByLibrary.simpleMessage("وصف العقار"),
         "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
+        "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
+        "edit_post": MessageLookupByLibrary.simpleMessage("تعديل المنشور"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("جنية"),
@@ -144,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "job_description": MessageLookupByLibrary.simpleMessage("وصف الوظيفة"),
         "job_title": MessageLookupByLibrary.simpleMessage("عنوان الوظيفة"),
         "job_type": MessageLookupByLibrary.simpleMessage("نوع الوظيفه"),
+        "jobs": MessageLookupByLibrary.simpleMessage("الوظائف"),
         "just_now": MessageLookupByLibrary.simpleMessage("الآن"),
         "killo_meter_lone": MessageLookupByLibrary.simpleMessage("كيلومتر"),
         "killo_meter_short": MessageLookupByLibrary.simpleMessage("كم"),
@@ -167,6 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "must_be_more_than_minimum_number_of_characters":
             MessageLookupByLibrary.simpleMessage(
                 "يجب أن تكون كلمة المرور أكثر من الحد الأدنى لطول الأحرف"),
+        "my_business": MessageLookupByLibrary.simpleMessage("أعمالي"),
         "my_posts": MessageLookupByLibrary.simpleMessage("منشوراتي"),
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
         "no_craftsmen_found":
@@ -218,8 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "properties": MessageLookupByLibrary.simpleMessage("العقارات"),
         "property_address":
             MessageLookupByLibrary.simpleMessage("عنوان العقار"),
-        "remove_picked_images":
-            MessageLookupByLibrary.simpleMessage("إزالة الصور المختارة"),
+        "remove_images": MessageLookupByLibrary.simpleMessage("إزالة الصور"),
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("حذف صورة البروفايل"),
         "rent": MessageLookupByLibrary.simpleMessage("للإيجار"),
@@ -240,6 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "salary": MessageLookupByLibrary.simpleMessage("المرتب"),
         "sale": MessageLookupByLibrary.simpleMessage("للبيع"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+        "saved": MessageLookupByLibrary.simpleMessage("العناصر المحفوظه"),
         "search": MessageLookupByLibrary.simpleMessage("أبحث"),
         "search_for_job":
             MessageLookupByLibrary.simpleMessage("البحث عن وظيفة"),
@@ -266,6 +271,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("لا توجد رسائل حتى الآن"),
         "today": MessageLookupByLibrary.simpleMessage("اليوم"),
+        "update": MessageLookupByLibrary.simpleMessage("تحديث"),
         "upload_property_images":
             MessageLookupByLibrary.simpleMessage("تحميل صور العقار"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),

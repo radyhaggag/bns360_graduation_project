@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../domain/entities/property_entity.dart';
+import '../../../../core/shared_data/entities/property_entity.dart';
 import '../../domain/repositories/properties_repo.dart';
 import '../../params/add_property_params.dart';
 
@@ -21,8 +21,11 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     on<SearchOnPropertiesEvent>(_searchOnProperties);
     on<SelectPropertyLocationEvent>(_selectPropertyLocation);
     on<AddPropertyEvent>(_addProperty);
+    on<EditPropertyEvent>(_editProperty);
     on<PickPropertyImagesEvent>(_pickPropertyImages);
     on<RemovePickedPropertyImageEvent>(_removePropertyImages);
+    on<ClearPropertyImagesEvent>(_clearPropertyImages);
+    on<InitNetworkPropertyImageEvent>(_initNetworkPropertyImage);
   }
 
   List<PropertyEntity> properties = [];
@@ -163,6 +166,40 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     Emitter<PropertiesState> emit,
   ) {
     _pickedImages.removeAt(event.index);
+    emit(PropertyImagesUpdatedState());
+  }
+
+  _editProperty(EditPropertyEvent event, Emitter<PropertiesState> emit) async {
+    emit(EditPropertyLoadingState());
+    final params = event.addPropertyParams.copyWith(
+      lat: _propertyLat,
+      lng: _propertyLng,
+      images: _pickedImages,
+    );
+    final res = await propertiesRepo.editProperty(params);
+
+    res.fold(
+      (l) => emit(EditPropertyErrorState(message: l.message)),
+      (r) => emit(const EditPropertySuccessState()),
+    );
+  }
+
+  List<String> networkImages = [];
+
+  _clearPropertyImages(
+    ClearPropertyImagesEvent event,
+    Emitter<PropertiesState> emit,
+  ) {
+    networkImages.clear();
+    pickedImages.clear();
+    emit(PropertyImagesUpdatedState());
+  }
+
+  _initNetworkPropertyImage(
+    InitNetworkPropertyImageEvent event,
+    Emitter<PropertiesState> emit,
+  ) {
+    networkImages = event.networkImages.map((e) => e).toList();
     emit(PropertyImagesUpdatedState());
   }
 }

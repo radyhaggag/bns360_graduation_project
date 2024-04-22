@@ -27,7 +27,7 @@ class ProfileSignOutBtn extends StatelessWidget {
         child: Icon(
           Icons.logout,
           color: context.theme.primaryColor.withAlpha(90),
-          size: 24.r,
+          size: 25.r,
         ),
       ),
       title: Text(

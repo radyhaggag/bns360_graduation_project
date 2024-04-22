@@ -1,7 +1,7 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/job_entity.dart';
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
-import 'package:bns360_graduation_project/features/jobs/domain/entities/job_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

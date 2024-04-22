@@ -1,10 +1,10 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:bns360_graduation_project/core/widgets/custom_back_button.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/widgets/property_card/property_card_images_section.dart';
+import 'package:bns360_graduation_project/core/widgets/property_card/property_card_images_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../domain/entities/property_entity.dart';
+import '../../../../../core/shared_data/entities/property_entity.dart';
 
 class PropertyDetailsPainedSection extends SliverPersistentHeaderDelegate {
   final PropertyEntity propertyEntity;

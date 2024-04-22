@@ -12,10 +12,12 @@ class AddPropertyButton extends StatelessWidget {
     super.key,
     required this.onAdd,
     this.isOfferTypeSelected = false,
+    this.isUpdate = false,
   });
 
   final VoidCallback onAdd;
   final bool isOfferTypeSelected;
+  final bool isUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class AddPropertyButton extends StatelessWidget {
         return BlocBuilder<PropertiesBloc, PropertiesState>(
           builder: (context, state) {
             return CustomElevatedButton(
-              label: S.of(context).post_now,
+              label: isUpdate ? S.of(context).update : S.of(context).post_now,
               onPressed: (form.valid && isOfferTypeSelected) ? onAdd : null,
               isLoading: state is AddPropertyLoadingState,
               width: context.width,

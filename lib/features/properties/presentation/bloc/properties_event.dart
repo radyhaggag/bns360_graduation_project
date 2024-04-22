@@ -32,10 +32,26 @@ class AddPropertyEvent extends PropertiesEvent {
   });
 }
 
+class EditPropertyEvent extends PropertiesEvent {
+  final AddPropertyParams addPropertyParams;
+
+  const EditPropertyEvent({
+    required this.addPropertyParams,
+  });
+}
+
 class PickPropertyImagesEvent extends PropertiesEvent {}
 
 class RemovePickedPropertyImageEvent extends PropertiesEvent {
   final int index;
 
   const RemovePickedPropertyImageEvent({required this.index});
+}
+
+class ClearPropertyImagesEvent extends PropertiesEvent {}
+
+class InitNetworkPropertyImageEvent extends PropertiesEvent {
+  final List<String> networkImages;
+
+  const InitNetworkPropertyImageEvent({required this.networkImages});
 }

@@ -161,7 +161,7 @@
   "offer_type": "Offer type",
   "properties": "Properties",
   "no_properties_found": "No properties found",
-  "remove_picked_images": "Remove picked images",
+  "remove_images": "Remove images",
   "add_property_success": "The property has been added successfully",
   "add_job_success": "The job has been added successfully",
   "call": "Call",
@@ -182,5 +182,12 @@
   "compare_validation_message": "Values do not match",
   "contains_validation_message": "Invalid value",
   "any_validation_message": "Invalid value",
-  "required": "Required"
+  "required": "Required",
+  "saved": "Saved",
+  "jobs": "Jobs",
+  "my_business": "My business",
+  "edit": "Edit",
+  "delete_post": "Delete post?",
+  "edit_post": "Edit post",
+  "update": "Update"
 }

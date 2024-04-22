@@ -16,7 +16,7 @@ class ProfileListItemsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.width * .93,
-      height: context.height * .45,
+      height: context.height * .55,
       padding: EdgeInsetsDirectional.only(start: 6.w, top: 12.h),
       decoration: BoxDecoration(
         color: context.theme.highlightColor,
@@ -49,15 +49,36 @@ class ProfileListItemsSection extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           ProfileItemTile(
+            title: S.of(context).my_business,
+            svgPath: AppSvg.business,
+            size: 30.r,
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.myBusiness);
+            },
+          ),
+          const SizedBox(height: 10),
+          ProfileItemTile(
             title: S.of(context).my_posts,
             svgPath: AppSvg.posts,
             size: 19.5.r,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.myPosts);
+            },
+          ),
+          const SizedBox(height: 10),
+          ProfileItemTile(
+            title: S.of(context).saved,
+            icon: Icons.bookmark,
+            size: 30.r,
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.savedItems);
+            },
           ),
           const SizedBox(height: 10),
           ProfileItemTile(
             title: S.of(context).share_this_app,
             svgPath: AppSvg.share,
+            size: 25.r,
             onTap: () {},
           ),
           const SizedBox(height: 10),

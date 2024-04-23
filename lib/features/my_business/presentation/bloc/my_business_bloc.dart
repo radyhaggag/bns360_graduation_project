@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:bns360_graduation_project/core/shared_data/entities/category_entity.dart';
 import 'package:bns360_graduation_project/features/my_business/domain/repositories/my_business_repo.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../domain/params/add_business_params.dart';
 
 part 'my_business_event.dart';
@@ -28,6 +28,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     on<SelectBusinessCategoryEvent>(_selectBusinessCategory);
     on<ClearMainBusinessImageEvent>(_clearMainBusinessImageE);
     on<AddMainBusinessImageEvent>(_addMainBusinessImageE);
+    on<DeleteMyBusinessEvent>(_deleteMyBusiness);
   }
 
   double? _businessLat;
@@ -79,6 +80,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   }
 
   List<String> networkImages = [];
+  String? mainNetworkImage;
 
   _clearBusinessImages(
     ClearBusinessImagesEvent event,
@@ -94,8 +96,11 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     Emitter<MyBusinessState> emit,
   ) {
     networkImages = event.networkImages.map((e) => e).toList();
+    mainNetworkImage = event.mainBusinessImage;
     emit(BusinessImagesUpdatedState());
   }
+
+  List<CategoryItemEntity> myBusinessItems = [];
 
   _getMyBusiness(
     GetMyBusinessEvent event,
@@ -107,7 +112,10 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
 
     res.fold(
       (l) => emit(GetMyBusinessErrorState(message: l.message)),
-      (r) => emit(GetMyBusinessSuccessState()),
+      (r) {
+        myBusinessItems = r;
+        emit(GetMyBusinessSuccessState());
+      },
     );
   }
 
@@ -174,6 +182,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     Emitter<MyBusinessState> emit,
   ) {
     _mainBusinessImage = null;
+    mainNetworkImage = null;
     emit(MainBusinessImageUpdatedState());
   }
 
@@ -192,5 +201,14 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
 
   bool get isAllImagesSelected {
     return _mainBusinessImage != null && pickedImages.isNotEmpty;
+  }
+
+  _deleteMyBusiness(
+    DeleteMyBusinessEvent event,
+    Emitter<MyBusinessState> emit,
+  ) {
+    myBusinessItems.removeWhere(
+      (element) => element.id == event.businessId,
+    );
   }
 }

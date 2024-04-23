@@ -6,10 +6,10 @@ import '../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/data_state_widget.dart';
 import '../../../../core/widgets/main_list_view_builder.dart';
+import '../../../../core/widgets/more_icon.dart';
 import '../../../../core/widgets/property_card/property_card.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/my_posts_bloc.dart';
-import 'more_section/more_icon.dart';
 
 class MyPostsPropertiesBuilder extends StatelessWidget {
   const MyPostsPropertiesBuilder({super.key});
@@ -39,7 +39,7 @@ class MyPostsPropertiesBuilder extends StatelessWidget {
             list: myPostsProperties,
             emptyMessage: S.of(context).no_properties_found,
             itemWidget: (item, index) => PropertyCard(
-              propertyEntity: item,
+              propertyEntity: item.copyWith(isBelongToMe: true),
               moreWidget: MoreIcon(
                 onDelete: () {
                   context.read<MyPostsBloc>().add(
@@ -52,6 +52,7 @@ class MyPostsPropertiesBuilder extends StatelessWidget {
                     arguments: item,
                   );
                 },
+                deleteMessage: S.of(context).delete_post,
               ),
             ),
             scrollDirection: Axis.vertical,

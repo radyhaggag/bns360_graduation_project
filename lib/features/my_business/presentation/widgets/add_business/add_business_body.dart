@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
 import '../../../../../generated/l10n.dart';
@@ -16,7 +17,9 @@ import 'submit_business_button.dart';
 import 'upload_business_images_section.dart';
 
 class AddBusinessBody extends StatefulWidget {
-  const AddBusinessBody({super.key});
+  const AddBusinessBody({super.key, this.categoryItemEntity});
+
+  final CategoryItemEntity? categoryItemEntity;
 
   @override
   State<AddBusinessBody> createState() => _AddBusinessBodyState();
@@ -29,15 +32,29 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
   @override
   void initState() {
     super.initState();
+
+    if (widget.categoryItemEntity != null) {
+      context.read<MyBusinessBloc>().add(InitNetworkBusinessImageEvent(
+            networkImages: widget.categoryItemEntity!.businessImages,
+            mainBusinessImage: widget.categoryItemEntity!.imageUrl,
+          ));
+      context.read<MyBusinessBloc>().add(SelectBusinessCategoryEvent(
+            businessCategory: widget.categoryItemEntity!.category,
+          ));
+    }
+
     form = FormGroup({
       'name': FormControl<String>(
         validators: [Validators.required],
+        value: widget.categoryItemEntity?.nameEN,
       ),
       'description': FormControl<String>(
         validators: [Validators.required],
+        value: widget.categoryItemEntity?.descriptionEN,
       ),
       'address': FormControl<String>(
         validators: [Validators.required],
+        value: widget.categoryItemEntity?.address,
       ),
       'from': FormControl<String>(
         validators: [
@@ -52,13 +69,6 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
         ],
       ),
       'phoneNumber': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-        ],
-      ),
-      'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,

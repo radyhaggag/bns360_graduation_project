@@ -1,4 +1,6 @@
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,27 +40,40 @@ class CategoryItemProfileSection extends StatelessWidget {
           child: _TitleAndTypeSection(categoryItemEntity: categoryItemEntity),
         ),
         const SizedBox(width: 10),
-        RoundedIconBtn(
-          icon: const Icon(FeatherIcons.messageCircle),
-          addMargin: false,
-          onPressed: () {
-            final params = ConversationScreenParams(
-              participantEntity: ParticipantEntity(
-                id: categoryItemEntity.id.toString(),
-                nameEN: categoryItemEntity.nameEN,
-                nameAR: categoryItemEntity.nameAR,
-                imageUrl: categoryItemEntity.imageUrl,
-                userType: UserType.businessOwner.id,
-              ),
-              categoryItemEntity: categoryItemEntity,
-            );
-            Navigator.of(context).pushNamed(
-              Routes.conversation,
-              arguments: params,
-            );
-          },
-        ),
-        const FavoriteIcon(addMargin: false),
+        if (categoryItemEntity.isBelongToMe)
+          CustomTextButton(
+            label: S.of(context).edit,
+            width: 50.w,
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                Routes.addBusiness,
+                arguments: categoryItemEntity,
+              );
+            },
+          )
+        else ...[
+          RoundedIconBtn(
+            icon: const Icon(FeatherIcons.messageCircle),
+            addMargin: false,
+            onPressed: () {
+              final params = ConversationScreenParams(
+                participantEntity: ParticipantEntity(
+                  id: categoryItemEntity.id.toString(),
+                  nameEN: categoryItemEntity.nameEN,
+                  nameAR: categoryItemEntity.nameAR,
+                  imageUrl: categoryItemEntity.imageUrl,
+                  userType: UserType.businessOwner.id,
+                ),
+                categoryItemEntity: categoryItemEntity,
+              );
+              Navigator.of(context).pushNamed(
+                Routes.conversation,
+                arguments: params,
+              );
+            },
+          ),
+          const FavoriteIcon(addMargin: false),
+        ],
       ],
     );
   }

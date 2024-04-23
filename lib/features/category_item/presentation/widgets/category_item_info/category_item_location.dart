@@ -13,6 +13,8 @@ class _CategoryItemLocation extends StatelessWidget {
         SvgPicture.asset(
           AppSvg.marker,
           color: context.theme.cardColor,
+          width: 20.r,
+          height: 20.r,
         ),
         const SizedBox(width: 15),
         Expanded(
@@ -24,9 +26,9 @@ class _CategoryItemLocation extends StatelessWidget {
             ),
           ),
         ),
-        const MapBtn(
+        MapBtn(
           mapParams: MapParams(
-            location: 'Beni Madi',
+            location: location,
             lat: 28.9826537,
             lng: 31.0087249,
           ),

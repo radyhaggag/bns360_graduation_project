@@ -12,10 +12,12 @@ class MoreIcon extends StatelessWidget {
     super.key,
     required this.onDelete,
     required this.onEdit,
+    required this.deleteMessage,
   });
 
   final VoidCallback onDelete;
   final VoidCallback onEdit;
+  final String deleteMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class MoreIcon extends StatelessWidget {
               onDelete.call();
               Navigator.pop(context);
             },
-            message: S.of(context).delete_post,
+            message: deleteMessage,
           );
         }
       },

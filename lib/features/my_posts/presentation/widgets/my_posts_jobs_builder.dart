@@ -1,5 +1,5 @@
 import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/features/my_posts/presentation/widgets/more_section/more_icon.dart';
+import 'package:bns360_graduation_project/core/widgets/more_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,7 +38,7 @@ class MyPostsJobsBuilder extends StatelessWidget {
             list: myPostsJobs,
             emptyMessage: S.of(context).no_jobs_found,
             itemWidget: (item, index) => JobCard(
-              jobEntity: item,
+              jobEntity: item.copyWith(isBelongToMe: true),
               moreWidget: MoreIcon(
                 onDelete: () {
                   context.read<MyPostsBloc>().add(
@@ -51,6 +51,7 @@ class MyPostsJobsBuilder extends StatelessWidget {
                     arguments: item,
                   );
                 },
+                deleteMessage: S.of(context).delete_post,
               ),
             ),
             scrollDirection: Axis.vertical,

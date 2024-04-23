@@ -36,30 +36,31 @@ class PropertyDetailsBody extends StatelessWidget {
             ),
           ],
         ),
-        Positioned(
-          bottom: 10,
-          left: 0,
-          right: 0,
-          child: SizedBox(
-            width: context.width,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: CustomElevatedButton(
-                label: S.of(context).buy_now,
-                onPressed: () {
-                  ContactWithBottomSheet.show(
-                    context: context,
-                    whatsapp: "+201030096242",
-                    phoneNumber: "+201030096242",
-                  );
-                },
-                width: context.width,
-                height: 50.h,
-                borderRadius: BorderRadius.circular(8),
+        if (!propertyEntity.isBelongToMe)
+          Positioned(
+            bottom: 10,
+            left: 0,
+            right: 0,
+            child: SizedBox(
+              width: context.width,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: CustomElevatedButton(
+                  label: S.of(context).buy_now,
+                  onPressed: () {
+                    ContactWithBottomSheet.show(
+                      context: context,
+                      whatsapp: "+201030096242",
+                      phoneNumber: "+201030096242",
+                    );
+                  },
+                  width: context.width,
+                  height: 50.h,
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }

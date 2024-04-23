@@ -373,7 +373,9 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) =>
                 sl<MyBusinessBloc>()..add(GetBusinessTypesEvent()),
-            child: const AddBusinessScreen(),
+            child: AddBusinessScreen(
+              categoryItemEntity: settings.arguments as CategoryItemEntity?,
+            ),
           ),
         );
       default:

@@ -12,6 +12,10 @@ class CategoryItemModel extends CategoryItemEntity {
     required super.imageUrl,
     required super.starsCount,
     required super.numOfRatings,
+    required super.address,
+    required super.businessImages,
+    required super.lat,
+    required super.lng,
   });
 
   factory CategoryItemModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +29,12 @@ class CategoryItemModel extends CategoryItemEntity {
       imageUrl: json['image_url'],
       starsCount: json['stars_count'],
       numOfRatings: json['num_of_ratings'],
+      address: json['address'],
+      businessImages: List<String>.from(
+        json['businessImages'].map((e) => e.toString()),
+      ),
+      lat: json['lat'],
+      lng: json['lng'],
     );
   }
 }

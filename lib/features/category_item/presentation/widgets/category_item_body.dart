@@ -88,17 +88,18 @@ class CategoryItemBody extends StatelessWidget {
               ),
             ),
           ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 50.w,
-              vertical: 20,
-            ),
-            sliver: SliverToBoxAdapter(
-              child: WriteReviewBtn(
-                addReviewCallback: (rating, value) {},
+          if (!categoryItemEntity.isBelongToMe)
+            SliverPadding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 50.w,
+                vertical: 20,
+              ),
+              sliver: SliverToBoxAdapter(
+                child: WriteReviewBtn(
+                  addReviewCallback: (rating, value) {},
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

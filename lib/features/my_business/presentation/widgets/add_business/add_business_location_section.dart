@@ -10,11 +10,15 @@ import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 
 import '../../../../../core/helpers/location_helper.dart';
+import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/custom_marker.dart';
+import '../../../../map/domain/params/map_params.dart';
 
 class AddBusinessLocationSection extends StatefulWidget {
-  const AddBusinessLocationSection({super.key});
+  const AddBusinessLocationSection({super.key, this.categoryItemEntity});
+
+  final CategoryItemEntity? categoryItemEntity;
 
   @override
   State<AddBusinessLocationSection> createState() =>
@@ -32,6 +36,15 @@ class _AddBusinessLocationSectionState
   void initState() {
     super.initState();
     _mapController = MapController();
+    if (widget.categoryItemEntity != null) {
+      centerPoint = LatLng(
+        widget.categoryItemEntity!.lat,
+        widget.categoryItemEntity!.lng,
+      );
+    } else {
+      _getCurrentLocation();
+    }
+
     _getCurrentLocation();
   }
 
@@ -103,9 +116,24 @@ class _AddBusinessLocationSectionState
         ),
         const SizedBox(height: 15),
         CustomElevatedButton(
-          label: S.of(context).add_location,
+          label: widget.categoryItemEntity != null
+              ? S.of(context).edit_location
+              : S.of(context).add_location,
           width: 150.w,
-          onPressed: () => Navigator.of(context).pushNamed(Routes.map),
+          onPressed: () {
+            MapParams? mapParams;
+            if (widget.categoryItemEntity != null) {
+              mapParams = MapParams(
+                location: widget.categoryItemEntity!.address,
+                lat: widget.categoryItemEntity!.lat,
+                lng: widget.categoryItemEntity!.lng,
+              );
+            }
+            Navigator.of(context).pushNamed(
+              Routes.map,
+              arguments: mapParams,
+            );
+          },
           borderRadius: BorderRadius.circular(8.0),
         ),
       ],

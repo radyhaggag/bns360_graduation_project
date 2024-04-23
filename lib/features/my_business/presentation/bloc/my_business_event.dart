@@ -1,6 +1,6 @@
 part of 'my_business_bloc.dart';
 
-abstract class MyBusinessEvent  {
+abstract class MyBusinessEvent {
   const MyBusinessEvent();
 }
 
@@ -40,13 +40,22 @@ class AddMainBusinessImageEvent extends MyBusinessEvent {}
 
 class InitNetworkBusinessImageEvent extends MyBusinessEvent {
   final List<String> networkImages;
+  final String mainBusinessImage;
 
-  const InitNetworkBusinessImageEvent({required this.networkImages});
+  const InitNetworkBusinessImageEvent({
+    required this.networkImages,
+    required this.mainBusinessImage,
+  });
 }
 
 class SelectBusinessCategoryEvent extends MyBusinessEvent {
   final CategoryEntity businessCategory;
 
   const SelectBusinessCategoryEvent({required this.businessCategory});
+}
 
+class DeleteMyBusinessEvent extends MyBusinessEvent {
+  final int businessId;
+
+  const DeleteMyBusinessEvent({required this.businessId});
 }

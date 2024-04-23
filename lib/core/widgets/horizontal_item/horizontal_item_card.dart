@@ -24,6 +24,7 @@ class HorizontalItemCard extends StatelessWidget {
     this.width,
     this.isFavorite,
     this.useSetStateToChangeFavoriteColor,
+    this.moreWidget,
   });
 
   final String title;
@@ -36,6 +37,7 @@ class HorizontalItemCard extends StatelessWidget {
   final bool? useSetStateToChangeFavoriteColor;
   final void Function()? onFavoriteIconPressed;
   final void Function()? onPressed;
+  final Widget? moreWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +77,11 @@ class HorizontalItemCard extends StatelessWidget {
               ),
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: moreWidget == null
+                  ? MainAxisAlignment.end
+                  : MainAxisAlignment.spaceBetween,
               children: [
+                if (moreWidget != null) moreWidget!,
                 FavoriteIcon(
                   onPressed: onFavoriteIconPressed,
                   isFavorite: isFavorite,

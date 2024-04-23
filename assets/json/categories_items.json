@@ -15,7 +15,17 @@
       "description_en": "A Turkish restaurant serving many international dishes",
       "image_url": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
       "stars_count": 4.5,
-      "num_of_ratings": 25
+      "num_of_ratings": 25,
+      "address": "Beni-Suef",
+      "businessImages": [
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg"
+      ],
+      "lat": 28.9826537,
+      "lng": 31.0087249
     },
     {
       "id": 2,
@@ -31,7 +41,17 @@
       "description_en": "Cafe Ozzy is the best gathering for the most beautiful people",
       "image_url": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
       "stars_count": 3,
-      "num_of_ratings": 25
+      "num_of_ratings": 25,
+      "address": "Beni-Suef",
+      "businessImages": [
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg"
+      ],
+      "lat": 28.9826537,
+      "lng": 31.0087249
     },
     {
       "id": 1,
@@ -47,7 +67,17 @@
       "description_en": "A Turkish restaurant serving many international dishes",
       "image_url": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
       "stars_count": 4.5,
-      "num_of_ratings": 25
+      "num_of_ratings": 25,
+      "address": "Beni-Suef",
+      "businessImages": [
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg"
+      ],
+      "lat": 28.9826537,
+      "lng": 31.0087249
     },
     {
       "id": 2,
@@ -63,7 +93,17 @@
       "description_en": "Cafe Ozzy is the best gathering for the most beautiful people",
       "image_url": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
       "stars_count": 3,
-      "num_of_ratings": 25
+      "num_of_ratings": 25,
+      "address": "Beni-Suef",
+      "businessImages": [
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg"
+      ],
+      "lat": 28.9826537,
+      "lng": 31.0087249
     },
     {
       "id": 1,
@@ -79,7 +119,17 @@
       "description_en": "A Turkish restaurant serving many international dishes",
       "image_url": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
       "stars_count": 4.5,
-      "num_of_ratings": 25
+      "num_of_ratings": 25,
+      "address": "Beni-Suef",
+      "businessImages": [
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg"
+      ],
+      "lat": 28.9826537,
+      "lng": 31.0087249
     },
     {
       "id": 2,
@@ -95,7 +145,17 @@
       "description_en": "Cafe Ozzy is the best gathering for the most beautiful people",
       "image_url": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
       "stars_count": 3,
-      "num_of_ratings": 25
+      "num_of_ratings": 25,
+      "address": "Beni-Suef",
+      "businessImages": [
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg"
+      ],
+      "lat": 28.9826537,
+      "lng": 31.0087249
     }
   ]
 }

@@ -8,7 +8,7 @@ import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/my_business_bloc.dart';
-import 'add_property_picked_images_builder.dart';
+import 'add_business_picked_images_builder.dart';
 
 class UploadBusinessImagesSection extends StatelessWidget {
   const UploadBusinessImagesSection({super.key});
@@ -23,18 +23,19 @@ class UploadBusinessImagesSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomElevatedButtonWithIcon(
-              onPressed: pickedImages.length < 4
-                  ? () {
-                      _onPressed(networkImages, context);
-                    }
-                  : null,
+              onPressed: () {
+                _onPressed(
+                  (networkImages.isNotEmpty || pickedImages.length == 4),
+                  context,
+                );
+              },
               isExpanded: false,
               borderRadius: BorderRadius.circular(8),
-              label: networkImages.isNotEmpty
+              label: (networkImages.isNotEmpty || pickedImages.length == 4)
                   ? S.of(context).remove_images
                   : S.of(context).upload_business_images,
               leading: const Icon(Icons.file_upload_outlined),
-              backgroundColor: networkImages.isNotEmpty
+              backgroundColor: (networkImages.isNotEmpty || pickedImages.length == 4)
                   ? AppColors.red
                   : context.theme.cardColor.withOpacity(.7),
               foregroundColor: AppColors.white,
@@ -61,14 +62,15 @@ class UploadBusinessImagesSection extends StatelessWidget {
     );
   }
 
-  void _onPressed(List<String> networkImages, BuildContext context) {
-    if (networkImages.isNotEmpty) {
+  void _onPressed(bool delete, BuildContext context) {
+    if (delete) {
       ConfirmationDialog.show(
         context,
         onConfirm: () {
           context.read<MyBusinessBloc>().add(
                 ClearBusinessImagesEvent(),
               );
+          Navigator.pop(context);
         },
         message: S.of(context).delete_business_images,
       );
@@ -89,36 +91,29 @@ class UploadMainBusinessImageSection extends StatelessWidget {
       builder: (context, state) {
         final mainBusinessImage =
             context.read<MyBusinessBloc>().mainBusinessImage;
+        final mainNetworkImage =
+            context.read<MyBusinessBloc>().mainNetworkImage;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomElevatedButtonWithIcon(
               onPressed: () => _onPressed(
                 context,
-                delete: mainBusinessImage != null,
+                delete: mainBusinessImage != null || mainNetworkImage != null,
               ),
               isExpanded: false,
               borderRadius: BorderRadius.circular(8),
-              label: mainBusinessImage != null
+              label: (mainBusinessImage != null || mainNetworkImage != null)
                   ? S.of(context).delete_main_business_image
                   : S.of(context).upload_main_business_image,
               leading: const Icon(Icons.file_upload_outlined),
-              backgroundColor: mainBusinessImage != null
-                  ? AppColors.red
-                  : context.theme.cardColor.withOpacity(.7),
+              backgroundColor:
+                  (mainBusinessImage != null || mainNetworkImage != null)
+                      ? AppColors.red
+                      : context.theme.cardColor.withOpacity(.7),
               foregroundColor: AppColors.white,
               fontSize: AppFontSize.details,
             ),
-            if (mainBusinessImage != null) ...[
-              const SizedBox(height: 10),
-              Text(
-                S.of(context).max_no_of_image_uploads(4),
-                style: context.textTheme.bodyMedium?.copyWith(
-                  color: context.theme.hoverColor,
-                  fontSize: AppFontSize.light,
-                ),
-              ),
-            ],
           ],
         );
       },

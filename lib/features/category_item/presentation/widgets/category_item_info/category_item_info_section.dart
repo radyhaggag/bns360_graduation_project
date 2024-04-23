@@ -1,6 +1,7 @@
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
@@ -40,8 +41,8 @@ class CategoryItemInfoSection extends StatelessWidget {
             end: DateTime.now().add(const Duration(hours: 5)),
           ),
           const SizedBox(height: 15),
-          const _CategoryItemLocation(
-            location: 'Elkornish, Beni suef',
+           _CategoryItemLocation(
+            location: categoryItemEntity.address,
           ),
           const SizedBox(height: 15),
           const _CategoryItemContactInfo(

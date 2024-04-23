@@ -194,5 +194,20 @@
   "delete_property_images": "Delete property images?",
   "add_requirement": "Add requirement",
   "add": "Add",
-  "remove_requirement": "Remove requirement?"
+  "remove_requirement": "Remove requirement?",
+  "add_business": "Add business",
+  "add_business_success": "The business has been added successfully",
+  "description_of_business": "Description of business",
+  "business_address": "Business address",
+  "enter_business_address": "Enter business address",
+  "upload_business_images": "Upload business images",
+  "business_name": "Business name",
+  "enter_business_name": "Enter business name",
+  "delete_business_images": "Delete business images?",
+  "select_business_category": "Select business category",
+  "to": "To",
+  "from": "From",
+  "delete_main_business_image": "Delete main business image",
+  "upload_main_business_image": "Upload main business image",
+  "work_time": "Times of work"
 }

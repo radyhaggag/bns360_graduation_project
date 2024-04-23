@@ -28,9 +28,7 @@ class AddJobScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AddJobScreenAppBar(
-          isUpdate: jobEntity != null,
-        ),
+        appBar: const AddJobScreenAppBar(),
         body: AddJobBody(
           jobEntity: jobEntity,
         ),

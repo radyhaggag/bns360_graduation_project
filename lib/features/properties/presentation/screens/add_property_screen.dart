@@ -28,9 +28,7 @@ class AddPropertyScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
-        appBar: AddPropertyScreenAppBar(
-          isUpdate: propertyEntity != null,
-        ),
+        appBar: const AddPropertyScreenAppBar(),
         body: AddPropertyBody(
           propertyEntity: propertyEntity,
         ),

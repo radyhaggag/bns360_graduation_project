@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,11 +23,11 @@ class AddRequirementButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(8.0),
       leading: Icon(
         Icons.add_circle,
-        color: AppColors.primary,
+        color: context.theme.cardColor,
         size: 25.r,
       ),
       isExpanded: false,
-      foregroundColor: AppColors.primary,
+      foregroundColor: context.theme.cardColor,
       onPressed: () {
         AddRequirementDialog.show(
           context: context,

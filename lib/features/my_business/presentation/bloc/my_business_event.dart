@@ -1,10 +1,52 @@
 part of 'my_business_bloc.dart';
 
-abstract class MyBusinessEvent extends Equatable {
+abstract class MyBusinessEvent  {
   const MyBusinessEvent();
-
-  @override
-  List<Object> get props => [];
 }
 
 class GetMyBusinessEvent extends MyBusinessEvent {}
+
+class GetBusinessTypesEvent extends MyBusinessEvent {}
+
+class AddBusinessEvent extends MyBusinessEvent {
+  final AddBusinessParams addBusinessParams;
+
+  const AddBusinessEvent({required this.addBusinessParams});
+}
+
+class SelectBusinessLocationEvent extends MyBusinessEvent {
+  final double lat;
+  final double lng;
+
+  const SelectBusinessLocationEvent({
+    required this.lat,
+    required this.lng,
+  });
+}
+
+class PickBusinessImagesEvent extends MyBusinessEvent {}
+
+class RemovePickedBusinessImageEvent extends MyBusinessEvent {
+  final int index;
+
+  const RemovePickedBusinessImageEvent({required this.index});
+}
+
+class ClearBusinessImagesEvent extends MyBusinessEvent {}
+
+class ClearMainBusinessImageEvent extends MyBusinessEvent {}
+
+class AddMainBusinessImageEvent extends MyBusinessEvent {}
+
+class InitNetworkBusinessImageEvent extends MyBusinessEvent {
+  final List<String> networkImages;
+
+  const InitNetworkBusinessImageEvent({required this.networkImages});
+}
+
+class SelectBusinessCategoryEvent extends MyBusinessEvent {
+  final CategoryEntity businessCategory;
+
+  const SelectBusinessCategoryEvent({required this.businessCategory});
+
+}

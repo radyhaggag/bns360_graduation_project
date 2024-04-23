@@ -31,7 +31,7 @@ class CustomReactiveFormField extends StatelessWidget {
   final String formControlName;
   final TextInputAction? textInputAction;
   final ValidationMessages? validationMessages;
-
+  final bool isExpanded;
   const CustomReactiveFormField({
     super.key,
     this.label,
@@ -58,6 +58,7 @@ class CustomReactiveFormField extends StatelessWidget {
     required this.formControlName,
     this.textInputAction,
     this.validationMessages,
+    this.isExpanded = true,
   });
 
   Widget get reactiveField {
@@ -109,10 +110,12 @@ class CustomReactiveFormField extends StatelessWidget {
               margin: EdgeInsetsDirectional.only(start: fromStartMargin ?? 0),
               child: reactiveField,
             )
-          else
+          else if (isExpanded)
             Expanded(
               child: reactiveField,
-            ),
+            )
+          else
+            reactiveField,
         ],
       );
     } else {
@@ -227,17 +230,6 @@ class _BuildTextFieldState extends State<_BuildTextField> {
             setState(() {});
           }
         }
-      },
-      onEditingComplete: (control) {
-        if (((control.value as String?) ?? "").isEmpty &&
-                widget.prefixText != null ||
-            widget.hint != null) {
-          prefixText = null;
-          hintText = widget.hint;
-
-          setState(() {});
-        }
-        FocusScope.of(context).unfocus();
       },
       validationMessages: widget.validationMessages ??
           FormValidator.validationMessages(context),

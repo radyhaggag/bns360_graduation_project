@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/features/my_business/business_injector.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -42,6 +43,7 @@ Future<void> initAppDependencies() async {
   initProperties();
   initSaved();
   initMyPosts();
+  initMyBusiness();
 }
 
 Future<void> initCore() async {

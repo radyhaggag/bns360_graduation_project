@@ -48,6 +48,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "add": MessageLookupByLibrary.simpleMessage("إضافة"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("إضافة وظيفة"),
+        "add_business":
+            MessageLookupByLibrary.simpleMessage("إضافة نشاط تجاري"),
         "add_job_success":
             MessageLookupByLibrary.simpleMessage("تم اضافة الوظيفة بنجاح"),
         "add_location": MessageLookupByLibrary.simpleMessage("إضافة موقع"),
@@ -67,6 +69,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("العودة الى تسجيل الدخول"),
         "businessOwner":
             MessageLookupByLibrary.simpleMessage("صاحب نشاط تجارى"),
+        "business_address":
+            MessageLookupByLibrary.simpleMessage("عنوان النشاط التجاري"),
+        "business_name":
+            MessageLookupByLibrary.simpleMessage("اسم النشاط التجاري"),
         "buy_now": MessageLookupByLibrary.simpleMessage("اشترِ الآن"),
         "call": MessageLookupByLibrary.simpleMessage("اتصل"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
@@ -99,12 +105,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "day_ago": MessageLookupByLibrary.simpleMessage("قبل يوم"),
         "days_ago": m0,
         "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+        "delete_business_images": MessageLookupByLibrary.simpleMessage(
+            "هل تريد حذف صور النشاط التجاري؟"),
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "تم حذف هذه الرسالة من قبل المرسل."),
+        "delete_main_business_image": MessageLookupByLibrary.simpleMessage(
+            "هل تريد حذف الصورة الرئيسية للنشاط التجاري"),
         "delete_post": MessageLookupByLibrary.simpleMessage("حذف المنشور؟"),
         "delete_property_images":
             MessageLookupByLibrary.simpleMessage("هل تريد حذف صور العقارات؟"),
         "description": MessageLookupByLibrary.simpleMessage("الوصف"),
+        "description_of_business":
+            MessageLookupByLibrary.simpleMessage("وصف النشاط التجاري"),
         "description_of_property":
             MessageLookupByLibrary.simpleMessage("وصف العقار"),
         "details": MessageLookupByLibrary.simpleMessage("تفاصيل"),
@@ -126,6 +138,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل كلمة المرور"),
         "enterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("ادخل رقم هاتفك"),
+        "enter_business_address":
+            MessageLookupByLibrary.simpleMessage("أدخل عنوان النشاط التجاري"),
+        "enter_business_name":
+            MessageLookupByLibrary.simpleMessage("أدخل اسم النشاط التجاري"),
         "enter_job_description":
             MessageLookupByLibrary.simpleMessage("ادخل الوظف"),
         "enter_job_title": MessageLookupByLibrary.simpleMessage("ادخل عنوان"),
@@ -142,6 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "لا تقلق! يحدث ذلك. الرجاء إدخال البريد الإلكتروني المرتبط بحسابك."),
+        "from": MessageLookupByLibrary.simpleMessage("من"),
         "fullName": MessageLookupByLibrary.simpleMessage("اسمك بالكامل"),
         "full_time": MessageLookupByLibrary.simpleMessage("دوام كامل"),
         "haveAccountMsg":
@@ -259,6 +276,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "search_on": MessageLookupByLibrary.simpleMessage("البحث في"),
         "search_on_properties":
             MessageLookupByLibrary.simpleMessage("البحث في العقارات"),
+        "select_business_category":
+            MessageLookupByLibrary.simpleMessage("اختار فئة النشاط التجاري"),
         "send": MessageLookupByLibrary.simpleMessage("إرسال"),
         "sendCode": MessageLookupByLibrary.simpleMessage("إرسال رمز التحقق"),
         "send_message": MessageLookupByLibrary.simpleMessage("ارسال رسالة"),
@@ -278,8 +297,13 @@ class MessageLookup extends MessageLookupByLibrary {
                 "حجم الصورة كبير جدا ، والحد الأقصى للحجم المسموح به هو"),
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("لا توجد رسائل حتى الآن"),
+        "to": MessageLookupByLibrary.simpleMessage("إلى"),
         "today": MessageLookupByLibrary.simpleMessage("اليوم"),
         "update": MessageLookupByLibrary.simpleMessage("تحديث"),
+        "upload_business_images":
+            MessageLookupByLibrary.simpleMessage("تحميل صور النشاط التجاري"),
+        "upload_main_business_image": MessageLookupByLibrary.simpleMessage(
+            "تحديد الصورة الرئيسية للنشاط التجاري"),
         "upload_property_images":
             MessageLookupByLibrary.simpleMessage("تحميل صور العقار"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
@@ -302,6 +326,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
         "work_hours": MessageLookupByLibrary.simpleMessage("ساعات العمل"),
+        "work_time": MessageLookupByLibrary.simpleMessage("وقت العمل"),
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),

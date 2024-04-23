@@ -193,5 +193,19 @@
   "delete_property_images": "هل تريد حذف صور العقارات؟",
   "add_requirement": "إضافة متطلب للوظيفه",
   "add": "إضافة",
-  "remove_requirement": "حذف المتطلب؟"
+  "remove_requirement": "حذف المتطلب؟",
+  "add_business": "إضافة نشاط تجاري",
+  "description_of_business": "وصف النشاط التجاري",
+  "business_address": "عنوان النشاط التجاري",
+  "enter_business_address": "أدخل عنوان النشاط التجاري",
+  "upload_business_images": "تحميل صور النشاط التجاري",
+  "business_name": "اسم النشاط التجاري",
+  "enter_business_name": "أدخل اسم النشاط التجاري",
+  "delete_business_images": "هل تريد حذف صور النشاط التجاري؟",
+  "select_business_category": "اختار فئة النشاط التجاري",
+  "to": "إلى",
+  "from": "من",
+  "delete_main_business_image": "هل تريد حذف الصورة الرئيسية للنشاط التجاري",
+  "upload_main_business_image": "تحديد الصورة الرئيسية للنشاط التجاري",
+  "work_time": "وقت العمل"
 }

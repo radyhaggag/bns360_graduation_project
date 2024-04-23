@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
+import 'package:bns360_graduation_project/features/my_business/presentation/screens/add_business_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -92,6 +93,7 @@ abstract class Routes {
   static const savedItems = '/savedItems';
   static const myPosts = '/myPosts';
   static const myBusiness = '/myBusiness';
+  static const addBusiness = '/addBusiness';
 }
 
 abstract class RouteConfig {
@@ -364,6 +366,14 @@ abstract class RouteConfig {
             create: (context) =>
                 sl<MyBusinessBloc>()..add(GetMyBusinessEvent()),
             child: const MyBusinessScreen(),
+          ),
+        );
+      case Routes.addBusiness:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyBusinessBloc>()..add(GetBusinessTypesEvent()),
+            child: const AddBusinessScreen(),
           ),
         );
       default:

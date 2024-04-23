@@ -7,7 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'custom_reactive_input_field.dart';
 
 class WhatsappAndMobileFields extends StatelessWidget {
-  const WhatsappAndMobileFields({super.key});
+  const WhatsappAndMobileFields({
+    super.key,
+    this.viewWhatsapp = true,
+  });
+
+  final bool viewWhatsapp;
 
   @override
   Widget build(BuildContext context) {
@@ -26,22 +31,25 @@ class WhatsappAndMobileFields extends StatelessWidget {
           textStyle: context.textTheme.bodyMedium,
           maxLength: 10,
           textInputAction: TextInputAction.next,
-          validationMessages: FormValidator.validationMessages(context, isPhoneNumber: true),
+          validationMessages:
+              FormValidator.validationMessages(context, isPhoneNumber: true),
         ),
-        10.verticalSpace,
-        CustomReactiveFormField(
-          title: S.of(context).whatsapp,
-          prefixText: "+20 ",
-          hint: "+20 XXXXXXXXXX",
-          formControlName: 'whatsapp',
-          isHorizontally: false,
-          keyboardType: TextInputType.number,
-          isDigitsOnly: true,
-          // textFieldWidth: .5.sw,
-          textStyle: context.textTheme.bodyMedium,
-          maxLength: 10,
-          textInputAction: TextInputAction.done,
-        ),
+        if (viewWhatsapp) ...[
+          10.verticalSpace,
+          CustomReactiveFormField(
+            title: S.of(context).whatsapp,
+            prefixText: "+20 ",
+            hint: "+20 XXXXXXXXXX",
+            formControlName: 'whatsapp',
+            isHorizontally: false,
+            keyboardType: TextInputType.number,
+            isDigitsOnly: true,
+            // textFieldWidth: .5.sw,
+            textStyle: context.textTheme.bodyMedium,
+            maxLength: 10,
+            textInputAction: TextInputAction.done,
+          ),
+        ],
       ],
     );
   }

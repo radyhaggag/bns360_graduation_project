@@ -16,6 +16,7 @@ class CustomDropdown<T> extends StatefulWidget {
   final String label;
   final Color? dropdownColor;
   final Color? selectedItemColor;
+  final double? horizontalPadding;
 
   const CustomDropdown({
     super.key,
@@ -27,6 +28,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.dropdownColor,
     this.selectedItemColor,
     this.textValue,
+    this.horizontalPadding,
   });
 
   @override
@@ -62,7 +64,10 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
             alignment: Alignment.center,
             child: Container(
               alignment: Alignment.center,
-              margin: const EdgeInsets.all(5),
+              margin: EdgeInsets.symmetric(
+                horizontal: widget.horizontalPadding ?? 5,
+                vertical: 5,
+              ),
               decoration: BoxDecoration(
                 color: widget.items[index] == widget.value
                     ? context.theme.primaryColor.withOpacity(.25)
@@ -99,7 +104,10 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
         ),
         menuItemStyleData: const MenuItemStyleData(height: 60),
         dropdownStyleData: DropdownStyleData(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.symmetric(
+            horizontal: widget.horizontalPadding ?? 10,
+            vertical: 10,
+          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
             border: Border.all(color: AppColors.black25),

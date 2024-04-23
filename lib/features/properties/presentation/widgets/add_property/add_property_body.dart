@@ -1,5 +1,6 @@
 import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/features/properties/params/add_property_params.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/bloc/properties_bloc.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_button.dart';
@@ -11,6 +12,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
+import '../../../../../generated/l10n.dart';
 import 'add_property_form.dart';
 import 'upload_property_images_section.dart';
 
@@ -84,7 +86,6 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: kHorizontalPadding,
-        vertical: 15,
       ),
       child: ReactiveFormBuilder(
         form: () => form,
@@ -92,9 +93,19 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
         child: ListView(
           shrinkWrap: true,
           children: [
+            Text(
+              widget.propertyEntity != null
+                  ? S.of(context).edit_post
+                  : S.of(context).add_property,
+              style: context.textTheme.titleMedium?.copyWith(
+                color: context.theme.cardColor,
+              ),
+            ),
+            20.verticalSpace,
             AddPropertyForm(
               form: form,
               selectedOfferType: selectedOfferType,
+              propertyEntity: widget.propertyEntity,
               onOfferTypeChanged: (newValue) {
                 setState(() {
                   selectedOfferType = newValue;

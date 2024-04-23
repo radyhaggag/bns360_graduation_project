@@ -49,6 +49,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "add": MessageLookupByLibrary.simpleMessage("Add"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("Add a job"),
+        "add_business": MessageLookupByLibrary.simpleMessage("Add business"),
+        "add_business_success": MessageLookupByLibrary.simpleMessage(
+            "The business has been added successfully"),
         "add_job_success": MessageLookupByLibrary.simpleMessage(
             "The job has been added successfully"),
         "add_location": MessageLookupByLibrary.simpleMessage("Add location"),
@@ -66,6 +69,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "area": MessageLookupByLibrary.simpleMessage("Area"),
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),
         "businessOwner": MessageLookupByLibrary.simpleMessage("Business owner"),
+        "business_address":
+            MessageLookupByLibrary.simpleMessage("Business address"),
+        "business_name": MessageLookupByLibrary.simpleMessage("Business name"),
         "buy_now": MessageLookupByLibrary.simpleMessage("Buy now"),
         "call": MessageLookupByLibrary.simpleMessage("Call"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -100,12 +106,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "day_ago": MessageLookupByLibrary.simpleMessage("day ago"),
         "days_ago": m0,
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "delete_business_images":
+            MessageLookupByLibrary.simpleMessage("Delete business images?"),
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "This message has been deleted by the sender."),
+        "delete_main_business_image":
+            MessageLookupByLibrary.simpleMessage("Delete main business image"),
         "delete_post": MessageLookupByLibrary.simpleMessage("Delete post?"),
         "delete_property_images":
             MessageLookupByLibrary.simpleMessage("Delete property images?"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
+        "description_of_business":
+            MessageLookupByLibrary.simpleMessage("Description of business"),
         "description_of_property":
             MessageLookupByLibrary.simpleMessage("Description of property"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
@@ -125,6 +137,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "enterPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Enter your phone number"),
+        "enter_business_address":
+            MessageLookupByLibrary.simpleMessage("Enter business address"),
+        "enter_business_name":
+            MessageLookupByLibrary.simpleMessage("Enter business name"),
         "enter_job_description":
             MessageLookupByLibrary.simpleMessage("Enter job description"),
         "enter_job_title":
@@ -144,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "Don’t worry! It happens. Please enter the email associated with your account."),
+        "from": MessageLookupByLibrary.simpleMessage("From"),
         "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
         "full_time": MessageLookupByLibrary.simpleMessage("Full time"),
         "haveAccountMsg":
@@ -260,6 +277,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "search_on": MessageLookupByLibrary.simpleMessage("Search on"),
         "search_on_properties":
             MessageLookupByLibrary.simpleMessage("Search on properties"),
+        "select_business_category":
+            MessageLookupByLibrary.simpleMessage("Select business category"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
         "send_message": MessageLookupByLibrary.simpleMessage("Send message"),
@@ -282,8 +301,13 @@ class MessageLookup extends MessageLookupByLibrary {
                 "The image size is too large, the maximum allowed size is"),
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("There are no messages yet"),
+        "to": MessageLookupByLibrary.simpleMessage("To"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
+        "upload_business_images":
+            MessageLookupByLibrary.simpleMessage("Upload business images"),
+        "upload_main_business_image":
+            MessageLookupByLibrary.simpleMessage("Upload main business image"),
         "upload_property_images":
             MessageLookupByLibrary.simpleMessage("Upload property images"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
@@ -306,6 +330,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "work_hours": MessageLookupByLibrary.simpleMessage("Work hours"),
+        "work_time": MessageLookupByLibrary.simpleMessage("Times of work"),
         "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("Write your message"),

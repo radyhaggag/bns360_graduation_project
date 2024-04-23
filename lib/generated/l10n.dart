@@ -1999,6 +1999,156 @@ class S {
       args: [],
     );
   }
+
+  /// `Add business`
+  String get add_business {
+    return Intl.message(
+      'Add business',
+      name: 'add_business',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The business has been added successfully`
+  String get add_business_success {
+    return Intl.message(
+      'The business has been added successfully',
+      name: 'add_business_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description of business`
+  String get description_of_business {
+    return Intl.message(
+      'Description of business',
+      name: 'description_of_business',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business address`
+  String get business_address {
+    return Intl.message(
+      'Business address',
+      name: 'business_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter business address`
+  String get enter_business_address {
+    return Intl.message(
+      'Enter business address',
+      name: 'enter_business_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload business images`
+  String get upload_business_images {
+    return Intl.message(
+      'Upload business images',
+      name: 'upload_business_images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Business name`
+  String get business_name {
+    return Intl.message(
+      'Business name',
+      name: 'business_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter business name`
+  String get enter_business_name {
+    return Intl.message(
+      'Enter business name',
+      name: 'enter_business_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete business images?`
+  String get delete_business_images {
+    return Intl.message(
+      'Delete business images?',
+      name: 'delete_business_images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select business category`
+  String get select_business_category {
+    return Intl.message(
+      'Select business category',
+      name: 'select_business_category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To`
+  String get to {
+    return Intl.message(
+      'To',
+      name: 'to',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From`
+  String get from {
+    return Intl.message(
+      'From',
+      name: 'from',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete main business image`
+  String get delete_main_business_image {
+    return Intl.message(
+      'Delete main business image',
+      name: 'delete_main_business_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload main business image`
+  String get upload_main_business_image {
+    return Intl.message(
+      'Upload main business image',
+      name: 'upload_main_business_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Times of work`
+  String get work_time {
+    return Intl.message(
+      'Times of work',
+      name: 'work_time',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

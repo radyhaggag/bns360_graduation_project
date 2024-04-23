@@ -1,23 +1,21 @@
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../core/widgets/custom_back_button.dart';
 
-class AddJobScreenAppBar extends StatelessWidget
+class MyBusinessScreenAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const AddJobScreenAppBar({super.key});
+  const MyBusinessScreenAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: context.theme.scaffoldBackgroundColor,
       leading: const CustomBackButton(),
-      // title: Text(
-      //   isUpdate ? S.of(context).edit_post : S.of(context).add_a_job,
-      // ),
+      // title: Text(S.of(context).my_business),
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(50);
+  Size get preferredSize => const Size.fromHeight(60);
 }

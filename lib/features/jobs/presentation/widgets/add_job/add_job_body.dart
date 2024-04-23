@@ -1,5 +1,6 @@
 import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/job_entity.dart';
+import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
 import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
@@ -100,6 +101,7 @@ class _AddJobBodyState extends State<AddJobBody> {
                   : S.of(context).add_a_job,
               style: context.textTheme.titleMedium?.copyWith(
                 color: context.theme.cardColor,
+                fontSize: AppFontSize.titleMedium,
               ),
             ),
             20.verticalSpace,

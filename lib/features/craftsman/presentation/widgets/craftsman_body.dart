@@ -48,13 +48,7 @@ class CraftsmanBody extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   CraftsManWorkSamplesSection(
-                    imagesUrls: [
-                      craftsmanEntity.imageUrl,
-                      craftsmanEntity.imageUrl,
-                      craftsmanEntity.imageUrl,
-                      craftsmanEntity.imageUrl,
-                      craftsmanEntity.imageUrl
-                    ],
+                    imagesUrls: craftsmanEntity.serviceImages,
                   ),
                   const SizedBox(height: 10),
                   MainReviewSummaryCard(
@@ -71,17 +65,18 @@ class CraftsmanBody extends StatelessWidget {
               ),
             ),
           ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 50.w,
-              vertical: 20,
-            ),
-            sliver: SliverToBoxAdapter(
-              child: WriteReviewBtn(
-                addReviewCallback: (rating, value) {},
+          if (!craftsmanEntity.isBelongToMe)
+            SliverPadding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 50.w,
+                vertical: 20,
+              ),
+              sliver: SliverToBoxAdapter(
+                child: WriteReviewBtn(
+                  addReviewCallback: (rating, value) {},
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

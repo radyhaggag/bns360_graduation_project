@@ -20,6 +20,7 @@ class MyBusinessBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             AddBusinessButton(),
+            SizedBox(height: 15),
             MyBusinessItemsBuilder(),
           ],
         ),

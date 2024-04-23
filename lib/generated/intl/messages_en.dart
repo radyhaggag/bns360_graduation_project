@@ -60,6 +60,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "The property has been added successfully"),
         "add_requirement":
             MessageLookupByLibrary.simpleMessage("Add requirement"),
+        "add_service": MessageLookupByLibrary.simpleMessage("Add service"),
+        "add_service_success": MessageLookupByLibrary.simpleMessage(
+            "The service has been added successfully"),
         "am": MessageLookupByLibrary.simpleMessage("AM"),
         "any_validation_message":
             MessageLookupByLibrary.simpleMessage("Invalid value"),
@@ -112,23 +115,32 @@ class MessageLookup extends MessageLookupByLibrary {
             "This message has been deleted by the sender."),
         "delete_main_business_image":
             MessageLookupByLibrary.simpleMessage("Delete main business image"),
+        "delete_main_service_image":
+            MessageLookupByLibrary.simpleMessage("Delete main service image"),
         "delete_post": MessageLookupByLibrary.simpleMessage("Delete post?"),
         "delete_property_images":
             MessageLookupByLibrary.simpleMessage("Delete property images?"),
+        "delete_service_images":
+            MessageLookupByLibrary.simpleMessage("Delete service images?"),
         "description": MessageLookupByLibrary.simpleMessage("Description"),
         "description_of_business":
             MessageLookupByLibrary.simpleMessage("Description of business"),
         "description_of_property":
             MessageLookupByLibrary.simpleMessage("Description of property"),
+        "description_of_service":
+            MessageLookupByLibrary.simpleMessage("Description of service"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "edit_business": MessageLookupByLibrary.simpleMessage("Edit business"),
         "edit_location": MessageLookupByLibrary.simpleMessage("Edit location"),
         "edit_post": MessageLookupByLibrary.simpleMessage("Edit post"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "edit_service": MessageLookupByLibrary.simpleMessage("Edit service"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_validation_message": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid email address"),
+        "enter": MessageLookupByLibrary.simpleMessage("Enter"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter your email"),
         "enterName": MessageLookupByLibrary.simpleMessage("Enter your name"),
         "enterNewPassword":
@@ -147,8 +159,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter job title"),
         "enter_property_address":
             MessageLookupByLibrary.simpleMessage("Enter property address"),
+        "enter_service_address":
+            MessageLookupByLibrary.simpleMessage("Enter service address"),
         "enter_the_requirements":
             MessageLookupByLibrary.simpleMessage("Enter the requirements"),
+        "enter_your_address":
+            MessageLookupByLibrary.simpleMessage("Enter your address"),
         "equals_validation_message":
             MessageLookupByLibrary.simpleMessage("Fields must be equal"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
@@ -199,6 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Password must be more than the minimum length of characters"),
         "my_business": MessageLookupByLibrary.simpleMessage("My business"),
         "my_posts": MessageLookupByLibrary.simpleMessage("My posts"),
+        "my_services": MessageLookupByLibrary.simpleMessage("My services"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("No craftsmen found!"),
@@ -279,6 +296,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Search on properties"),
         "select_business_category":
             MessageLookupByLibrary.simpleMessage("Select business category"),
+        "select_service_category":
+            MessageLookupByLibrary.simpleMessage("Select service category"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
         "sendCode": MessageLookupByLibrary.simpleMessage("Send code"),
         "send_message": MessageLookupByLibrary.simpleMessage("Send message"),
@@ -286,6 +305,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to"),
         "serviceProvider":
             MessageLookupByLibrary.simpleMessage("Service provider"),
+        "service_address":
+            MessageLookupByLibrary.simpleMessage("Service address"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "share_this_app":
             MessageLookupByLibrary.simpleMessage("Share this App"),
@@ -308,8 +329,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upload business images"),
         "upload_main_business_image":
             MessageLookupByLibrary.simpleMessage("Upload main business image"),
+        "upload_main_service_image":
+            MessageLookupByLibrary.simpleMessage("Upload main service image"),
         "upload_property_images":
             MessageLookupByLibrary.simpleMessage("Upload property images"),
+        "upload_service_images":
+            MessageLookupByLibrary.simpleMessage("Upload service images"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "validateEmail":
@@ -338,6 +363,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Write your review"),
         "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
         "you_deleted_this_message":
-            MessageLookupByLibrary.simpleMessage("You deleted this message")
+            MessageLookupByLibrary.simpleMessage("You deleted this message"),
+        "your_address": MessageLookupByLibrary.simpleMessage("Your address")
       };
 }

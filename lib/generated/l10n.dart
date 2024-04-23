@@ -2149,6 +2149,166 @@ class S {
       args: [],
     );
   }
+
+  /// `Add service`
+  String get add_service {
+    return Intl.message(
+      'Add service',
+      name: 'add_service',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The service has been added successfully`
+  String get add_service_success {
+    return Intl.message(
+      'The service has been added successfully',
+      name: 'add_service_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description of service`
+  String get description_of_service {
+    return Intl.message(
+      'Description of service',
+      name: 'description_of_service',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service address`
+  String get service_address {
+    return Intl.message(
+      'Service address',
+      name: 'service_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter service address`
+  String get enter_service_address {
+    return Intl.message(
+      'Enter service address',
+      name: 'enter_service_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload service images`
+  String get upload_service_images {
+    return Intl.message(
+      'Upload service images',
+      name: 'upload_service_images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete service images?`
+  String get delete_service_images {
+    return Intl.message(
+      'Delete service images?',
+      name: 'delete_service_images',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select service category`
+  String get select_service_category {
+    return Intl.message(
+      'Select service category',
+      name: 'select_service_category',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete main service image`
+  String get delete_main_service_image {
+    return Intl.message(
+      'Delete main service image',
+      name: 'delete_main_service_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload main service image`
+  String get upload_main_service_image {
+    return Intl.message(
+      'Upload main service image',
+      name: 'upload_main_service_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My services`
+  String get my_services {
+    return Intl.message(
+      'My services',
+      name: 'my_services',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your address`
+  String get your_address {
+    return Intl.message(
+      'Your address',
+      name: 'your_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your address`
+  String get enter_your_address {
+    return Intl.message(
+      'Enter your address',
+      name: 'enter_your_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter`
+  String get enter {
+    return Intl.message(
+      'Enter',
+      name: 'enter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit business`
+  String get edit_business {
+    return Intl.message(
+      'Edit business',
+      name: 'edit_business',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit service`
+  String get edit_service {
+    return Intl.message(
+      'Edit service',
+      name: 'edit_service',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

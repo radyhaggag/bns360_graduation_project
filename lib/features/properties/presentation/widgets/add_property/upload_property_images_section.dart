@@ -1,6 +1,8 @@
+import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
 import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
@@ -19,28 +21,35 @@ class UploadPropertyImagesSection extends StatelessWidget {
       builder: (context, state) {
         final pickedImages = context.read<PropertiesBloc>().pickedImages;
         final networkImages = context.read<PropertiesBloc>().networkImages;
+        final isRemoveEnabled =
+            networkImages.isNotEmpty || pickedImages.length == 4;
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomElevatedButtonWithIcon(
-              onPressed: pickedImages.length < 4
-                  ? () {
-                      _onPressed(networkImages, context);
-                    }
-                  : null,
+              onPressed: () {
+                _onPressed(networkImages, context);
+              },
               isExpanded: false,
               borderRadius: BorderRadius.circular(8),
-              label: networkImages.isNotEmpty
+              label: isRemoveEnabled
                   ? S.of(context).remove_images
                   : S.of(context).upload_property_images,
-              leading: const Icon(Icons.file_upload_outlined),
-              backgroundColor: networkImages.isNotEmpty
+              leading: isRemoveEnabled
+                  ? SvgPicture.asset(
+                      AppSvg.deletePost,
+                      color: AppColors.white,
+                    )
+                  : const Icon(Icons.file_upload_outlined),
+              backgroundColor: isRemoveEnabled
                   ? AppColors.red
                   : context.theme.cardColor.withOpacity(.7),
               foregroundColor: AppColors.white,
               fontSize: AppFontSize.details,
             ),
-            if (pickedImages.isEmpty) ...[
+            if (pickedImages.isEmpty ||
+                (networkImages.length < 4 && pickedImages.isEmpty)) ...[
               const SizedBox(height: 10),
               Text(
                 S.of(context).max_no_of_image_uploads(4),

@@ -36,6 +36,16 @@ class AddBusinessErrorState extends MyBusinessState {
   const AddBusinessErrorState({required this.message});
 }
 
+class UpdateBusinessLoadingState extends MyBusinessState {}
+
+class UpdateBusinessSuccessState extends MyBusinessState {}
+
+class UpdateBusinessErrorState extends MyBusinessState {
+  final String message;
+
+  const UpdateBusinessErrorState({required this.message});
+}
+
 class BusinessImagesUpdatedState extends MyBusinessState {}
 
 class BusinessCategoryUpdatedState extends MyBusinessState {

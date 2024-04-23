@@ -1,6 +1,5 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
@@ -9,8 +8,8 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/language.dart';
-import '../../../../../core/widgets/buttons/map_btn.dart';
 import '../../../../../generated/l10n.dart';
 
 part 'craftsman_contact_info.dart';
@@ -40,8 +39,8 @@ class CraftsmanInfoSection extends StatelessWidget {
             end: DateTime.now().add(const Duration(hours: 5)),
           ),
           const SizedBox(height: 15),
-          const _CraftsmanLocation(
-            location: 'Elkornish, Beni suef',
+          _CraftsmanLocation(
+            location: craftsmanEntity.address,
           ),
           const SizedBox(height: 15),
           const _CraftsmanContactInfo(

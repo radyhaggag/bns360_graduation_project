@@ -18,6 +18,7 @@ import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
 import '../features/jobs/jobs_injector.dart';
 import '../features/my_posts/my_posts_injector.dart';
+import '../features/my_services/my_services_injector.dart';
 import '../features/profile/profile_injector.dart';
 import '../features/properties/properties_injector.dart';
 import '../features/saved_items/saved_injector.dart';
@@ -44,6 +45,7 @@ Future<void> initAppDependencies() async {
   initSaved();
   initMyPosts();
   initMyBusiness();
+  initMyServices();
 }
 
 Future<void> initCore() async {

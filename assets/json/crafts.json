@@ -17,34 +17,34 @@
       "name_en": "Electrician"
     },
     {
-      "id": 1,
-      "name_ar": "النجارين",
-      "name_en": "Carpenters"
+      "id": 4,
+      "name_ar": "المصورين",
+      "name_en": "Photographers"
     },
     {
-      "id": 2,
-      "name_ar": "سباكيين",
-      "name_en": "Plumber"
+      "id": 5,
+      "name_ar": "صحفيين",
+      "name_en": "Journalists"
     },
     {
-      "id": 3,
-      "name_ar": "عمال الكهرباء",
-      "name_en": "Electrician"
+      "id": 6,
+      "name_ar": "مبرمجين",
+      "name_en": "Programmers"
     },
     {
-      "id": 1,
-      "name_ar": "النجارين",
-      "name_en": "Carpenters"
+      "id": 7,
+      "name_ar": "الحدادين",
+      "name_en": "Blacksmiths"
     },
     {
-      "id": 2,
-      "name_ar": "سباكيين",
-      "name_en": "Plumber"
+      "id": 8,
+      "name_ar": "مرشدين سياحيين",
+      "name_en": "Tour Guides"
     },
     {
-      "id": 3,
-      "name_ar": "عمال الكهرباء",
-      "name_en": "Electrician"
+      "id": 9,
+      "name_ar": "محاسبين",
+      "name_en": "Accountants"
     }
   ]
 }

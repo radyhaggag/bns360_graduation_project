@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,6 +19,7 @@ class ProfileListItemsSection extends StatelessWidget {
     return Container(
       width: context.width * .93,
       height: context.height * .55,
+      // height: context.height * .65,
       padding: EdgeInsetsDirectional.only(start: 6.w, top: 12.h),
       decoration: BoxDecoration(
         color: context.theme.highlightColor,
@@ -48,15 +51,30 @@ class ProfileListItemsSection extends StatelessWidget {
             },
           ),
           const SizedBox(height: 10),
-          ProfileItemTile(
-            title: S.of(context).my_business,
-            svgPath: AppSvg.business,
-            size: 30.r,
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.myBusiness);
-            },
-          ),
-          const SizedBox(height: 10),
+          if (AppProvider().getProfile()?.userType ==
+              UserType.businessOwner.id) ...[
+            ProfileItemTile(
+              title: S.of(context).my_business,
+              svgPath: AppSvg.business,
+              size: 30.r,
+              onTap: () {
+                Navigator.of(context).pushNamed(Routes.myBusiness);
+              },
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (AppProvider().getProfile()?.userType ==
+              UserType.serviceProvider.id) ...[
+            ProfileItemTile(
+              title: S.of(context).my_services,
+              svgPath: AppSvg.construction,
+              size: 30.r,
+              onTap: () {
+                Navigator.of(context).pushNamed(Routes.myServices);
+              },
+            ),
+            const SizedBox(height: 10),
+          ],
           ProfileItemTile(
             title: S.of(context).my_posts,
             svgPath: AppSvg.posts,

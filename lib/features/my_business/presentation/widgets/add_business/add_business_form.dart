@@ -38,7 +38,7 @@ class AddBusinessForm extends StatelessWidget {
           15.verticalSpace,
           CustomReactiveFormField(
             title: t.description_of_business,
-            hint: t.enter_business_address,
+            hint: "${t.enter} ${t.description_of_business}",
             formControlName: 'description',
             textInputAction: TextInputAction.next,
           ),

@@ -14,6 +14,12 @@ class AddBusinessEvent extends MyBusinessEvent {
   const AddBusinessEvent({required this.addBusinessParams});
 }
 
+class UpdateBusinessEvent extends MyBusinessEvent {
+  final AddBusinessParams addBusinessParams;
+
+  const UpdateBusinessEvent({required this.addBusinessParams});
+}
+
 class SelectBusinessLocationEvent extends MyBusinessEvent {
   final double lat;
   final double lng;

@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
+import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -92,13 +93,19 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
           children: [
             Center(
               child: Text(
-                S.of(context).add_business,
-                style: context.textTheme.titleMedium,
+                widget.categoryItemEntity != null
+                    ? S.of(context).edit_business
+                    : S.of(context).add_business,
+                style: context.textTheme.titleMedium?.copyWith(
+                  color: context.theme.cardColor,
+                  fontSize: AppFontSize.titleMedium,
+                ),
               ),
             ),
             20.verticalSpace,
             AddBusinessForm(
               form: form,
+              categoryItemEntity: widget.categoryItemEntity,
             ),
             10.verticalSpace,
             const UploadMainBusinessImageSection(),
@@ -107,7 +114,9 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
             20.verticalSpace,
             SubmitBusinessButton(
               onAdd: _submitForm,
+              isUpdate: widget.categoryItemEntity != null,
             ),
+            20.verticalSpace,
           ],
         ),
       ),
@@ -117,7 +126,7 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
   void _submitForm() {
     final formControls = form.controls;
     final params = AddBusinessParams(
-      businessName: formControls['whatsapp']!.value as String,
+      businessName: formControls['name']!.value as String,
       businessAddress: formControls['address']!.value as String,
       businessDescription: formControls['description']!.value as String,
       to: int.parse(formControls['to']!.value as String),
@@ -127,9 +136,15 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
       mainBusinessImage: "", // Will updated on the bloc
     );
 
-    context.read<MyBusinessBloc>().add(AddBusinessEvent(
-          addBusinessParams: params,
-        ));
+    if (widget.categoryItemEntity == null) {
+      context.read<MyBusinessBloc>().add(AddBusinessEvent(
+            addBusinessParams: params,
+          ));
+    } else {
+      context.read<MyBusinessBloc>().add(UpdateBusinessEvent(
+            addBusinessParams: params,
+          ));
+    }
   }
 
   @override

@@ -30,14 +30,15 @@ class CategoryItemReviewSummaryBody extends StatelessWidget {
               starsCount: categoryItemEntity.starsCount,
             ),
           ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 50.w),
-            sliver: SliverToBoxAdapter(
-              child: WriteReviewBtn(
-                addReviewCallback: (rating, value) {},
+          if (!categoryItemEntity.isBelongToMe)
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 50.w),
+              sliver: SliverToBoxAdapter(
+                child: WriteReviewBtn(
+                  addReviewCallback: (rating, value) {},
+                ),
               ),
             ),
-          ),
           SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 10.h),
             sliver: const SliverToBoxAdapter(

@@ -209,5 +209,21 @@
   "from": "From",
   "delete_main_business_image": "Delete main business image",
   "upload_main_business_image": "Upload main business image",
-  "work_time": "Times of work"
+  "work_time": "Times of work",
+  "add_service": "Add service",
+  "add_service_success": "The service has been added successfully",
+  "description_of_service": "Description of service",
+  "service_address": "Service address",
+  "enter_service_address": "Enter service address",
+  "upload_service_images": "Upload service images",
+  "delete_service_images": "Delete service images?",
+  "select_service_category": "Select service category",
+  "delete_main_service_image": "Delete main service image",
+  "upload_main_service_image": "Upload main service image",
+  "my_services": "My services",
+  "your_address": "Your address",
+  "enter_your_address": "Enter your address",
+  "enter": "Enter",
+  "edit_business": "Edit business",
+  "edit_service": "Edit service"
 }

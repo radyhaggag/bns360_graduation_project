@@ -13,6 +13,8 @@ class _CraftsmanLocation extends StatelessWidget {
         SvgPicture.asset(
           AppSvg.marker,
           color: context.theme.cardColor,
+          width: 20.r,
+          height: 20.r,
         ),
         const SizedBox(width: 15),
         Expanded(
@@ -24,13 +26,13 @@ class _CraftsmanLocation extends StatelessWidget {
             ),
           ),
         ),
-        const MapBtn(
-          mapParams: MapParams(
-            location: 'Beni Madi',
-            lat: 28.9826537,
-            lng: 31.0087249,
-          ),
-        ),
+        // const MapBtn(
+        //   mapParams: MapParams(
+        //     location: 'Beni Madi',
+        //     lat: 28.9826537,
+        //     lng: 31.0087249,
+        //   ),
+        // ),
       ],
     );
   }

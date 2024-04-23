@@ -12,9 +12,11 @@ class SubmitBusinessButton extends StatelessWidget {
   const SubmitBusinessButton({
     super.key,
     required this.onAdd,
+    required this.isUpdate,
   });
 
   final VoidCallback onAdd;
+  final bool isUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +25,11 @@ class SubmitBusinessButton extends StatelessWidget {
         return BlocBuilder<MyBusinessBloc, MyBusinessState>(
           builder: (context, state) {
             return CustomElevatedButton(
-              label: S.of(context).add_business,
+              label:
+                  isUpdate ? S.of(context).update : S.of(context).add_business,
               onPressed: (form.valid) ? onAdd : null,
-              isLoading: state is AddBusinessLoadingState,
+              isLoading: state is AddBusinessLoadingState ||
+                  state is UpdateBusinessLoadingState,
               width: context.width,
               height: 50.h,
               borderRadius: BorderRadius.circular(8),

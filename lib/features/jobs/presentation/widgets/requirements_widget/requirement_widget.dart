@@ -78,6 +78,7 @@ class RequirementWidget extends StatelessWidget {
               },
               child: SvgPicture.asset(
                 AppSvg.edit,
+                color: context.theme.cardColor,
               ),
             ),
           ],

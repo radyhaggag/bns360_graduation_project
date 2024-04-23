@@ -20,6 +20,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     on<GetMyBusinessEvent>(_getMyBusiness);
     on<GetBusinessTypesEvent>(_getBusinessTypes);
     on<AddBusinessEvent>(_addBusiness);
+    on<UpdateBusinessEvent>(_updateBusiness);
     on<SelectBusinessLocationEvent>(_selectPropertyLocation);
     on<PickBusinessImagesEvent>(_pickBusinessImages);
     on<RemovePickedBusinessImageEvent>(_removeBusinessImages);
@@ -157,6 +158,28 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     res.fold(
       (l) => emit(AddBusinessErrorState(message: l.message)),
       (r) => emit(AddBusinessSuccessState()),
+    );
+  }
+
+  _updateBusiness(
+    UpdateBusinessEvent event,
+    Emitter<MyBusinessState> emit,
+  ) async {
+    emit(UpdateBusinessLoadingState());
+
+    final params = event.addBusinessParams.copyWith(
+      lat: _businessLat,
+      lng: _businessLng,
+      businessCategory: selectedBusinessCategory,
+      mainBusinessBackgroundImages: pickedImages.map((e) => e.path).toList(),
+      mainBusinessImage: _mainBusinessImage?.path,
+    );
+
+    final res = await myBusinessRepo.addBusiness(params);
+
+    res.fold(
+      (l) => emit(UpdateBusinessErrorState(message: l.message)),
+      (r) => emit(UpdateBusinessSuccessState()),
     );
   }
 

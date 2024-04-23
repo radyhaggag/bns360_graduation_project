@@ -47,6 +47,10 @@ import '../features/map/presentation/screens/map_screen.dart';
 import '../features/my_business/presentation/screens/my_business_screen.dart';
 import '../features/my_posts/presentation/bloc/my_posts_bloc.dart';
 import '../features/my_posts/presentation/screens/my_posts_screen.dart';
+import '../features/my_services/presentation/bloc/my_services_bloc.dart';
+import '../features/my_services/presentation/screens/add_service_screen.dart';
+import '../features/my_services/presentation/screens/edit_service_screen.dart';
+import '../features/my_services/presentation/screens/my_services_screen.dart';
 import '../features/profile/presentation/screen/edit_profile_screen.dart';
 import '../features/properties/presentation/bloc/properties_bloc.dart';
 import '../features/properties/presentation/screens/add_property_screen.dart';
@@ -94,6 +98,9 @@ abstract class Routes {
   static const myPosts = '/myPosts';
   static const myBusiness = '/myBusiness';
   static const addBusiness = '/addBusiness';
+  static const myServices = '/myServices';
+  static const addService = '/addService';
+  static const editService = '/editService';
 }
 
 abstract class RouteConfig {
@@ -375,6 +382,40 @@ abstract class RouteConfig {
                 sl<MyBusinessBloc>()..add(GetBusinessTypesEvent()),
             child: AddBusinessScreen(
               categoryItemEntity: settings.arguments as CategoryItemEntity?,
+            ),
+          ),
+        );
+      case Routes.myServices:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyServicesBloc>()..add(GetMyServicesEvent()),
+            child: const MyServicesScreen(),
+          ),
+        );
+      case Routes.addService:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyServicesBloc>()..add(GetServiceTypesEvent()),
+            child: const AddServiceScreen(),
+          ),
+        );
+      case Routes.editService:
+        final args = settings.arguments as CraftsmanEntity;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<MyServicesBloc>()
+              ..add(GetServiceTypesEvent())
+              ..add(InitNetworkServiceImageEvent(
+                networkImages: args.serviceImages,
+                mainServiceImage: args.imageUrl,
+              ))
+              ..add(SelectServiceCategoryEvent(
+                serviceCategory: args.craft,
+              )),
+            child: EditServiceScreen(
+              craftsmanEntity: args,
             ),
           ),
         );

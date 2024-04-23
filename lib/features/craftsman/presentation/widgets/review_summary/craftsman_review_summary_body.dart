@@ -30,14 +30,15 @@ class CraftsmanReviewSummaryBody extends StatelessWidget {
               starsCount: craftsmanEntity.averageRatings,
             ),
           ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 50.w),
-            sliver: SliverToBoxAdapter(
-              child: WriteReviewBtn(
-                addReviewCallback: (rating, value) {},
+          if (!craftsmanEntity.isBelongToMe)
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 50.w),
+              sliver: SliverToBoxAdapter(
+                child: WriteReviewBtn(
+                  addReviewCallback: (rating, value) {},
+                ),
               ),
             ),
-          ),
           SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 10.h),
             sliver: const SliverToBoxAdapter(

@@ -19,12 +19,13 @@ class EditProfileDataBtn extends StatelessWidget {
           builder: (context, form, child) {
             final formControls = form.controls;
 
-            final email = formControls['email']!.value as String;
-            final name = formControls['name']!.value as String;
+            final email = (formControls['email']?.value ?? "") as String;
+            final name = (formControls['name']?.value ?? "") as String;
 
             return CustomElevatedButton(
               onPressed: (form.valid && isProfileDataChanged(email, name)) ||
-                      context.read<ProfileBloc>().newImagePath != null || context.read<ProfileBloc>().isProfileImageCleared
+                      context.read<ProfileBloc>().newImagePath != null ||
+                      context.read<ProfileBloc>().isProfileImageCleared
                   ? () {
                       context.read<ProfileBloc>().add(EditProfileDataEvent(
                             email: email,

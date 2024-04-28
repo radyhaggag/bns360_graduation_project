@@ -53,14 +53,14 @@ class _AddJobBodyState extends State<AddJobBody> {
       ),
       'workHours': FormControl<String>(
         validators: [
-          Validators.requiredTrue,
+          Validators.required,
           Validators.number,
         ],
         value: widget.jobEntity?.workHours.toString(),
       ),
       'salary': FormControl<String>(
         validators: [
-          Validators.requiredTrue,
+          Validators.required,
           Validators.number,
         ],
         value: widget.jobEntity?.salary.toString(),

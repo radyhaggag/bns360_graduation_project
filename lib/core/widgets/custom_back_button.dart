@@ -42,7 +42,7 @@ class CustomBackButtonWithCircle extends StatelessWidget {
         backgroundColor: context.theme.highlightColor.withOpacity(.5),
         alignment: Alignment.center,
         shape: const CircleBorder(),
-        padding: const EdgeInsets.only(left: 6),
+        padding: const EdgeInsetsDirectional.only(start: 6),
         elevation: 0,
       ),
       alignment: Alignment.center,

@@ -61,26 +61,27 @@ class RequirementWidget extends StatelessWidget {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
-                AddRequirementDialog.show(
-                  context: context,
-                  onAdd: (value) {
-                    context.read<JobsBloc>().add(
-                          EditRequirementEvent(
-                            requirement: value,
-                            index: index,
-                          ),
-                        );
-                  },
-                  initialValue: requirement,
-                );
-              },
-              child: SvgPicture.asset(
-                AppSvg.edit,
-                color: context.theme.cardColor,
+            if (!isReadOnly)
+              InkWell(
+                onTap: () {
+                  AddRequirementDialog.show(
+                    context: context,
+                    onAdd: (value) {
+                      context.read<JobsBloc>().add(
+                            EditRequirementEvent(
+                              requirement: value,
+                              index: index,
+                            ),
+                          );
+                    },
+                    initialValue: requirement,
+                  );
+                },
+                child: SvgPicture.asset(
+                  AppSvg.edit,
+                  color: context.theme.cardColor,
+                ),
               ),
-            ),
           ],
         ),
       ),

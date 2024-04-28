@@ -45,14 +45,14 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
       ),
       'area': FormControl<String>(
         validators: [
-          Validators.requiredTrue,
+          Validators.required,
           Validators.number,
         ],
         value: widget.propertyEntity?.area.split(" ").first,
       ),
       'price': FormControl<String>(
         validators: [
-          Validators.requiredTrue,
+          Validators.required,
           Validators.number,
         ],
         value: widget.propertyEntity?.price.toString(),

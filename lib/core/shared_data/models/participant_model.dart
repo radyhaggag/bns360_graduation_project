@@ -1,5 +1,6 @@
 import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 
+import '../../utils/enums/user_type.dart';
 import '../entities/participant_entity.dart';
 import '../entities/profile/profile_entity.dart';
 
@@ -34,7 +35,13 @@ class ParticipantModel extends ParticipantEntity {
 
   static ParticipantEntity currentParticipant() {
     final profile = AppProvider().getProfile();
-    return profile!.toParticipant();
+    if (profile == null) {
+      return ParticipantEntity(
+        id: "30096242",
+        userType: UserType.user.id,
+      );
+    }
+    return profile.toParticipant();
   }
 }
 

@@ -18,6 +18,7 @@ Future<void> main() async {
     initAppDependencies(),
     HiveManager.init(),
   ]);
+  
   Bloc.observer = MyBlocObserver();
   runApp(const BNS360App());
 }

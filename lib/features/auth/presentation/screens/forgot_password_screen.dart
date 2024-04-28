@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,16 +21,17 @@ class ForgotPasswordScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is ErrorState) {
-            // showToast(state.message, ToastType.error);
-            // CommonDialogs.showErrorDialog(context, message: state.message);
-            // TODO: DELETE THIS NAVIGATION
-            Navigator.of(context).pushNamed(
-              Routes.verifyOtpCode,
-              arguments: "radyhaggag@gmail.com",
+            showToast(
+              state.message,
+              ToastType.error,
             );
           }
           if (state is SendResetPasswordCodeSuccessState) {
-            // TODO: REDIRECT USER TO VERIFY RESET PASSWORD CODE SCREEN
+            showToast(
+              S.of(context).check_your_email_for_verification_code,
+              ToastType.success,
+            );
+
             Navigator.of(context).pushNamed(
               Routes.verifyOtpCode,
               arguments: state.email,

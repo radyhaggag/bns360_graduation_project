@@ -222,5 +222,14 @@
   "enter_your_address": "ادخل عنوانك",
   "enter": "ادخل",
   "edit_business": "تعديل النشاط التجاري",
-  "edit_service": "تعديل الخدمة"
+  "edit_service": "تعديل الخدمة",
+  "sign_up_success_message": "تم التسجيل بنجاح! يرجى التحقق من بريدك الإلكتروني للتأكيد وتسجيل الدخول.",
+  "check_your_email_for_verification_code": "الرجاء التحقق من البريد الإلكتروني للحصول على رمز التحقق.",
+  "invalid_otp_code_msg": "الرمز غير صحيح. يرجى المحاولة مرة أخرى أو طلب رمز جديد.",
+  "password_must_contain": "يجب أن تحتوي كلمة المرور على",
+  "password_requirements_length": "على الأقل 9 أحرف.",
+  "password_requirements_uppercase": "حرف كبير على الأقل.",
+  "password_requirements_lowercase": "حرف صغير على الأقل.",
+  "password_requirements_digit": "رقم واحد على الأقل.",
+  "password_requirements_special_character": "حرف خاص واحد على الأقل."
 }

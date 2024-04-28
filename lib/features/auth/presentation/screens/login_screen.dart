@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,13 +15,7 @@ class LoginScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is ErrorState) {
-            // showToast(state.message, ToastType.error);
-            // CommonDialogs.showErrorDialog(context, message: state.message);
-            // todo: disable it after api integration
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              Routes.bottomNavBar,
-              (route) => false,
-            );
+            showToast(state.message, ToastType.error);
           }
           if (state is LoginSuccessState) {
             Navigator.of(context).pushNamedAndRemoveUntil(

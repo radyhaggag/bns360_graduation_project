@@ -14,6 +14,7 @@ class CustomElevatedButton extends StatelessWidget {
   final void Function()? onPressed;
   final bool isLoading;
   final BorderRadius? borderRadius;
+  final bool isDisabled;
 
   const CustomElevatedButton({
     super.key,
@@ -24,6 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.isLoading = false,
+    this.isDisabled = false,
     this.borderRadius,
   });
 
@@ -33,7 +35,7 @@ class CustomElevatedButton extends StatelessWidget {
       width: width ?? context.width,
       height: height ?? 45.h,
       child: ElevatedButton(
-        onPressed: !isLoading ? onPressed : null,
+        onPressed: (!isLoading && !isDisabled) ? onPressed : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,

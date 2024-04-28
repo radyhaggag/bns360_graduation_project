@@ -84,6 +84,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "checkEmailMsg": MessageLookupByLibrary.simpleMessage(
             "من فضلك قم بفحص بريدك اللالكترونى"),
+        "check_your_email_for_verification_code":
+            MessageLookupByLibrary.simpleMessage(
+                "الرجاء التحقق من البريد الإلكتروني للحصول على رمز التحقق."),
         "closed_now": MessageLookupByLibrary.simpleMessage("مغلق الآن"),
         "compare_validation_message":
             MessageLookupByLibrary.simpleMessage("القيم غير متطابقة"),
@@ -180,6 +183,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
         "hours_ago": m1,
         "hr_work": MessageLookupByLibrary.simpleMessage("س عمل"),
+        "invalid_otp_code_msg": MessageLookupByLibrary.simpleMessage(
+            "الرمز غير صحيح. يرجى المحاولة مرة أخرى أو طلب رمز جديد."),
         "job_description": MessageLookupByLibrary.simpleMessage("وصف الوظيفة"),
         "job_title": MessageLookupByLibrary.simpleMessage("عنوان الوظيفة"),
         "job_type": MessageLookupByLibrary.simpleMessage("نوع الوظيفه"),
@@ -239,6 +244,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور"),
         "passwordChangedMsg":
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة مرورك بنجاح"),
+        "password_must_contain": MessageLookupByLibrary.simpleMessage(
+            "يجب أن تحتوي كلمة المرور على"),
+        "password_requirements_digit":
+            MessageLookupByLibrary.simpleMessage("رقم واحد على الأقل."),
+        "password_requirements_length":
+            MessageLookupByLibrary.simpleMessage("على الأقل 9 أحرف."),
+        "password_requirements_lowercase":
+            MessageLookupByLibrary.simpleMessage("حرف صغير على الأقل."),
+        "password_requirements_special_character":
+            MessageLookupByLibrary.simpleMessage("حرف خاص واحد على الأقل."),
+        "password_requirements_uppercase":
+            MessageLookupByLibrary.simpleMessage("حرف كبير على الأقل."),
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("كلمات المرور غير متطابقة"),
         "pattern_validation_message":
@@ -306,6 +323,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "قم بملئ المعلومات التاليه أو قم بالتسجيل بحسابك على مواقع التواصل الاجتماعى"),
+        "sign_up_success_message": MessageLookupByLibrary.simpleMessage(
+            "تم التسجيل بنجاح! يرجى التحقق من بريدك الإلكتروني للتأكيد وتسجيل الدخول."),
         "support": MessageLookupByLibrary.simpleMessage("الدعم"),
         "tap_to_rate": MessageLookupByLibrary.simpleMessage("انقر للتقييم"),
         "terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),

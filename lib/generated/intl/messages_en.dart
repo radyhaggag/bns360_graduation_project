@@ -86,6 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change password"),
         "checkEmailMsg":
             MessageLookupByLibrary.simpleMessage("Please check your email"),
+        "check_your_email_for_verification_code":
+            MessageLookupByLibrary.simpleMessage(
+                "Please check your email for the verification code."),
         "closed_now": MessageLookupByLibrary.simpleMessage("Closed now"),
         "compare_validation_message":
             MessageLookupByLibrary.simpleMessage("Values do not match"),
@@ -185,6 +188,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage("hour ago"),
         "hours_ago": m1,
         "hr_work": MessageLookupByLibrary.simpleMessage("hr work"),
+        "invalid_otp_code_msg": MessageLookupByLibrary.simpleMessage(
+            "Invalid OTP. Please try again or request a new one."),
         "job_description":
             MessageLookupByLibrary.simpleMessage("Job description"),
         "job_title": MessageLookupByLibrary.simpleMessage("Job title"),
@@ -244,6 +249,19 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password changed"),
         "passwordChangedMsg": MessageLookupByLibrary.simpleMessage(
             "Your password has been changed successfully"),
+        "password_must_contain":
+            MessageLookupByLibrary.simpleMessage("Password must contain"),
+        "password_requirements_digit":
+            MessageLookupByLibrary.simpleMessage("at least one digit."),
+        "password_requirements_length":
+            MessageLookupByLibrary.simpleMessage("at least 9 characters."),
+        "password_requirements_lowercase": MessageLookupByLibrary.simpleMessage(
+            "at least one lowercase letter."),
+        "password_requirements_special_character":
+            MessageLookupByLibrary.simpleMessage(
+                "at least one special character."),
+        "password_requirements_uppercase": MessageLookupByLibrary.simpleMessage(
+            "at least one uppercase letter."),
         "passwordsDoNotMatch":
             MessageLookupByLibrary.simpleMessage("Passwords do not match"),
         "pattern_validation_message":
@@ -313,6 +331,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "signUpMsg": MessageLookupByLibrary.simpleMessage(
             "Fill your information below or register with your social account"),
+        "sign_up_success_message": MessageLookupByLibrary.simpleMessage(
+            "Sign up successful! Check your email for confirmation and log in."),
         "support": MessageLookupByLibrary.simpleMessage("Support"),
         "tap_to_rate": MessageLookupByLibrary.simpleMessage("Tap to Rate"),
         "terms_of_service":

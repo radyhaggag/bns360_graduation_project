@@ -47,6 +47,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             title: S.of(context).newPassword,
             hint: S.of(context).enterNewPassword,
             textInputAction: TextInputAction.next,
+            showRequirements: true,
           ),
           const SizedBox(height: 20),
           ConfirmPasswordInputField(
@@ -54,7 +55,9 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             textInputAction: TextInputAction.done,
           ),
           const SizedBox(height: 50),
-          const ResetPasswordBtn(),
+          ResetPasswordBtn(
+            email: widget.email,
+          ),
         ],
       ),
     );

@@ -19,4 +19,17 @@ enum UserType {
         return S.of(context).serviceProvider;
     }
   }
+
+  static UserType fromInteger(int value) {
+    switch (value) {
+      case 0:
+        return UserType.user;
+      case 1:
+        return UserType.serviceProvider;
+      case 2:
+        return UserType.businessOwner;
+      default:
+        return UserType.user;
+    }
+  }
 }

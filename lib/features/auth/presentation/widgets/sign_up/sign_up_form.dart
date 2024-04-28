@@ -28,7 +28,11 @@ class _SignUpFormState extends State<SignUpForm> {
       'password': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.minLength(kMinPasswordLength)
+          Validators.minLength(kMinPasswordLength),
+          Validators.pattern(r'[A-Z]'),
+          Validators.pattern(r'[a-z]'),
+          Validators.pattern(r'\d'),
+          Validators.pattern(r'[!@#$%^&*(),.?":{}|<>]'),
         ],
       ),
       'name': FormControl<String>(
@@ -55,6 +59,7 @@ class _SignUpFormState extends State<SignUpForm> {
           SizedBox(height: 15),
           PasswordInputField(
             textInputAction: TextInputAction.done,
+            showRequirements: true,
           ),
           SizedBox(height: 15),
           UserTypeDropdown(),

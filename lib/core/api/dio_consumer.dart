@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../utils/app_endpoints.dart';
 import '../utils/constants.dart';
 import 'api_consumer.dart';
 
@@ -13,7 +14,7 @@ class DioConsumer implements APIConsumer {
     Map<String, dynamic> headers = {_contentType: _applicationJson};
 
     dio.options = BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: AppEndpoints.baseUrl,
       headers: headers,
       sendTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
@@ -40,8 +41,19 @@ class DioConsumer implements APIConsumer {
     required String endpoint,
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
+    Map<String, dynamic>? headers,
   }) async {
-    return await dio.post(endpoint, queryParameters: queries, data: data);
+    if (headers != null) {
+      for (var header in headers.entries) {
+        dio.options.headers[header.key] = header.value;
+      }
+    }
+
+    return await dio.post(
+      endpoint,
+      queryParameters: queries,
+      data: data,
+    );
   }
 
   @override
@@ -51,5 +63,13 @@ class DioConsumer implements APIConsumer {
     Map<String, dynamic>? data,
   }) async {
     return await dio.patch(endpoint, queryParameters: queries, data: data);
+  }
+  @override
+  Future<Response> put({
+    required String endpoint,
+    Map<String, dynamic>? queries,
+    Map<String, dynamic>? data,
+  }) async {
+    return await dio.put(endpoint, queryParameters: queries, data: data);
   }
 }

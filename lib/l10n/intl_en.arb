@@ -225,5 +225,14 @@
   "enter_your_address": "Enter your address",
   "enter": "Enter",
   "edit_business": "Edit business",
-  "edit_service": "Edit service"
+  "edit_service": "Edit service",
+  "sign_up_success_message": "Sign up successful! Check your email for confirmation and log in.",
+  "check_your_email_for_verification_code": "Please check your email for the verification code.",
+  "invalid_otp_code_msg": "Invalid OTP. Please try again or request a new one.",
+  "password_must_contain": "Password must contain",
+  "password_requirements_length": "at least 9 characters.",
+  "password_requirements_uppercase": "at least one uppercase letter.",
+  "password_requirements_lowercase": "at least one lowercase letter.",
+  "password_requirements_digit": "at least one digit.",
+  "password_requirements_special_character": "at least one special character."
 }

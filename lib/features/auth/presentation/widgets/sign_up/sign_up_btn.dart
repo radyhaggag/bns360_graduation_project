@@ -11,27 +11,26 @@ class SignUpBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<AuthBloc>();
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         return ReactiveFormConsumer(
           builder: (context, form, child) {
             return CustomElevatedButton(
-              onPressed: form.valid &&context.read<AuthBloc>().userType != null
-                  ? () {
-                      final formControls = form.controls;
+              isDisabled: !(form.valid && bloc.userType != null),
+              onPressed: () {
+                final formControls = form.controls;
 
-                      final name = formControls['name']!.value as String;
-                      final email = formControls['email']!.value as String;
-                      final password =
-                          formControls['password']!.value as String;
+                final name = formControls['name']!.value as String;
+                final email = formControls['email']!.value as String;
+                final password = formControls['password']!.value as String;
 
-                      context.read<AuthBloc>().add(SignUpEvent(
-                            name: name,
-                            email: email,
-                            password: password,
-                          ));
-                    }
-                  : null,
+                bloc.add(SignUpEvent(
+                  name: name,
+                  email: email,
+                  password: password,
+                ));
+              },
               label: S.of(context).signUp,
               isLoading: state is SignUpLoadingState,
             );

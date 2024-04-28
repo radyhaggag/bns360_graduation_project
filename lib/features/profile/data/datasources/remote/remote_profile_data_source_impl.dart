@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/databases/secure_storage/token_manager.dart';
 import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
 
@@ -9,9 +10,11 @@ import 'remote_profile_data_source.dart';
 
 class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
   final APIConsumer apiConsumer;
+  final TokenManager tokenManager;
 
   RemoteProfileDataSourceImpl({
     required this.apiConsumer,
+    required this.tokenManager,
   });
   @override
   Future<void> editProfile(EditProfileParams editProfileParams) async {}
@@ -24,13 +27,13 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
   }
 
   @override
-  Future<void> changePassword(ChangePasswordParams changePasswordParams)async {
+  Future<void> changePassword(ChangePasswordParams changePasswordParams) async {
     await Future.delayed(const Duration(seconds: 2));
   }
 
   @override
-  Future<void> signOut() async{
-  await  AppProvider().clearProfile();
-    await Future.delayed(const Duration(seconds: 2));
+  Future<void> signOut() async {
+    await AppProvider().clearProfile();
+    await tokenManager.deleteToken();
   }
 }

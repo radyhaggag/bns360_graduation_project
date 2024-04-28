@@ -1,10 +1,9 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../../../config/route_config.dart';
 import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../bloc/auth_bloc.dart';
 import 'not_receive_code_tile.dart';
 import 'verify_otp_code_btn.dart';
@@ -41,15 +40,9 @@ class _VerifyOtpCodeFormState extends State<VerifyOtpCodeForm> {
       listener: (context, state) {
         if (state is VerifyResetPasswordCodeErrorState) {
           setState(() => borderColor = AppColors.error);
-          // TODO: DELETE THIS NAVIGATION
-          Navigator.of(context).popAndPushNamed(
-            Routes.resetPassword,
-            arguments: widget.email,
-          );
         }
         if (state is VerifyResetPasswordCodeSuccessState) {
           setState(() => borderColor = AppColors.green);
-          // TODO: REDIRECT USER TO RESET PASSWORD SCREEN
         }
       },
       child: Form(

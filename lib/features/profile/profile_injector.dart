@@ -10,6 +10,7 @@ initProfile() {
   sl.registerLazySingleton<RemoteProfileDataSource>(
     () => RemoteProfileDataSourceImpl(
       apiConsumer: sl(),
+      tokenManager: sl(),
     ),
   );
   // Repo

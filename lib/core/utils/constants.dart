@@ -1,4 +1,3 @@
-const baseUrl = "http://numbersapi.com/";
 String? token;
 
 const kHorizontalPadding = 15.0;

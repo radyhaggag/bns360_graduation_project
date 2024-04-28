@@ -1,8 +1,9 @@
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/route_config.dart';
-import '../../../../core/helpers/common_dialogs.dart';
+import '../../../../core/helpers/custom_toast.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/sign_up/sign_up_body.dart';
 
@@ -15,10 +16,15 @@ class SignUpScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is ErrorState) {
-            // showToast(state.message, ToastType.error);
-            CommonDialogs.showErrorDialog(context, message: state.message);
+            showToast(state.message, ToastType.error);
+            // CommonDialogs.showErrorDialog(context, message: state.message);
           }
           if (state is SignUpSuccessState) {
+            showToast(
+              S.of(context).sign_up_success_message,
+              ToastType.success,
+            );
+
             Navigator.of(context).pushNamedAndRemoveUntil(
               Routes.login,
               (route) => false,

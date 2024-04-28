@@ -7,6 +7,7 @@ import '../core/api/api_consumer.dart';
 import '../core/api/dio_consumer.dart';
 import '../core/app/app_bloc.dart';
 import '../core/databases/secure_storage/secure_storage_manager.dart';
+import '../core/databases/secure_storage/token_manager.dart';
 import '../core/helpers/cache_helper.dart';
 import '../features/auth/auth_injector.dart';
 import '../features/categories/categories_injector.dart';
@@ -76,7 +77,10 @@ Future<void> initCore() async {
   );
   // Cache Helper
   sl.registerLazySingleton(
-    () => CacheHelper(sl()),
+    () => CacheHelper(),
+  );
+  sl.registerLazySingleton(
+    () => TokenManager(storage: sl()),
   );
   // Localization Bloc
   sl.registerFactory(

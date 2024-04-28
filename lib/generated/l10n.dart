@@ -2309,6 +2309,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Sign up successful! Check your email for confirmation and log in.`
+  String get sign_up_success_message {
+    return Intl.message(
+      'Sign up successful! Check your email for confirmation and log in.',
+      name: 'sign_up_success_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your email for the verification code.`
+  String get check_your_email_for_verification_code {
+    return Intl.message(
+      'Please check your email for the verification code.',
+      name: 'check_your_email_for_verification_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid OTP. Please try again or request a new one.`
+  String get invalid_otp_code_msg {
+    return Intl.message(
+      'Invalid OTP. Please try again or request a new one.',
+      name: 'invalid_otp_code_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must contain`
+  String get password_must_contain {
+    return Intl.message(
+      'Password must contain',
+      name: 'password_must_contain',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `at least 9 characters.`
+  String get password_requirements_length {
+    return Intl.message(
+      'at least 9 characters.',
+      name: 'password_requirements_length',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `at least one uppercase letter.`
+  String get password_requirements_uppercase {
+    return Intl.message(
+      'at least one uppercase letter.',
+      name: 'password_requirements_uppercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `at least one lowercase letter.`
+  String get password_requirements_lowercase {
+    return Intl.message(
+      'at least one lowercase letter.',
+      name: 'password_requirements_lowercase',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `at least one digit.`
+  String get password_requirements_digit {
+    return Intl.message(
+      'at least one digit.',
+      name: 'password_requirements_digit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `at least one special character.`
+  String get password_requirements_special_character {
+    return Intl.message(
+      'at least one special character.',
+      name: 'password_requirements_special_character',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

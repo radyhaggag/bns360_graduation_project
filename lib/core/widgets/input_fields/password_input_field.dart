@@ -1,4 +1,8 @@
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../generated/l10n.dart';
@@ -8,12 +12,14 @@ class PasswordInputField extends StatefulWidget {
   final String? title;
   final String? hint;
   final TextInputAction? textInputAction;
+  final bool showRequirements;
 
   const PasswordInputField({
     super.key,
     this.title,
     this.hint,
     this.textInputAction,
+    this.showRequirements = false,
   });
 
   @override
@@ -23,14 +29,66 @@ class PasswordInputField extends StatefulWidget {
 class _PasswordInputFieldState extends State<PasswordInputField> {
   bool isSecure = true;
 
+  List<String> get passwordRequirements => [
+        S.of(context).password_requirements_length,
+        S.of(context).password_requirements_uppercase,
+        S.of(context).password_requirements_lowercase,
+        S.of(context).password_requirements_digit,
+        S.of(context).password_requirements_special_character,
+      ];
+
+  List<bool> isRequirementValid(String password) => [
+        password.length >= 9,
+        RegExp(r'[A-Z]').hasMatch(password),
+        RegExp(r'[a-z]').hasMatch(password),
+        RegExp(r'\d').hasMatch(password),
+        RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password),
+      ];
+
   @override
   Widget build(BuildContext context) {
-    return SharedPasswordInputField(
-      title: widget.title ?? S.of(context).password,
-      hint: widget.hint ?? S.of(context).enterPassword,
-      formControlName: 'password',
-      textInputAction: widget.textInputAction,
-    );
+    return ReactiveFormConsumer(builder: (context, form, child) {
+      final password = (form.findControl("password")?.value ?? "") as String;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SharedPasswordInputField(
+            title: widget.title ?? S.of(context).password,
+            hint: widget.hint ?? S.of(context).enterPassword,
+            formControlName: 'password',
+            textInputAction: widget.textInputAction,
+            viewValidatorError: !widget.showRequirements,
+          ),
+          if (widget.showRequirements) ...[
+            Text(
+              S.of(context).password_must_contain,
+              style: context.textTheme.titleSmall?.copyWith(
+                fontSize: AppFontSize.details,
+              ),
+            ),
+            for (int i = 0; i < passwordRequirements.length; i++)
+              Row(
+                children: [
+                  if (isRequirementValid(password)[i])
+                    Icon(
+                      Icons.check,
+                      color: AppColors.green,
+                      size: 15.r,
+                    )
+                  else
+                    const SizedBox.shrink(),
+                  Text(
+                    "${isRequirementValid(password)[i] ? "" : "\t-"} ${passwordRequirements[i]}",
+                    style: context.textTheme.bodySmall?.copyWith(
+                      fontSize: AppFontSize.details,
+                    ),
+                  ),
+                ],
+              ),
+          ],
+        ],
+      );
+    });
   }
 }
 
@@ -68,6 +126,7 @@ class SharedPasswordInputField extends StatefulWidget {
   final String hint;
   final String formControlName;
   final TextInputAction? textInputAction;
+  final bool viewValidatorError;
 
   const SharedPasswordInputField({
     super.key,
@@ -75,6 +134,7 @@ class SharedPasswordInputField extends StatefulWidget {
     required this.hint,
     required this.formControlName,
     this.textInputAction,
+    this.viewValidatorError = true,
   });
 
   @override
@@ -98,6 +158,7 @@ class _SharedPasswordInputFieldState extends State<SharedPasswordInputField> {
         onTap: () => setState(() => isSecure = !isSecure),
         child: _getSuffixIcon(),
       ),
+      showValidationMessages: widget.viewValidatorError,
     );
   }
 

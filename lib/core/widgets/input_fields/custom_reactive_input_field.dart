@@ -32,6 +32,8 @@ class CustomReactiveFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final ValidationMessages? validationMessages;
   final bool isExpanded;
+  final bool showValidationMessages;
+
   const CustomReactiveFormField({
     super.key,
     this.label,
@@ -59,6 +61,7 @@ class CustomReactiveFormField extends StatelessWidget {
     this.textInputAction,
     this.validationMessages,
     this.isExpanded = true,
+    this.showValidationMessages = true,
   });
 
   Widget get reactiveField {
@@ -79,6 +82,7 @@ class CustomReactiveFormField extends StatelessWidget {
       title: title,
       textInputAction: textInputAction,
       validationMessages: validationMessages,
+      showValidationMessages: showValidationMessages,
     );
   }
 
@@ -160,6 +164,7 @@ class _BuildTextField extends StatefulWidget {
     this.textAlign,
     this.textInputAction,
     this.validationMessages,
+    this.showValidationMessages = true,
   });
 
   final bool isSecure;
@@ -178,6 +183,7 @@ class _BuildTextField extends StatefulWidget {
   final String formControlName;
   final TextInputAction? textInputAction;
   final ValidationMessages? validationMessages;
+  final bool showValidationMessages;
 
   @override
   State<_BuildTextField> createState() => _BuildTextFieldState();
@@ -219,6 +225,7 @@ class _BuildTextFieldState extends State<_BuildTextField> {
       textAlign: widget.textAlign ?? TextAlign.start,
       textInputAction: widget.textInputAction,
       style: widget.textStyle,
+      showErrors: (control) => !widget.showValidationMessages ? false : (control.invalid && control.touched && control.dirty),
       onTap: (control) {
         if (((control.value as String?) ?? "").isEmpty &&
                 widget.prefixText != null ||

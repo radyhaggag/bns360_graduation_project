@@ -34,14 +34,6 @@ class SignUpErrorState extends ErrorState {
   const SignUpErrorState({required super.message});
 }
 
-class SendEmailVerificationLoadingState extends AuthState {}
-
-class SendEmailVerificationSuccessState extends AuthState {}
-
-class SendEmailVerificationErrorState extends ErrorState {
-  const SendEmailVerificationErrorState({required super.message});
-}
-
 class SendResetPasswordCodeLoadingState extends AuthState {}
 
 class SendResetPasswordCodeSuccessState extends AuthState {

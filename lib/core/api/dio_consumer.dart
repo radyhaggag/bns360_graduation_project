@@ -64,6 +64,7 @@ class DioConsumer implements APIConsumer {
   }) async {
     return await dio.patch(endpoint, queryParameters: queries, data: data);
   }
+
   @override
   Future<Response> put({
     required String endpoint,
@@ -71,5 +72,14 @@ class DioConsumer implements APIConsumer {
     Map<String, dynamic>? data,
   }) async {
     return await dio.put(endpoint, queryParameters: queries, data: data);
+  }
+
+  @override
+  Future<Response> delete({
+    required String endpoint,
+    Map<String, dynamic>? queries,
+    Map<String, dynamic>? data,
+  }) async {
+    return await dio.delete(endpoint, queryParameters: queries, data: data);
   }
 }

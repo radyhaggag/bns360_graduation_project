@@ -36,22 +36,30 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
 
     if (widget.categoryItemEntity != null) {
       context.read<MyBusinessBloc>().add(InitNetworkBusinessImageEvent(
-            networkImages: widget.categoryItemEntity!.businessImages,
-            mainBusinessImage: widget.categoryItemEntity!.imageUrl,
+            networkImages: widget.categoryItemEntity!.albumUrls,
+            mainBusinessImage: widget.categoryItemEntity!.profilePictureUrl,
           ));
       context.read<MyBusinessBloc>().add(SelectBusinessCategoryEvent(
-            businessCategory: widget.categoryItemEntity!.category,
+            categoryId: widget.categoryItemEntity!.categoryId,
           ));
     }
 
     form = FormGroup({
-      'name': FormControl<String>(
+      'name_ar': FormControl<String>(
         validators: [Validators.required],
-        value: widget.categoryItemEntity?.nameEN,
+        value: widget.categoryItemEntity?.nameAR,
       ),
-      'description': FormControl<String>(
+      'name_eng': FormControl<String>(
         validators: [Validators.required],
-        value: widget.categoryItemEntity?.descriptionEN,
+        value: widget.categoryItemEntity?.nameENG,
+      ),
+      'description_ar': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.categoryItemEntity?.aboutAR,
+      ),
+      'description_eng': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.categoryItemEntity?.aboutENG,
       ),
       'address': FormControl<String>(
         validators: [Validators.required],
@@ -126,9 +134,9 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
   void _submitForm() {
     final formControls = form.controls;
     final params = AddBusinessParams(
-      businessName: formControls['name']!.value as String,
+      businessName: formControls['name_ar']!.value as String,
       businessAddress: formControls['address']!.value as String,
-      businessDescription: formControls['description']!.value as String,
+      businessDescription: formControls['description_ar']!.value as String,
       to: int.parse(formControls['to']!.value as String),
       from: int.parse(formControls['from']!.value as String),
       phoneNumber: formControls['phoneNumber']!.value as String,
@@ -141,8 +149,22 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
             addBusinessParams: params,
           ));
     } else {
+      final entity = widget.categoryItemEntity!.copyWith(
+        nameAR: formControls['name_ar']!.value as String,
+        nameENG: formControls['name_eng']!.value as String,
+        address: formControls['address']!.value as String,
+        aboutAR: formControls['description_ar']!.value as String,
+        aboutENG: formControls['description_eng']!.value as String,
+        workStartHour: int.parse(formControls['from']!.value as String),
+        workEndHour: int.parse(formControls['to']!.value as String),
+        contacts: widget.categoryItemEntity?.contacts.copyWith(
+          phoneNumbers: [
+            formControls['phoneNumber']!.value as String,
+          ],
+        ),
+      );
       context.read<MyBusinessBloc>().add(UpdateBusinessEvent(
-            addBusinessParams: params,
+            categoryItemEntity: entity,
           ));
     }
   }

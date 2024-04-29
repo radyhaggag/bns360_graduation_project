@@ -31,13 +31,7 @@ class CategoryItemBody extends StatelessWidget {
             primary: true,
             flexibleSpace: FlexibleSpaceBar(
               background: CustomSlider(
-                images: [
-                  categoryItemEntity.imageUrl,
-                  categoryItemEntity.imageUrl,
-                  categoryItemEntity.imageUrl,
-                  categoryItemEntity.imageUrl,
-                  categoryItemEntity.imageUrl,
-                ],
+                images: categoryItemEntity.albumUrls,
               ),
             ),
             leading: Container(
@@ -64,8 +58,8 @@ class CategoryItemBody extends StatelessWidget {
                   CategoryItemDescription(
                     description: LocalizationHelper.getLocalizedString(
                       context,
-                      ar: categoryItemEntity.descriptionAR,
-                      en: categoryItemEntity.descriptionEN,
+                      ar: categoryItemEntity.aboutAR,
+                      en: categoryItemEntity.aboutENG,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -74,8 +68,10 @@ class CategoryItemBody extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   MainReviewSummaryCard(
-                    numOfRatings: categoryItemEntity.numOfRatings,
-                    starsCount: categoryItemEntity.starsCount,
+                    // numOfRatings: categoryItemEntity.numOfRatings,
+                    // starsCount: categoryItemEntity.starsCount,
+                    numOfRatings: 50,
+                    starsCount: 4.5,
                     mainColor: context.theme.listTileTheme.tileColor,
                     onViewAllTap: () {
                       Navigator.of(context).pushNamed(

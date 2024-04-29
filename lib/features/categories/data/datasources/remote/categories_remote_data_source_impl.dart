@@ -1,9 +1,9 @@
 import 'package:bns360_graduation_project/core/shared_data/models/category_item_model.dart';
 
 import '../../../../../core/api/api_consumer.dart';
-import '../../../../../core/shared_data/models/category_model.dart';
-
 import '../../../../../core/helpers/load_json_from_asset.dart';
+import '../../../../../core/shared_data/models/category_model.dart';
+import '../../../../../core/utils/app_endpoints.dart';
 import 'categories_remote_data_source.dart';
 
 class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
@@ -13,15 +13,17 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
 
   @override
   Future<List<CategoryModel>> getCategories() async {
-    final res = await loadJsonFromAsset('categories.json');
-    final categories = List<CategoryModel>.from(res['data'].map(
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.getAllCategories,
+    );
+    final categories = List<CategoryModel>.from(res.data.map(
       (category) => CategoryModel.fromJson(category),
     ));
     return categories;
   }
 
   @override
-  Future<List<CategoryItemModel>> getCategoryItemsById(int id) async {
+  Future<List<CategoryItemModel>> getCategoryItemsById(String id) async {
     final res = await loadJsonFromAsset('categories_items.json');
     final items = List<CategoryItemModel>.from(res['data'].map(
       (item) => CategoryItemModel.fromJson(item),
@@ -32,7 +34,7 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
 
   @override
   Future<List<CategoryItemModel>> searchOnCategoryItemsById(
-    int id,
+    String id,
     String text,
   ) async {
     final res = await loadJsonFromAsset('categories_items.json');
@@ -41,7 +43,7 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
     ));
     final searchLowercase = text.toLowerCase();
     bool isTrue(CategoryItemModel item) {
-      final itemNameLowercase = item.nameEN.toLowerCase();
+      final itemNameLowercase = item.nameENG.toLowerCase();
       return (searchLowercase.contains(itemNameLowercase) ||
               itemNameLowercase.contains(searchLowercase)) &&
           item.id == id;

@@ -1,88 +1,107 @@
 import 'package:equatable/equatable.dart';
 
-import 'category_entity.dart';
+import 'contact_entity.dart';
 
 class CategoryItemEntity extends Equatable {
-  final int id;
-  final CategoryEntity category;
+  final String id;
+  final String categoryId;
   final String nameAR;
-  final String nameEN;
-  final String descriptionAR;
-  final String descriptionEN;
-  final String imageUrl;
-  final List<String> businessImages;
-  final num starsCount;
-  final int numOfRatings;
+  final String nameENG;
+  final String aboutAR;
+  final String aboutENG;
+  final String profilePictureUrl;
+  final double latitude;
+  final double longitude;
   final String address;
-  final double lat;
-  final double lng;
+  final int workStartHour;
+  final int workEndHour;
+  final int workingDays;
+  final List<String> albumUrls;
+  final List<DateTime> holidays;
+  final ContactEntity contacts;
+
   final bool isBelongToMe;
 
   const CategoryItemEntity({
     required this.id,
-    required this.category,
+    required this.categoryId,
     required this.nameAR,
-    required this.nameEN,
-    required this.descriptionAR,
-    required this.descriptionEN,
-    required this.imageUrl,
-    required this.starsCount,
-    required this.numOfRatings,
+    required this.nameENG,
+    required this.aboutAR,
+    required this.aboutENG,
+    required this.profilePictureUrl,
+    required this.latitude,
+    required this.longitude,
     required this.address,
-    required this.businessImages,
-    required this.lat,
-    required this.lng,
+    required this.workStartHour,
+    required this.workEndHour,
+    required this.workingDays,
+    required this.albumUrls,
+    required this.holidays,
+    required this.contacts,
     this.isBelongToMe = false,
   });
+
+  CategoryItemEntity copyWith({
+    String? id,
+    String? categoryId,
+    String? nameAR,
+    String? nameENG,
+    String? aboutAR,
+    String? aboutENG,
+    String? profilePictureUrl,
+    double? latitude,
+    double? longitude,
+    String? address,
+    int? workStartHour,
+    int? workEndHour,
+    int? workingDays,
+    List<String>? albumUrls,
+    List<DateTime>? holidays,
+    ContactEntity? contacts,
+    bool? isBelongToMe,
+  }) {
+    return CategoryItemEntity(
+      id: id ?? this.id,
+      categoryId: categoryId ?? this.categoryId,
+      nameAR: nameAR ?? this.nameAR,
+      nameENG: nameENG ?? this.nameENG,
+      aboutAR: aboutAR ?? this.aboutAR,
+      aboutENG: aboutENG ?? this.aboutENG,
+      profilePictureUrl: profilePictureUrl ?? this.profilePictureUrl,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      address: address ?? this.address,
+      workStartHour: workStartHour ?? this.workStartHour,
+      workEndHour: workEndHour ?? this.workEndHour,
+      workingDays: workingDays ?? this.workingDays,
+      albumUrls: albumUrls ?? this.albumUrls,
+      holidays: holidays ?? this.holidays,
+      contacts: contacts ?? this.contacts,
+      isBelongToMe: isBelongToMe ?? this.isBelongToMe,
+    );
+  }
 
   @override
   List<Object> get props {
     return [
       id,
-      category,
+      categoryId,
       nameAR,
-      nameEN,
-      descriptionAR,
-      descriptionEN,
-      imageUrl,
-      starsCount,
-      numOfRatings,
+      nameENG,
+      aboutAR,
+      aboutENG,
+      profilePictureUrl,
+      latitude,
+      longitude,
       address,
-      businessImages,
+      workStartHour,
+      workEndHour,
+      workingDays,
+      albumUrls,
+      holidays,
+      contacts,
+      isBelongToMe,
     ];
-  }
-
-  CategoryItemEntity copyWith({
-    int? id,
-    CategoryEntity? category,
-    String? nameAR,
-    String? nameEN,
-    String? descriptionAR,
-    String? descriptionEN,
-    String? imageUrl,
-    List<String>? businessImages,
-    num? starsCount,
-    int? numOfRatings,
-    String? address,
-    double? lat,
-    double? lng,
-    bool? isBelongToMe,
-  }) {
-    return CategoryItemEntity(
-      id: id ?? this.id,
-      category: category ?? this.category,
-      nameAR: nameAR ?? this.nameAR,
-      nameEN: nameEN ?? this.nameEN,
-      descriptionAR: descriptionAR ?? this.descriptionAR,
-      descriptionEN: descriptionEN ?? this.descriptionEN,
-      imageUrl: imageUrl ?? this.imageUrl,
-      businessImages: businessImages ?? this.businessImages,
-      starsCount: starsCount ?? this.starsCount,
-      numOfRatings: numOfRatings ?? this.numOfRatings,
-      address: address ?? this.address,
-      lat: lat ?? this.lat,
-      lng: lng ?? this.lng,
-      isBelongToMe: isBelongToMe ?? this.isBelongToMe,
-    );
   }
 }

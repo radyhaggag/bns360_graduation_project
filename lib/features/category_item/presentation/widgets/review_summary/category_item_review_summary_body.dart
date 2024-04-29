@@ -26,8 +26,10 @@ class CategoryItemReviewSummaryBody extends StatelessWidget {
             pinned: true,
             floating: false,
             delegate: SliverReviewsAppBarDelegate(
-              numOfRatings: categoryItemEntity.numOfRatings,
-              starsCount: categoryItemEntity.starsCount,
+              // numOfRatings: categoryItemEntity.numOfRatings,
+              // starsCount: categoryItemEntity.starsCount,
+              numOfRatings: 50,
+              starsCount: 3.5,
             ),
           ),
           if (!categoryItemEntity.isBelongToMe)

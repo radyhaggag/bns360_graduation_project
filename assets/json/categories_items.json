@@ -2,160 +2,62 @@
   "success": true,
   "data": [
     {
-      "id": 1,
-      "category": {
-        "id": 1,
-        "name_ar": "مطاعم وكافيهات",
-        "name_en": "Restaurants & Café",
-        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
-      },
-      "name_ar": "بيل كانتو",
-      "name_en": "Bel Canto",
-      "description_ar": "مطعم تركي يقدم العديد من الآكلات العالمية",
-      "description_en": "A Turkish restaurant serving many international dishes",
-      "image_url": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-      "stars_count": 4.5,
-      "num_of_ratings": 25,
+      "id": "371c855f-5c28-4e25-8050-24f30fe4fc2d",
+      "nameAR": "بيل كانتو",
+      "nameENG": "Bel Canto",
+      "aboutAR": "مطعم تركي يقدم العديد من الآكلات العالمية",
+      "aboutENG": "A Turkish restaurant serving many international dishes",
+      "profilePictureUrl": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+      "latitude": 28.9826537,
+      "longitude": 31.0087249,
       "address": "Beni-Suef",
-      "businessImages": [
+      "workStartHour": 9,
+      "workEndHour": 18,
+      "workingDays": 5,
+      "albumUrls": [
         "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg"
       ],
-      "lat": 28.9826537,
-      "lng": 31.0087249
+      "holidays": ["2024-05-01T00:00:00Z", "2024-05-25T00:00:00Z"],
+      "contacts": {
+        "id": "b7578a10-4b73-4c5a-9f8a-6e25f4818409",
+        "emails": ["info@belcanto.com", "reservation@belcanto.com"],
+        "phoneNumbers": [],
+        "urlSites": ["https://www.belcanto.com"]
+      },
+      "categoryId": "1"
     },
     {
-      "id": 2,
-      "category": {
-        "id": 1,
-        "name_ar": "مطاعم وكافيهات",
-        "name_en": "Restaurants & Café",
-        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
-      },
-      "name_ar": "أوزي",
-      "name_en": "Oozy",
-      "description_ar": "كافيه أوزي أحلي لمه لأجمل ناس",
-      "description_en": "Cafe Ozzy is the best gathering for the most beautiful people",
-      "image_url": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-      "stars_count": 3,
-      "num_of_ratings": 25,
+      "id": "d18d0a28-67d2-46fc-8c89-9f10d8d0a09e",
+      "nameAR": "أوزي",
+      "nameENG": "Oozy",
+      "aboutAR": "كافيه أوزي أحلي لمه لأجمل ناس",
+      "aboutENG": "Cafe Ozzy is the best gathering for the most beautiful people",
+      "profilePictureUrl": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+      "latitude": 28.9826537,
+      "longitude": 31.0087249,
       "address": "Beni-Suef",
-      "businessImages": [
+      "workStartHour": 8,
+      "workEndHour": 22,
+      "workingDays": 7,
+      "albumUrls": [
         "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
         "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
         "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
         "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
         "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg"
       ],
-      "lat": 28.9826537,
-      "lng": 31.0087249
-    },
-    {
-      "id": 1,
-      "category": {
-        "id": 1,
-        "name_ar": "مطاعم وكافيهات",
-        "name_en": "Restaurants & Café",
-        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
+      "holidays": ["2024-06-15T00:00:00Z", "2024-07-20T00:00:00Z"],
+      "contacts": {
+        "id": "17a8f03b-5aa2-43b2-b4ed-6a03671a2da0",
+        "emails": ["contact@oozycafe.com", "support@oozycafe.com"],
+        "phoneNumbers": [],
+        "urlSites": ["https://www.oozycafe.com"]
       },
-      "name_ar": "بيل كانتو",
-      "name_en": "Bel Canto",
-      "description_ar": "مطعم تركي يقدم العديد من الآكلات العالمية",
-      "description_en": "A Turkish restaurant serving many international dishes",
-      "image_url": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-      "stars_count": 4.5,
-      "num_of_ratings": 25,
-      "address": "Beni-Suef",
-      "businessImages": [
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg"
-      ],
-      "lat": 28.9826537,
-      "lng": 31.0087249
-    },
-    {
-      "id": 2,
-      "category": {
-        "id": 1,
-        "name_ar": "مطاعم وكافيهات",
-        "name_en": "Restaurants & Café",
-        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
-      },
-      "name_ar": "أوزي",
-      "name_en": "Oozy",
-      "description_ar": "كافيه أوزي أحلي لمه لأجمل ناس",
-      "description_en": "Cafe Ozzy is the best gathering for the most beautiful people",
-      "image_url": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-      "stars_count": 3,
-      "num_of_ratings": 25,
-      "address": "Beni-Suef",
-      "businessImages": [
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg"
-      ],
-      "lat": 28.9826537,
-      "lng": 31.0087249
-    },
-    {
-      "id": 1,
-      "category": {
-        "id": 1,
-        "name_ar": "مطاعم وكافيهات",
-        "name_en": "Restaurants & Café",
-        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
-      },
-      "name_ar": "بيل كانتو",
-      "name_en": "Bel Canto",
-      "description_ar": "مطعم تركي يقدم العديد من الآكلات العالمية",
-      "description_en": "A Turkish restaurant serving many international dishes",
-      "image_url": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-      "stars_count": 4.5,
-      "num_of_ratings": 25,
-      "address": "Beni-Suef",
-      "businessImages": [
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg"
-      ],
-      "lat": 28.9826537,
-      "lng": 31.0087249
-    },
-    {
-      "id": 2,
-      "category": {
-        "id": 1,
-        "name_ar": "مطاعم وكافيهات",
-        "name_en": "Restaurants & Café",
-        "image_url": "https://www.rivaicmimarlik.com/upload/images/sayfalar/2023/kafelerde-misafirperver-tasarimlar-45268-4763400231.jpg"
-      },
-      "name_ar": "أوزي",
-      "name_en": "Oozy",
-      "description_ar": "كافيه أوزي أحلي لمه لأجمل ناس",
-      "description_en": "Cafe Ozzy is the best gathering for the most beautiful people",
-      "image_url": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-      "stars_count": 3,
-      "num_of_ratings": 25,
-      "address": "Beni-Suef",
-      "businessImages": [
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg"
-      ],
-      "lat": 28.9826537,
-      "lng": 31.0087249
+      "categoryId": "1"
     }
   ]
 }

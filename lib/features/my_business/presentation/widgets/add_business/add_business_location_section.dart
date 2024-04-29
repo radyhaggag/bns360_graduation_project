@@ -38,8 +38,8 @@ class _AddBusinessLocationSectionState
     _mapController = MapController();
     if (widget.categoryItemEntity != null) {
       centerPoint = LatLng(
-        widget.categoryItemEntity!.lat,
-        widget.categoryItemEntity!.lng,
+        widget.categoryItemEntity!.latitude,
+        widget.categoryItemEntity!.longitude,
       );
     } else {
       _getCurrentLocation();
@@ -125,8 +125,8 @@ class _AddBusinessLocationSectionState
             if (widget.categoryItemEntity != null) {
               mapParams = MapParams(
                 location: widget.categoryItemEntity!.address,
-                lat: widget.categoryItemEntity!.lat,
-                lng: widget.categoryItemEntity!.lng,
+                lat: widget.categoryItemEntity!.latitude,
+                lng: widget.categoryItemEntity!.longitude,
               );
             }
             Navigator.of(context).pushNamed(

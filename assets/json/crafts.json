@@ -2,47 +2,47 @@
   "success": true,
   "data": [
     {
-      "id": 1,
+      "id": "1",
       "name_ar": "النجارين",
       "name_en": "Carpenters"
     },
     {
-      "id": 2,
+      "id": "2",
       "name_ar": "سباكيين",
       "name_en": "Plumber"
     },
     {
-      "id": 3,
+      "id": "3",
       "name_ar": "عمال الكهرباء",
       "name_en": "Electrician"
     },
     {
-      "id": 4,
+      "id": "4",
       "name_ar": "المصورين",
       "name_en": "Photographers"
     },
     {
-      "id": 5,
+      "id": "5",
       "name_ar": "صحفيين",
       "name_en": "Journalists"
     },
     {
-      "id": 6,
+      "id": "6",
       "name_ar": "مبرمجين",
       "name_en": "Programmers"
     },
     {
-      "id": 7,
+      "id": "7",
       "name_ar": "الحدادين",
       "name_en": "Blacksmiths"
     },
     {
-      "id": 8,
+      "id": "8",
       "name_ar": "مرشدين سياحيين",
       "name_en": "Tour Guides"
     },
     {
-      "id": 9,
+      "id": "9",
       "name_ar": "محاسبين",
       "name_en": "Accountants"
     }

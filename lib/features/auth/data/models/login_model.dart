@@ -7,7 +7,6 @@ class LoginModel extends LoginEntity {
     required super.token,
     required super.displayName,
     required super.email,
-    required super.id,
     required super.role,
   });
 
@@ -16,7 +15,6 @@ class LoginModel extends LoginEntity {
       token: json['token'],
       displayName: json['displayName'],
       email: json['email'],
-      id: json['\$id'],
       role: UserType.fromInteger(json['role']),
     );
   }

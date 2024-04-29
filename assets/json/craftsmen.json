@@ -2,13 +2,13 @@
   "success": true,
   "data": [
     {
-      "id": 5,
+      "id": "5",
       "name": "Moustafa Sherif",
       "image_url": "https://i.pinimg.com/originals/a5/e6/87/a5e68779fc5ff6f0f23691311d4918fa.png",
       "stars_count": 4.5,
       "num_of_ratings": 25,
       "craft": {
-        "id": 1,
+        "id": "1",
         "name_ar": "النجارين",
         "name_en": "Carpenters"
       },
@@ -23,13 +23,13 @@
       "address": "Beni-Suef"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "محمود السباك",
       "image_url": "https://img.freepik.com/premium-vector/plumber_609550-231.jpg",
       "stars_count": 3,
       "num_of_ratings": 50,
       "craft": {
-        "id": 2,
+        "id": "2",
         "name_ar": "سباكيين",
         "name_en": "Plumber"
       },
@@ -44,13 +44,13 @@
       "address": "Beni-Suef"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "عبود الحضرى",
       "image_url": "https://img.freepik.com/premium-vector/electrician-man-holding-lighting-vector-illustration_10548-519.jpg",
       "stars_count": 5,
       "num_of_ratings": 30,
       "craft": {
-        "id": 3,
+        "id": "3",
         "name_ar": "عمال الكهرباء",
         "name_en": "Electrician"
       },
@@ -65,13 +65,13 @@
       "address": "Beni-Suef"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Moustafa Sherif",
       "image_url": "https://i.pinimg.com/originals/a5/e6/87/a5e68779fc5ff6f0f23691311d4918fa.png",
       "stars_count": 4.5,
       "num_of_ratings": 25,
       "craft": {
-        "id": 1,
+        "id": "1",
         "name_ar": "النجارين",
         "name_en": "Carpenters"
       },
@@ -86,13 +86,13 @@
       "address": "Beni-Suef"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "محمود السباك",
       "image_url": "https://img.freepik.com/premium-vector/plumber_609550-231.jpg",
       "stars_count": 3,
       "num_of_ratings": 50,
       "craft": {
-        "id": 2,
+        "id": "2",
         "name_ar": "سباكيين",
         "name_en": "Plumber"
       },
@@ -107,13 +107,13 @@
       "address": "Beni-Suef"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "عبود الحضرى",
       "image_url": "https://img.freepik.com/premium-vector/electrician-man-holding-lighting-vector-illustration_10548-519.jpg",
       "stars_count": 5,
       "num_of_ratings": 30,
       "craft": {
-        "id": 3,
+        "id": "3",
         "name_ar": "عمال الكهرباء",
         "name_en": "Electrician"
       },

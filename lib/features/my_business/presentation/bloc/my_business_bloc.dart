@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bns360_graduation_project/core/shared_data/entities/category_entity.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/iterable.dart';
 import 'package:bns360_graduation_project/features/my_business/domain/repositories/my_business_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -167,15 +168,15 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   ) async {
     emit(UpdateBusinessLoadingState());
 
-    final params = event.addBusinessParams.copyWith(
-      lat: _businessLat,
-      lng: _businessLng,
-      businessCategory: selectedBusinessCategory,
-      mainBusinessBackgroundImages: pickedImages.map((e) => e.path).toList(),
-      mainBusinessImage: _mainBusinessImage?.path,
+    final params = event.categoryItemEntity.copyWith(
+      latitude: _businessLat,
+      longitude: _businessLng,
+      categoryId: selectedBusinessCategory?.id,
+      albumUrls: pickedImages.map((e) => e.path).toList(),
+      profilePictureUrl: _mainBusinessImage?.path,
     );
 
-    final res = await myBusinessRepo.addBusiness(params);
+    final res = await myBusinessRepo.updateBusiness(params);
 
     res.fold(
       (l) => emit(UpdateBusinessErrorState(message: l.message)),
@@ -189,7 +190,9 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     SelectBusinessCategoryEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
-    selectedBusinessCategory = event.businessCategory;
+    selectedBusinessCategory = businessCategories.firstWhereOrNull(
+      (e) => e.id == event.categoryId,
+    );
     if (selectedBusinessCategory == null) return;
 
     emit(BusinessCategoryUpdatedState(
@@ -229,9 +232,19 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   _deleteMyBusiness(
     DeleteMyBusinessEvent event,
     Emitter<MyBusinessState> emit,
-  ) {
-    myBusinessItems.removeWhere(
-      (element) => element.id == event.businessId,
+  ) async {
+    emit(DeleteBusinessLoadingState());
+
+    final res = await myBusinessRepo.deleteBusiness(event.businessId);
+
+    res.fold(
+      (l) => emit(DeleteBusinessErrorState(message: l.message)),
+      (r) {
+        myBusinessItems.removeWhere(
+          (element) => element.id == event.businessId,
+        );
+        emit(DeleteBusinessSuccessState());
+      },
     );
   }
 }

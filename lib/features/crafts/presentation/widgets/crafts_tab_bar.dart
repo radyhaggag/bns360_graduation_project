@@ -62,7 +62,7 @@ class _LoadedWidget extends StatelessWidget {
   });
 
   final List<CraftEntity> crafts;
-  final int selectedCraftId;
+  final String selectedCraftId;
 
   @override
   Widget build(BuildContext context) {

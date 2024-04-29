@@ -15,9 +15,9 @@ class AddBusinessEvent extends MyBusinessEvent {
 }
 
 class UpdateBusinessEvent extends MyBusinessEvent {
-  final AddBusinessParams addBusinessParams;
+  final CategoryItemEntity categoryItemEntity;
 
-  const UpdateBusinessEvent({required this.addBusinessParams});
+  const UpdateBusinessEvent({required this.categoryItemEntity});
 }
 
 class SelectBusinessLocationEvent extends MyBusinessEvent {
@@ -55,13 +55,14 @@ class InitNetworkBusinessImageEvent extends MyBusinessEvent {
 }
 
 class SelectBusinessCategoryEvent extends MyBusinessEvent {
-  final CategoryEntity businessCategory;
+  // final CategoryEntity businessCategory;
+  final String categoryId;
 
-  const SelectBusinessCategoryEvent({required this.businessCategory});
+  const SelectBusinessCategoryEvent({required this.categoryId});
 }
 
 class DeleteMyBusinessEvent extends MyBusinessEvent {
-  final int businessId;
+  final String businessId;
 
   const DeleteMyBusinessEvent({required this.businessId});
 }

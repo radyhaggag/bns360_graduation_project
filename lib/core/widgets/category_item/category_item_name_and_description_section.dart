@@ -25,7 +25,7 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
               LocalizationHelper.getLocalizedString(
                 context,
                 ar: categoryItemEntity.nameAR,
-                en: categoryItemEntity.nameEN,
+                en: categoryItemEntity.nameENG,
               ),
               style: context.textTheme.titleSmall,
               overflow: TextOverflow.ellipsis,
@@ -37,8 +37,8 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
             child: Text(
               LocalizationHelper.getLocalizedString(
                 context,
-                ar: categoryItemEntity.descriptionAR,
-                en: categoryItemEntity.descriptionEN,
+                ar: categoryItemEntity.aboutAR,
+                en: categoryItemEntity.aboutENG,
               ),
               style: context.textTheme.bodySmall,
               maxLines: 2,

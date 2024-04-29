@@ -4,9 +4,9 @@ import '../../../../core/utils/custom_types.dart';
 
 abstract class CategoriesRepo {
   FutureEither<List<CategoryEntity>> getCategories();
-  FutureEither<List<CategoryItemEntity>> getCategoryItemsById(int id);
+  FutureEither<List<CategoryItemEntity>> getCategoryItemsById(String id);
   FutureEither<List<CategoryItemEntity>> searchOnCategoryItemsById(
-    int id,
+    String id,
     String text,
   );
 }

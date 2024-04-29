@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'craft_entity.dart';
 
 class CraftsmanEntity extends Equatable {
-  final int id;
+  final String id;
   final String name;
   final String imageUrl;
   final int numOfRatings;
@@ -34,7 +34,7 @@ class CraftsmanEntity extends Equatable {
   List<Object> get props => [id, craft];
 
   CraftsmanEntity copyWith({
-    int? id,
+    String? id,
     String? name,
     String? imageUrl,
     int? numOfRatings,

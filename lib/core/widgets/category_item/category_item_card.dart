@@ -7,7 +7,6 @@ import '../../helpers/localization_helper.dart';
 import '../../shared_data/entities/category_item_entity.dart';
 import '../icons/favorite_icon.dart';
 import '../main_network_image.dart';
-import '../ratings_item_with_count.dart';
 
 part 'category_item_image.dart';
 part 'category_item_name_and_description_section.dart';
@@ -51,12 +50,13 @@ class CategoryItemCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        child: RatingsItemWithCount(
-                          numOfRatings: categoryItemEntity.numOfRatings,
-                          starsCount: categoryItemEntity.starsCount,
-                          size: 19.r,
-                        ),
+                      const Expanded(
+                        // child: RatingsItemWithCount(
+                        //   numOfRatings: categoryItemEntity.numOfRatings,
+                        //   starsCount: categoryItemEntity.starsCount,
+                        //   size: 19.r,
+                        // ),
+                        child: SizedBox(),
                       ),
                       FavoriteIcon(
                         onPressed: onFavoriteIconPressed,

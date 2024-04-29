@@ -5,6 +5,8 @@ import '../params/add_business_params.dart';
 
 abstract class MyBusinessRepo {
   FutureEither<void> addBusiness(AddBusinessParams params);
+  FutureEither<void> updateBusiness(CategoryItemEntity params);
+  FutureEither<void> deleteBusiness(String businessId);
   FutureEither<List<CategoryItemEntity>> getMyBusiness();
   FutureEither<List<CategoryEntity>> getBusinessCategories();
 }

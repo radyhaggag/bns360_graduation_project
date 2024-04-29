@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class CraftEntity extends Equatable {
-  final int id;
+  final String id;
   final String nameAR;
   final String nameEN;
 

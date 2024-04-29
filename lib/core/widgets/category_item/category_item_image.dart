@@ -20,7 +20,7 @@ class _CategoryItemImage extends StatelessWidget {
           topRight: Radius.circular(10),
         ),
         child: MainNetworkImage(
-          imageUrl: categoryItemEntity.imageUrl,
+          imageUrl: categoryItemEntity.profilePictureUrl,
           width: 250.w,
           height: 125.h,
           fit: BoxFit.cover,

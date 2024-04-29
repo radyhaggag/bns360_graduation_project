@@ -16,8 +16,9 @@ class MyBusinessRepoImpl implements MyBusinessRepo {
 
   @override
   FutureEither<void> addBusiness(AddBusinessParams params) async {
-    // TODO: implement addBusiness
-    throw UnimplementedError();
+    return executeAndHandleErrorAsync(
+      () => myBusinessRemoteDataSource.addBusiness(params),
+    );
   }
 
   @override
@@ -31,6 +32,20 @@ class MyBusinessRepoImpl implements MyBusinessRepo {
   FutureEither<List<CategoryItemEntity>> getMyBusiness() {
     return executeAndHandleErrorAsync(
       () => myBusinessRemoteDataSource.getMyBusiness(),
+    );
+  }
+
+  @override
+  FutureEither<void> updateBusiness(CategoryItemEntity params) {
+    return executeAndHandleErrorAsync(
+      () => myBusinessRemoteDataSource.updateBusiness(params),
+    );
+  }
+
+  @override
+  FutureEither<void> deleteBusiness(String params) {
+    return executeAndHandleErrorAsync(
+      () => myBusinessRemoteDataSource.deleteBusiness(params),
     );
   }
 }

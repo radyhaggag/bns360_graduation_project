@@ -18,7 +18,7 @@ class BusinessTypeDropdown extends StatelessWidget {
         return CustomDropdown<CategoryEntity>(
           value: myBusinessBloc.selectedBusinessCategory,
           onTapCallback: (value) => myBusinessBloc.add(
-            SelectBusinessCategoryEvent(businessCategory: value),
+            SelectBusinessCategoryEvent(categoryId: value),
           ),
           items: myBusinessBloc.businessCategories.map((e) => e).toList(),
           viewItems: myBusinessBloc.businessCategories

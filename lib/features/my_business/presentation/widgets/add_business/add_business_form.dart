@@ -30,19 +30,37 @@ class AddBusinessForm extends StatelessWidget {
           CustomReactiveFormField(
             title: t.business_name,
             hint: t.enter_business_name,
-            formControlName: 'name',
+            formControlName: 'name_ar',
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
+          if (categoryItemEntity != null) ...[
+            CustomReactiveFormField(
+              title: t.business_name,
+              hint: t.enter_business_name,
+              formControlName: 'name_eng',
+              textInputAction: TextInputAction.next,
+            ),
+            15.verticalSpace,
+          ],
           const BusinessTypeDropdown(),
           15.verticalSpace,
           CustomReactiveFormField(
             title: t.description_of_business,
             hint: "${t.enter} ${t.description_of_business}",
-            formControlName: 'description',
+            formControlName: 'description_ar',
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
+          if (categoryItemEntity != null) ...[
+            CustomReactiveFormField(
+              title: t.business_name,
+              hint: t.enter_business_name,
+              formControlName: 'description_eng',
+              textInputAction: TextInputAction.next,
+            ),
+            15.verticalSpace,
+          ],
           CustomReactiveFormField(
             title: t.business_address,
             hint: t.enter_business_address,

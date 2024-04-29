@@ -10,19 +10,19 @@ abstract class CategoriesEvent extends Equatable {
 class GetCategoriesEvent extends CategoriesEvent {}
 
 class ToggleSearchIcon extends CategoriesEvent {
-  final int categoryId;
+  final String categoryId;
 
   const ToggleSearchIcon({required this.categoryId});
 }
 
 class SearchOnCategoryItems extends CategoriesEvent {
-  final int categoryId;
+  final String categoryId;
 
   const SearchOnCategoryItems({required this.categoryId});
 }
 
 class GetCategoryItemsByIdEvent extends CategoriesEvent {
-  final int categoryId;
+  final String categoryId;
 
   const GetCategoryItemsByIdEvent({required this.categoryId});
 

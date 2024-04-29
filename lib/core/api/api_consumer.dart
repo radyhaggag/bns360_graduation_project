@@ -23,4 +23,9 @@ abstract class APIConsumer {
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
   });
+  Future<Response<dynamic>> delete({
+    required String endpoint,
+    Map<String, dynamic>? queries,
+    Map<String, dynamic>? data,
+  });
 }

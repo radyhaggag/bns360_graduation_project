@@ -32,7 +32,7 @@ class CategoryItemProfileSection extends StatelessWidget {
           child: ProfileCircleIcon(
             height: 60.r,
             width: 60.r,
-            imageUrl: categoryItemEntity.imageUrl,
+            imageUrl: categoryItemEntity.profilePictureUrl,
           ),
         ),
         const SizedBox(width: 10),
@@ -59,9 +59,9 @@ class CategoryItemProfileSection extends StatelessWidget {
               final params = ConversationScreenParams(
                 participantEntity: ParticipantEntity(
                   id: categoryItemEntity.id.toString(),
-                  nameEN: categoryItemEntity.nameEN,
+                  nameEN: categoryItemEntity.nameENG,
                   nameAR: categoryItemEntity.nameAR,
-                  imageUrl: categoryItemEntity.imageUrl,
+                  imageUrl: categoryItemEntity.profilePictureUrl,
                   userType: UserType.businessOwner.id,
                 ),
                 categoryItemEntity: categoryItemEntity,
@@ -99,18 +99,19 @@ class _TitleAndTypeSection extends StatelessWidget {
           LocalizationHelper.getLocalizedString(
             context,
             ar: categoryItemEntity.nameAR,
-            en: categoryItemEntity.nameEN,
+            en: categoryItemEntity.nameENG,
           ),
           style: context.textTheme.titleSmall?.copyWith(
             color: context.theme.cardColor,
           ),
         ),
         Text(
-          LocalizationHelper.getLocalizedString(
-            context,
-            ar: categoryItemEntity.category.nameAR,
-            en: categoryItemEntity.category.nameEN,
-          ),
+          "Not found",
+          // LocalizationHelper.getLocalizedString(
+          //   context,
+          //   ar: categoryItemEntity.category.nameAR,
+          //   en: categoryItemEntity.category.nameEN,
+          // ),
           style: context.textTheme.bodyLarge?.copyWith(
             color: context.theme.hintColor,
             fontSize: AppFontSize.light,

@@ -12,7 +12,7 @@ class GetCraftsmenEvent extends CraftsEvent {}
 class GetCraftsEvent extends CraftsEvent {}
 
 class GetCraftItemsByIdEvent extends CraftsEvent {
-  final int id;
+  final String id;
 
   const GetCraftItemsByIdEvent({required this.id});
 

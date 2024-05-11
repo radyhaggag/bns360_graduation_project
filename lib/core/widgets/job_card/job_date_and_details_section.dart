@@ -34,10 +34,11 @@ class _JobDateAndDetailsSection extends StatelessWidget {
     );
   }
 
+  // todo: change the date here or remove it
   String getDate(BuildContext context) {
     return "${S.of(context).posted} ${DateFormatter.getSuitableDateString(
       context: context,
-      date: jobEntity.date,
+      date: DateTime.now().toString(),
       showFullDateHours: false,
     )}";
   }

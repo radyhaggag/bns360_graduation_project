@@ -140,7 +140,8 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
       to: int.parse(formControls['to']!.value as String),
       from: int.parse(formControls['from']!.value as String),
       phoneNumber: formControls['phoneNumber']!.value as String,
-      mainBusinessBackgroundImages: [], // Will updated on the bloc
+      mainBusinessBackgroundImages: [],
+      // Will updated on the bloc
       mainBusinessImage: "", // Will updated on the bloc
     );
 
@@ -158,9 +159,7 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
         workStartHour: int.parse(formControls['from']!.value as String),
         workEndHour: int.parse(formControls['to']!.value as String),
         contacts: widget.categoryItemEntity?.contacts.copyWith(
-          phoneNumbers: [
-            formControls['phoneNumber']!.value as String,
-          ],
+          phoneNumber: formControls['phoneNumber']!.value as String,
         ),
       );
       context.read<MyBusinessBloc>().add(UpdateBusinessEvent(

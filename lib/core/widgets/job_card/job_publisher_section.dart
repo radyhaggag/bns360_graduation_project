@@ -13,7 +13,7 @@ class _JobPublisherSection extends StatelessWidget {
         InkWell(
           onTap: () {},
           child: JobPublisherImage(
-            imageUrl: jobEntity.publisher.imageUrl!,
+            imageUrl: jobEntity.publisherDetails.photoUrl,
           ),
         ),
         const SizedBox(width: 5),
@@ -25,12 +25,8 @@ class _JobPublisherSection extends StatelessWidget {
               InkWell(
                 onTap: () {},
                 child: _TitleAndSubTitleSection(
-                  title: jobEntity.publisher.name,
-                  subTitle: LocalizationHelper.getLocalizedString(
-                    context,
-                    ar: jobEntity.publisher.userDescriptionAR ?? "",
-                    en: jobEntity.publisher.userDescriptionEN ?? "",
-                  ),
+                  title: jobEntity.publisherDetails.name ?? "",
+                  subTitle: jobEntity.publisherDetails.description ?? "",
                 ),
               ),
             ],

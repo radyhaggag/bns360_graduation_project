@@ -50,9 +50,7 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       longitude: params.lng,
       address: params.businessAddress,
       contacts: ContactEntity(
-        emails: const [],
-        phoneNumbers: [params.phoneNumber],
-        urlSites: const [],
+        phoneNumber: params.phoneNumber,
       ),
     );
 

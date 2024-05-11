@@ -16,9 +16,13 @@ import '../../utils/extensions/media_query.dart';
 import 'job_publisher_image.dart';
 
 part 'job_date_and_details_section.dart';
+
 part 'job_description_section.dart';
+
 part 'job_details_items.dart';
+
 part 'job_publisher_section.dart';
+
 part 'title_and_sub_title_section.dart';
 
 class JobCard extends StatelessWidget {
@@ -44,13 +48,18 @@ class JobCard extends StatelessWidget {
           color: context.theme.highlightColor,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (moreWidget == null) const SizedBox(height: 10),
             Row(
               children: [
                 Expanded(
                   child: Text(
-                    jobEntity.jobTitle,
+                    LocalizationHelper.getLocalizedString(
+                      context,
+                      ar: jobEntity.jobTitleArabic,
+                      en: jobEntity.jobTitleEnglish,
+                    ),
                     textAlign: TextAlign.center,
                     style: context.textTheme.titleMedium?.copyWith(
                       fontSize: AppFontSize.subTitle,
@@ -63,7 +72,11 @@ class JobCard extends StatelessWidget {
             _JobPublisherSection(jobEntity: jobEntity),
             const SizedBox(height: 10),
             _JobDescriptionSection(
-              description: jobEntity.description,
+              description: LocalizationHelper.getLocalizedString(
+                context,
+                ar: jobEntity.jobDescriptionArabic,
+                en: jobEntity.jobDescriptionEnglish,
+              ),
             ),
             const SizedBox(height: 20),
             _JobDescriptionItems(jobEntity: jobEntity),

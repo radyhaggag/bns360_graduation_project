@@ -6,9 +6,10 @@ enum JobType {
   fullTime(1);
 
   const JobType(this.id);
+
   final int id;
 
- static JobType fromInteger(int hours) {
+  static JobType fromInteger(int hours) {
     if (hours > 4) return JobType.fullTime;
     return JobType.partTime;
   }
@@ -16,6 +17,11 @@ enum JobType {
   static JobType fromId(int id) {
     if (id == 0) return JobType.partTime;
     return JobType.fullTime;
+  }
+
+  static JobType fromString(String type) {
+    if (type.toLowerCase() == "FullTime".toLowerCase()) return JobType.fullTime;
+    return JobType.partTime;
   }
 
   String getLocalizedString(BuildContext context) {

@@ -1,34 +1,95 @@
+import 'package:bns360_graduation_project/core/shared_data/models/contact_model.dart';
+import 'package:bns360_graduation_project/core/shared_data/models/publisher_details_model.dart';
+import 'package:bns360_graduation_project/core/shared_data/models/requirements_model.dart';
+import 'package:bns360_graduation_project/core/utils/enums/job_type.dart';
+
 import '../entities/job_entity.dart';
-import 'profile/user_model.dart';
 
 class JobModel extends JobEntity {
   const JobModel({
-    required super.id,
-    required super.jobTitle,
-    required super.description,
+    super.id,
+    required super.contacts,
+    required super.jobDescriptionArabic,
+    required super.jobDescriptionEnglish,
+    required super.jobTitleArabic,
+    required super.jobTitleEnglish,
+    required super.publisherDetails,
+    required super.requirementsArabic,
+    required super.requirementEnglish,
     required super.salary,
-    required super.requirements,
-    required super.date,
-    required super.publisher,
+    required super.type,
+    required super.whatsapp,
     required super.workHours,
-    super.phoneNumber,
-    super.whatsapp,
+    super.isBelongToMe,
   });
 
   factory JobModel.fromJson(Map<String, dynamic> json) {
+    final isContactsList = json["contacts"] != null && json["contacts"] is List;
+    final contacts = isContactsList ? json["contacts"].first : json["contacts"];
+
     return JobModel(
       id: json['id'],
-      description: json['description'],
-      jobTitle: json['jobTitle'],
+      jobDescriptionEnglish: json['jobDescriptionEnglish'],
+      contacts: contacts != null
+          ? ContactModel.fromJson(contacts)
+          : const ContactModel(),
+      jobTitleEnglish: json['jobTitleEnglish'],
+      jobTitleArabic: json['jobTitleArabic'],
       salary: json['salary'],
-      requirements: List<String>.from(
-        json['requirements'].map((e) => e.toString()),
+      requirementEnglish: RequirementsModel.fromJson(
+        json["requirementEnglish"],
       ),
-      date: json['date'],
+      requirementsArabic: RequirementsModel.fromJson(
+        json["requirementsArabic"],
+      ),
       workHours: json['workHours'],
-      phoneNumber: json['phoneNumber'],
       whatsapp: json['whatsapp'],
-      publisher: UserModel.fromJson(json['publisher']),
+      publisherDetails: PublisherDetailsModel.fromJson(
+        json['publisherDetails'],
+      ),
+      jobDescriptionArabic: json["jobDescriptionArabic"],
+      type: JobType.fromString(json["type"]),
     );
+  }
+
+  factory JobModel.fromEntity(JobEntity entity) {
+    return JobModel(
+      id: entity.id,
+      contacts: entity.contacts,
+      jobDescriptionArabic: entity.jobDescriptionArabic,
+      jobDescriptionEnglish: entity.jobDescriptionEnglish,
+      jobTitleArabic: entity.jobTitleArabic,
+      jobTitleEnglish: entity.jobTitleEnglish,
+      publisherDetails: entity.publisherDetails,
+      requirementsArabic: entity.requirementsArabic,
+      requirementEnglish: entity.requirementEnglish,
+      salary: entity.salary,
+      type: entity.type,
+      whatsapp: entity.whatsapp,
+      workHours: entity.workHours,
+      isBelongToMe: entity.isBelongToMe,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'jobDescriptionEnglish': jobDescriptionEnglish,
+      'contacts': contacts != null
+          ? [ContactModel.fromEntity(contacts!).toJson()]
+          : null,
+      'jobTitleEnglish': jobTitleEnglish,
+      'jobTitleArabic': jobTitleArabic,
+      'salary': salary,
+      'requirementEnglish':
+          RequirementsModel.fromEntity(requirementEnglish).toJson(),
+      'requirementsArabic':
+          RequirementsModel.fromEntity(requirementsArabic).toJson(),
+      'workHours': workHours,
+      'whatsapp': whatsapp,
+      'publisherDetails':
+          PublisherDetailsModel.fromEntity(publisherDetails).toJson(),
+      'jobDescriptionArabic': jobDescriptionArabic,
+      'type': type.id.toString(),
+    };
   }
 }

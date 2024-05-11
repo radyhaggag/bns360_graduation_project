@@ -125,11 +125,7 @@ class CategoryItemModel extends CategoryItemEntity {
       workingDays: 0,
       albumUrls: [],
       holidays: [],
-      contacts: ContactModel(
-        emails: [],
-        phoneNumbers: [],
-        urlSites: [],
-      ),
+      contacts: ContactModel(),
     );
   }
 

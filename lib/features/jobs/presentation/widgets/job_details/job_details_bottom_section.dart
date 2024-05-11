@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
@@ -25,11 +26,19 @@ class JobDetailsBottomSection extends StatelessWidget {
       child: Column(
         children: [
           DescriptionSection(
-            description: jobEntity.description,
+            description: LocalizationHelper.getLocalizedString(
+              context,
+              ar: jobEntity.jobDescriptionArabic,
+              en: jobEntity.jobDescriptionEnglish,
+            ),
           ),
           const SizedBox(height: 15),
           _RequirementsSection(
-            requirements: jobEntity.requirements,
+            requirements: LocalizationHelper.getLocalizedValue(
+              context,
+              ar: jobEntity.requirementsArabic.requirements,
+              en: jobEntity.requirementEnglish.requirements,
+            ) as List<String>,
           ),
           const SizedBox(height: 15),
         ],

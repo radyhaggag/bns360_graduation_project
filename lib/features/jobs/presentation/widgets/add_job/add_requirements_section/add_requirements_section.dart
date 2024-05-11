@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/shared_data/entities/job_entity.dart';
@@ -20,7 +21,12 @@ class AddRequirementsSection extends StatelessWidget {
       children: [
         AddRequirementButton(onAdd: onAdd),
         RequirementsBuilder(
-          requirements: jobEntity?.requirements,
+          requirements: LocalizationHelper.getLocalizedValue(
+                context,
+                ar: jobEntity?.requirementsArabic.requirements,
+                en: jobEntity?.requirementEnglish.requirements,
+              ) as List<String>? ??
+              [],
           isReadOnly: false,
         ),
       ],

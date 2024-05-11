@@ -45,10 +45,10 @@ class JobsRepoImpl implements JobsRepo {
 
   @override
   FutureEither<void> editJob(
-    AddJobParams addJobParams,
+    JobEntity job,
   ) async {
     return executeAndHandleErrorAsync(
-      () => jobsRemoteDataSource.editJob(addJobParams),
+      () => jobsRemoteDataSource.editJob(job),
     );
   }
 }

@@ -39,17 +39,17 @@ class _AddJobBodyState extends State<AddJobBody> {
       selectedJobType = JobType.fromInteger(widget.jobEntity!.workHours);
       context.read<JobsBloc>().add(
             InitJobRequirementsEvent(
-              requirements: widget.jobEntity!.requirements,
+              requirements: widget.jobEntity!.requirementEnglish.requirements,
             ),
           );
     }
     form = FormGroup({
       'title': FormControl<String>(
         validators: [Validators.required],
-        value: widget.jobEntity?.jobTitle,
+        value: widget.jobEntity?.jobTitleArabic,
       ),
       'description': FormControl<String>(
-        value: widget.jobEntity?.description,
+        value: widget.jobEntity?.jobDescriptionEnglish,
       ),
       'workHours': FormControl<String>(
         validators: [
@@ -71,7 +71,7 @@ class _AddJobBodyState extends State<AddJobBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: widget.jobEntity?.phoneNumber,
+        value: widget.jobEntity?.contacts?.phoneNumber,
       ),
       'whatsapp': FormControl<String>(
         validators: [
@@ -134,7 +134,8 @@ class _AddJobBodyState extends State<AddJobBody> {
       title: formControls['title']!.value as String,
       description: formControls['description']!.value as String,
       jobType: selectedJobType!,
-      requirements: [], // Will edited on the bloc
+      requirements: [],
+      // Will edited on the bloc
       workHours: int.parse(formControls['workHours']!.value as String),
       salary: double.parse(formControls['salary']!.value as String),
       phoneNumber: formControls['phoneNumber']!.value as String,

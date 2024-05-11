@@ -1,63 +1,78 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bns360_graduation_project/core/shared_data/entities/publisher_details_entity.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/requirements_entity.dart';
 import 'package:equatable/equatable.dart';
 
-import 'profile/user_entity.dart';
+import '../../utils/enums/job_type.dart';
+import 'contact_entity.dart';
 
 class JobEntity extends Equatable {
-  final String id;
-  final String jobTitle;
-  final String description;
-  final List<String> requirements;
-  final String date;
-  final num salary;
+  final String? id;
+  final String jobTitleArabic;
+  final String jobTitleEnglish;
+  final String jobDescriptionArabic;
+  final String jobDescriptionEnglish;
+  final RequirementsEntity requirementsArabic;
+  final RequirementsEntity requirementEnglish;
+  final JobType type;
   final int workHours;
-  final UserEntity publisher;
-  final String? phoneNumber;
+  final num salary;
+  final PublisherDetailsEntity publisherDetails;
   final String? whatsapp;
+  final ContactEntity? contacts;
   final bool isBelongToMe;
 
   const JobEntity({
-    required this.id,
-    required this.jobTitle,
-    required this.description,
-    required this.salary,
-    required this.publisher,
-    required this.requirements,
-    required this.date,
-    required this.workHours,
-    this.phoneNumber,
-    this.whatsapp,
+    this.id,
+    required this.contacts,
     this.isBelongToMe = false,
+    required this.jobDescriptionArabic,
+    required this.jobDescriptionEnglish,
+    required this.jobTitleArabic,
+    required this.jobTitleEnglish,
+    required this.publisherDetails,
+    required this.requirementsArabic,
+    required this.requirementEnglish,
+    required this.salary,
+    required this.type,
+    required this.whatsapp,
+    required this.workHours,
   });
-
-  @override
-  List<Object> get props => [id, jobTitle, description, salary];
 
   JobEntity copyWith({
     String? id,
-    String? jobTitle,
-    String? description,
-    List<String>? requirements,
-    String? date,
-    num? salary,
+    String? jobTitleArabic,
+    String? jobTitleEnglish,
+    String? jobDescriptionArabic,
+    String? jobDescriptionEnglish,
+    RequirementsEntity? requirementsArabic,
+    RequirementsEntity? requirementEnglish,
+    JobType? type,
     int? workHours,
-    UserEntity? publisher,
-    String? phoneNumber,
+    num? salary,
+    PublisherDetailsEntity? publisherDetails,
     String? whatsapp,
+    ContactEntity? contacts,
     bool? isBelongToMe,
   }) {
     return JobEntity(
       id: id ?? this.id,
-      jobTitle: jobTitle ?? this.jobTitle,
-      description: description ?? this.description,
-      requirements: requirements ?? this.requirements,
-      date: date ?? this.date,
-      salary: salary ?? this.salary,
+      jobTitleArabic: jobTitleArabic ?? this.jobTitleArabic,
+      jobTitleEnglish: jobTitleEnglish ?? this.jobTitleEnglish,
+      jobDescriptionArabic: jobDescriptionArabic ?? this.jobDescriptionArabic,
+      jobDescriptionEnglish:
+          jobDescriptionEnglish ?? this.jobDescriptionEnglish,
+      requirementsArabic: requirementsArabic ?? this.requirementsArabic,
+      requirementEnglish: requirementEnglish ?? this.requirementEnglish,
+      type: type ?? this.type,
       workHours: workHours ?? this.workHours,
-      publisher: publisher ?? this.publisher,
-      phoneNumber: phoneNumber ?? this.phoneNumber,
+      salary: salary ?? this.salary,
+      publisherDetails: publisherDetails ?? this.publisherDetails,
       whatsapp: whatsapp ?? this.whatsapp,
+      contacts: contacts ?? this.contacts,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
     );
   }
+
+  @override
+  List<Object?> get props => [id];
 }

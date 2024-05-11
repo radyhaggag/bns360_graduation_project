@@ -50,26 +50,27 @@ class JobDetailsTopSection extends StatelessWidget {
               child: MainNetworkImage(
                 height: 70.r,
                 width: 70.r,
-                imageUrl: jobEntity.publisher.imageUrl,
+                imageUrl: jobEntity.publisherDetails.photoUrl,
+                name: jobEntity.publisherDetails.name,
               ),
             ),
             const SizedBox(height: 12),
             Text(
-              jobEntity.publisher.name,
+              jobEntity.publisherDetails.name ?? "",
               style: _textStyle1(context),
             ),
             const SizedBox(height: 8),
             Text(
-              LocalizationHelper.getLocalizedString(
-                context,
-                ar: jobEntity.publisher.userDescriptionAR ?? "",
-                en: jobEntity.publisher.userDescriptionEN ?? "",
-              ),
+              jobEntity.publisherDetails.description ?? "",
               style: _textStyle2(context),
             ),
             SizedBox(height: 13.h),
             Text(
-              jobEntity.jobTitle,
+              LocalizationHelper.getLocalizedString(
+                context,
+                ar: jobEntity.jobTitleArabic,
+                en: jobEntity.jobTitleEnglish,
+              ),
               style: _textStyle3(context),
             ),
           ],

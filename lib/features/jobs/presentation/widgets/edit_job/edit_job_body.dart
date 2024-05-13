@@ -1,53 +1,76 @@
+import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/job_entity.dart';
+import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
+import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../core/helpers/validators/form_validators.dart';
-import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/job_type.dart';
-import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domain/params/add_job_params.dart';
-import '../../bloc/jobs_bloc.dart';
-import 'add_job_button.dart';
-import 'add_job_form.dart';
+import 'edit_job_button.dart';
+import 'edit_job_form.dart';
 
-class AddJobBody extends StatefulWidget {
-  const AddJobBody({
+class EditJobBody extends StatefulWidget {
+  const EditJobBody({
     super.key,
+    required this.jobEntity,
   });
 
+  final JobEntity jobEntity;
+
   @override
-  State<AddJobBody> createState() => _AddJobBodyState();
+  State<EditJobBody> createState() => _EditJobBodyState();
 }
 
-class _AddJobBodyState extends State<AddJobBody> {
+class _EditJobBodyState extends State<EditJobBody> {
   JobType? selectedJobType;
   late final FormGroup form;
 
   @override
   void initState() {
     super.initState();
+    selectedJobType = JobType.fromInteger(widget.jobEntity.workHours);
+    context.read<JobsBloc>().add(
+          InitJobRequirementsEvent(
+            requirementsEng: widget.jobEntity.requirementEnglish.requirements,
+            requirementsAr: widget.jobEntity.requirementsArabic.requirements,
+          ),
+        );
+
     form = FormGroup({
-      'title': FormControl<String>(
+      'title_ar': FormControl<String>(
         validators: [Validators.required],
+        value: widget.jobEntity.jobTitleArabic,
       ),
-      'description': FormControl<String>(),
+      'title_eng': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.jobEntity.jobTitleEnglish,
+      ),
+      'description_ar': FormControl<String>(
+        value: widget.jobEntity.jobDescriptionArabic,
+      ),
+      'description_eng': FormControl<String>(
+        value: widget.jobEntity.jobDescriptionEnglish,
+      ),
       'workHours': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
         ],
+        value: widget.jobEntity.workHours.toString(),
       ),
       'salary': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
         ],
+        value: widget.jobEntity.salary.toInt.toString(),
       ),
       'phoneNumber': FormControl<String>(
         validators: [
@@ -55,6 +78,7 @@ class _AddJobBodyState extends State<AddJobBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
+        value: widget.jobEntity.contacts?.phoneNumber?.withoutCountryCode,
       ),
       'whatsapp': FormControl<String>(
         validators: [
@@ -62,6 +86,7 @@ class _AddJobBodyState extends State<AddJobBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
+        value: widget.jobEntity.whatsapp?.withoutCountryCode,
       ),
     });
   }
@@ -78,7 +103,7 @@ class _AddJobBodyState extends State<AddJobBody> {
         child: Column(
           children: [
             Text(
-              S.of(context).add_a_job,
+              S.of(context).edit_job,
               style: context.textTheme.titleMedium?.copyWith(
                 color: context.theme.cardColor,
                 fontSize: AppFontSize.titleMedium,
@@ -86,7 +111,7 @@ class _AddJobBodyState extends State<AddJobBody> {
             ),
             20.verticalSpace,
             Expanded(
-              child: AddJobForm(
+              child: EditJobForm(
                 form: form,
                 selectedJobType: selectedJobType,
                 onJobTypeChanged: (newValue) {
@@ -94,11 +119,12 @@ class _AddJobBodyState extends State<AddJobBody> {
                     selectedJobType = newValue;
                   });
                 },
+                jobEntity: widget.jobEntity,
               ),
             ),
             10.verticalSpace,
-            AddJobButton(
-              onAdd: _submitForm,
+            EditJobButton(
+              onEdit: _submitForm,
               isJobTypeSelected: selectedJobType != null,
             ),
           ],
@@ -109,18 +135,22 @@ class _AddJobBodyState extends State<AddJobBody> {
 
   void _submitForm() {
     final formControls = form.controls;
-    final params = AddJobParams(
-      title: formControls['title']!.value as String,
-      description: formControls['description']!.value as String,
-      jobType: selectedJobType!,
-      requirements: [],
-      // Will edited on the bloc
+    final jobEntity = widget.jobEntity.copyWith(
+      jobTitleArabic: formControls['title_ar']!.value as String,
+      jobTitleEnglish: formControls['title_eng']!.value as String,
+      jobDescriptionArabic: formControls['description_ar']!.value as String,
+      jobDescriptionEnglish: formControls['description_eng']!.value as String,
+      type: selectedJobType!,
       workHours: int.parse(formControls['workHours']!.value as String),
       salary: double.parse(formControls['salary']!.value as String),
-      phoneNumber: (formControls['phoneNumber']!.value as String).withCountryCode,
+      contacts: widget.jobEntity.contacts?.copyWith(
+        phoneNumber:
+            (formControls['phoneNumber']!.value as String).withCountryCode,
+      ),
       whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
     );
-    context.read<JobsBloc>().add(AddJobEvent(addJobParams: params));
+
+    context.read<JobsBloc>().add(EditJobEvent(jobEntity: jobEntity));
   }
 
   @override

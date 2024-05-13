@@ -231,5 +231,8 @@
   "password_requirements_uppercase": "حرف كبير على الأقل.",
   "password_requirements_lowercase": "حرف صغير على الأقل.",
   "password_requirements_digit": "رقم واحد على الأقل.",
-  "password_requirements_special_character": "حرف خاص واحد على الأقل."
+  "password_requirements_special_character": "حرف خاص واحد على الأقل.",
+  "edit_job": "تعديل الوظيفة",
+  "in_arabic": "بالعربية",
+  "in_english": "بالإنجليزية"
 }

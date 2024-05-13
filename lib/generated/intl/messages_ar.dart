@@ -131,6 +131,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "edit_business":
             MessageLookupByLibrary.simpleMessage("تعديل النشاط التجاري"),
+        "edit_job": MessageLookupByLibrary.simpleMessage("تعديل الوظيفة"),
         "edit_location": MessageLookupByLibrary.simpleMessage("تعديل الموقع"),
         "edit_post": MessageLookupByLibrary.simpleMessage("تعديل المنشور"),
         "edit_profile":
@@ -183,6 +184,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
         "hours_ago": m1,
         "hr_work": MessageLookupByLibrary.simpleMessage("س عمل"),
+        "in_arabic": MessageLookupByLibrary.simpleMessage("بالعربية"),
+        "in_english": MessageLookupByLibrary.simpleMessage("بالإنجليزية"),
         "invalid_otp_code_msg": MessageLookupByLibrary.simpleMessage(
             "الرمز غير صحيح. يرجى المحاولة مرة أخرى أو طلب رمز جديد."),
         "job_description": MessageLookupByLibrary.simpleMessage("وصف الوظيفة"),

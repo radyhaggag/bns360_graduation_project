@@ -26,15 +26,6 @@ class JobsRepoImpl implements JobsRepo {
   }
 
   @override
-  FutureEither<List<JobEntity>> searchOnJobs(
-    String text,
-  ) async {
-    return executeAndHandleErrorAsync(
-      () => jobsRemoteDataSource.searchOnJobs(text),
-    );
-  }
-
-  @override
   FutureEither<void> addJob(
     AddJobParams addJobParams,
   ) async {

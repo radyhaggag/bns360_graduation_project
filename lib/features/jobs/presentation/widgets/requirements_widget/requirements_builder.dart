@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,20 +8,24 @@ import 'requirement_widget.dart';
 class RequirementsBuilder extends StatelessWidget {
   const RequirementsBuilder({
     super.key,
-    this.requirements,
     required this.isReadOnly,
+    required this.withTranslation,
+    this.language,
   });
 
-  final List<String>? requirements;
   final bool isReadOnly;
+  final bool withTranslation;
+  final Language? language;
 
   List<String> _getRequirementsToView(BuildContext context) {
-    final addRequirements = context.read<JobsBloc>().requirements;
-    if (isReadOnly) {
-      return requirements ?? [];
+    final bloc = context.read<JobsBloc>();
+    if (language != null) {
+      return language == Language.arabic
+          ? bloc.requirementsAr
+          : bloc.requirementsEng;
     }
-
-    return addRequirements;
+    final requirements = bloc.requirements(context);
+    return requirements;
   }
 
   @override
@@ -39,6 +44,7 @@ class RequirementsBuilder extends StatelessWidget {
                 requirement: requirements[index],
                 index: index,
                 isReadOnly: isReadOnly,
+                withTranslation: withTranslation,
               ),
             ),
           ),

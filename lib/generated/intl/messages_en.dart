@@ -135,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "edit_business": MessageLookupByLibrary.simpleMessage("Edit business"),
+        "edit_job": MessageLookupByLibrary.simpleMessage("Edit job"),
         "edit_location": MessageLookupByLibrary.simpleMessage("Edit location"),
         "edit_post": MessageLookupByLibrary.simpleMessage("Edit post"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -188,6 +189,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hour_ago": MessageLookupByLibrary.simpleMessage("hour ago"),
         "hours_ago": m1,
         "hr_work": MessageLookupByLibrary.simpleMessage("hr work"),
+        "in_arabic": MessageLookupByLibrary.simpleMessage("In Arabic"),
+        "in_english": MessageLookupByLibrary.simpleMessage("In English"),
         "invalid_otp_code_msg": MessageLookupByLibrary.simpleMessage(
             "Invalid OTP. Please try again or request a new one."),
         "job_description":

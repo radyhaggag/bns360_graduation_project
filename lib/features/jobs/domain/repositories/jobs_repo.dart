@@ -7,8 +7,6 @@ abstract class JobsRepo {
 
   FutureEither<JobEntity> getJobById(String id);
 
-  FutureEither<List<JobEntity>> searchOnJobs(String text);
-
   FutureEither<void> addJob(AddJobParams addJobParams);
 
   FutureEither<void> editJob(JobEntity job);

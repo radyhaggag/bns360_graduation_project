@@ -39,6 +39,7 @@ import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
 import '../features/jobs/presentation/bloc/jobs_bloc.dart';
 import '../features/jobs/presentation/screens/add_job_screen.dart';
+import '../features/jobs/presentation/screens/edit_job_screen.dart';
 import '../features/jobs/presentation/screens/job_details_screen.dart';
 import '../features/jobs/presentation/screens/jobs_screen.dart';
 import '../features/map/domain/params/map_params.dart';
@@ -91,6 +92,7 @@ abstract class Routes {
   static const jobDetails = '/jobDetails';
   static const jobs = '/jobs';
   static const addJob = '/addJob';
+  static const editJob = '/editJob';
   static const propertyDetails = '/propertyDetails';
   static const properties = '/properties';
   static const addProperty = '/addProperty';
@@ -309,20 +311,32 @@ abstract class RouteConfig {
           ),
         );
       case Routes.jobDetails:
+        final job = settings.arguments as JobEntity;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => sl<JobsBloc>(),
+            create: (context) => sl<JobsBloc>()
+              ..add(InitJobRequirementsEvent(
+                requirementsAr: job.requirementsArabic.requirements,
+                requirementsEng: job.requirementEnglish.requirements,
+              )),
             child: JobDetailsScreen(
-              jobEntity: settings.arguments as JobEntity,
+              jobEntity: job,
             ),
           ),
         );
       case Routes.addJob:
-        final params = settings.arguments as JobEntity?;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => sl<JobsBloc>(),
-            child: AddJobScreen(
+            child: const AddJobScreen(),
+          ),
+        );
+      case Routes.editJob:
+        final params = settings.arguments as JobEntity;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<JobsBloc>(),
+            child: EditJobScreen(
               jobEntity: params,
             ),
           ),

@@ -1,7 +1,7 @@
 import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/widgets/add_job/add_requirements_section/add_requirement_dialog.dart';
+import 'package:bns360_graduation_project/features/jobs/presentation/widgets/requirements_widget/add_requirement_dialog.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,18 +16,19 @@ class RequirementWidget extends StatelessWidget {
     required this.requirement,
     required this.index,
     required this.isReadOnly,
+    required this.withTranslation,
   });
+
   final String requirement;
   final int index;
   final bool isReadOnly;
+  final bool withTranslation;
 
   _onTap(BuildContext context) {
     ConfirmationDialog.show(
       context,
       onConfirm: () {
-        context.read<JobsBloc>().add(RemoveRequirementEvent(
-              index: index,
-            ));
+        context.read<JobsBloc>().add(RemoveRequirementEvent(index: index));
         Navigator.pop(context);
       },
       message: S.of(context).remove_requirement,
@@ -71,6 +72,8 @@ class RequirementWidget extends StatelessWidget {
                             EditRequirementEvent(
                               requirement: value,
                               index: index,
+                              context: context,
+                              withTranslation: withTranslation,
                             ),
                           );
                     },

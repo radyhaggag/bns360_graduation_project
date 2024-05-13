@@ -2399,6 +2399,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit job`
+  String get edit_job {
+    return Intl.message(
+      'Edit job',
+      name: 'edit_job',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In Arabic`
+  String get in_arabic {
+    return Intl.message(
+      'In Arabic',
+      name: 'in_arabic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In English`
+  String get in_english {
+    return Intl.message(
+      'In English',
+      name: 'in_english',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

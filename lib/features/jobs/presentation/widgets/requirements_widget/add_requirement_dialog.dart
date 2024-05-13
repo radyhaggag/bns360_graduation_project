@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
 
 class AddRequirementDialog extends StatefulWidget {
   const AddRequirementDialog({

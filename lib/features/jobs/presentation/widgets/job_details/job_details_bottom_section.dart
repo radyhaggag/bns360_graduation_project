@@ -78,9 +78,9 @@ class _RequirementsSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          RequirementsBuilder(
+          const RequirementsBuilder(
             isReadOnly: true,
-            requirements: requirements,
+            withTranslation: false,
           ),
         ],
       ),

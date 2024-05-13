@@ -8,14 +8,14 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../bloc/jobs_bloc.dart';
 
-class AddJobButton extends StatelessWidget {
-  const AddJobButton({
+class EditJobButton extends StatelessWidget {
+  const EditJobButton({
     super.key,
-    required this.onAdd,
+    required this.onEdit,
     this.isJobTypeSelected = false,
   });
 
-  final VoidCallback onAdd;
+  final VoidCallback onEdit;
   final bool isJobTypeSelected;
 
   @override
@@ -29,12 +29,12 @@ class AddJobButton extends StatelessWidget {
             return BlocBuilder<JobsBloc, JobsState>(
               builder: (context, state) {
                 return CustomElevatedButton(
-                  label: S.of(context).post_now,
-                  onPressed: onAdd,
+                  label: S.of(context).update,
+                  onPressed: onEdit,
                   width: context.width,
                   height: 50.h,
                   isDisabled: !(form.valid && isJobTypeSelected),
-                  isLoading: state is AddJobLoadingState,
+                  isLoading: state is EditJobLoadingState,
                   borderRadius: BorderRadius.circular(8),
                 );
               },

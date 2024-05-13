@@ -234,5 +234,8 @@
   "password_requirements_uppercase": "at least one uppercase letter.",
   "password_requirements_lowercase": "at least one lowercase letter.",
   "password_requirements_digit": "at least one digit.",
-  "password_requirements_special_character": "at least one special character."
+  "password_requirements_special_character": "at least one special character.",
+  "edit_job": "Edit job",
+  "in_arabic": "In Arabic",
+  "in_english": "In English"
 }

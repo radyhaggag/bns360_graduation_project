@@ -11,22 +11,22 @@ import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../generated/l10n.dart';
+import '../edit_requirements_section/edit_requirements_section.dart';
 import '../job_type_radio_tile.dart';
-import 'add_requirements_section.dart';
 
-class AddJobForm extends StatelessWidget {
-  const AddJobForm({
+class EditJobForm extends StatelessWidget {
+  const EditJobForm({
     super.key,
     required this.form,
+    required this.jobEntity,
     this.selectedJobType,
     this.onJobTypeChanged,
-    this.jobEntity,
   });
 
   final FormGroup form;
   final JobType? selectedJobType;
   final void Function(JobType?)? onJobTypeChanged;
-  final JobEntity? jobEntity;
+  final JobEntity jobEntity;
 
   void _onAddRequirement(
     BuildContext context, {
@@ -36,7 +36,7 @@ class AddJobForm extends StatelessWidget {
           AddRequirementEvent(
             requirement: requirement,
             context: context,
-            withTranslation: false,
+            withTranslation: true,
           ),
         );
   }
@@ -50,21 +50,38 @@ class AddJobForm extends StatelessWidget {
         shrinkWrap: true,
         children: [
           CustomReactiveFormField(
-            title: t.job_title,
-            hint: t.enter_job_title,
-            formControlName: 'title',
+            title: "${t.job_title}\t(${t.in_arabic})",
+            hint: "${t.enter_job_title}\t(${t.in_arabic})",
+            formControlName: 'title_ar',
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
-            title: t.job_description,
-            hint: t.enter_job_description,
-            formControlName: 'description',
+            title: "${t.job_title}\t(${t.in_english})",
+            hint: "${t.enter_job_title}\t(${t.in_english})",
+            formControlName: 'title_eng',
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
-          AddRequirementsSection(
-            onAdd: (value) => _onAddRequirement(context, requirement: value),
+          CustomReactiveFormField(
+            title: "${t.job_description}\t(${t.in_arabic})",
+            hint: "${t.enter_job_description}\t(${t.in_arabic})",
+            formControlName: 'description_ar',
+            textInputAction: TextInputAction.next,
+          ),
+          10.verticalSpace,
+          CustomReactiveFormField(
+            title: "${t.job_description}\t(${t.in_english})",
+            hint: "${t.enter_job_description}\t(${t.in_english})",
+            formControlName: 'description_eng',
+            textInputAction: TextInputAction.next,
+          ),
+          10.verticalSpace,
+          EditRequirementsSection(
+            onAdd: (value) => _onAddRequirement(
+              context,
+              requirement: value,
+            ),
           ),
           10.verticalSpace,
           const WhatsappAndMobileFields(),

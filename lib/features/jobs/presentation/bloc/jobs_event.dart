@@ -21,15 +21,21 @@ class AddJobEvent extends JobsEvent {
 }
 
 class EditJobEvent extends JobsEvent {
-  final AddJobParams addJobParams;
+  final JobEntity jobEntity;
 
-  const EditJobEvent({required this.addJobParams});
+  const EditJobEvent({required this.jobEntity});
 }
 
 class AddRequirementEvent extends JobsEvent {
   final String requirement;
+  final bool withTranslation;
+  final BuildContext context;
 
-  const AddRequirementEvent({required this.requirement});
+  const AddRequirementEvent({
+    required this.requirement,
+    required this.context,
+    this.withTranslation = false,
+  });
 }
 
 class RemoveRequirementEvent extends JobsEvent {
@@ -40,16 +46,24 @@ class RemoveRequirementEvent extends JobsEvent {
 
 class EditRequirementEvent extends JobsEvent {
   final String requirement;
+  final BuildContext context;
   final int index;
+  final bool withTranslation;
 
   const EditRequirementEvent({
     required this.requirement,
+    required this.context,
     required this.index,
+    this.withTranslation = false,
   });
 }
 
 class InitJobRequirementsEvent extends JobsEvent {
-  final List<String> requirements;
+  final List<String> requirementsEng;
+  final List<String> requirementsAr;
 
-  const InitJobRequirementsEvent({required this.requirements});
+  const InitJobRequirementsEvent({
+    required this.requirementsAr,
+    required this.requirementsEng,
+  });
 }

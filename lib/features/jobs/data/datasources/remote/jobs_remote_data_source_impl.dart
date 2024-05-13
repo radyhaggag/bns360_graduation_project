@@ -8,7 +8,6 @@ import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_pa
 import 'package:translator/translator.dart';
 
 import '../../../../../core/api/api_consumer.dart';
-import '../../../../../core/helpers/load_json_from_asset.dart';
 import '../../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../../core/shared_data/models/job_model.dart';
 import '../../../../../core/utils/enums.dart';
@@ -39,28 +38,6 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
     final data = res.data;
     final job = JobModel.fromJson(data);
     return job;
-  }
-
-  @override
-  Future<List<JobModel>> searchOnJobs(String text) async {
-    final res = await loadJsonFromAsset('jobs.json');
-    final craftsmen = List<JobModel>.from(res['data'].map(
-      (craftsman) => JobModel.fromJson(craftsman),
-    ));
-    final searchLowercase = text.toLowerCase();
-    bool isTrue(String itemName) {
-      final itemNameLowercase = itemName.toLowerCase();
-      return searchLowercase.contains(itemNameLowercase) ||
-          itemNameLowercase.contains(searchLowercase);
-    }
-
-    final filteredItems = craftsmen
-        .where(
-          (item) => isTrue(item.jobTitleEnglish) || isTrue(item.jobTitleArabic),
-        )
-        .toList();
-
-    return filteredItems;
   }
 
   @override
@@ -154,6 +131,7 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
 
   @override
   Future<void> editJob(JobEntity job) async {
+    if (job.id == null) throw Exception("Job id is null");
     final model = JobModel.fromEntity(job);
     await apiConsumer.put(
       endpoint: AppEndpoints.jobById(job.id!),

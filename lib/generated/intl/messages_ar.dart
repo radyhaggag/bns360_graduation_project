@@ -132,10 +132,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_business":
             MessageLookupByLibrary.simpleMessage("تعديل النشاط التجاري"),
         "edit_job": MessageLookupByLibrary.simpleMessage("تعديل الوظيفة"),
+        "edit_job_success":
+            MessageLookupByLibrary.simpleMessage("تم تعديل الوظيفة بنجاح"),
         "edit_location": MessageLookupByLibrary.simpleMessage("تعديل الموقع"),
         "edit_post": MessageLookupByLibrary.simpleMessage("تعديل المنشور"),
         "edit_profile":
             MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
+        "edit_property": MessageLookupByLibrary.simpleMessage("تعديل العقار"),
+        "edit_property_success":
+            MessageLookupByLibrary.simpleMessage("تم تعديل العقار بنجاح"),
         "edit_service": MessageLookupByLibrary.simpleMessage("تعديل الخدمة"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("جنية"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكترونى"),

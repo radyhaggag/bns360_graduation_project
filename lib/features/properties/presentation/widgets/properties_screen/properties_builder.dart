@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +37,16 @@ class PropertiesBuilder extends StatelessWidget {
                 ? propertiesBloc.searchResults
                 : propertiesBloc.properties,
             emptyMessage: S.of(context).no_properties_found,
-            itemWidget: (item, _) => PropertyCard(propertyEntity: item),
+            itemWidget: (item, _) => InkWell(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  Routes.editProperty,
+                  arguments: item,
+                );
+              },
+              child: PropertyCard(propertyEntity: item),
+            ),
             scrollDirection: Axis.vertical,
             width: context.width,
             height: context.height,

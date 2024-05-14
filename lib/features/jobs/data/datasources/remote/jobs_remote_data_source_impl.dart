@@ -106,6 +106,7 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
     final currentUser = AppProvider().getProfile();
 
     final jobModel = JobModel(
+      id: -1,
       contacts: contacts,
       jobDescriptionArabic: aboutAR,
       jobDescriptionEnglish: aboutENG,
@@ -122,6 +123,7 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
         description: "Normal user",
         photoUrl: currentUser?.imageUrl,
       ),
+      timeAddedjob: DateTime.now(),
     );
     await apiConsumer.post(
       endpoint: AppEndpoints.addJob,
@@ -131,11 +133,12 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
 
   @override
   Future<void> editJob(JobEntity job) async {
-    if (job.id == null) throw Exception("Job id is null");
     final model = JobModel.fromEntity(job);
+    final path = AppEndpoints.jobById(job.id.toString());
+    final data = model.toJson()..addAll({"id": model.id});
     await apiConsumer.put(
-      endpoint: AppEndpoints.jobById(job.id!),
-      data: model.toJson(),
+      endpoint: path,
+      data: data,
     );
   }
 }

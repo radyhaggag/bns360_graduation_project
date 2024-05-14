@@ -6,7 +6,7 @@ import '../../utils/enums/job_type.dart';
 import 'contact_entity.dart';
 
 class JobEntity extends Equatable {
-  final String? id;
+  final int id;
   final String jobTitleArabic;
   final String jobTitleEnglish;
   final String jobDescriptionArabic;
@@ -20,9 +20,10 @@ class JobEntity extends Equatable {
   final String? whatsapp;
   final ContactEntity? contacts;
   final bool isBelongToMe;
+  final DateTime timeAddedjob;
 
   const JobEntity({
-    this.id,
+    required this.id,
     required this.contacts,
     this.isBelongToMe = false,
     required this.jobDescriptionArabic,
@@ -36,10 +37,10 @@ class JobEntity extends Equatable {
     required this.type,
     required this.whatsapp,
     required this.workHours,
+    required this.timeAddedjob,
   });
 
   JobEntity copyWith({
-    String? id,
     String? jobTitleArabic,
     String? jobTitleEnglish,
     String? jobDescriptionArabic,
@@ -55,7 +56,7 @@ class JobEntity extends Equatable {
     bool? isBelongToMe,
   }) {
     return JobEntity(
-      id: id ?? this.id,
+      id: id,
       jobTitleArabic: jobTitleArabic ?? this.jobTitleArabic,
       jobTitleEnglish: jobTitleEnglish ?? this.jobTitleEnglish,
       jobDescriptionArabic: jobDescriptionArabic ?? this.jobDescriptionArabic,
@@ -70,6 +71,7 @@ class JobEntity extends Equatable {
       whatsapp: whatsapp ?? this.whatsapp,
       contacts: contacts ?? this.contacts,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
+      timeAddedjob: timeAddedjob,
     );
   }
 

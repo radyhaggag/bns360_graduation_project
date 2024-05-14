@@ -1,31 +1,37 @@
+import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
+import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
-import '../../../../../core/utils/assets/app_svg.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/properties_bloc.dart';
-import 'add_property_picked_images_builder.dart';
+import 'edit_property_picked_images_builder.dart';
 
-class UploadPropertyImagesSection extends StatelessWidget {
-  const UploadPropertyImagesSection({super.key});
+class EditPropertyImagesSection extends StatelessWidget {
+  const EditPropertyImagesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PropertiesBloc, PropertiesState>(
       builder: (context, state) {
         final pickedImages = context.read<PropertiesBloc>().pickedImages;
-        final isRemoveEnabled = pickedImages.length == 4;
+        final networkImages = context.read<PropertiesBloc>().networkImages;
+        final isRemoveEnabled =
+            networkImages.isNotEmpty || pickedImages.isNotEmpty;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomElevatedButtonWithIcon(
-              onPressed: () => _onPressed(context),
+              onPressed: () => _onPressed(
+                networkImages.isEmpty && pickedImages.isEmpty,
+                context,
+              ),
               isExpanded: false,
               borderRadius: BorderRadius.circular(8),
               label: isRemoveEnabled
@@ -43,7 +49,8 @@ class UploadPropertyImagesSection extends StatelessWidget {
               foregroundColor: AppColors.white,
               fontSize: AppFontSize.details,
             ),
-            if (pickedImages.isEmpty) ...[
+            if (pickedImages.isEmpty ||
+                (networkImages.length < 4 && pickedImages.isEmpty)) ...[
               const SizedBox(height: 10),
               Text(
                 S.of(context).max_no_of_image_uploads(4),
@@ -54,8 +61,9 @@ class UploadPropertyImagesSection extends StatelessWidget {
               ),
             ],
             const SizedBox(height: 10),
-            AddPropertyPickedImagesBuilder(
+            EditPropertyPickedImagesBuilder(
               images: pickedImages,
+              networkImages: networkImages,
             ),
           ],
         );
@@ -63,9 +71,22 @@ class UploadPropertyImagesSection extends StatelessWidget {
     );
   }
 
-  void _onPressed(BuildContext context) {
-    context.read<PropertiesBloc>().add(
-          PickPropertyImagesEvent(),
-        );
+  void _onPressed(bool isEmptyImages, BuildContext context) {
+    if (!isEmptyImages) {
+      ConfirmationDialog.show(
+        context,
+        onConfirm: () {
+          context.read<PropertiesBloc>().add(
+                ClearPropertyImagesEvent(),
+              );
+              Navigator.pop(context);
+        },
+        message: S.of(context).delete_property_images,
+      );
+    } else {
+      context.read<PropertiesBloc>().add(
+            PickPropertyImagesEvent(),
+          );
+    }
   }
 }

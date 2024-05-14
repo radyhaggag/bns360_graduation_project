@@ -5,6 +5,7 @@ extension MobileNumbersExtension on String? {
   }
 
   String get withCountryCode {
-    return "+20\$${this ?? ""}";
+    final number = this ?? "";
+    return "+20$number";
   }
 }

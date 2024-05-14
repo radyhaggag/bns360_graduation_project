@@ -136,9 +136,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "edit_business": MessageLookupByLibrary.simpleMessage("Edit business"),
         "edit_job": MessageLookupByLibrary.simpleMessage("Edit job"),
+        "edit_job_success": MessageLookupByLibrary.simpleMessage(
+            "The job has been updated successfully"),
         "edit_location": MessageLookupByLibrary.simpleMessage("Edit location"),
         "edit_post": MessageLookupByLibrary.simpleMessage("Edit post"),
         "edit_profile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+        "edit_property": MessageLookupByLibrary.simpleMessage("Edit property"),
+        "edit_property_success": MessageLookupByLibrary.simpleMessage(
+            "The property has been updated successfully"),
         "edit_service": MessageLookupByLibrary.simpleMessage("Edit service"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),

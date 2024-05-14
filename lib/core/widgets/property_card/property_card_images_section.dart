@@ -45,7 +45,7 @@ class PropertyCardImagesSection extends StatelessWidget {
                 : null,
             decoration: const BoxDecoration(),
             child: CustomSlider(
-              images: propertyEntity.propertyImagesUrls,
+              images: propertyEntity.images,
               height: isMiniMode ? 110.h : 225.h,
               viewPaginationBars: !isMiniMode,
               imagesRadius: isMiniMode ? 16 : null,

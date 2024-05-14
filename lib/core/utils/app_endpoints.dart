@@ -1,5 +1,5 @@
 abstract class AppEndpoints {
-  static const baseUrl = "http://graduationbns.runasp.net";
+  static const baseUrl = "http://graduationbns360.runasp.net";
 
   //* Auth endpoints
   static const login = "$baseUrl/api/Account/login";
@@ -26,11 +26,22 @@ abstract class AppEndpoints {
   //* Business Categories
   static const getAllCategories = "$baseUrl/api/Category/GetAllCategories";
 
-  // Jobs
+  //* Jobs
   static const addJob = "$baseUrl/api/Job";
   static const getAllJobs = "$baseUrl/api/Job";
 
   static String jobById(String jobId) {
     return "$baseUrl/api/Job/$jobId";
+  }
+
+  //* Properties
+  static const addProperty = "$baseUrl/api/Property";
+  static const getAllProperties = "$baseUrl/api/Property";
+
+  static String propertyById(String propertyId, {bool addPrefix = true}) {
+    if (addPrefix) {
+      return "$baseUrl/api/Property/properties/$propertyId";
+    }
+    return "$baseUrl/api/Property/$propertyId";
   }
 }

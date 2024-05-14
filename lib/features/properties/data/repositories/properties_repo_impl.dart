@@ -26,15 +26,6 @@ class PropertiesRepoImpl implements PropertiesRepo {
   }
 
   @override
-  FutureEither<List<PropertyEntity>> searchOnProperties(
-    String text,
-  ) async {
-    return executeAndHandleErrorAsync(
-      () => propertiesRemoteDataSource.searchOnProperties(text),
-    );
-  }
-
-  @override
   FutureEither<void> addProperty(AddPropertyParams addPropertyParams) async {
     return executeAndHandleErrorAsync(
       () => propertiesRemoteDataSource.addProperty(addPropertyParams),
@@ -42,9 +33,9 @@ class PropertiesRepoImpl implements PropertiesRepo {
   }
 
   @override
-  FutureEither<void> editProperty(AddPropertyParams addPropertyParams) async {
+  FutureEither<void> editProperty(PropertyEntity entity) async {
     return executeAndHandleErrorAsync(
-      () => propertiesRemoteDataSource.editProperty(addPropertyParams),
+      () => propertiesRemoteDataSource.editProperty(entity),
     );
   }
 }

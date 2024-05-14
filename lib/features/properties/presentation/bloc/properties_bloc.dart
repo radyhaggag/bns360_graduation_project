@@ -65,19 +65,26 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     isSearchEnabled = true;
 
     emit(GetPropertiesLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
-    final res = await propertiesRepo.searchOnProperties(searchVal);
+    final searchLowercase = searchVal.toLowerCase();
+    bool isTrue(String itemName) {
+      final itemNameLowercase = itemName.toLowerCase();
+      return searchLowercase.contains(itemNameLowercase) ||
+          itemNameLowercase.contains(searchLowercase);
+    }
 
-    res.fold(
-      (l) {
-        emit(GetPropertiesErrorState(message: l.message));
-      },
-      (r) {
-        searchResults = r;
-        emit(GetPropertiesSuccessState(properties: r));
-      },
-    );
+    final filteredItems = properties
+        .where(
+          (item) =>
+              isTrue(item.arabicAddress) ||
+              isTrue(item.arabicAddress) ||
+              isTrue(item.arabicDescription) ||
+              isTrue(item.englishDescription),
+        )
+        .toList();
+
+    searchResults = filteredItems;
+    emit(GetPropertiesSuccessState(properties: filteredItems));
   }
 
   @override
@@ -171,10 +178,10 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
 
   _editProperty(EditPropertyEvent event, Emitter<PropertiesState> emit) async {
     emit(EditPropertyLoadingState());
-    final params = event.addPropertyParams.copyWith(
-      lat: _propertyLat,
-      lng: _propertyLng,
-      images: _pickedImages,
+    final params = event.propertyEntity.copyWith(
+      latitude: _propertyLat,
+      longitude: _propertyLng,
+      images: _pickedImages.map((e) => e.path).toList(),
     );
     final res = await propertiesRepo.editProperty(params);
 

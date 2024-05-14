@@ -12,7 +12,7 @@ class PropertyDetailsItemsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final offerTypeStr = propertyEntity.offerType.getLocalizedString(context);
+    final offerTypeStr = propertyEntity.type.getLocalizedString(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(

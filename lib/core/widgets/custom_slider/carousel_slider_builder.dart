@@ -14,6 +14,8 @@ class _CarouselSliderBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (images.isEmpty) return const SizedBox.shrink();
+
     return CarouselSlider.builder(
       itemCount: images.length,
       itemBuilder: (BuildContext context, int itemIndex, int _) {

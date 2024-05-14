@@ -33,10 +33,10 @@ class AddPropertyEvent extends PropertiesEvent {
 }
 
 class EditPropertyEvent extends PropertiesEvent {
-  final AddPropertyParams addPropertyParams;
+  final PropertyEntity propertyEntity;
 
   const EditPropertyEvent({
-    required this.addPropertyParams,
+    required this.propertyEntity,
   });
 }
 

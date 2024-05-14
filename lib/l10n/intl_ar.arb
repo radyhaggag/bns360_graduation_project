@@ -162,7 +162,9 @@
   "no_properties_found": "لم يتم العثور على عقارات",
   "remove_images": "إزالة الصور",
   "add_property_success": "تم اضافة العقار بنجاح",
+  "edit_property_success": "تم تعديل العقار بنجاح",
   "add_job_success": "تم اضافة الوظيفة بنجاح",
+  "edit_job_success": "تم تعديل الوظيفة بنجاح",
   "call": "اتصل",
   "send_message": "ارسال رسالة",
   "remove_profile_image": "حذف صورة البروفايل",
@@ -234,5 +236,6 @@
   "password_requirements_special_character": "حرف خاص واحد على الأقل.",
   "edit_job": "تعديل الوظيفة",
   "in_arabic": "بالعربية",
-  "in_english": "بالإنجليزية"
+  "in_english": "بالإنجليزية",
+  "edit_property": "تعديل العقار"
 }

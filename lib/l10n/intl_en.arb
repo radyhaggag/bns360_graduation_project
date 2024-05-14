@@ -163,7 +163,9 @@
   "no_properties_found": "No properties found",
   "remove_images": "Remove images",
   "add_property_success": "The property has been added successfully",
+  "edit_property_success": "The property has been updated successfully",
   "add_job_success": "The job has been added successfully",
+  "edit_job_success": "The job has been updated successfully",
   "call": "Call",
   "send_message": "Send message",
   "remove_profile_image": "Remove profile image",
@@ -237,5 +239,6 @@
   "password_requirements_special_character": "at least one special character.",
   "edit_job": "Edit job",
   "in_arabic": "In Arabic",
-  "in_english": "In English"
+  "in_english": "In English",
+  "edit_property": "Edit property"
 }

@@ -35,7 +35,7 @@ class _EditJobBodyState extends State<EditJobBody> {
   @override
   void initState() {
     super.initState();
-    selectedJobType = JobType.fromInteger(widget.jobEntity.workHours);
+    selectedJobType = widget.jobEntity.type;
     context.read<JobsBloc>().add(
           InitJobRequirementsEvent(
             requirementsEng: widget.jobEntity.requirementEnglish.requirements,
@@ -70,7 +70,7 @@ class _EditJobBodyState extends State<EditJobBody> {
           Validators.required,
           Validators.number,
         ],
-        value: widget.jobEntity.salary.toInt.toString(),
+        value: widget.jobEntity.salary.toInt().toString(),
       ),
       'phoneNumber': FormControl<String>(
         validators: [

@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/config/route_config.dart';
+import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
 import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
 import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
@@ -10,23 +11,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 
-import '../../../../../core/helpers/location_helper.dart';
-import '../../../../../core/utils/extensions/media_query.dart';
-import '../../../../../core/widgets/custom_marker.dart';
-import '../../bloc/properties_bloc.dart';
+import '../../../../core/helpers/location_helper.dart';
+import '../../../../core/utils/extensions/media_query.dart';
+import '../../../../core/widgets/custom_marker.dart';
+import '../bloc/properties_bloc.dart';
 
-class AddPropertyLocationSection extends StatefulWidget {
-  const AddPropertyLocationSection({super.key, this.propertyEntity});
+class PropertyLocationSection extends StatefulWidget {
+  const PropertyLocationSection({super.key, this.propertyEntity});
 
   final PropertyEntity? propertyEntity;
 
   @override
-  State<AddPropertyLocationSection> createState() =>
-      _AddPropertyLocationSectionState();
+  State<PropertyLocationSection> createState() =>
+      _PropertyLocationSectionState();
 }
 
-class _AddPropertyLocationSectionState
-    extends State<AddPropertyLocationSection> {
+class _PropertyLocationSectionState extends State<PropertyLocationSection> {
   late MapController _mapController;
   Position? currentLocation;
   LatLng? centerPoint;
@@ -38,8 +38,8 @@ class _AddPropertyLocationSectionState
     _mapController = MapController();
     if (widget.propertyEntity != null) {
       centerPoint = LatLng(
-        widget.propertyEntity!.lat,
-        widget.propertyEntity!.lng,
+        widget.propertyEntity!.latitude,
+        widget.propertyEntity!.longitude,
       );
     } else {
       _getCurrentLocation();
@@ -48,6 +48,7 @@ class _AddPropertyLocationSectionState
 
   _getCurrentLocation() async {
     currentLocation = await LocationHelper.determinePosition(context);
+
     if (currentLocation != null) {
       centerPoint = LatLng(
         currentLocation!.latitude,
@@ -61,6 +62,22 @@ class _AddPropertyLocationSectionState
       );
       _mapController.move(centerPoint!, 9);
       setState(() {});
+    }
+    if (centerPoint != null && mounted) {
+      context.read<PropertiesBloc>().add(
+            SelectPropertyLocationEvent(
+              lat: centerPoint!.latitude,
+              lng: centerPoint!.longitude,
+            ),
+          );
+    } else {
+      if (!mounted) return;
+      context.read<PropertiesBloc>().add(
+            const SelectPropertyLocationEvent(
+              lat: 50.5,
+              lng: 30.51,
+            ),
+          );
     }
   }
 
@@ -127,9 +144,13 @@ class _AddPropertyLocationSectionState
             MapParams? mapParams;
             if (widget.propertyEntity != null) {
               mapParams = MapParams(
-                location: widget.propertyEntity!.address,
-                lat: widget.propertyEntity!.lat,
-                lng: widget.propertyEntity!.lng,
+                location: LocalizationHelper.getLocalizedString(
+                  context,
+                  ar: widget.propertyEntity?.arabicAddress ?? "",
+                  en: widget.propertyEntity?.englishAddress ?? "",
+                ),
+                lat: widget.propertyEntity!.latitude,
+                lng: widget.propertyEntity!.longitude,
               );
             }
             Navigator.of(context).pushNamed(

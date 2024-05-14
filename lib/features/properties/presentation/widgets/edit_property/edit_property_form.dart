@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
 import 'package:bns360_graduation_project/features/properties/presentation/widgets/property_location_section.dart';
 import 'package:flutter/material.dart';
@@ -11,17 +12,19 @@ import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart
 import '../../../../../generated/l10n.dart';
 import '../property_offer_type_radio_tile.dart';
 
-class AddPropertyForm extends StatelessWidget {
-  const AddPropertyForm({
+class EditPropertyForm extends StatelessWidget {
+  const EditPropertyForm({
     super.key,
     required this.form,
     this.selectedOfferType,
     this.onOfferTypeChanged,
+    this.propertyEntity,
   });
 
   final FormGroup form;
   final OfferType? selectedOfferType;
   final void Function(OfferType?)? onOfferTypeChanged;
+  final PropertyEntity? propertyEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +34,36 @@ class AddPropertyForm extends StatelessWidget {
       child: Column(
         children: [
           CustomReactiveFormField(
-            title: t.description_of_property,
-            hint: t.enter_property_address,
-            formControlName: 'description',
+            title: "${t.description_of_property}\t(${t.in_arabic})",
+            hint: "${t.enter_property_address}\t(${t.in_arabic})",
+            formControlName: 'description_ar',
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
-            title: t.property_address,
-            hint: t.enter_property_address,
-            formControlName: 'address',
+            title: "${t.description_of_property}\t(${t.in_english})",
+            hint: "${t.enter_property_address}\t(${t.in_english})",
+            formControlName: 'description_eng',
+            textInputAction: TextInputAction.next,
+          ),
+          10.verticalSpace,
+          CustomReactiveFormField(
+            title: "${t.property_address}\t(${t.in_arabic})",
+            hint: "${t.enter_property_address}\t(${t.in_arabic})",
+            formControlName: 'address_ar',
+            textInputAction: TextInputAction.next,
+          ),
+          10.verticalSpace,
+          CustomReactiveFormField(
+            title: "${t.property_address}\t(${t.in_english})",
+            hint: "${t.enter_property_address}\t(${t.in_english})",
+            formControlName: 'address_eng',
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
-          const PropertyLocationSection(),
+          PropertyLocationSection(
+            propertyEntity: propertyEntity,
+          ),
           15.verticalSpace,
           const WhatsappAndMobileFields(),
           15.verticalSpace,

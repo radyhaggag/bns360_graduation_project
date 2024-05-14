@@ -24,8 +24,12 @@ class _JobDateAndDetailsSection extends StatelessWidget {
           height: 35.h,
           borderRadius: BorderRadius.circular(8),
           onPressed: () {
+            // Navigator.of(context).pushNamed(
+            //   Routes.jobDetails,
+            //   arguments: jobEntity,
+            // );
             Navigator.of(context).pushNamed(
-              Routes.jobDetails,
+              Routes.editJob,
               arguments: jobEntity,
             );
           },
@@ -38,7 +42,7 @@ class _JobDateAndDetailsSection extends StatelessWidget {
   String getDate(BuildContext context) {
     return "${S.of(context).posted} ${DateFormatter.getSuitableDateString(
       context: context,
-      date: DateTime.now().toString(),
+      date: jobEntity.timeAddedjob.toString(),
       showFullDateHours: false,
     )}";
   }

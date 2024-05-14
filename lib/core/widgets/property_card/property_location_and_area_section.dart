@@ -12,11 +12,15 @@ class _PropertyLocationAndAreaSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         PropertyAddressWidget(
-          address: propertyEntity.address,
+          address: LocalizationHelper.getLocalizedString(
+            context,
+            ar: propertyEntity.arabicAddress,
+            en: propertyEntity.englishAddress,
+          ),
           markerColor: Colors.amberAccent,
         ),
         PropertyAreaWidget(
-          area: propertyEntity.area,
+          area: propertyEntity.area.toString(),
         ),
       ],
     );

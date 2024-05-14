@@ -1,8 +1,9 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/shared_data/entities/property_entity.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/description_widget.dart';
 import '../property_publisher_section.dart';
 import 'property_details_area_and_price_section.dart';
@@ -34,8 +35,8 @@ class PropertyDetailsBottomSection extends StatelessWidget {
               10.verticalSpace,
               PropertyDetailsAreaAndPriceSection(
                 price: propertyEntity.price,
-                area: propertyEntity.area,
-                offerType: propertyEntity.offerType,
+                area: propertyEntity.area.toString(),
+                offerType: propertyEntity.type,
               ),
             ],
           ),
@@ -61,7 +62,11 @@ class PropertyDetailsBottomSection extends StatelessWidget {
             horizontal: 20,
           ),
           child: DescriptionSection(
-            description: propertyEntity.description,
+            description: LocalizationHelper.getLocalizedString(
+              context,
+              ar: propertyEntity.arabicDescription,
+              en: propertyEntity.englishDescription,
+            ),
           ),
         ),
       ],

@@ -42,6 +42,7 @@ class DioConsumer implements APIConsumer {
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
     Map<String, dynamic>? headers,
+    FormData? formData,
   }) async {
     if (headers != null) {
       for (var header in headers.entries) {
@@ -52,7 +53,7 @@ class DioConsumer implements APIConsumer {
     return await dio.post(
       endpoint,
       queryParameters: queries,
-      data: data,
+      data: formData ?? data,
     );
   }
 
@@ -61,8 +62,13 @@ class DioConsumer implements APIConsumer {
     required String endpoint,
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
+    FormData? formData,
   }) async {
-    return await dio.patch(endpoint, queryParameters: queries, data: data);
+    return await dio.patch(
+      endpoint,
+      queryParameters: queries,
+      data: formData ?? data,
+    );
   }
 
   @override
@@ -70,8 +76,13 @@ class DioConsumer implements APIConsumer {
     required String endpoint,
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
+    FormData? formData,
   }) async {
-    return await dio.put(endpoint, queryParameters: queries, data: data);
+    return await dio.put(
+      endpoint,
+      queryParameters: queries,
+      data: formData ?? data,
+    );
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../features/properties/presentation/widgets/propert_area_widget.dart';

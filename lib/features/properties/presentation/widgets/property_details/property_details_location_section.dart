@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared_data/entities/property_entity.dart';
@@ -20,18 +21,26 @@ class PropertyDetailsLocationSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         PropertyAddressWidget(
-          address: propertyEntity.address,
+          address: getAddress(context),
           markerColor: context.theme.hoverColor,
         ),
         MapBtn(
           borderRadius: BorderRadius.circular(8),
           mapParams: MapParams(
-            lat: propertyEntity.lat,
-            lng: propertyEntity.lng,
-            location: propertyEntity.address,
+            lat: propertyEntity.latitude,
+            lng: propertyEntity.longitude,
+            location: getAddress(context),
           ),
         )
       ],
+    );
+  }
+
+  String getAddress(BuildContext context) {
+    return LocalizationHelper.getLocalizedString(
+      context,
+      ar: propertyEntity.arabicAddress,
+      en: propertyEntity.englishAddress,
     );
   }
 }

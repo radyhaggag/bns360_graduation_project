@@ -5,12 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class RemoveIcon extends StatelessWidget {
   const RemoveIcon({
     super.key,
-    required this.networkImages,
     this.onTap,
   });
 
   final void Function()? onTap;
-  final List<String> networkImages;
 
   @override
   Widget build(BuildContext context) {

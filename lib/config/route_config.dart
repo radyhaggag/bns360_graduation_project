@@ -55,6 +55,7 @@ import '../features/my_services/presentation/screens/my_services_screen.dart';
 import '../features/profile/presentation/screen/edit_profile_screen.dart';
 import '../features/properties/presentation/bloc/properties_bloc.dart';
 import '../features/properties/presentation/screens/add_property_screen.dart';
+import '../features/properties/presentation/screens/edit_property_screen.dart';
 import '../features/properties/presentation/screens/properties_screen.dart';
 import '../features/properties/presentation/screens/property_details_screen.dart';
 import '../features/saved_items/presentation/bloc/saved_bloc.dart';
@@ -96,6 +97,7 @@ abstract class Routes {
   static const propertyDetails = '/propertyDetails';
   static const properties = '/properties';
   static const addProperty = '/addProperty';
+  static const editProperty = '/editProperty';
   static const savedItems = '/savedItems';
   static const myPosts = '/myPosts';
   static const myBusiness = '/myBusiness';
@@ -356,11 +358,18 @@ abstract class RouteConfig {
           ),
         );
       case Routes.addProperty:
-        final params = settings.arguments as PropertyEntity?;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => sl<PropertiesBloc>(),
-            child: AddPropertyScreen(
+            child: const AddPropertyScreen(),
+          ),
+        );
+      case Routes.editProperty:
+        final params = settings.arguments as PropertyEntity;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<PropertiesBloc>(),
+            child: EditPropertyScreen(
               propertyEntity: params,
             ),
           ),

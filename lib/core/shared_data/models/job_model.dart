@@ -7,7 +7,7 @@ import '../entities/job_entity.dart';
 
 class JobModel extends JobEntity {
   const JobModel({
-    super.id,
+    required super.id,
     required super.contacts,
     required super.jobDescriptionArabic,
     required super.jobDescriptionEnglish,
@@ -20,6 +20,7 @@ class JobModel extends JobEntity {
     required super.type,
     required super.whatsapp,
     required super.workHours,
+    required super.timeAddedjob,
     super.isBelongToMe,
   });
 
@@ -49,6 +50,7 @@ class JobModel extends JobEntity {
       ),
       jobDescriptionArabic: json["jobDescriptionArabic"],
       type: JobType.fromString(json["type"]),
+      timeAddedjob: DateTime.parse(json["timeAddedjob"]),
     );
   }
 
@@ -68,6 +70,7 @@ class JobModel extends JobEntity {
       whatsapp: entity.whatsapp,
       workHours: entity.workHours,
       isBelongToMe: entity.isBelongToMe,
+      timeAddedjob: entity.timeAddedjob,
     );
   }
 

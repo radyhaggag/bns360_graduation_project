@@ -13,7 +13,7 @@ class _JobDescriptionItems extends StatelessWidget {
       children: [
         Expanded(
           child: _DetailsItem(
-            value: jobType(context),
+            value: jobEntity.type.getLocalizedString(context),
           ),
         ),
         Expanded(
@@ -28,13 +28,6 @@ class _JobDescriptionItems extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  String jobType(BuildContext context) {
-    if (jobEntity.workHours > 4) {
-      return S.of(context).full_time;
-    }
-    return S.of(context).part_time;
   }
 }
 

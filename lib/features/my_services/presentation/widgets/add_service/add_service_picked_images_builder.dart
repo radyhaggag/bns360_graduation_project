@@ -51,7 +51,6 @@ class AddServicePickedImagesBuilder extends StatelessWidget {
             ),
             if (networkImages.isEmpty)
               RemoveIcon(
-                networkImages: networkImages,
                 onTap: () {
                   context.read<MyServicesBloc>().add(
                         RemovePickedServiceImageEvent(index: index),

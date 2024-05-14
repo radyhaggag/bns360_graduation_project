@@ -14,13 +14,13 @@ class ContactWithBottomSheet extends StatelessWidget {
     required this.phoneNumber,
   });
 
-  final String whatsapp;
-  final String phoneNumber;
+  final String? whatsapp;
+  final String? phoneNumber;
 
   static show({
     required BuildContext context,
-    required String whatsapp,
-    required String phoneNumber,
+    String? whatsapp,
+    String? phoneNumber,
   }) {
     showModalBottomSheet(
       context: context,
@@ -46,14 +46,18 @@ class ContactWithBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _WhatsappItem(
-            phoneNumber: whatsapp,
-          ),
-          const SizedBox(height: 10),
-          _CallItem(
-            phoneNumber: phoneNumber,
-          ),
-          const SizedBox(height: 10),
+          if (whatsapp != null) ...[
+            _WhatsappItem(
+              phoneNumber: whatsapp!,
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (phoneNumber != null) ...[
+            _CallItem(
+              phoneNumber: phoneNumber!,
+            ),
+            const SizedBox(height: 10),
+          ],
           CustomElevatedButton(
             label: S.of(context).cancel,
             onPressed: () {

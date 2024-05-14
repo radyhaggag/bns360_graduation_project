@@ -1,76 +1,87 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 import '../../utils/enums/offer_type.dart';
-import 'profile/user_entity.dart';
+import 'contact_entity.dart';
+import 'publisher_details_entity.dart';
 
 class PropertyEntity extends Equatable {
-  final String id;
-  final UserEntity publisher;
+  final int id;
+  final String arabicDescription;
+  final String englishDescription;
+  final String arabicAddress;
+  final String englishAddress;
+  final String whatsappNumber;
+  final PublisherDetailsEntity publisher;
+  final ContactEntity contacts;
+  final OfferType type;
+  final int area;
   final num price;
-  final String description;
-  final String date;
-  final List<String> propertyImagesUrls;
-  final String address;
-  final double lat;
-  final double lng;
-  final String area;
-  final OfferType offerType;
-  final String? phoneNumber;
-  final String? whatsapp;
+  final double longitude;
+  final double latitude;
+  final List<String> imageNames;
+  final List<String> images;
+  final DateTime timeAddedProperty;
+
   final bool isBelongToMe;
 
   const PropertyEntity({
     required this.id,
-    required this.description,
-    required this.price,
+    required this.arabicDescription,
+    required this.englishDescription,
+    required this.arabicAddress,
+    required this.englishAddress,
+    required this.whatsappNumber,
     required this.publisher,
-    required this.date,
-    required this.propertyImagesUrls,
-    required this.address,
-    required this.lat,
-    required this.lng,
+    required this.contacts,
+    required this.type,
     required this.area,
-    required this.offerType,
-    this.phoneNumber,
-    this.whatsapp,
+    required this.price,
+    required this.longitude,
+    required this.latitude,
+    required this.imageNames,
+    required this.images,
+    required this.timeAddedProperty,
     this.isBelongToMe = false,
   });
 
   @override
-  List<Object> get props => [id, date, description, propertyImagesUrls];
+  List<Object?> get props => [id];
 
-  PropertyEntity copyWith({
-    String? id,
-    UserEntity? publisher,
+  copyWith({
+    String? arabicDescription,
+    String? englishDescription,
+    String? arabicAddress,
+    String? englishAddress,
+    String? whatsappNumber,
+    PublisherDetailsEntity? publisher,
+    ContactEntity? contacts,
+    OfferType? type,
+    int? area,
     num? price,
-    String? description,
-    String? date,
-    List<String>? propertyImagesUrls,
-    String? address,
-    double? lat,
-    double? lng,
-    String? area,
-    OfferType? offerType,
-    String? phoneNumber,
-    String? whatsapp,
+    double? longitude,
+    double? latitude,
+    List<String>? imageNames,
+    List<String>? images,
     bool? isBelongToMe,
   }) {
     return PropertyEntity(
-      id: id ?? this.id,
+      id: id,
+      arabicDescription: arabicDescription ?? this.arabicDescription,
+      englishDescription: englishDescription ?? this.englishDescription,
+      arabicAddress: arabicAddress ?? this.arabicAddress,
+      englishAddress: englishAddress ?? this.englishAddress,
+      whatsappNumber: whatsappNumber ?? this.whatsappNumber,
       publisher: publisher ?? this.publisher,
-      price: price ?? this.price,
-      description: description ?? this.description,
-      date: date ?? this.date,
-      propertyImagesUrls: propertyImagesUrls ?? this.propertyImagesUrls,
-      address: address ?? this.address,
-      lat: lat ?? this.lat,
-      lng: lng ?? this.lng,
+      contacts: contacts ?? this.contacts,
+      type: type ?? this.type,
       area: area ?? this.area,
-      offerType: offerType ?? this.offerType,
-      phoneNumber: phoneNumber ?? this.phoneNumber,
-      whatsapp: whatsapp ?? this.whatsapp,
+      price: price ?? this.price,
+      longitude: longitude ?? this.longitude,
+      latitude: latitude ?? this.latitude,
+      imageNames: imageNames ?? this.imageNames,
+      images: images ?? this.images,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
+      timeAddedProperty: timeAddedProperty,
     );
   }
 }

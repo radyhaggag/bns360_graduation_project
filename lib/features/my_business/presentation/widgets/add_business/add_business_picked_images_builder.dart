@@ -51,7 +51,6 @@ class AddBusinessPickedImagesBuilder extends StatelessWidget {
             ),
             if (networkImages.isEmpty)
               RemoveIcon(
-                networkImages: networkImages,
                 onTap: () {
                   context.read<MyBusinessBloc>().add(
                         RemovePickedBusinessImageEvent(index: index),

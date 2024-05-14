@@ -1680,11 +1680,31 @@ class S {
     );
   }
 
+  /// `The property has been updated successfully`
+  String get edit_property_success {
+    return Intl.message(
+      'The property has been updated successfully',
+      name: 'edit_property_success',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The job has been added successfully`
   String get add_job_success {
     return Intl.message(
       'The job has been added successfully',
       name: 'add_job_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The job has been updated successfully`
+  String get edit_job_success {
+    return Intl.message(
+      'The job has been updated successfully',
+      name: 'edit_job_success',
       desc: '',
       args: [],
     );
@@ -2425,6 +2445,16 @@ class S {
     return Intl.message(
       'In English',
       name: 'in_english',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit property`
+  String get edit_property {
+    return Intl.message(
+      'Edit property',
+      name: 'edit_property',
       desc: '',
       args: [],
     );

@@ -28,15 +28,15 @@ class PropertyPublisherSection extends StatelessWidget {
         InkWell(
           onTap: () {},
           child: PropertyPublisherImage(
-            imageUrl: propertyEntity.publisher.imageUrl!,
+            imageUrl: propertyEntity.publisher.photoUrl,
           ),
         ),
         const SizedBox(width: 5),
         InkWell(
           onTap: () {},
           child: _PublisherNameAndHintSection(
-            title: propertyEntity.publisher.name,
-            date: propertyEntity.date,
+            title: propertyEntity.publisher.name ?? "",
+            date: propertyEntity.timeAddedProperty.toString(),
             isMiniMode: isMiniMode,
           ),
         ),
@@ -45,7 +45,7 @@ class PropertyPublisherSection extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: PropertyPriceItem(
-              offerType: propertyEntity.offerType,
+              offerType: propertyEntity.type,
               price: propertyEntity.price,
             ),
           )
@@ -61,8 +61,8 @@ class PropertyPublisherSection extends StatelessWidget {
 }
 
 class PropertyPublisherImage extends StatelessWidget {
-  final String imageUrl;
-  const PropertyPublisherImage({super.key, required this.imageUrl});
+  final String? imageUrl;
+  const PropertyPublisherImage({super.key, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {

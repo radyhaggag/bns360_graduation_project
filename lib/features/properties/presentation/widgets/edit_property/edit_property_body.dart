@@ -5,49 +5,65 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/helpers/validators/form_validators.dart';
+import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/strings.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../params/add_property_params.dart';
 import '../../bloc/properties_bloc.dart';
-import 'add_property_button.dart';
-import 'add_property_form.dart';
-import 'upload_property_images_section.dart';
+import 'edit_property_button.dart';
+import 'edit_property_form.dart';
+import 'edit_property_images_section.dart';
 
-class AddPropertyBody extends StatefulWidget {
-  const AddPropertyBody({super.key});
+class EditPropertyBody extends StatefulWidget {
+  const EditPropertyBody({super.key, required this.propertyEntity});
+
+  final PropertyEntity propertyEntity;
 
   @override
-  State<AddPropertyBody> createState() => _AddPropertyBodyState();
+  State<EditPropertyBody> createState() => _EditPropertyBodyState();
 }
 
-class _AddPropertyBodyState extends State<AddPropertyBody> {
+class _EditPropertyBodyState extends State<EditPropertyBody> {
   OfferType? selectedOfferType;
   late final FormGroup form;
 
   @override
   void initState() {
     super.initState();
+    selectedOfferType = widget.propertyEntity.type;
     form = FormGroup({
-      'description': FormControl<String>(
+      'description_ar': FormControl<String>(
         validators: [Validators.required],
+        value: widget.propertyEntity.arabicDescription,
       ),
-      'address': FormControl<String>(
+      'description_eng': FormControl<String>(
         validators: [Validators.required],
+        value: widget.propertyEntity.englishDescription,
+      ),
+      'address_ar': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.propertyEntity.arabicAddress,
+      ),
+      'address_eng': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.propertyEntity.englishAddress,
       ),
       'area': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
         ],
+        value: widget.propertyEntity.area.toInt().toString(),
       ),
       'price': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
         ],
+        value: widget.propertyEntity.price.toInt().toString(),
       ),
       'phoneNumber': FormControl<String>(
         validators: [
@@ -55,6 +71,7 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
+        value: widget.propertyEntity.contacts.phoneNumber.withoutCountryCode,
       ),
       'whatsapp': FormControl<String>(
         validators: [
@@ -62,8 +79,15 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
+        value: widget.propertyEntity.whatsappNumber.withoutCountryCode,
       ),
     });
+
+    if ((widget.propertyEntity.images).isNotEmpty) {
+      context.read<PropertiesBloc>().add(InitNetworkPropertyImageEvent(
+            networkImages: widget.propertyEntity.images,
+          ));
+    }
   }
 
   @override
@@ -79,16 +103,17 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
           shrinkWrap: true,
           children: [
             Text(
-              S.of(context).add_property,
+              S.of(context).edit_post,
               style: context.textTheme.titleMedium?.copyWith(
                 color: context.theme.cardColor,
                 fontSize: AppFontSize.titleMedium,
               ),
             ),
             20.verticalSpace,
-            AddPropertyForm(
+            EditPropertyForm(
               form: form,
               selectedOfferType: selectedOfferType,
+              propertyEntity: widget.propertyEntity,
               onOfferTypeChanged: (newValue) {
                 setState(() {
                   selectedOfferType = newValue;
@@ -96,11 +121,11 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
               },
             ),
             10.verticalSpace,
-            const UploadPropertyImagesSection(),
+            const EditPropertyImagesSection(),
             20.verticalSpace,
-            AddPropertyButton(
-              onAdd: _submitForm,
+            EditPropertyButton(
               isOfferTypeSelected: selectedOfferType != null,
+              onEdit: _submitForm,
             ),
             10.verticalSpace,
           ],
@@ -111,18 +136,26 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
 
   void _submitForm() {
     final formControls = form.controls;
-    final params = AddPropertyParams(
-      address: formControls['address']!.value as String,
-      description: formControls['description']!.value as String,
-      area: double.parse(formControls['area']!.value as String),
-      offerType: selectedOfferType!,
+
+    final propertyEntity = widget.propertyEntity.copyWith(
+      arabicDescription: formControls['description_ar']!.value as String,
+      englishDescription: formControls['description_eng']!.value as String,
+      arabicAddress: formControls['address_ar']!.value as String,
+      englishAddress: formControls['address_eng']!.value as String,
+      area: int.parse(formControls['area']!.value as String),
       price: double.parse(formControls['price']!.value as String),
-      phoneNumber: formControls['phoneNumber']!.value as String,
-      whatsapp: formControls['whatsapp']!.value as String,
+      contacts: widget.propertyEntity.contacts.copyWith(
+        phoneNumber:
+            (formControls['phoneNumber']!.value as String).withCountryCode,
+      ),
+      whatsappNumber:
+          (formControls['whatsapp']!.value as String).withCountryCode,
+      type: selectedOfferType!,
+      images: widget.propertyEntity.images,
     );
 
-    context.read<PropertiesBloc>().add(AddPropertyEvent(
-          addPropertyParams: params,
+    context.read<PropertiesBloc>().add(EditPropertyEvent(
+          propertyEntity: propertyEntity,
         ));
   }
 

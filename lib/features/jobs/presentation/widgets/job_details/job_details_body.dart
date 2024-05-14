@@ -50,8 +50,8 @@ class JobDetailsBody extends StatelessWidget {
                   onPressed: () {
                     ContactWithBottomSheet.show(
                       context: context,
-                      whatsapp: "+201030096242",
-                      phoneNumber: "+201030096242",
+                      whatsapp: jobEntity.whatsapp,
+                      phoneNumber: jobEntity.contacts?.phoneNumber,
                     );
                   },
                   width: context.width,

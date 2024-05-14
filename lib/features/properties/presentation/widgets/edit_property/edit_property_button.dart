@@ -1,20 +1,21 @@
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/bloc/properties_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-class AddPropertyButton extends StatelessWidget {
-  const AddPropertyButton({
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../../generated/l10n.dart';
+import '../../bloc/properties_bloc.dart';
+
+class EditPropertyButton extends StatelessWidget {
+  const EditPropertyButton({
     super.key,
-    required this.onAdd,
+    required this.onEdit,
     this.isOfferTypeSelected = false,
   });
 
-  final VoidCallback onAdd;
+  final VoidCallback onEdit;
   final bool isOfferTypeSelected;
 
   @override
@@ -24,12 +25,15 @@ class AddPropertyButton extends StatelessWidget {
         return BlocBuilder<PropertiesBloc, PropertiesState>(
           builder: (context, state) {
             final pickedImages = context.read<PropertiesBloc>().pickedImages;
+            final networkImages = context.read<PropertiesBloc>().networkImages;
+
+            bool isDisabled = pickedImages.isEmpty && networkImages.isEmpty;
+
             return CustomElevatedButton(
-              label: S.of(context).post_now,
-              isDisabled:
-                  pickedImages.isEmpty || !(form.valid && isOfferTypeSelected),
-              onPressed: onAdd,
-              isLoading: state is AddPropertyLoadingState,
+              label: S.of(context).update,
+              onPressed: onEdit,
+              isDisabled: !(form.valid && isOfferTypeSelected) || isDisabled,
+              isLoading: state is EditPropertyLoadingState,
               width: context.width,
               height: 50.h,
               borderRadius: BorderRadius.circular(8),

@@ -237,5 +237,12 @@
   "edit_job": "تعديل الوظيفة",
   "in_arabic": "بالعربية",
   "in_english": "بالإنجليزية",
-  "edit_property": "تعديل العقار"
+  "edit_property": "تعديل العقار",
+  "sunday": "الأحد",
+  "monday": "الاثنين",
+  "tuesday": "الثلاثاء",
+  "wednesday": "الأربعاء",
+  "thursday": "الخميس",
+  "friday": "الجمعة",
+  "saturday": "السبت"
 }

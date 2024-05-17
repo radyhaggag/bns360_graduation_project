@@ -20,20 +20,10 @@ class CategoriesRepoImpl implements CategoriesRepo {
 
   @override
   FutureEither<List<CategoryItemEntity>> getCategoryItemsById(
-    String id,
+    int id,
   ) async {
     return executeAndHandleErrorAsync<List<CategoryItemEntity>>(
       () => categoriesRemoteDataSource.getCategoryItemsById(id),
-    );
-  }
-
-  @override
-  FutureEither<List<CategoryItemEntity>> searchOnCategoryItemsById(
-    String id,
-    String text,
-  ) async {
-    return executeAndHandleErrorAsync<List<CategoryItemEntity>>(
-      () => categoriesRemoteDataSource.searchOnCategoryItemsById(id, text),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/contact_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/publisher_details_entity.dart';
 import 'package:bns360_graduation_project/core/shared_data/entities/requirements_entity.dart';
 import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
@@ -103,31 +102,27 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
       phoneNumber: addJobParams.phoneNumber,
     );
 
-    final currentUser = AppProvider().getProfile();
-
     final jobModel = JobModel(
       id: -1,
-      contacts: contacts,
+      contacts: contacts.copyWith(
+        whatsapp: addJobParams.whatsapp,
+      ),
       jobDescriptionArabic: aboutAR,
       jobDescriptionEnglish: aboutENG,
       jobTitleArabic: titleAR,
       jobTitleEnglish: titleENG,
       requirementsArabic: RequirementsEntity(requirements: requirementsAR),
       requirementEnglish: RequirementsEntity(requirements: requirementsENG),
-      salary: addJobParams.salary,
+      salary: addJobParams.salary.toInt(),
       workHours: addJobParams.workHours,
       type: addJobParams.jobType,
-      whatsapp: addJobParams.whatsapp,
-      publisherDetails: PublisherDetailsEntity(
-        name: currentUser?.name,
-        description: "Normal user",
-        photoUrl: currentUser?.imageUrl,
-      ),
+      publisherDetails: AppProvider().getPublisherDetails()!,
       timeAddedjob: DateTime.now(),
     );
+    final data = jobModel.toJson();
     await apiConsumer.post(
       endpoint: AppEndpoints.addJob,
-      data: jobModel.toJson(),
+      data: data,
     );
   }
 

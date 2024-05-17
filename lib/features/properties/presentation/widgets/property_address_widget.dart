@@ -23,11 +23,16 @@ class PropertyAddressWidget extends StatelessWidget {
           size: 20.r,
         ),
         const SizedBox(width: 5),
-        Text(
-          address,
-          style: context.textTheme.titleSmall?.copyWith(
-            fontSize: AppFontSize.light,
-            color: context.theme.primaryColor.withOpacity(.6),
+        Expanded(
+          child: Text(
+            address,
+            style: context.textTheme.titleSmall?.copyWith(
+              fontSize: AppFontSize.light,
+              color: context.theme.primaryColor.withOpacity(.6),
+            ),
+            overflow: TextOverflow.ellipsis,
+            softWrap: true,
+            maxLines: 2,
           ),
         ),
       ],

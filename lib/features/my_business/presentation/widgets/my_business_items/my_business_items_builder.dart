@@ -42,16 +42,15 @@ class MyBusinessItemsBuilder extends StatelessWidget {
               itemWidget: (item, index) => HorizontalItemCard(
                 title: LocalizationHelper.getLocalizedString(
                   context,
-                  ar: item.nameAR,
-                  en: item.nameENG,
+                  ar: item.businessNameArabic,
+                  en: item.businessNameEnglish,
                 ),
-                // subTitle: LocalizationHelper.getLocalizedString(
-                //   context,
-                //   ar: item.category.nameAR,
-                //   en: item.category.nameENG,
-                // ),
-                subTitle: "Not found",
-                imageUrl: item.profilePictureUrl,
+                subTitle: LocalizationHelper.getLocalizedString(
+                  context,
+                  ar: item.categoriesModel.categoryNameArabic,
+                  en: item.categoriesModel.categoryNameEnglish,
+                ),
+                imageUrl: item.profileImageName,
                 // numOfRatings: item.numOfRatings,
                 // starsCount: item.starsCount,
                 numOfRatings: 59,

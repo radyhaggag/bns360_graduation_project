@@ -2,35 +2,27 @@ import '../entities/contact_entity.dart';
 
 class ContactModel extends ContactEntity {
   const ContactModel({
-    super.id,
     super.email,
     super.phoneNumber,
     super.urlSite,
+    super.whatsapp,
   });
 
   factory ContactModel.fromJson(Map<String, dynamic> json) {
     return ContactModel(
-      id: json['id'],
-      email: json['email'],
-      phoneNumber: json['phoneNumber'],
-      urlSite: json['url'],
+      email: json['emails'],
+      phoneNumber: json['phonenumbers'],
+      urlSite: json['uRls'],
+      whatsapp: json['whatsapp'] ?? json['whatsappNumber'],
     );
   }
 
   factory ContactModel.fromEntity(ContactEntity entity) {
     return ContactModel(
-      id: entity.id,
       email: entity.email,
       phoneNumber: entity.phoneNumber,
       urlSite: entity.urlSite,
+      whatsapp: entity.whatsapp,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      "email": email,
-      "phoneNumber": phoneNumber,
-      "urlSite": urlSite,
-    };
   }
 }

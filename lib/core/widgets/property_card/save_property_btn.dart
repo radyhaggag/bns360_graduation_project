@@ -3,17 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../databases/local_storage/hive_manager.dart';
 import '../icons/rounded_icon_btn.dart';
 
 class SavePropertyBtn extends StatefulWidget {
   const SavePropertyBtn({
     super.key,
-    this.isSaved,
+    required this.propertyId,
     this.notSavedColor,
+    this.notSavedBackgroundColor,
+    this.size,
   });
 
-  final bool? isSaved;
+  final int propertyId;
   final Color? notSavedColor;
+  final Color? notSavedBackgroundColor;
+  final double? size;
 
   @override
   State<SavePropertyBtn> createState() => SavePropertyBtnState();
@@ -26,7 +31,13 @@ class SavePropertyBtnState extends State<SavePropertyBtn> {
   @override
   void initState() {
     super.initState();
-    isSaved = widget.isSaved ?? false;
+    isSaved = isSavedInLocal;
+  }
+
+  bool get isSavedInLocal {
+    final savedProperties =
+        HiveBoxes.savedProperties.get('savedProperties') ?? [];
+    return savedProperties.contains(widget.propertyId);
   }
 
   @override

@@ -37,13 +37,16 @@ class JobDetailsTopSection extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomBackButton(
+                const CustomBackButton(
                   color: AppColors.white,
                 ),
-                SaveJobBtn(notSavedColor: AppColors.white),
+                SaveJobBtn(
+                  notSavedColor: AppColors.white,
+                  jobId: jobEntity.id,
+                ),
               ],
             ),
             ClipOval(
@@ -56,12 +59,12 @@ class JobDetailsTopSection extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(
-              jobEntity.publisherDetails.name ?? "",
+              jobEntity.publisherDetails.name,
               style: _textStyle1(context),
             ),
             const SizedBox(height: 8),
             Text(
-              jobEntity.publisherDetails.description ?? "",
+              jobEntity.publisherDetails.getDescription(context),
               style: _textStyle2(context),
             ),
             SizedBox(height: 13.h),

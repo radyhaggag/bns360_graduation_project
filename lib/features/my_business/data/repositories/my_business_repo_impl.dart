@@ -43,7 +43,7 @@ class MyBusinessRepoImpl implements MyBusinessRepo {
   }
 
   @override
-  FutureEither<void> deleteBusiness(String params) {
+  FutureEither<void> deleteBusiness(int params) {
     return executeAndHandleErrorAsync(
       () => myBusinessRemoteDataSource.deleteBusiness(params),
     );

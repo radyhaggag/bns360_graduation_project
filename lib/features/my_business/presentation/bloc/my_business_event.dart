@@ -56,13 +56,13 @@ class InitNetworkBusinessImageEvent extends MyBusinessEvent {
 
 class SelectBusinessCategoryEvent extends MyBusinessEvent {
   // final CategoryEntity businessCategory;
-  final String categoryId;
+  final int categoryId;
 
   const SelectBusinessCategoryEvent({required this.categoryId});
 }
 
 class DeleteMyBusinessEvent extends MyBusinessEvent {
-  final String businessId;
+  final int businessId;
 
   const DeleteMyBusinessEvent({required this.businessId});
 }

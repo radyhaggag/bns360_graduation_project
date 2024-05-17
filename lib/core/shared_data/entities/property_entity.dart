@@ -10,7 +10,6 @@ class PropertyEntity extends Equatable {
   final String englishDescription;
   final String arabicAddress;
   final String englishAddress;
-  final String whatsappNumber;
   final PublisherDetailsEntity publisher;
   final ContactEntity contacts;
   final OfferType type;
@@ -18,8 +17,10 @@ class PropertyEntity extends Equatable {
   final num price;
   final double longitude;
   final double latitude;
-  final List<String> imageNames;
-  final List<String> images;
+  final String? image1;
+  final String? image2;
+  final String? image3;
+  final String? image4;
   final DateTime timeAddedProperty;
 
   final bool isBelongToMe;
@@ -30,7 +31,6 @@ class PropertyEntity extends Equatable {
     required this.englishDescription,
     required this.arabicAddress,
     required this.englishAddress,
-    required this.whatsappNumber,
     required this.publisher,
     required this.contacts,
     required this.type,
@@ -38,16 +38,28 @@ class PropertyEntity extends Equatable {
     required this.price,
     required this.longitude,
     required this.latitude,
-    required this.imageNames,
-    required this.images,
     required this.timeAddedProperty,
+    this.image1,
+    this.image2,
+    this.image3,
+    this.image4,
     this.isBelongToMe = false,
   });
 
   @override
   List<Object?> get props => [id];
 
-  copyWith({
+  List<String> get images {
+    List<String> images = [];
+    if (image1 != null) images.add(image1!);
+    if (image2 != null) images.add(image2!);
+    if (image3 != null) images.add(image3!);
+    if (image4 != null) images.add(image4!);
+    return images;
+  }
+
+  PropertyEntity copyWith({
+    int? id,
     String? arabicDescription,
     String? englishDescription,
     String? arabicAddress,
@@ -60,17 +72,19 @@ class PropertyEntity extends Equatable {
     num? price,
     double? longitude,
     double? latitude,
-    List<String>? imageNames,
-    List<String>? images,
+    String? image1,
+    String? image2,
+    String? image3,
+    String? image4,
+    DateTime? timeAddedProperty,
     bool? isBelongToMe,
   }) {
     return PropertyEntity(
-      id: id,
+      id: id ?? this.id,
       arabicDescription: arabicDescription ?? this.arabicDescription,
       englishDescription: englishDescription ?? this.englishDescription,
       arabicAddress: arabicAddress ?? this.arabicAddress,
       englishAddress: englishAddress ?? this.englishAddress,
-      whatsappNumber: whatsappNumber ?? this.whatsappNumber,
       publisher: publisher ?? this.publisher,
       contacts: contacts ?? this.contacts,
       type: type ?? this.type,
@@ -78,10 +92,12 @@ class PropertyEntity extends Equatable {
       price: price ?? this.price,
       longitude: longitude ?? this.longitude,
       latitude: latitude ?? this.latitude,
-      imageNames: imageNames ?? this.imageNames,
-      images: images ?? this.images,
+      image1: image1,
+      image2: image2,
+      image3: image3,
+      image4: image4,
+      timeAddedProperty: timeAddedProperty ?? this.timeAddedProperty,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
-      timeAddedProperty: timeAddedProperty,
     );
   }
 }

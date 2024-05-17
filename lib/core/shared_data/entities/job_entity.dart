@@ -17,7 +17,6 @@ class JobEntity extends Equatable {
   final int workHours;
   final num salary;
   final PublisherDetailsEntity publisherDetails;
-  final String? whatsapp;
   final ContactEntity? contacts;
   final bool isBelongToMe;
   final DateTime timeAddedjob;
@@ -35,7 +34,6 @@ class JobEntity extends Equatable {
     required this.requirementEnglish,
     required this.salary,
     required this.type,
-    required this.whatsapp,
     required this.workHours,
     required this.timeAddedjob,
   });
@@ -68,7 +66,6 @@ class JobEntity extends Equatable {
       workHours: workHours ?? this.workHours,
       salary: salary ?? this.salary,
       publisherDetails: publisherDetails ?? this.publisherDetails,
-      whatsapp: whatsapp ?? this.whatsapp,
       contacts: contacts ?? this.contacts,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
       timeAddedjob: timeAddedjob,

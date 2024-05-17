@@ -31,7 +31,7 @@ class CategoryItemBody extends StatelessWidget {
             primary: true,
             flexibleSpace: FlexibleSpaceBar(
               background: CustomSlider(
-                images: categoryItemEntity.albumUrls,
+                images: categoryItemEntity.businessImages,
               ),
             ),
             leading: Container(
@@ -58,8 +58,8 @@ class CategoryItemBody extends StatelessWidget {
                   CategoryItemDescription(
                     description: LocalizationHelper.getLocalizedString(
                       context,
-                      ar: categoryItemEntity.aboutAR,
-                      en: categoryItemEntity.aboutENG,
+                      ar: categoryItemEntity.businessDescriptionArabic,
+                      en: categoryItemEntity.businessDescriptionEnglish,
                     ),
                   ),
                   const SizedBox(height: 20),

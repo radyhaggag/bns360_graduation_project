@@ -37,7 +37,7 @@ class CategoryCard extends StatelessWidget {
                 topRight: Radius.circular(10),
               ),
               child: MainNetworkImage(
-                imageUrl: categoryEntity.imageUrl,
+                imageUrl: categoryEntity.image,
                 height: 110.h,
                 fit: BoxFit.cover,
               ),
@@ -47,8 +47,8 @@ class CategoryCard extends StatelessWidget {
                 child: Text(
                   LocalizationHelper.getLocalizedString(
                     context,
-                    ar: categoryEntity.nameAR,
-                    en: categoryEntity.nameEN,
+                    ar: categoryEntity.categoryNameArabic,
+                    en: categoryEntity.categoryNameEnglish,
                   ),
                   style: context.textTheme.titleSmall?.copyWith(
                     color: context.theme.cardColor,

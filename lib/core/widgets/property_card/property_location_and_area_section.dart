@@ -8,17 +8,20 @@ class _PropertyLocationAndAreaSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        PropertyAddressWidget(
-          address: LocalizationHelper.getLocalizedString(
-            context,
-            ar: propertyEntity.arabicAddress,
-            en: propertyEntity.englishAddress,
+        Expanded(
+          child: PropertyAddressWidget(
+            address: LocalizationHelper.getLocalizedString(
+              context,
+              ar: propertyEntity.arabicAddress,
+              en: propertyEntity.englishAddress,
+            ),
+            markerColor: Colors.amberAccent,
           ),
-          markerColor: Colors.amberAccent,
         ),
+        const SizedBox(width: 10),
         PropertyAreaWidget(
           area: propertyEntity.area.toString(),
         ),

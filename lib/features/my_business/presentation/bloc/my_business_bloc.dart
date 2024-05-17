@@ -171,9 +171,12 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     final params = event.categoryItemEntity.copyWith(
       latitude: _businessLat,
       longitude: _businessLng,
-      categoryId: selectedBusinessCategory?.id,
-      albumUrls: pickedImages.map((e) => e.path).toList(),
-      profilePictureUrl: _mainBusinessImage?.path,
+      categoriesModelId: selectedBusinessCategory?.id,
+      businessImageName1: pickedImages[0].path,
+      businessImageName2: pickedImages[1].path,
+      businessImageName3: pickedImages[2].path,
+      businessImageName4: pickedImages[3].path,
+      profileImageName: _mainBusinessImage?.path,
     );
 
     final res = await myBusinessRepo.updateBusiness(params);

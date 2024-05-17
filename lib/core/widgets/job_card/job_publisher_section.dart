@@ -25,14 +25,16 @@ class _JobPublisherSection extends StatelessWidget {
               InkWell(
                 onTap: () {},
                 child: _TitleAndSubTitleSection(
-                  title: jobEntity.publisherDetails.name ?? "",
-                  subTitle: jobEntity.publisherDetails.description ?? "",
+                  title: jobEntity.publisherDetails.name,
+                  subTitle: jobEntity.publisherDetails.getDescription(context),
                 ),
               ),
             ],
           ),
         ),
-        const SaveJobBtn(isSaved: true),
+        SaveJobBtn(
+          jobId: jobEntity.id,
+        ),
       ],
     );
   }

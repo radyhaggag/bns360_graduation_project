@@ -115,8 +115,8 @@ class CategoryItemsScreenAppBar extends StatelessWidget
   String getItemTxt(BuildContext context) {
     return LocalizationHelper.getLocalizedString(
       context,
-      ar: categoryEntity.nameAR,
-      en: categoryEntity.nameEN,
+      ar: categoryEntity.categoryNameArabic,
+      en: categoryEntity.categoryNameEnglish,
     );
   }
 }

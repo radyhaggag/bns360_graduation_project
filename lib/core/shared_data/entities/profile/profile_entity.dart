@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/databases/local_storage/hive_manager.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 
@@ -42,6 +43,10 @@ class ProfileEntity extends HiveObject with EquatableMixin {
       imageUrl: imageUrl ?? this.imageUrl,
       userType: userType ?? this.userType,
     );
+  }
+
+  Future<void> saveToCache() async {
+    await HiveBoxes.profile.put('profile', this);
   }
 
   @override

@@ -101,6 +101,7 @@ class _AddJobBodyState extends State<AddJobBody> {
               onAdd: _submitForm,
               isJobTypeSelected: selectedJobType != null,
             ),
+            10.verticalSpace,
           ],
         ),
       ),
@@ -117,7 +118,8 @@ class _AddJobBodyState extends State<AddJobBody> {
       // Will edited on the bloc
       workHours: int.parse(formControls['workHours']!.value as String),
       salary: double.parse(formControls['salary']!.value as String),
-      phoneNumber: (formControls['phoneNumber']!.value as String).withCountryCode,
+      phoneNumber:
+          (formControls['phoneNumber']!.value as String).withCountryCode,
       whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
     );
     context.read<JobsBloc>().add(AddJobEvent(addJobParams: params));

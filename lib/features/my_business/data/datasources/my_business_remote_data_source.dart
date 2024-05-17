@@ -6,7 +6,7 @@ import '../../domain/params/add_business_params.dart';
 abstract class MyBusinessRemoteDataSource {
   Future<void> addBusiness(AddBusinessParams params);
   Future<void> updateBusiness(CategoryItemEntity params);
-  Future<void> deleteBusiness(String businessId);
+  Future<void> deleteBusiness(int businessId);
   Future<List<CategoryItemModel>> getMyBusiness();
   Future<List<CategoryModel>> getBusinessCategories();
 }

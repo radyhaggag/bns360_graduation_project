@@ -1,5 +1,5 @@
 abstract class AppEndpoints {
-  static const baseUrl = "http://graduationbns360.runasp.net";
+  static const baseUrl = "http://bns360v1.runasp.net";
 
   //* Auth endpoints
   static const login = "$baseUrl/api/Account/login";
@@ -11,20 +11,21 @@ abstract class AppEndpoints {
   //* Business
   static const addBusiness = "$baseUrl/api/Business/add";
 
-  static String updateBusiness(String businessId) {
+  static String updateBusiness(int businessId) {
     return "$baseUrl/api/Business/UpdateBusiness/$businessId";
   }
 
-  static String deleteBusiness(String businessId) {
+  static String deleteBusiness(int businessId) {
     return "$baseUrl/api/Business/delete/$businessId";
   }
 
-  static String getBusinessById(String businessId) {
+  static String getBusinessById(int businessId) {
     return "$baseUrl/api/Business/GetBusinessById/$businessId";
   }
 
   //* Business Categories
-  static const getAllCategories = "$baseUrl/api/Category/GetAllCategories";
+  static const getAllCategories = "$baseUrl/api/Categories";
+  static const getAllCategoryItems = "$baseUrl/api/Business";
 
   //* Jobs
   static const addJob = "$baseUrl/api/Job";
@@ -35,13 +36,10 @@ abstract class AppEndpoints {
   }
 
   //* Properties
-  static const addProperty = "$baseUrl/api/Property";
+  static const addProperty = "$baseUrl/api/property";
   static const getAllProperties = "$baseUrl/api/Property";
 
-  static String propertyById(String propertyId, {bool addPrefix = true}) {
-    if (addPrefix) {
-      return "$baseUrl/api/Property/properties/$propertyId";
-    }
+  static String propertyById(int propertyId) {
     return "$baseUrl/api/Property/$propertyId";
   }
 }

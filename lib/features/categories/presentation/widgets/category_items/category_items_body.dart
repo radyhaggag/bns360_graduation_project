@@ -42,8 +42,8 @@ class CategoryItemsBody extends StatelessWidget {
               itemWidget: (item, index) => HorizontalItemCard(
                 title: LocalizationHelper.getLocalizedString(
                   context,
-                  ar: item.nameAR,
-                  en: item.nameENG,
+                  ar: item.businessNameArabic,
+                  en: item.businessNameEnglish,
                 ),
                 subTitle: "Not found",
                 // subTitle: LocalizationHelper.getLocalizedString(
@@ -51,7 +51,7 @@ class CategoryItemsBody extends StatelessWidget {
                 //   ar: item.category.nameAR,
                 //   en: item.category.nameEN,
                 // ),
-                imageUrl: item.profilePictureUrl,
+                imageUrl: item.profileImageName,
                 // numOfRatings: item.numOfRatings,
                 // starsCount: item.starsCount,
                 numOfRatings: 50,

@@ -185,6 +185,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "Don’t worry! It happens. Please enter the email associated with your account."),
+        "friday": MessageLookupByLibrary.simpleMessage("Friday"),
         "from": MessageLookupByLibrary.simpleMessage("From"),
         "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
         "full_time": MessageLookupByLibrary.simpleMessage("Full time"),
@@ -221,6 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "min_ago": MessageLookupByLibrary.simpleMessage("min ago"),
         "min_validation_message": m6,
         "mins_ago": m7,
+        "monday": MessageLookupByLibrary.simpleMessage("Monday"),
         "mustMatch_validation_message":
             MessageLookupByLibrary.simpleMessage("Fields must match"),
         "must_be_more_than_minimum_number_of_characters":
@@ -312,6 +314,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reviewer": MessageLookupByLibrary.simpleMessage("Reviewer"),
         "salary": MessageLookupByLibrary.simpleMessage("Salary"),
         "sale": MessageLookupByLibrary.simpleMessage("Sale"),
+        "saturday": MessageLookupByLibrary.simpleMessage("Saturday"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saved": MessageLookupByLibrary.simpleMessage("Saved"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
@@ -341,6 +344,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Fill your information below or register with your social account"),
         "sign_up_success_message": MessageLookupByLibrary.simpleMessage(
             "Sign up successful! Check your email for confirmation and log in."),
+        "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
         "support": MessageLookupByLibrary.simpleMessage("Support"),
         "tap_to_rate": MessageLookupByLibrary.simpleMessage("Tap to Rate"),
         "terms_of_service":
@@ -350,8 +354,10 @@ class MessageLookup extends MessageLookupByLibrary {
                 "The image size is too large, the maximum allowed size is"),
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("There are no messages yet"),
+        "thursday": MessageLookupByLibrary.simpleMessage("Thursday"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
         "today": MessageLookupByLibrary.simpleMessage("Today"),
+        "tuesday": MessageLookupByLibrary.simpleMessage("Tuesday"),
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "upload_business_images":
             MessageLookupByLibrary.simpleMessage("Upload business images"),
@@ -380,6 +386,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "view_profile": MessageLookupByLibrary.simpleMessage("View profile"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("View reviews"),
+        "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "work_hours": MessageLookupByLibrary.simpleMessage("Work hours"),

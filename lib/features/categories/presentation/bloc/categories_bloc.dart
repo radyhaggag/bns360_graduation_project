@@ -29,7 +29,6 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     Emitter<CategoriesState> emit,
   ) async {
     emit(GetCategoriesLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await categoriesRepo.getCategories();
 
@@ -67,20 +66,21 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     if (searchVal.isEmpty) return;
 
     emit(GetCategoryItemsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
-    final res = await categoriesRepo.searchOnCategoryItemsById(
-      event.categoryId,
-      searchVal,
-    );
+    final searchLowercase = searchVal.toLowerCase();
+    bool isTrue(CategoryItemEntity item) {
+      final itemNameLowercaseAR = item.businessNameArabic.toLowerCase();
+      final itemNameLowercaseENG = item.businessNameEnglish.toLowerCase();
+      return (searchLowercase.contains(itemNameLowercaseAR) ||
+              itemNameLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(itemNameLowercaseENG) ||
+                  itemNameLowercaseENG.contains(searchLowercase)) &&
+              item.id == event.categoryId;
+    }
 
-    res.fold(
-      (l) => emit(GetCategoryItemsErrorState(message: l.message)),
-      (r) {
-        items = r;
-        emit(GetCategoryItemsSuccessState(items: r));
-      },
-    );
+    final filteredItems = items.where(isTrue).toList();
+
+    emit(GetCategoryItemsSuccessState(items: filteredItems));
   }
 
   _getCategoryItemsById(
@@ -88,7 +88,6 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     Emitter<CategoriesState> emit,
   ) async {
     emit(GetCategoryItemsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final res = await categoriesRepo.getCategoryItemsById(
       event.categoryId,

@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/app_fonts.dart';
-import '../../../../../core/utils/extensions/context.dart';
-import '../../../../../core/widgets/buttons/custom_buttons.dart';
-import '../../../../../generated/l10n.dart';
-import '../../bloc/my_business_bloc.dart';
-import 'add_business_picked_images_builder.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../generated/l10n.dart';
+import '../bloc/my_business_bloc.dart';
+import 'add_business/add_business_picked_images_builder.dart';
 
 class UploadBusinessImagesSection extends StatelessWidget {
   const UploadBusinessImagesSection({super.key});

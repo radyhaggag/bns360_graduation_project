@@ -26,8 +26,8 @@ class AddPropertyButton extends StatelessWidget {
             final pickedImages = context.read<PropertiesBloc>().pickedImages;
             return CustomElevatedButton(
               label: S.of(context).post_now,
-              isDisabled:
-                  pickedImages.isEmpty || !(form.valid && isOfferTypeSelected),
+              isDisabled: pickedImages.isEmpty ||
+                  !(form.valid && isOfferTypeSelected),
               onPressed: onAdd,
               isLoading: state is AddPropertyLoadingState,
               width: context.width,

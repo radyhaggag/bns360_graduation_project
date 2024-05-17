@@ -2,62 +2,64 @@
   "success": true,
   "data": [
     {
-      "id": "371c855f-5c28-4e25-8050-24f30fe4fc2d",
-      "nameAR": "بيل كانتو",
-      "nameENG": "Bel Canto",
-      "aboutAR": "مطعم تركي يقدم العديد من الآكلات العالمية",
-      "aboutENG": "A Turkish restaurant serving many international dishes",
-      "profilePictureUrl": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+      "id": 1,
+      "businessAddressArabic": "Beni-Suef",
+      "businessAddressEnglish": "Beni-Suef",
+      "businessDescriptionArabic": "مطعم تركي يقدم العديد من الآكلات العالمية",
+      "businessDescriptionEnglish": "A Turkish restaurant serving many international dishes",
+      "businessNameArabic": "بيل كانتو",
+      "businessNameEnglish": "Bel Canto",
+      "categoriesModelId": 1,
+      "closing": 18,
+      "opening": 9,
+      "profileImageName": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+      "holidays": 1,
+      "phonenumbers": "01224034494",
+      "emails": "info@deliciousrestaurant.com",
+      "uRls": "https://www.deliciousrestaurant.com",
+      "categoriesModel": {
+        "id": 1,
+        "categoryNameArabic": "بنوك",
+        "categoryNameEnglish": "Banks",
+        "image": "https://top50women.com/wp-content/uploads/2023/05/banks.jpg",
+        "imageFileName": "https://top50women.com/wp-content/uploads/2023/05/banks.jpg"
+      },
       "latitude": 28.9826537,
       "longitude": 31.0087249,
-      "address": "Beni-Suef",
-      "workStartHour": 9,
-      "workEndHour": 18,
-      "workingDays": 5,
-      "albumUrls": [
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
-        "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg"
-      ],
-      "holidays": ["2024-05-01T00:00:00Z", "2024-05-25T00:00:00Z"],
-      "contacts": {
-        "id": "b7578a10-4b73-4c5a-9f8a-6e25f4818409",
-        "emails": ["info@belcanto.com", "reservation@belcanto.com"],
-        "phoneNumbers": [],
-        "urlSites": ["https://www.belcanto.com"]
-      },
-      "categoryId": "1"
+      "businessImageName1": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+      "businessImageName2": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+      "businessImageName3": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg",
+      "businessImageName4": "https://media-cdn.tripadvisor.com/media/photo-o/1a/5c/eb/db/bel-canto.jpg"
     },
     {
-      "id": "d18d0a28-67d2-46fc-8c89-9f10d8d0a09e",
-      "nameAR": "أوزي",
-      "nameENG": "Oozy",
-      "aboutAR": "كافيه أوزي أحلي لمه لأجمل ناس",
-      "aboutENG": "Cafe Ozzy is the best gathering for the most beautiful people",
-      "profilePictureUrl": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+      "id": 2,
+      "businessAddressArabic": "Beni-Suef",
+      "businessAddressEnglish": "Beni-Suef",
+      "businessDescriptionArabic": "كافيه أوزي أحلي لمه لأجمل ناس",
+      "businessDescriptionEnglish": "Cafe Ozzy is the best gathering for the most beautiful people",
+      "businessNameArabic": "أوزي",
+      "businessNameEnglish": "Oozy",
+      "categoriesModelId": 1,
+      "closing": 22,
+      "opening": 8,
+      "profileImageName": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+      "holidays": 0,
+      "phonenumbers": "01224034494",
+      "emails": "info@deliciousrestaurant.com",
+      "uRls": "https://www.deliciousrestaurant.com",
+      "categoriesModel": {
+        "id": 1,
+        "categoryNameArabic": "بنوك",
+        "categoryNameEnglish": "Banks",
+        "image": "https://top50women.com/wp-content/uploads/2023/05/banks.jpg",
+        "imageFileName": "https://top50women.com/wp-content/uploads/2023/05/banks.jpg"
+      },
       "latitude": 28.9826537,
       "longitude": 31.0087249,
-      "address": "Beni-Suef",
-      "workStartHour": 8,
-      "workEndHour": 22,
-      "workingDays": 7,
-      "albumUrls": [
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
-        "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg"
-      ],
-      "holidays": ["2024-06-15T00:00:00Z", "2024-07-20T00:00:00Z"],
-      "contacts": {
-        "id": "17a8f03b-5aa2-43b2-b4ed-6a03671a2da0",
-        "emails": ["contact@oozycafe.com", "support@oozycafe.com"],
-        "phoneNumbers": [],
-        "urlSites": ["https://www.oozycafe.com"]
-      },
-      "categoryId": "1"
+      "businessImageName1": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+      "businessImageName2": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+      "businessImageName3": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg",
+      "businessImageName4": "https://10619-2.s.cdn12.com/rests/original/110_505652794.jpg"
     }
   ]
 }

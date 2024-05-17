@@ -10,15 +10,15 @@ import '../add_business_location_section.dart';
 import '../add_business_time_section.dart';
 import '../business_type_dropdown.dart';
 
-class AddBusinessForm extends StatelessWidget {
-  const AddBusinessForm({
+class EditBusinessForm extends StatelessWidget {
+  const EditBusinessForm({
     super.key,
     required this.form,
-    this.categoryItemEntity,
+    required this.categoryItemEntity,
   });
 
   final FormGroup form;
-  final CategoryItemEntity? categoryItemEntity;
+  final CategoryItemEntity categoryItemEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -28,43 +28,46 @@ class AddBusinessForm extends StatelessWidget {
       child: Column(
         children: [
           CustomReactiveFormField(
-            title: t.business_name,
-            hint: t.enter_business_name,
+            title: "${t.business_name}\t(${t.in_arabic})",
+            hint: "${t.enter_business_name}\t(${t.in_arabic})",
             formControlName: 'name_ar',
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
-          if (categoryItemEntity != null) ...[
-            CustomReactiveFormField(
-              title: t.business_name,
-              hint: t.enter_business_name,
-              formControlName: 'name_eng',
-              textInputAction: TextInputAction.next,
-            ),
-            15.verticalSpace,
-          ],
+          CustomReactiveFormField(
+            title: "${t.business_name}\t(${t.in_english})",
+            hint: "${t.enter_business_name}\t(${t.in_english})",
+            formControlName: 'name_eng',
+            textInputAction: TextInputAction.next,
+          ),
+          15.verticalSpace,
           const BusinessTypeDropdown(),
           15.verticalSpace,
           CustomReactiveFormField(
-            title: t.description_of_business,
-            hint: "${t.enter} ${t.description_of_business}",
+            title: "${t.description_of_business}\t(${t.in_arabic})",
+            hint: "${t.enter} ${t.description_of_business}\t(${t.in_arabic})",
             formControlName: 'description_ar',
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
-          if (categoryItemEntity != null) ...[
-            CustomReactiveFormField(
-              title: t.business_name,
-              hint: t.enter_business_name,
-              formControlName: 'description_eng',
-              textInputAction: TextInputAction.next,
-            ),
-            15.verticalSpace,
-          ],
           CustomReactiveFormField(
-            title: t.business_address,
-            hint: t.enter_business_address,
-            formControlName: 'address',
+            title: "${t.description_of_business}\t(${t.in_english})",
+            hint: "${t.enter} ${t.description_of_business}\t(${t.in_english})",
+            formControlName: 'description_eng',
+            textInputAction: TextInputAction.next,
+          ),
+          15.verticalSpace,
+          CustomReactiveFormField(
+            title: "${t.business_address}\t(${t.in_arabic})",
+            hint: "${t.enter_business_address}\t(${t.in_arabic})",
+            formControlName: 'address_ar',
+            textInputAction: TextInputAction.next,
+          ),
+          15.verticalSpace,
+          CustomReactiveFormField(
+            title: "${t.business_address}\t(${t.in_english})",
+            hint: "${t.enter_business_address}\t(${t.in_english})",
+            formControlName: 'address_eng',
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,

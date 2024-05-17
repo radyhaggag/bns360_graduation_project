@@ -21,15 +21,14 @@ class EditPropertyImagesSection extends StatelessWidget {
       builder: (context, state) {
         final pickedImages = context.read<PropertiesBloc>().pickedImages;
         final networkImages = context.read<PropertiesBloc>().networkImages;
-        final isRemoveEnabled =
-            networkImages.isNotEmpty || pickedImages.isNotEmpty;
+        final isRemoveEnabled = pickedImages.length >= 4 || networkImages.isNotEmpty;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomElevatedButtonWithIcon(
               onPressed: () => _onPressed(
-                networkImages.isEmpty && pickedImages.isEmpty,
+                isRemoveEnabled,
                 context,
               ),
               isExpanded: false,
@@ -71,15 +70,15 @@ class EditPropertyImagesSection extends StatelessWidget {
     );
   }
 
-  void _onPressed(bool isEmptyImages, BuildContext context) {
-    if (!isEmptyImages) {
+  void _onPressed(bool isRemoveEnabled, BuildContext context) {
+    if (isRemoveEnabled) {
       ConfirmationDialog.show(
         context,
         onConfirm: () {
           context.read<PropertiesBloc>().add(
                 ClearPropertyImagesEvent(),
               );
-              Navigator.pop(context);
+          Navigator.pop(context);
         },
         message: S.of(context).delete_property_images,
       );

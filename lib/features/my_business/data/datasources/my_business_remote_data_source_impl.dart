@@ -26,32 +26,67 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
     late String titleENG;
     late String aboutAR;
     late String aboutENG;
+    late String addressAR;
+    late String addressENG;
 
     if (params.businessName.detectLanguage == Language.arabic) {
       titleAR = params.businessName;
+      aboutAR = params.businessDescription;
+      addressAR = params.businessAddress;
       final titleTranslation = await translator.translate(
         params.businessName,
       );
-      titleENG = titleTranslation.text;
-      aboutAR = params.businessDescription;
-      final translation = await translator.translate(
+      final descriptionTranslation = await translator.translate(
         params.businessDescription,
       );
-      aboutENG = translation.text;
+      final addressTranslation = await translator.translate(
+        params.businessAddress,
+      );
+      titleENG = titleTranslation.text;
+      aboutENG = descriptionTranslation.text;
+      addressENG = addressTranslation.text;
+    } else {
+      titleENG = params.businessName;
+      aboutENG = params.businessDescription;
+      addressENG = params.businessAddress;
+      final titleTranslation = await translator.translate(
+        params.businessName,
+      );
+      final descriptionTranslation = await translator.translate(
+        params.businessDescription,
+      );
+      final addressTranslation = await translator.translate(
+        params.businessAddress,
+      );
+      titleAR = titleTranslation.text;
+      aboutAR = descriptionTranslation.text;
+      addressAR = addressTranslation.text;
     }
 
-    CategoryItemModel categoryItemModel = CategoryItemModel.empty();
-    categoryItemModel = categoryItemModel.copyWith(
-      nameAR: titleAR,
-      nameENG: titleENG,
-      aboutAR: aboutAR,
-      aboutENG: aboutENG,
-      latitude: params.lat,
-      longitude: params.lng,
-      address: params.businessAddress,
+    final categoryItemModel = CategoryItemModel(
+      id: -1,
+      businessNameArabic: titleAR,
+      businessNameEnglish: titleENG,
+      businessDescriptionArabic: aboutAR,
+      businessDescriptionEnglish: aboutENG,
+      latitude: params.lat!,
+      longitude: params.lng!,
+      businessAddressArabic: addressAR,
+      businessAddressEnglish: addressENG,
+
       contacts: ContactEntity(
         phoneNumber: params.phoneNumber,
       ),
+      categoriesModel: CategoryModel.empty(), // will not added
+      categoriesModelId: params.businessCategory!.id,
+      closing: params.to,
+      opening: params.from,
+      holidays: params.holiday.id,
+      profileImageName: params.mainBusinessImage,
+      businessImageName1: params.mainBusinessBackgroundImages[0],
+      businessImageName2: params.mainBusinessBackgroundImages[1],
+      businessImageName3: params.mainBusinessBackgroundImages[2],
+      businessImageName4: params.mainBusinessBackgroundImages[3],
     );
 
     await apiConsumer.post(
@@ -90,7 +125,7 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
   }
 
   @override
-  Future<void> deleteBusiness(String businessId) async {
+  Future<void> deleteBusiness(int businessId) async {
     await apiConsumer.delete(
       endpoint: AppEndpoints.deleteBusiness(businessId),
     );

@@ -8,10 +8,12 @@ class LoginModel extends LoginEntity {
     required super.displayName,
     required super.email,
     required super.role,
+    required super.userId,
   });
 
   factory LoginModel.fromJson(Map<String, dynamic> json) {
     return LoginModel(
+      userId: json['id'],
       token: json['token'],
       displayName: json['displayName'],
       email: json['email'],

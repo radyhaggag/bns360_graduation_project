@@ -25,7 +25,7 @@ class UploadPropertyImagesSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomElevatedButtonWithIcon(
-              onPressed: () => _onPressed(context),
+              onPressed: () => _onPressed(context, isRemoveEnabled),
               isExpanded: false,
               borderRadius: BorderRadius.circular(8),
               label: isRemoveEnabled
@@ -63,9 +63,15 @@ class UploadPropertyImagesSection extends StatelessWidget {
     );
   }
 
-  void _onPressed(BuildContext context) {
-    context.read<PropertiesBloc>().add(
-          PickPropertyImagesEvent(),
-        );
+  void _onPressed(BuildContext context, bool isRemoveEnabled) {
+    if (isRemoveEnabled) {
+      context.read<PropertiesBloc>().add(
+            ClearPropertyImagesEvent(),
+          );
+    } else {
+      context.read<PropertiesBloc>().add(
+            PickPropertyImagesEvent(),
+          );
+    }
   }
 }

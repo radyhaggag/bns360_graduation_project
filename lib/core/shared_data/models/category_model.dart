@@ -3,17 +3,26 @@ import '../entities/category_entity.dart';
 class CategoryModel extends CategoryEntity {
   const CategoryModel({
     required super.id,
-    required super.nameAR,
-    required super.nameEN,
-    required super.imageUrl,
+    required super.categoryNameArabic,
+    required super.categoryNameEnglish,
+    required super.image,
   });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(
       id: json['id'],
-      nameAR: json['name_ar'],
-      nameEN: json['name_en'],
-      imageUrl: json['image_url'],
+      categoryNameArabic: json['categoryNameArabic'],
+      categoryNameEnglish: json['categoryNameEnglish'],
+      image: json['imageFileName']?? json["image"],
+    );
+  }
+
+  factory CategoryModel.empty() {
+    return const CategoryModel(
+      id: -1,
+      categoryNameArabic: "",
+      categoryNameEnglish: "",
+      image: "",
     );
   }
 }

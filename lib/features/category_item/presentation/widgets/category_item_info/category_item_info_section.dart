@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
 import 'package:flutter/material.dart';
@@ -41,8 +42,12 @@ class CategoryItemInfoSection extends StatelessWidget {
             end: DateTime.now().add(const Duration(hours: 5)),
           ),
           const SizedBox(height: 15),
-           _CategoryItemLocation(
-            location: categoryItemEntity.address,
+          _CategoryItemLocation(
+            location: LocalizationHelper.getLocalizedString(
+              context,
+              ar: categoryItemEntity.businessAddressArabic,
+              en: categoryItemEntity.businessAddressEnglish,
+            ),
           ),
           const SizedBox(height: 15),
           const _CategoryItemContactInfo(

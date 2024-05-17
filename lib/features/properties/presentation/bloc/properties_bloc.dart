@@ -126,6 +126,11 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     Emitter<PropertiesState> emit,
   ) async {
     emit(AddPropertyLoadingState());
+    if (_propertyLat == null || _propertyLng == null) {
+      emit(const AddPropertyErrorState(
+          message: 'Please select property location'));
+      return;
+    }
     final params = event.addPropertyParams.copyWith(
       lat: _propertyLat,
       lng: _propertyLng,
@@ -181,7 +186,10 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     final params = event.propertyEntity.copyWith(
       latitude: _propertyLat,
       longitude: _propertyLng,
-      images: _pickedImages.map((e) => e.path).toList(),
+      image1: _pickedImages.firstOrNull?.path,
+      image2: _pickedImages.length > 1 ? _pickedImages[1].path : null,
+      image3: _pickedImages.length > 2 ? _pickedImages[2].path : null,
+      image4: _pickedImages.length > 3 ? _pickedImages[3].path : null,
     );
     final res = await propertiesRepo.editProperty(params);
 

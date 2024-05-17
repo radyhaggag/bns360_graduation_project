@@ -180,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هل نسيت كلمة المرور؟"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "لا تقلق! يحدث ذلك. الرجاء إدخال البريد الإلكتروني المرتبط بحسابك."),
+        "friday": MessageLookupByLibrary.simpleMessage("الجمعة"),
         "from": MessageLookupByLibrary.simpleMessage("من"),
         "fullName": MessageLookupByLibrary.simpleMessage("اسمك بالكامل"),
         "full_time": MessageLookupByLibrary.simpleMessage("دوام كامل"),
@@ -215,6 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "min_ago": MessageLookupByLibrary.simpleMessage("قبل دقيقة"),
         "min_validation_message": m6,
         "mins_ago": m7,
+        "monday": MessageLookupByLibrary.simpleMessage("الاثنين"),
         "mustMatch_validation_message":
             MessageLookupByLibrary.simpleMessage("الحقول يجب أن تتطابق"),
         "must_be_more_than_minimum_number_of_characters":
@@ -307,6 +309,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reviewer": MessageLookupByLibrary.simpleMessage("مراجع"),
         "salary": MessageLookupByLibrary.simpleMessage("المرتب"),
         "sale": MessageLookupByLibrary.simpleMessage("للبيع"),
+        "saturday": MessageLookupByLibrary.simpleMessage("السبت"),
         "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "saved": MessageLookupByLibrary.simpleMessage("العناصر المحفوظه"),
         "search": MessageLookupByLibrary.simpleMessage("أبحث"),
@@ -333,6 +336,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "قم بملئ المعلومات التاليه أو قم بالتسجيل بحسابك على مواقع التواصل الاجتماعى"),
         "sign_up_success_message": MessageLookupByLibrary.simpleMessage(
             "تم التسجيل بنجاح! يرجى التحقق من بريدك الإلكتروني للتأكيد وتسجيل الدخول."),
+        "sunday": MessageLookupByLibrary.simpleMessage("الأحد"),
         "support": MessageLookupByLibrary.simpleMessage("الدعم"),
         "tap_to_rate": MessageLookupByLibrary.simpleMessage("انقر للتقييم"),
         "terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
@@ -341,8 +345,10 @@ class MessageLookup extends MessageLookupByLibrary {
                 "حجم الصورة كبير جدا ، والحد الأقصى للحجم المسموح به هو"),
         "there_are_no_messages_yet":
             MessageLookupByLibrary.simpleMessage("لا توجد رسائل حتى الآن"),
+        "thursday": MessageLookupByLibrary.simpleMessage("الخميس"),
         "to": MessageLookupByLibrary.simpleMessage("إلى"),
         "today": MessageLookupByLibrary.simpleMessage("اليوم"),
+        "tuesday": MessageLookupByLibrary.simpleMessage("الثلاثاء"),
         "update": MessageLookupByLibrary.simpleMessage("تحديث"),
         "upload_business_images":
             MessageLookupByLibrary.simpleMessage("تحميل صور النشاط التجاري"),
@@ -369,6 +375,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "view_profile":
             MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("عرض المراجعات"),
+        "wednesday": MessageLookupByLibrary.simpleMessage("الأربعاء"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
         "work_hours": MessageLookupByLibrary.simpleMessage("ساعات العمل"),

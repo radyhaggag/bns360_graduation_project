@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/shared_data/entities/category_entity.dart';
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 
 class AddBusinessParams {
   final String businessName;
@@ -12,6 +13,7 @@ class AddBusinessParams {
   final double? lat;
   final double? lng;
   final CategoryEntity? businessCategory;
+  final WorkDay holiday;
 
   const AddBusinessParams({
     required this.businessName,
@@ -25,6 +27,7 @@ class AddBusinessParams {
     this.lat,
     this.lng,
     this.businessCategory,
+    required this.holiday,
   });
 
   AddBusinessParams copyWith({
@@ -39,6 +42,7 @@ class AddBusinessParams {
     double? lat,
     double? lng,
     CategoryEntity? businessCategory,
+    WorkDay? holiday,
   }) {
     return AddBusinessParams(
       businessName: businessName ?? this.businessName,
@@ -53,6 +57,7 @@ class AddBusinessParams {
       lat: lat ?? this.lat,
       lng: lng ?? this.lng,
       businessCategory: businessCategory ?? this.businessCategory,
+      holiday: holiday ?? this.holiday,
     );
   }
 

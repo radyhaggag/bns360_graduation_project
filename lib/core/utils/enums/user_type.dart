@@ -20,6 +20,17 @@ enum UserType {
     }
   }
 
+  String asPublisherDetailsDescription(BuildContext context) {
+    switch (this) {
+      case UserType.user:
+        return S.of(context).user;
+      case UserType.businessOwner:
+        return S.of(context).businessOwner;
+      case UserType.serviceProvider:
+        return S.of(context).serviceProvider;
+    }
+  }
+
   static UserType fromInteger(int value) {
     switch (value) {
       case 0:

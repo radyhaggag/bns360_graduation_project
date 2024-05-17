@@ -9,11 +9,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 
-import '../../../../../core/helpers/location_helper.dart';
-import '../../../../../core/shared_data/entities/category_item_entity.dart';
-import '../../../../../core/utils/extensions/media_query.dart';
-import '../../../../../core/widgets/custom_marker.dart';
-import '../../../../map/domain/params/map_params.dart';
+import '../../../../core/helpers/localization_helper.dart';
+import '../../../../core/helpers/location_helper.dart';
+import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/utils/extensions/media_query.dart';
+import '../../../../core/widgets/custom_marker.dart';
+import '../../../map/domain/params/map_params.dart';
 
 class AddBusinessLocationSection extends StatefulWidget {
   const AddBusinessLocationSection({super.key, this.categoryItemEntity});
@@ -124,7 +125,11 @@ class _AddBusinessLocationSectionState
             MapParams? mapParams;
             if (widget.categoryItemEntity != null) {
               mapParams = MapParams(
-                location: widget.categoryItemEntity!.address,
+                location: LocalizationHelper.getLocalizedString(
+                  context,
+                  ar: widget.categoryItemEntity!.businessAddressArabic,
+                  en: widget.categoryItemEntity!.businessAddressEnglish,
+                ),
                 lat: widget.categoryItemEntity!.latitude,
                 lng: widget.categoryItemEntity!.longitude,
               );

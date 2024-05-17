@@ -45,6 +45,7 @@ import '../features/jobs/presentation/screens/jobs_screen.dart';
 import '../features/map/domain/params/map_params.dart';
 import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
+import '../features/my_business/presentation/screens/edit_business_screen.dart';
 import '../features/my_business/presentation/screens/my_business_screen.dart';
 import '../features/my_posts/presentation/bloc/my_posts_bloc.dart';
 import '../features/my_posts/presentation/screens/my_posts_screen.dart';
@@ -102,6 +103,7 @@ abstract class Routes {
   static const myPosts = '/myPosts';
   static const myBusiness = '/myBusiness';
   static const addBusiness = '/addBusiness';
+  static const editBusiness = '/editBusiness';
   static const myServices = '/myServices';
   static const addService = '/addService';
   static const editService = '/editService';
@@ -403,8 +405,16 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) =>
                 sl<MyBusinessBloc>()..add(GetBusinessTypesEvent()),
-            child: AddBusinessScreen(
-              categoryItemEntity: settings.arguments as CategoryItemEntity?,
+            child: const AddBusinessScreen(),
+          ),
+        );
+      case Routes.editBusiness:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyBusinessBloc>()..add(GetBusinessTypesEvent()),
+            child: EditBusinessScreen(
+              categoryItemEntity: settings.arguments as CategoryItemEntity,
             ),
           ),
         );

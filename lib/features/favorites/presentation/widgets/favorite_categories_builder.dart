@@ -41,16 +41,15 @@ class FavoriteCategoriesBuilder extends StatelessWidget {
             itemWidget: (item, _) => HorizontalItemCard(
               title: LocalizationHelper.getLocalizedString(
                 context,
-                ar: item.nameAR,
-                en: item.nameENG,
+                ar: item.businessNameArabic,
+                en: item.businessNameEnglish,
               ),
-              // subTitle: LocalizationHelper.getLocalizedString(
-              //   context,
-              //   ar: item.category.nameAR,
-              //   en: item.category.nameEN,
-              // ),
-              subTitle: "Not found",
-              imageUrl: item.profilePictureUrl,
+              subTitle: LocalizationHelper.getLocalizedString(
+                context,
+                ar: item.categoriesModel.categoryNameArabic,
+                en: item.categoriesModel.categoryNameEnglish,
+              ),
+              imageUrl: item.profileImageName,
               // numOfRatings: item.numOfRatings,
               // starsCount: item.starsCount,
               numOfRatings: 50,

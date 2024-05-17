@@ -7,7 +7,6 @@ import '../../../../../core/helpers/load_json_from_asset.dart';
 import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/shared_data/entities/contact_entity.dart';
 import '../../../../../core/shared_data/entities/property_entity.dart';
-import '../../../../../core/shared_data/entities/publisher_details_entity.dart';
 import '../../../../../core/shared_data/models/property_model.dart';
 import '../../../../../core/utils/app_endpoints.dart';
 import '../../../../../core/utils/enums.dart';
@@ -84,9 +83,8 @@ class PropertiesRemoteDataSourceImpl implements PropertiesRemoteDataSource {
 
     final contacts = ContactEntity(
       phoneNumber: addPropertyParams.phoneNumber,
+      whatsapp: addPropertyParams.whatsapp,
     );
-
-    final currentUser = AppProvider().getProfile();
 
     final propertyModel = PropertyModel(
       id: -1,
@@ -98,17 +96,14 @@ class PropertiesRemoteDataSourceImpl implements PropertiesRemoteDataSource {
       price: addPropertyParams.price,
       area: addPropertyParams.area.toInt(),
       type: addPropertyParams.offerType,
-      whatsappNumber: addPropertyParams.whatsapp,
-      publisher: PublisherDetailsEntity(
-        name: currentUser?.name,
-        description: "Normal user",
-        photoUrl: currentUser?.imageUrl,
-      ),
+      publisher: AppProvider().getPublisherDetails()!,
       timeAddedProperty: DateTime.now(),
       latitude: addPropertyParams.lat!,
       longitude: addPropertyParams.lng!,
-      imageNames: addPropertyParams.images!.map((e) => e.path).toList(),
-      images: addPropertyParams.images!.map((e) => e.path).toList(),
+      image1: addPropertyParams.image1,
+      image2: addPropertyParams.image2,
+      image3: addPropertyParams.image3,
+      image4: addPropertyParams.image4,
     );
 
     final formData = FormData.fromMap(await propertyModel.toJson());
@@ -123,16 +118,14 @@ class PropertiesRemoteDataSourceImpl implements PropertiesRemoteDataSource {
   Future<void> editProperty(PropertyEntity entity) async {
     final model = PropertyModel.fromEntity(entity);
 
-    final formData = FormData.fromMap(await model.toJson()
-      ..addAll(
-        {"id": entity.id},
-      ));
+    final data = await model.toJson();
+
+    final formData = FormData.fromMap(data);
+
+    final path = AppEndpoints.propertyById(entity.id);
 
     await apiConsumer.put(
-      endpoint: AppEndpoints.propertyById(
-        entity.id.toString(),
-        addPrefix: false,
-      ),
+      endpoint: path,
       formData: formData,
     );
   }

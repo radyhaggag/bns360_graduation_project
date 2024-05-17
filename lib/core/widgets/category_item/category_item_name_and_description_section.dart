@@ -24,8 +24,8 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
             child: Text(
               LocalizationHelper.getLocalizedString(
                 context,
-                ar: categoryItemEntity.nameAR,
-                en: categoryItemEntity.nameENG,
+                ar: categoryItemEntity.businessNameArabic,
+                en: categoryItemEntity.businessNameEnglish,
               ),
               style: context.textTheme.titleSmall,
               overflow: TextOverflow.ellipsis,
@@ -37,8 +37,8 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
             child: Text(
               LocalizationHelper.getLocalizedString(
                 context,
-                ar: categoryItemEntity.aboutAR,
-                en: categoryItemEntity.aboutENG,
+                ar: categoryItemEntity.businessDescriptionArabic,
+                en: categoryItemEntity.businessDescriptionEnglish,
               ),
               style: context.textTheme.bodySmall,
               maxLines: 2,

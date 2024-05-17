@@ -1,6 +1,5 @@
 import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
 import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -8,23 +7,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domain/params/add_business_params.dart';
 import '../../bloc/my_business_bloc.dart';
 import '../submit_business_button.dart';
 import '../upload_business_images_section.dart';
-import 'add_business_form.dart';
+import 'edit_business_form.dart';
 
-class AddBusinessBody extends StatefulWidget {
-  const AddBusinessBody({super.key});
+class EditBusinessBody extends StatefulWidget {
+  const EditBusinessBody({super.key, required this.categoryItemEntity});
+
+  final CategoryItemEntity categoryItemEntity;
 
   @override
-  State<AddBusinessBody> createState() => _AddBusinessBodyState();
+  State<EditBusinessBody> createState() => _EditBusinessBodyState();
 }
 
-class _AddBusinessBodyState extends State<AddBusinessBody> {
+class _EditBusinessBodyState extends State<EditBusinessBody> {
   OfferType? selectedOfferType;
   late final FormGroup form;
 
@@ -32,15 +33,38 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
   void initState() {
     super.initState();
 
+    context.read<MyBusinessBloc>().add(InitNetworkBusinessImageEvent(
+          networkImages: widget.categoryItemEntity.businessImages,
+          mainBusinessImage: widget.categoryItemEntity.profileImageName,
+        ));
+    context.read<MyBusinessBloc>().add(SelectBusinessCategoryEvent(
+          categoryId: widget.categoryItemEntity.categoriesModelId,
+        ));
+
     form = FormGroup({
       'name_ar': FormControl<String>(
         validators: [Validators.required],
+        value: widget.categoryItemEntity.businessNameArabic,
+      ),
+      'name_eng': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.categoryItemEntity.businessNameEnglish,
       ),
       'description_ar': FormControl<String>(
         validators: [Validators.required],
+        value: widget.categoryItemEntity.businessDescriptionArabic,
       ),
-      'address': FormControl<String>(
+      'description_eng': FormControl<String>(
         validators: [Validators.required],
+        value: widget.categoryItemEntity.businessDescriptionEnglish,
+      ),
+      'address_ar': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.categoryItemEntity.businessAddressArabic,
+      ),
+      'address_eng': FormControl<String>(
+        validators: [Validators.required],
+        value: widget.categoryItemEntity.businessAddressEnglish,
       ),
       'from': FormControl<String>(
         validators: [
@@ -78,7 +102,7 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
           children: [
             Center(
               child: Text(
-                S.of(context).add_business,
+                S.of(context).edit_business,
                 style: context.textTheme.titleMedium?.copyWith(
                   color: context.theme.cardColor,
                   fontSize: AppFontSize.titleMedium,
@@ -86,8 +110,9 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
               ),
             ),
             20.verticalSpace,
-            AddBusinessForm(
+            EditBusinessForm(
               form: form,
+              categoryItemEntity: widget.categoryItemEntity,
             ),
             10.verticalSpace,
             const UploadMainBusinessImageSection(),
@@ -96,7 +121,7 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
             20.verticalSpace,
             SubmitBusinessButton(
               onAdd: _submitForm,
-              isUpdate: false,
+              isUpdate: true,
             ),
             20.verticalSpace,
           ],
@@ -107,21 +132,23 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
 
   void _submitForm() {
     final formControls = form.controls;
-    final params = AddBusinessParams(
-      holiday: WorkDay.friday,
-      businessName: formControls['name_ar']!.value as String,
-      businessAddress: formControls['address']!.value as String,
-      businessDescription: formControls['description_ar']!.value as String,
-      to: int.parse(formControls['to']!.value as String),
-      from: int.parse(formControls['from']!.value as String),
-      phoneNumber: formControls['phoneNumber']!.value as String,
-      mainBusinessBackgroundImages: [],
-      // Will updated on the bloc
-      mainBusinessImage: "", // Will updated on the bloc
+    final entity = widget.categoryItemEntity.copyWith(
+      businessNameArabic: formControls['name_ar']!.value as String,
+      businessNameEnglish: formControls['name_eng']!.value as String,
+      businessAddressArabic: formControls['address_ar']!.value as String,
+      businessAddressEnglish: formControls['address_eng']!.value as String,
+      businessDescriptionArabic:
+          formControls['description_ar']!.value as String,
+      businessDescriptionEnglish:
+          formControls['description_eng']!.value as String,
+      opening: int.parse(formControls['from']!.value as String),
+      closing: int.parse(formControls['to']!.value as String),
+      contacts: widget.categoryItemEntity.contacts.copyWith(
+        phoneNumber: formControls['phoneNumber']!.value as String,
+      ),
     );
-
-    context.read<MyBusinessBloc>().add(AddBusinessEvent(
-          addBusinessParams: params,
+    context.read<MyBusinessBloc>().add(UpdateBusinessEvent(
+          categoryItemEntity: entity,
         ));
   }
 

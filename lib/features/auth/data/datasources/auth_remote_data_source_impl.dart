@@ -1,6 +1,7 @@
 import '../../../../core/api/api_consumer.dart';
 import '../../../../core/databases/secure_storage/token_manager.dart';
 import '../../../../core/firebase/firebase_auth_manager.dart';
+import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../../../core/utils/app_endpoints.dart';
 import '../../domain/params/login_params.dart';
 import '../../domain/params/reset_password_params.dart';
@@ -28,6 +29,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final loginModel = LoginModel.fromJson(res.data);
 
     await tokenManager.saveToken(loginModel.token);
+
+    final profile = ProfileEntity(
+      id: loginModel.userId,
+      email: loginModel.email,
+      name: loginModel.displayName,
+      userType: loginModel.role.id,
+    );
+
+    await profile.saveToCache();
 
     return loginModel;
   }

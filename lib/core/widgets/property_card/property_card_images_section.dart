@@ -1,11 +1,11 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/custom_slider/custom_slider.dart';
-import 'package:bns360_graduation_project/core/widgets/job_card/save_job_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/route_config.dart';
 import '../../shared_data/entities/property_entity.dart';
+import '../../utils/extensions/context.dart';
+import '../custom_slider/custom_slider.dart';
+import 'save_property_btn.dart';
 
 class PropertyCardImagesSection extends StatelessWidget {
   const PropertyCardImagesSection({
@@ -54,8 +54,8 @@ class PropertyCardImagesSection extends StatelessWidget {
         ),
         Padding(
           padding: isMiniMode ? EdgeInsets.zero : const EdgeInsets.all(8.0),
-          child: SaveJobBtn(
-            isSaved: true,
+          child: SavePropertyBtn(
+            propertyId: propertyEntity.id,
             notSavedBackgroundColor: context.theme.highlightColor.withAlpha(
               150,
             ),

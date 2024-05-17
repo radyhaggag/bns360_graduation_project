@@ -12,15 +12,16 @@ class JobDetailsScreenAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverAppBar(
+    return SliverAppBar(
       pinned: true,
       backgroundColor: AppColors.primary,
-      leading: CustomBackButton(
+      leading: const CustomBackButton(
         color: Colors.white,
       ),
       actions: [
         SaveJobBtn(
           notSavedColor: AppColors.white,
+          jobId: jobEntity.id,
         ),
       ],
     );

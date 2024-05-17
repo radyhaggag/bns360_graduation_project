@@ -32,7 +32,7 @@ class CategoryItemProfileSection extends StatelessWidget {
           child: ProfileCircleIcon(
             height: 60.r,
             width: 60.r,
-            imageUrl: categoryItemEntity.profilePictureUrl,
+            imageUrl: categoryItemEntity.profileImageName,
           ),
         ),
         const SizedBox(width: 10),
@@ -59,9 +59,9 @@ class CategoryItemProfileSection extends StatelessWidget {
               final params = ConversationScreenParams(
                 participantEntity: ParticipantEntity(
                   id: categoryItemEntity.id.toString(),
-                  nameEN: categoryItemEntity.nameENG,
-                  nameAR: categoryItemEntity.nameAR,
-                  imageUrl: categoryItemEntity.profilePictureUrl,
+                  nameEN: categoryItemEntity.businessNameEnglish,
+                  nameAR: categoryItemEntity.businessNameEnglish,
+                  imageUrl: categoryItemEntity.profileImageName,
                   userType: UserType.businessOwner.id,
                 ),
                 categoryItemEntity: categoryItemEntity,
@@ -98,20 +98,19 @@ class _TitleAndTypeSection extends StatelessWidget {
         Text(
           LocalizationHelper.getLocalizedString(
             context,
-            ar: categoryItemEntity.nameAR,
-            en: categoryItemEntity.nameENG,
+            ar: categoryItemEntity.businessNameArabic,
+            en: categoryItemEntity.businessNameEnglish,
           ),
           style: context.textTheme.titleSmall?.copyWith(
             color: context.theme.cardColor,
           ),
         ),
         Text(
-          "Not found",
-          // LocalizationHelper.getLocalizedString(
-          //   context,
-          //   ar: categoryItemEntity.category.nameAR,
-          //   en: categoryItemEntity.category.nameEN,
-          // ),
+          LocalizationHelper.getLocalizedString(
+            context,
+            ar: categoryItemEntity.categoriesModel.categoryNameArabic,
+            en: categoryItemEntity.categoriesModel.categoryNameEnglish,
+          ),
           style: context.textTheme.bodyLarge?.copyWith(
             color: context.theme.hintColor,
             fontSize: AppFontSize.light,

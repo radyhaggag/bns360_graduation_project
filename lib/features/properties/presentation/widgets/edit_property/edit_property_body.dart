@@ -79,7 +79,7 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: widget.propertyEntity.whatsappNumber.withoutCountryCode,
+        value: widget.propertyEntity.contacts.whatsapp.withoutCountryCode,
       ),
     });
 
@@ -108,6 +108,7 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
                 color: context.theme.cardColor,
                 fontSize: AppFontSize.titleMedium,
               ),
+              textAlign: TextAlign.center,
             ),
             20.verticalSpace,
             EditPropertyForm(
@@ -136,7 +137,7 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
 
   void _submitForm() {
     final formControls = form.controls;
-
+    final images = widget.propertyEntity.images;
     final propertyEntity = widget.propertyEntity.copyWith(
       arabicDescription: formControls['description_ar']!.value as String,
       englishDescription: formControls['description_eng']!.value as String,
@@ -147,11 +148,13 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
       contacts: widget.propertyEntity.contacts.copyWith(
         phoneNumber:
             (formControls['phoneNumber']!.value as String).withCountryCode,
+        whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
       ),
-      whatsappNumber:
-          (formControls['whatsapp']!.value as String).withCountryCode,
       type: selectedOfferType!,
-      images: widget.propertyEntity.images,
+      image1: images.firstOrNull,
+      image2: images.length > 1 ? images[1] : null,
+      image3: images.length > 2 ? images[2] : null,
+      image4: images.length > 3 ? images[3] : null,
     );
 
     context.read<PropertiesBloc>().add(EditPropertyEvent(

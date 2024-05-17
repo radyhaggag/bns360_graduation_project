@@ -240,5 +240,12 @@
   "edit_job": "Edit job",
   "in_arabic": "In Arabic",
   "in_english": "In English",
-  "edit_property": "Edit property"
+  "edit_property": "Edit property",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday"
 }

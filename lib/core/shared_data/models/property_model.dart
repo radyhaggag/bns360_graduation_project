@@ -1,7 +1,5 @@
+import 'package:bns360_graduation_project/core/helpers/api_images_helper.dart';
 import 'package:bns360_graduation_project/core/utils/enums/offer_type.dart';
-import 'package:dio/dio.dart';
-import 'package:http_parser/http_parser.dart';
-import 'package:path/path.dart';
 
 import '../entities/property_entity.dart';
 import 'contact_model.dart';
@@ -14,7 +12,6 @@ class PropertyModel extends PropertyEntity {
     required super.englishDescription,
     required super.arabicAddress,
     required super.englishAddress,
-    required super.whatsappNumber,
     required super.publisher,
     required super.contacts,
     required super.type,
@@ -22,9 +19,11 @@ class PropertyModel extends PropertyEntity {
     required super.price,
     required super.longitude,
     required super.latitude,
-    required super.imageNames,
-    required super.images,
     required super.timeAddedProperty,
+    super.image1,
+    super.image2,
+    super.image3,
+    super.image4,
   });
 
   factory PropertyModel.fromJson(Map<String, dynamic> json) {
@@ -34,18 +33,17 @@ class PropertyModel extends PropertyEntity {
       englishDescription: json['englishDescription'],
       arabicAddress: json['arabicAddress'],
       englishAddress: json['englishAddress'],
-      whatsappNumber: json['whatsappNumber'],
       publisher: PublisherDetailsModel.fromJson(json['publisherDetails']),
-      contacts: ContactModel.fromJson(json['contacts']),
+      contacts: ContactModel.fromJson(json),
       type: OfferType.fromId(json['type']),
       area: json['area'],
       price: json['price'],
       longitude: json['longitude'],
       latitude: json['latitude'],
-      imageNames: List<String>.from(
-        json['imageNames'].map((e) => e["imageNames"]),
-      ),
-      images: const [],
+      image1: json['imageName1'],
+      image2: json['imageName2'],
+      image3: json['imageName3'],
+      image4: json['imageName4'],
       timeAddedProperty: DateTime.parse(json["timeAddedProperty"]),
     );
   }
@@ -57,7 +55,6 @@ class PropertyModel extends PropertyEntity {
       englishDescription: entity.englishDescription,
       arabicAddress: entity.arabicAddress,
       englishAddress: entity.englishAddress,
-      whatsappNumber: entity.whatsappNumber,
       publisher: PublisherDetailsModel.fromEntity(entity.publisher),
       contacts: ContactModel.fromEntity(entity.contacts),
       type: entity.type,
@@ -65,39 +62,42 @@ class PropertyModel extends PropertyEntity {
       price: entity.price,
       longitude: entity.longitude,
       latitude: entity.latitude,
-      imageNames: entity.imageNames,
-      images: entity.images,
       timeAddedProperty: entity.timeAddedProperty,
+      image1: entity.image1,
+      image2: entity.image2,
+      image3: entity.image3,
+      image4: entity.image4,
     );
   }
 
   Future<Map<String, dynamic>> toJson() async {
-    final multiPartFiles = images.map((path) async {
-      String fileName = basename(path);
-      return await MultipartFile.fromFile(
-        path,
-        filename: fileName,
-        contentType: MediaType('image', 'jpeg'),
-      );
-    }).toList();
-
-    final encodedImages = await Future.wait(multiPartFiles);
-
-    return {
-      'arabicDescription': arabicDescription,
-      'englishDescription': englishDescription,
-      'arabicAddress': arabicAddress,
-      'englishAddress': englishAddress,
-      'whatsappNumber': whatsappNumber,
-      'publisherDetails': PublisherDetailsModel.fromEntity(publisher).toJson(),
-      'contacts': ContactModel.fromEntity(contacts).toJson(),
-      'type': type.id.toString(),
-      'area': area.toString(),
-      'price': price.toString(),
-      'longitude': longitude.toString(),
-      'latitude': latitude.toString(),
-      'imageNames': [],
-      'images': encodedImages,
+    final map = {
+      'ArabicDescription': arabicDescription,
+      'EnglishDescription': englishDescription,
+      'ArabicAddress': arabicAddress,
+      'EnglishAddress': englishAddress,
+      'WhatsappNumber': contacts.whatsapp,
+      'Phonenumbers': contacts.phoneNumber,
+      'Emails': contacts.email,
+      'URls': contacts.urlSite,
+      'PublisherDetails': PublisherDetailsModel.fromEntity(publisher).toJson(),
+      'Type': type.id.toString(),
+      'Area': area.toString(),
+      'Price': price.toString(),
+      'Longitude': longitude.toString(),
+      'Latitude': latitude.toString(),
+      'image1': await APIImagesHelper.convertImageToMultipartFile(image1),
+      'image2': await APIImagesHelper.convertImageToMultipartFile(image2),
+      'image3': await APIImagesHelper.convertImageToMultipartFile(image3),
+      'image4': await APIImagesHelper.convertImageToMultipartFile(image4),
     };
+
+    if (id != -1) {
+      map['Id'] = id;
+    }
+
+    // remove null values
+    map.removeWhere((key, value) => value == null);
+    return map;
   }
 }

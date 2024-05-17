@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,6 +85,7 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
                 color: context.theme.cardColor,
                 fontSize: AppFontSize.titleMedium,
               ),
+              textAlign: TextAlign.center,
             ),
             20.verticalSpace,
             AddPropertyForm(
@@ -117,8 +119,9 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
       area: double.parse(formControls['area']!.value as String),
       offerType: selectedOfferType!,
       price: double.parse(formControls['price']!.value as String),
-      phoneNumber: formControls['phoneNumber']!.value as String,
-      whatsapp: formControls['whatsapp']!.value as String,
+      phoneNumber:
+          (formControls['phoneNumber']!.value as String).withCountryCode,
+      whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
     );
 
     context.read<PropertiesBloc>().add(AddPropertyEvent(

@@ -10,10 +10,23 @@ abstract class HiveBoxes {
   static const _theme = 'theme';
   static const _profile = 'profile';
 
+  static const _savedJobs = 'savedJobs';
+  static const _savedProperties = 'savedProperties';
+  static const _favoriteCrafts = 'favoriteCrafts';
+  static const _favoriteBusiness = 'favoriteBusiness';
+
   // Boxes
   static Box<String> get language => Hive.box<String>(_language);
   static Box<String> get theme => Hive.box<String>(_theme);
   static Box<ProfileEntity> get profile => Hive.box<ProfileEntity>(_profile);
+
+  static Box<List<int>> get savedJobs => Hive.box<List<int>>(_savedJobs);
+  static Box<List<int>> get savedProperties =>
+      Hive.box<List<int>>(_savedProperties);
+  static Box<List<int>> get favoriteCrafts =>
+      Hive.box<List<int>>(_favoriteCrafts);
+  static Box<List<int>> get favoriteBusiness =>
+      Hive.box<List<int>>(_favoriteBusiness);
 }
 
 abstract class HiveManager {
@@ -31,6 +44,10 @@ abstract class HiveManager {
         Hive.openBox<String>(HiveBoxes._language),
         Hive.openBox<String>(HiveBoxes._theme),
         Hive.openBox<ProfileEntity>(HiveBoxes._profile),
+        Hive.openBox<List<int>>(HiveBoxes._savedJobs),
+        Hive.openBox<List<int>>(HiveBoxes._savedProperties),
+        Hive.openBox<List<int>>(HiveBoxes._favoriteCrafts),
+        Hive.openBox<List<int>>(HiveBoxes._favoriteBusiness),
       ];
       await Future.wait(boxes);
     });

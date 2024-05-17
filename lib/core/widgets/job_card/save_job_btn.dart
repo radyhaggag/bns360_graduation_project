@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../databases/local_storage/hive_manager.dart';
 import '../icons/rounded_icon_btn.dart';
 
 class SaveJobBtn extends StatefulWidget {
   const SaveJobBtn({
     super.key,
-    this.isSaved,
+    required this.jobId,
     this.notSavedColor,
     this.notSavedBackgroundColor,
     this.size,
   });
 
-  final bool? isSaved;
+  final int jobId;
   final Color? notSavedColor;
   final Color? notSavedBackgroundColor;
   final double? size;
@@ -30,7 +31,12 @@ class SaveJobBtnState extends State<SaveJobBtn> {
   @override
   void initState() {
     super.initState();
-    isSaved = widget.isSaved ?? false;
+    isSaved = isSavedInLocal;
+  }
+
+  bool get isSavedInLocal {
+    final savedJobs = HiveBoxes.savedJobs.get('savedJobs') ?? [];
+    return savedJobs.contains(widget.jobId);
   }
 
   @override

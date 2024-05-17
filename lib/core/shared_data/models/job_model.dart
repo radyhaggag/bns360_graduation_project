@@ -18,22 +18,17 @@ class JobModel extends JobEntity {
     required super.requirementEnglish,
     required super.salary,
     required super.type,
-    required super.whatsapp,
     required super.workHours,
     required super.timeAddedjob,
     super.isBelongToMe,
   });
 
   factory JobModel.fromJson(Map<String, dynamic> json) {
-    final isContactsList = json["contacts"] != null && json["contacts"] is List;
-    final contacts = isContactsList ? json["contacts"].first : json["contacts"];
 
     return JobModel(
       id: json['id'],
       jobDescriptionEnglish: json['jobDescriptionEnglish'],
-      contacts: contacts != null
-          ? ContactModel.fromJson(contacts)
-          : const ContactModel(),
+      contacts: ContactModel.fromJson(json),
       jobTitleEnglish: json['jobTitleEnglish'],
       jobTitleArabic: json['jobTitleArabic'],
       salary: json['salary'],
@@ -44,7 +39,6 @@ class JobModel extends JobEntity {
         json["requirementsArabic"],
       ),
       workHours: json['workHours'],
-      whatsapp: json['whatsapp'],
       publisherDetails: PublisherDetailsModel.fromJson(
         json['publisherDetails'],
       ),
@@ -67,7 +61,6 @@ class JobModel extends JobEntity {
       requirementEnglish: entity.requirementEnglish,
       salary: entity.salary,
       type: entity.type,
-      whatsapp: entity.whatsapp,
       workHours: entity.workHours,
       isBelongToMe: entity.isBelongToMe,
       timeAddedjob: entity.timeAddedjob,
@@ -76,22 +69,22 @@ class JobModel extends JobEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'jobDescriptionEnglish': jobDescriptionEnglish,
-      'contacts': contacts != null
-          ? [ContactModel.fromEntity(contacts!).toJson()]
-          : null,
-      'jobTitleEnglish': jobTitleEnglish,
       'jobTitleArabic': jobTitleArabic,
-      'salary': salary,
-      'requirementEnglish':
-          RequirementsModel.fromEntity(requirementEnglish).toJson(),
+      'jobTitleEnglish': jobTitleEnglish,
+      'jobDescriptionArabic': jobDescriptionArabic,
+      'jobDescriptionEnglish': jobDescriptionEnglish,
       'requirementsArabic':
           RequirementsModel.fromEntity(requirementsArabic).toJson(),
-      'workHours': workHours,
-      'whatsapp': whatsapp,
+      'requirementEnglish':
+          RequirementsModel.fromEntity(requirementEnglish).toJson(),
       'publisherDetails':
           PublisherDetailsModel.fromEntity(publisherDetails).toJson(),
-      'jobDescriptionArabic': jobDescriptionArabic,
+      'salary': salary,
+      'workHours': workHours,
+      'whatsapp': contacts?.whatsapp,
+      'phonenumbers': contacts?.phoneNumber,
+      'emails': contacts?.email,
+      'uRls': contacts?.urlSite,
       'type': type.id.toString(),
     };
   }

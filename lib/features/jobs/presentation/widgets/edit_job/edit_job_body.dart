@@ -86,7 +86,7 @@ class _EditJobBodyState extends State<EditJobBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: widget.jobEntity.whatsapp?.withoutCountryCode,
+        value: widget.jobEntity.contacts?.whatsapp?.withoutCountryCode,
       ),
     });
   }
@@ -127,6 +127,7 @@ class _EditJobBodyState extends State<EditJobBody> {
               onEdit: _submitForm,
               isJobTypeSelected: selectedJobType != null,
             ),
+            10.verticalSpace,
           ],
         ),
       ),

@@ -35,7 +35,7 @@ class PropertyPublisherSection extends StatelessWidget {
         InkWell(
           onTap: () {},
           child: _PublisherNameAndHintSection(
-            title: propertyEntity.publisher.name ?? "",
+            title: propertyEntity.publisher.name,
             date: propertyEntity.timeAddedProperty.toString(),
             isMiniMode: isMiniMode,
           ),

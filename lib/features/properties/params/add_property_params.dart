@@ -66,4 +66,27 @@ class AddPropertyParams {
       images: images ?? this.images,
     );
   }
+
+  String? get image1 {
+    if (images == null) return null;
+    return images!.isNotEmpty ? images![0].path : null;
+  }
+
+  String? get image2 {
+    if (images == null) return null;
+    if (images!.length < 2) return null;
+    return images!.isNotEmpty ? images![1].path : null;
+  }
+
+  String? get image3 {
+    if (images == null) return null;
+    if (images!.length < 3) return null;
+    return images!.isNotEmpty ? images![2].path : null;
+  }
+
+  String? get image4 {
+    if (images == null) return null;
+    if (images!.length < 4) return null;
+    return images!.isNotEmpty ? images![3].path : null;
+  }
 }

@@ -1,4 +1,3 @@
-import '../../../databases/local_storage/hive_manager.dart';
 import '../../entities/profile/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {
@@ -28,9 +27,5 @@ class ProfileModel extends ProfileEntity {
       imageUrl: map['image_url'] as String?,
       userType: map['userType'] as int,
     );
-  }
-
-  Future<void> saveToCache() async {
-    await HiveBoxes.profile.put('profile', this);
   }
 }

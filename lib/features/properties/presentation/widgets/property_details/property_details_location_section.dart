@@ -20,10 +20,13 @@ class PropertyDetailsLocationSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        PropertyAddressWidget(
-          address: getAddress(context),
-          markerColor: context.theme.hoverColor,
+        Expanded(
+          child: PropertyAddressWidget(
+            address: getAddress(context),
+            markerColor: context.theme.hoverColor,
+          ),
         ),
+        const SizedBox(width: 10),
         MapBtn(
           borderRadius: BorderRadius.circular(8),
           mapParams: MapParams(

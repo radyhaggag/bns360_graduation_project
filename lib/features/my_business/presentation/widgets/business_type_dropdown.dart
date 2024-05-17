@@ -4,8 +4,8 @@ import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../core/widgets/custom_dropdown.dart';
-import '../../bloc/my_business_bloc.dart';
+import '../../../../core/widgets/custom_dropdown.dart';
+import '../bloc/my_business_bloc.dart';
 
 class BusinessTypeDropdown extends StatelessWidget {
   const BusinessTypeDropdown({super.key});
@@ -25,8 +25,8 @@ class BusinessTypeDropdown extends StatelessWidget {
               .map(
                 (e) => LocalizationHelper.getLocalizedString(
                   context,
-                  ar: e.nameAR,
-                  en: e.nameEN,
+                  ar: e.categoryNameArabic,
+                  en: e.categoryNameEnglish,
                 ),
               )
               .toList(),
@@ -34,8 +34,8 @@ class BusinessTypeDropdown extends StatelessWidget {
           textValue: myBusinessBloc.selectedBusinessCategory != null
               ? LocalizationHelper.getLocalizedString(
                   context,
-                  ar: myBusinessBloc.selectedBusinessCategory?.nameAR ?? "",
-                  en: myBusinessBloc.selectedBusinessCategory?.nameEN ?? "",
+                  ar: myBusinessBloc.selectedBusinessCategory?.categoryNameArabic ?? "",
+                  en: myBusinessBloc.selectedBusinessCategory?.categoryNameEnglish ?? "",
                 )
               : S.of(context).select_business_category,
           horizontalPadding: 0,

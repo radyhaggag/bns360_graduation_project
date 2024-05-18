@@ -1,8 +1,7 @@
-import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
-
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../core/utils/custom_types.dart';
+import '../../domain/params/add_job_params.dart';
 import '../../domain/repositories/jobs_repo.dart';
 import '../datasources/remote/jobs_remote_data_source.dart';
 

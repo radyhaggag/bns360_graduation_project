@@ -7,6 +7,6 @@ abstract class MyBusinessRemoteDataSource {
   Future<void> addBusiness(AddBusinessParams params);
   Future<void> updateBusiness(CategoryItemEntity params);
   Future<void> deleteBusiness(int businessId);
-  Future<List<CategoryItemModel>> getMyBusiness();
+  Future<CategoryItemModel?> getMyBusiness();
   Future<List<CategoryModel>> getBusinessCategories();
 }

@@ -1,6 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/utils/app_colors.dart';
 
 class UploadFileErrorWidget extends StatelessWidget {
   const UploadFileErrorWidget({

@@ -6,6 +6,7 @@ import 'contact_entity.dart';
 
 class CategoryItemEntity extends Equatable {
   final int id;
+  final String userId;
   final int categoriesModelId;
   final String businessNameArabic;
   final String businessNameEnglish;
@@ -29,6 +30,7 @@ class CategoryItemEntity extends Equatable {
   final bool isBelongToMe;
 
   const CategoryItemEntity({
+    required this.userId,
     required this.id,
     required this.categoriesModelId,
     required this.businessAddressArabic,
@@ -64,6 +66,7 @@ class CategoryItemEntity extends Equatable {
   }
 
   CategoryItemEntity copyWith({
+    String? userId,
     int? id,
     int? categoriesModelId,
     String? businessNameArabic,
@@ -85,8 +88,10 @@ class CategoryItemEntity extends Equatable {
     bool? isBelongToMe,
     double? longitude,
     double? latitude,
+    bool removeImages = false,
   }) {
     return CategoryItemEntity(
+      userId: userId ?? this.userId,
       id: id ?? this.id,
       categoriesModelId: categoriesModelId ?? this.categoriesModelId,
       businessNameArabic: businessNameArabic ?? this.businessNameArabic,
@@ -104,11 +109,16 @@ class CategoryItemEntity extends Equatable {
       opening: opening ?? this.opening,
       closing: closing ?? this.closing,
       categoriesModel: categoriesModel ?? this.categoriesModel,
-      profileImageName: profileImageName ?? this.profileImageName,
-      businessImageName1: businessImageName1 ?? this.businessImageName1,
-      businessImageName2: businessImageName2 ?? this.businessImageName2,
-      businessImageName3: businessImageName3 ?? this.businessImageName3,
-      businessImageName4: businessImageName4 ?? this.businessImageName4,
+      profileImageName:
+          removeImages ? "" : profileImageName ?? this.profileImageName,
+      businessImageName1:
+          removeImages ? null : businessImageName1 ?? this.businessImageName1,
+      businessImageName2:
+          removeImages ? null : businessImageName2 ?? this.businessImageName2,
+      businessImageName3:
+          removeImages ? null : businessImageName3 ?? this.businessImageName3,
+      businessImageName4:
+          removeImages ? null : businessImageName4 ?? this.businessImageName4,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
       longitude: longitude ?? this.longitude,
       latitude: latitude ?? this.latitude,

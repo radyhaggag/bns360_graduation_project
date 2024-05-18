@@ -1,12 +1,12 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../config/route_config.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_entity.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../../../../core/widgets/main_network_image.dart';
 
 class CategoryCard extends StatelessWidget {

@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../utils/app_colors.dart';
+import '../utils/assets/app_svg.dart';
+import '../utils/extensions/context.dart';
+import 'buttons/custom_buttons.dart';
+import '../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

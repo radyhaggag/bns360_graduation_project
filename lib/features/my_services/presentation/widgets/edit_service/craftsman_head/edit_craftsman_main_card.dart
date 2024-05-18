@@ -1,5 +1,3 @@
-import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:bns360_graduation_project/features/my_services/presentation/bloc/my_services_bloc.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../../core/helpers/localization_helper.dart';
+import '../../../../../../core/utils/app_fonts.dart';
 import '../../../../../../core/utils/extensions/context.dart';
 import '../../../../../../core/utils/extensions/media_query.dart';
 import 'edit_craftsman_image_section.dart';

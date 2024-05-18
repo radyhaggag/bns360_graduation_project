@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:bns360_graduation_project/core/shared_data/entities/category_item_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/shared_data/entities/category_entity.dart';
+import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../domain/repositories/categories_repo.dart';
 
 part 'categories_event.dart';

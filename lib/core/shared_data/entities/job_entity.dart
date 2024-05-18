@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/publisher_details_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/requirements_entity.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../utils/enums/job_type.dart';
 import 'contact_entity.dart';
+import 'publisher_details_entity.dart';
+import 'requirements_entity.dart';
 
 class JobEntity extends Equatable {
   final int id;

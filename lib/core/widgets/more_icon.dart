@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../utils/app_colors.dart';
+import '../utils/app_fonts.dart';
+import '../utils/assets/app_svg.dart';
+import '../utils/extensions/context.dart';
+import 'confirm_delete_pop_up.dart';
+import '../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

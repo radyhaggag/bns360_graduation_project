@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../core/providers/app_provider.dart';
 import '../../../../core/shared_data/entities/profile/profile_entity.dart';
+import '../../domain/params/change_password_params.dart';
 import '../../domain/params/edit_profile_params.dart';
 import '../../domain/repositories/profile_repo.dart';
 

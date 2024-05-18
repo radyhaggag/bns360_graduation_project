@@ -1,10 +1,10 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../config/route_config.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../../generated/l10n.dart';
+import '../../bloc/auth_bloc.dart';
 
 class ContinueAsGuestButton extends StatelessWidget {
   const ContinueAsGuestButton({super.key});

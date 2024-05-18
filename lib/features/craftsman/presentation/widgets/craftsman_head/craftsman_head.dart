@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
 import 'craftsman_head_actions.dart';
 import 'craftsman_head_background.dart';

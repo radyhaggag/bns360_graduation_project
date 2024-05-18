@@ -1,15 +1,16 @@
-import 'package:bns360_graduation_project/core/api/api_consumer.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/category_item_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/contact_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/category_item_model.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/category_model.dart';
-import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
-import 'package:bns360_graduation_project/features/my_business/domain/params/add_business_params.dart';
+import 'package:dio/dio.dart';
 import 'package:translator/translator.dart';
 
-import '../../../../core/helpers/load_json_from_asset.dart';
+import '../../../../core/api/api_consumer.dart';
+import '../../../../core/providers/app_provider.dart';
+import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/shared_data/entities/contact_entity.dart';
+import '../../../../core/shared_data/models/category_item_model.dart';
+import '../../../../core/shared_data/models/category_model.dart';
+import '../../../../core/utils/app_endpoints.dart';
+import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/extensions/language.dart';
+import '../../domain/params/add_business_params.dart';
 import 'my_business_remote_data_source.dart';
 
 class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
@@ -63,7 +64,10 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       addressAR = addressTranslation.text;
     }
 
+    final userId = AppProvider().getProfile()!.id;
+
     final categoryItemModel = CategoryItemModel(
+      userId: userId,
       id: -1,
       businessNameArabic: titleAR,
       businessNameEnglish: titleENG,
@@ -73,7 +77,6 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       longitude: params.lng!,
       businessAddressArabic: addressAR,
       businessAddressEnglish: addressENG,
-
       contacts: ContactEntity(
         phoneNumber: params.phoneNumber,
       ),
@@ -89,9 +92,13 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       businessImageName4: params.mainBusinessBackgroundImages[3],
     );
 
+    final FormData formData = FormData.fromMap(
+      await categoryItemModel.toJson(),
+    );
+
     await apiConsumer.post(
       endpoint: AppEndpoints.addBusiness,
-      data: categoryItemModel.toJson(),
+      formData: formData,
     );
   }
 
@@ -107,20 +114,28 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
   }
 
   @override
-  Future<List<CategoryItemModel>> getMyBusiness() async {
-    final res = await loadJsonFromAsset('categories_items.json');
-    final items = List<CategoryItemModel>.from(res['data'].map(
-      (item) => CategoryItemModel.fromJson(item),
-    ));
-    return items;
+  Future<CategoryItemModel?> getMyBusiness() async {
+    final userId = AppProvider().getProfile()!.id;
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.getMyBusiness(userId),
+    );
+    if (res.data == null) return null;
+
+    final category = CategoryItemModel.fromJson(res.data);
+    return category;
   }
 
   @override
   Future<void> updateBusiness(CategoryItemEntity params) async {
     final model = CategoryItemModel.fromEntity(params);
+
+    final FormData formData = FormData.fromMap(
+      await model.toJson(),
+    );
+
     await apiConsumer.put(
       endpoint: AppEndpoints.updateBusiness(params.id),
-      data: model.toJson(),
+      formData: formData,
     );
   }
 

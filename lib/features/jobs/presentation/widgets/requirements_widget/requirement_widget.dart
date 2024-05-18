@@ -1,14 +1,14 @@
-import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/widgets/requirements_widget/add_requirement_dialog.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../core/utils/assets/app_svg.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/widgets/confirm_delete_pop_up.dart';
+import '../../../../../generated/l10n.dart';
 import '../../bloc/jobs_bloc.dart';
+import 'add_requirement_dialog.dart';
 
 class RequirementWidget extends StatelessWidget {
   const RequirementWidget({

@@ -1,14 +1,14 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/profile/profile_entity.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/providers/app_provider.dart';
+import '../../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/input_fields/edit_input_field.dart';
 import '../../../../../generated/l10n.dart';

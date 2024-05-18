@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../../core/helpers/validators/form_validators.dart';
+import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../craftsman_head/edit_craftsman_head_sliver.dart';
 import 'edit_service_form.dart';
 

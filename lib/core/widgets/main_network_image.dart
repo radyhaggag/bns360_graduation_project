@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import '../utils/extensions/context.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 

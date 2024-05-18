@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:bns360_graduation_project/core/shared_data/entities/requirements_entity.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:translator/translator.dart';
 
 import '../../../../core/shared_data/entities/job_entity.dart';
+import '../../../../core/shared_data/entities/requirements_entity.dart';
+import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/extensions/language.dart';
 import '../../domain/params/add_job_params.dart';
 import '../../domain/repositories/jobs_repo.dart';
 

@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/helpers/common_dialogs.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/helpers/common_dialogs.dart';
+import '../../../../generated/l10n.dart';
 import '../bloc/my_services_bloc.dart';
 import '../widgets/add_service/add_service_body.dart';
 import '../widgets/add_service/add_service_screen_app_bar.dart';

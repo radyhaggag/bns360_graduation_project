@@ -1,10 +1,10 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
+import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
+import '../../../../../core/utils/enums/user_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../generated/l10n.dart';

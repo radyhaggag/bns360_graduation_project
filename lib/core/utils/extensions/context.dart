@@ -1,7 +1,8 @@
-import 'package:bns360_graduation_project/core/app/app_bloc.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../app/app_bloc.dart';
+import '../enums.dart';
 
 extension ThemeExtension on BuildContext {
   ThemeData get theme => Theme.of(this);

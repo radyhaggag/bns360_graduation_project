@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/injector_container.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../bloc/settings_bloc.dart';
 import '../widgets/settings_body.dart';
 import '../widgets/settings_screen_app_bar.dart';

@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/enums/offer_type.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
+import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/enums/offer_type.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/utils/extensions/price.dart';
 import 'package:flutter/material.dart';
 
 class PropertyPriceItem extends StatelessWidget {

@@ -1,5 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,9 +6,11 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../../core/utils/enums/job_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/price.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../generated/l10n.dart';
+import '../../bloc/jobs_bloc.dart';
 import '../job_type_radio_tile.dart';
 import 'add_requirements_section.dart';
 

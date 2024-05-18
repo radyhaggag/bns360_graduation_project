@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
+import '../utils/assets/app_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

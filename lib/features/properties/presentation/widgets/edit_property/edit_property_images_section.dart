@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
-import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
+import '../../../../../core/utils/assets/app_svg.dart';
+import '../../../../../core/widgets/confirm_delete_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';

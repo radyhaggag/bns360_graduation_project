@@ -1,10 +1,10 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/route_config.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../../../../core/widgets/buttons/write_review_btn.dart';
 import '../../../../core/widgets/custom_back_button.dart';
 import '../../../../core/widgets/custom_slider/custom_slider.dart';

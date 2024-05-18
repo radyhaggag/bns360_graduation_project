@@ -1,5 +1,4 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-
+import '../../providers/app_provider.dart';
 import '../../utils/enums/user_type.dart';
 import '../entities/participant_entity.dart';
 import '../entities/profile/profile_entity.dart';

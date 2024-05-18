@@ -1,9 +1,8 @@
-import 'package:bns360_graduation_project/core/shared_data/models/contact_model.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/publisher_details_model.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/requirements_model.dart';
-import 'package:bns360_graduation_project/core/utils/enums/job_type.dart';
-
+import '../../utils/enums/job_type.dart';
 import '../entities/job_entity.dart';
+import 'contact_model.dart';
+import 'publisher_details_model.dart';
+import 'requirements_model.dart';
 
 class JobModel extends JobEntity {
   const JobModel({

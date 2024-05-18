@@ -1,8 +1,9 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/job_entity.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_details/job_details_items_section.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_details/job_details_top_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/shared_data/entities/job_entity.dart';
+import 'job_details_items_section.dart';
+import 'job_details_top_section.dart';
 
 class JobDetailsPainedSection extends SliverPersistentHeaderDelegate {
   final JobEntity jobEntity;

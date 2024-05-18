@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../databases/local_storage/hive_manager.dart';
+import '../../utils/app_colors.dart';
 import '../icons/rounded_icon_btn.dart';
 
 class SaveJobBtn extends StatefulWidget {

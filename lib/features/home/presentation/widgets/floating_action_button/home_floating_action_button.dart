@@ -1,9 +1,9 @@
-import '../../../../../core/utils/enums.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/assets/app_images.dart';
+import '../../../../../core/utils/enums.dart';
 
 part 'chatbot_vector.dart';
 

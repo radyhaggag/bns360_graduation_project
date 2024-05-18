@@ -1,15 +1,15 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/contact_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/requirements_entity.dart';
-import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
-import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
 import 'package:translator/translator.dart';
 
 import '../../../../../core/api/api_consumer.dart';
+import '../../../../../core/providers/app_provider.dart';
+import '../../../../../core/shared_data/entities/contact_entity.dart';
 import '../../../../../core/shared_data/entities/job_entity.dart';
+import '../../../../../core/shared_data/entities/requirements_entity.dart';
 import '../../../../../core/shared_data/models/job_model.dart';
+import '../../../../../core/utils/app_endpoints.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/extensions/language.dart';
+import '../../../domain/params/add_job_params.dart';
 import 'jobs_remote_data_source.dart';
 
 class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {

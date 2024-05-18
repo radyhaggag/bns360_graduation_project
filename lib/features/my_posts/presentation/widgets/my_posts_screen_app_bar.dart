@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/widgets/custom_back_button.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/widgets/custom_back_button.dart';
 import '../../../../generated/l10n.dart';
 
 class MyPostsScreenAppBar extends StatelessWidget

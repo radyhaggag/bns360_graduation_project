@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +9,7 @@ import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/job_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/strings.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/params/add_job_params.dart';
 import '../../bloc/jobs_bloc.dart';

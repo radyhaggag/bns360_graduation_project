@@ -1,5 +1,3 @@
-import 'package:bns360_graduation_project/features/conversations/domain/params/delete_message_params.dart';
-
 import '../../../../../core/firebase/firebase_storage_manager.dart';
 import '../../../../../core/firebase/firestore_collections.dart';
 import '../../../../../core/firebase/firestore_manager.dart';
@@ -8,6 +6,7 @@ import '../../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../../core/shared_data/models/participant_model.dart';
 import '../../../domain/entities/message_entity.dart';
 import '../../../domain/entities/unread_count_entity.dart';
+import '../../../domain/params/delete_message_params.dart';
 import '../../../domain/params/reset_unread_count_params.dart';
 import '../../../domain/params/send_message_params.dart';
 import '../../models/conversation_model.dart';

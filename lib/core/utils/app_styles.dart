@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';

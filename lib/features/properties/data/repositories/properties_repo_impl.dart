@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/features/properties/params/add_property_params.dart';
+import '../../params/add_property_params.dart';
 
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/shared_data/entities/property_entity.dart';

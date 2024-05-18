@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/route_config.dart';
 import '../../../../core/helpers/custom_toast.dart';
+import '../../../../generated/l10n.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/sign_up/sign_up_body.dart';
 

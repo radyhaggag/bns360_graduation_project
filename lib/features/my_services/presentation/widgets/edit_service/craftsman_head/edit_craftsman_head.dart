@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/widgets/custom_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../../../core/utils/app_colors.dart';
+import '../../../../../../core/widgets/custom_back_button.dart';
 import 'edit_craftsman_head_background.dart';
 import 'edit_craftsman_main_card.dart';
 

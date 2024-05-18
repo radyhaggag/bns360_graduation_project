@@ -1,5 +1,5 @@
 abstract class AppEndpoints {
-  static const baseUrl = "http://bns360v1.runasp.net";
+  static const baseUrl = "http://graduationbns360v2.runasp.net";
 
   //* Auth endpoints
   static const login = "$baseUrl/api/Account/login";
@@ -9,18 +9,22 @@ abstract class AppEndpoints {
   static const resetPassword = "$baseUrl/api/Account/resetPassword";
 
   //* Business
-  static const addBusiness = "$baseUrl/api/Business/add";
+  static const addBusiness = "$baseUrl/api/Business";
 
   static String updateBusiness(int businessId) {
-    return "$baseUrl/api/Business/UpdateBusiness/$businessId";
+    return "$baseUrl/api/Business/$businessId";
   }
 
   static String deleteBusiness(int businessId) {
-    return "$baseUrl/api/Business/delete/$businessId";
+    return "$baseUrl/api/Business/$businessId";
   }
 
   static String getBusinessById(int businessId) {
-    return "$baseUrl/api/Business/GetBusinessById/$businessId";
+    return "$baseUrl/api/Business/$businessId";
+  }
+
+  static String getMyBusiness(String userId) {
+    return "$baseUrl/api/Business/business-owner/$userId";
   }
 
   //* Business Categories

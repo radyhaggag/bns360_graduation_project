@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/databases/local_storage/hive_manager.dart';
+import '../../../databases/local_storage/hive_manager.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hive/hive.dart';
 

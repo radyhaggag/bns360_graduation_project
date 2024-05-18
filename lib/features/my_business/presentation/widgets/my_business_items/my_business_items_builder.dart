@@ -72,7 +72,7 @@ class MyBusinessItemsBuilder extends StatelessWidget {
                   },
                   onEdit: () {
                     Navigator.of(context).pushNamed(
-                      Routes.addBusiness,
+                      Routes.editBusiness,
                       arguments: item,
                     );
                   },

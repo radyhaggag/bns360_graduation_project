@@ -1,5 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/features/auth/presentation/widgets/welcome/continue_as_guest_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,12 +5,14 @@ import '../../../../../config/route_config.dart';
 import '../../../../../core/utils/assets/app_images.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/language.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../or_separator.dart';
 import '../social_icons_buttons.dart';
+import 'continue_as_guest_button.dart';
 
 class WelcomeBody extends StatelessWidget {
   const WelcomeBody({super.key});

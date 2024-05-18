@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
+import '../../../../../core/helpers/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared_data/entities/property_entity.dart';

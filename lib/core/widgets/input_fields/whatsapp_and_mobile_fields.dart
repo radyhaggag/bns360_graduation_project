@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../helpers/validators/form_validators.dart';
+import '../../utils/extensions/context.dart';
+import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/category_entity.dart';
-import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
+import '../../../../core/shared_data/entities/category_entity.dart';
+import '../../../../core/utils/enums/work_days.dart';
 
 class AddBusinessParams {
   final String businessName;

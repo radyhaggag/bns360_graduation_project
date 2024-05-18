@@ -1,13 +1,13 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/core/widgets/more_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../config/route_config.dart';
 import '../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/data_state_widget.dart';
 import '../../../../core/widgets/job_card/job_card.dart';
 import '../../../../core/widgets/main_list_view_builder.dart';
+import '../../../../core/widgets/more_icon.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/my_posts_bloc.dart';
 

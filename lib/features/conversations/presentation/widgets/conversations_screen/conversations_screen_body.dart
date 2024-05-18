@@ -1,12 +1,12 @@
-import 'package:bns360_graduation_project/core/widgets/data_state_widget.dart';
-import 'package:bns360_graduation_project/features/conversations/presentation/bloc/conversations_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/empty_card.dart';
+import '../../../../../generated/l10n.dart';
+import '../../bloc/conversations_bloc.dart';
 import 'conversations_builder.dart';
 import 'conversations_search_section.dart';
 import 'lazy_loading_card.dart';

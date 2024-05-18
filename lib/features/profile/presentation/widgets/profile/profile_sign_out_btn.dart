@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../config/route_config.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../generated/l10n.dart';

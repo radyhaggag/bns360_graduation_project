@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/extensions/validators.dart';
+import '../../utils/extensions/validators.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class MobileNumberValidator extends Validator<dynamic> {

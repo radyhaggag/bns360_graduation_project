@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/enums/job_type.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../../../../generated/l10n.dart';
 
 class JobTypeRadioTile extends StatelessWidget {

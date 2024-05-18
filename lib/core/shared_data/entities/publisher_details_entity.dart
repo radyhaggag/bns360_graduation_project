@@ -1,6 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/enums/user_type.dart';
 
 class PublisherDetailsEntity extends Equatable {
   final String photoUrl;

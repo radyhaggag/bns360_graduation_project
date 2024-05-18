@@ -1,15 +1,15 @@
-import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/my_business_bloc.dart';
 import '../submit_business_button.dart';
@@ -33,13 +33,12 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
   void initState() {
     super.initState();
 
-    context.read<MyBusinessBloc>().add(InitNetworkBusinessImageEvent(
-          networkImages: widget.categoryItemEntity.businessImages,
-          mainBusinessImage: widget.categoryItemEntity.profileImageName,
-        ));
-    context.read<MyBusinessBloc>().add(SelectBusinessCategoryEvent(
-          categoryId: widget.categoryItemEntity.categoriesModelId,
-        ));
+    // because the update cannot be done now without updating the images
+
+    // context.read<MyBusinessBloc>().add(InitNetworkBusinessImageEvent(
+    //       networkImages: widget.categoryItemEntity.businessImages,
+    //       mainBusinessImage: widget.categoryItemEntity.profileImageName,
+    //     ));
 
     form = FormGroup({
       'name_ar': FormControl<String>(
@@ -71,12 +70,14 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
           Validators.required,
           Validators.number,
         ],
+        value: widget.categoryItemEntity.opening.toString(),
       ),
       'to': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
         ],
+        value: widget.categoryItemEntity.closing.toString(),
       ),
       'phoneNumber': FormControl<String>(
         validators: [
@@ -84,6 +85,7 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
+        value: widget.categoryItemEntity.contacts.phoneNumber.toString(),
       ),
     });
   }

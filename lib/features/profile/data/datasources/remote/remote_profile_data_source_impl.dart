@@ -1,10 +1,9 @@
-import 'package:bns360_graduation_project/core/databases/secure_storage/token_manager.dart';
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
-
 import '../../../../../core/api/api_consumer.dart';
+import '../../../../../core/databases/secure_storage/token_manager.dart';
 import '../../../../../core/helpers/load_json_from_asset.dart';
+import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/shared_data/models/profile/profile_model.dart';
+import '../../../domain/params/change_password_params.dart';
 import '../../../domain/params/edit_profile_params.dart';
 import 'remote_profile_data_source.dart';
 

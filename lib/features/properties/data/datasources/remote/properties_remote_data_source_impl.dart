@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
 import 'package:dio/dio.dart';
 import 'package:translator/translator.dart';
 
@@ -10,6 +9,7 @@ import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/shared_data/models/property_model.dart';
 import '../../../../../core/utils/app_endpoints.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/extensions/language.dart';
 import '../../../params/add_property_params.dart';
 import 'properties_remote_data_source.dart';
 

@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../features/properties/presentation/widgets/propert_area_widget.dart';
 import '../../../features/properties/presentation/widgets/property_address_widget.dart';
 import '../../../features/properties/presentation/widgets/property_publisher_section.dart';
+import '../../helpers/localization_helper.dart';
 import '../../shared_data/entities/property_entity.dart';
 import '../../utils/extensions/context.dart';
 import '../../utils/extensions/media_query.dart';

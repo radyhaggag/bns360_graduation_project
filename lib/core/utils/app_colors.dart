@@ -1,5 +1,6 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
+
+import 'extensions/context.dart';
 
 abstract class AppColors {
   static const black = Color(0xff121212);

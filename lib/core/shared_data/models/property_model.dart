@@ -1,6 +1,5 @@
-import 'package:bns360_graduation_project/core/helpers/api_images_helper.dart';
-import 'package:bns360_graduation_project/core/utils/enums/offer_type.dart';
-
+import '../../helpers/api_images_helper.dart';
+import '../../utils/enums/offer_type.dart';
 import '../entities/property_entity.dart';
 import 'contact_model.dart';
 import 'publisher_details_model.dart';

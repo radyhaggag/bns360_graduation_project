@@ -1,28 +1,24 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/core/helpers/date_formatter.dart';
-import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/core/widgets/job_card/save_job_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/route_config.dart';
 import '../../../generated/l10n.dart';
+import '../../helpers/date_formatter.dart';
+import '../../helpers/localization_helper.dart';
 import '../../shared_data/entities/job_entity.dart';
+import '../../utils/app_colors.dart';
 import '../../utils/app_fonts.dart';
+import '../../utils/extensions/context.dart';
 import '../../utils/extensions/media_query.dart';
+import '../../utils/extensions/price.dart';
+import '../buttons/custom_buttons.dart';
 import 'job_publisher_image.dart';
+import 'save_job_btn.dart';
 
 part 'job_date_and_details_section.dart';
-
 part 'job_description_section.dart';
-
 part 'job_details_items.dart';
-
 part 'job_publisher_section.dart';
-
 part 'title_and_sub_title_section.dart';
 
 class JobCard extends StatelessWidget {

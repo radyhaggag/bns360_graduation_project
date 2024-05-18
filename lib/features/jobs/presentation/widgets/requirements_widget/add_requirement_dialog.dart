@@ -1,11 +1,11 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/input_fields/custom_reactive_input_field.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
+import '../../../../../generated/l10n.dart';
 
 class AddRequirementDialog extends StatefulWidget {
   const AddRequirementDialog({

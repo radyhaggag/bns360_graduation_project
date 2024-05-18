@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/utils/assets/app_images.dart';
+import '../../../../core/utils/extensions/context.dart';
 
 class SocialIconsButtons extends StatelessWidget {
   const SocialIconsButtons({super.key});

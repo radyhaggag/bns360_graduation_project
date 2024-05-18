@@ -1,11 +1,11 @@
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../core/utils/extensions/media_query.dart';
+import '../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../generated/l10n.dart';
 import '../bloc/my_services_bloc.dart';
 
 class SubmitServiceButton extends StatelessWidget {

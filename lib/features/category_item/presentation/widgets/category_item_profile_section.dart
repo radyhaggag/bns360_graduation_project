@@ -1,6 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,9 +8,12 @@ import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../core/utils/app_fonts.dart';
 import '../../../../core/utils/enums/user_type.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../core/widgets/icons/favorite_icon.dart';
 import '../../../../core/widgets/icons/profile_circle_icon.dart';
 import '../../../../core/widgets/icons/rounded_icon_btn.dart';
+import '../../../../generated/l10n.dart';
 import '../../../conversations/domain/params/conversation_screen_params.dart';
 
 class CategoryItemProfileSection extends StatelessWidget {

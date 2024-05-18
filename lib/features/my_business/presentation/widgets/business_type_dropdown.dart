@@ -1,10 +1,10 @@
-import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/category_entity.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/helpers/localization_helper.dart';
+import '../../../../core/shared_data/entities/category_entity.dart';
 import '../../../../core/widgets/custom_dropdown.dart';
+import '../../../../generated/l10n.dart';
 import '../bloc/my_business_bloc.dart';
 
 class BusinessTypeDropdown extends StatelessWidget {
@@ -18,7 +18,7 @@ class BusinessTypeDropdown extends StatelessWidget {
         return CustomDropdown<CategoryEntity>(
           value: myBusinessBloc.selectedBusinessCategory,
           onTapCallback: (value) => myBusinessBloc.add(
-            SelectBusinessCategoryEvent(categoryId: value),
+            SelectBusinessCategoryEvent(categoryId: (value as CategoryEntity).id),
           ),
           items: myBusinessBloc.businessCategories.map((e) => e).toList(),
           viewItems: myBusinessBloc.businessCategories

@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/profile_bloc.dart';

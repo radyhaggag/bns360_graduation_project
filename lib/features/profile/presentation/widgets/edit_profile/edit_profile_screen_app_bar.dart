@@ -1,5 +1,6 @@
-import '../../../../../core/widgets/custom_back_button.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/widgets/custom_back_button.dart';
 
 class EditProfileScreenAppBar extends StatelessWidget {
   const EditProfileScreenAppBar({super.key, this.imageUrl});

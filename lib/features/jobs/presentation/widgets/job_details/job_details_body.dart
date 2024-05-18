@@ -1,15 +1,15 @@
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/core/widgets/contact_with_bottom_sheet.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_details/job_details_pained_section.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/job_entity.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../../core/widgets/contact_with_bottom_sheet.dart';
+import '../../../../../generated/l10n.dart';
 import 'job_details_bottom_section.dart';
+import 'job_details_pained_section.dart';
 
 class JobDetailsBody extends StatelessWidget {
   const JobDetailsBody({super.key, required this.jobEntity});

@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../widgets/edit_service/edit_service_body/edit_service_body.dart';
 
 class EditServiceScreen extends StatelessWidget {

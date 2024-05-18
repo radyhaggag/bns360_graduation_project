@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/widgets/main_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/widgets/main_network_image.dart';
 import '../../../domain/entities/message_entity.dart';
 import 'message_text_template.dart';
 

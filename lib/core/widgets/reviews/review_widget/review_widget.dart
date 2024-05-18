@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,6 +5,7 @@ import '../../../helpers/date_formatter.dart';
 import '../../../shared_data/entities/review_entity.dart';
 import '../../../utils/app_fonts.dart';
 import '../../../utils/constants.dart';
+import '../../../utils/extensions/context.dart';
 import '../../main_network_image.dart';
 import '../../main_rating_bar.dart';
 

@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:bns360_graduation_project/core/shared_data/entities/category_entity.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/iterable.dart';
-import 'package:bns360_graduation_project/features/my_business/domain/repositories/my_business_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../core/shared_data/entities/category_entity.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/utils/extensions/iterable.dart';
 import '../../domain/params/add_business_params.dart';
+import '../../domain/repositories/my_business_repo.dart';
 
 part 'my_business_event.dart';
 part 'my_business_state.dart';
@@ -115,7 +115,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     res.fold(
       (l) => emit(GetMyBusinessErrorState(message: l.message)),
       (r) {
-        myBusinessItems = r;
+        if (r != null) myBusinessItems.add(r);
         emit(GetMyBusinessSuccessState());
       },
     );
@@ -171,11 +171,12 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     final params = event.categoryItemEntity.copyWith(
       latitude: _businessLat,
       longitude: _businessLng,
+      removeImages: pickedImages.isEmpty,
       categoriesModelId: selectedBusinessCategory?.id,
-      businessImageName1: pickedImages[0].path,
-      businessImageName2: pickedImages[1].path,
-      businessImageName3: pickedImages[2].path,
-      businessImageName4: pickedImages[3].path,
+      businessImageName1: pickedImages.isNotEmpty ? pickedImages[0].path : null,
+      businessImageName2: pickedImages.length > 1 ? pickedImages[1].path : null,
+      businessImageName3: pickedImages.length > 2 ? pickedImages[2].path : null,
+      businessImageName4: pickedImages.length > 2 ? pickedImages[3].path : null,
       profileImageName: _mainBusinessImage?.path,
     );
 

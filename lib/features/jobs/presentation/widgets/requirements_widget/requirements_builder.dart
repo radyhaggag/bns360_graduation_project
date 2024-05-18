@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/enums.dart';
 import '../../bloc/jobs_bloc.dart';
 import 'requirement_widget.dart';
 

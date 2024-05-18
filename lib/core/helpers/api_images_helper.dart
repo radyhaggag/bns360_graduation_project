@@ -13,8 +13,8 @@ abstract class APIImagesHelper {
   static Future<MultipartFile?> convertImageToMultipartFile(
     String? imagePath,
   ) async {
-    if (imagePath == null) return null;
-    String fileName = basename(imagePath);
+    if ((imagePath ?? "").isEmpty) return null;
+    String fileName = basename(imagePath!);
     return await MultipartFile.fromFile(
       imagePath,
       filename: fileName,

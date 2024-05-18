@@ -1,5 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
-
+import '../../../../core/utils/enums/user_type.dart';
 import '../../domain/entities/login_entity.dart';
 
 class LoginModel extends LoginEntity {

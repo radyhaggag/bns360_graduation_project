@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../../../../core/shared_data/entities/property_entity.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../../generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

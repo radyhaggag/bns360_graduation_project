@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/publisher_details_entity.dart';
-import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
+import '../../utils/enums/user_type.dart';
+import '../entities/publisher_details_entity.dart';
 
 class PublisherDetailsModel extends PublisherDetailsEntity {
   const PublisherDetailsModel({

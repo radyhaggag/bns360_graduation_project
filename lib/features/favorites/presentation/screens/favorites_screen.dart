@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/injector_container.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../bloc/favorites_bloc.dart';
 import '../widgets/favorites_body.dart';
 import '../widgets/favorites_screen_app_bar.dart';

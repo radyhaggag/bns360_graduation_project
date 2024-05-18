@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/property_entity.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../../../config/route_config.dart';
+import '../../../../core/helpers/localization_helper.dart';
+import '../../../../core/shared_data/entities/property_entity.dart';
+import '../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../map/domain/params/map_params.dart';
+import '../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';

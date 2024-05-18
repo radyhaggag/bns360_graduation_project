@@ -1,9 +1,8 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/participant_entity.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/entities/message_entity.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/entities/unread_count_entity.dart';
-
+import '../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../core/shared_data/models/participant_model.dart';
 import '../../domain/entities/conversation_entity.dart';
+import '../../domain/entities/message_entity.dart';
+import '../../domain/entities/unread_count_entity.dart';
 import 'message_model.dart';
 import 'unread_count_model.dart';
 

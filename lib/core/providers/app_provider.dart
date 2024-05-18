@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/publisher_details_entity.dart';
-import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
+import '../shared_data/entities/publisher_details_entity.dart';
+import '../utils/enums/user_type.dart';
 
 import '../databases/local_storage/hive_manager.dart';
 import '../shared_data/entities/profile/profile_entity.dart';

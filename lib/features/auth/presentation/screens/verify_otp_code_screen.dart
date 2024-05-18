@@ -1,10 +1,10 @@
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/route_config.dart';
 import '../../../../core/helpers/custom_toast.dart';
 import '../../../../core/widgets/custom_back_button.dart';
+import '../../../../generated/l10n.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/verify_otp_code/verify_otp_code_body.dart';
 

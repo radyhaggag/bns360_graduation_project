@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../widgets/craftsman_body.dart';
 
 class CraftsmanScreen extends StatelessWidget {

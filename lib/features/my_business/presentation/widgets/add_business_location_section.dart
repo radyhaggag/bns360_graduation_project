@@ -1,7 +1,3 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -9,12 +5,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../../../../config/route_config.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/helpers/location_helper.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/utils/extensions/media_query.dart';
+import '../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../core/widgets/custom_marker.dart';
+import '../../../../generated/l10n.dart';
 import '../../../map/domain/params/map_params.dart';
+import '../bloc/my_business_bloc.dart';
 
 class AddBusinessLocationSection extends StatefulWidget {
   const AddBusinessLocationSection({super.key, this.categoryItemEntity});
@@ -51,6 +51,7 @@ class _AddBusinessLocationSectionState
 
   _getCurrentLocation() async {
     currentLocation = await LocationHelper.determinePosition(context);
+
     if (currentLocation != null) {
       centerPoint = LatLng(
         currentLocation!.latitude,
@@ -64,6 +65,22 @@ class _AddBusinessLocationSectionState
       );
       _mapController.move(centerPoint!, 9);
       setState(() {});
+    }
+    if (centerPoint != null && mounted) {
+      context.read<MyBusinessBloc>().add(
+            SelectBusinessLocationEvent(
+              lat: centerPoint!.latitude,
+              lng: centerPoint!.longitude,
+            ),
+          );
+    } else {
+      if (!mounted) return;
+      context.read<MyBusinessBloc>().add(
+            const SelectBusinessLocationEvent(
+              lat: 50.5,
+              lng: 30.51,
+            ),
+          );
     }
   }
 

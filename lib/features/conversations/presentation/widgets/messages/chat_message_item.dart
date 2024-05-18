@@ -1,11 +1,11 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/participant_entity.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/confirm_delete_pop_up.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../domain/entities/message_entity.dart';
 import '../../../domain/params/delete_message_params.dart';
 import '../../bloc/conversations_bloc.dart';

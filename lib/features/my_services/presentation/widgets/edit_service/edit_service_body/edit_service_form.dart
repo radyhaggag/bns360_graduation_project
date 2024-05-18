@@ -1,16 +1,16 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
-import 'package:bns360_graduation_project/core/widgets/input_fields/custom_reactive_input_field.dart';
-import 'package:bns360_graduation_project/core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
-import 'package:bns360_graduation_project/features/my_services/domain/params/add_service_params.dart';
-import 'package:bns360_graduation_project/features/my_services/presentation/widgets/add_service/add_service_time_section.dart';
-import 'package:bns360_graduation_project/features/my_services/presentation/widgets/add_service/service_type_dropdown.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
+import '../../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
+import '../../../../../../generated/l10n.dart';
+import '../../../../domain/params/add_service_params.dart';
 import '../../../bloc/my_services_bloc.dart';
+import '../../add_service/add_service_time_section.dart';
+import '../../add_service/service_type_dropdown.dart';
 import '../../submit_service_button.dart';
 import '../../upload_service_images_section.dart';
 

@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/enums/job_type.dart';
+import '../../../../core/utils/enums/job_type.dart';
 
 class AddJobParams {
   final String title;

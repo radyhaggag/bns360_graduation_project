@@ -1,10 +1,11 @@
-import 'package:bns360_graduation_project/core/shared_data/models/category_model.dart';
-
+import '../../helpers/api_images_helper.dart';
 import '../entities/category_item_entity.dart';
+import 'category_model.dart';
 import 'contact_model.dart';
 
 class CategoryItemModel extends CategoryItemEntity {
   const CategoryItemModel({
+    required super.userId,
     required super.id,
     required super.businessAddressArabic,
     required super.businessAddressEnglish,
@@ -29,22 +30,23 @@ class CategoryItemModel extends CategoryItemEntity {
 
   factory CategoryItemModel.fromJson(Map<String, dynamic> json) {
     return CategoryItemModel(
+      userId: json['userId'],
       id: json['id'],
       businessAddressArabic: json['businessAddressArabic'],
       businessAddressEnglish: json['businessAddressEnglish'],
       businessDescriptionArabic: json['businessDescriptionArabic'],
       businessDescriptionEnglish: json['businessDescriptionEnglish'],
-      businessImageName1: json['businessImageName1'],
-      businessImageName2: json['businessImageName2'],
-      businessImageName3: json['businessImageName3'],
-      businessImageName4: json['businessImageName4'],
+      profileImageName: json['profileImageName'] ?? json['profileImage'],
+      businessImageName1: json['businessImageName1'] ?? json['businessImage1'],
+      businessImageName2: json['businessImageName2'] ?? json['businessImage2'],
+      businessImageName3: json['businessImageName3'] ?? json['businessImage3'],
+      businessImageName4: json['businessImageName4'] ?? json['businessImage4'],
       businessNameArabic: json['businessNameArabic'],
       businessNameEnglish: json['businessNameEnglish'],
       categoriesModel: CategoryModel.fromJson(json['categoriesModel']),
       categoriesModelId: json['categoriesModelId'],
       closing: json['closing'],
       opening: json['opening'],
-      profileImageName: json['profileImageName'],
       holidays: json['holidays'],
       contacts: ContactModel.fromJson(json),
       latitude: json['latitude'],
@@ -52,22 +54,28 @@ class CategoryItemModel extends CategoryItemEntity {
     );
   }
 
-  Map<String, dynamic> toJson() {
+  Future<Map<String, dynamic>> toJson() async {
     final map = {
+      'UserId': userId,
       'BusinessAddressArabic': businessAddressArabic,
       'BusinessAddressEnglish': businessAddressEnglish,
       'BusinessDescriptionArabic': businessDescriptionArabic,
       'BusinessDescriptionEnglish': businessDescriptionEnglish,
-      'BusinessImageName1': businessImageName1,
-      'BusinessImageName2': businessImageName2,
-      'BusinessImageName3': businessImageName3,
-      'BusinessImageName4': businessImageName4,
       'BusinessNameArabic': businessNameArabic,
       'BusinessNameEnglish': businessNameEnglish,
+      'ProfileImage':
+          await APIImagesHelper.convertImageToMultipartFile(profileImageName),
+      'BusinessImage1':
+          await APIImagesHelper.convertImageToMultipartFile(businessImageName1),
+      'BusinessImage2':
+          await APIImagesHelper.convertImageToMultipartFile(businessImageName2),
+      'BusinessImage3':
+          await APIImagesHelper.convertImageToMultipartFile(businessImageName3),
+      'BusinessImage4':
+          await APIImagesHelper.convertImageToMultipartFile(businessImageName4),
       'CategoriesModelId': categoriesModelId,
       'Closing': closing,
       'Opening': opening,
-      'ProfileImageName': profileImageName,
       'Holidays': holidays,
       "Phonenumbers": contacts.phoneNumber,
       "Emails": contacts.email,
@@ -77,13 +85,18 @@ class CategoryItemModel extends CategoryItemEntity {
     };
 
     if (id != -1) {
-      map.addAll({'id': id});
+      map['Id'] = id;
     }
+
+    // remove null values
+    map.removeWhere((key, value) => value == null);
+
     return map;
   }
 
   factory CategoryItemModel.fromEntity(CategoryItemEntity entity) {
     return CategoryItemModel(
+      userId: entity.userId,
       id: entity.id,
       businessAddressArabic: entity.businessAddressArabic,
       businessAddressEnglish: entity.businessAddressEnglish,

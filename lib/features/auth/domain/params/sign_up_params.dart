@@ -1,5 +1,6 @@
-import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../core/utils/enums/user_type.dart';
 
 class SignUpParams extends Equatable {
   final String displayName;

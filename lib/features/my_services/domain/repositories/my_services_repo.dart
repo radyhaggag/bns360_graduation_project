@@ -1,6 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
-
 import '../../../../core/shared_data/entities/craft_entity.dart';
+import '../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../params/add_service_params.dart';
 

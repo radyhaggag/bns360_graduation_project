@@ -1,12 +1,13 @@
-import 'package:bns360_graduation_project/core/utils/main_logger.dart';
+import '../utils/main_logger.dart';
 import 'package:dartz/dartz.dart';
 
 import '../errors/error_handler.dart';
 import '../utils/custom_types.dart';
 
 FutureEither<T> executeAndHandleErrorAsync<T>(
-  Future<T> Function() function,
-) async {
+  Future<T> Function() function, {
+  Future<T> Function(dynamic e)? onFailure,
+}) async {
   try {
     final result = await function();
     return Right(result);
@@ -14,6 +15,10 @@ FutureEither<T> executeAndHandleErrorAsync<T>(
     // if (kDebugMode) {
     //   rethrow;
     // }
+    if (onFailure != null) {
+      final result = await onFailure.call(e);
+      return Right(result);
+    }
     final failure = ErrorHandler.handle(e).failure;
     logger.e(e);
     return Left(failure);

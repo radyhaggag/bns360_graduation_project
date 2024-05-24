@@ -25,7 +25,7 @@ class BottomNavBarBloc extends Bloc<BottomNavBarEvent, BottomNavBarState> {
     CraftsScreen.getWithBlocProvider(),
     PropertiesScreen.getWithBlocProvider(),
     ConversationsScreen.getWithBlocProvider(), // Not on nav bar
-    ProfileScreen.getWithBlocProvider(), // Not on nav bar
+    const ProfileScreen(), // Not on nav bar
   ];
   int bottomNavbarIndex = 0;
 

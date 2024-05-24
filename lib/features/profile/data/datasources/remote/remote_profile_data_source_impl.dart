@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:bns360_graduation_project/core/helpers/api_images_helper.dart';
+import 'package:dio/dio.dart';
+
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/databases/secure_storage/token_manager.dart';
 import '../../../../../core/providers/app_provider.dart';
@@ -16,23 +21,39 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
     required this.tokenManager,
   });
   @override
-  Future<void> editProfile(EditProfileParams editProfileParams) async {}
+  Future<void> editProfile(EditProfileParams editProfileParams) async {
+    var currentUser = AppProvider().getProfile();
+    if (editProfileParams.newImagePath != null) {
+      final newImageFile = await APIImagesHelper.convertImageToMultipartFile(
+        editProfileParams.newImagePath!,
+      );
+      final data = {'image': newImageFile, 'id': currentUser?.id};
+      final formData = FormData.fromMap(data);
+      await apiConsumer.patch(
+        endpoint: AppEndpoints.editProfileImage,
+        formData: formData,
+      );
+    }
+    final newName = editProfileParams.name;
+    if (newName != currentUser?.name && newName != null) {
+      await apiConsumer.patch(
+        endpoint: AppEndpoints.editProfileName(currentUser!.id),
+        customData: json.encode(newName),
+      );
+    }
+  }
 
   @override
   Future<ProfileModel?> getProfile() async {
     final userId = AppProvider().getProfile()?.id;
 
-    if (userId == null) {
-      return null;
-    }
+    if (userId == null) return null;
 
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getProfile(userId),
     );
 
-    final ProfileModel profile = ProfileModel.fromJson(
-      res.data,
-    );
+    final profile = ProfileModel.fromJson(res.data);
 
     await profile.saveToCache();
 
@@ -41,7 +62,10 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
 
   @override
   Future<void> changePassword(ChangePasswordParams changePasswordParams) async {
-    await Future.delayed(const Duration(seconds: 2));
+    await apiConsumer.post(
+      endpoint: AppEndpoints.changePassword,
+      data: changePasswordParams.toMap(),
+    );
   }
 
   @override

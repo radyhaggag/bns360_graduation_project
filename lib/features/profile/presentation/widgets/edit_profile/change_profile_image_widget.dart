@@ -30,10 +30,13 @@ class ChangeProfileImageWidget extends StatelessWidget {
           alignment: Alignment.bottomRight,
           children: [
             if (newImagePath != null)
-              Image.file(
-                File(newImagePath),
-                width: 100.r,
-                height: 100.r,
+              ClipOval(
+                child: Image.file(
+                  File(newImagePath),
+                  width: 100.r,
+                  height: 100.r,
+                  fit: BoxFit.cover,
+                ),
               )
             else
               ClipOval(

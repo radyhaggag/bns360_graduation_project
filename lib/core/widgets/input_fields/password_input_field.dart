@@ -1,11 +1,11 @@
-import '../../utils/app_colors.dart';
-import '../../utils/app_fonts.dart';
-import '../../utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../generated/l10n.dart';
+import '../../utils/app_colors.dart';
+import '../../utils/app_fonts.dart';
+import '../../utils/extensions/context.dart';
 import 'custom_reactive_input_field.dart';
 
 class PasswordInputField extends StatefulWidget {
@@ -13,12 +13,14 @@ class PasswordInputField extends StatefulWidget {
   final String? hint;
   final TextInputAction? textInputAction;
   final bool showRequirements;
+  final String controlName;
 
   const PasswordInputField({
     super.key,
     this.title,
     this.hint,
     this.textInputAction,
+    this.controlName = 'password',
     this.showRequirements = false,
   });
 
@@ -48,14 +50,14 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
   @override
   Widget build(BuildContext context) {
     return ReactiveFormConsumer(builder: (context, form, child) {
-      final password = (form.findControl("password")?.value ?? "") as String;
+      final password = (form.findControl(widget.controlName)?.value ?? "") as String;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SharedPasswordInputField(
             title: widget.title ?? S.of(context).password,
             hint: widget.hint ?? S.of(context).enterPassword,
-            formControlName: 'password',
+            formControlName: widget.controlName,
             textInputAction: widget.textInputAction,
             viewValidatorError: !widget.showRequirements,
           ),

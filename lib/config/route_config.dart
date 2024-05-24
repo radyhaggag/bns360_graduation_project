@@ -1,6 +1,7 @@
 import 'package:bns360_graduation_project/features/category_item/domain/params.dart/category_item_screen_params.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/screens/add_business_screen.dart';
+import 'package:bns360_graduation_project/features/profile/presentation/screen/change_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -108,6 +109,7 @@ abstract class Routes {
   static const myServices = '/myServices';
   static const addService = '/addService';
   static const editService = '/editService';
+  static const changePassword = '/changePassword';
 }
 
 abstract class RouteConfig {
@@ -454,6 +456,12 @@ abstract class RouteConfig {
             ),
           ),
         );
+
+      case Routes.changePassword:
+        return MaterialPageRoute(
+          builder: (context) => const ChangePasswordScreen(),
+        );
+
       default:
         return null;
     }

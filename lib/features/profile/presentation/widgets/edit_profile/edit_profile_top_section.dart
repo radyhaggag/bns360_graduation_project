@@ -39,11 +39,11 @@ class EditProfileTopSection extends StatelessWidget {
         const SizedBox(height: 12),
         BlocBuilder<ProfileBloc, ProfileState>(
           builder: (context, state) {
-            final isProfileImageCleared =
-                context.read<ProfileBloc>().isProfileImageCleared;
-            if (isProfileImageCleared) {
+            final newImagePath = context.read<ProfileBloc>().newImagePath;
+            if (newImagePath == null) {
               return const SizedBox.shrink();
             }
+
             return CustomElevatedButton(
               label: S.of(context).remove_profile_image,
               width: 200.w,

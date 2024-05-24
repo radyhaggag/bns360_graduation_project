@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,9 +17,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }) : super(ProfileInitial()) {
     on<ChangeProfileImageEvent>(_changeProfileImage);
     on<ClearProfileImageEvent>(_clearProfileImage);
-    on<EditProfileDataEvent>(_editProfileImage);
+    on<EditProfileDataEvent>(_editProfileData);
     on<GetProfileEvent>(_getProfile);
-    on<RemoveProfileImageEvent>(_removeProfileImage);
     on<ChangePasswordEvent>(_changePassword);
     on<SignOutEvent>(_signOut);
   }
@@ -58,12 +55,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileImageChangedState());
   }
 
-  _editProfileImage(
+  _editProfileData(
     EditProfileDataEvent event,
     Emitter<ProfileState> emit,
   ) async {
     emit(EditProfileLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final editParams = EditProfileParams(
       email: event.email,
@@ -76,7 +72,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     res.fold(
       (l) => emit(EditProfileErrorState(message: l.message)),
-      (r) => emit(EditProfileSuccessState()),
+      (r) {
+        _newImagePath = null;
+
+        add(const GetProfileEvent());
+        emit(EditProfileSuccessState());
+      },
     );
   }
 
@@ -84,6 +85,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     GetProfileEvent event,
     Emitter<ProfileState> emit,
   ) async {
+    if (event.localProfile && _profile != null) {
+      emit(GetProfileSuccessState(profileEntity: _profile!));
+      return;
+    }
     emit(GetProfileLoadingState());
 
     final res = await profileRepo.getProfile();
@@ -100,26 +105,19 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     );
   }
 
-  _removeProfileImage(
-    RemoveProfileImageEvent event,
-    Emitter<ProfileState> emit,
-  ) {
-    emit(ProfileImageChangedState());
-  }
-
   _changePassword(
     ChangePasswordEvent event,
     Emitter<ProfileState> emit,
   ) async {
     emit(ChangePasswordLoadingState());
 
-    final currentEmail = AppProvider().getProfile()?.email;
-    if (currentEmail == null) {
+    final userId = AppProvider().getProfile()?.id;
+    if (userId == null) {
       emit(const ChangePasswordErrorState(message: "You must logged in first"));
       return;
     }
     final params = ChangePasswordParams(
-      email: currentEmail,
+      userId: userId,
       oldPassword: event.oldPassword,
       newPassword: event.newPassword,
     );

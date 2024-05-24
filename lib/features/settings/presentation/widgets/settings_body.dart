@@ -34,7 +34,9 @@ class SettingsBody extends StatelessWidget {
           SettingsItemTile(
             title: S.of(context).change_password,
             svgPath: AppSvg.key,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.changePassword);
+            },
           ),
           SettingsSectionTile(
             title: S.of(context).app_settings,

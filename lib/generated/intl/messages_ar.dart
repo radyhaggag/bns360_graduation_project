@@ -152,6 +152,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterName": MessageLookupByLibrary.simpleMessage("ادخل اسمك بالكامل"),
         "enterNewPassword":
             MessageLookupByLibrary.simpleMessage("اكتب كلمة مرور جديدة"),
+        "enterOldPassword":
+            MessageLookupByLibrary.simpleMessage("ادخل كلمة المرور القديمة"),
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("ادخل كلمة المرور"),
         "enterPhoneNumber":
@@ -173,6 +175,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل عنوانك"),
         "equals_validation_message":
             MessageLookupByLibrary.simpleMessage("الحقول يجب أن تكون متساوية"),
+        "failedToChangePassword":
+            MessageLookupByLibrary.simpleMessage("فشل تغيير كلمة المرور"),
         "favorites": MessageLookupByLibrary.simpleMessage("لمفضلة"),
         "find_your_home": MessageLookupByLibrary.simpleMessage("ابحث عن منزلك"),
         "find_your_job": MessageLookupByLibrary.simpleMessage("لنجد وظيفتك"),
@@ -245,6 +249,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يرجى إدخال رقم صحيح"),
         "offer_type": MessageLookupByLibrary.simpleMessage("نوع العرض"),
         "ok": MessageLookupByLibrary.simpleMessage("حسنا"),
+        "oldPassword":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور القديمة"),
         "open_now": MessageLookupByLibrary.simpleMessage("مفتوح الان"),
         "optional": MessageLookupByLibrary.simpleMessage("اختيارى"),
         "or": MessageLookupByLibrary.simpleMessage("أو"),

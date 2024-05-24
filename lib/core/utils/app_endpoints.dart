@@ -51,6 +51,10 @@ abstract class AppEndpoints {
 
   //* PROFILE
   static String getProfile(String userId) => "$baseUrl/api/Profile/$userId";
+  static const editProfileImage = "$baseUrl/api/Profile/updateImage";
+  static String editProfileName(String userId) =>
+      "$baseUrl/api/Profile/$userId/name";
+  static const changePassword = "$baseUrl/api/Account/ChangePassword";
 
   //* REVIEWS
   static String getBusinessReviews(int businessId) {

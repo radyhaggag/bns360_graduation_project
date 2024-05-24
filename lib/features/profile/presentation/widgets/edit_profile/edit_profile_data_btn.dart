@@ -23,16 +23,19 @@ class EditProfileDataBtn extends StatelessWidget {
             final name = (formControls['name']?.value ?? "") as String;
 
             return CustomElevatedButton(
-              onPressed: (form.valid && isProfileDataChanged(email, name)) ||
-                      context.read<ProfileBloc>().newImagePath != null ||
-                      context.read<ProfileBloc>().isProfileImageCleared
-                  ? () {
-                      context.read<ProfileBloc>().add(EditProfileDataEvent(
-                            email: email,
-                            name: name,
-                          ));
-                    }
-                  : null,
+              onPressed: () {
+                context.read<ProfileBloc>().add(EditProfileDataEvent(
+                      email: email,
+                      name: name,
+                    ));
+              },
+              isLoading: state is EditProfileLoadingState,
+              isDisabled: !form.valid ||
+                  !isProfileDataChanged(
+                    email,
+                    name,
+                    context: context,
+                  ),
               label: S.of(context).save,
               width: 100.w,
             );
@@ -42,8 +45,17 @@ class EditProfileDataBtn extends StatelessWidget {
     );
   }
 
-  bool isProfileDataChanged(String email, String name) {
+  bool isProfileDataChanged(
+    String email,
+    String name, {
+    required BuildContext context,
+  }) {
+    final bloc = context.read<ProfileBloc>();
+
     final profile = AppProvider().getProfile();
-    return email != profile?.email || name != profile?.name;
+    return email != profile?.email ||
+        name != profile?.name ||
+        bloc.profile?.imageUrl != profile?.imageUrl ||
+        bloc.isProfileImageCleared || bloc.newImagePath != null;
   }
 }

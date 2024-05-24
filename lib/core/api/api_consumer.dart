@@ -19,6 +19,7 @@ abstract class APIConsumer {
     Map<String, dynamic>? queries,
     FormData? formData,
     Map<String, dynamic>? data,
+    dynamic customData,
   });
   Future<Response<dynamic>> put({
     required String endpoint,

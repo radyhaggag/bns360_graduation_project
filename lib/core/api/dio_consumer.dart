@@ -63,11 +63,12 @@ class DioConsumer implements APIConsumer {
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
     FormData? formData,
+    dynamic customData,
   }) async {
     return await dio.patch(
       endpoint,
       queryParameters: queries,
-      data: formData ?? data,
+      data: customData ?? formData ?? data,
     );
   }
 

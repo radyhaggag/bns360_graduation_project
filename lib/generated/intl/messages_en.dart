@@ -154,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterName": MessageLookupByLibrary.simpleMessage("Enter your name"),
         "enterNewPassword":
             MessageLookupByLibrary.simpleMessage("Enter new password"),
+        "enterOldPassword":
+            MessageLookupByLibrary.simpleMessage("Enter old password"),
         "enterPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "enterPhoneNumber":
@@ -176,6 +178,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your address"),
         "equals_validation_message":
             MessageLookupByLibrary.simpleMessage("Fields must be equal"),
+        "failedToChangePassword":
+            MessageLookupByLibrary.simpleMessage("Failed to change password"),
         "favorites": MessageLookupByLibrary.simpleMessage("Favorites"),
         "find_your_home":
             MessageLookupByLibrary.simpleMessage("Find your home"),
@@ -250,6 +254,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please enter a valid number"),
         "offer_type": MessageLookupByLibrary.simpleMessage("Offer type"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "oldPassword": MessageLookupByLibrary.simpleMessage("Old password"),
         "open_now": MessageLookupByLibrary.simpleMessage("Open now"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or": MessageLookupByLibrary.simpleMessage("Or"),

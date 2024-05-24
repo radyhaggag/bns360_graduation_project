@@ -470,6 +470,26 @@ class S {
     );
   }
 
+  /// `Old password`
+  String get oldPassword {
+    return Intl.message(
+      'Old password',
+      name: 'oldPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter old password`
+  String get enterOldPassword {
+    return Intl.message(
+      'Enter old password',
+      name: 'enterOldPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm new password`
   String get confirmNewPassword {
     return Intl.message(
@@ -495,6 +515,16 @@ class S {
     return Intl.message(
       'Your password has been changed successfully',
       name: 'passwordChangedMsg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to change password`
+  String get failedToChangePassword {
+    return Intl.message(
+      'Failed to change password',
+      name: 'failedToChangePassword',
       desc: '',
       args: [],
     );

@@ -82,7 +82,7 @@ class _EditProfileBottomSectionState extends State<EditProfileBottomSection> {
               fontSize: AppFontSize.subTitle,
               heightBetweenLabelAndField: 15,
               keyboardType: TextInputType.name,
-              textInputAction: TextInputAction.next,
+              textInputAction: TextInputAction.done,
             ),
             const SizedBox(height: 30),
             EditInputField(

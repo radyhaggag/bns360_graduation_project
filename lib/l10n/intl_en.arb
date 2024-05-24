@@ -247,5 +247,6 @@
   "thursday": "Thursday",
   "friday": "Friday",
   "saturday": "Saturday",
-  "sunday": "Sunday"
+  "sunday": "Sunday",
+  "review_sent_successfully": "Your review sent successfully"
 }

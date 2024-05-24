@@ -1,8 +1,8 @@
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/databases/secure_storage/token_manager.dart';
-import '../../../../../core/helpers/load_json_from_asset.dart';
 import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/shared_data/models/profile/profile_model.dart';
+import '../../../../../core/utils/app_endpoints.dart';
 import '../../../domain/params/change_password_params.dart';
 import '../../../domain/params/edit_profile_params.dart';
 import 'remote_profile_data_source.dart';
@@ -19,9 +19,23 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
   Future<void> editProfile(EditProfileParams editProfileParams) async {}
 
   @override
-  Future<ProfileModel> getProfile() async {
-    final res = await loadJsonFromAsset('profile.json');
-    final profile = ProfileModel.fromJson(res['data']);
+  Future<ProfileModel?> getProfile() async {
+    final userId = AppProvider().getProfile()?.id;
+
+    if (userId == null) {
+      return null;
+    }
+
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.getProfile(userId),
+    );
+
+    final ProfileModel profile = ProfileModel.fromJson(
+      res.data,
+    );
+
+    await profile.saveToCache();
+
     return profile;
   }
 

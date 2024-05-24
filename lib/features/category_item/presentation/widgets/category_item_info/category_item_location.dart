@@ -2,12 +2,17 @@ part of 'category_item_info_section.dart';
 
 class _CategoryItemLocation extends StatelessWidget {
   const _CategoryItemLocation({
-    required this.location,
+    required this.categoryItemEntity,
   });
-  final String location;
+  final CategoryItemEntity categoryItemEntity;
 
   @override
   Widget build(BuildContext context) {
+    final location = LocalizationHelper.getLocalizedString(
+      context,
+      ar: categoryItemEntity.businessAddressArabic,
+      en: categoryItemEntity.businessAddressEnglish,
+    );
     return Row(
       children: [
         SvgPicture.asset(
@@ -22,15 +27,16 @@ class _CategoryItemLocation extends StatelessWidget {
             location,
             style: context.textTheme.titleMedium?.copyWith(
               fontSize: AppFontSize.details,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
+        const SizedBox(width: 15),
         MapBtn(
           mapParams: MapParams(
             location: location,
-            lat: 28.9826537,
-            lng: 31.0087249,
+            lat: categoryItemEntity.latitude,
+            lng: categoryItemEntity.longitude,
           ),
         ),
       ],

@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import 'category_entity.dart';
 import 'contact_entity.dart';
+import 'review_summary_entity.dart';
 
 class CategoryItemEntity extends Equatable {
   final int id;
@@ -26,6 +27,8 @@ class CategoryItemEntity extends Equatable {
   final String? businessImageName4;
   final double longitude;
   final double latitude;
+
+  final ReviewSummaryEntity? reviewSummary; // for ui
 
   final bool isBelongToMe;
 
@@ -51,6 +54,7 @@ class CategoryItemEntity extends Equatable {
     this.businessImageName2,
     this.businessImageName3,
     this.businessImageName4,
+    this.reviewSummary,
     this.isBelongToMe = false,
   });
 
@@ -89,6 +93,7 @@ class CategoryItemEntity extends Equatable {
     double? longitude,
     double? latitude,
     bool removeImages = false,
+    ReviewSummaryEntity? reviewSummary,
   }) {
     return CategoryItemEntity(
       userId: userId ?? this.userId,
@@ -122,6 +127,7 @@ class CategoryItemEntity extends Equatable {
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
       longitude: longitude ?? this.longitude,
       latitude: latitude ?? this.latitude,
+      reviewSummary: reviewSummary ?? this.reviewSummary,
     );
   }
 

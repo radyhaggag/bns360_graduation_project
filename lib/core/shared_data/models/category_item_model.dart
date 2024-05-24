@@ -36,11 +36,18 @@ class CategoryItemModel extends CategoryItemEntity {
       businessAddressEnglish: json['businessAddressEnglish'],
       businessDescriptionArabic: json['businessDescriptionArabic'],
       businessDescriptionEnglish: json['businessDescriptionEnglish'],
-      profileImageName: json['profileImageName'] ?? json['profileImage'],
-      businessImageName1: json['businessImageName1'] ?? json['businessImage1'],
-      businessImageName2: json['businessImageName2'] ?? json['businessImage2'],
-      businessImageName3: json['businessImageName3'] ?? json['businessImage3'],
-      businessImageName4: json['businessImageName4'] ?? json['businessImage4'],
+      profileImageName: APIImagesHelper.toServerImage(
+        json['profileImageName'],
+        addDefault: true,
+      )!,
+      businessImageName1:
+          APIImagesHelper.toServerImage(json['businessImageName1']),
+      businessImageName2:
+          APIImagesHelper.toServerImage(json['businessImageName2']),
+      businessImageName3:
+          APIImagesHelper.toServerImage(json['businessImageName3']),
+      businessImageName4:
+          APIImagesHelper.toServerImage(json['businessImageName4']),
       businessNameArabic: json['businessNameArabic'],
       businessNameEnglish: json['businessNameEnglish'],
       categoriesModel: CategoryModel.fromJson(json['categoriesModel']),
@@ -86,6 +93,10 @@ class CategoryItemModel extends CategoryItemEntity {
 
     if (id != -1) {
       map['Id'] = id;
+    }
+
+    if (profileImageName.isEmpty) {
+      map["ProfileImage"] = null;
     }
 
     // remove null values

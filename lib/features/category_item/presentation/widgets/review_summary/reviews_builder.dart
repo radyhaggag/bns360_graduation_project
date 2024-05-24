@@ -53,11 +53,13 @@ class _CategoryItemReviewsBuilderState
             controller: scrollController,
             child: Column(
               children: List.generate(
-                  context.read<CategoryItemBloc>().reviews.length, (index) {
-                final item = context.read<CategoryItemBloc>().reviews[index];
+                context.read<CategoryItemBloc>().reviews.length,
+                (index) {
+                  final item = context.read<CategoryItemBloc>().reviews[index];
 
-                return ReviewWidget(review: item);
-              }),
+                  return ReviewWidget(review: item);
+                },
+              ),
             ),
           ),
         );

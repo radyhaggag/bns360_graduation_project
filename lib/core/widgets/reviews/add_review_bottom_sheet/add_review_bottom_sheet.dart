@@ -1,9 +1,9 @@
-import '../../../utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../utils/app_fonts.dart';
+import '../../../utils/extensions/context.dart';
 import 'add_review_rating_bar.dart';
 import 'add_review_text_field.dart';
 import 'submit_review_btn.dart';
@@ -14,13 +14,19 @@ class AddReviewBottomSheet extends StatefulWidget {
   const AddReviewBottomSheet({
     super.key,
     required this.addReviewCallback,
+    this.initialReview,
+    this.initialRating,
   });
 
   final AddReviewCallback addReviewCallback;
+  final String? initialReview;
+  final double? initialRating;
 
   static show({
     required BuildContext context,
     required AddReviewCallback addReviewCallback,
+    String? initialReview,
+    double? initialRating,
   }) {
     showModalBottomSheet(
       context: context,
@@ -31,6 +37,8 @@ class AddReviewBottomSheet extends StatefulWidget {
         backgroundColor: context.theme.highlightColor,
         builder: (context) => AddReviewBottomSheet(
           addReviewCallback: addReviewCallback,
+          initialReview: initialReview,
+          initialRating: initialRating,
         ),
       ),
     );
@@ -41,9 +49,15 @@ class AddReviewBottomSheet extends StatefulWidget {
 }
 
 class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
-  double rate = 0.0;
+  double? rate;
   onRatingUpdate(double value) => setState(() => rate = value);
   final reviewController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    reviewController.text = widget.initialReview ?? '';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +88,7 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
           const SizedBox(height: 30),
           AddReviewRatingBar(
             onRatingUpdate: onRatingUpdate,
+            initialRating: widget.initialRating,
           ),
           const SizedBox(height: 30),
           AddReviewTextField(
@@ -81,10 +96,14 @@ class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
           ),
           const SizedBox(height: 30),
           SubmitReviewBtn(
-            onSubmit: () {
-              final review = reviewController.text;
-              widget.addReviewCallback.call(rate, review);
-            },
+            isDisabled: rate == null,
+            onSubmit: rate == null
+                ? null
+                : () {
+                    final review = reviewController.text;
+                    widget.addReviewCallback.call(rate!, review);
+                    Navigator.pop(context);
+                  },
           ),
         ],
       ),

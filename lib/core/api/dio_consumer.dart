@@ -16,8 +16,8 @@ class DioConsumer implements APIConsumer {
     dio.options = BaseOptions(
       baseUrl: AppEndpoints.baseUrl,
       headers: headers,
-      sendTimeout: const Duration(seconds: 30),
-      receiveTimeout: const Duration(seconds: 30),
+      sendTimeout: const Duration(seconds: 60),
+      receiveTimeout: const Duration(seconds: 60),
     );
 
     dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {

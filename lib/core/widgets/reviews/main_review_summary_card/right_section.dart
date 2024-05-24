@@ -4,9 +4,28 @@ class _RightSection extends StatelessWidget {
   const _RightSection({
     required this.showViewAllBtn,
     this.onViewAllTap,
+    this.fiveStarCount = 0,
+    this.fourStarCount = 0,
+    this.threeStarCount = 0,
+    this.twoStarCount = 0,
+    this.oneStarCount = 0,
   });
   final bool showViewAllBtn;
   final void Function()? onViewAllTap;
+
+  final int fiveStarCount;
+  final int fourStarCount;
+  final int threeStarCount;
+  final int twoStarCount;
+  final int oneStarCount;
+
+  int get _totalRating {
+    return fiveStarCount +
+        fourStarCount +
+        threeStarCount +
+        twoStarCount +
+        oneStarCount;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,29 +38,29 @@ class _RightSection extends StatelessWidget {
           ),
           const SizedBox(height: 15),
         ],
-        const _RatingProgressRow(
-          totalRating: 25,
-          numOfRating: 25,
+         _RatingProgressRow(
+          totalRating: _totalRating,
+          numOfRating: fiveStarCount,
           starNumber: 5,
         ),
-        const _RatingProgressRow(
-          totalRating: 25,
-          numOfRating: 20,
+         _RatingProgressRow(
+          totalRating: _totalRating,
+          numOfRating: fourStarCount,
           starNumber: 4,
         ),
-        const _RatingProgressRow(
-          totalRating: 25,
-          numOfRating: 15,
+         _RatingProgressRow(
+          totalRating: _totalRating,
+          numOfRating: threeStarCount,
           starNumber: 3,
         ),
-        const _RatingProgressRow(
-          totalRating: 25,
-          numOfRating: 10,
+         _RatingProgressRow(
+          totalRating: _totalRating,
+          numOfRating: twoStarCount,
           starNumber: 2,
         ),
-        const _RatingProgressRow(
-          totalRating: 25,
-          numOfRating: 5,
+         _RatingProgressRow(
+          totalRating: _totalRating,
+          numOfRating: oneStarCount,
           starNumber: 1,
         ),
       ],
@@ -73,7 +92,7 @@ class _RatingProgressRow extends StatelessWidget {
         ),
         const SizedBox(width: 5),
         _RatingProgressLine(
-          totalRating: totalRating,
+          totalRating: totalRating == numOfRating ? totalRating + 1 : totalRating,
           numOfRating: numOfRating,
         ),
       ],

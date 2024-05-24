@@ -18,7 +18,7 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  FutureEither<ProfileEntity> getProfile() async {
+  FutureEither<ProfileEntity?> getProfile() async {
     return executeAndHandleErrorAsync(
       () => remoteProfileDataSource.getProfile(),
     );

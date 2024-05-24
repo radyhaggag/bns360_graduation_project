@@ -244,5 +244,6 @@
   "wednesday": "الأربعاء",
   "thursday": "الخميس",
   "friday": "الجمعة",
-  "saturday": "السبت"
+  "saturday": "السبت",
+  "review_sent_successfully": "تم إرسال تقييمك بنجاح"
 }

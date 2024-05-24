@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:bns360_graduation_project/core/shared_data/entities/category_item_entity.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/review_summary_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +17,11 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
   CategoryItemBloc({
     required this.categoryItemRepo,
   }) : super(CategoryItemInitial()) {
+    on<GetCategoryItemReviewSummaryEvent>(_getCategoryItemReviewSummary);
     on<GetCategoryItemReviewsEvent>(_getCategoryItemReviews);
+    on<GetCategoryItemEvent>(_getCategoryItem);
+    on<SetCategoryItemEntityEvent>(_setCategoryItemEntity);
+    on<SendReviewEvent>(_sendReview);
   }
 
   List<ReviewEntity> reviews = [];
@@ -25,7 +31,6 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
     Emitter<CategoryItemState> emit,
   ) async {
     emit(GetCategoryItemReviewsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final res = await categoryItemRepo.getReviews(event.itemId);
 
@@ -34,6 +39,77 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
       (r) {
         reviews = r;
         emit(GetCategoryItemReviewsSuccessState(reviews: r));
+      },
+    );
+  }
+
+  ReviewSummaryEntity? reviewsSummary;
+
+  _getCategoryItemReviewSummary(
+    GetCategoryItemReviewSummaryEvent event,
+    Emitter<CategoryItemState> emit,
+  ) async {
+    emit(GetCategoryItemReviewSummaryLoadingState());
+
+    final res =
+        await categoryItemRepo.getCategoryItemReviewSummary(event.itemId);
+
+    res.fold(
+      (l) => emit(GetCategoryItemReviewSummaryErrorState(message: l.message)),
+      (r) {
+        reviewsSummary = r;
+        emit(GetCategoryItemReviewSummarySuccessState(summary: r));
+      },
+    );
+  }
+
+  CategoryItemEntity? categoryItem;
+
+  _getCategoryItem(
+    GetCategoryItemEvent event,
+    Emitter<CategoryItemState> emit,
+  ) async {
+    emit(GetCategoryItemLoadingState());
+
+    final res = await categoryItemRepo.getCategoryItem(event.itemId);
+
+    res.fold(
+      (l) => emit(GetCategoryItemErrorState(message: l.message)),
+      (r) {
+        categoryItem = r;
+        emit(GetCategoryItemSuccessState(categoryItem: r));
+      },
+    );
+  }
+
+  _setCategoryItemEntity(
+    SetCategoryItemEntityEvent event,
+    Emitter<CategoryItemState> emit,
+  ) {
+    categoryItem = event.categoryItemEntity;
+    emit(GetCategoryItemSuccessState(categoryItem: categoryItem!));
+  }
+
+  FutureOr<void> _sendReview(
+    SendReviewEvent event,
+    Emitter<CategoryItemState> emit,
+  ) async {
+    emit(SendCategoryItemReviewLoadingState());
+
+    final res = await categoryItemRepo.sendReview(
+      event.itemId,
+      event.rating,
+      event.review,
+    );
+
+    res.fold(
+      (l) => emit(SendCategoryItemReviewErrorState(
+        message: l.message,
+        rating: event.rating,
+        review: event.review,
+      )),
+      (r) {
+        emit(SendCategoryItemReviewSuccessState());
       },
     );
   }

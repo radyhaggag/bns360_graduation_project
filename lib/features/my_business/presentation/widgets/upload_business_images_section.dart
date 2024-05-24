@@ -22,7 +22,7 @@ class UploadBusinessImagesSection extends StatelessWidget {
         final pickedImages = context.read<MyBusinessBloc>().pickedImages;
         final networkImages = context.read<MyBusinessBloc>().networkImages;
         final isRemoveEnabled =
-            networkImages.isNotEmpty || pickedImages.length == 4;
+            networkImages.isNotEmpty || pickedImages.isNotEmpty;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

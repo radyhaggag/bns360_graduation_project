@@ -35,7 +35,7 @@ class SearchIconToggled extends CategoriesState {
 class GetCategoryItemsLoadingState extends CategoriesState {}
 
 class GetCategoryItemsSuccessState extends CategoriesState {
-  final List<CategoryItemEntity> items;
+  final List<CategoryItemInfoEntity> items;
 
   const GetCategoryItemsSuccessState({required this.items});
 }

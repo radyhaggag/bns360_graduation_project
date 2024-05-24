@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/helpers/api_images_helper.dart';
+
 import '../entities/category_entity.dart';
 
 class CategoryModel extends CategoryEntity {
@@ -13,7 +15,10 @@ class CategoryModel extends CategoryEntity {
       id: json['id'],
       categoryNameArabic: json['categoryNameArabic'],
       categoryNameEnglish: json['categoryNameEnglish'],
-      image: json['imageFileName']?? json["image"],
+      image: APIImagesHelper.toServerImage(
+        json['imageFileName'],
+        addDefault: true,
+      )!,
     );
   }
 

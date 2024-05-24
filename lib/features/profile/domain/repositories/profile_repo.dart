@@ -4,7 +4,7 @@ import '../params/change_password_params.dart';
 import '../params/edit_profile_params.dart';
 
 abstract class ProfileRepo {
-  FutureEither<ProfileEntity> getProfile();
+  FutureEither<ProfileEntity?> getProfile();
   FutureEither<void> editProfile(EditProfileParams editProfileParams);
   FutureEither<void> changePassword(ChangePasswordParams changePasswordParams);
   FutureEither<void> signOut();

@@ -32,9 +32,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
     final profile = ProfileEntity(
       id: loginModel.userId,
-      email: loginModel.email,
-      name: loginModel.displayName,
-      userType: loginModel.role.id,
+      email: params.email,
+      name: "", // Will updated on get profile
+      userType: 0, // Will updated on get profile
     );
 
     await profile.saveToCache();

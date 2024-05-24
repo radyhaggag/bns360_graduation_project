@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/review_summary_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,8 +27,7 @@ class CraftsmanReviewSummaryBody extends StatelessWidget {
             pinned: true,
             floating: false,
             delegate: SliverReviewsAppBarDelegate(
-              numOfRatings: craftsmanEntity.numOfRatings,
-              starsCount: craftsmanEntity.averageRatings,
+              reviewSummary: const ReviewSummaryEntity.empty(),
             ),
           ),
           if (!craftsmanEntity.isBelongToMe)

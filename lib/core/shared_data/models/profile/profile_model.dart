@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/helpers/api_images_helper.dart';
+
 import '../../entities/profile/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {
@@ -22,10 +24,10 @@ class ProfileModel extends ProfileEntity {
   factory ProfileModel.fromJson(Map<String, dynamic> map) {
     return ProfileModel(
       id: map['id'] as String,
-      name: map['name'] as String,
+      name: map['displayName'] as String,
       email: map['email'] as String,
-      imageUrl: map['image_url'] as String?,
-      userType: map['userType'] as int,
+      imageUrl: map['profileImageName'] != null? APIImagesHelper.toServerImage(map['profileImageName']):null,
+      userType: map['userRole'] as int,
     );
   }
 }

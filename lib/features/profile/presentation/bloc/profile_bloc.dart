@@ -85,7 +85,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     emit(GetProfileLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final res = await profileRepo.getProfile();
 
@@ -94,6 +93,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         emit(GetProfileErrorState(message: l.message));
       },
       (r) {
+        if (r == null) return;
         _profile = r;
         emit(GetProfileSuccessState(profileEntity: r));
       },

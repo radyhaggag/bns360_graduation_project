@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart';
@@ -20,5 +21,15 @@ abstract class APIImagesHelper {
       filename: fileName,
       contentType: MediaType('image', 'jpeg'),
     );
+  }
+
+  static String? toServerImage(
+    String? imageName, {
+    bool addDefault = false,
+  }) {
+    if (addDefault && (imageName ?? "").isEmpty) {
+      return kDefaultImgUrl;
+    }
+    return imageName;
   }
 }

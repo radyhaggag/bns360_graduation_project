@@ -1,6 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/models/category_item_model.dart';
-
 import '../../../../../core/api/api_consumer.dart';
+import '../../../../../core/shared_data/models/category_item_info_model.dart';
 import '../../../../../core/shared_data/models/category_model.dart';
 import '../../../../../core/utils/app_endpoints.dart';
 import 'categories_remote_data_source.dart';
@@ -22,12 +21,12 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
   }
 
   @override
-  Future<List<CategoryItemModel>> getCategoryItemsById(int id) async {
+  Future<List<CategoryItemInfoModel>> getCategoryItemsById(int id) async {
     final res = await apiConsumer.get(
-      endpoint: AppEndpoints.getAllCategoryItems,
+      endpoint: AppEndpoints.getAllCategoryItems(id),
     );
-    final categories = List<CategoryItemModel>.from(res.data.map(
-      (category) => CategoryItemModel.fromJson(category),
+    final categories = List<CategoryItemInfoModel>.from(res.data.map(
+      (category) => CategoryItemInfoModel.fromJson(category),
     ));
     return categories;
   }

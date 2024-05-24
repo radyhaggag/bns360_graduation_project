@@ -43,15 +43,15 @@ class CategoryItemInfoSection extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _CategoryItemLocation(
-            location: LocalizationHelper.getLocalizedString(
-              context,
-              ar: categoryItemEntity.businessAddressArabic,
-              en: categoryItemEntity.businessAddressEnglish,
-            ),
+            categoryItemEntity: categoryItemEntity,
           ),
           const SizedBox(height: 15),
-          const _CategoryItemContactInfo(
-            contactInfo: ["01030096242"],
+          _CategoryItemContactInfo(
+            contactInfo: [
+              categoryItemEntity.contacts.phoneNumber ??
+                  categoryItemEntity.contacts.whatsapp ??
+                  "",
+            ],
           ),
         ],
       ),

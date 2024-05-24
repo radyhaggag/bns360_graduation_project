@@ -304,6 +304,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "resetPasswordMsg":
             MessageLookupByLibrary.simpleMessage("يرجى كتابة شيء سوف تتذكره"),
+        "review_sent_successfully":
+            MessageLookupByLibrary.simpleMessage("تم إرسال تقييمك بنجاح"),
         "review_summary":
             MessageLookupByLibrary.simpleMessage("ملخص المراجعات"),
         "reviewer": MessageLookupByLibrary.simpleMessage("مراجع"),

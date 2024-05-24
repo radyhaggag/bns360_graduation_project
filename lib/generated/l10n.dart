@@ -2529,6 +2529,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Your review sent successfully`
+  String get review_sent_successfully {
+    return Intl.message(
+      'Your review sent successfully',
+      name: 'review_sent_successfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

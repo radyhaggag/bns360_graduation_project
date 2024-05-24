@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/shared_data/entities/category_entity.dart';
-import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/shared_data/entities/category_item_info_entity.dart';
 import '../../domain/repositories/categories_repo.dart';
 
 part 'categories_event.dart';
@@ -41,7 +41,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     );
   }
 
-  List<CategoryItemEntity> items = [];
+  List<CategoryItemInfoEntity> items = [];
 
   bool isSearchEnabled = false;
   final searchController = TextEditingController();
@@ -68,7 +68,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     emit(GetCategoryItemsLoadingState());
 
     final searchLowercase = searchVal.toLowerCase();
-    bool isTrue(CategoryItemEntity item) {
+    bool isTrue(CategoryItemInfoEntity item) {
       final itemNameLowercaseAR = item.businessNameArabic.toLowerCase();
       final itemNameLowercaseENG = item.businessNameEnglish.toLowerCase();
       return (searchLowercase.contains(itemNameLowercaseAR) ||

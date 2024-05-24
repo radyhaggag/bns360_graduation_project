@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/features/category_item/domain/params.dart/category_item_screen_params.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/screens/add_business_screen.dart';
 import 'package:flutter/material.dart';
@@ -233,11 +234,12 @@ abstract class RouteConfig {
           builder: (context) => const EditProfileScreen(),
         );
       case Routes.categoryItem:
+        final params = settings.arguments as CategoryItemScreenParams;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => sl<CategoryItemBloc>(),
             child: CategoryItemScreen(
-              categoryItemEntity: settings.arguments as CategoryItemEntity,
+              screenParams: params,
             ),
           ),
         );
@@ -248,7 +250,7 @@ abstract class RouteConfig {
             return BlocProvider(
               create: (context) => sl<CategoryItemBloc>()
                 ..add(GetCategoryItemReviewsEvent(
-                  itemId: item.id.toString(),
+                  itemId: item.id,
                 )),
               child: CategoryItemReviewSummaryScreen(
                 categoryItemEntity: item,

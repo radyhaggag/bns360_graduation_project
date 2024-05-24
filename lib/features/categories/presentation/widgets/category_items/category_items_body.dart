@@ -1,9 +1,10 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/category_item_info_entity.dart';
+import 'package:bns360_graduation_project/features/category_item/domain/params.dart/category_item_screen_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../config/route_config.dart';
 import '../../../../../core/helpers/localization_helper.dart';
-import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
@@ -36,7 +37,7 @@ class CategoryItemsBody extends StatelessWidget {
             isLoaded: state is GetCategoryItemsSuccessState,
             errorMessage:
                 state is GetCategoryItemsErrorState ? state.message : "",
-            loadedWidget: MainListViewBuilder<CategoryItemEntity>(
+            loadedWidget: MainListViewBuilder<CategoryItemInfoEntity>(
               list: items,
               emptyMessage: S.of(context).no_places_to_explore,
               itemWidget: (item, index) => HorizontalItemCard(
@@ -45,24 +46,24 @@ class CategoryItemsBody extends StatelessWidget {
                   ar: item.businessNameArabic,
                   en: item.businessNameEnglish,
                 ),
-                subTitle: "Not found",
-                // subTitle: LocalizationHelper.getLocalizedString(
-                //   context,
-                //   ar: item.category.nameAR,
-                //   en: item.category.nameEN,
-                // ),
+                subTitle: LocalizationHelper.getLocalizedString(
+                  context,
+                  ar: item.categoriesModel.categoryNameArabic,
+                  en: item.categoriesModel.categoryNameEnglish,
+                ),
                 imageUrl: item.profileImageName,
-                // numOfRatings: item.numOfRatings,
-                // starsCount: item.starsCount,
-                numOfRatings: 50,
-                starsCount: 4.6,
+                numOfRatings: item.totalReviews.toInt(),
+                starsCount: item.averageRating,
                 isFavorite: true,
                 onFavoriteIconPressed: () {},
                 useSetStateToChangeFavoriteColor: true,
                 onPressed: () {
                   Navigator.of(context).pushNamed(
                     Routes.categoryItem,
-                    arguments: item,
+                    arguments: CategoryItemScreenParams(
+                      itemId: item.id,
+                      categoryItemInfoEntity: item,
+                    )
                   );
                 },
               ),

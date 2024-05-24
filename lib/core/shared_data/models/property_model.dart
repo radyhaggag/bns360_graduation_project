@@ -39,10 +39,10 @@ class PropertyModel extends PropertyEntity {
       price: json['price'],
       longitude: json['longitude'],
       latitude: json['latitude'],
-      image1: json['imageName1'],
-      image2: json['imageName2'],
-      image3: json['imageName3'],
-      image4: json['imageName4'],
+      image1: APIImagesHelper.toServerImage(json['imageName1']),
+      image2: APIImagesHelper.toServerImage(json['imageName2']),
+      image3: APIImagesHelper.toServerImage(json['imageName3']),
+      image4: APIImagesHelper.toServerImage(json['imageName4']),
       timeAddedProperty: DateTime.parse(json["timeAddedProperty"]),
     );
   }

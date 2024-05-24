@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:bns360_graduation_project/core/shared_data/entities/review_summary_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,11 +10,10 @@ import '../../utils/extensions/context.dart';
 import 'main_review_summary_card/main_review_summary_card.dart';
 
 class SliverReviewsAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final int numOfRatings;
-  final num starsCount;
+  final ReviewSummaryEntity reviewSummary;
+
   SliverReviewsAppBarDelegate({
-    required this.numOfRatings,
-    required this.starsCount,
+    required this.reviewSummary,
   });
 
   final _minHeight = 120.h;
@@ -44,11 +44,16 @@ class SliverReviewsAppBarDelegate extends SliverPersistentHeaderDelegate {
       ),
       color: AppColors.backgroundColor(context),
       child: MainReviewSummaryCard(
-        numOfRatings: numOfRatings,
-        starsCount: starsCount,
+        numOfRatings: reviewSummary.totalReviews,
+        starsCount: reviewSummary.averageRating,
         showReviewSummaryTxt: false,
         showViewAllBtn: false,
         mainColor: context.theme.highlightColor,
+        fiveStarCount: reviewSummary.fiveStars,
+        fourStarCount: reviewSummary.fourStars,
+        threeStarCount: reviewSummary.threeStars,
+        twoStarCount: reviewSummary.twoStars,
+        oneStarCount: reviewSummary.oneStars,
       ),
     );
   }

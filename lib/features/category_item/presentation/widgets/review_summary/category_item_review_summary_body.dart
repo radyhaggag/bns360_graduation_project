@@ -1,10 +1,11 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/review_summary_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
-import '../../../../../core/widgets/buttons/write_review_btn.dart';
 import '../../../../../core/widgets/reviews/sliver_reviews_app_bar_delegate.dart';
+import '../send_category_item_review_section.dart';
 import 'category_item_review_summary_app_bar.dart';
 import 'reviews_builder.dart';
 
@@ -26,18 +27,17 @@ class CategoryItemReviewSummaryBody extends StatelessWidget {
             pinned: true,
             floating: false,
             delegate: SliverReviewsAppBarDelegate(
-              // numOfRatings: categoryItemEntity.numOfRatings,
-              // starsCount: categoryItemEntity.starsCount,
-              numOfRatings: 50,
-              starsCount: 3.5,
+              reviewSummary: categoryItemEntity.reviewSummary ??
+                  const ReviewSummaryEntity.empty(),
             ),
           ),
           if (!categoryItemEntity.isBelongToMe)
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 50.w),
               sliver: SliverToBoxAdapter(
-                child: WriteReviewBtn(
-                  addReviewCallback: (rating, value) {},
+                child: SendCategoryItemReviewSection(
+                  itemId: categoryItemEntity.id,
+                  refreshReviewsAfterSend: true,
                 ),
               ),
             ),

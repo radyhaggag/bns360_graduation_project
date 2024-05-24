@@ -22,6 +22,11 @@ class MainReviewSummaryCard extends StatelessWidget {
     this.showReviewSummaryTxt = true,
     this.onViewAllTap,
     this.mainColor,
+    this.fiveStarCount = 0,
+    this.fourStarCount = 0,
+    this.threeStarCount = 0,
+    this.twoStarCount = 0,
+    this.oneStarCount = 0,
   });
 
   final num starsCount;
@@ -30,6 +35,11 @@ class MainReviewSummaryCard extends StatelessWidget {
   final bool showReviewSummaryTxt;
   final void Function()? onViewAllTap;
   final Color? mainColor;
+  final int fiveStarCount;
+  final int fourStarCount;
+  final int threeStarCount;
+  final int twoStarCount;
+  final int oneStarCount;
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +65,11 @@ class MainReviewSummaryCard extends StatelessWidget {
           _RightSection(
             showViewAllBtn: showViewAllBtn,
             onViewAllTap: onViewAllTap,
+            fiveStarCount: fiveStarCount,
+            fourStarCount: fourStarCount,
+            threeStarCount: threeStarCount,
+            twoStarCount: twoStarCount,
+            oneStarCount: oneStarCount,
           ),
         ],
       ),

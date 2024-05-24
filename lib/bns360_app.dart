@@ -1,4 +1,3 @@
-import 'features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,6 +9,7 @@ import 'config/theme_config.dart';
 import 'core/app/app_bloc.dart';
 import 'core/utils/app_strings.dart';
 import 'core/utils/enums.dart';
+import 'features/profile/presentation/bloc/profile_bloc.dart';
 import 'generated/l10n.dart';
 
 class BNS360App extends StatefulWidget {
@@ -39,6 +39,7 @@ class _BNS360AppState extends State<BNS360App> {
             create: (context) => sl<AppBloc>(),
           ),
           BlocProvider(
+            lazy: false,
             create: (context) => sl<ProfileBloc>()..add(GetProfileEvent()),
           ),
         ],

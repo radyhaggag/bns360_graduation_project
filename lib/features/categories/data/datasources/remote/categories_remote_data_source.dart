@@ -1,7 +1,8 @@
-import '../../../../../core/shared_data/models/category_item_model.dart';
+import 'package:bns360_graduation_project/core/shared_data/models/category_item_info_model.dart';
+
 import '../../../../../core/shared_data/models/category_model.dart';
 
 abstract class CategoriesRemoteDataSource {
   Future<List<CategoryModel>> getCategories();
-  Future<List<CategoryItemModel>> getCategoryItemsById(int id);
+  Future<List<CategoryItemInfoModel>> getCategoryItemsById(int id);
 }

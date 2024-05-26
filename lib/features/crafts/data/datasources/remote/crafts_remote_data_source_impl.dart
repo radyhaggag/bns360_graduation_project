@@ -28,7 +28,7 @@ class CraftsRemoteDataSourceImpl implements CraftsRemoteDataSource {
   }
 
   @override
-  Future<List<CraftsmanModel>> getCraftItemsById(String id) async {
+  Future<List<CraftsmanModel>> getCraftItemsById(int id) async {
     final res = await loadJsonFromAsset('craftsmen.json');
     final craftsmen = List<CraftsmanModel>.from(res['data'].map(
       (craftsman) => CraftsmanModel.fromJson(craftsman),
@@ -55,13 +55,13 @@ class CraftsRemoteDataSourceImpl implements CraftsRemoteDataSource {
   }
 
   @override
-  Future<List<CraftsmanModel>> searchOnCraftsById(String id, String text) async {
+  Future<List<CraftsmanModel>> searchOnCraftsById(int id, String text) async {
     final res = await loadJsonFromAsset('craftsmen.json');
     final craftsmen = List<CraftsmanModel>.from(res['data'].map(
       (craftsman) => CraftsmanModel.fromJson(craftsman),
     ));
     final searchLowercase = text.toLowerCase();
-    bool isTrue(String itemName, String itemId) {
+    bool isTrue(String itemName, int itemId) {
       if (id != itemId) return false;
       final itemNameLowercase = itemName.toLowerCase();
       return searchLowercase.contains(itemNameLowercase) ||

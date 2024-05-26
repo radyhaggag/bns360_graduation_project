@@ -5,7 +5,7 @@ import '../../../../core/utils/custom_types.dart';
 abstract class CraftsRepo {
   FutureEither<List<CraftEntity>> getCrafts();
   FutureEither<List<CraftsmanEntity>> getCraftsmen();
-  FutureEither<List<CraftsmanEntity>> getCraftItemsById(String id);
-  FutureEither<List<CraftsmanEntity>> searchOnCraftsById(String id, String text);
+  FutureEither<List<CraftsmanEntity>> getCraftItemsById(int id);
+  FutureEither<List<CraftsmanEntity>> searchOnCraftsById(int id, String text);
   FutureEither<List<CraftsmanEntity>> searchOnAllCrafts(String text);
 }

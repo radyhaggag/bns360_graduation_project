@@ -32,8 +32,9 @@ class _JobPublisherSection extends StatelessWidget {
             ],
           ),
         ),
-        SaveJobBtn(
-          jobId: jobEntity.id,
+        SaveIcon(
+          itemId: jobEntity.id,
+          isJob: true,
         ),
       ],
     );

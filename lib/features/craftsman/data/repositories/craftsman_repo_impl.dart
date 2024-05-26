@@ -10,9 +10,16 @@ class CraftsmanRepoImpl implements CraftsmanRepo {
   CraftsmanRepoImpl({required this.craftsmanRemoteDataSource});
 
   @override
-  FutureEither<List<ReviewEntity>> getReviews(String itemId) {
+  FutureEither<List<ReviewEntity>> getReviews(int itemId) {
     return executeAndHandleErrorAsync(
       () => craftsmanRemoteDataSource.getReviews(itemId),
+    );
+  }
+
+  @override
+  FutureEither<void> removeReview(int itemId, int reviewId) {
+    return executeAndHandleErrorAsync(
+      () => craftsmanRemoteDataSource.removeReview(itemId, reviewId),
     );
   }
 }

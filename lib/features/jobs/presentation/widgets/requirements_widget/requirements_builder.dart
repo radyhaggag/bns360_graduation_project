@@ -10,22 +10,22 @@ class RequirementsBuilder extends StatelessWidget {
     super.key,
     required this.isReadOnly,
     required this.withTranslation,
-    this.language,
+    required this.language,
   });
 
   final bool isReadOnly;
   final bool withTranslation;
-  final Language? language;
+  final Language language;
 
   List<String> _getRequirementsToView(BuildContext context) {
     final bloc = context.read<JobsBloc>();
-    if (language != null) {
-      return language == Language.arabic
-          ? bloc.requirementsAr
-          : bloc.requirementsEng;
+    if (isReadOnly) {
+      final requirements = bloc.requirements(context);
+      return requirements;
     }
-    final requirements = bloc.requirements(context);
-    return requirements;
+    return language == Language.arabic
+        ? bloc.requirementsAr
+        : bloc.requirementsEng;
   }
 
   @override
@@ -45,6 +45,7 @@ class RequirementsBuilder extends StatelessWidget {
                 index: index,
                 isReadOnly: isReadOnly,
                 withTranslation: withTranslation,
+                language: language,
               ),
             ),
           ),

@@ -20,6 +20,7 @@ class JobEntity extends Equatable {
   final ContactEntity? contacts;
   final bool isBelongToMe;
   final DateTime timeAddedjob;
+  final String userId;
 
   const JobEntity({
     required this.id,
@@ -36,6 +37,7 @@ class JobEntity extends Equatable {
     required this.type,
     required this.workHours,
     required this.timeAddedjob,
+    required this.userId,
   });
 
   JobEntity copyWith({
@@ -69,6 +71,7 @@ class JobEntity extends Equatable {
       contacts: contacts ?? this.contacts,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
       timeAddedjob: timeAddedjob,
+      userId: userId,
     );
   }
 

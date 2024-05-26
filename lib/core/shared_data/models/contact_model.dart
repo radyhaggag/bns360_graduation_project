@@ -10,10 +10,10 @@ class ContactModel extends ContactEntity {
 
   factory ContactModel.fromJson(Map<String, dynamic> json) {
     return ContactModel(
-      email: json['emails'],
-      phoneNumber: json['phonenumbers'],
-      urlSite: json['uRls'],
-      whatsapp: json['whatsapp'] ?? json['whatsappNumber'],
+      email: json['Emails'],
+      phoneNumber: json['Phonenumbers'],
+      urlSite: json['URls'],
+      whatsapp: json['Whatsapp'] ?? json['WhatsappNumber'],
     );
   }
 

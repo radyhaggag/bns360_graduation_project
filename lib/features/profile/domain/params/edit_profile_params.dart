@@ -30,6 +30,18 @@ class EditProfileParams extends Equatable {
     );
   }
 
+  factory EditProfileParams.withoutImage({
+    required String name,
+    required String email,
+  }) {
+    return EditProfileParams(
+      name: name,
+      email: email,
+      newImagePath: null,
+      isProfileImageCleared: true,
+    );
+  }
+
   EditProfileParams fromProfileEntity(
     ProfileEntity profileEntity,
   ) {

@@ -12,11 +12,11 @@ class CategoryModel extends CategoryEntity {
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(
-      id: json['id'],
-      categoryNameArabic: json['categoryNameArabic'],
-      categoryNameEnglish: json['categoryNameEnglish'],
+      id: json['Id'],
+      categoryNameArabic: json['CategoryNameArabic'],
+      categoryNameEnglish: json['CategoryNameEnglish'],
       image: APIImagesHelper.toServerImage(
-        json['imageFileName'],
+        json['ImageFileName'],
         addDefault: true,
       )!,
     );

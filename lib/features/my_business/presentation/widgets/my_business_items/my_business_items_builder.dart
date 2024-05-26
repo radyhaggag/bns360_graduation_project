@@ -10,6 +10,7 @@ import '../../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
 import '../../../../../core/widgets/more_icon.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../category_item/domain/params/category_item_screen_params.dart';
 import '../../bloc/my_business_bloc.dart';
 
 class MyBusinessItemsBuilder extends StatelessWidget {
@@ -40,45 +41,47 @@ class MyBusinessItemsBuilder extends StatelessWidget {
               list: items,
               emptyMessage: S.of(context).no_places_to_explore,
               itemWidget: (item, index) => HorizontalItemCard(
-                title: LocalizationHelper.getLocalizedString(
-                  context,
-                  ar: item.businessNameArabic,
-                  en: item.businessNameEnglish,
-                ),
-                subTitle: LocalizationHelper.getLocalizedString(
-                  context,
-                  ar: item.categoriesModel.categoryNameArabic,
-                  en: item.categoriesModel.categoryNameEnglish,
-                ),
-                imageUrl: item.profileImageName,
-                // numOfRatings: item.numOfRatings,
-                // starsCount: item.starsCount,
-                numOfRatings: 59,
-                starsCount: 4.6,
-                isFavorite: true,
-                onFavoriteIconPressed: () {},
-                useSetStateToChangeFavoriteColor: true,
-                onPressed: () {
-                  Navigator.of(context).pushNamed(
-                    Routes.categoryItem,
-                    arguments: item.copyWith(isBelongToMe: true),
-                  );
-                },
-                moreWidget: MoreIcon(
-                  onDelete: () {
-                    context.read<MyBusinessBloc>().add(
-                          DeleteMyBusinessEvent(businessId: item.id),
-                        );
-                  },
-                  onEdit: () {
+                  title: LocalizationHelper.getLocalizedString(
+                    context,
+                    ar: item.businessNameArabic,
+                    en: item.businessNameEnglish,
+                  ),
+                  subTitle: LocalizationHelper.getLocalizedString(
+                    context,
+                    ar: item.categoriesModel.categoryNameArabic,
+                    en: item.categoriesModel.categoryNameEnglish,
+                  ),
+                  imageUrl: item.profileImageName,
+                  // numOfRatings: item.numOfRatings,
+                  // starsCount: item.starsCount,
+                  numOfRatings: 59,
+                  starsCount: 4.6,
+                  onPressed: () {
                     Navigator.of(context).pushNamed(
-                      Routes.editBusiness,
-                      arguments: item,
+                      Routes.categoryItem,
+                      arguments: CategoryItemScreenParams(
+                        itemId: item.id,
+                        categoryItemEntity: item.copyWith(isBelongToMe: true),
+                        isBelongToMe: true,
+                      ),
                     );
                   },
-                  deleteMessage: S.of(context).delete_post,
-                ),
-              ),
+                  moreWidget: MoreIcon(
+                    onDelete: () {
+                      context.read<MyBusinessBloc>().add(
+                            DeleteMyBusinessEvent(businessId: item.id),
+                          );
+                    },
+                    onEdit: () {
+                      Navigator.of(context).pushNamed(
+                        Routes.editBusiness,
+                        arguments: item,
+                      );
+                    },
+                    deleteMessage: S.of(context).delete_post,
+                  ),
+                  isBusiness: true,
+                  itemId: item.id),
               scrollDirection: Axis.vertical,
               width: context.width,
               height: context.height,

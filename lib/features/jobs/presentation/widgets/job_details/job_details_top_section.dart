@@ -9,7 +9,7 @@ import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
-import '../../../../../core/widgets/job_card/save_job_btn.dart';
+import '../../../../../core/widgets/icons/save_icon.dart';
 import '../../../../../core/widgets/main_network_image.dart';
 
 class JobDetailsTopSection extends StatelessWidget {
@@ -27,7 +27,6 @@ class JobDetailsTopSection extends StatelessWidget {
         padding: EdgeInsets.only(top: 5.h),
         margin: EdgeInsets.only(bottom: 35.h),
         width: context.width,
-        // height: context.height * .42,
         decoration: BoxDecoration(
           color: AppColors.primary,
           borderRadius: BorderRadius.only(
@@ -43,9 +42,10 @@ class JobDetailsTopSection extends StatelessWidget {
                 const CustomBackButton(
                   color: AppColors.white,
                 ),
-                SaveJobBtn(
+                SaveIcon(
                   notSavedColor: AppColors.white,
-                  jobId: jobEntity.id,
+                  itemId: jobEntity.id,
+                  isJob: true,
                 ),
               ],
             ),

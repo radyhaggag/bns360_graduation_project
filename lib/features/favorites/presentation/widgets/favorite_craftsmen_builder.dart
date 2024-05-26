@@ -48,15 +48,14 @@ class FavoriteCraftsmenBuilder extends StatelessWidget {
               imageUrl: item.imageUrl,
               numOfRatings: item.numOfRatings,
               starsCount: item.averageRatings,
-              isFavorite: true,
-              onFavoriteIconPressed: () {},
-              useSetStateToChangeFavoriteColor: true,
               onPressed: () {
                 Navigator.of(context).pushNamed(
                   Routes.craftsman,
                   arguments: item,
                 );
               },
+              isBusiness: false,
+              itemId: item.id,
             ),
             scrollDirection: Axis.vertical,
             width: context.width,

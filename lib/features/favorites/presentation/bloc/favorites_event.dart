@@ -19,3 +19,39 @@ class ChangeCurrentView extends FavoritesEvent {
   @override
   List<Object> get props => [index];
 }
+
+class AddCategoryItemToFavorite extends FavoritesEvent {
+  final int itemId;
+
+  const AddCategoryItemToFavorite({required this.itemId});
+
+  @override
+  List<Object> get props => [itemId];
+}
+
+class RemoveCategoryItemFromFavorite extends FavoritesEvent {
+  final int itemId;
+
+  const RemoveCategoryItemFromFavorite({required this.itemId});
+
+  @override
+  List<Object> get props => [itemId];
+}
+
+class AddCraftsmanToFavorite extends FavoritesEvent {
+  final int itemId;
+
+  const AddCraftsmanToFavorite({required this.itemId});
+
+  @override
+  List<Object> get props => [itemId];
+}
+
+class RemoveCraftsmanFromFavorite extends FavoritesEvent {
+  final int itemId;
+
+  const RemoveCraftsmanFromFavorite({required this.itemId});
+
+  @override
+  List<Object> get props => [itemId];
+}

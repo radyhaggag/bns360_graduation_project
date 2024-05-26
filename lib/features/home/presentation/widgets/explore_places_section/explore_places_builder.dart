@@ -28,8 +28,6 @@ class _ExplorePlacesBuilder extends StatelessWidget {
             emptyMessage: S.of(context).no_places_to_explore,
             itemWidget: (item, _) => CategoryItemCard(
               categoryItemEntity: item,
-              onFavoriteIconPressed: () {},
-              useSetStateToChangeFavoriteColor: true,
             ),
             scrollDirection: Axis.horizontal,
             width: context.width,

@@ -42,3 +42,13 @@ class SendReviewEvent extends CategoryItemEvent {
     required this.review,
   });
 }
+
+class RemoveCategoryItemReviewEvent extends CategoryItemEvent {
+  final int reviewId;
+  final int categoryItemId;
+
+  const RemoveCategoryItemReviewEvent({
+    required this.reviewId,
+    required this.categoryItemId,
+  });
+}

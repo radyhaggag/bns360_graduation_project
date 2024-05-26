@@ -43,8 +43,10 @@ class CategoryItemReviewSummaryBody extends StatelessWidget {
             ),
           SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 10.h),
-            sliver: const SliverToBoxAdapter(
-              child: CategoryItemReviewsBuilder(),
+            sliver: SliverToBoxAdapter(
+              child: CategoryItemReviewsBuilder(
+                categoryItemId: categoryItemEntity.id,
+              ),
             ),
           ),
         ],

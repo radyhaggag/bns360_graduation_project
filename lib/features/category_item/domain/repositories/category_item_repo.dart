@@ -13,4 +13,6 @@ abstract class CategoryItemRepo {
     double rating,
     String review,
   );
+
+  FutureEither<void> removeReview(int reviewId, int categoryItemId);
 }

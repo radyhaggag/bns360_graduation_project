@@ -40,8 +40,12 @@ class AddRequirementEvent extends JobsEvent {
 
 class RemoveRequirementEvent extends JobsEvent {
   final int index;
+  final Language language;
 
-  const RemoveRequirementEvent({required this.index});
+  const RemoveRequirementEvent({
+    required this.index,
+    required this.language,
+  });
 }
 
 class EditRequirementEvent extends JobsEvent {
@@ -49,11 +53,13 @@ class EditRequirementEvent extends JobsEvent {
   final BuildContext context;
   final int index;
   final bool withTranslation;
+  final Language language;
 
   const EditRequirementEvent({
     required this.requirement,
     required this.context,
     required this.index,
+    required this.language,
     this.withTranslation = false,
   });
 }
@@ -67,3 +73,4 @@ class InitJobRequirementsEvent extends JobsEvent {
     required this.requirementsEng,
   });
 }
+

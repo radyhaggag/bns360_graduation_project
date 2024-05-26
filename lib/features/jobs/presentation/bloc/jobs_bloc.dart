@@ -22,7 +22,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     on<GetJobByIdEvent>(_getJobById);
     on<SearchOnJobs>(_searchOnJobs);
     on<AddJobEvent>(_addJob);
-    on<EditJobEvent>(_editJon);
+    on<EditJobEvent>(_editJob);
     on<AddRequirementEvent>(_addRequirement);
     on<RemoveRequirementEvent>(_removeRequirement);
     on<EditRequirementEvent>(_editRequirement);
@@ -120,14 +120,14 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
-  _editJon(
+  _editJob(
     EditJobEvent event,
     Emitter<JobsState> emit,
   ) async {
     emit(EditJobLoadingState());
 
     final jobEntity = event.jobEntity.copyWith(
-      requirementEnglish: RequirementsEntity(requirements: requirementsAr),
+      requirementEnglish: RequirementsEntity(requirements: requirementsEng),
       requirementsArabic: RequirementsEntity(requirements: requirementsAr),
     );
 
@@ -181,8 +181,11 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     RemoveRequirementEvent event,
     Emitter<JobsState> emit,
   ) {
-    requirementsAr.removeAt(event.index);
-    requirementsEng.removeAt(event.index);
+    if (event.language == Language.arabic) {
+      requirementsAr.removeAt(event.index);
+    } else {
+      requirementsEng.removeAt(event.index);
+    }
     emit(JobRequirementUpdatedState());
   }
 
@@ -205,31 +208,33 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     EditRequirementEvent event,
     Emitter<JobsState> emit,
   ) async {
-    if (event.context.currentLanguage == Language.arabic) {
+    if (event.language == Language.arabic) {
       requirementsAr[event.index] = event.requirement;
     } else {
       requirementsEng[event.index] = event.requirement;
     }
 
-    if (event.withTranslation) {
-      final translation = event.context.currentLanguage == Language.arabic
-          ? await GoogleTranslator().translate(
-              event.requirement,
-              from: "ar",
-              to: 'en',
-            )
-          : await GoogleTranslator().translate(
-              event.requirement,
-              from: "en",
-              to: 'ar',
-            );
+    // if (event.withTranslation) {
+    //   final translation = event.language == Language.arabic
+    //       ? await GoogleTranslator().translate(
+    //           event.requirement,
+    //           from: "ar",
+    //           to: 'en',
+    //         )
+    //       : await GoogleTranslator().translate(
+    //           event.requirement,
+    //           from: "en",
+    //           to: 'ar',
+    //         );
 
-      if (event.context.currentLanguage == Language.arabic) {
-        requirementsEng[event.index] = translation.text;
-      } else {
-        requirementsAr[event.index] = translation.text;
-      }
-    }
+    //   if (event.language == Language.arabic) {
+    //     requirementsAr[event.index] = event.requirement;
+    //     requirementsEng[event.index] = translation.text;
+    //   } else {
+    //     requirementsAr[event.index] = translation.text;
+    //     requirementsEng[event.index] = event.requirement;
+    //   }
+    // }
     emit(JobRequirementUpdatedState());
   }
 }

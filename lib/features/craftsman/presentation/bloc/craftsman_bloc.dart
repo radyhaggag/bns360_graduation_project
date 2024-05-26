@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,6 +16,7 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
     required this.craftsmanRepo,
   }) : super(CraftsmanInitial()) {
     on<GetCraftsmanReviewsEvent>(_getCraftsmanReviews);
+    on<RemoveCraftsmanReviewEvent>(_removeCraftsmanReview);
   }
 
   List<ReviewEntity> reviews = [];
@@ -32,6 +35,23 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
       (r) {
         reviews = r;
         emit(GetCraftsmanReviewsSuccessState(reviews: r));
+      },
+    );
+  }
+
+  _removeCraftsmanReview(
+    RemoveCraftsmanReviewEvent event,
+    Emitter<CraftsmanState> emit,
+  ) async {
+    emit(RemoveCraftsmanReviewLoadingState());
+
+    final res = await craftsmanRepo.removeReview(event.itemId, event.reviewId);
+
+    res.fold(
+      (l) => emit(RemoveCraftsmanReviewErrorState(message: l.message)),
+      (r) {
+        reviews.removeWhere((element) => element.id == event.reviewId);
+        emit(RemoveCraftsmanReviewSuccessState());
       },
     );
   }

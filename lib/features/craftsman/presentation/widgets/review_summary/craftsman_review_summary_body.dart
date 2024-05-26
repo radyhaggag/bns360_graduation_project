@@ -41,8 +41,10 @@ class CraftsmanReviewSummaryBody extends StatelessWidget {
             ),
           SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 10.h),
-            sliver: const SliverToBoxAdapter(
-              child: CraftsmanReviewsBuilder(),
+            sliver: SliverToBoxAdapter(
+              child: CraftsmanReviewsBuilder(
+                craftsmanId: craftsmanEntity.id,
+              ),
             ),
           ),
         ],

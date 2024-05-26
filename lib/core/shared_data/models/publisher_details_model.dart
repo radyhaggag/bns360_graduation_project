@@ -10,9 +10,9 @@ class PublisherDetailsModel extends PublisherDetailsEntity {
 
   factory PublisherDetailsModel.fromJson(Map<String, dynamic> json) {
     return PublisherDetailsModel(
-      userType: UserType.fromInteger(int.tryParse(json["description"]) ?? 0),
-      photoUrl: json["photoUrl"],
-      name: json["name"],
+      userType: UserType.fromInteger(int.tryParse(json["Description"]) ?? 0),
+      photoUrl: json["PhotoUrl"],
+      name: json["Name"],
     );
   }
 
@@ -25,7 +25,7 @@ class PublisherDetailsModel extends PublisherDetailsEntity {
   }
 
   Map<String, dynamic> toJson() {
-    return {"photoUrl": photoUrl, "description": userType.id.toString(), "name": name};
+    return {"PhotoUrl": photoUrl, "Description": userType.id.toString(), "Name": name};
     // return {"PhotoUrl": photoUrl, "Description": userType.id.toString(), "Name": name};
   }
 }

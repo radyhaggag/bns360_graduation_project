@@ -9,7 +9,9 @@ import '../../../../../core/widgets/reviews/review_widget/review_widget.dart';
 import '../../bloc/category_item_bloc.dart';
 
 class CategoryItemReviewsBuilder extends StatefulWidget {
-  const CategoryItemReviewsBuilder({super.key});
+  const CategoryItemReviewsBuilder({super.key, required this.categoryItemId});
+
+  final int categoryItemId;
 
   @override
   State<CategoryItemReviewsBuilder> createState() =>
@@ -57,7 +59,17 @@ class _CategoryItemReviewsBuilderState
                 (index) {
                   final item = context.read<CategoryItemBloc>().reviews[index];
 
-                  return ReviewWidget(review: item);
+                  return ReviewWidget(
+                    review: item,
+                    onRemove: () {
+                      context.read<CategoryItemBloc>().add(
+                            RemoveCategoryItemReviewEvent(
+                              reviewId: item.id,
+                              categoryItemId: widget.categoryItemId,
+                            ),
+                          );
+                    },
+                  );
                 },
               ),
             ),

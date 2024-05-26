@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
 import 'package:flutter/material.dart';
 
 import '../requirements_widget/add_requirement_button.dart';
@@ -16,9 +17,10 @@ class AddRequirementsSection extends StatelessWidget {
     return Column(
       children: [
         AddRequirementButton(onAdd: onAdd),
-        const RequirementsBuilder(
+        RequirementsBuilder(
           withTranslation: false,
           isReadOnly: false,
+          language: context.currentLanguage,
         ),
       ],
     );

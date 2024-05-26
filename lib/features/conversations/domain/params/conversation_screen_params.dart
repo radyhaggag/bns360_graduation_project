@@ -5,6 +5,7 @@ import '../../../../config/route_config.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../core/shared_data/entities/participant_entity.dart';
+import '../../../category_item/domain/params/category_item_screen_params.dart';
 import '../entities/conversation_entity.dart';
 
 class ConversationScreenParams extends Equatable {
@@ -29,7 +30,11 @@ class ConversationScreenParams extends Equatable {
     } else if (categoryItemEntity != null) {
       Navigator.of(context).pushNamed(
         Routes.categoryItem,
-        arguments: categoryItemEntity,
+        arguments: CategoryItemScreenParams(
+          itemId: categoryItemEntity!.id,
+          categoryItemEntity: categoryItemEntity,
+          isBelongToMe: categoryItemEntity!.isBelongToMe,
+        ),
       );
     }
   }

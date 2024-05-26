@@ -15,12 +15,12 @@ class CategoryItemInfoModel extends CategoryItemInfoEntity {
   factory CategoryItemInfoModel.fromJson(Map<String, dynamic> json) {
     return CategoryItemInfoModel(
       id: json['id'],
-      businessNameArabic: json['businessNameArabic'],
-      businessNameEnglish: json['businessNameEnglish'],
-      categoriesModel: CategoryModel.fromJson(json['category']),
-      profileImageName: json['profileImageName'],
-      averageRating: json['averageRating'],
-      totalReviews: json['totalReviews'],
+      businessNameArabic: json['BusinessNameArabic'],
+      businessNameEnglish: json['BusinessNameEnglish'],
+      categoriesModel: CategoryModel.fromJson(json['Category']),
+      profileImageName: json['ProfileImageName'],
+      averageRating: json['AverageRating'],
+      totalReviews: json['TotalReviews'],
     );
   }
 }

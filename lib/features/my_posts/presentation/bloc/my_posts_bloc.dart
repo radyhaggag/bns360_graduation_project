@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,7 +27,6 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
     if (myPostsJobs.isNotEmpty) return;
 
     emit(GetMyPostsJobsLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await myPostsRepo.getMyPostsJobs();
 
@@ -50,7 +47,6 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
   ) async {
     if (myPostsProperties.isNotEmpty) return;
     emit(GetMyPostsPropertiesLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await myPostsRepo.getMyPostsProperties();
 

@@ -22,6 +22,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
     on<GetCategoryItemEvent>(_getCategoryItem);
     on<SetCategoryItemEntityEvent>(_setCategoryItemEntity);
     on<SendReviewEvent>(_sendReview);
+    on<RemoveCategoryItemReviewEvent>(_removeCategoryItemReview);
   }
 
   List<ReviewEntity> reviews = [];
@@ -110,6 +111,26 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
       )),
       (r) {
         emit(SendCategoryItemReviewSuccessState());
+      },
+    );
+  }
+
+  _removeCategoryItemReview(
+    RemoveCategoryItemReviewEvent event,
+    Emitter<CategoryItemState> emit,
+  ) async {
+    emit(RemoveCategoryItemReviewLoadingState());
+
+    final res = await categoryItemRepo.removeReview(
+      event.reviewId,
+      event.categoryItemId,
+    );
+
+    res.fold(
+      (l) => emit(RemoveCategoryItemReviewErrorState(message: l.message)),
+      (r) {
+        reviews.removeWhere((element) => element.id == event.reviewId);
+        emit(RemoveCategoryItemReviewSuccessState());
       },
     );
   }

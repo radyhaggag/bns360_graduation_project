@@ -11,7 +11,11 @@ class _CategoryItemImage extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           Routes.categoryItem,
-          arguments: categoryItemEntity,
+          arguments: CategoryItemScreenParams(
+            itemId: categoryItemEntity.id,
+            categoryItemEntity: categoryItemEntity,
+            isBelongToMe: categoryItemEntity.isBelongToMe,
+          ),
         );
       },
       child: ClipRRect(

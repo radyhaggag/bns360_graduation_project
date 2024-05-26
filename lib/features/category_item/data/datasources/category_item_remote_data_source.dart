@@ -8,4 +8,5 @@ abstract class CategoryItemRemoteDataSource {
   Future<CategoryItemEntity> getCategoryItem(int itemId);
   Future<ReviewSummaryModel> getCategoryItemReviewSummary(int itemId);
   Future<void> sendReview(int itemId, double rating, String review);
+  Future<void> removeReview(int reviewId, int categoryItemId);
 }

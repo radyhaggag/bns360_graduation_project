@@ -34,6 +34,16 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
         formData: formData,
       );
     }
+
+    if (editProfileParams.isProfileImageCleared) {
+      final data = {'image': null, 'id': currentUser?.id};
+      final formData = FormData.fromMap(data);
+
+      await apiConsumer.patch(
+        endpoint: AppEndpoints.editProfileImage,
+        formData: formData,
+      );
+    }
     final newName = editProfileParams.name;
     if (newName != currentUser?.name && newName != null) {
       await apiConsumer.patch(

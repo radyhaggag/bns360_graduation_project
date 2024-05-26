@@ -61,7 +61,7 @@ class SelectServiceCategoryEvent extends MyServicesEvent {
 }
 
 class DeleteMyServicesEvent extends MyServicesEvent {
-  final String serviceId;
+  final int serviceId;
 
   const DeleteMyServicesEvent({required this.serviceId});
 }

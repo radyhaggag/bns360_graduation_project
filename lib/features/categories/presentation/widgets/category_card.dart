@@ -39,6 +39,7 @@ class CategoryCard extends StatelessWidget {
               child: MainNetworkImage(
                 imageUrl: categoryEntity.image,
                 height: 110.h,
+                width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),

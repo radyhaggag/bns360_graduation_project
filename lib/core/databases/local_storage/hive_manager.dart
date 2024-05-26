@@ -20,13 +20,10 @@ abstract class HiveBoxes {
   static Box<String> get theme => Hive.box<String>(_theme);
   static Box<ProfileEntity> get profile => Hive.box<ProfileEntity>(_profile);
 
-  static Box<List<int>> get savedJobs => Hive.box<List<int>>(_savedJobs);
-  static Box<List<int>> get savedProperties =>
-      Hive.box<List<int>>(_savedProperties);
-  static Box<List<int>> get favoriteCrafts =>
-      Hive.box<List<int>>(_favoriteCrafts);
-  static Box<List<int>> get favoriteBusiness =>
-      Hive.box<List<int>>(_favoriteBusiness);
+  static Box<int> get savedJobs => Hive.box<int>(_savedJobs);
+  static Box<int> get savedProperties => Hive.box<int>(_savedProperties);
+  static Box<int> get favoriteCrafts => Hive.box<int>(_favoriteCrafts);
+  static Box<int> get favoriteBusiness => Hive.box<int>(_favoriteBusiness);
 }
 
 abstract class HiveManager {
@@ -44,10 +41,10 @@ abstract class HiveManager {
         Hive.openBox<String>(HiveBoxes._language),
         Hive.openBox<String>(HiveBoxes._theme),
         Hive.openBox<ProfileEntity>(HiveBoxes._profile),
-        Hive.openBox<List<int>>(HiveBoxes._savedJobs),
-        Hive.openBox<List<int>>(HiveBoxes._savedProperties),
-        Hive.openBox<List<int>>(HiveBoxes._favoriteCrafts),
-        Hive.openBox<List<int>>(HiveBoxes._favoriteBusiness),
+        Hive.openBox<int>(HiveBoxes._savedJobs),
+        Hive.openBox<int>(HiveBoxes._savedProperties),
+        Hive.openBox<int>(HiveBoxes._favoriteCrafts),
+        Hive.openBox<int>(HiveBoxes._favoriteBusiness),
       ];
       await Future.wait(boxes);
     });

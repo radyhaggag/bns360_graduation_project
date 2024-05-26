@@ -104,6 +104,7 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
 
     final jobModel = JobModel(
       id: -1,
+      userId: AppProvider().getProfile()!.id,
       contacts: contacts.copyWith(
         whatsapp: addJobParams.whatsapp,
       ),

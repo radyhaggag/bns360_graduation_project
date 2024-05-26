@@ -20,13 +20,12 @@ class SavedBody extends StatelessWidget {
           Expanded(
             child: BlocBuilder<SavedBloc, SavedState>(
               builder: (context, state) {
-                final activeTabIndex =
-                    context.read<SavedBloc>().activeTabIndex;
-                if (activeTabIndex == 1) {
-                  return const SavedJobsBuilder();
-                }
+                final activeTabIndex = context.read<SavedBloc>().activeTabIndex;
                 if (activeTabIndex == 0) {
                   return const SavedPropertiesBuilder();
+                }
+                if (activeTabIndex == 1) {
+                  return const SavedJobsBuilder();
                 }
                 return Container();
               },

@@ -8,7 +8,17 @@ abstract class CraftsmanEvent extends Equatable {
 }
 
 class GetCraftsmanReviewsEvent extends CraftsmanEvent {
-  final String itemId;
+  final int itemId;
 
   const GetCraftsmanReviewsEvent({required this.itemId});
+}
+
+class RemoveCraftsmanReviewEvent extends CraftsmanEvent {
+  final int itemId;
+  final int reviewId;
+
+  const RemoveCraftsmanReviewEvent({
+    required this.itemId,
+    required this.reviewId,
+  });
 }

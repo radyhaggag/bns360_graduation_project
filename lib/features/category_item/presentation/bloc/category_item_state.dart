@@ -67,3 +67,13 @@ class SendCategoryItemReviewErrorState extends CategoryItemState {
     required this.rating,
   });
 }
+
+class RemoveCategoryItemReviewLoadingState extends CategoryItemState {}
+
+class RemoveCategoryItemReviewSuccessState extends CategoryItemState {}
+
+class RemoveCategoryItemReviewErrorState extends CategoryItemState {
+  final String message;
+
+  const RemoveCategoryItemReviewErrorState({required this.message});
+}

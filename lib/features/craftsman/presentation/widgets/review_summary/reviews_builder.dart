@@ -9,7 +9,9 @@ import '../../../../../core/widgets/reviews/review_widget/review_widget.dart';
 import '../../bloc/craftsman_bloc.dart';
 
 class CraftsmanReviewsBuilder extends StatefulWidget {
-  const CraftsmanReviewsBuilder({super.key});
+  const CraftsmanReviewsBuilder({super.key, required this.craftsmanId});
+
+  final int craftsmanId;
 
   @override
   State<CraftsmanReviewsBuilder> createState() =>
@@ -55,7 +57,17 @@ class _CraftsmanReviewsBuilderState extends State<CraftsmanReviewsBuilder> {
                   context.read<CraftsmanBloc>().reviews.length, (index) {
                 final item = context.read<CraftsmanBloc>().reviews[index];
 
-                return ReviewWidget(review: item);
+                return ReviewWidget(
+                  review: item,
+                  onRemove: () {
+                    context.read<CraftsmanBloc>().add(
+                          RemoveCraftsmanReviewEvent(
+                            reviewId: item.id,
+                            itemId: widget.craftsmanId,
+                          ),
+                        );
+                  },
+                );
               }),
             ),
           ),

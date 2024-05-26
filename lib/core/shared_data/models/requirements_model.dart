@@ -9,7 +9,7 @@ class RequirementsModel extends RequirementsEntity {
     );
     return RequirementsModel(
       requirements: List<String>.from(
-        castList.map((e) => e["value"]),
+        castList.map((e) => e.values.first),
       ),
     );
   }

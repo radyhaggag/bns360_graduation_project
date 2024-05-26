@@ -39,4 +39,14 @@ class CategoryItemRepoImpl implements CategoryItemRepo {
       () => categoryItemRemoteDataSource.sendReview(itemId, rating, review),
     );
   }
+
+  @override
+  FutureEither<void> removeReview(int reviewId, int categoryItemId) {
+    return executeAndHandleErrorAsync(
+      () => categoryItemRemoteDataSource.removeReview(
+        reviewId,
+        categoryItemId,
+      ),
+    );
+  }
 }

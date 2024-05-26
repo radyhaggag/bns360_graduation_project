@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/remove_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,9 +11,14 @@ import '../../main_network_image.dart';
 import '../../main_rating_bar.dart';
 
 class ReviewWidget extends StatelessWidget {
-  const ReviewWidget({super.key, required this.review});
+  const ReviewWidget({
+    super.key,
+    required this.review,
+    required this.onRemove,
+  });
 
   final ReviewEntity review;
+  final VoidCallback onRemove;
 
   @override
   Widget build(BuildContext context) {
@@ -85,11 +91,25 @@ class ReviewWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 5),
-          Text(
-            review.reviewText,
-            style: context.textTheme.bodyLarge?.copyWith(
-              fontSize: AppFontSize.light,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: Text(
+                  review.reviewText,
+                  style: context.textTheme.bodyLarge?.copyWith(
+                    fontSize: AppFontSize.light,
+                  ),
+                ),
+              ),
+              if (review.isByMe) ...[
+                const SizedBox(width: 15),
+                DeleteIcon(
+                  onTap: onRemove,
+                ),
+              ],
+            ],
           ),
         ],
       ),

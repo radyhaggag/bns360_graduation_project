@@ -134,6 +134,46 @@ class CustomTextButton extends StatelessWidget {
   }
 }
 
+class CustomIconButton extends StatelessWidget {
+  final double? size;
+  final Color? foregroundColor;
+  final Color? backgroundColor;
+  final Widget icon;
+  final void Function()? onPressed;
+  final bool isLoading;
+  final EdgeInsets? padding;
+
+  const CustomIconButton({
+    super.key,
+    required this.icon,
+    this.size,
+    this.foregroundColor,
+    this.backgroundColor,
+    this.onPressed,
+    this.padding,
+    this.isLoading = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size ?? 50.h,
+      height: size ?? 50.h,
+      child: IconButton(
+        onPressed: !isLoading ? onPressed : null,
+        style: context.theme.iconButtonTheme.style?.copyWith(
+          foregroundColor: MaterialStatePropertyAll(foregroundColor),
+          backgroundColor: MaterialStatePropertyAll(backgroundColor),
+          padding: padding != null
+              ? MaterialStatePropertyAll(padding)
+              : context.theme.iconButtonTheme.style?.padding,
+        ),
+        icon: isLoading ? const CenterProgressIndicator() : icon,
+      ),
+    );
+  }
+}
+
 class CustomElevatedButtonWithIcon extends StatelessWidget {
   final double? width;
   final double? height;

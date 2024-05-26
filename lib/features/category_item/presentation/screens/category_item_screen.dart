@@ -6,7 +6,7 @@ import 'package:bns360_graduation_project/features/category_item/presentation/bl
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/params.dart/category_item_screen_params.dart';
+import '../../domain/params/category_item_screen_params.dart';
 import '../widgets/category_item_body.dart';
 
 class CategoryItemScreen extends StatefulWidget {
@@ -38,12 +38,13 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
             ),
           );
     }
-
-    context.read<CategoryItemBloc>().add(
-          GetCategoryItemReviewSummaryEvent(
-            itemId: widget.screenParams.itemId,
-          ),
-        );
+    if (widget.screenParams.categoryItemEntity?.reviewSummary == null) {
+      context.read<CategoryItemBloc>().add(
+            GetCategoryItemReviewSummaryEvent(
+              itemId: widget.screenParams.itemId,
+            ),
+          );
+    }
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:equatable/equatable.dart';
 
 class ReviewEntity extends Equatable {
@@ -7,6 +8,7 @@ class ReviewEntity extends Equatable {
   final String userImage;
   final String reviewText;
   final num starCount;
+  final String userId;
 
   const ReviewEntity({
     required this.id,
@@ -15,6 +17,7 @@ class ReviewEntity extends Equatable {
     required this.userImage,
     required this.reviewText,
     required this.starCount,
+    required this.userId,
   });
 
   @override
@@ -26,4 +29,8 @@ class ReviewEntity extends Equatable {
         reviewText,
         starCount,
       ];
+
+  bool get isByMe {
+    return AppProvider().getProfile()?.id == userId;
+  }
 }

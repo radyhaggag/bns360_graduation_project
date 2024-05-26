@@ -72,9 +72,10 @@ class CategoryItemProfileSection extends StatelessWidget {
               );
             },
           ),
-          const FavoriteIcon(
+          FavoriteIcon(
             addMargin: false,
-            useSetStateToChangeColor: true,
+            isBusiness: true,
+            itemId: categoryItemEntity.id,
           ),
         ],
       ],

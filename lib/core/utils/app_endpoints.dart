@@ -29,9 +29,13 @@ abstract class AppEndpoints {
 
   //* Business Categories
   static const getAllCategories = "$baseUrl/api/Categories";
-  static String getAllCategoryItems(int id) =>
-      "$baseUrl/api/Business/all-businessesWithReviewsAndCategories/$id";
-  static String getCategoryItem(int id) => "$baseUrl/api/Business/$id";
+  static String getAllCategoryItems(int id) {
+    return "$baseUrl/api/Business/all-businessesWithReviewsAndCategories/$id";
+  }
+
+  static String getCategoryItem(int id) {
+    return "$baseUrl/api/Business/$id";
+  }
 
   //* Jobs
   static const addJob = "$baseUrl/api/Job";
@@ -50,10 +54,15 @@ abstract class AppEndpoints {
   }
 
   //* PROFILE
-  static String getProfile(String userId) => "$baseUrl/api/Profile/$userId";
+  static String getProfile(String userId) {
+    return "$baseUrl/api/Profile/$userId";
+  }
+
   static const editProfileImage = "$baseUrl/api/Profile/updateImage";
-  static String editProfileName(String userId) =>
-      "$baseUrl/api/Profile/$userId/name";
+  static String editProfileName(String userId) {
+    return "$baseUrl/api/Profile/$userId/name";
+  }
+
   static const changePassword = "$baseUrl/api/Account/ChangePassword";
 
   //* REVIEWS
@@ -65,5 +74,34 @@ abstract class AppEndpoints {
     return "$baseUrl/api/RatingAndReviewForBusiness/summary/$businessId";
   }
 
+  static String removeBusingsReview(int reviewId) {
+    return "$baseUrl/api/RatingAndReviewForBusiness/{reviewAndRatingId}/$reviewId";
+  }
+
   static const sendReview = "$baseUrl/api/RatingAndReviewForBusiness";
+
+  //* Favorites
+  static const businessFavorite = "$baseUrl/api/FavoritesBusinesses";
+  static String getBusinessFavorites(String userId) {
+    return "$baseUrl/api/FavoritesBusinesses/GetBusinessReviewSummary/$userId";
+  }
+
+  static const craftsmenFavorite = "$baseUrl/api/FavoritesCraftsmen";
+  static String getCraftsmenFavorites(String userId) {
+    return "$baseUrl/api/FavoritesCraftsmen/GetCraftsmanFavorites/$userId";
+  }
+
+  //* Saved
+  static const savedJobs = "$baseUrl/api/SavedJobs";
+
+  static const savedProperties = "$baseUrl/api/SavedProperty";
+
+  //* My posts
+  static String myPostsJobs(String userId) {
+    return "$baseUrl/api/Profile/jobs/$userId";
+  }
+
+  static String myPostsProperties(String userId) {
+    return "$baseUrl/api/Profile/properties/$userId";
+  }
 }

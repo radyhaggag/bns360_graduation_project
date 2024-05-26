@@ -9,11 +9,18 @@ class CraftsmanRemoteDataSourceImpl implements CraftsmanRemoteDataSource {
   CraftsmanRemoteDataSourceImpl(this.apiConsumer);
 
   @override
-  Future<List<ReviewModel>> getReviews(String itemId) async {
+  Future<List<ReviewModel>> getReviews(int itemId) async {
     final res = await loadJsonFromAsset('reviews.json');
     final reviews = List<ReviewModel>.from(res['data'].map(
       (review) => ReviewModel.fromJson(review),
     ));
     return reviews;
+  }
+
+  @override
+  Future<void> removeReview(int itemId, int reviewId) async {
+    // await apiConsumer.delete(
+    //   endpoint: AppEndpoints.removeReview(reviewId),
+    // );
   }
 }

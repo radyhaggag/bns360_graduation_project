@@ -37,6 +37,8 @@ class CraftsmenBuilder extends StatelessWidget {
             list: favoriteCraftsmen,
             emptyMessage: S.of(context).no_craftsmen_found,
             itemWidget: (item, _) => HorizontalItemCard(
+              isBusiness: false,
+              itemId: item.id,
               title: item.name,
               subTitle: LocalizationHelper.getLocalizedString(
                 context,
@@ -46,9 +48,6 @@ class CraftsmenBuilder extends StatelessWidget {
               imageUrl: item.imageUrl,
               numOfRatings: item.numOfRatings,
               starsCount: item.averageRatings,
-              isFavorite: true,
-              onFavoriteIconPressed: () {},
-              useSetStateToChangeFavoriteColor: true,
               onPressed: () {
                 Navigator.of(context).pushNamed(
                   Routes.craftsman,

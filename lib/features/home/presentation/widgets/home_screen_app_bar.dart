@@ -1,8 +1,8 @@
+import 'package:bns360_graduation_project/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
-import '../../../../core/providers/app_provider.dart';
 import '../../../../core/widgets/icons/profile_circle_icon.dart';
 import '../../../../generated/l10n.dart';
 import '../../../bottom_navigation/presentation/bloc/bottom_navigation_bloc.dart';
@@ -46,7 +46,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           IconButton(
             icon: ProfileCircleIcon(
-              imageUrl: AppProvider().getProfile()?.imageUrl,
+              imageUrl: context.read<ProfileBloc>().profile?.imageUrl,
             ),
             onPressed: () {
               context.read<BottomNavBarBloc>().add(

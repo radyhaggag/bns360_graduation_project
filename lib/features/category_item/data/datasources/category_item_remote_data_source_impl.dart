@@ -55,4 +55,11 @@ class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
       },
     );
   }
+
+  @override
+  Future<void> removeReview(int reviewId, int categoryItemId) async {
+    await apiConsumer.delete(
+      endpoint: AppEndpoints.removeBusingsReview(reviewId),
+    );
+  }
 }

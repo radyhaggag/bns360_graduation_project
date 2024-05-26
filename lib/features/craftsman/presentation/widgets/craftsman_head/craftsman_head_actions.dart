@@ -46,12 +46,12 @@ class CraftsmanHeadActions extends StatelessWidget {
                     );
                   },
                 ),
-                const FavoriteIcon(
+                FavoriteIcon(
                   addMargin: false,
-                  useSetStateToChangeColor: true,
                   notRounded: true,
+                  isBusiness: false,
+                  itemId: craftsmanEntity.id,
                 ),
-               
               ],
             )
           : CustomTextButton(

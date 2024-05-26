@@ -22,3 +22,13 @@ class GetCraftsmanReviewsErrorState extends CraftsmanState {
 
   const GetCraftsmanReviewsErrorState({required this.message});
 }
+
+class RemoveCraftsmanReviewLoadingState extends CraftsmanState {}
+
+class RemoveCraftsmanReviewSuccessState extends CraftsmanState {}
+
+class RemoveCraftsmanReviewErrorState extends CraftsmanState {
+  final String message;
+
+  const RemoveCraftsmanReviewErrorState({required this.message});
+}

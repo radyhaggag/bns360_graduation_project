@@ -16,10 +16,12 @@ class PropertyCard extends StatelessWidget {
     super.key,
     required this.propertyEntity,
     this.moreWidget,
+    this.isInSavedScreen = false,
   });
 
   final PropertyEntity propertyEntity;
   final Widget? moreWidget;
+  final bool isInSavedScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class PropertyCard extends StatelessWidget {
             PropertyCardImagesSection(
               propertyEntity: propertyEntity,
               moreWidget: moreWidget,
+              isInSavedScreen: isInSavedScreen,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),

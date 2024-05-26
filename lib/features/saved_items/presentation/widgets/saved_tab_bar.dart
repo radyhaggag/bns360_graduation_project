@@ -1,9 +1,9 @@
-import '../../../../core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/saved_bloc.dart';
 
@@ -32,9 +32,7 @@ class SavedTabBar extends StatelessWidget {
         Tab(text: S.of(context).jobs),
       ],
       onTap: (index) {
-        context.read<SavedBloc>().add(ChangeCurrentView(
-              index: index,
-            ));
+        context.read<SavedBloc>().add(ChangeCurrentView(index: index));
       },
     );
   }

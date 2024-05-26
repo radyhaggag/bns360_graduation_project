@@ -9,6 +9,7 @@ import '../../../../core/widgets/data_state_widget.dart';
 import '../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
 import '../../../../core/widgets/main_list_view_builder.dart';
 import '../../../../generated/l10n.dart';
+import '../../../category_item/domain/params/category_item_screen_params.dart';
 import '../bloc/favorites_bloc.dart';
 
 class FavoriteCategoriesBuilder extends StatelessWidget {
@@ -39,31 +40,33 @@ class FavoriteCategoriesBuilder extends StatelessWidget {
             list: favoriteCategories,
             emptyMessage: S.of(context).no_favorite_items,
             itemWidget: (item, _) => HorizontalItemCard(
-              title: LocalizationHelper.getLocalizedString(
-                context,
-                ar: item.businessNameArabic,
-                en: item.businessNameEnglish,
-              ),
-              subTitle: LocalizationHelper.getLocalizedString(
-                context,
-                ar: item.categoriesModel.categoryNameArabic,
-                en: item.categoriesModel.categoryNameEnglish,
-              ),
-              imageUrl: item.profileImageName,
-              // numOfRatings: item.numOfRatings,
-              // starsCount: item.starsCount,
-              numOfRatings: 50,
-              starsCount: 4.6,
-              isFavorite: true,
-              onFavoriteIconPressed: () {},
-              useSetStateToChangeFavoriteColor: true,
-              onPressed: () {
-                Navigator.of(context).pushNamed(
-                  Routes.categoryItem,
-                  arguments: item,
-                );
-              },
-            ),
+                title: LocalizationHelper.getLocalizedString(
+                  context,
+                  ar: item.businessNameArabic,
+                  en: item.businessNameEnglish,
+                ),
+                subTitle: LocalizationHelper.getLocalizedString(
+                  context,
+                  ar: item.categoriesModel.categoryNameArabic,
+                  en: item.categoriesModel.categoryNameEnglish,
+                ),
+                imageUrl: item.profileImageName,
+                // numOfRatings: item.numOfRatings,
+                // starsCount: item.starsCount,
+                numOfRatings: 50,
+                starsCount: 4.6,
+                onPressed: () {
+                  Navigator.of(context).pushNamed(
+                    Routes.categoryItem,
+                    arguments: CategoryItemScreenParams(
+                      itemId: item.id,
+                      categoryItemEntity: item,
+                      isBelongToMe: item.isBelongToMe,
+                    ),
+                  );
+                },
+                isBusiness: true,
+                itemId: item.id),
             scrollDirection: Axis.vertical,
             width: context.width,
             height: context.height,

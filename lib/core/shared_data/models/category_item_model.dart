@@ -30,34 +30,34 @@ class CategoryItemModel extends CategoryItemEntity {
 
   factory CategoryItemModel.fromJson(Map<String, dynamic> json) {
     return CategoryItemModel(
-      userId: json['userId'],
-      id: json['id'],
-      businessAddressArabic: json['businessAddressArabic'],
-      businessAddressEnglish: json['businessAddressEnglish'],
-      businessDescriptionArabic: json['businessDescriptionArabic'],
-      businessDescriptionEnglish: json['businessDescriptionEnglish'],
+      userId: json['UserId'],
+      id: json['Id'],
+      businessAddressArabic: json['BusinessAddressArabic'],
+      businessAddressEnglish: json['BusinessAddressEnglish'],
+      businessDescriptionArabic: json['BusinessDescriptionArabic'],
+      businessDescriptionEnglish: json['BusinessDescriptionEnglish'],
       profileImageName: APIImagesHelper.toServerImage(
-        json['profileImageName'],
+        json['ProfileImageName'],
         addDefault: true,
       )!,
       businessImageName1:
-          APIImagesHelper.toServerImage(json['businessImageName1']),
+          APIImagesHelper.toServerImage(json['BusinessImageName1']),
       businessImageName2:
-          APIImagesHelper.toServerImage(json['businessImageName2']),
+          APIImagesHelper.toServerImage(json['BusinessImageName2']),
       businessImageName3:
-          APIImagesHelper.toServerImage(json['businessImageName3']),
+          APIImagesHelper.toServerImage(json['BusinessImageName3']),
       businessImageName4:
-          APIImagesHelper.toServerImage(json['businessImageName4']),
-      businessNameArabic: json['businessNameArabic'],
-      businessNameEnglish: json['businessNameEnglish'],
-      categoriesModel: CategoryModel.fromJson(json['categoriesModel']),
-      categoriesModelId: json['categoriesModelId'],
-      closing: json['closing'],
-      opening: json['opening'],
-      holidays: json['holidays'],
+          APIImagesHelper.toServerImage(json['BusinessImageName4']),
+      businessNameArabic: json['BusinessNameArabic'],
+      businessNameEnglish: json['BusinessNameEnglish'],
+      categoriesModel: CategoryModel.fromJson(json['CategoriesModel']),
+      categoriesModelId: json['CategoriesModelId'],
+      closing: json['Closing'],
+      opening: json['Opening'],
+      holidays: json['Holidays'],
       contacts: ContactModel.fromJson(json),
-      latitude: json['latitude'],
-      longitude: json['longitude'],
+      latitude: json['Latitude'],
+      longitude: json['Longitude'],
     );
   }
 

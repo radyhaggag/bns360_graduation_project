@@ -10,17 +10,19 @@ class ReviewModel extends ReviewEntity {
     required super.userImage,
     required super.reviewText,
     required super.starCount,
+    required super.userId,
   });
 
   factory ReviewModel.fromJson(Map<String, dynamic> json) {
     return ReviewModel(
-      id: json['id'],
-      date: json['date'] ?? DateTime.now().toString(),
-      userName: json['user_name'] ?? "Someone",
+      id: json['Id'],
+      date: json['dateTime'] ?? DateTime.now().toString(),
+      userName: json['UserName'] ?? "Someone",
       userImage:
-          APIImagesHelper.toServerImage(json['user_image'], addDefault: true)!,
-      reviewText: json['review'],
-      starCount: json['rating'],
+          APIImagesHelper.toServerImage(json['PhotoUrl'], addDefault: true)!,
+      reviewText: json['Review'],
+      starCount: json['Rating'],
+      userId: json["UserId"],
     );
   }
 }

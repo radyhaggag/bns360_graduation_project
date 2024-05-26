@@ -1,9 +1,13 @@
 part of 'job_card.dart';
 
 class _JobDateAndDetailsSection extends StatelessWidget {
-  const _JobDateAndDetailsSection({required this.jobEntity});
+  const _JobDateAndDetailsSection({
+    required this.jobEntity,
+    required this.isInSavedScreen,
+  });
 
   final JobEntity jobEntity;
+  final bool isInSavedScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +28,24 @@ class _JobDateAndDetailsSection extends StatelessWidget {
           height: 35.h,
           borderRadius: BorderRadius.circular(8),
           onPressed: () {
+            Navigator.of(context)
+                .pushNamed(
+              Routes.jobDetails,
+              arguments: jobEntity,
+            )
+                .then((_) {
+              if (isInSavedScreen) {
+                NavigationService.navigatorKey.currentContext!
+                    .read<SavedBloc>()
+                    .add(
+                      GetSavedJobsEvent(),
+                    );
+              }
+            });
             // Navigator.of(context).pushNamed(
-            //   Routes.jobDetails,
+            //   Routes.editJob,
             //   arguments: jobEntity,
             // );
-            Navigator.of(context).pushNamed(
-              Routes.editJob,
-              arguments: jobEntity,
-            );
           },
         ),
       ],

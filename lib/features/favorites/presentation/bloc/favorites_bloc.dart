@@ -1,8 +1,7 @@
-import 'dart:async';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/databases/local_storage/hive_manager.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../domain/repositories/favorites_repo.dart';
@@ -17,6 +16,19 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     on<GetFavoriteCategoriesEvent>(_getFavoriteCategories);
     on<GetFavoriteCraftsmenEvent>(_getFavoriteCraftsmen);
     on<ChangeCurrentView>(_changeCurrentView);
+
+    on<AddCategoryItemToFavorite>(_addCategoryItemToFavorite);
+    on<RemoveCategoryItemFromFavorite>(_removeCategoryItemFromFavorite);
+    on<AddCraftsmanToFavorite>(_addCraftsmanToFavorite);
+    on<RemoveCraftsmanFromFavorite>(_removeCraftsmanFromFavorite);
+  }
+
+  List<int> get savedFavoriteCategoriesIds {
+    return HiveBoxes.favoriteBusiness.values.toList();
+  }
+
+  List<int> get savedFavoriteCraftsmenIds {
+    return HiveBoxes.favoriteCrafts.values.toList();
   }
 
   List<CategoryItemEntity> favoriteCategories = [];
@@ -25,10 +37,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     GetFavoriteCategoriesEvent event,
     Emitter<FavoritesState> emit,
   ) async {
-    if (favoriteCategories.isNotEmpty) return;
-
     emit(GetFavoriteCategoriesLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await favoritesRepo.getFavoriteCategories();
 
@@ -47,9 +56,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     GetFavoriteCraftsmenEvent event,
     Emitter<FavoritesState> emit,
   ) async {
-    if (favoriteCraftsmen.isNotEmpty) return;
     emit(GetFavoriteCraftsmenLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await favoritesRepo.getFavoriteCraftsmen();
 
@@ -76,5 +83,104 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
       add(GetFavoriteCraftsmenEvent());
     }
     emit(CurrentViewChanged(index: activeTabIndex));
+  }
+
+  _addCategoryItemToFavorite(
+    AddCategoryItemToFavorite event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    emit(AddCategoryItemToFavoriteLoadingState(itemId: event.itemId));
+
+    final res = await favoritesRepo.addCategoryItemToFavorite(
+      event.itemId,
+    );
+
+    res.fold(
+      (l) => emit(AddCategoryItemToFavoriteErrorState(
+        message: l.message,
+        itemId: event.itemId,
+      )),
+      (r) => emit(AddCategoryItemToFavoriteSuccessState(
+        itemId: event.itemId,
+      )),
+    );
+  }
+
+  _removeCategoryItemFromFavorite(
+    RemoveCategoryItemFromFavorite event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    emit(RemoveCategoryItemFromFavoriteLoadingState(
+      itemId: event.itemId,
+    ));
+
+    final res = await favoritesRepo.removeCategoryItemFromFavorite(
+      event.itemId,
+    );
+
+    res.fold(
+      (l) => emit(RemoveCategoryItemFromFavoriteErrorState(
+        message: l.message,
+        itemId: event.itemId,
+      )),
+      (r) {
+        favoriteCategories.removeWhere(
+          (element) => element.id == event.itemId,
+        );
+        emit(RemoveCategoryItemFromFavoriteSuccessState(
+          itemId: event.itemId,
+        ));
+      },
+    );
+  }
+
+  _addCraftsmanToFavorite(
+    AddCraftsmanToFavorite event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    emit(AddCraftsmanToFavoriteLoadingState(itemId: event.itemId));
+
+    final res = await favoritesRepo.addCraftsmanToFavorite(
+      event.itemId,
+    );
+
+    res.fold(
+      (l) => emit(AddCraftsmanToFavoriteErrorState(
+        message: l.message,
+        itemId: event.itemId,
+      )),
+      (r) => emit(AddCraftsmanToFavoriteSuccessState(
+        itemId: event.itemId,
+      )),
+    );
+  }
+
+  _removeCraftsmanFromFavorite(
+    RemoveCraftsmanFromFavorite event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    emit(RemoveCraftsmanFromFavoriteLoadingState(
+      itemId: event.itemId,
+    ));
+
+    final res = await favoritesRepo.removeCraftsmanFromFavorite(
+      event.itemId,
+    );
+
+    res.fold(
+      (l) => emit(RemoveCraftsmanFromFavoriteErrorState(
+        message: l.message,
+        itemId: event.itemId,
+      )),
+      (r) {
+        favoriteCraftsmen.removeWhere(
+          (element) => element.id == event.itemId,
+        );
+
+        emit(RemoveCraftsmanFromFavoriteSuccessState(
+          itemId: event.itemId,
+        ));
+      },
+    );
   }
 }

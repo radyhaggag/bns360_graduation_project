@@ -45,3 +45,91 @@ class CurrentViewChanged extends FavoritesState {
   @override
   List<Object> get props => [index];
 }
+
+class AddCategoryItemToFavoriteLoadingState extends FavoritesState {
+  final int itemId;
+
+  const AddCategoryItemToFavoriteLoadingState({required this.itemId});
+}
+
+class AddCategoryItemToFavoriteSuccessState extends FavoritesState {
+  final int itemId;
+
+  const AddCategoryItemToFavoriteSuccessState({required this.itemId});
+}
+
+class AddCategoryItemToFavoriteErrorState extends FavoritesState {
+  final String message;
+  final int itemId;
+
+  const AddCategoryItemToFavoriteErrorState({
+    required this.message,
+    required this.itemId,
+  });
+}
+
+class RemoveCategoryItemFromFavoriteLoadingState extends FavoritesState {
+  final int itemId;
+
+  const RemoveCategoryItemFromFavoriteLoadingState({required this.itemId});
+}
+
+class RemoveCategoryItemFromFavoriteSuccessState extends FavoritesState {
+  final int itemId;
+
+  const RemoveCategoryItemFromFavoriteSuccessState({required this.itemId});
+}
+
+class RemoveCategoryItemFromFavoriteErrorState extends FavoritesState {
+  final String message;
+  final int itemId;
+
+  const RemoveCategoryItemFromFavoriteErrorState({
+    required this.message,
+    required this.itemId,
+  });
+}
+
+class AddCraftsmanToFavoriteLoadingState extends FavoritesState {
+  final int itemId;
+
+  const AddCraftsmanToFavoriteLoadingState({required this.itemId});
+}
+
+class AddCraftsmanToFavoriteSuccessState extends FavoritesState {
+  final int itemId;
+
+  const AddCraftsmanToFavoriteSuccessState({required this.itemId});
+}
+
+class AddCraftsmanToFavoriteErrorState extends FavoritesState {
+  final String message;
+  final int itemId;
+
+  const AddCraftsmanToFavoriteErrorState({
+    required this.message,
+    required this.itemId,
+  });
+}
+
+class RemoveCraftsmanFromFavoriteLoadingState extends FavoritesState {
+  final int itemId;
+
+  const RemoveCraftsmanFromFavoriteLoadingState({required this.itemId});
+}
+
+class RemoveCraftsmanFromFavoriteSuccessState extends FavoritesState {
+  final int itemId;
+
+  const RemoveCraftsmanFromFavoriteSuccessState({required this.itemId});
+}
+
+class RemoveCraftsmanFromFavoriteErrorState extends FavoritesState {
+  final String message;
+  final int itemId;
+
+  const RemoveCraftsmanFromFavoriteErrorState({
+    required this.message,
+    required this.itemId,
+  });
+}

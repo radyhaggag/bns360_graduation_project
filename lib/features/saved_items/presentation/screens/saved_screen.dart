@@ -1,21 +1,24 @@
-import '../../../../core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../config/injector_container.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../bloc/saved_bloc.dart';
 import '../widgets/saved_body.dart';
 import '../widgets/saved_screen_app_bar.dart';
 
-class SavedScreen extends StatelessWidget {
+class SavedScreen extends StatefulWidget {
   const SavedScreen({super.key});
 
-  static Widget getWithBlocProvider() {
-    return BlocProvider(
-      create: (context) =>
-          sl<SavedBloc>()..add(GetSavedJobsEvent()),
-      child: const SavedScreen(),
-    );
+  @override
+  State<SavedScreen> createState() => _SavedScreenState();
+}
+
+class _SavedScreenState extends State<SavedScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // context.read<SavedBloc>().add(GetSavedJobsEvent());
+    context.read<SavedBloc>().add(GetSavedPropertiesEvent());
   }
 
   @override

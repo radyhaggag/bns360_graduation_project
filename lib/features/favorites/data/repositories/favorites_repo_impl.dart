@@ -23,4 +23,32 @@ class FavoritesRepoImpl implements FavoritesRepo {
       () => favoritesRemoteDataSource.getFavoriteCraftsmen(),
     );
   }
+
+  @override
+  FutureEither<void> addCategoryItemToFavorite(int itemId) async {
+    return executeAndHandleErrorAsync(
+      () => favoritesRemoteDataSource.addCategoryItemToFavorite(itemId),
+    );
+  }
+
+  @override
+  FutureEither<void> removeCategoryItemFromFavorite(int itemId) async {
+    return executeAndHandleErrorAsync(
+      () => favoritesRemoteDataSource.removeCategoryItemFromFavorite(itemId),
+    );
+  }
+
+  @override
+  FutureEither<void> addCraftsmanToFavorite(int itemId) async {
+    return executeAndHandleErrorAsync(
+      () => favoritesRemoteDataSource.addCraftsmanToFavorite(itemId),
+    );
+  }
+
+  @override
+  FutureEither<void> removeCraftsmanFromFavorite(int itemId) async {
+    return executeAndHandleErrorAsync(
+      () => favoritesRemoteDataSource.removeCraftsmanFromFavorite(itemId),
+    );
+  }
 }

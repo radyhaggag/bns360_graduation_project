@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/features/category_item/domain/params/category_item_screen_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,17 +16,11 @@ class CategoryItemCard extends StatelessWidget {
   const CategoryItemCard({
     super.key,
     required this.categoryItemEntity,
-    this.onFavoriteIconPressed,
     this.width,
-    this.isFavorite,
-    this.useSetStateToChangeFavoriteColor,
   });
 
   final CategoryItemEntity categoryItemEntity;
-  final void Function()? onFavoriteIconPressed;
   final double? width;
-  final bool? isFavorite;
-  final bool? useSetStateToChangeFavoriteColor;
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +54,8 @@ class CategoryItemCard extends StatelessWidget {
                         child: SizedBox(),
                       ),
                       FavoriteIcon(
-                        onPressed: onFavoriteIconPressed,
-                        isFavorite: isFavorite,
-                        useSetStateToChangeColor:
-                            useSetStateToChangeFavoriteColor,
+                        itemId: categoryItemEntity.id,
+                        isBusiness: true,
                       ),
                     ],
                   ),

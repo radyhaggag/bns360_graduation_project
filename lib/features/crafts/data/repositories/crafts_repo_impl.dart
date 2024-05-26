@@ -25,7 +25,7 @@ class CraftsRepoImpl implements CraftsRepo {
   }
 
   @override
-  FutureEither<List<CraftsmanEntity>> getCraftItemsById(String id) async {
+  FutureEither<List<CraftsmanEntity>> getCraftItemsById(int id) async {
     return executeAndHandleErrorAsync(
       () => craftsRemoteDataSource.getCraftItemsById(id),
     );
@@ -42,7 +42,7 @@ class CraftsRepoImpl implements CraftsRepo {
 
   @override
   FutureEither<List<CraftsmanEntity>> searchOnCraftsById(
-    String id,
+    int id,
     String text,
   ) async {
     return executeAndHandleErrorAsync(

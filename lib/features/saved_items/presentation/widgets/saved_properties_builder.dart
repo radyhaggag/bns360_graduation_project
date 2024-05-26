@@ -15,14 +15,6 @@ class SavedPropertiesBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SavedBloc, SavedState>(
-      buildWhen: (previous, current) {
-        final states = [
-          GetSavedPropertiesLoadingState,
-          GetSavedPropertiesErrorState,
-          GetSavedPropertiesSuccessState
-        ];
-        return states.contains(current.runtimeType);
-      },
       builder: (context, state) {
         final savedProperties = context.read<SavedBloc>().savedProperties;
 
@@ -35,7 +27,10 @@ class SavedPropertiesBuilder extends StatelessWidget {
           loadedWidget: MainListViewBuilder<PropertyEntity>(
             list: savedProperties,
             emptyMessage: S.of(context).no_properties_found,
-            itemWidget: (item, _) => PropertyCard(propertyEntity: item),
+            itemWidget: (item, _) => PropertyCard(
+              propertyEntity: item,
+              isInSavedScreen: true,
+            ),
             scrollDirection: Axis.vertical,
             width: context.width,
             height: context.height,

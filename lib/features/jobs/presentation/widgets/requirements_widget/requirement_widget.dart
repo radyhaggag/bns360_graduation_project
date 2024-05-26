@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,18 +18,23 @@ class RequirementWidget extends StatelessWidget {
     required this.index,
     required this.isReadOnly,
     required this.withTranslation,
+    required this.language,
   });
 
   final String requirement;
   final int index;
   final bool isReadOnly;
   final bool withTranslation;
+  final Language language;
 
   _onTap(BuildContext context) {
     ConfirmationDialog.show(
       context,
       onConfirm: () {
-        context.read<JobsBloc>().add(RemoveRequirementEvent(index: index));
+        context.read<JobsBloc>().add(RemoveRequirementEvent(
+              index: index,
+              language: language,
+            ));
         Navigator.pop(context);
       },
       message: S.of(context).remove_requirement,
@@ -74,6 +80,7 @@ class RequirementWidget extends StatelessWidget {
                               index: index,
                               context: context,
                               withTranslation: withTranslation,
+                              language: language,
                             ),
                           );
                     },

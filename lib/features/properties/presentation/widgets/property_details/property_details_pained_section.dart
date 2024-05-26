@@ -1,15 +1,17 @@
-import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/widgets/custom_back_button.dart';
-import '../../../../../core/widgets/property_card/property_card_images_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/property_entity.dart';
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../../core/widgets/property_card/property_card_images_section.dart';
 
 class PropertyDetailsPainedSection extends SliverPersistentHeaderDelegate {
   final PropertyEntity propertyEntity;
 
-  PropertyDetailsPainedSection({required this.propertyEntity});
+  PropertyDetailsPainedSection({
+    required this.propertyEntity,
+  });
 
   @override
   Widget build(

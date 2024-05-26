@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
-import '../../../../../core/widgets/job_card/save_job_btn.dart';
+import '../../../../../core/widgets/icons/save_icon.dart';
 
 class JobDetailsScreenAppBar extends StatelessWidget {
   const JobDetailsScreenAppBar({super.key, required this.jobEntity});
@@ -19,9 +19,10 @@ class JobDetailsScreenAppBar extends StatelessWidget {
         color: Colors.white,
       ),
       actions: [
-        SaveJobBtn(
+        SaveIcon(
           notSavedColor: AppColors.white,
-          jobId: jobEntity.id,
+          itemId: jobEntity.id,
+          isJob: true,
         ),
       ],
     );

@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+
 import '../../utils/enums/job_type.dart';
 import '../entities/job_entity.dart';
 import 'contact_model.dart';
@@ -19,31 +21,33 @@ class JobModel extends JobEntity {
     required super.type,
     required super.workHours,
     required super.timeAddedjob,
+    required super.userId,
     super.isBelongToMe,
   });
 
   factory JobModel.fromJson(Map<String, dynamic> json) {
 
     return JobModel(
-      id: json['id'],
-      jobDescriptionEnglish: json['jobDescriptionEnglish'],
+      id: json['Id'],
+      userId: json['UserId'],
+      jobDescriptionEnglish: json['JobDescriptionEnglish'],
       contacts: ContactModel.fromJson(json),
-      jobTitleEnglish: json['jobTitleEnglish'],
-      jobTitleArabic: json['jobTitleArabic'],
-      salary: json['salary'],
+      jobTitleEnglish: json['JobTitleEnglish'],
+      jobTitleArabic: json['JobTitleArabic'],
+      salary: json['Salary'],
       requirementEnglish: RequirementsModel.fromJson(
-        json["requirementEnglish"],
+        json["RequirementEnglish"],
       ),
       requirementsArabic: RequirementsModel.fromJson(
-        json["requirementsArabic"],
+        json["RequirementsArabic"],
       ),
-      workHours: json['workHours'],
+      workHours: json['WorkHours'],
       publisherDetails: PublisherDetailsModel.fromJson(
-        json['publisherDetails'],
+        json['PublisherDetails'],
       ),
-      jobDescriptionArabic: json["jobDescriptionArabic"],
-      type: JobType.fromString(json["type"]),
-      timeAddedjob: DateTime.parse(json["timeAddedjob"]),
+      jobDescriptionArabic: json["JobDescriptionArabic"],
+      type: JobType.fromString(json["Type"]),
+      timeAddedjob: DateTime.parse(json["TimeAddedjob"]),
     );
   }
 
@@ -63,28 +67,30 @@ class JobModel extends JobEntity {
       workHours: entity.workHours,
       isBelongToMe: entity.isBelongToMe,
       timeAddedjob: entity.timeAddedjob,
+      userId: entity.userId,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'jobTitleArabic': jobTitleArabic,
-      'jobTitleEnglish': jobTitleEnglish,
-      'jobDescriptionArabic': jobDescriptionArabic,
-      'jobDescriptionEnglish': jobDescriptionEnglish,
-      'requirementsArabic':
+      'JobTitleArabic': jobTitleArabic,
+      'JobTitleEnglish': jobTitleEnglish,
+      'JobDescriptionArabic': jobDescriptionArabic,
+      'JobDescriptionEnglish': jobDescriptionEnglish,
+      'RequirementsArabic':
           RequirementsModel.fromEntity(requirementsArabic).toJson(),
-      'requirementEnglish':
+      'RequirementEnglish':
           RequirementsModel.fromEntity(requirementEnglish).toJson(),
-      'publisherDetails':
+      'PublisherDetails':
           PublisherDetailsModel.fromEntity(publisherDetails).toJson(),
-      'salary': salary,
-      'workHours': workHours,
-      'whatsapp': contacts?.whatsapp,
-      'phonenumbers': contacts?.phoneNumber,
-      'emails': contacts?.email,
-      'uRls': contacts?.urlSite,
-      'type': type.id.toString(),
+      'Salary': salary,
+      'WorkHours': workHours,
+      'Whatsapp': contacts?.whatsapp,
+      'Phonenumbers': contacts?.phoneNumber,
+      'Emails': contacts?.email,
+      'URls': contacts?.urlSite,
+      'Type': type.id.toString(),
+      'UserId': AppProvider().getProfile()!.id,
     };
   }
 }

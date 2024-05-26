@@ -45,7 +45,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
   }
 
   final craftAllEntity = const CraftEntity(
-    id: "-1",
+    id: -1,
     nameAR: 'الجميع',
     nameEN: 'All',
   );
@@ -58,7 +58,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     return null;
   }
 
-  String selectedCraftId = "-1";
+  int selectedCraftId = -1;
 
   String? selectedCraftName(BuildContext context) {
     var selectedCraft = crafts?.firstWhere(
@@ -96,7 +96,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     GetCraftItemsByIdEvent event,
     Emitter<CraftsState> emit,
   ) async {
-    String prevSelectedId = selectedCraftId;
+    int prevSelectedId = selectedCraftId;
 
     selectedCraftId = event.id;
 

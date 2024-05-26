@@ -23,11 +23,11 @@ class ProfileModel extends ProfileEntity {
 
   factory ProfileModel.fromJson(Map<String, dynamic> map) {
     return ProfileModel(
-      id: map['id'] as String,
-      name: map['displayName'] as String,
-      email: map['email'] as String,
+      id: map['Id'] as String,
+      name: map['DisplayName'] as String,
+      email: map['Email'] as String,
       imageUrl: map['profileImageName'] != null? APIImagesHelper.toServerImage(map['profileImageName']):null,
-      userType: map['userRole'] as int,
+      userType: map['UserRole'] as int,
     );
   }
 }

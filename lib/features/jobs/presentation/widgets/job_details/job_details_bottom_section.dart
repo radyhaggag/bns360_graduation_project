@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -78,9 +79,10 @@ class _RequirementsSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 5),
-          const RequirementsBuilder(
+          RequirementsBuilder(
             isReadOnly: true,
             withTranslation: false,
+            language: context.currentLanguage,
           ),
         ],
       ),

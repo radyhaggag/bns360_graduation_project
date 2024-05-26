@@ -11,16 +11,44 @@ class SavedRepoImpl implements SavedRepo {
   SavedRepoImpl(this.savedRemoteDataSource);
 
   @override
-  FutureEither<List<JobModel>> getSavedJobs() async {
+  FutureEither<List<JobModel>> getSavedJobs() {
     return executeAndHandleErrorAsync(
       () => savedRemoteDataSource.getSavedJobs(),
     );
   }
 
   @override
-  FutureEither<List<PropertyEntity>> getSavedProperties() async {
+  FutureEither<List<PropertyEntity>> getSavedProperties() {
     return executeAndHandleErrorAsync(
       () => savedRemoteDataSource.getSavedProperties(),
+    );
+  }
+
+  @override
+  FutureEither<void> saveJob(int jobId) {
+    return executeAndHandleErrorAsync(
+      () => savedRemoteDataSource.saveJob(jobId),
+    );
+  }
+
+  @override
+  FutureEither<void> saveProperty(int propertyId) {
+    return executeAndHandleErrorAsync(
+      () => savedRemoteDataSource.saveProperty(propertyId),
+    );
+  }
+
+  @override
+  FutureEither<void> unSaveJob(int jobId) {
+    return executeAndHandleErrorAsync(
+      () => savedRemoteDataSource.unSaveJob(jobId),
+    );
+  }
+
+  @override
+  FutureEither<void> unSaveProperty(int propertyId) {
+    return executeAndHandleErrorAsync(
+      () => savedRemoteDataSource.unSaveProperty(propertyId),
     );
   }
 }

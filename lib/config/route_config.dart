@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/features/category_item/domain/params.dart/category_item_screen_params.dart';
+import 'package:bns360_graduation_project/features/category_item/domain/params/category_item_screen_params.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/screens/add_business_screen.dart';
 import 'package:bns360_graduation_project/features/profile/presentation/screen/change_password_screen.dart';
@@ -61,7 +61,6 @@ import '../features/properties/presentation/screens/add_property_screen.dart';
 import '../features/properties/presentation/screens/edit_property_screen.dart';
 import '../features/properties/presentation/screens/properties_screen.dart';
 import '../features/properties/presentation/screens/property_details_screen.dart';
-import '../features/saved_items/presentation/bloc/saved_bloc.dart';
 import '../features/saved_items/presentation/screens/saved_screen.dart';
 import '../features/settings/presentation/bloc/settings_bloc.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
@@ -276,7 +275,7 @@ abstract class RouteConfig {
             return BlocProvider(
               create: (context) => sl<CraftsmanBloc>()
                 ..add(GetCraftsmanReviewsEvent(
-                  itemId: item.id.toString(),
+                  itemId: item.id,
                 )),
               child: CraftsmanReviewSummaryScreen(
                 craftsmanEntity: item,
@@ -382,11 +381,7 @@ abstract class RouteConfig {
         );
       case Routes.savedItems:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) =>
-                sl<SavedBloc>()..add(GetSavedPropertiesEvent()),
-            child: const SavedScreen(),
-          ),
+          builder: (context) => const SavedScreen(),
         );
       case Routes.myPosts:
         return MaterialPageRoute(

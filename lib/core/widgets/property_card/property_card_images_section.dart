@@ -1,11 +1,13 @@
+import 'package:bns360_graduation_project/config/navigation_service.dart';
+import 'package:bns360_graduation_project/core/widgets/icons/save_icon.dart';
+import 'package:bns360_graduation_project/features/saved_items/presentation/bloc/saved_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/route_config.dart';
 import '../../shared_data/entities/property_entity.dart';
-import '../../utils/extensions/context.dart';
 import '../custom_slider/custom_slider.dart';
-import 'save_property_btn.dart';
 
 class PropertyCardImagesSection extends StatelessWidget {
   const PropertyCardImagesSection({
@@ -13,10 +15,12 @@ class PropertyCardImagesSection extends StatelessWidget {
     required this.propertyEntity,
     this.isMiniMode = true,
     this.moreWidget,
+    this.isInSavedScreen = false,
   });
   final PropertyEntity propertyEntity;
   final bool isMiniMode;
   final Widget? moreWidget;
+  final bool isInSavedScreen;
 
   AlignmentGeometry get alignment {
     if (isMiniMode) {
@@ -33,10 +37,18 @@ class PropertyCardImagesSection extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            Navigator.of(context).pushNamed(
+            Navigator.of(context)
+                .pushNamed(
               Routes.propertyDetails,
               arguments: propertyEntity,
-            );
+            )
+                .then((_) {
+              if (isInSavedScreen) {
+                NavigationService.navigatorKey.currentContext!
+                    .read<SavedBloc>()
+                    .add(GetSavedPropertiesEvent());
+              }
+            });
           },
           child: Container(
             margin: isMiniMode ? const EdgeInsets.only(bottom: 15) : null,
@@ -54,11 +66,9 @@ class PropertyCardImagesSection extends StatelessWidget {
         ),
         Padding(
           padding: isMiniMode ? EdgeInsets.zero : const EdgeInsets.all(8.0),
-          child: SavePropertyBtn(
-            propertyId: propertyEntity.id,
-            notSavedBackgroundColor: context.theme.highlightColor.withAlpha(
-              150,
-            ),
+          child: SaveIcon(
+            itemId: propertyEntity.id,
+            isJob: false,
             size: 30.r,
           ),
         ),

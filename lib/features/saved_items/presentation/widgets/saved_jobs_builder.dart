@@ -15,14 +15,6 @@ class SavedJobsBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SavedBloc, SavedState>(
-      buildWhen: (previous, current) {
-        final states = [
-          GetSavedJobsLoadingState,
-          GetSavedJobsErrorState,
-          GetSavedJobsSuccessState
-        ];
-        return states.contains(current.runtimeType);
-      },
       builder: (context, state) {
         final savedJobs = context.read<SavedBloc>().savedJobs;
 
@@ -34,7 +26,10 @@ class SavedJobsBuilder extends StatelessWidget {
           loadedWidget: MainListViewBuilder<JobEntity>(
             list: savedJobs,
             emptyMessage: S.of(context).no_jobs_found,
-            itemWidget: (item, _) => JobCard(jobEntity: item),
+            itemWidget: (item, _) => JobCard(
+              jobEntity: item,
+              isInSavedScreen: true,
+            ),
             scrollDirection: Axis.vertical,
             width: context.width,
             height: context.height,

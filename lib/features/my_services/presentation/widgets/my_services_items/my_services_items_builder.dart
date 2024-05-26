@@ -40,6 +40,8 @@ class MyServicesItemsBuilder extends StatelessWidget {
               list: items,
               emptyMessage: S.of(context).no_places_to_explore,
               itemWidget: (item, index) => HorizontalItemCard(
+                isBusiness: false,
+                itemId: item.id,
                 title: item.name,
                 subTitle: LocalizationHelper.getLocalizedString(
                   context,
@@ -49,9 +51,6 @@ class MyServicesItemsBuilder extends StatelessWidget {
                 imageUrl: item.imageUrl,
                 numOfRatings: item.numOfRatings,
                 starsCount: item.numOfRatings,
-                isFavorite: true,
-                onFavoriteIconPressed: () {},
-                useSetStateToChangeFavoriteColor: true,
                 onPressed: () {
                   Navigator.of(context).pushNamed(
                     Routes.craftsman,

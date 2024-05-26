@@ -4,12 +4,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'config/injector_container.dart';
+import 'config/navigation_service.dart';
 import 'config/route_config.dart';
 import 'config/theme_config.dart';
 import 'core/app/app_bloc.dart';
 import 'core/utils/app_strings.dart';
 import 'core/utils/enums.dart';
+import 'features/favorites/presentation/bloc/favorites_bloc.dart';
 import 'features/profile/presentation/bloc/profile_bloc.dart';
+import 'features/saved_items/presentation/bloc/saved_bloc.dart';
 import 'generated/l10n.dart';
 
 class BNS360App extends StatefulWidget {
@@ -38,15 +41,23 @@ class _BNS360AppState extends State<BNS360App> {
           BlocProvider<AppBloc>(
             create: (context) => sl<AppBloc>(),
           ),
+          BlocProvider<FavoritesBloc>(
+            create: (context) => sl<FavoritesBloc>(),
+          ),
+          BlocProvider<SavedBloc>(
+            create: (context) => sl<SavedBloc>(),
+          ),
           BlocProvider(
             lazy: false,
-            create: (context) => sl<ProfileBloc>()..add(GetProfileEvent()),
+            create: (context) =>
+                sl<ProfileBloc>()..add(const GetProfileEvent()),
           ),
         ],
         child: BlocBuilder<AppBloc, AppState>(
           builder: (context, state) {
             ScreenUtil.init(context);
             return MaterialApp(
+              navigatorKey: NavigationService.navigatorKey,
               supportedLocales: S.delegate.supportedLocales,
               localizationsDelegates: const [
                 S.delegate,

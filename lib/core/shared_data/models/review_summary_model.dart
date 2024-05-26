@@ -13,13 +13,13 @@ class ReviewSummaryModel extends ReviewSummaryEntity {
 
   factory ReviewSummaryModel.fromJson(Map<String, dynamic> json) {
     return ReviewSummaryModel(
-      totalReviews: json['totalReviews'],
-      averageRating: json['averageRating'],
-      fiveStars: json['fiveStars'],
-      fourStars: json['fourStars'],
-      threeStars: json['threeStars'],
-      twoStars: json['twoStars'],
-      oneStars: json['oneStars'],
+      totalReviews: json['TotalReviews'],
+      averageRating: (json['AverageRating'] as num).toDouble(),
+      fiveStars: json['FiveStars'],
+      fourStars: json['FourStars'],
+      threeStars: json['ThreeStars'],
+      twoStars: json['TwoStars'],
+      oneStars: json['OneStars'],
     );
   }
 }

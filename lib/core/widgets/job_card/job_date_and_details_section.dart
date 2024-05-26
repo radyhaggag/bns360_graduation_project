@@ -38,7 +38,7 @@ class _JobDateAndDetailsSection extends StatelessWidget {
                 NavigationService.navigatorKey.currentContext!
                     .read<SavedBloc>()
                     .add(
-                      GetSavedJobsEvent(),
+                      GetSavedJobsEvent(skipPreviousCheck: false),
                     );
               }
             });

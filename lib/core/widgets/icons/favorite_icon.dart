@@ -60,7 +60,7 @@ class FavoriteIcon extends StatelessWidget {
         return rebuildStates.any((element) => element);
       },
       builder: (context, state) {
-        final isInFavorite = isFavorite(context);
+        final isInFavorite = isFavorite(context, state);
 
         final loadingStates = [
           state is AddCategoryItemToFavoriteLoadingState &&
@@ -83,10 +83,7 @@ class FavoriteIcon extends StatelessWidget {
               color: isInFavorite ? Colors.red : context.theme.cardColor,
             ),
             padding: EdgeInsets.zero,
-            // constraints: BoxConstraints(minHeight: 30.r, minWidth: 30.r),
-            // style: IconButton.styleFrom(
             backgroundColor: context.theme.highlightColor,
-            // ),
             onPressed: () {
               onPressed.call(context, isInFavorite: isInFavorite);
             },
@@ -110,7 +107,21 @@ class FavoriteIcon extends StatelessWidget {
     );
   }
 
-  bool isFavorite(BuildContext context) {
+  bool isFavorite(BuildContext context, FavoritesState lastState) {
+    if (lastState is AddCategoryItemToFavoriteSuccessState &&
+        lastState.itemId == itemId) {
+      return true;
+    } else if (lastState is RemoveCategoryItemFromFavoriteSuccessState &&
+        lastState.itemId == itemId) {
+      return false;
+    } else if (lastState is AddCraftsmanToFavoriteSuccessState &&
+        lastState.itemId == itemId) {
+      return true;
+    } else if (lastState is RemoveCraftsmanFromFavoriteSuccessState &&
+        lastState.itemId == itemId) {
+      return false;
+    }
+
     if (isBusiness) {
       return context
           .read<FavoritesBloc>()

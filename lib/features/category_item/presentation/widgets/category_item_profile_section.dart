@@ -53,6 +53,7 @@ class CategoryItemProfileSection extends StatelessWidget {
           )
         else ...[
           RoundedIconBtn(
+            size: 35.r,
             icon: const Icon(FeatherIcons.messageCircle),
             addMargin: false,
             onPressed: () {
@@ -72,6 +73,7 @@ class CategoryItemProfileSection extends StatelessWidget {
               );
             },
           ),
+          const SizedBox(width: 10),
           FavoriteIcon(
             addMargin: false,
             isBusiness: true,

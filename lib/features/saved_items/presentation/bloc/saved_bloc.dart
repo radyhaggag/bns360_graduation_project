@@ -36,7 +36,9 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     GetSavedJobsEvent event,
     Emitter<SavedState> emit,
   ) async {
-    if (savedJobs.length == savedJobInLocalIds.length) return;
+    if (!event.skipPreviousCheck) {
+      if (savedJobs.length == savedJobInLocalIds.length) return;
+    }
     emit(GetSavedJobsLoadingState());
 
     final res = await savedRepo.getSavedJobs();
@@ -54,7 +56,9 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     GetSavedPropertiesEvent event,
     Emitter<SavedState> emit,
   ) async {
-    if (savedProperties.length == savedPropertiesInLocalIds.length) return;
+    if (!event.skipPreviousCheck) {
+      if (savedProperties.length == savedPropertiesInLocalIds.length) return;
+    }
     emit(GetSavedPropertiesLoadingState());
 
     final res = await savedRepo.getSavedProperties();
@@ -77,10 +81,10 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     if (activeTabIndex == event.index) return;
     activeTabIndex = event.index;
     if (activeTabIndex == 0) {
-      add(GetSavedPropertiesEvent());
+      add(GetSavedPropertiesEvent(skipPreviousCheck: true));
     }
     if (activeTabIndex == 1) {
-      add(GetSavedJobsEvent());
+      add(GetSavedJobsEvent(skipPreviousCheck: true));
     }
     emit(CurrentViewChanged(index: activeTabIndex));
   }

@@ -37,6 +37,11 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     GetFavoriteCategoriesEvent event,
     Emitter<FavoritesState> emit,
   ) async {
+    if (!event.skipPreviousCheck) {
+      if (favoriteCategories.length == savedFavoriteCategoriesIds.length) {
+        return;
+      }
+    }
     emit(GetFavoriteCategoriesLoadingState());
 
     final res = await favoritesRepo.getFavoriteCategories();
@@ -56,6 +61,11 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     GetFavoriteCraftsmenEvent event,
     Emitter<FavoritesState> emit,
   ) async {
+    if (!event.skipPreviousCheck) {
+      if (favoriteCraftsmen.length == savedFavoriteCraftsmenIds.length) {
+        return;
+      }
+    }
     emit(GetFavoriteCraftsmenLoadingState());
 
     final res = await favoritesRepo.getFavoriteCraftsmen();
@@ -75,12 +85,13 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     ChangeCurrentView event,
     Emitter<FavoritesState> emit,
   ) {
+    if(activeTabIndex == event.index) return;
     activeTabIndex = event.index;
     if (activeTabIndex == 0) {
-      add(GetFavoriteCategoriesEvent());
+      add(GetFavoriteCategoriesEvent(skipPreviousCheck: true));
     }
     if (activeTabIndex == 1) {
-      add(GetFavoriteCraftsmenEvent());
+      add(GetFavoriteCraftsmenEvent(skipPreviousCheck: true));
     }
     emit(CurrentViewChanged(index: activeTabIndex));
   }

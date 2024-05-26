@@ -46,7 +46,7 @@ class PropertyCardImagesSection extends StatelessWidget {
               if (isInSavedScreen) {
                 NavigationService.navigatorKey.currentContext!
                     .read<SavedBloc>()
-                    .add(GetSavedPropertiesEvent());
+                    .add(GetSavedPropertiesEvent(skipPreviousCheck: false));
               }
             });
           },

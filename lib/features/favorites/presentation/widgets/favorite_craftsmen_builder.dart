@@ -17,14 +17,6 @@ class FavoriteCraftsmenBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoritesBloc, FavoritesState>(
-      buildWhen: (previous, current) {
-        final states = [
-          GetFavoriteCraftsmenLoadingState,
-          GetFavoriteCraftsmenErrorState,
-          GetFavoriteCraftsmenSuccessState
-        ];
-        return states.contains(current.runtimeType);
-      },
       builder: (context, state) {
         final favoriteCraftsmen =
             context.read<FavoritesBloc>().favoriteCraftsmen;
@@ -49,10 +41,16 @@ class FavoriteCraftsmenBuilder extends StatelessWidget {
               numOfRatings: item.numOfRatings,
               starsCount: item.averageRatings,
               onPressed: () {
-                Navigator.of(context).pushNamed(
+                Navigator.of(context)
+                    .pushNamed(
                   Routes.craftsman,
                   arguments: item,
-                );
+                )
+                    .then((value) {
+                  context.read<FavoritesBloc>().add(GetFavoriteCategoriesEvent(
+                        skipPreviousCheck: false,
+                      ));
+                });
               },
               isBusiness: false,
               itemId: item.id,

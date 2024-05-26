@@ -18,7 +18,7 @@ class _SavedScreenState extends State<SavedScreen> {
   void initState() {
     super.initState();
     // context.read<SavedBloc>().add(GetSavedJobsEvent());
-    context.read<SavedBloc>().add(GetSavedPropertiesEvent());
+    context.read<SavedBloc>().add(GetSavedPropertiesEvent(skipPreviousCheck: true));
   }
 
   @override

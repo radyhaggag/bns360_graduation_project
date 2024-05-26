@@ -65,6 +65,7 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
     ChangeCurrentView event,
     Emitter<MyPostsState> emit,
   ) {
+    if(event.index == activeTabIndex) return;
     activeTabIndex = event.index;
     if (activeTabIndex == 1) {
       add(GetMyPostsJobsEvent());

@@ -35,7 +35,6 @@ import '../features/crafts/presentation/screens/crafts_screen.dart';
 import '../features/craftsman/presentation/bloc/craftsman_bloc.dart';
 import '../features/craftsman/presentation/screens/craftsman_review_summary_screen.dart';
 import '../features/craftsman/presentation/screens/craftsman_screen.dart';
-import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
@@ -190,11 +189,7 @@ abstract class RouteConfig {
         );
       case Routes.favorites:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) =>
-                sl<FavoritesBloc>()..add(GetFavoriteCategoriesEvent()),
-            child: const FavoritesScreen(),
-          ),
+          builder: (context) => const FavoritesScreen(),
         );
       case Routes.categories:
         return MaterialPageRoute(

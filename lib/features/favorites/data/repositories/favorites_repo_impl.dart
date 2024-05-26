@@ -14,6 +14,7 @@ class FavoritesRepoImpl implements FavoritesRepo {
   FutureEither<List<CategoryItemEntity>> getFavoriteCategories() async {
     return executeAndHandleErrorAsync(
       () => favoritesRemoteDataSource.getFavoriteCategories(),
+      onFailure: (e) => Future.value(<CategoryItemEntity>[]),
     );
   }
 
@@ -21,6 +22,7 @@ class FavoritesRepoImpl implements FavoritesRepo {
   FutureEither<List<CraftsmanEntity>> getFavoriteCraftsmen() async {
     return executeAndHandleErrorAsync(
       () => favoritesRemoteDataSource.getFavoriteCraftsmen(),
+      onFailure: (e) => Future.value(<CraftsmanEntity>[]),
     );
   }
 

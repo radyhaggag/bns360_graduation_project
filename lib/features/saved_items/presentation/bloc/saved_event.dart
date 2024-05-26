@@ -2,9 +2,17 @@ part of 'saved_bloc.dart';
 
 abstract class SavedEvent {}
 
-class GetSavedJobsEvent extends SavedEvent {}
+class GetSavedJobsEvent extends SavedEvent {
+  final bool skipPreviousCheck;
 
-class GetSavedPropertiesEvent extends SavedEvent {}
+  GetSavedJobsEvent({required this.skipPreviousCheck});
+}
+
+class GetSavedPropertiesEvent extends SavedEvent {
+  final bool skipPreviousCheck;
+
+  GetSavedPropertiesEvent({required this.skipPreviousCheck});
+}
 
 class ChangeCurrentView extends SavedEvent {
   final int index;

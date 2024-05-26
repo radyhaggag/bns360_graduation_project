@@ -18,14 +18,6 @@ class FavoriteCategoriesBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoritesBloc, FavoritesState>(
-      buildWhen: (previous, current) {
-        final states = [
-          GetFavoriteCategoriesLoadingState,
-          GetFavoriteCategoriesErrorState,
-          GetFavoriteCategoriesSuccessState
-        ];
-        return states.contains(current.runtimeType);
-      },
       builder: (context, state) {
         final favoriteCategories =
             context.read<FavoritesBloc>().favoriteCategories;
@@ -56,14 +48,22 @@ class FavoriteCategoriesBuilder extends StatelessWidget {
                 numOfRatings: 50,
                 starsCount: 4.6,
                 onPressed: () {
-                  Navigator.of(context).pushNamed(
+                  Navigator.of(context)
+                      .pushNamed(
                     Routes.categoryItem,
                     arguments: CategoryItemScreenParams(
                       itemId: item.id,
                       categoryItemEntity: item,
                       isBelongToMe: item.isBelongToMe,
                     ),
-                  );
+                  )
+                      .then((value) {
+                    context
+                        .read<FavoritesBloc>()
+                        .add(GetFavoriteCategoriesEvent(
+                          skipPreviousCheck: false,
+                        ));
+                  });
                 },
                 isBusiness: true,
                 itemId: item.id),

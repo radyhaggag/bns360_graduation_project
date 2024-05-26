@@ -1,57 +1,45 @@
 part of 'favorites_bloc.dart';
 
-abstract class FavoritesEvent extends Equatable {
-  const FavoritesEvent();
+abstract class FavoritesEvent {}
 
-  @override
-  List<Object> get props => [];
+class GetFavoriteCategoriesEvent extends FavoritesEvent {
+  final bool skipPreviousCheck;
+
+  GetFavoriteCategoriesEvent({required this.skipPreviousCheck});
 }
 
-class GetFavoriteCategoriesEvent extends FavoritesEvent {}
+class GetFavoriteCraftsmenEvent extends FavoritesEvent {
+  final bool skipPreviousCheck;
 
-class GetFavoriteCraftsmenEvent extends FavoritesEvent {}
+  GetFavoriteCraftsmenEvent({required this.skipPreviousCheck});
+}
 
 class ChangeCurrentView extends FavoritesEvent {
   final int index;
 
-  const ChangeCurrentView({required this.index});
-
-  @override
-  List<Object> get props => [index];
+  ChangeCurrentView({required this.index});
 }
 
 class AddCategoryItemToFavorite extends FavoritesEvent {
   final int itemId;
 
-  const AddCategoryItemToFavorite({required this.itemId});
-
-  @override
-  List<Object> get props => [itemId];
+  AddCategoryItemToFavorite({required this.itemId});
 }
 
 class RemoveCategoryItemFromFavorite extends FavoritesEvent {
   final int itemId;
 
-  const RemoveCategoryItemFromFavorite({required this.itemId});
-
-  @override
-  List<Object> get props => [itemId];
+  RemoveCategoryItemFromFavorite({required this.itemId});
 }
 
 class AddCraftsmanToFavorite extends FavoritesEvent {
   final int itemId;
 
-  const AddCraftsmanToFavorite({required this.itemId});
-
-  @override
-  List<Object> get props => [itemId];
+  AddCraftsmanToFavorite({required this.itemId});
 }
 
 class RemoveCraftsmanFromFavorite extends FavoritesEvent {
   final int itemId;
 
-  const RemoveCraftsmanFromFavorite({required this.itemId});
-
-  @override
-  List<Object> get props => [itemId];
+  RemoveCraftsmanFromFavorite({required this.itemId});
 }

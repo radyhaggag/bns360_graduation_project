@@ -1,9 +1,10 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../core/shared_data/entities/review_entity.dart';
+import '../../../../core/shared_data/entities/review_summary_entity.dart';
 import '../../domain/repositories/craftsman_repo.dart';
 
 part 'craftsman_event.dart';
@@ -15,7 +16,11 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
   CraftsmanBloc({
     required this.craftsmanRepo,
   }) : super(CraftsmanInitial()) {
+    on<GetCraftsmanReviewSummaryEvent>(_getCraftsmanReviewSummary);
     on<GetCraftsmanReviewsEvent>(_getCraftsmanReviews);
+    on<GetCraftsmanEvent>(_getCraftsman);
+    on<SetCraftsmanEntityEvent>(_setCraftsmanEntity);
+    on<SendCraftsmanReviewEvent>(_sendReview);
     on<RemoveCraftsmanReviewEvent>(_removeCraftsmanReview);
   }
 
@@ -26,7 +31,6 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
     Emitter<CraftsmanState> emit,
   ) async {
     emit(GetCraftsmanReviewsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final res = await craftsmanRepo.getReviews(event.itemId);
 
@@ -39,13 +43,88 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
     );
   }
 
+  ReviewSummaryEntity? reviewsSummary;
+
+  _getCraftsmanReviewSummary(
+    GetCraftsmanReviewSummaryEvent event,
+    Emitter<CraftsmanState> emit,
+  ) async {
+    emit(GetCraftsmanReviewSummaryLoadingState());
+
+    final res = await craftsmanRepo.getCraftsmanReviewSummary(event.itemId);
+
+    res.fold(
+      (l) => emit(GetCraftsmanReviewSummaryErrorState(message: l.message)),
+      (r) {
+        reviewsSummary = r;
+        emit(GetCraftsmanReviewSummarySuccessState(summary: r));
+      },
+    );
+  }
+
+  CraftsmanEntity? craftsman;
+
+  _getCraftsman(
+    GetCraftsmanEvent event,
+    Emitter<CraftsmanState> emit,
+  ) async {
+    emit(GetCraftsmanLoadingState());
+
+    final res = await craftsmanRepo.getCraftsman(event.itemId);
+
+    res.fold(
+      (l) => emit(GetCraftsmanErrorState(message: l.message)),
+      (r) {
+        craftsman = r;
+        emit(GetCraftsmanSuccessState(craftsmanEntity: r));
+      },
+    );
+  }
+
+  _setCraftsmanEntity(
+    SetCraftsmanEntityEvent event,
+    Emitter<CraftsmanState> emit,
+  ) {
+    craftsman = event.craftsmanEntity;
+    emit(GetCraftsmanSuccessState(craftsmanEntity: craftsman!));
+  }
+
+  FutureOr<void> _sendReview(
+    SendCraftsmanReviewEvent event,
+    Emitter<CraftsmanState> emit,
+  ) async {
+    emit(SendCraftsmanReviewLoadingState());
+
+    final res = await craftsmanRepo.sendReview(
+      event.itemId,
+      event.rating,
+      event.review,
+    );
+
+    res.fold(
+      (l) => emit(SendCraftsmanReviewErrorState(
+        message: l.message,
+        rating: event.rating,
+        review: event.review,
+      )),
+      (r) {
+        emit(SendCraftsmanReviewSuccessState());
+      },
+    );
+  }
+
   _removeCraftsmanReview(
     RemoveCraftsmanReviewEvent event,
     Emitter<CraftsmanState> emit,
   ) async {
-    emit(RemoveCraftsmanReviewLoadingState());
+    emit(RemoveCraftsmanReviewLoadingState(
+      reviewId: event.reviewId,
+    ));
 
-    final res = await craftsmanRepo.removeReview(event.itemId, event.reviewId);
+    final res = await craftsmanRepo.removeReview(
+      event.reviewId,
+      event.craftsmanId,
+    );
 
     res.fold(
       (l) => emit(RemoveCraftsmanReviewErrorState(message: l.message)),

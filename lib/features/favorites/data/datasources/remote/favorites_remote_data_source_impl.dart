@@ -21,7 +21,7 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
       endpoint: AppEndpoints.getBusinessFavorites(userId),
     );
     final categoriesFuture = List<Future<CategoryItemModel>>.from(res.data.map(
-      (item) => _mapAndGetModel(item),
+      (item) => _mapAndGetCategoryItemModel(item),
     ));
 
     final categories = await Future.wait(categoriesFuture);
@@ -33,7 +33,8 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
     return categories;
   }
 
-  Future<CategoryItemModel> _mapAndGetModel(Map<String, dynamic> json) async {
+  Future<CategoryItemModel> _mapAndGetCategoryItemModel(
+      Map<String, dynamic> json) async {
     CategoryItemModel model = CategoryItemModel.fromJson(json);
 
     final res = await apiConsumer.get(
@@ -52,15 +53,33 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getCraftsmenFavorites(userId),
     );
-    final craftsmen = List<CraftsmanModel>.from(res.data.map(
-      (craftsman) => CraftsmanModel.fromJson(craftsman),
+    final categoriesFuture = List<Future<CraftsmanModel>>.from(res.data.map(
+      (item) => _mapAndGetCraftsmanModel(item),
     ));
+
+    final craftsmen = await Future.wait(categoriesFuture);
 
     await HiveBoxes.favoriteCrafts.clear();
 
     HiveBoxes.favoriteCrafts.addAll(craftsmen.map((e) => e.id));
 
     return craftsmen;
+  }
+
+  Future<CraftsmanModel> _mapAndGetCraftsmanModel(
+    Map<String, dynamic> json,
+  ) async {
+    CraftsmanModel model = CraftsmanModel.fromJson(json);
+
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.getCraftsmanReviewSummary(model.id),
+    );
+    final reviewSummary = ReviewSummaryModel.fromJson(res.data);
+    model = CraftsmanModel.fromEntity(
+      model.copyWith(reviewSummary: reviewSummary),
+    );
+
+    return model;
   }
 
   @override

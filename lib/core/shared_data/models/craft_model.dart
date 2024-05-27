@@ -9,9 +9,13 @@ class CraftModel extends CraftEntity {
 
   factory CraftModel.fromJson(Map<String, dynamic> json) {
     return CraftModel(
-      id: json['id'],
-      nameAR: json['name_ar'],
-      nameEN: json['name_en'],
+      id: json['Id'],
+      nameAR: json['CraftsNameArabic'],
+      nameEN: json['CraftsNameEnglish'],
     );
+  }
+
+  factory CraftModel.empty() {
+    return const CraftModel(id: -1, nameAR: "", nameEN: "");
   }
 }

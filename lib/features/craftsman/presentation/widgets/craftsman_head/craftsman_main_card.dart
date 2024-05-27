@@ -29,7 +29,7 @@ class CraftsmanMainCard extends StatelessWidget {
             children: [
               ClipOval(
                 child: MainNetworkImage(
-                  imageUrl: craftsmanEntity.imageUrl,
+                  imageUrl: craftsmanEntity.profileImageUrl,
                   width: 90.r,
                   height: 90.r,
                 ),
@@ -41,7 +41,11 @@ class CraftsmanMainCard extends StatelessWidget {
                 ),
                 child: FittedBox(
                   child: Text(
-                    craftsmanEntity.name,
+                    LocalizationHelper.getLocalizedString(
+                      context,
+                      ar: craftsmanEntity.nameAR,
+                      en: craftsmanEntity.nameEN,
+                    ),
                     style: context.textTheme.titleSmall?.copyWith(
                       color: context.theme.cardColor,
                       fontSize: AppFontSize.subTitle,

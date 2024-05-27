@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,7 +41,11 @@ class CraftsmanInfoSection extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           _CraftsmanLocation(
-            location: craftsmanEntity.address,
+            location: LocalizationHelper.getLocalizedString(
+              context,
+              ar: craftsmanEntity.addressAR,
+              en: craftsmanEntity.addressEN,
+            ),
           ),
           const SizedBox(height: 15),
           const _CraftsmanContactInfo(

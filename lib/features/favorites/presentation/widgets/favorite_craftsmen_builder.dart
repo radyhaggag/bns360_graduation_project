@@ -9,6 +9,7 @@ import '../../../../core/widgets/data_state_widget.dart';
 import '../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
 import '../../../../core/widgets/main_list_view_builder.dart';
 import '../../../../generated/l10n.dart';
+import '../../../craftsman/domain/params/craftsman_screen_params.dart';
 import '../bloc/favorites_bloc.dart';
 
 class FavoriteCraftsmenBuilder extends StatelessWidget {
@@ -31,20 +32,27 @@ class FavoriteCraftsmenBuilder extends StatelessWidget {
             list: favoriteCraftsmen,
             emptyMessage: S.of(context).no_favorite_items,
             itemWidget: (item, _) => HorizontalItemCard(
-              title: item.name,
+              title: LocalizationHelper.getLocalizedString(
+                context,
+                ar: item.nameAR,
+                en: item.nameEN,
+              ),
               subTitle: LocalizationHelper.getLocalizedString(
                 context,
                 ar: item.craft.nameAR,
                 en: item.craft.nameEN,
               ),
-              imageUrl: item.imageUrl,
-              numOfRatings: item.numOfRatings,
-              starsCount: item.averageRatings,
+              imageUrl: item.profileImageUrl,
+              numOfRatings: item.reviewSummary!.totalReviews,
+              starsCount: item.reviewSummary!.averageRating,
               onPressed: () {
                 Navigator.of(context)
                     .pushNamed(
                   Routes.craftsman,
-                  arguments: item,
+                  arguments: CraftsmanScreenParams(
+                    itemId: item.id,
+                    craftsmanEntity: item,
+                  ),
                 )
                     .then((value) {
                   context.read<FavoritesBloc>().add(GetFavoriteCategoriesEvent(

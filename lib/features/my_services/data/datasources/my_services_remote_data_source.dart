@@ -4,6 +4,7 @@ import '../../domain/params/add_service_params.dart';
 
 abstract class MyServicesRemoteDataSource {
   Future<void> addService(AddServiceParams params);
+  Future<void> updateService(CraftsmanEntity params);
   Future<List<CraftsmanEntity>> getMyServices();
   Future<List<CraftEntity>> getServiceCategories();
 }

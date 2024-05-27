@@ -24,6 +24,7 @@ class CraftsmanHeadActions extends StatelessWidget {
     return Positioned(
       right: context.currentLanguage == Language.english ? 0 : null,
       left: context.currentLanguage == Language.english ? null : 0,
+      top: 10,
       child: !craftsmanEntity.isBelongToMe
           ? Row(
               children: [
@@ -32,10 +33,10 @@ class CraftsmanHeadActions extends StatelessWidget {
                   onPressed: () {
                     final params = ConversationScreenParams(
                       participantEntity: ParticipantEntity(
-                        id: craftsmanEntity.id.toString(),
-                        nameEN: craftsmanEntity.name,
-                        nameAR: craftsmanEntity.name,
-                        imageUrl: craftsmanEntity.imageUrl,
+                        id: craftsmanEntity.userId.toString(),
+                        nameEN: craftsmanEntity.nameEN,
+                        nameAR: craftsmanEntity.nameAR,
+                        imageUrl: craftsmanEntity.profileImageUrl,
                         userType: UserType.serviceProvider.id,
                       ),
                       craftsmanEntity: craftsmanEntity,
@@ -46,12 +47,15 @@ class CraftsmanHeadActions extends StatelessWidget {
                     );
                   },
                 ),
+                const SizedBox(width: 10),
                 FavoriteIcon(
-                  addMargin: false,
+                  addMargin: true,
                   notRounded: true,
                   isBusiness: false,
                   itemId: craftsmanEntity.id,
+                  size: 35.r,
                 ),
+                const SizedBox(width: 10),
               ],
             )
           : CustomTextButton(
@@ -80,17 +84,14 @@ class _BuildBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    return CustomIconButton(
       icon: Icon(
         iconData,
-        size: 20.r,
         color: context.theme.cardColor,
       ),
+      size: 35.r,
       padding: EdgeInsets.zero,
-      constraints: BoxConstraints(minHeight: 30.r, minWidth: 30.r),
-      style: IconButton.styleFrom(
-        backgroundColor: context.theme.highlightColor,
-      ),
+      backgroundColor: context.theme.highlightColor,
       onPressed: onPressed,
     );
   }

@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/features/category_item/domain/params/category_item_screen_params.dart';
+import 'package:bns360_graduation_project/features/craftsman/domain/params/craftsman_screen_params.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/screens/add_business_screen.dart';
 import 'package:bns360_graduation_project/features/profile/presentation/screen/change_password_screen.dart';
@@ -259,7 +260,7 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<CraftsmanBloc>(),
             child: CraftsmanScreen(
-              craftsmanEntity: settings.arguments as CraftsmanEntity,
+              screenParams: settings.arguments as CraftsmanScreenParams,
             ),
           ),
         );
@@ -436,7 +437,7 @@ abstract class RouteConfig {
               ..add(GetServiceTypesEvent())
               ..add(InitNetworkServiceImageEvent(
                 networkImages: args.serviceImages,
-                mainServiceImage: args.imageUrl,
+                mainServiceImage: args.profileImageUrl,
               ))
               ..add(SelectServiceCategoryEvent(
                 serviceCategory: args.craft,

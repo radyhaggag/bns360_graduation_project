@@ -10,6 +10,7 @@ import '../../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
 import '../../../../../core/widgets/more_icon.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../craftsman/domain/params/craftsman_screen_params.dart';
 import '../../bloc/my_services_bloc.dart';
 
 class MyServicesItemsBuilder extends StatelessWidget {
@@ -42,19 +43,26 @@ class MyServicesItemsBuilder extends StatelessWidget {
               itemWidget: (item, index) => HorizontalItemCard(
                 isBusiness: false,
                 itemId: item.id,
-                title: item.name,
+                title: LocalizationHelper.getLocalizedString(
+                  context,
+                  ar: item.nameAR,
+                  en: item.nameEN,
+                ),
                 subTitle: LocalizationHelper.getLocalizedString(
                   context,
                   ar: item.craft.nameAR,
                   en: item.craft.nameEN,
                 ),
-                imageUrl: item.imageUrl,
-                numOfRatings: item.numOfRatings,
-                starsCount: item.numOfRatings,
+                imageUrl: item.profileImageUrl,
+                numOfRatings: item.reviewSummary!.totalReviews,
+                starsCount: item.reviewSummary!.averageRating,
                 onPressed: () {
                   Navigator.of(context).pushNamed(
                     Routes.craftsman,
-                    arguments: item.copyWith(isBelongToMe: true),
+                    arguments: CraftsmanScreenParams(
+                      itemId: item.id,
+                      craftsmanEntity: item.copyWith(isBelongToMe: true),
+                    ),
                   );
                 },
                 moreWidget: MoreIcon(

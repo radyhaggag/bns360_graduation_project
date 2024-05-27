@@ -157,8 +157,8 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: size ?? 50.h,
-      height: size ?? 50.h,
+      width: size ?? 50.r,
+      height: size ?? 50.r,
       child: IconButton(
         onPressed: !isLoading ? onPressed : null,
         style: context.theme.iconButtonTheme.style?.copyWith(
@@ -168,7 +168,11 @@ class CustomIconButton extends StatelessWidget {
               ? MaterialStatePropertyAll(padding)
               : context.theme.iconButtonTheme.style?.padding,
         ),
-        icon: isLoading ? const CenterProgressIndicator() : icon,
+        icon: isLoading
+            ? CenterProgressIndicator(
+                size: (size ?? 50.r) - 5.r,
+              )
+            : icon,
       ),
     );
   }

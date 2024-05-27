@@ -68,7 +68,13 @@ class SendCategoryItemReviewErrorState extends CategoryItemState {
   });
 }
 
-class RemoveCategoryItemReviewLoadingState extends CategoryItemState {}
+class RemoveCategoryItemReviewLoadingState extends CategoryItemState {
+  final int reviewId;
+
+  const RemoveCategoryItemReviewLoadingState({
+    required this.reviewId,
+  });
+}
 
 class RemoveCategoryItemReviewSuccessState extends CategoryItemState {}
 

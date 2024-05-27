@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -105,6 +106,7 @@ class _AddServiceBodyState extends State<AddServiceBody> {
   void _submitForm() {
     final formControls = form.controls;
     final params = AddServiceParams(
+      holiday: WorkDay.friday,
       serviceName: formControls['name']!.value as String,
       serviceAddress: formControls['address']!.value as String,
       serviceDescription: formControls['description']!.value as String,

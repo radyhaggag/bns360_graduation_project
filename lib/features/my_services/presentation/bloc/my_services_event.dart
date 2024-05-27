@@ -15,9 +15,9 @@ class AddServiceEvent extends MyServicesEvent {
 }
 
 class UpdateServiceEvent extends MyServicesEvent {
-  final AddServiceParams addServiceParams;
+  final CraftsmanEntity craftsmanEntity;
 
-  const UpdateServiceEvent({required this.addServiceParams});
+  const UpdateServiceEvent({required this.craftsmanEntity});
 }
 
 class SelectServiceLocationEvent extends MyServicesEvent {

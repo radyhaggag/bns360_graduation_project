@@ -119,7 +119,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
     RemoveCategoryItemReviewEvent event,
     Emitter<CategoryItemState> emit,
   ) async {
-    emit(RemoveCategoryItemReviewLoadingState());
+    emit(RemoveCategoryItemReviewLoadingState(reviewId: event.reviewId));
 
     final res = await categoryItemRepo.removeReview(
       event.reviewId,

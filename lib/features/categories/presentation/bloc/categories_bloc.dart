@@ -16,10 +16,19 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   CategoriesBloc({
     required this.categoriesRepo,
   }) : super(CategoriesInitial()) {
+    initListener();
+
     on<GetCategoriesEvent>(_getCatteries);
     on<ToggleSearchIcon>(_toggleSearchIcon);
     on<SearchOnCategoryItems>(_searchOnCategoryItems);
     on<GetCategoryItemsByIdEvent>(_getCategoryItemsById);
+  }
+
+  initListener() {
+    searchController.addListener(() {
+      if ((categoryItems ?? []).isEmpty) return;
+      add(SearchOnCategoryItems(categoryId: categoryItems!.first.id));
+    });
   }
 
   List<CategoryEntity>? categories;
@@ -41,7 +50,16 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     );
   }
 
-  List<CategoryItemInfoEntity> items = [];
+  List<CategoryItemInfoEntity>? categoryItems;
+  List<CategoryItemInfoEntity> searchResults = [];
+
+  List<CategoryItemInfoEntity> get items {
+    if (isSearchEnabled) {
+      return searchResults;
+    } else {
+      return categoryItems ?? [];
+    }
+  }
 
   bool isSearchEnabled = false;
   final searchController = TextEditingController();
@@ -52,10 +70,6 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   ) {
     isSearchEnabled = !isSearchEnabled;
     emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
-    if (!isSearchEnabled && searchController.text.isNotEmpty) {
-      searchController.clear();
-      add(GetCategoryItemsByIdEvent(categoryId: event.categoryId));
-    }
   }
 
   _searchOnCategoryItems(
@@ -63,24 +77,22 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     Emitter<CategoriesState> emit,
   ) async {
     final searchVal = searchController.text.trim();
-    if (searchVal.isEmpty) return;
-
-    emit(GetCategoryItemsLoadingState());
-
     final searchLowercase = searchVal.toLowerCase();
+
     bool isTrue(CategoryItemInfoEntity item) {
+      if (searchLowercase.isEmpty) return true;
+
       final itemNameLowercaseAR = item.businessNameArabic.toLowerCase();
       final itemNameLowercaseENG = item.businessNameEnglish.toLowerCase();
       return (searchLowercase.contains(itemNameLowercaseAR) ||
               itemNameLowercaseAR.contains(searchLowercase)) ||
           (searchLowercase.contains(itemNameLowercaseENG) ||
-                  itemNameLowercaseENG.contains(searchLowercase)) &&
-              item.id == event.categoryId;
+              itemNameLowercaseENG.contains(searchLowercase));
     }
 
-    final filteredItems = items.where(isTrue).toList();
+    searchResults = (categoryItems ?? []).where(isTrue).toList();
 
-    emit(GetCategoryItemsSuccessState(items: filteredItems));
+    emit(GetCategoryItemsSuccessState(items: searchResults));
   }
 
   _getCategoryItemsById(
@@ -96,7 +108,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     res.fold(
       (l) => emit(GetCategoryItemsErrorState(message: l.message)),
       (r) {
-        items = r;
+        categoryItems = r;
         emit(GetCategoryItemsSuccessState(items: r));
       },
     );

@@ -1,26 +1,23 @@
 part of 'crafts_bloc.dart';
 
-abstract class CraftsState extends Equatable {
+abstract class CraftsState {
   const CraftsState();
-
-  @override
-  List<Object> get props => [];
 }
 
 class CraftsInitial extends CraftsState {}
 
-class GetCraftsmenLoadingState extends CraftsState {}
+class GetCraftItemsByIdLoadingState extends CraftsState {}
 
-class GetCraftsmenSuccessState extends CraftsState {
-  final List<CraftsmanEntity> craftsmen;
+class GetCraftItemsByIdSuccessState extends CraftsState {
+  final List<CraftsmanInfoEntity> craftsmen;
 
-  const GetCraftsmenSuccessState({required this.craftsmen});
+  const GetCraftItemsByIdSuccessState({required this.craftsmen});
 }
 
-class GetCraftsmenErrorState extends CraftsState {
+class GetCraftItemsByIdErrorState extends CraftsState {
   final String message;
 
-  const GetCraftsmenErrorState({required this.message});
+  const GetCraftItemsByIdErrorState({required this.message});
 }
 
 class GetCraftsLoadingState extends CraftsState {}
@@ -41,7 +38,4 @@ class SearchIconToggled extends CraftsState {
   final bool isSearchEnabled;
 
   const SearchIconToggled({required this.isSearchEnabled});
-
-  @override
-  List<Object> get props => [isSearchEnabled];
 }

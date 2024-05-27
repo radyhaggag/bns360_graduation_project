@@ -146,8 +146,8 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     emit(AddServiceLoadingState());
 
     final params = event.addServiceParams.copyWith(
-      lat: _serviceLat,
-      lng: _serviceLng,
+      // lat: _serviceLat,
+      // lng: _serviceLng,
       serviceCategory: selectedServiceCraft,
       mainServiceBackgroundImages: pickedImages.map((e) => e.path).toList(),
       mainServiceImage: _mainServiceImage?.path,
@@ -167,15 +167,17 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   ) async {
     emit(UpdateServiceLoadingState());
 
-    final params = event.addServiceParams.copyWith(
-      lat: _serviceLat,
-      lng: _serviceLng,
-      serviceCategory: selectedServiceCraft,
-      mainServiceBackgroundImages: pickedImages.map((e) => e.path).toList(),
-      mainServiceImage: _mainServiceImage?.path,
+    final params = event.craftsmanEntity.copyWith(
+      removeImages: pickedImages.isEmpty,
+      craftsModelId: selectedServiceCraft?.id,
+      imageName1: pickedImages.isNotEmpty ? pickedImages[0].path : null,
+      imageName2: pickedImages.length > 1 ? pickedImages[1].path : null,
+      imageName3: pickedImages.length > 2 ? pickedImages[2].path : null,
+      imageName4: pickedImages.length > 2 ? pickedImages[3].path : null,
+      profileImageUrl: mainServiceImage?.path,
     );
 
-    final res = await myServicesRepo.addService(params);
+    final res = await myServicesRepo.updateService(params);
 
     res.fold(
       (l) => emit(UpdateServiceErrorState(message: l.message)),

@@ -27,6 +27,25 @@ abstract class AppEndpoints {
     return "$baseUrl/api/Business/business-owner/$userId";
   }
 
+  //* Business
+  static const addCraftsman = "$baseUrl/api/Craftsmen";
+
+  static String updateCraftsman(int businessId) {
+    return "$baseUrl/api/Craftsmen/$businessId";
+  }
+
+  static String deleteCraftsman(int craftsmanId) {
+    return "$baseUrl/api/Craftsmen/$craftsmanId";
+  }
+
+  static String getCraftsmanById(int craftsmanId) {
+    return "$baseUrl/api/Craftsmen/$craftsmanId";
+  }
+
+  static String getMyCraftsman(String userId) {
+    return "$baseUrl/Craftsmen/craftsman/$userId";
+  }
+
   //* Business Categories
   static const getAllCategories = "$baseUrl/api/Categories";
   static String getAllCategoryItems(int id) {
@@ -74,11 +93,33 @@ abstract class AppEndpoints {
     return "$baseUrl/api/RatingAndReviewForBusiness/summary/$businessId";
   }
 
-  static String removeBusingsReview(int reviewId) {
-    return "$baseUrl/api/RatingAndReviewForBusiness/{reviewAndRatingId}/$reviewId";
+  static String removeBusinessReview({
+    required String userId,
+    required int reviewAndRatingId,
+    required int businessId,
+  }) {
+    return "$baseUrl/api/RatingAndReviewForBusiness/$userId/$businessId/$reviewAndRatingId";
   }
 
-  static const sendReview = "$baseUrl/api/RatingAndReviewForBusiness";
+  static const sendBusinessReview = "$baseUrl/api/RatingAndReviewForBusiness";
+
+  static String geCraftsmanReviews(int craftsmanId) {
+    return "$baseUrl/api/RatingAndReviewForCraftsman/$craftsmanId";
+  }
+
+  static String getCraftsmanReviewSummary(int craftsmanId) {
+    return "$baseUrl/api/RatingAndReviewForCraftsman/summary/$craftsmanId";
+  }
+
+  static String removeCraftsmanReview({
+    required String userId,
+    required int reviewAndRatingId,
+    required int craftsmanId,
+  }) {
+    return "$baseUrl/api/RatingAndReviewForCraftsman/$userId/$craftsmanId/$reviewAndRatingId";
+  }
+
+  static const sendCraftsmanReview = "$baseUrl/api/RatingAndReviewForCraftsman";
 
   //* Favorites
   static const businessFavorite = "$baseUrl/api/FavoritesBusinesses";
@@ -104,4 +145,11 @@ abstract class AppEndpoints {
   static String myPostsProperties(String userId) {
     return "$baseUrl/api/Profile/properties/$userId";
   }
+
+  //* Crafts
+  static String getCraftItemsById(int craftId) {
+    return "$baseUrl/api/Craftsmen/GetAllCraftsmenWithDetails/$craftId";
+  }
+
+  static const getAllCrafts = "$baseUrl/api/Crafts";
 }

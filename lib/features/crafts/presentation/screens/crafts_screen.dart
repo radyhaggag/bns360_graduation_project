@@ -12,9 +12,7 @@ class CraftsScreen extends StatelessWidget {
 
   static Widget getWithBlocProvider() {
     return BlocProvider(
-      create: (context) => sl<CraftsBloc>()
-        ..add(GetCraftsEvent())
-        ..add(GetCraftsmenEvent()),
+      create: (context) => sl<CraftsBloc>()..add(GetCraftsEvent()),
       child: const CraftsScreen(),
     );
   }

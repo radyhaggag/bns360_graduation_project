@@ -18,8 +18,6 @@ class ProfileListItemsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.width * .93,
-      height: context.height * .55,
-      // height: context.height * .65,
       padding: EdgeInsetsDirectional.only(start: 6.w, top: 12.h),
       decoration: BoxDecoration(
         color: context.theme.highlightColor,
@@ -33,7 +31,8 @@ class ProfileListItemsSection extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: ListView(
+        shrinkWrap: true,
         children: [
           ProfileItemTile(
             title: S.of(context).settings,

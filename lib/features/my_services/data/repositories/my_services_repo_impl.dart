@@ -15,8 +15,9 @@ class MyServicesRepoImpl implements MyServicesRepo {
 
   @override
   FutureEither<void> addService(AddServiceParams params) async {
-    // TODO: implement addService
-    throw UnimplementedError();
+    return executeAndHandleErrorAsync(
+      () => myServicesRemoteDataSource.addService(params),
+    );
   }
 
   @override
@@ -30,6 +31,13 @@ class MyServicesRepoImpl implements MyServicesRepo {
   FutureEither<List<CraftsmanEntity>> getMyServices() {
     return executeAndHandleErrorAsync(
       () => myServicesRemoteDataSource.getMyServices(),
+    );
+  }
+
+  @override
+  FutureEither<void> updateService(CraftsmanEntity params) {
+    return executeAndHandleErrorAsync(
+      () => myServicesRemoteDataSource.updateService(params),
     );
   }
 }

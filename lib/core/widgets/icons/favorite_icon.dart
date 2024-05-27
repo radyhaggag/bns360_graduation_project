@@ -79,10 +79,11 @@ class FavoriteIcon extends StatelessWidget {
             isLoading: isLoading,
             icon: Icon(
               isInFavorite ? Icons.favorite : FeatherIcons.heart,
-              size: size,
+              // size: size,
               color: isInFavorite ? Colors.red : context.theme.cardColor,
             ),
             padding: EdgeInsets.zero,
+            size: size,
             backgroundColor: context.theme.highlightColor,
             onPressed: () {
               onPressed.call(context, isInFavorite: isInFavorite);

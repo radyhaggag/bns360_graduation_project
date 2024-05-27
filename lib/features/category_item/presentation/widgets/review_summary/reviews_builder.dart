@@ -61,6 +61,8 @@ class _CategoryItemReviewsBuilderState
 
                   return ReviewWidget(
                     review: item,
+                    isLoading: state is RemoveCategoryItemReviewLoadingState &&
+                        state.reviewId == item.id,
                     onRemove: () {
                       context.read<CategoryItemBloc>().add(
                             RemoveCategoryItemReviewEvent(

@@ -59,11 +59,13 @@ class _CraftsmanReviewsBuilderState extends State<CraftsmanReviewsBuilder> {
 
                 return ReviewWidget(
                   review: item,
+                  isLoading: state is RemoveCraftsmanReviewLoadingState &&
+                      state.reviewId == item.id,
                   onRemove: () {
                     context.read<CraftsmanBloc>().add(
                           RemoveCraftsmanReviewEvent(
                             reviewId: item.id,
-                            itemId: widget.craftsmanId,
+                            craftsmanId: widget.craftsmanId,
                           ),
                         );
                   },

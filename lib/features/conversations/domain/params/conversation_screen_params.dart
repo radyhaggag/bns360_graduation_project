@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/features/craftsman/domain/params/craftsman_screen_params.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
@@ -25,7 +26,10 @@ class ConversationScreenParams extends Equatable {
     if (craftsmanEntity != null) {
       Navigator.of(context).pushNamed(
         Routes.craftsman,
-        arguments: craftsmanEntity,
+        arguments: CraftsmanScreenParams(
+          itemId: craftsmanEntity!.id,
+          craftsmanEntity: craftsmanEntity,
+        ),
       );
     } else if (categoryItemEntity != null) {
       Navigator.of(context).pushNamed(

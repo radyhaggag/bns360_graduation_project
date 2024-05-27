@@ -1,10 +1,8 @@
 part of 'categories_bloc.dart';
 
-abstract class CategoriesState extends Equatable {
+abstract class CategoriesState  {
   const CategoriesState();
 
-  @override
-  List<Object> get props => [];
 }
 
 class CategoriesInitial extends CategoriesState {}
@@ -28,8 +26,6 @@ class SearchIconToggled extends CategoriesState {
 
   const SearchIconToggled({required this.isSearchEnabled});
 
-  @override
-  List<Object> get props => [isSearchEnabled];
 }
 
 class GetCategoryItemsLoadingState extends CategoriesState {}

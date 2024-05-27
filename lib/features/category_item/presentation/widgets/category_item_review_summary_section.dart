@@ -20,14 +20,6 @@ class CategoryItemReviewSummarySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryItemBloc, CategoryItemState>(
-      buildWhen: (previous, current) {
-        final states = [
-          GetCategoryItemReviewSummaryLoadingState,
-          GetCategoryItemReviewSummaryErrorState,
-          GetCategoryItemReviewSummarySuccessState,
-        ];
-        return states.contains(current.runtimeType);
-      },
       builder: (context, state) {
         final categoryItem = getCategoryItem(context);
 

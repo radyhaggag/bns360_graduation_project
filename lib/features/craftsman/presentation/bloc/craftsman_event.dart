@@ -1,10 +1,7 @@
 part of 'craftsman_bloc.dart';
 
-abstract class CraftsmanEvent extends Equatable {
+abstract class CraftsmanEvent {
   const CraftsmanEvent();
-
-  @override
-  List<Object> get props => [];
 }
 
 class GetCraftsmanReviewsEvent extends CraftsmanEvent {
@@ -13,12 +10,42 @@ class GetCraftsmanReviewsEvent extends CraftsmanEvent {
   const GetCraftsmanReviewsEvent({required this.itemId});
 }
 
-class RemoveCraftsmanReviewEvent extends CraftsmanEvent {
+class GetCraftsmanReviewSummaryEvent extends CraftsmanEvent {
   final int itemId;
+
+  const GetCraftsmanReviewSummaryEvent({required this.itemId});
+}
+
+class GetCraftsmanEvent extends CraftsmanEvent {
+  final int itemId;
+
+  const GetCraftsmanEvent({required this.itemId});
+}
+
+class SetCraftsmanEntityEvent extends CraftsmanEvent {
+  final CraftsmanEntity craftsmanEntity;
+
+  const SetCraftsmanEntityEvent({required this.craftsmanEntity});
+}
+
+class SendCraftsmanReviewEvent extends CraftsmanEvent {
+  final int itemId;
+  final double rating;
+  final String review;
+
+  const SendCraftsmanReviewEvent({
+    required this.itemId,
+    required this.rating,
+    required this.review,
+  });
+}
+
+class RemoveCraftsmanReviewEvent extends CraftsmanEvent {
   final int reviewId;
+  final int craftsmanId;
 
   const RemoveCraftsmanReviewEvent({
-    required this.itemId,
     required this.reviewId,
+    required this.craftsmanId,
   });
 }

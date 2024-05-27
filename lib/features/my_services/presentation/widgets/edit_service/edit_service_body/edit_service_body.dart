@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -25,39 +26,56 @@ class _EditServiceBodyState extends State<EditServiceBody> {
   void initState() {
     super.initState();
 
-    form = FormGroup({
-      'name': FormControl<String>(
-        validators: [Validators.required],
-        value: widget.craftsmanEntity.name,
-      ),
-      'description': FormControl<String>(
-        validators: [Validators.required],
-        value: widget.craftsmanEntity.descriptionEN,
-      ),
-      'address': FormControl<String>(
-        validators: [Validators.required],
-        value: widget.craftsmanEntity.address,
-      ),
-      'from': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.number,
-        ],
-      ),
-      'to': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.number,
-        ],
-      ),
-      'phoneNumber': FormControl<String>(
-        validators: [
-          Validators.required,
-          Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-        ],
-      ),
-    });
+    form = FormGroup(
+      {
+        'name_ar': FormControl<String>(
+          validators: [Validators.required],
+          value: widget.craftsmanEntity.nameAR,
+        ),
+        'name_en': FormControl<String>(
+          validators: [Validators.required],
+          value: widget.craftsmanEntity.nameEN,
+        ),
+        'description_ar': FormControl<String>(
+          validators: [Validators.required],
+          value: widget.craftsmanEntity.descriptionAR,
+        ),
+        'description_en': FormControl<String>(
+          validators: [Validators.required],
+          value: widget.craftsmanEntity.descriptionEN,
+        ),
+        'address_ar': FormControl<String>(
+          validators: [Validators.required],
+          value: widget.craftsmanEntity.addressAR,
+        ),
+        'address_en': FormControl<String>(
+          validators: [Validators.required],
+          value: widget.craftsmanEntity.addressEN,
+        ),
+        'from': FormControl<String>(
+          validators: [
+            Validators.required,
+            Validators.number,
+          ],
+          value: widget.craftsmanEntity.opening.toString(),
+        ),
+        'to': FormControl<String>(
+          validators: [
+            Validators.required,
+            Validators.number,
+          ],
+          value: widget.craftsmanEntity.closing.toString(),
+        ),
+        'phoneNumber': FormControl<String>(
+          validators: [
+            Validators.required,
+            Validators.number,
+            Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+          ],
+          value: widget.craftsmanEntity.contact.phoneNumber.withoutCountryCode,
+        ),
+      },
+    );
   }
 
   @override

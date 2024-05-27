@@ -5,6 +5,7 @@ import '../params/add_service_params.dart';
 
 abstract class MyServicesRepo {
   FutureEither<void> addService(AddServiceParams params);
+  FutureEither<void> updateService(CraftsmanEntity params);
   FutureEither<List<CraftsmanEntity>> getMyServices();
   FutureEither<List<CraftEntity>> getServiceCategories();
 }

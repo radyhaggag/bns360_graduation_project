@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../config/route_config.dart';
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
-import '../../../../core/widgets/buttons/write_review_btn.dart';
-import '../../../../core/widgets/reviews/main_review_summary_card/main_review_summary_card.dart';
 import 'craftsman_description.dart';
 import 'craftsman_head/craftsman_head_sliver.dart';
 import 'craftsman_info/craftsman_info_section.dart';
+import 'craftsman_review_summary_section.dart';
 import 'craftsman_work_samples_section.dart';
+import 'send_craftsman_review_section.dart';
 
 class CraftsmanBody extends StatelessWidget {
   const CraftsmanBody({
@@ -51,15 +50,8 @@ class CraftsmanBody extends StatelessWidget {
                     imagesUrls: craftsmanEntity.serviceImages,
                   ),
                   const SizedBox(height: 10),
-                  MainReviewSummaryCard(
-                    numOfRatings: craftsmanEntity.numOfRatings,
-                    starsCount: craftsmanEntity.averageRatings,
-                    onViewAllTap: () {
-                      Navigator.of(context).pushNamed(
-                        Routes.craftsmanReviewSummary,
-                        arguments: craftsmanEntity,
-                      );
-                    },
+                  const CraftsmanReviewSummarySection(
+                    showViewAllBtn: true,
                   ),
                 ],
               ),
@@ -72,8 +64,8 @@ class CraftsmanBody extends StatelessWidget {
                 vertical: 20,
               ),
               sliver: SliverToBoxAdapter(
-                child: WriteReviewBtn(
-                  addReviewCallback: (rating, value) {},
+                child: SendCraftsmanReviewSection(
+                  itemId: craftsmanEntity.id,
                 ),
               ),
             ),

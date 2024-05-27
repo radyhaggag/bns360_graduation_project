@@ -7,7 +7,6 @@ import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../../generated/l10n.dart';
-import '../../../../domain/params/add_service_params.dart';
 import '../../../bloc/my_services_bloc.dart';
 import '../../add_service/add_service_time_section.dart';
 import '../../add_service/service_type_dropdown.dart';
@@ -32,25 +31,46 @@ class EditServiceForm extends StatelessWidget {
       child: Column(
         children: [
           CustomReactiveFormField(
-            title: t.user_name,
-            hint: t.enterName,
-            formControlName: 'name',
+            title: "${t.user_name}\t(${t.in_arabic})",
+            hint: "${t.enterName}\t(${t.in_arabic})",
+            formControlName: 'name_ar',
+            textInputAction: TextInputAction.next,
+          ),
+          10.verticalSpace,
+          CustomReactiveFormField(
+            title: "${t.user_name}\t(${t.in_english})",
+            hint: "${t.enterName}\t(${t.in_english})",
+            formControlName: 'name_en',
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           const ServiceTypeDropdown(),
           15.verticalSpace,
           CustomReactiveFormField(
-            title: t.description,
-            hint: "${t.enter} ${t.description}",
-            formControlName: 'description',
+            title: "${t.enter} ${t.description}\t(${t.in_arabic})",
+            hint: "${t.enter} ${t.description}\t(${t.in_arabic})",
+            formControlName: 'description_ar',
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
-            title: t.your_address,
-            hint: t.enter_service_address,
-            formControlName: 'address',
+            title: "${t.enter} ${t.description}\t(${t.in_english})",
+            hint: "${t.enter} ${t.description}\t(${t.in_english})",
+            formControlName: 'description_en',
+            textInputAction: TextInputAction.next,
+          ),
+          10.verticalSpace,
+          CustomReactiveFormField(
+            title: "${t.your_address}\t(${t.in_arabic})",
+            hint: "${t.enter_service_address}\t(${t.in_arabic})",
+            formControlName: 'address_ar',
+            textInputAction: TextInputAction.next,
+          ),
+          10.verticalSpace,
+          CustomReactiveFormField(
+            title: "${t.your_address}\t(${t.in_english})",
+            hint: "${t.enter_service_address}\t(${t.in_english})",
+            formControlName: 'address_en',
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
@@ -73,18 +93,23 @@ class EditServiceForm extends StatelessWidget {
 
   void _submitForm(BuildContext context) {
     final formControls = form.controls;
-    final params = AddServiceParams(
-      serviceName: formControls['name']!.value as String,
-      serviceAddress: formControls['address']!.value as String,
-      serviceDescription: formControls['description']!.value as String,
-      to: int.parse(formControls['to']!.value as String),
-      from: int.parse(formControls['from']!.value as String),
-      phoneNumber: formControls['phoneNumber']!.value as String,
-      mainServiceBackgroundImages: [], // Will updated on the bloc
-      mainServiceImage: "", // Will updated on the bloc
+
+    final newData = craftsmanEntity.copyWith(
+      nameAR: formControls['name_ar']!.value as String,
+      nameEN: formControls['name_en']!.value as String,
+      addressAR: formControls['address_ar']!.value as String,
+      addressEN: formControls['address_en']!.value as String,
+      descriptionAR: formControls['description_ar']!.value as String,
+      descriptionEN: formControls['description_en']!.value as String,
+      opening: int.parse(formControls['from']!.value as String),
+      closing: int.parse(formControls['to']!.value as String),
+      contact: craftsmanEntity.contact.copyWith(
+        phoneNumber: formControls['phoneNumber']!.value as String,
+      ),
     );
-    context.read<MyServicesBloc>().add(AddServiceEvent(
-          addServiceParams: params,
+
+    context.read<MyServicesBloc>().add(UpdateServiceEvent(
+          craftsmanEntity: newData,
         ));
   }
 }

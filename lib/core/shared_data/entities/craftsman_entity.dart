@@ -1,33 +1,56 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
+import 'contact_entity.dart';
 import 'craft_entity.dart';
+import 'review_summary_entity.dart';
 
 class CraftsmanEntity extends Equatable {
   final int id;
-  final String name;
-  final String imageUrl;
-  final int numOfRatings;
-  final num averageRatings;
-  final CraftEntity craft;
+  final int craftsModelId;
+  final String userId;
+  final String nameAR;
+  final String nameEN;
   final String descriptionAR;
   final String descriptionEN;
-  final String address;
-  final List<String> serviceImages;
+  final String profileImageUrl;
+  final int holidays;
+  final ContactEntity contact;
+  final CraftEntity craft;
+  final int opening;
+  final int closing;
+  final String addressAR;
+  final String addressEN;
+  final String? imageName1;
+  final String? imageName2;
+  final String? imageName3;
+  final String? imageName4;
   final bool isBelongToMe;
+
+  final ReviewSummaryEntity? reviewSummary; // for ui
 
   const CraftsmanEntity({
     required this.id,
-    required this.name,
-    required this.imageUrl,
-    required this.numOfRatings,
-    required this.averageRatings,
+    required this.contact,
+    required this.closing,
+    required this.craftsModelId,
+    required this.holidays,
     required this.craft,
     required this.descriptionAR,
     required this.descriptionEN,
-    required this.address,
-    required this.serviceImages,
+    required this.addressAR,
+    required this.addressEN,
+    required this.userId,
+    required this.nameAR,
+    required this.nameEN,
+    required this.profileImageUrl,
+    required this.opening,
+    required this.imageName1,
+    required this.imageName2,
+    required this.imageName3,
+    required this.imageName4,
     this.isBelongToMe = false,
+    this.reviewSummary,
   });
 
   @override
@@ -35,29 +58,62 @@ class CraftsmanEntity extends Equatable {
 
   CraftsmanEntity copyWith({
     int? id,
-    String? name,
-    String? imageUrl,
-    int? numOfRatings,
-    num? averageRatings,
-    CraftEntity? craft,
+    int? craftsModelId,
+    String? userId,
+    String? nameAR,
+    String? nameEN,
     String? descriptionAR,
     String? descriptionEN,
-    String? address,
-    List<String>? serviceImages,
+    String? profileImageUrl,
+    int? holidays,
+    ContactEntity? contact,
+    CraftEntity? craft,
+    int? opening,
+    int? closing,
+    String? addressAR,
+    String? addressEN,
+    String? imageName1,
+    String? imageName2,
+    String? imageName3,
+    String? imageName4,
     bool? isBelongToMe,
+    ReviewSummaryEntity? reviewSummary,
+    bool removeImages = false,
   }) {
     return CraftsmanEntity(
       id: id ?? this.id,
-      name: name ?? this.name,
-      imageUrl: imageUrl ?? this.imageUrl,
-      numOfRatings: numOfRatings ?? this.numOfRatings,
-      averageRatings: averageRatings ?? this.averageRatings,
-      craft: craft ?? this.craft,
+      craftsModelId: craftsModelId ?? this.craftsModelId,
+      userId: userId ?? this.userId,
+      nameAR: nameAR ?? this.nameAR,
+      nameEN: nameEN ?? this.nameEN,
       descriptionAR: descriptionAR ?? this.descriptionAR,
       descriptionEN: descriptionEN ?? this.descriptionEN,
-      address: address ?? this.address,
-      serviceImages: serviceImages ?? this.serviceImages,
+      holidays: holidays ?? this.holidays,
+      contact: contact ?? this.contact,
+      craft: craft ?? this.craft,
+      opening: opening ?? this.opening,
+      closing: closing ?? this.closing,
+      addressAR: addressAR ?? this.addressAR,
+      addressEN: addressEN ?? this.addressEN,
+      profileImageUrl:
+          removeImages ? "" : profileImageUrl ?? this.profileImageUrl,
+      imageName1: removeImages ? null : imageName1 ?? this.imageName1,
+      imageName2: removeImages ? null : imageName2 ?? this.imageName2,
+      imageName3: removeImages ? null : imageName3 ?? this.imageName3,
+      imageName4: removeImages ? null : imageName4 ?? this.imageName4,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
+      reviewSummary: reviewSummary ?? this.reviewSummary,
     );
+  }
+
+  List<String> get serviceImages {
+    List<String> images = [];
+
+    if (imageName1 != null) images.add(imageName1!);
+    if (imageName2 != null) images.add(imageName2!);
+    if (imageName3 != null) images.add(imageName3!);
+    if (imageName4 != null) images.add(imageName4!);
+
+    return images;
   }
 }

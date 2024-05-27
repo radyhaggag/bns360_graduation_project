@@ -15,10 +15,12 @@ class ReviewWidget extends StatelessWidget {
     super.key,
     required this.review,
     required this.onRemove,
+    this.isLoading = false,
   });
 
   final ReviewEntity review;
   final VoidCallback onRemove;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +109,7 @@ class ReviewWidget extends StatelessWidget {
                 const SizedBox(width: 15),
                 DeleteIcon(
                   onTap: onRemove,
+                  isLoading: isLoading,
                 ),
               ],
             ],

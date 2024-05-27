@@ -23,6 +23,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   }
 
   @override
+  void deactivate() {
+    context.read<FavoritesBloc>().activeTabIndex = 0;
+    super.deactivate();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor(context),

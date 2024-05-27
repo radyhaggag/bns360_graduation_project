@@ -12,6 +12,8 @@ class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
 
   CategoryItemRemoteDataSourceImpl(this.apiConsumer);
 
+  String get userId => AppProvider().getProfile()!.id;
+
   @override
   Future<List<ReviewModel>> getReviews(int itemId) async {
     final res = await apiConsumer.get(
@@ -43,10 +45,8 @@ class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
 
   @override
   Future<void> sendReview(int itemId, double rating, String review) async {
-    final userId = AppProvider().getProfile()?.id;
-
     await apiConsumer.post(
-      endpoint: AppEndpoints.sendReview,
+      endpoint: AppEndpoints.sendBusinessReview,
       data: {
         "review": review,
         "rating": rating,
@@ -59,7 +59,11 @@ class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
   @override
   Future<void> removeReview(int reviewId, int categoryItemId) async {
     await apiConsumer.delete(
-      endpoint: AppEndpoints.removeBusingsReview(reviewId),
+      endpoint: AppEndpoints.removeBusinessReview(
+        businessId: categoryItemId,
+        userId: userId,
+        reviewAndRatingId: reviewId,
+      ),
     );
   }
 }

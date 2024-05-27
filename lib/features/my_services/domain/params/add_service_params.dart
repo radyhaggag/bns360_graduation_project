@@ -1,4 +1,5 @@
 import '../../../../core/shared_data/entities/craft_entity.dart';
+import '../../../../core/utils/enums/work_days.dart';
 
 class AddServiceParams {
   final String serviceName;
@@ -7,10 +8,9 @@ class AddServiceParams {
   final String phoneNumber;
   final int from;
   final int to;
+  final WorkDay holiday;
   final String mainServiceImage;
   final List<String> mainServiceBackgroundImages;
-  final double? lat;
-  final double? lng;
   final CraftEntity? serviceCategory;
 
   const AddServiceParams({
@@ -22,8 +22,7 @@ class AddServiceParams {
     required this.to,
     required this.mainServiceImage,
     required this.mainServiceBackgroundImages,
-    this.lat,
-    this.lng,
+    required this.holiday,
     this.serviceCategory,
   });
 
@@ -36,8 +35,7 @@ class AddServiceParams {
     int? to,
     String? mainServiceImage,
     List<String>? mainServiceBackgroundImages,
-    double? lat,
-    double? lng,
+    WorkDay? holiday,
     CraftEntity? serviceCategory,
   }) {
     return AddServiceParams(
@@ -50,24 +48,8 @@ class AddServiceParams {
       mainServiceImage: mainServiceImage ?? this.mainServiceImage,
       mainServiceBackgroundImages:
           mainServiceBackgroundImages ?? this.mainServiceBackgroundImages,
-      lat: lat ?? this.lat,
-      lng: lng ?? this.lng,
+      holiday: holiday ?? this.holiday,
       serviceCategory: serviceCategory ?? this.serviceCategory,
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceName': serviceName,
-      'serviceDescription': serviceDescription,
-      'serviceAddress': serviceAddress,
-      'phoneNumber': phoneNumber,
-      'from': from,
-      'to': to,
-      'mainServiceImage': mainServiceImage,
-      'mainServiceBackgroundImages': mainServiceBackgroundImages,
-      'lat': lat,
-      'lng': lng,
-    };
   }
 }

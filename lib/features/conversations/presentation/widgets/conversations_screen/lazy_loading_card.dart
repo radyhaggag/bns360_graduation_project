@@ -58,7 +58,8 @@ class _Item extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ShimmerWidget.square(
-            size: 50.r,
+            width: 50.r,
+            height: 50.r,
             borderRadius: 10,
             enabled: enabled,
           ),

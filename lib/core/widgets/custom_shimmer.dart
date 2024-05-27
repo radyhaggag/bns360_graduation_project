@@ -1,6 +1,7 @@
-import '../utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../utils/extensions/context.dart';
 
 class ShimmerWidget extends StatelessWidget {
   final double width;
@@ -45,14 +46,16 @@ class ShimmerWidget extends StatelessWidget {
 
   ShimmerWidget.square({
     super.key,
-    required double size,
+    required this.width,
+    required this.height,
     double borderRadius = 2,
     this.enabled = true,
     this.baseColor,
-  })  : width = size,
-        height = size,
-        shapeBorder = RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(borderRadius))),
+  })  : shapeBorder = RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(borderRadius),
+          ),
+        ),
         customShape = null;
 
   ShimmerWidget.rectangular({

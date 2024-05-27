@@ -1,6 +1,9 @@
-import '../utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/utils/assets/app_images.dart';
+import 'package:bns360_graduation_project/core/widgets/custom_shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
+import '../utils/extensions/context.dart';
 
 class MainNetworkImage extends StatelessWidget {
   const MainNetworkImage({
@@ -29,6 +32,7 @@ class MainNetworkImage extends StatelessWidget {
             imageUrl: imageUrl,
             width: width,
             height: height,
+            isCircular: true,
           ),
         );
       }
@@ -36,6 +40,7 @@ class MainNetworkImage extends StatelessWidget {
         imageUrl: imageUrl,
         width: width,
         height: height,
+        isCircular: false,
       );
     } else {
       if ((name ?? "").isEmpty) {
@@ -63,11 +68,13 @@ class _BuildImage extends StatelessWidget {
     required this.imageUrl,
     required this.width,
     required this.height,
+    required this.isCircular,
   });
 
   final String? imageUrl;
   final double? width;
   final double? height;
+  final bool isCircular;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +83,28 @@ class _BuildImage extends StatelessWidget {
       width: width,
       height: height,
       fit: BoxFit.cover,
+      errorWidget: (context, url, error) {
+        return Image.asset(
+          AppImages.appLogo,
+          width: width,
+          height: height,
+          fit: BoxFit.cover,
+        );
+      },
+      placeholder: (context, url) {
+        if (isCircular && (width != null || height != null)) {
+          return ShimmerWidget.circular(size: (width ?? height)!);
+        }
+
+        if (width != null && height != null) {
+          return ShimmerWidget.square(
+            width: width!,
+            height: height!,
+          );
+        }
+
+        return const SizedBox.shrink();
+      },
     );
   }
 }

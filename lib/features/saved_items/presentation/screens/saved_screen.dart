@@ -18,7 +18,15 @@ class _SavedScreenState extends State<SavedScreen> {
   void initState() {
     super.initState();
     // context.read<SavedBloc>().add(GetSavedJobsEvent());
-    context.read<SavedBloc>().add(GetSavedPropertiesEvent(skipPreviousCheck: true));
+    context
+        .read<SavedBloc>()
+        .add(GetSavedPropertiesEvent(skipPreviousCheck: true));
+  }
+
+  @override
+  void deactivate() {
+    context.read<SavedBloc>().activeTabIndex = 0;
+    super.deactivate();
   }
 
   @override

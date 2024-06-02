@@ -16,6 +16,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   final PropertiesRepo propertiesRepo;
 
   PropertiesBloc({required this.propertiesRepo}) : super(PropertiesInitial()) {
+    initListener();
     on<GetPropertiesEvent>(_getProperties);
     on<GetPropertyByIdEvent>(_getPropertyById);
     on<SearchOnPropertiesEvent>(_searchOnProperties);
@@ -28,8 +29,22 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     on<InitNetworkPropertyImageEvent>(_initNetworkPropertyImage);
   }
 
+  initListener() {
+    searchController.addListener(() {
+      if ((properties).isEmpty) return;
+      add(SearchOnPropertiesEvent());
+    });
+  }
+
   List<PropertyEntity> properties = [];
   List<PropertyEntity> searchResults = [];
+
+  List<PropertyEntity> get items {
+    if (isSearchEnabled) {
+      return searchResults;
+    }
+    return properties;
+  }
 
   _getProperties(
     GetPropertiesEvent event,
@@ -49,7 +64,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     );
   }
 
-  bool isSearchEnabled = false;
+  bool get isSearchEnabled => searchController.text.trim().isNotEmpty;
   final searchController = TextEditingController();
 
   _searchOnProperties(
@@ -57,34 +72,27 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     Emitter<PropertiesState> emit,
   ) async {
     final searchVal = searchController.text.trim();
-    if (searchVal.isEmpty) {
-      isSearchEnabled = false;
-      add(GetPropertiesEvent());
-      return;
-    }
-    isSearchEnabled = true;
-
-    emit(GetPropertiesLoadingState());
-
     final searchLowercase = searchVal.toLowerCase();
-    bool isTrue(String itemName) {
-      final itemNameLowercase = itemName.toLowerCase();
-      return searchLowercase.contains(itemNameLowercase) ||
-          itemNameLowercase.contains(searchLowercase);
+
+    bool isTrue(PropertyEntity item) {
+      if (searchLowercase.isEmpty) return true;
+      final itemNameLowercaseAR = item.arabicDescription.toLowerCase();
+      final itemNameLowercaseENG = item.englishDescription.toLowerCase();
+      final addressLowercaseAR = item.arabicAddress.toLowerCase();
+      final addressLowercaseENG = item.englishAddress.toLowerCase();
+      return (searchLowercase.contains(itemNameLowercaseAR) ||
+              itemNameLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(itemNameLowercaseENG) ||
+              itemNameLowercaseENG.contains(searchLowercase)) ||
+          (searchLowercase.contains(addressLowercaseAR) ||
+              addressLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(addressLowercaseENG) ||
+              addressLowercaseENG.contains(searchLowercase));
     }
 
-    final filteredItems = properties
-        .where(
-          (item) =>
-              isTrue(item.arabicAddress) ||
-              isTrue(item.arabicAddress) ||
-              isTrue(item.arabicDescription) ||
-              isTrue(item.englishDescription),
-        )
-        .toList();
+    searchResults = (properties).where(isTrue).toList();
 
-    searchResults = filteredItems;
-    emit(GetPropertiesSuccessState(properties: filteredItems));
+    emit(GetPropertiesSuccessState(properties: searchResults));
   }
 
   @override

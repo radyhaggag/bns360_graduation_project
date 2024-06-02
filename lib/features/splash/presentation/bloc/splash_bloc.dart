@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,10 +19,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     CheckUserLoginStatusEvent event,
     Emitter<SplashState> emit,
   ) async {
-    final token = await tokenManager.getToken();
-    // final profile = AppProvider().getProfile();
+    // final token = await tokenManager.getToken();
+    final profile = AppProvider().getProfile();
 
-    if (token == null) emit(UserNotLoggedInState());
-    if (token != null) emit(UserLoggedInState());
+    if (profile == null) emit(UserNotLoggedInState());
+    if (profile != null) emit(UserLoggedInState());
   }
 }

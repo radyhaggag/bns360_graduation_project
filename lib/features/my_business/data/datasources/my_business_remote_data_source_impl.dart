@@ -7,6 +7,7 @@ import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/contact_entity.dart';
 import '../../../../core/shared_data/models/category_item_model.dart';
 import '../../../../core/shared_data/models/category_model.dart';
+import '../../../../core/shared_data/models/review_summary_model.dart';
 import '../../../../core/utils/app_endpoints.dart';
 import '../../../../core/utils/enums.dart';
 import '../../../../core/utils/extensions/language.dart';
@@ -36,12 +37,18 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       addressAR = params.businessAddress;
       final titleTranslation = await translator.translate(
         params.businessName,
+        from: "ar",
+        to: "en",
       );
       final descriptionTranslation = await translator.translate(
         params.businessDescription,
+        from: "ar",
+        to: "en",
       );
       final addressTranslation = await translator.translate(
         params.businessAddress,
+        from: "ar",
+        to: "en",
       );
       titleENG = titleTranslation.text;
       aboutENG = descriptionTranslation.text;
@@ -52,12 +59,18 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       addressENG = params.businessAddress;
       final titleTranslation = await translator.translate(
         params.businessName,
+        from: "en",
+        to: "ar",
       );
       final descriptionTranslation = await translator.translate(
         params.businessDescription,
+        from: "en",
+        to: "ar",
       );
       final addressTranslation = await translator.translate(
         params.businessAddress,
+        from: "en",
+        to: "ar",
       );
       titleAR = titleTranslation.text;
       aboutAR = descriptionTranslation.text;
@@ -121,8 +134,24 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
     );
     if (res.data == null) return null;
 
-    final category = CategoryItemModel.fromJson(res.data);
+    final category = await _mapAndGetCategoryItemModel(res.data);
     return category;
+  }
+
+  Future<CategoryItemModel> _mapAndGetCategoryItemModel(
+    Map<String, dynamic> json,
+  ) async {
+    CategoryItemModel model = CategoryItemModel.fromJson(json);
+
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.getBusinessReviewSummary(model.id),
+    );
+    final reviewSummary = ReviewSummaryModel.fromJson(res.data);
+    model = CategoryItemModel.fromEntity(
+      model.copyWith(reviewSummary: reviewSummary),
+    );
+
+    return model;
   }
 
   @override

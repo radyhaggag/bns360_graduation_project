@@ -18,6 +18,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
   final JobsRepo jobsRepo;
 
   JobsBloc({required this.jobsRepo}) : super(JobsInitial()) {
+    initListener();
     on<GetJobsEvent>(_getJobs);
     on<GetJobByIdEvent>(_getJobById);
     on<SearchOnJobs>(_searchOnJobs);
@@ -29,8 +30,22 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     on<InitJobRequirementsEvent>(_initJobRequirements);
   }
 
+  initListener() {
+    searchController.addListener(() {
+      if ((jobs).isEmpty) return;
+      add(SearchOnJobs());
+    });
+  }
+
   List<JobEntity> jobs = [];
   List<JobEntity> searchResults = [];
+
+  List<JobEntity> get items {
+    if (isSearchEnabled) {
+      return searchResults;
+    }
+    return jobs;
+  }
 
   _getJobs(
     GetJobsEvent event,
@@ -49,7 +64,8 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
-  bool isSearchEnabled = false;
+  bool get isSearchEnabled => searchController.text.trim().isNotEmpty;
+
   final searchController = TextEditingController();
 
   _searchOnJobs(
@@ -57,33 +73,29 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     Emitter<JobsState> emit,
   ) async {
     final searchVal = searchController.text.trim();
-    if (searchVal.isEmpty) {
-      isSearchEnabled = false;
-      add(GetJobsEvent());
-      return;
-    }
-    isSearchEnabled = true;
-
-    emit(GetJobsLoadingState());
-
     final searchLowercase = searchVal.toLowerCase();
-    bool isTrue(String itemName) {
-      final itemNameLowercase = itemName.toLowerCase();
-      return searchLowercase.contains(itemNameLowercase) ||
-          itemNameLowercase.contains(searchLowercase);
+
+    bool isTrue(JobEntity item) {
+      if (searchLowercase.isEmpty) return true;
+      final itemNameLowercaseAR = item.jobTitleArabic.toLowerCase();
+      final itemNameLowercaseENG = item.jobTitleEnglish.toLowerCase();
+      final jobDescriptionLowercaseAR = item.jobDescriptionArabic.toLowerCase();
+      final jobDescriptionLowercaseENG =
+          item.jobDescriptionEnglish.toLowerCase();
+
+      return (searchLowercase.contains(itemNameLowercaseAR) ||
+              itemNameLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(itemNameLowercaseENG) ||
+              itemNameLowercaseENG.contains(searchLowercase)) ||
+          (searchLowercase.contains(jobDescriptionLowercaseAR) ||
+              jobDescriptionLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(jobDescriptionLowercaseENG) ||
+              jobDescriptionLowercaseENG.contains(searchLowercase));
     }
 
-    final filteredItems = jobs.where(
-      (item) {
-        return isTrue(item.jobTitleEnglish) ||
-            isTrue(item.jobTitleArabic) ||
-            isTrue(item.jobDescriptionArabic) ||
-            isTrue(item.jobDescriptionEnglish);
-      },
-    ).toList();
+    searchResults = (jobs).where(isTrue).toList();
 
-    searchResults = filteredItems;
-    emit(GetJobsSuccessState(jobs: filteredItems));
+    emit(GetJobsSuccessState(jobs: searchResults));
   }
 
   _getJobById(

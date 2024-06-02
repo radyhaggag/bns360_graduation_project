@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -104,7 +105,8 @@ class EditServiceForm extends StatelessWidget {
       opening: int.parse(formControls['from']!.value as String),
       closing: int.parse(formControls['to']!.value as String),
       contact: craftsmanEntity.contact.copyWith(
-        phoneNumber: formControls['phoneNumber']!.value as String,
+        phoneNumber:
+            (formControls['phoneNumber']!.value as String).withCountryCode,
       ),
     );
 

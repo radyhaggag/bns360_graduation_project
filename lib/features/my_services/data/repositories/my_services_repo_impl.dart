@@ -31,6 +31,9 @@ class MyServicesRepoImpl implements MyServicesRepo {
   FutureEither<List<CraftsmanEntity>> getMyServices() {
     return executeAndHandleErrorAsync(
       () => myServicesRemoteDataSource.getMyServices(),
+      onFailure: (e) async {
+        return Future<List<CraftsmanEntity>>.value([]);
+      },
     );
   }
 
@@ -38,6 +41,13 @@ class MyServicesRepoImpl implements MyServicesRepo {
   FutureEither<void> updateService(CraftsmanEntity params) {
     return executeAndHandleErrorAsync(
       () => myServicesRemoteDataSource.updateService(params),
+    );
+  }
+
+  @override
+  FutureEither<void> deleteService(int serviceId) {
+    return executeAndHandleErrorAsync(
+      () => myServicesRemoteDataSource.deleteService(serviceId),
     );
   }
 }

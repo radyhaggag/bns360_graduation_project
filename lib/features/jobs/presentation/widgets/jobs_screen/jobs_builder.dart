@@ -32,9 +32,7 @@ class JobsBuilder extends StatelessWidget {
           isLoaded: state is GetJobsSuccessState,
           errorMessage: state is GetJobsErrorState ? state.message : "",
           loadedWidget: MainListViewBuilder<JobEntity>(
-            list: jobsBloc.isSearchEnabled
-                ? jobsBloc.searchResults
-                : jobsBloc.jobs,
+            list: jobsBloc.items,
             emptyMessage: S.of(context).no_jobs_found,
             itemWidget: (item, _) => JobCard(jobEntity: item),
             scrollDirection: Axis.vertical,

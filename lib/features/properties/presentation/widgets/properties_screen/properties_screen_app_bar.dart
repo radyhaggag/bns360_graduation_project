@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,17 +53,20 @@ class PropertiesScreenAppBar extends StatelessWidget
                       fontSize: AppFontSize.subTitle,
                     ),
                   ),
-                  RoundedIconBtn(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(Routes.addProperty);
-                    },
-                    icon: Icon(
-                      Icons.add,
-                      color: context.theme.highlightColor,
+                  if (AppProvider().isGuest)
+                    const SizedBox.shrink()
+                  else
+                    RoundedIconBtn(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(Routes.addProperty);
+                      },
+                      icon: Icon(
+                        Icons.add,
+                        color: context.theme.highlightColor,
+                      ),
+                      size: 30.r,
+                      backgroundColor: context.theme.cardColor,
                     ),
-                    size: 30.r,
-                    backgroundColor: context.theme.cardColor,
-                  ),
                 ],
               ),
               const SizedBox(height: 10),

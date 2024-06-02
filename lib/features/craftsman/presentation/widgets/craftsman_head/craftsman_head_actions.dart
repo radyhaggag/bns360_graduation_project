@@ -60,6 +60,7 @@ class CraftsmanHeadActions extends StatelessWidget {
             )
           : CustomTextButton(
               label: S.of(context).edit,
+              height: 30.h,
               onPressed: () {
                 Navigator.of(context).pushNamed(
                   Routes.editService,

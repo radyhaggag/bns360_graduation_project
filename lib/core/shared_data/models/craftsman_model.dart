@@ -46,13 +46,13 @@ class CraftsmanModel extends CraftsmanEntity {
       nameEN: json['CraftsMenNameEnglish'],
       opening: json['Opening'],
       profileImageUrl: APIImagesHelper.toServerImage(
-        json['profileImageUrl'],
+        json['ProfileImageName'],
         addDefault: true,
       )!,
-      imageName1: APIImagesHelper.toServerImage(json['imageName1']),
-      imageName2: APIImagesHelper.toServerImage(json['imageName2']),
-      imageName3: APIImagesHelper.toServerImage(json['imageName3']),
-      imageName4: APIImagesHelper.toServerImage(json['imageName4']),
+      imageName1: APIImagesHelper.toServerImage(json['CraftsMenImageName1']),
+      imageName2: APIImagesHelper.toServerImage(json['CraftsMenImageName2']),
+      imageName3: APIImagesHelper.toServerImage(json['CraftsMenImageName3']),
+      imageName4: APIImagesHelper.toServerImage(json['CraftsMenImageName4']),
     );
   }
 

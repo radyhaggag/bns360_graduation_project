@@ -112,7 +112,7 @@
   "conversations": "المحادثات",
   "today": "اليوم",
   "yesterday": "الأمس",
-  "no_results": "لا توجد نتائج.",
+  "no_results": "لا توجد نتائج",
   "you_deleted_this_message": "لقد حذفت هذه الرسالة",
   "delete_by_sender": "تم حذف هذه الرسالة من قبل المرسل.",
   "confirm_delete_message": "هل أنت متأكد أنك تريد حذف هذه الرسالة؟",
@@ -214,6 +214,8 @@
   "upload_main_service_image": "تحديد الصورة الرئيسية للخدمة",
   "work_time": "وقت العمل",
   "add_service": "إضافة نشاط تجاري",
+  "add_service_success": "تمت إضافة الخدمة بنجاح",
+  "edit_service_success": "تم تعديل الخدمة بنجاح",
   "description_of_service": "وصف الخدمة",
   "service_address": "عنوان الخدمة",
   "enter_service_address": "أدخل عنوان الخدمة",
@@ -248,5 +250,7 @@
   "thursday": "الخميس",
   "friday": "الجمعة",
   "saturday": "السبت",
-  "review_sent_successfully": "تم إرسال تقييمك بنجاح"
+  "review_sent_successfully": "تم إرسال تقييمك بنجاح",
+  "guest": "ضيف",
+  "guest_guard_message": "انت الان تتصفح التطبيق كضيف. يمكنك تسجيل الدخول أو التسجيل للحصول على ميزات إضافية."
 }

@@ -42,21 +42,13 @@ class _BNS360AppState extends State<BNS360App> {
             create: (context) => sl<AppBloc>(),
           ),
           BlocProvider<FavoritesBloc>(
-            lazy: false,
-            create: (context) => sl<FavoritesBloc>()
-              ..add(GetFavoriteCategoriesEvent(skipPreviousCheck: true))
-              ..add(GetFavoriteCraftsmenEvent(skipPreviousCheck: true)),
+            create: (context) => sl<FavoritesBloc>(),
           ),
           BlocProvider<SavedBloc>(
-            lazy: false,
-            create: (context) => sl<SavedBloc>()
-              ..add(GetSavedJobsEvent(skipPreviousCheck: true))
-              ..add(GetSavedPropertiesEvent(skipPreviousCheck: true)),
+            create: (context) => sl<SavedBloc>(),
           ),
           BlocProvider(
-            lazy: false,
-            create: (context) =>
-                sl<ProfileBloc>()..add(const GetProfileEvent()),
+            create: (context) => sl<ProfileBloc>(),
           ),
         ],
         child: BlocBuilder<AppBloc, AppState>(

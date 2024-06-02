@@ -1,4 +1,8 @@
+import 'package:bns360_graduation_project/core/helpers/common_dialogs.dart';
+import 'package:bns360_graduation_project/features/my_services/presentation/bloc/my_services_bloc.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -14,10 +18,23 @@ class EditServiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.backgroundColor(context),
-      body: EditServiceBody(
-        craftsmanEntity: craftsmanEntity,
+    return BlocListener<MyServicesBloc, MyServicesState>(
+      listener: (context, state) {
+        if (state is UpdateServiceErrorState) {
+          CommonDialogs.showErrorDialog(context, message: state.message);
+        }
+        if (state is UpdateServiceSuccessState) {
+          CommonDialogs.showSuccessDialog(
+            context,
+            message: S.of(context).edit_service_success,
+          ).then((_) => Navigator.pop(context));
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundColor(context),
+        body: EditServiceBody(
+          craftsmanEntity: craftsmanEntity,
+        ),
       ),
     );
   }

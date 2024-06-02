@@ -1,6 +1,7 @@
+import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
+
 import '../../../../core/api/api_consumer.dart';
 import '../../../../core/databases/secure_storage/token_manager.dart';
-import '../../../../core/firebase/firebase_auth_manager.dart';
 import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../../../core/utils/app_endpoints.dart';
 import '../../domain/params/login_params.dart';
@@ -35,7 +36,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       email: loginModel.email,
       name: loginModel.displayName,
       userType: loginModel.role,
-
     );
 
     await profile.saveToCache();
@@ -88,6 +88,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> continueAsGuest() async {
-    await FirebaseAuthManager.signInAnonymously();
+    final profile = ProfileEntity(
+      id: "guest-${DateTime.now().millisecondsSinceEpoch}",
+      email: "guest_${DateTime.now().microsecondsSinceEpoch}@mail.com",
+      name: "Guest User",
+      userType: UserType.guest.id,
+    );
+
+    await profile.saveToCache();
   }
 }

@@ -20,10 +20,12 @@ class UploadServiceImagesSection extends StatelessWidget {
     return BlocBuilder<MyServicesBloc, MyServicesState>(
       builder: (context, state) {
         final pickedImages = context.read<MyServicesBloc>().pickedImages;
-        final networkImages = context.read<MyServicesBloc>().networkImages;
+        // final networkImages = context.read<MyServicesBloc>().networkImages;
 
-        bool isRemoveEnabled =
-            (networkImages.isNotEmpty || pickedImages.length == 4);
+        // bool isRemoveEnabled =
+        //     (networkImages.isNotEmpty || pickedImages.length == 4);
+        bool isRemoveEnabled = (pickedImages.length == 4);
+
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -51,7 +53,18 @@ class UploadServiceImagesSection extends StatelessWidget {
               foregroundColor: AppColors.white,
               fontSize: AppFontSize.details,
             ),
-            if (pickedImages.isEmpty || (networkImages.length < 4 && pickedImages.isEmpty)) ...[
+            // if (pickedImages.isEmpty ||
+            //     (networkImages.length < 4 && pickedImages.isEmpty)) ...[
+            //   const SizedBox(height: 10),
+            //   Text(
+            //     S.of(context).max_no_of_image_uploads(4),
+            //     style: context.textTheme.bodyMedium?.copyWith(
+            //       color: context.theme.hoverColor,
+            //       fontSize: AppFontSize.light,
+            //     ),
+            //   ),
+            // ],
+            if (pickedImages.isEmpty) ...[
               const SizedBox(height: 10),
               Text(
                 S.of(context).max_no_of_image_uploads(4),
@@ -64,7 +77,8 @@ class UploadServiceImagesSection extends StatelessWidget {
             const SizedBox(height: 10),
             AddServicePickedImagesBuilder(
               images: pickedImages,
-              networkImages: networkImages,
+              // networkImages: networkImages,
+              networkImages: const [],
             ),
           ],
         );

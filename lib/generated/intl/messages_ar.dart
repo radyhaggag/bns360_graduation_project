@@ -59,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_requirement":
             MessageLookupByLibrary.simpleMessage("إضافة متطلب للوظيفه"),
         "add_service": MessageLookupByLibrary.simpleMessage("إضافة نشاط تجاري"),
+        "add_service_success":
+            MessageLookupByLibrary.simpleMessage("تمت إضافة الخدمة بنجاح"),
         "am": MessageLookupByLibrary.simpleMessage("ص"),
         "any_validation_message":
             MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),
@@ -142,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_property_success":
             MessageLookupByLibrary.simpleMessage("تم تعديل العقار بنجاح"),
         "edit_service": MessageLookupByLibrary.simpleMessage("تعديل الخدمة"),
+        "edit_service_success":
+            MessageLookupByLibrary.simpleMessage("تم تعديل الخدمة بنجاح"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("جنية"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكترونى"),
         "email_validation_message": MessageLookupByLibrary.simpleMessage(
@@ -188,6 +192,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "from": MessageLookupByLibrary.simpleMessage("من"),
         "fullName": MessageLookupByLibrary.simpleMessage("اسمك بالكامل"),
         "full_time": MessageLookupByLibrary.simpleMessage("دوام كامل"),
+        "guest": MessageLookupByLibrary.simpleMessage("ضيف"),
+        "guest_guard_message": MessageLookupByLibrary.simpleMessage(
+            "انت الان تتصفح التطبيق كضيف. يمكنك تسجيل الدخول أو التسجيل للحصول على ميزات إضافية."),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
@@ -240,7 +247,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا بوجد اماكن للاستكشاف"),
         "no_properties_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على عقارات"),
-        "no_results": MessageLookupByLibrary.simpleMessage("لا توجد نتائج."),
+        "no_results": MessageLookupByLibrary.simpleMessage("لا توجد نتائج"),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":

@@ -20,16 +20,6 @@ class UpdateServiceEvent extends MyServicesEvent {
   const UpdateServiceEvent({required this.craftsmanEntity});
 }
 
-class SelectServiceLocationEvent extends MyServicesEvent {
-  final double lat;
-  final double lng;
-
-  const SelectServiceLocationEvent({
-    required this.lat,
-    required this.lng,
-  });
-}
-
 class PickServiceImagesEvent extends MyServicesEvent {}
 
 class RemovePickedServiceImageEvent extends MyServicesEvent {

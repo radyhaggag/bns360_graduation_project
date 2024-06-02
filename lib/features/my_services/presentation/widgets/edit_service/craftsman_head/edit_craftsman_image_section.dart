@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,23 +15,39 @@ class EditCraftsmanImageSection extends StatelessWidget {
     return BlocBuilder<MyServicesBloc, MyServicesState>(
       builder: (context, state) {
         final selectedImage = context.read<MyServicesBloc>().mainServiceImage;
-        final currentNetworkImage =
-            context.read<MyServicesBloc>().mainNetworkImage;
+        // final currentNetworkImage =
+        //     context.read<MyServicesBloc>().mainNetworkImage;
         return Stack(
           alignment: Alignment.center,
           children: [
-            if (selectedImage == null)
+            // if (selectedImage != null)
+            //   ClipOval(
+            //     child: Image.file(
+            //       selectedImage,
+            //       width: 90.r,
+            //       height: 90.r,
+            //     ),
+            //   )
+            // else if (currentNetworkImage != null)
+            // ClipOval(
+            //   child: MainNetworkImage(
+            //     imageUrl: currentNetworkImage,
+            //     width: 90.r,
+            //     height: 90.r,
+            //   ),
+            // ),
+            if (selectedImage != null)
               ClipOval(
-                child: MainNetworkImage(
-                  imageUrl: currentNetworkImage,
+                child: Image.file(
+                  selectedImage,
                   width: 90.r,
                   height: 90.r,
                 ),
               )
             else
               ClipOval(
-                child: Image.file(
-                  selectedImage,
+                child: MainNetworkImage(
+                  imageUrl: kDefaultImgUrl,
                   width: 90.r,
                   height: 90.r,
                 ),

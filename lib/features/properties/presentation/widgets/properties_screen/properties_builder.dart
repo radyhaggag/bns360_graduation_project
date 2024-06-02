@@ -1,7 +1,7 @@
-import '../../../../../config/route_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../config/route_config.dart';
 import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
@@ -33,9 +33,7 @@ class PropertiesBuilder extends StatelessWidget {
           isLoaded: state is GetPropertiesSuccessState,
           errorMessage: state is GetPropertiesErrorState ? state.message : "",
           loadedWidget: MainListViewBuilder<PropertyEntity>(
-            list: propertiesBloc.isSearchEnabled
-                ? propertiesBloc.searchResults
-                : propertiesBloc.properties,
+            list: propertiesBloc.items,
             emptyMessage: S.of(context).no_properties_found,
             itemWidget: (item, _) => InkWell(
               onTap: () {

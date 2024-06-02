@@ -11,6 +11,7 @@ class MainListViewBuilder<T> extends StatelessWidget {
   final double? height;
   final double? separatingSpace;
   final ScrollController? scrollController;
+  final Widget? emptyWidget;
 
   const MainListViewBuilder({
     super.key,
@@ -22,11 +23,14 @@ class MainListViewBuilder<T> extends StatelessWidget {
     this.height,
     this.separatingSpace,
     this.scrollController,
+    this.emptyWidget,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (list.isEmpty && emptyMessage == null) {
+    if (list.isEmpty && emptyWidget != null) {
+      return emptyWidget!;
+    } else if (list.isEmpty && emptyMessage == null) {
       return const SizedBox.shrink();
     } else if (list.isEmpty && emptyMessage != null) {
       return EmptyMessageWidget(message: emptyMessage!);

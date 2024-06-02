@@ -1,5 +1,7 @@
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
 import '../../../../../core/helpers/localization_helper.dart';
@@ -40,6 +42,14 @@ class MyBusinessItemsBuilder extends StatelessWidget {
             loadedWidget: MainListViewBuilder<CategoryItemEntity>(
               list: items,
               emptyMessage: S.of(context).no_places_to_explore,
+              emptyWidget: SizedBox(
+                width: context.width,
+                height: context.height / 2,
+                child: EmptyCard(
+                  iconSize: 150.r,
+                  title: S.of(context).no_results,
+                ),
+              ),
               itemWidget: (item, index) => HorizontalItemCard(
                   title: LocalizationHelper.getLocalizedString(
                     context,
@@ -72,11 +82,16 @@ class MyBusinessItemsBuilder extends StatelessWidget {
                             DeleteMyBusinessEvent(businessId: item.id),
                           );
                     },
-                    onEdit: () {
-                      Navigator.of(context).pushNamed(
+                    onEdit: () async {
+                      await Navigator.of(context).pushNamed(
                         Routes.editBusiness,
                         arguments: item,
                       );
+                      if (context.mounted) {
+                        context
+                            .read<MyBusinessBloc>()
+                            .add(GetMyBusinessEvent());
+                      }
                     },
                     deleteMessage: S.of(context).delete_post,
                   ),

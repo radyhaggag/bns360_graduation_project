@@ -24,9 +24,7 @@ class EditCraftsmanHead extends StatelessWidget {
           const EditCraftsmanHeadBackground(),
           Container(
             margin: EdgeInsets.only(top: 50.h),
-            child: EditCraftsmanMainCard(
-              imageUrl: craftsmanEntity.profileImageUrl,
-            ),
+            child: const EditCraftsmanMainCard(),
           ),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 10),

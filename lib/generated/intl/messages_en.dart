@@ -145,6 +145,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "edit_property_success": MessageLookupByLibrary.simpleMessage(
             "The property has been updated successfully"),
         "edit_service": MessageLookupByLibrary.simpleMessage("Edit service"),
+        "edit_service_success": MessageLookupByLibrary.simpleMessage(
+            "The service has been updated successfully"),
         "egypt_currency": MessageLookupByLibrary.simpleMessage("EGP"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_validation_message": MessageLookupByLibrary.simpleMessage(
@@ -193,6 +195,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "from": MessageLookupByLibrary.simpleMessage("From"),
         "fullName": MessageLookupByLibrary.simpleMessage("Full name"),
         "full_time": MessageLookupByLibrary.simpleMessage("Full time"),
+        "guest": MessageLookupByLibrary.simpleMessage("Guest"),
+        "guest_guard_message": MessageLookupByLibrary.simpleMessage(
+            "You are currently browsing as a guest. To access all features, please sign up or log in."),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -245,7 +250,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No places to explore"),
         "no_properties_found":
             MessageLookupByLibrary.simpleMessage("No properties found"),
-        "no_results": MessageLookupByLibrary.simpleMessage("No results found."),
+        "no_results": MessageLookupByLibrary.simpleMessage("No results found"),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
         "notReceiveCode":

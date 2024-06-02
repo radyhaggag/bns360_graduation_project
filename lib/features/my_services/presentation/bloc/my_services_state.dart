@@ -57,3 +57,13 @@ class ServiceCategoryUpdatedState extends MyServicesState {
 }
 
 class MainServiceImageUpdatedState extends MyServicesState {}
+
+class DeleteMyServiceLoadingState extends MyServicesState {}
+
+class DeleteMyServiceSuccessState extends MyServicesState {}
+
+class DeleteMyServiceErrorState extends MyServicesState {
+  final String message;
+
+  const DeleteMyServiceErrorState({required this.message});
+}

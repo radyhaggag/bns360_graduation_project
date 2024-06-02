@@ -6,10 +6,10 @@ import 'package:dio/dio.dart';
 import 'package:translator/translator.dart';
 
 import '../../../../core/api/api_consumer.dart';
-import '../../../../core/helpers/load_json_from_asset.dart';
 import '../../../../core/shared_data/entities/contact_entity.dart';
 import '../../../../core/shared_data/models/craft_model.dart';
 import '../../../../core/shared_data/models/craftsman_model.dart';
+import '../../../../core/shared_data/models/review_summary_model.dart';
 import '../../../../core/utils/enums.dart';
 import '../../domain/params/add_service_params.dart';
 import 'my_services_remote_data_source.dart';
@@ -20,6 +20,8 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
   MyServicesRemoteDataSourceImpl({
     required this.apiConsumer,
   });
+
+  String get userId => AppProvider().getProfile()!.id;
 
   @override
   Future<void> addService(AddServiceParams params) async {
@@ -37,12 +39,18 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
       addressAR = params.serviceAddress;
       final titleTranslation = await translator.translate(
         params.serviceName,
+        from: "ar",
+        to: "en",
       );
       final descriptionTranslation = await translator.translate(
         params.serviceDescription,
+        from: "ar",
+        to: "en",
       );
       final addressTranslation = await translator.translate(
         params.serviceAddress,
+        from: "ar",
+        to: "en",
       );
       titleENG = titleTranslation.text;
       aboutENG = descriptionTranslation.text;
@@ -53,19 +61,25 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
       addressENG = params.serviceAddress;
       final titleTranslation = await translator.translate(
         params.serviceName,
+        from: "en",
+        to: "ar",
       );
       final descriptionTranslation = await translator.translate(
         params.serviceDescription,
+        from: "en",
+        to: "ar",
       );
       final addressTranslation = await translator.translate(
         params.serviceAddress,
+        from: "en",
+        to: "ar",
       );
       titleAR = titleTranslation.text;
       aboutAR = descriptionTranslation.text;
       addressAR = addressTranslation.text;
     }
 
-    final userId = AppProvider().getProfile()!.id;
+    final images = params.mainServiceBackgroundImages;
 
     final categoryItemModel = CraftsmanModel(
       userId: userId,
@@ -83,10 +97,10 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
       opening: params.from,
       holidays: params.holiday.id,
       profileImageUrl: params.mainServiceImage,
-      imageName1: params.mainServiceBackgroundImages[0],
-      imageName2: params.mainServiceBackgroundImages[1],
-      imageName3: params.mainServiceBackgroundImages[2],
-      imageName4: params.mainServiceBackgroundImages[3],
+      imageName1: images.isNotEmpty ? images[0] : null,
+      imageName2: images.length > 1 ? images[1] : null,
+      imageName3: images.length > 2 ? images[2] : null,
+      imageName4: images.length > 3 ? images[3] : null,
     );
 
     final FormData formData = FormData.fromMap(
@@ -101,20 +115,38 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
 
   @override
   Future<List<CraftModel>> getServiceCategories() async {
-    final res = await loadJsonFromAsset('crafts.json');
-    final crafts = List<CraftModel>.from(res['data'].map(
-      (category) => CraftModel.fromJson(category),
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.getAllCrafts,
+    );
+    final crafts = List<CraftModel>.from(res.data.map(
+      (craft) => CraftModel.fromJson(craft),
     ));
     return crafts;
   }
 
   @override
   Future<List<CraftsmanModel>> getMyServices() async {
-    final res = await loadJsonFromAsset('craftsmen.json');
-    final items = List<CraftsmanModel>.from(res['data'].map(
-      (item) => CraftsmanModel.fromJson(item),
-    ));
-    return items;
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.getMyCraftsman(userId),
+    );
+    final item = await _mapAndGetCraftsmanModel(res.data);
+    return [item];
+  }
+
+  Future<CraftsmanModel> _mapAndGetCraftsmanModel(
+    Map<String, dynamic> json,
+  ) async {
+    CraftsmanModel model = CraftsmanModel.fromJson(json);
+
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.getCraftsmanReviewSummary(model.id),
+    );
+    final reviewSummary = ReviewSummaryModel.fromJson(res.data);
+    model = CraftsmanModel.fromEntity(
+      model.copyWith(reviewSummary: reviewSummary),
+    );
+
+    return model;
   }
 
   @override
@@ -128,6 +160,13 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
     await apiConsumer.put(
       endpoint: AppEndpoints.updateCraftsman(params.id),
       formData: formData,
+    );
+  }
+
+  @override
+  Future<void> deleteService(int serviceId) async {
+    await apiConsumer.delete(
+      endpoint: AppEndpoints.deleteCraftsman(serviceId),
     );
   }
 }

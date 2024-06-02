@@ -14,10 +14,7 @@ import 'edit_craftsman_image_section.dart';
 class EditCraftsmanMainCard extends StatelessWidget {
   const EditCraftsmanMainCard({
     super.key,
-    required this.imageUrl,
   });
-
-  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +35,7 @@ class EditCraftsmanMainCard extends StatelessWidget {
                 child: FittedBox(
                   child: ReactiveFormConsumer(
                     builder: (context, formGroup, child) => Text(
-                      (formGroup.controls["name"]?.value as String?) ?? " ",
+                      getLocalizedName(context, formGroup),
                       style: context.textTheme.titleSmall?.copyWith(
                         color: context.theme.cardColor,
                         fontSize: AppFontSize.subTitle,
@@ -70,6 +67,14 @@ class EditCraftsmanMainCard extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  String getLocalizedName(BuildContext context, FormGroup formGroup) {
+    return LocalizationHelper.getLocalizedString(
+      context,
+      ar: formGroup.controls["name_ar"]?.value as String,
+      en: formGroup.controls["name_en"]?.value as String,
     );
   }
 }

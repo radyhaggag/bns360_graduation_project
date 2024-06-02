@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
 import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
+import '../../../../../core/widgets/empty_card.dart';
 import '../../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
 import '../../../../../core/widgets/more_icon.dart';
@@ -39,7 +41,15 @@ class MyServicesItemsBuilder extends StatelessWidget {
             errorMessage: state is GetMyServicesErrorState ? state.message : "",
             loadedWidget: MainListViewBuilder<CraftsmanEntity>(
               list: items,
-              emptyMessage: S.of(context).no_places_to_explore,
+              emptyMessage: S.of(context).no_results,
+              emptyWidget: SizedBox(
+                width: context.width,
+                height: context.height / 2,
+                child: EmptyCard(
+                  iconSize: 150.r,
+                  title: S.of(context).no_results,
+                ),
+              ),
               itemWidget: (item, index) => HorizontalItemCard(
                 isBusiness: false,
                 itemId: item.id,
@@ -71,11 +81,15 @@ class MyServicesItemsBuilder extends StatelessWidget {
                           DeleteMyServicesEvent(serviceId: item.id),
                         );
                   },
-                  onEdit: () {
-                    Navigator.of(context).pushNamed(
+                  onEdit: () async {
+                    await Navigator.of(context).pushNamed(
                       Routes.editService,
                       arguments: item,
                     );
+
+                    if (context.mounted) {
+                      context.read<MyServicesBloc>().add(GetMyServicesEvent());
+                    }
                   },
                   deleteMessage: S.of(context).delete_post,
                 ),

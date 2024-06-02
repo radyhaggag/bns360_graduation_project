@@ -1180,10 +1180,10 @@ class S {
     );
   }
 
-  /// `No results found.`
+  /// `No results found`
   String get no_results {
     return Intl.message(
-      'No results found.',
+      'No results found',
       name: 'no_results',
       desc: '',
       args: [],
@@ -2220,6 +2220,16 @@ class S {
     );
   }
 
+  /// `The service has been updated successfully`
+  String get edit_service_success {
+    return Intl.message(
+      'The service has been updated successfully',
+      name: 'edit_service_success',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Description of service`
   String get description_of_service {
     return Intl.message(
@@ -2565,6 +2575,26 @@ class S {
     return Intl.message(
       'Your review sent successfully',
       name: 'review_sent_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guest`
+  String get guest {
+    return Intl.message(
+      'Guest',
+      name: 'guest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are currently browsing as a guest. To access all features, please sign up or log in.`
+  String get guest_guard_message {
+    return Intl.message(
+      'You are currently browsing as a guest. To access all features, please sign up or log in.',
+      name: 'guest_guard_message',
       desc: '',
       args: [],
     );

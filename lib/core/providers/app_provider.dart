@@ -1,9 +1,8 @@
-import '../shared_data/entities/publisher_details_entity.dart';
-import '../utils/enums/user_type.dart';
-
 import '../databases/local_storage/hive_manager.dart';
 import '../shared_data/entities/profile/profile_entity.dart';
+import '../shared_data/entities/publisher_details_entity.dart';
 import '../utils/constants.dart';
+import '../utils/enums/user_type.dart';
 
 class AppProvider {
   AppProvider._();
@@ -25,4 +24,6 @@ class AppProvider {
 
   Future<void> clearProfile() => HiveBoxes.profile.clear();
   Future<void> saveProfile() => HiveBoxes.profile.clear();
+
+  bool get isGuest => getProfile()?.userType == UserType.guest.id;
 }

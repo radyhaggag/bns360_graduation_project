@@ -27,7 +27,7 @@ abstract class AppEndpoints {
     return "$baseUrl/api/Business/business-owner/$userId";
   }
 
-  //* Business
+  //* Crafts
   static const addCraftsman = "$baseUrl/api/Craftsmen";
 
   static String updateCraftsman(int businessId) {
@@ -43,7 +43,7 @@ abstract class AppEndpoints {
   }
 
   static String getMyCraftsman(String userId) {
-    return "$baseUrl/Craftsmen/craftsman/$userId";
+    return "$baseUrl/api/Craftsmen/craftsman/$userId";
   }
 
   //* Business Categories

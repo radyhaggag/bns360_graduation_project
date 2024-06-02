@@ -13,6 +13,10 @@ class EditProfileDataBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (AppProvider().isGuest) {
+      return const SizedBox.shrink();
+    }
+
     return BlocBuilder<ProfileBloc, ProfileState>(
       builder: (context, state) {
         return ReactiveFormConsumer(
@@ -56,6 +60,7 @@ class EditProfileDataBtn extends StatelessWidget {
     return email != profile?.email ||
         name != profile?.name ||
         bloc.profile?.imageUrl != profile?.imageUrl ||
-        bloc.isProfileImageCleared || bloc.newImagePath != null;
+        bloc.isProfileImageCleared ||
+        bloc.newImagePath != null;
   }
 }

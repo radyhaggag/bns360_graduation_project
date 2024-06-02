@@ -21,7 +21,6 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     on<GetServiceTypesEvent>(_getServiceTypes);
     on<AddServiceEvent>(_addService);
     on<UpdateServiceEvent>(_updateService);
-    on<SelectServiceLocationEvent>(_selectPropertyLocation);
     on<PickServiceImagesEvent>(_pickServiceImages);
     on<RemovePickedServiceImageEvent>(_removeServiceImages);
     on<ClearServiceImagesEvent>(_clearServiceImages);
@@ -30,17 +29,6 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     on<ClearMainServiceImageEvent>(_clearMainServiceImageE);
     on<AddMainServiceImageEvent>(_addMainServiceImageE);
     on<DeleteMyServicesEvent>(_deleteMyServices);
-  }
-
-  double? _serviceLat;
-  double? _serviceLng;
-
-  _selectPropertyLocation(
-    SelectServiceLocationEvent event,
-    Emitter<MyServicesState> emit,
-  ) {
-    _serviceLat = event.lat;
-    _serviceLng = event.lng;
   }
 
   final List<File> _pickedImages = [];
@@ -231,9 +219,21 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   _deleteMyServices(
     DeleteMyServicesEvent event,
     Emitter<MyServicesState> emit,
-  ) {
-    myServicesItems.removeWhere(
-      (element) => element.id == event.serviceId,
+  ) async {
+    emit(DeleteMyServiceLoadingState());
+
+    final res = await myServicesRepo.deleteService(
+      event.serviceId,
+    );
+
+    res.fold(
+      (l) => emit(DeleteMyServiceErrorState(message: l.message)),
+      (r) {
+        myServicesItems.removeWhere(
+          (element) => element.id == event.serviceId,
+        );
+        emit(DeleteMyServiceSuccessState());
+      },
     );
   }
 }

@@ -1,10 +1,12 @@
-import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
+
+import '../../../generated/l10n.dart';
 
 enum UserType {
   user(0),
   serviceProvider(1),
-  businessOwner(2);
+  businessOwner(2),
+  guest(4);
 
   const UserType(this.id);
   final int id;
@@ -17,6 +19,8 @@ enum UserType {
         return S.of(context).businessOwner;
       case UserType.serviceProvider:
         return S.of(context).serviceProvider;
+      case UserType.guest:
+        return S.of(context).guest;
     }
   }
 
@@ -28,6 +32,8 @@ enum UserType {
         return S.of(context).businessOwner;
       case UserType.serviceProvider:
         return S.of(context).serviceProvider;
+      case UserType.guest:
+        return S.of(context).guest;
     }
   }
 
@@ -39,6 +45,8 @@ enum UserType {
         return UserType.serviceProvider;
       case 2:
         return UserType.businessOwner;
+      case 3:
+        return UserType.guest;
       default:
         return UserType.user;
     }

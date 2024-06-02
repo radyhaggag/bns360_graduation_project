@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -112,7 +113,7 @@ class _AddServiceBodyState extends State<AddServiceBody> {
       serviceDescription: formControls['description']!.value as String,
       to: int.parse(formControls['to']!.value as String),
       from: int.parse(formControls['from']!.value as String),
-      phoneNumber: formControls['phoneNumber']!.value as String,
+      phoneNumber: (formControls['phoneNumber']!.value as String).withCountryCode,
       mainServiceBackgroundImages: [], // Will updated on the bloc
       mainServiceImage: "", // Will updated on the bloc
     );

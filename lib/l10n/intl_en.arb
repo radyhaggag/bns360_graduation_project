@@ -113,7 +113,7 @@
   "conversations": "Conversations",
   "today": "Today",
   "yesterday": "Yesterday",
-  "no_results": "No results found.",
+  "no_results": "No results found",
   "you_deleted_this_message": "You deleted this message",
   "delete_by_sender": "This message has been deleted by the sender.",
   "confirm_delete_message": "Are you sure you want to delete this message?",
@@ -217,6 +217,7 @@
   "work_time": "Times of work",
   "add_service": "Add service",
   "add_service_success": "The service has been added successfully",
+  "edit_service_success": "The service has been updated successfully",
   "description_of_service": "Description of service",
   "service_address": "Service address",
   "enter_service_address": "Enter service address",
@@ -251,5 +252,7 @@
   "friday": "Friday",
   "saturday": "Saturday",
   "sunday": "Sunday",
-  "review_sent_successfully": "Your review sent successfully"
+  "review_sent_successfully": "Your review sent successfully",
+  "guest": "Guest",
+  "guest_guard_message": "You are currently browsing as a guest. To access all features, please sign up or log in."
 }

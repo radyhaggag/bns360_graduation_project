@@ -81,7 +81,7 @@ android {
         development {
             dimension "default"
             resValue "string", "app_name", "BNS360 Development"
-            // applicationIdSuffix ".dev"
+            applicationIdSuffix ".dev"
         }
         production {
             dimension "default"

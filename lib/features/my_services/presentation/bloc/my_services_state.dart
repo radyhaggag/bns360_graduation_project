@@ -67,3 +67,9 @@ class DeleteMyServiceErrorState extends MyServicesState {
 
   const DeleteMyServiceErrorState({required this.message});
 }
+
+class ServiceHolidayUpdatedState extends MyServicesState {
+  final WorkDay holiday;
+
+  const ServiceHolidayUpdatedState({required this.holiday});
+}

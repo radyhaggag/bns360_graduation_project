@@ -127,15 +127,19 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
   }
 
   @override
-  Future<CategoryItemModel?> getMyBusiness() async {
+  Future<List<CategoryItemModel>> getMyBusiness() async {
     final userId = AppProvider().getProfile()!.id;
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getMyBusiness(userId),
     );
-    if (res.data == null) return null;
+    if (res.data == null) return [];
+    final category = (res.data as List)
+        .map<Future<CategoryItemModel>>(
+            (json) => _mapAndGetCategoryItemModel(json))
+        .toList();
 
-    final category = await _mapAndGetCategoryItemModel(res.data);
-    return category;
+    final result = await Future.wait<CategoryItemModel>(category);
+    return result;
   }
 
   Future<CategoryItemModel> _mapAndGetCategoryItemModel(
@@ -150,7 +154,6 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
     model = CategoryItemModel.fromEntity(
       model.copyWith(reviewSummary: reviewSummary),
     );
-
     return model;
   }
 

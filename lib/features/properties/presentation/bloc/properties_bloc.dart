@@ -18,7 +18,6 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   PropertiesBloc({required this.propertiesRepo}) : super(PropertiesInitial()) {
     initListener();
     on<GetPropertiesEvent>(_getProperties);
-    on<GetPropertyByIdEvent>(_getPropertyById);
     on<SearchOnPropertiesEvent>(_searchOnProperties);
     on<SelectPropertyLocationEvent>(_selectPropertyLocation);
     on<AddPropertyEvent>(_addProperty);
@@ -99,23 +98,6 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   Future<void> close() {
     searchController.dispose();
     return super.close();
-  }
-
-  _getPropertyById(
-    GetPropertyByIdEvent event,
-    Emitter<PropertiesState> emit,
-  ) async {
-    emit(GetPropertyByIdLoadingState());
-    await Future.delayed(const Duration(seconds: 1));
-
-    final res = await propertiesRepo.getPropertyById(event.id);
-
-    res.fold(
-      (l) => emit(GetPropertyByIdErrorState(message: l.message)),
-      (r) {
-        emit(GetPropertyByIdSuccessState(property: r));
-      },
-    );
   }
 
   double? _propertyLat;

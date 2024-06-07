@@ -1,12 +1,15 @@
+import 'package:bns360_graduation_project/features/my_services/presentation/bloc/my_services_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
+import '../../../../../core/widgets/select_holiday_dropdown.dart';
 import '../../../../../generated/l10n.dart';
+import '../service_type_dropdown.dart';
 import 'add_service_time_section.dart';
-import 'service_type_dropdown.dart';
 
 class AddServiceForm extends StatelessWidget {
   const AddServiceForm({
@@ -51,6 +54,14 @@ class AddServiceForm extends StatelessWidget {
           ),
           15.verticalSpace,
           const AddServiceTimeSection(),
+          15.verticalSpace,
+          SelectHolidayDropdown(
+            onChange: (holiday) {
+              context.read<MyServicesBloc>().add(
+                    SelectServiceHolidayEvent(holiday: holiday),
+                  );
+            },
+          ),
         ],
       ),
     );

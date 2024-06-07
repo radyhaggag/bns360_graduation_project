@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -31,6 +32,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     on<ClearMainBusinessImageEvent>(_clearMainBusinessImageE);
     on<AddMainBusinessImageEvent>(_addMainBusinessImageE);
     on<DeleteMyBusinessEvent>(_deleteMyBusiness);
+    on<SelectBusinessHolidayEvent>(_selectBusinessHoliday);
   }
 
   double? _businessLat;
@@ -115,7 +117,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     res.fold(
       (l) => emit(GetMyBusinessErrorState(message: l.message)),
       (r) {
-        if (r != null) myBusinessItems.add(r);
+        myBusinessItems = r;
         emit(GetMyBusinessSuccessState());
       },
     );
@@ -152,6 +154,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
       businessCategory: selectedBusinessCategory,
       mainBusinessBackgroundImages: pickedImages.map((e) => e.path).toList(),
       mainBusinessImage: _mainBusinessImage?.path,
+      holiday: holiday,
     );
 
     final res = await myBusinessRepo.addBusiness(params);
@@ -178,6 +181,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
       businessImageName3: pickedImages.length > 2 ? pickedImages[2].path : null,
       businessImageName4: pickedImages.length > 2 ? pickedImages[3].path : null,
       profileImageName: _mainBusinessImage?.path,
+      holidays: holiday.id,
     );
 
     final res = await myBusinessRepo.updateBusiness(params);
@@ -250,5 +254,16 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
         emit(DeleteBusinessSuccessState());
       },
     );
+  }
+
+  WorkDay holiday = WorkDay.friday;
+
+  _selectBusinessHoliday(
+    SelectBusinessHolidayEvent event,
+    Emitter<MyBusinessState> emit,
+  ) async {
+    holiday = event.holiday;
+
+    emit(BusinessHolidayUpdatedState());
   }
 }

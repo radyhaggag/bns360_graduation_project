@@ -66,3 +66,5 @@ class BusinessCategoryUpdatedState extends MyBusinessState {
 }
 
 class MainBusinessImageUpdatedState extends MyBusinessState {}
+
+class BusinessHolidayUpdatedState extends MyBusinessState {}

@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/route_config.dart';
@@ -11,8 +13,10 @@ class AddBusinessButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.of(context).pushNamed(Routes.addBusiness);
+      onTap: () async {
+        await Navigator.of(context).pushNamed(Routes.addBusiness);
+        if(!context.mounted) return;
+        context.read<MyBusinessBloc>().add(GetMyBusinessEvent());
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

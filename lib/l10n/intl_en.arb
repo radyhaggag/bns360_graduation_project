@@ -159,7 +159,7 @@
   "price": "Price",
   "area": "Area",
   "upload_property_images": "Upload property images",
-  "max_no_of_image_uploads": "Maximum upload of {number} images",
+  "max_no_of_image_uploads": "Maximum upload of {number} images, and minimum of 1 image",
   "post_now": "Post now",
   "offer_type": "Offer type",
   "properties": "Properties",
@@ -214,7 +214,7 @@
   "from": "From",
   "delete_main_business_image": "Delete main business image",
   "upload_main_business_image": "Upload main business image",
-  "work_time": "Times of work",
+  "work_time": "Select your working hours for each day from 0 to 24.",
   "add_service": "Add service",
   "add_service_success": "The service has been added successfully",
   "edit_service_success": "The service has been updated successfully",
@@ -254,5 +254,8 @@
   "sunday": "Sunday",
   "review_sent_successfully": "Your review sent successfully",
   "guest": "Guest",
-  "guest_guard_message": "You are currently browsing as a guest. To access all features, please sign up or log in."
+  "guest_guard_message": "You are currently browsing as a guest. To access all features, please sign up or log in.",
+  "select_holiday": "Select holiday",
+  "working": "Working",
+  "not_working": "Not working"
 }

@@ -28,11 +28,11 @@ class MyBusinessRepoImpl implements MyBusinessRepo {
   }
 
   @override
-  FutureEither<CategoryItemEntity?> getMyBusiness() {
+  FutureEither<List<CategoryItemEntity>> getMyBusiness() {
     return executeAndHandleErrorAsync(
       () => myBusinessRemoteDataSource.getMyBusiness(),
       onFailure: (e) {
-        return Future.value(null);
+        return Future.value([]);
       },
     );
   }

@@ -19,8 +19,8 @@ class UserTypeDropdown extends StatelessWidget {
           onTapCallback: (value) => authBloc.add(
             ChangeUserTypeEvent(userType: value),
           ),
-          items: UserType.values,
-          viewItems: UserType.values.map((e) => e.getText(context)).toList(),
+          items: UserType.signUpTypes,
+          viewItems: UserType.signUpTypes.map((e) => e.getText(context)).toList(),
           label: S.of(context).pleaseChoose,
           textValue: authBloc.userType?.getText(context),
         );

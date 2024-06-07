@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -29,6 +30,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     on<ClearMainServiceImageEvent>(_clearMainServiceImageE);
     on<AddMainServiceImageEvent>(_addMainServiceImageE);
     on<DeleteMyServicesEvent>(_deleteMyServices);
+    on<SelectServiceHolidayEvent>(_selectHolidayWorkday);
   }
 
   final List<File> _pickedImages = [];
@@ -134,12 +136,12 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     emit(AddServiceLoadingState());
 
     final params = event.addServiceParams.copyWith(
-      // lat: _serviceLat,
-      // lng: _serviceLng,
-      serviceCategory: selectedServiceCraft,
-      mainServiceBackgroundImages: pickedImages.map((e) => e.path).toList(),
-      mainServiceImage: _mainServiceImage?.path,
-    );
+        // lat: _serviceLat,
+        // lng: _serviceLng,
+        serviceCategory: selectedServiceCraft,
+        mainServiceBackgroundImages: pickedImages.map((e) => e.path).toList(),
+        mainServiceImage: _mainServiceImage?.path,
+        holiday: holiday);
 
     final res = await myServicesRepo.addService(params);
 
@@ -163,6 +165,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
       imageName3: pickedImages.length > 2 ? pickedImages[2].path : null,
       imageName4: pickedImages.length > 2 ? pickedImages[3].path : null,
       profileImageUrl: mainServiceImage?.path,
+      holidays: holiday.id,
     );
 
     final res = await myServicesRepo.updateService(params);
@@ -185,6 +188,17 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     emit(ServiceCategoryUpdatedState(
       serviceCategory: selectedServiceCraft!,
     ));
+  }
+
+  WorkDay holiday = WorkDay.friday;
+
+  _selectHolidayWorkday(
+    SelectServiceHolidayEvent event,
+    Emitter<MyServicesState> emit,
+  ) async {
+    holiday = event.holiday;
+
+    emit(ServiceHolidayUpdatedState(holiday: holiday));
   }
 
   File? _mainServiceImage;

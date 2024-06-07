@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +40,10 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
     //       networkImages: widget.categoryItemEntity.businessImages,
     //       mainBusinessImage: widget.categoryItemEntity.profileImageName,
     //     ));
+
+    context.read<MyBusinessBloc>().add(SelectBusinessHolidayEvent(
+          holiday: WorkDay.fromId(widget.categoryItemEntity.holidays),
+        ));
 
     form = FormGroup({
       'name_ar': FormControl<String>(

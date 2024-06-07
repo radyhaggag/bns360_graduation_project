@@ -1640,10 +1640,10 @@ class S {
     );
   }
 
-  /// `Maximum upload of {number} images`
+  /// `Maximum upload of {number} images, and minimum of 1 image`
   String max_no_of_image_uploads(Object number) {
     return Intl.message(
-      'Maximum upload of $number images',
+      'Maximum upload of $number images, and minimum of 1 image',
       name: 'max_no_of_image_uploads',
       desc: '',
       args: [number],
@@ -2190,10 +2190,10 @@ class S {
     );
   }
 
-  /// `Times of work`
+  /// `Select your working hours for each day from 0 to 24.`
   String get work_time {
     return Intl.message(
-      'Times of work',
+      'Select your working hours for each day from 0 to 24.',
       name: 'work_time',
       desc: '',
       args: [],
@@ -2595,6 +2595,36 @@ class S {
     return Intl.message(
       'You are currently browsing as a guest. To access all features, please sign up or log in.',
       name: 'guest_guard_message',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select holiday`
+  String get select_holiday {
+    return Intl.message(
+      'Select holiday',
+      name: 'select_holiday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Working`
+  String get working {
+    return Intl.message(
+      'Working',
+      name: 'working',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not working`
+  String get not_working {
+    return Intl.message(
+      'Not working',
+      name: 'not_working',
       desc: '',
       args: [],
     );

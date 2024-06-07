@@ -62,10 +62,8 @@ class MyBusinessItemsBuilder extends StatelessWidget {
                     en: item.categoriesModel.categoryNameEnglish,
                   ),
                   imageUrl: item.profileImageName,
-                  // numOfRatings: item.numOfRatings,
-                  // starsCount: item.starsCount,
-                  numOfRatings: 59,
-                  starsCount: 4.6,
+                  numOfRatings: item.reviewSummary?.totalReviews ?? 0,
+                  starsCount: item.reviewSummary?.averageRating ?? 0,
                   onPressed: () {
                     Navigator.of(context).pushNamed(
                       Routes.categoryItem,

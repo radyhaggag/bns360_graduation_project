@@ -7,10 +7,11 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
+import '../../../../../../core/widgets/select_holiday_dropdown.dart';
 import '../../../../../../generated/l10n.dart';
 import '../../../bloc/my_services_bloc.dart';
 import '../../add_service/add_service_time_section.dart';
-import '../../add_service/service_type_dropdown.dart';
+import '../../service_type_dropdown.dart';
 import '../../submit_service_button.dart';
 import '../../upload_service_images_section.dart';
 
@@ -80,6 +81,14 @@ class EditServiceForm extends StatelessWidget {
           ),
           15.verticalSpace,
           const AddServiceTimeSection(),
+          15.verticalSpace,
+          SelectHolidayDropdown(
+            onChange: (holiday) {
+              context.read<MyServicesBloc>().add(
+                    SelectServiceHolidayEvent(holiday: holiday),
+                  );
+            },
+          ),
           const SizedBox(height: 10),
           const UploadServiceImagesSection(),
           const SizedBox(height: 25),

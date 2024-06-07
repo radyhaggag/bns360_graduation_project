@@ -26,7 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(number) => "Maximum length: ${number} characters.";
 
-  static String m3(number) => "Maximum upload of ${number} images";
+  static String m3(number) =>
+      "Maximum upload of ${number} images, and minimum of 1 image";
 
   static String m4(number) => "Value must be less than or equal to ${number}";
 
@@ -255,6 +256,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("I didn\'\'t receive a code!"),
+        "not_working": MessageLookupByLibrary.simpleMessage("Not working"),
         "number_validation_message":
             MessageLookupByLibrary.simpleMessage("Please enter a valid number"),
         "offer_type": MessageLookupByLibrary.simpleMessage("Offer type"),
@@ -337,6 +339,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Search on properties"),
         "select_business_category":
             MessageLookupByLibrary.simpleMessage("Select business category"),
+        "select_holiday":
+            MessageLookupByLibrary.simpleMessage("Select holiday"),
         "select_service_category":
             MessageLookupByLibrary.simpleMessage("Select service category"),
         "send": MessageLookupByLibrary.simpleMessage("Send"),
@@ -402,7 +406,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "work_hours": MessageLookupByLibrary.simpleMessage("Work hours"),
-        "work_time": MessageLookupByLibrary.simpleMessage("Times of work"),
+        "work_time": MessageLookupByLibrary.simpleMessage(
+            "Select your working hours for each day from 0 to 24."),
+        "working": MessageLookupByLibrary.simpleMessage("Working"),
         "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("Write your message"),

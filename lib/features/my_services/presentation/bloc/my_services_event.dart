@@ -55,3 +55,9 @@ class DeleteMyServicesEvent extends MyServicesEvent {
 
   const DeleteMyServicesEvent({required this.serviceId});
 }
+
+class SelectServiceHolidayEvent extends MyServicesEvent {
+  final WorkDay holiday;
+
+  const SelectServiceHolidayEvent({required this.holiday});
+}

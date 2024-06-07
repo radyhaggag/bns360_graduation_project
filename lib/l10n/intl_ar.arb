@@ -158,7 +158,7 @@
   "price": "السعر",
   "area": "المساحة",
   "upload_property_images": "تحميل صور العقار",
-  "max_no_of_image_uploads": "الحد الأقصى لتحميل {number} صورة",
+  "max_no_of_image_uploads": "الحد الأقصى لتحميل {number} صورة, وعلى الأقل صورة واحدة",
   "post_now": "نشر الآن",
   "offer_type": "نوع العرض",
   "properties": "العقارات",
@@ -212,7 +212,7 @@
   "from": "من",
   "delete_main_service_image": "هل تريد حذف الصورة الرئيسية للخدمة",
   "upload_main_service_image": "تحديد الصورة الرئيسية للخدمة",
-  "work_time": "وقت العمل",
+  "work_time": "حدد ساعات عملك لكل يوم من 0 إلى 24.",
   "add_service": "إضافة نشاط تجاري",
   "add_service_success": "تمت إضافة الخدمة بنجاح",
   "edit_service_success": "تم تعديل الخدمة بنجاح",
@@ -252,5 +252,8 @@
   "saturday": "السبت",
   "review_sent_successfully": "تم إرسال تقييمك بنجاح",
   "guest": "ضيف",
-  "guest_guard_message": "انت الان تتصفح التطبيق كضيف. يمكنك تسجيل الدخول أو التسجيل للحصول على ميزات إضافية."
+  "guest_guard_message": "انت الان تتصفح التطبيق كضيف. يمكنك تسجيل الدخول أو التسجيل للحصول على ميزات إضافية.",
+  "select_holiday": "اختر العطلة",
+  "working": "يعمل",
+  "not_working": "لا يعمل"
 }

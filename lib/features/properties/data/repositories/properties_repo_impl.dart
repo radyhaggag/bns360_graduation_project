@@ -1,9 +1,8 @@
-import '../../params/add_property_params.dart';
-
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/repositories/properties_repo.dart';
+import '../../params/add_property_params.dart';
 import '../datasources/remote/properties_remote_data_source.dart';
 
 class PropertiesRepoImpl implements PropertiesRepo {
@@ -15,13 +14,6 @@ class PropertiesRepoImpl implements PropertiesRepo {
   FutureEither<List<PropertyEntity>> getProperties() async {
     return executeAndHandleErrorAsync(
       () => propertiesRemoteDataSource.getProperties(),
-    );
-  }
-
-  @override
-  FutureEither<PropertyEntity> getPropertyById(String id) async {
-    return executeAndHandleErrorAsync(
-      () => propertiesRemoteDataSource.getPropertyById(id),
     );
   }
 

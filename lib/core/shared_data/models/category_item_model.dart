@@ -76,8 +76,9 @@ class CategoryItemModel extends CategoryItemEntity {
           await APIImagesHelper.convertImageToMultipartFile(businessImageName1),
       'BusinessImage2':
           await APIImagesHelper.convertImageToMultipartFile(businessImageName2),
-      'BusinessImage3':
-          await APIImagesHelper.convertImageToMultipartFile(businessImageName3),
+      'BusinessImage3': await APIImagesHelper.convertImageToMultipartFile(
+        businessImageName3,
+      ),
       'BusinessImage4':
           await APIImagesHelper.convertImageToMultipartFile(businessImageName4),
       'CategoriesModelId': categoriesModelId,

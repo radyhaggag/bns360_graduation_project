@@ -1,4 +1,7 @@
+import 'package:bns360_graduation_project/core/widgets/select_holiday_dropdown.dart';
+import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -80,6 +83,14 @@ class EditBusinessForm extends StatelessWidget {
           ),
           15.verticalSpace,
           const AddBusinessTimeSection(),
+          15.verticalSpace,
+          SelectHolidayDropdown(
+            onChange: (holiday) {
+              context.read<MyBusinessBloc>().add(
+                    SelectBusinessHolidayEvent(holiday: holiday),
+                  );
+            },
+          ),
         ],
       ),
     );

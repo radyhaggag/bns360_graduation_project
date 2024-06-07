@@ -112,7 +112,7 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
       endpoint: AppEndpoints.craftsmenFavorite,
       data: {
         "UserId": userId,
-        "BusinessId": itemId,
+        "CraftsmanId": itemId,
       },
     );
     await HiveBoxes.favoriteCrafts.put(itemId, itemId);
@@ -120,11 +120,11 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
 
   @override
   Future<void> removeCraftsmanFromFavorite(int itemId) async {
-    await apiConsumer.post(
+    await apiConsumer.delete(
       endpoint: AppEndpoints.craftsmenFavorite,
-      data: {
+      queries: {
         "UserId": userId,
-        "BusinessId": itemId,
+        "CraftsmanId": itemId,
       },
     );
     await HiveBoxes.favoriteCrafts.delete(itemId);

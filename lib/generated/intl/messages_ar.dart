@@ -26,7 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m2(number) => "الحد الأقصى: ${number} أحرف.";
 
-  static String m3(number) => "الحد الأقصى لتحميل ${number} صورة";
+  static String m3(number) =>
+      "الحد الأقصى لتحميل ${number} صورة, وعلى الأقل صورة واحدة";
 
   static String m4(number) => "يجب أن يكون القيمة أقل من أو تساوي ${number}";
 
@@ -252,6 +253,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("لم تتلقى رمز التحقق!"),
+        "not_working": MessageLookupByLibrary.simpleMessage("لا يعمل"),
         "number_validation_message":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال رقم صحيح"),
         "offer_type": MessageLookupByLibrary.simpleMessage("نوع العرض"),
@@ -335,6 +337,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("البحث في العقارات"),
         "select_business_category":
             MessageLookupByLibrary.simpleMessage("اختار فئة النشاط التجاري"),
+        "select_holiday": MessageLookupByLibrary.simpleMessage("اختر العطلة"),
         "select_service_category":
             MessageLookupByLibrary.simpleMessage("اختار فئة الخدمة"),
         "send": MessageLookupByLibrary.simpleMessage("إرسال"),
@@ -394,7 +397,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
         "work_hours": MessageLookupByLibrary.simpleMessage("ساعات العمل"),
-        "work_time": MessageLookupByLibrary.simpleMessage("وقت العمل"),
+        "work_time": MessageLookupByLibrary.simpleMessage(
+            "حدد ساعات عملك لكل يوم من 0 إلى 24."),
+        "working": MessageLookupByLibrary.simpleMessage("يعمل"),
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),

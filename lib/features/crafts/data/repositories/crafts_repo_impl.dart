@@ -21,6 +21,9 @@ class CraftsRepoImpl implements CraftsRepo {
   FutureEither<List<CraftsmanInfoEntity>> getCraftItemsById(int id) async {
     return executeAndHandleErrorAsync(
       () => craftsRemoteDataSource.getCraftItemsById(id),
+      onFailure: (e) {
+        return Future.value(<CraftsmanInfoEntity>[]);
+      },
     );
   }
 }

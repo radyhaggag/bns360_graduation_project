@@ -17,11 +17,11 @@ class SignUpParams extends Equatable {
 
   Map<String, dynamic> toJson() {
     return {
-      "displayName": displayName,
-      "email": email,
-      "password": password,
-      "confirmPassword": password,
-      "userRole": userType.id,
+      "DisplayName": displayName,
+      "Email": email,
+      "Password": password,
+      "ConfirmPassword": password,
+      "UserRole": userType.id,
     };
   }
 

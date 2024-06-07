@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/features/my_services/presentation/bloc/my_services_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/route_config.dart';
@@ -11,8 +13,12 @@ class AddServiceButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.of(context).pushNamed(Routes.addService);
+      onTap: () async {
+        await Navigator.of(context).pushNamed(Routes.addService);
+
+        if (!context.mounted) return;
+
+        context.read<MyServicesBloc>().add(GetMyServicesEvent());
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

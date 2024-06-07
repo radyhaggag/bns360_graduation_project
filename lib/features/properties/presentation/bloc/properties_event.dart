@@ -6,12 +6,6 @@ abstract class PropertiesEvent {
 
 class GetPropertiesEvent extends PropertiesEvent {}
 
-class GetPropertyByIdEvent extends PropertiesEvent {
-  final String id;
-
-  const GetPropertyByIdEvent({required this.id});
-}
-
 class SearchOnPropertiesEvent extends PropertiesEvent {}
 
 class SelectPropertyLocationEvent extends PropertiesEvent {

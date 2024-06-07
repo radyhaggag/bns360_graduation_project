@@ -48,10 +48,10 @@ class CraftsmanRemoteDataSourceImpl implements CraftsmanRemoteDataSource {
     await apiConsumer.post(
       endpoint: AppEndpoints.sendCraftsmanReview,
       data: {
-        "review": review,
-        "rating": rating,
-        "craftsmanId": itemId,
-        "userId": userId,
+        "Review": review,
+        "Rating": rating,
+        "CraftsmanId": itemId,
+        "UserId": userId,
       },
     );
   }

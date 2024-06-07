@@ -110,6 +110,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
         review: event.review,
       )),
       (r) {
+        add(GetCategoryItemReviewsEvent(itemId: event.itemId));
         emit(SendCategoryItemReviewSuccessState());
       },
     );

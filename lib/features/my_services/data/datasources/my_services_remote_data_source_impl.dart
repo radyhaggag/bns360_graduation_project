@@ -129,8 +129,14 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getMyCraftsman(userId),
     );
-    final item = await _mapAndGetCraftsmanModel(res.data);
-    return [item];
+
+    final category = (res.data as List)
+        .map<Future<CraftsmanModel>>((json) => _mapAndGetCraftsmanModel(json))
+        .toList();
+
+    final result = await Future.wait<CraftsmanModel>(category);
+
+    return result;
   }
 
   Future<CraftsmanModel> _mapAndGetCraftsmanModel(

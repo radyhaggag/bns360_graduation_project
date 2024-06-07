@@ -11,6 +11,12 @@ enum UserType {
   const UserType(this.id);
   final int id;
 
+  static List<UserType> get signUpTypes => [
+        UserType.user,
+        UserType.serviceProvider,
+        UserType.businessOwner,
+      ];
+
   String getText(BuildContext context) {
     switch (this) {
       case UserType.user:

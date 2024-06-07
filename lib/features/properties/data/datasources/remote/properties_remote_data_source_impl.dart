@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:translator/translator.dart';
 
 import '../../../../../core/api/api_consumer.dart';
-import '../../../../../core/helpers/load_json_from_asset.dart';
 import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/shared_data/entities/contact_entity.dart';
 import '../../../../../core/shared_data/entities/property_entity.dart';
@@ -28,16 +27,6 @@ class PropertiesRemoteDataSourceImpl implements PropertiesRemoteDataSource {
       (property) => PropertyModel.fromJson(property),
     ));
     return properties;
-  }
-
-  @override
-  Future<PropertyModel> getPropertyById(String id) async {
-    final res = await loadJsonFromAsset('properties.json');
-    final properties = List<PropertyModel>.from(res['data'].map(
-      (craftsman) => PropertyModel.fromJson(craftsman),
-    ));
-    final item = properties.firstWhere((item) => item.id == id);
-    return item;
   }
 
   @override

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
@@ -10,7 +9,6 @@ import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/extensions/context.dart';
-import '../../../../../core/utils/extensions/language.dart';
 import '../../../../../core/widgets/buttons/map_btn.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../map/domain/params/map_params.dart';
@@ -38,8 +36,8 @@ class CategoryItemInfoSection extends StatelessWidget {
       child: Column(
         children: [
           _ItemStatusWidget(
-            start: DateTime.now().subtract(const Duration(hours: 5)),
-            end: DateTime.now().add(const Duration(hours: 5)),
+            start: categoryItemEntity.opening,
+            end: categoryItemEntity.closing,
           ),
           const SizedBox(height: 15),
           _CategoryItemLocation(

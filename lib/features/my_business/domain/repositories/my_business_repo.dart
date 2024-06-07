@@ -7,6 +7,6 @@ abstract class MyBusinessRepo {
   FutureEither<void> addBusiness(AddBusinessParams params);
   FutureEither<void> updateBusiness(CategoryItemEntity params);
   FutureEither<void> deleteBusiness(int businessId);
-  FutureEither<CategoryItemEntity?> getMyBusiness();
+  FutureEither<List<CategoryItemEntity>> getMyBusiness();
   FutureEither<List<CategoryEntity>> getBusinessCategories();
 }

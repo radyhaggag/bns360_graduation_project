@@ -11,6 +11,7 @@ class ReviewModel extends ReviewEntity {
     required super.reviewText,
     required super.starCount,
     required super.userId,
+    super.isHappy,
   });
 
   factory ReviewModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +24,19 @@ class ReviewModel extends ReviewEntity {
       reviewText: json['Review'],
       starCount: json['Rating'],
       userId: json["UserId"],
+    );
+  }
+
+  factory ReviewModel.fromEntity(ReviewEntity entity) {
+    return ReviewModel(
+      id: entity.id,
+      date: entity.date,
+      userName: entity.userName,
+      userImage: entity.userImage,
+      reviewText: entity.reviewText,
+      starCount: entity.starCount,
+      userId: entity.userId,
+      isHappy: entity.isHappy,
     );
   }
 }

@@ -35,4 +35,7 @@ abstract class AppSvg {
   static const business = '$_svgPath/business.svg';
   static const editPost = '$_svgPath/edit_post.svg';
   static const deletePost = '$_svgPath/delete_post.svg';
+
+  static const happy = '$_svgPath/happy.svg';
+  static const sad = '$_svgPath/sad.svg';
 }

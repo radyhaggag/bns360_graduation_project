@@ -1,6 +1,7 @@
 import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/core/shared_data/models/review_summary_model.dart';
 import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
+import 'package:dio/dio.dart';
 
 import '../../../../core/api/api_consumer.dart';
 import '../../../../core/shared_data/models/craftsman_model.dart';
@@ -22,7 +23,34 @@ class CraftsmanRemoteDataSourceImpl implements CraftsmanRemoteDataSource {
     final reviews = List<ReviewModel>.from(res.data.map(
       (review) => ReviewModel.fromJson(review),
     ));
-    return reviews;
+
+    List<ReviewModel> customReviews = [];
+
+    for (var i = 0; i < reviews.length; i++) {
+      try {
+        final res = await apiConsumer.post(
+          endpoint: "http://radyhaggag.pythonanywhere.com/predict",
+          formData: FormData.fromMap(
+            {
+              "text": reviews[i].reviewText,
+            },
+          ),
+        );
+        final result = res.data["sentiment"];
+
+        final isHappy = result == "Happy";
+
+        customReviews.add(
+          ReviewModel.fromEntity(reviews[i].copyWith(
+            isHappy: isHappy,
+          )),
+        );
+      } catch (e) {
+        customReviews.add(reviews[i]);
+      }
+    }
+
+    return customReviews;
   }
 
   @override

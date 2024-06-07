@@ -1,6 +1,8 @@
+import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
 import 'package:bns360_graduation_project/core/widgets/remove_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../helpers/date_formatter.dart';
 import '../../../shared_data/entities/review_entity.dart';
@@ -25,19 +27,65 @@ class ReviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.symmetric(
         horizontal: kHorizontalPadding,
         vertical: 5,
       ),
       decoration: BoxDecoration(
-        color: context.theme.highlightColor,
+        color: review.isHappy == null
+            ? context.theme.highlightColor
+            : review.isHappy!
+                ? Colors.green.withAlpha(25)
+                : Colors.red.withAlpha(25),
+        // color: context.theme.highlightColor,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(32),
           topRight: Radius.circular(32),
           bottomRight: Radius.circular(32),
         ),
       ),
+      child: Stack(
+        alignment: AlignmentDirectional.topEnd,
+        children: [
+          _BuildReviewCard(
+            review: review,
+            onRemove: onRemove,
+            isLoading: isLoading,
+          ),
+          if (review.isHappy != null && review.isHappy!) ...[
+            SvgPicture.asset(
+              AppSvg.happy,
+              width: 25.r,
+              height: 25.r,
+            ),
+          ] else if (review.isHappy != null && !review.isHappy!) ...[
+            SvgPicture.asset(
+              AppSvg.sad,
+              width: 25.r,
+              height: 25.r,
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+}
+
+class _BuildReviewCard extends StatelessWidget {
+  const _BuildReviewCard({
+    required this.review,
+    required this.onRemove,
+    required this.isLoading,
+  });
+
+  final ReviewEntity review;
+  final VoidCallback onRemove;
+  final bool isLoading;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

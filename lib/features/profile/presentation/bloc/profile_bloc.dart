@@ -21,6 +21,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<GetProfileEvent>(_getProfile);
     on<ChangePasswordEvent>(_changePassword);
     on<SignOutEvent>(_signOut);
+    on<DeleteAccountEvent>(_deleteAccount);
   }
 
   ProfileEntity? _profile;
@@ -141,6 +142,20 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     res.fold(
       (l) => emit(SignOutErrorState(message: l.message)),
       (r) => emit(SignOutSuccessState()),
+    );
+  }
+
+  _deleteAccount(
+    DeleteAccountEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
+    emit(DeleteAccountLoadingState());
+
+    final res = await profileRepo.deleteAccount();
+
+    res.fold(
+      (l) => emit(DeleteAccountErrorState(message: l.message)),
+      (r) => emit(DeleteAccountSuccessState()),
     );
   }
 }

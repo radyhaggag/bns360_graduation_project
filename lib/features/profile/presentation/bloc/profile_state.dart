@@ -51,3 +51,14 @@ class SignOutErrorState extends ProfileState {
 
   const SignOutErrorState({required this.message});
 }
+
+
+class DeleteAccountLoadingState extends ProfileState {}
+
+class DeleteAccountSuccessState extends ProfileState {}
+
+class DeleteAccountErrorState extends ProfileState {
+  final String message;
+
+  const DeleteAccountErrorState({required this.message});
+}

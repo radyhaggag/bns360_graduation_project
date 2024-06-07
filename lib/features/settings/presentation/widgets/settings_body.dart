@@ -6,6 +6,7 @@ import '../../../../config/route_config.dart';
 import '../../../../core/utils/assets/app_svg.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/settings_bloc.dart';
+import 'delete_my_account_btn.dart';
 import 'language_bottom_sheet/change_language_bottom_sheet.dart';
 import 'settings_item_tile.dart';
 import 'settings_section_tile.dart';
@@ -76,6 +77,8 @@ class SettingsBody extends StatelessWidget {
             onTap: () {},
           ),
           const SettingsSignOutBtn(),
+          10.verticalSpace,
+          const DeleteAccountBtn(),
         ],
       ),
     );

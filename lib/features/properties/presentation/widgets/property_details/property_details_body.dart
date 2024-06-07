@@ -1,13 +1,13 @@
-import '../../../../../core/shared_data/entities/property_entity.dart';
-import '../../../../../core/utils/extensions/media_query.dart';
-import '../../../../../core/widgets/buttons/custom_buttons.dart';
-import '../../../../../generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/shared_data/entities/property_entity.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../core/widgets/contact_with_bottom_sheet.dart';
+import '../../../../../generated/l10n.dart';
 import 'property_details_bottom_section.dart';
 import 'property_details_pained_section.dart';
 
@@ -50,8 +50,8 @@ class PropertyDetailsBody extends StatelessWidget {
                   onPressed: () {
                     ContactWithBottomSheet.show(
                       context: context,
-                      whatsapp: "+201030096242",
-                      phoneNumber: "+201030096242",
+                      whatsapp: propertyEntity.contacts.whatsapp,
+                      phoneNumber: propertyEntity.contacts.phoneNumber,
                     );
                   },
                   width: context.width,

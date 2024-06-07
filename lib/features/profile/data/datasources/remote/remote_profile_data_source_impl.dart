@@ -83,4 +83,12 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
     await AppProvider().clearProfile();
     await tokenManager.deleteToken();
   }
+
+  @override
+  Future<void> deleteAccount() async {
+    final userId = AppProvider().getProfile()?.id;
+    await apiConsumer.delete(
+      endpoint: AppEndpoints.deleteAccount(userId!),
+    );
+  }
 }

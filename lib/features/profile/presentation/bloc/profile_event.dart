@@ -37,3 +37,5 @@ class ChangePasswordEvent extends ProfileEvent {
 }
 
 class SignOutEvent extends ProfileEvent {}
+
+class DeleteAccountEvent extends ProfileEvent {}

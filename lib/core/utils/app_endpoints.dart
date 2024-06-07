@@ -152,4 +152,7 @@ abstract class AppEndpoints {
   }
 
   static const getAllCrafts = "$baseUrl/api/Crafts";
+
+  //* account
+  static String deleteAccount(String userId) => "$baseUrl/api/Profile/$userId";
 }

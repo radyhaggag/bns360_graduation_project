@@ -256,5 +256,7 @@
   "select_holiday": "اختر العطلة",
   "working": "يعمل",
   "not_working": "لا يعمل",
-  "chatbot": "الدردشة الآلية"
+  "chatbot": "الدردشة الآلية",
+  "delete_account": "حذف الحساب",
+  "delete_account_message": "هل أنت متأكد أنك تريد حذف حسابك؟"
 }

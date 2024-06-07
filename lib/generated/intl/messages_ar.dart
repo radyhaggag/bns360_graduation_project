@@ -113,6 +113,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "day_ago": MessageLookupByLibrary.simpleMessage("قبل يوم"),
         "days_ago": m0,
         "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+        "delete_account": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+        "delete_account_message": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد حذف حسابك؟"),
         "delete_business_images": MessageLookupByLibrary.simpleMessage(
             "هل تريد حذف صور النشاط التجاري؟"),
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(

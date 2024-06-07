@@ -258,5 +258,7 @@
   "select_holiday": "Select holiday",
   "working": "Working",
   "not_working": "Not working",
-  "chatbot": "Chatbot"
+  "chatbot": "Chatbot",
+  "delete_account": "Delete account",
+  "delete_account_message": "Are you sure you want to delete your account?"
 }

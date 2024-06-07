@@ -25,16 +25,24 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  FutureEither<void> changePassword(ChangePasswordParams changePasswordParams) async{
-      return executeAndHandleErrorAsync(
+  FutureEither<void> changePassword(
+      ChangePasswordParams changePasswordParams) async {
+    return executeAndHandleErrorAsync(
       () => remoteProfileDataSource.changePassword(changePasswordParams),
     );
   }
 
   @override
-  FutureEither<void> signOut() async{
-      return executeAndHandleErrorAsync(
+  FutureEither<void> signOut() async {
+    return executeAndHandleErrorAsync(
       () => remoteProfileDataSource.signOut(),
+    );
+  }
+
+  @override
+  FutureEither<void> deleteAccount() {
+    return executeAndHandleErrorAsync(
+      () => remoteProfileDataSource.deleteAccount(),
     );
   }
 }

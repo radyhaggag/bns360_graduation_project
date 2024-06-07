@@ -1,4 +1,6 @@
 import 'package:bns360_graduation_project/features/category_item/domain/params/category_item_screen_params.dart';
+import 'package:bns360_graduation_project/features/chatbot/presentation/bloc/chatbot_bloc.dart';
+import 'package:bns360_graduation_project/features/chatbot/presentation/screens/chatbot_screen.dart';
 import 'package:bns360_graduation_project/features/craftsman/domain/params/craftsman_screen_params.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/screens/add_business_screen.dart';
@@ -109,6 +111,7 @@ abstract class Routes {
   static const addService = '/addService';
   static const editService = '/editService';
   static const changePassword = '/changePassword';
+  static const chatbot = '/chatbot';
 }
 
 abstract class RouteConfig {
@@ -451,6 +454,14 @@ abstract class RouteConfig {
       case Routes.changePassword:
         return MaterialPageRoute(
           builder: (context) => const ChangePasswordScreen(),
+        );
+
+      case Routes.chatbot:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<ChatbotBloc>(),
+            child: const ChatbotScreen(),
+          ),
         );
 
       default:

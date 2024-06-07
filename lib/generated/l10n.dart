@@ -2629,6 +2629,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Chatbot`
+  String get chatbot {
+    return Intl.message(
+      'Chatbot',
+      name: 'chatbot',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

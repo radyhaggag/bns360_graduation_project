@@ -85,6 +85,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change language"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change password"),
+        "chatbot": MessageLookupByLibrary.simpleMessage("Chatbot"),
         "checkEmailMsg":
             MessageLookupByLibrary.simpleMessage("Please check your email"),
         "check_your_email_for_verification_code":

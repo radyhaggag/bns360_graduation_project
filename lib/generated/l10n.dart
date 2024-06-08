@@ -2659,6 +2659,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Terms of Service`
+  String get termsOfServiceTitle {
+    return Intl.message(
+      'Terms of Service',
+      name: 'termsOfServiceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome to the "BNS360" app. By using the app, you agree to the following terms of service:\n\nUse of Service: The app is provided to help you find various services in Beni Suef. Any illegal use of the app is prohibited.\n\nRegistration: When registering, the information you provide must be accurate and up-to-date. You are responsible for protecting your password.\n\nIntellectual Property: All intellectual property rights in the app and its content belong to "BNS360". You may not copy or modify any part of the app without permission.\n\nReviews and Comments: All reviews and comments must be honest and respectful. "BNS360" reserves the right to remove any inappropriate content.\n\nDisclaimer: The app is provided "as is". "BNS360" is not responsible for the accuracy or completeness of the information provided by users or service providers.\n\nChanges: "BNS360" reserves the right to modify the terms of service at any time. You will be notified of any significant changes.\n\nTermination: "BNS360" reserves the right to terminate or suspend your access to the app if you violate the terms of service.`
+  String get termsOfServiceContent {
+    return Intl.message(
+      'Welcome to the "BNS360" app. By using the app, you agree to the following terms of service:\n\nUse of Service: The app is provided to help you find various services in Beni Suef. Any illegal use of the app is prohibited.\n\nRegistration: When registering, the information you provide must be accurate and up-to-date. You are responsible for protecting your password.\n\nIntellectual Property: All intellectual property rights in the app and its content belong to "BNS360". You may not copy or modify any part of the app without permission.\n\nReviews and Comments: All reviews and comments must be honest and respectful. "BNS360" reserves the right to remove any inappropriate content.\n\nDisclaimer: The app is provided "as is". "BNS360" is not responsible for the accuracy or completeness of the information provided by users or service providers.\n\nChanges: "BNS360" reserves the right to modify the terms of service at any time. You will be notified of any significant changes.\n\nTermination: "BNS360" reserves the right to terminate or suspend your access to the app if you violate the terms of service.',
+      name: 'termsOfServiceContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact Us`
+  String get contactUsTitle {
+    return Intl.message(
+      'Contact Us',
+      name: 'contactUsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We're here to help! If you have any inquiries or suggestions, feel free to contact us via the email or phone number provided below.\n\nWe value your feedback and will endeavor to respond to you as soon as possible.`
+  String get contactUsContent {
+    return Intl.message(
+      'We\'re here to help! If you have any inquiries or suggestions, feel free to contact us via the email or phone number provided below.\n\nWe value your feedback and will endeavor to respond to you as soon as possible.',
+      name: 'contactUsContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy Policy`
+  String get privacyPolicyTitle {
+    return Intl.message(
+      'Privacy Policy',
+      name: 'privacyPolicyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Information We Collect: We collect information you provide when registering, such as your name, email, and location.\n\nHow We Use Information: We use the information to enhance our services and personalize your experience within the app.\n\nInformation Sharing: We do not share your personal information with third parties except as required by law.\n\nSecurity: We take necessary measures to protect your information from unauthorized access.\n\nYour Rights: You can access, update, or delete your personal information at any time through your account settings.\n\nChanges to Policy: We may update the privacy policy from time to time. You will be notified of any significant changes.`
+  String get privacyPolicyContent {
+    return Intl.message(
+      'Information We Collect: We collect information you provide when registering, such as your name, email, and location.\n\nHow We Use Information: We use the information to enhance our services and personalize your experience within the app.\n\nInformation Sharing: We do not share your personal information with third parties except as required by law.\n\nSecurity: We take necessary measures to protect your information from unauthorized access.\n\nYour Rights: You can access, update, or delete your personal information at any time through your account settings.\n\nChanges to Policy: We may update the privacy policy from time to time. You will be notified of any significant changes.',
+      name: 'privacyPolicyContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About Us`
+  String get aboutUsTitle {
+    return Intl.message(
+      'About Us',
+      name: 'aboutUsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `"BNS360" is an app that helps newcomers in Beni-Suef find the best services based on visitor reviews and distance. Our goal is to provide an easy and seamless experience for users to meet their needs.`
+  String get aboutUsContent {
+    return Intl.message(
+      '"BNS360" is an app that helps newcomers in Beni-Suef find the best services based on visitor reviews and distance. Our goal is to provide an easy and seamless experience for users to meet their needs.',
+      name: 'aboutUsContent',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For Inquiries and Suggestions`
+  String get for_inquiries_and_suggestions {
+    return Intl.message(
+      'For Inquiries and Suggestions',
+      name: 'for_inquiries_and_suggestions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For Support`
+  String get for_support {
+    return Intl.message(
+      'For Support',
+      name: 'for_support',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

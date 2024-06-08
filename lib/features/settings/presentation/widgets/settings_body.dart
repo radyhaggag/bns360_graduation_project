@@ -59,22 +59,30 @@ class SettingsBody extends StatelessWidget {
           SettingsItemTile(
             title: S.of(context).terms_of_service,
             svgPath: AppSvg.termsOfService,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.termsOfService);
+            },
           ),
           SettingsItemTile(
             title: S.of(context).contact_us,
             svgPath: AppSvg.message,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.contactUs);
+            },
           ),
           SettingsItemTile(
             title: S.of(context).privacy_policy,
             svgPath: AppSvg.privacyTip,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.privacyPolicy);
+            },
           ),
           SettingsItemTile(
             title: S.of(context).about_us,
             svgPath: AppSvg.aboutCircle,
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(Routes.aboutUs);
+            },
           ),
           const SettingsSignOutBtn(),
           10.verticalSpace,

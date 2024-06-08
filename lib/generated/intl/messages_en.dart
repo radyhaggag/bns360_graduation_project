@@ -40,6 +40,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutUsContent": MessageLookupByLibrary.simpleMessage(
+            "\"BNS360\" is an app that helps newcomers in Beni-Suef find the best services based on visitor reviews and distance. Our goal is to provide an easy and seamless experience for users to meet their needs."),
+        "aboutUsTitle": MessageLookupByLibrary.simpleMessage("About Us"),
         "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
         "access_camera_permissions_msg": MessageLookupByLibrary.simpleMessage(
             "To pick images for your business or work, please grant camera permission in settings."),
@@ -98,6 +101,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_delete_message": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this message?"),
+        "contactUsContent": MessageLookupByLibrary.simpleMessage(
+            "We\'re here to help! If you have any inquiries or suggestions, feel free to contact us via the email or phone number provided below.\n\nWe value your feedback and will endeavor to respond to you as soon as possible."),
+        "contactUsTitle": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "contains_validation_message":
             MessageLookupByLibrary.simpleMessage("Invalid value"),
@@ -193,6 +199,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Find your home"),
         "find_your_job":
             MessageLookupByLibrary.simpleMessage("Let\'\'s find your job"),
+        "for_inquiries_and_suggestions": MessageLookupByLibrary.simpleMessage(
+            "For Inquiries and Suggestions"),
+        "for_support": MessageLookupByLibrary.simpleMessage("For Support"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "forgotPasswordMsg": MessageLookupByLibrary.simpleMessage(
@@ -304,6 +313,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "post_now": MessageLookupByLibrary.simpleMessage("Post now"),
         "posted": MessageLookupByLibrary.simpleMessage("Posted"),
         "price": MessageLookupByLibrary.simpleMessage("Price"),
+        "privacyPolicyContent": MessageLookupByLibrary.simpleMessage(
+            "Information We Collect: We collect information you provide when registering, such as your name, email, and location.\n\nHow We Use Information: We use the information to enhance our services and personalize your experience within the app.\n\nInformation Sharing: We do not share your personal information with third parties except as required by law.\n\nSecurity: We take necessary measures to protect your information from unauthorized access.\n\nYour Rights: You can access, update, or delete your personal information at any time through your account settings.\n\nChanges to Policy: We may update the privacy policy from time to time. You will be notified of any significant changes."),
+        "privacyPolicyTitle":
+            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy policy"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
@@ -368,6 +381,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "sunday": MessageLookupByLibrary.simpleMessage("Sunday"),
         "support": MessageLookupByLibrary.simpleMessage("Support"),
         "tap_to_rate": MessageLookupByLibrary.simpleMessage("Tap to Rate"),
+        "termsOfServiceContent": MessageLookupByLibrary.simpleMessage(
+            "Welcome to the \"BNS360\" app. By using the app, you agree to the following terms of service:\n\nUse of Service: The app is provided to help you find various services in Beni Suef. Any illegal use of the app is prohibited.\n\nRegistration: When registering, the information you provide must be accurate and up-to-date. You are responsible for protecting your password.\n\nIntellectual Property: All intellectual property rights in the app and its content belong to \"BNS360\". You may not copy or modify any part of the app without permission.\n\nReviews and Comments: All reviews and comments must be honest and respectful. \"BNS360\" reserves the right to remove any inappropriate content.\n\nDisclaimer: The app is provided \"as is\". \"BNS360\" is not responsible for the accuracy or completeness of the information provided by users or service providers.\n\nChanges: \"BNS360\" reserves the right to modify the terms of service at any time. You will be notified of any significant changes.\n\nTermination: \"BNS360\" reserves the right to terminate or suspend your access to the app if you violate the terms of service."),
+        "termsOfServiceTitle":
+            MessageLookupByLibrary.simpleMessage("Terms of Service"),
         "terms_of_service":
             MessageLookupByLibrary.simpleMessage("Terms of service"),
         "the_image_size_is_too_large_the_maximum_allowed_size_is_mp":

@@ -5,6 +5,9 @@ import 'package:bns360_graduation_project/features/craftsman/domain/params/craft
 import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/screens/add_business_screen.dart';
 import 'package:bns360_graduation_project/features/profile/presentation/screen/change_password_screen.dart';
+import 'package:bns360_graduation_project/features/settings/presentation/screens/about_us_screen.dart';
+import 'package:bns360_graduation_project/features/settings/presentation/screens/contact_us_screen.dart';
+import 'package:bns360_graduation_project/features/settings/presentation/screens/privacy_policy_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -66,6 +69,7 @@ import '../features/properties/presentation/screens/property_details_screen.dart
 import '../features/saved_items/presentation/screens/saved_screen.dart';
 import '../features/settings/presentation/bloc/settings_bloc.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
+import '../features/settings/presentation/screens/terms_of_service_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
 import '../features/splash/presentation/screens/splash_screen.dart';
 import 'injector_container.dart';
@@ -112,6 +116,10 @@ abstract class Routes {
   static const editService = '/editService';
   static const changePassword = '/changePassword';
   static const chatbot = '/chatbot';
+  static const termsOfService = '/termsOfService';
+  static const contactUs = '/contactUs';
+  static const privacyPolicy = '/privacyPolicy';
+  static const aboutUs = '/aboutUs';
 }
 
 abstract class RouteConfig {
@@ -462,6 +470,23 @@ abstract class RouteConfig {
             create: (context) => sl<ChatbotBloc>(),
             child: const ChatbotScreen(),
           ),
+        );
+
+      case Routes.termsOfService:
+        return MaterialPageRoute(
+          builder: (context) => const TermsOfServiceScreen(),
+        );
+      case Routes.contactUs:
+        return MaterialPageRoute(
+          builder: (context) => const ContactUsScreen(),
+        );
+      case Routes.privacyPolicy:
+        return MaterialPageRoute(
+          builder: (context) => const PrivacyPolicyScreen(),
+        );
+      case Routes.aboutUs:
+        return MaterialPageRoute(
+          builder: (context) => const AboutUsScreen(),
         );
 
       default:

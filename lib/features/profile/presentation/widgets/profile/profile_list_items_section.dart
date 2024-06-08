@@ -91,13 +91,13 @@ class ProfileListItemsSection extends StatelessWidget {
               Navigator.of(context).pushNamed(Routes.savedItems);
             },
           ),
-          const SizedBox(height: 10),
-          ProfileItemTile(
-            title: S.of(context).share_this_app,
-            svgPath: AppSvg.share,
-            size: 25.r,
-            onTap: () {},
-          ),
+          // const SizedBox(height: 10),
+          // ProfileItemTile(
+          //   title: S.of(context).share_this_app,
+          //   svgPath: AppSvg.share,
+          //   size: 25.r,
+          //   onTap: () {},
+          // ),
           const SizedBox(height: 10),
           const ProfileSignOutBtn(),
         ],

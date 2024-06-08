@@ -38,4 +38,6 @@ abstract class AppSvg {
 
   static const happy = '$_svgPath/happy.svg';
   static const sad = '$_svgPath/sad.svg';
+  static const facebook = '$_svgPath/facebook.svg';
+  static const instagram = '$_svgPath/instagram.svg';
 }

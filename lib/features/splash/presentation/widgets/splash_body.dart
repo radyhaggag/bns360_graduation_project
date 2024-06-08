@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/assets/app_images.dart';
@@ -23,21 +24,32 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        AnimatedBuilder(
-          animation: _slidingAnimation,
-          builder: (context, child) {
-            return SlideTransition(
-              position: _slidingAnimation,
-              child: Image.asset(AppImages.appLogo),
-            );
-          },
-        ),
-        const SizedBox(height: 5),
-      ],
+    return SizedBox(
+      width: context.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          AnimatedBuilder(
+            animation: _slidingAnimation,
+            builder: (context, child) {
+              return SlideTransition(
+                position: _slidingAnimation,
+                child: SizedBox(
+                  width: context.width * 0.7,
+                  child: ClipOval(
+                    child: Image.asset(
+                      AppImages.appLogoWithBackground,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 5),
+        ],
+      ),
     );
   }
 

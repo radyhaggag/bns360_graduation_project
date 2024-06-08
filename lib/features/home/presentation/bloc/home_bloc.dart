@@ -23,8 +23,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     GetBannersEvent event,
     Emitter<HomeState> emit,
   ) async {
+    return;
     emit(GetBannersLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await homeRepo.getBanners();
 
@@ -40,6 +40,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     GetPlacesToExploreEvent event,
     Emitter<HomeState> emit,
   ) async {
+    return;
     emit(GetPlacesToExploreLoadingState());
     await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/constants.dart';
-import 'explore_places_section/explore_places_section.dart';
 import 'home_slider/home_slider_section.dart';
 
 class HomeBody extends StatelessWidget {
@@ -19,12 +17,12 @@ class HomeBody extends StatelessWidget {
           children: [
             HomeSliderSection(),
             SizedBox(height: 50),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: kHorizontalPadding,
-              ),
-              child: ExplorePlacesSection(),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(
+            //     horizontal: kHorizontalPadding,
+            //   ),
+            //   child: ExplorePlacesSection(),
+            // ),
           ],
         ),
       ),

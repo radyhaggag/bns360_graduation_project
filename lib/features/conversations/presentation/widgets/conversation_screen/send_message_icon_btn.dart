@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/utils/enums.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,11 +56,15 @@ class SendMessageIconBtn extends StatelessWidget {
             width: 30.r,
             alignment: Alignment.center,
             child: Center(
-              child: SvgPicture.asset(
-                AppSvg.sendArrow,
-                color: AppColors.white,
-                width: 30.r,
-                height: 30.r,
+              child: RotatedBox(
+                quarterTurns:
+                    context.currentLanguage == Language.arabic ? 2 : 0,
+                child: SvgPicture.asset(
+                  AppSvg.sendArrow,
+                  color: AppColors.white,
+                  width: 30.r,
+                  height: 30.r,
+                ),
               ),
             ),
           ),

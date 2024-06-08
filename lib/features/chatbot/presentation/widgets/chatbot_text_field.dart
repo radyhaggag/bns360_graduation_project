@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
 import 'package:bns360_graduation_project/features/chatbot/presentation/bloc/chatbot_bloc.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +23,7 @@ class ChatbotTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: context.theme.cardColor,
+      color: context.theme.bottomNavigationBarTheme.backgroundColor,
       child: BlocConsumer<ChatbotBloc, ChatbotState>(
         buildWhen: (previous, current) {
           final states = [
@@ -74,12 +76,15 @@ class ChatbotTextField extends StatelessWidget {
                   height: 30.r,
                   width: 30.r,
                   alignment: Alignment.center,
-                  child: Center(
-                    child: SvgPicture.asset(
-                      AppSvg.sendArrow,
-                      color: AppColors.white,
-                      width: 30.r,
-                      height: 30.r,
+                  child: RotatedBox(
+                    quarterTurns: context.currentLanguage == Language.arabic ? 2 : 0,
+                    child: Center(
+                      child: SvgPicture.asset(
+                        AppSvg.sendArrow,
+                        color: AppColors.white,
+                        width: 30.r,
+                        height: 30.r,
+                      ),
                     ),
                   ),
                 ),

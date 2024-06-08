@@ -41,8 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUsContent": MessageLookupByLibrary.simpleMessage(
             "\"BNS360\" هو تطبيق يساعد الوافدين الجدد في محافظة بني سويف في العثور على أفضل الخدمات بناءً على آراء الزائرين والمسافة. هدفنا هو توفير تجربة سهلة وسلسة للمستخدمين لتلبية احتياجاتهم."),
-        "aboutUsTitle":
-            MessageLookupByLibrary.simpleMessage("من نحن (About Us)"),
+        "aboutUsTitle": MessageLookupByLibrary.simpleMessage("من نحن"),
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
         "access_camera_permissions_msg": MessageLookupByLibrary.simpleMessage(
             "To pick images for your business or work, please grant camera permission in settings."),
@@ -312,8 +311,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("السعر"),
         "privacyPolicyContent": MessageLookupByLibrary.simpleMessage(
             ".\n\nكيفية استخدام المعلومات: نستخدم المعلومات لتحسين خدماتنا وتخصيص تجربتك داخل التطبيق.\n\nمشاركة المعلومات: نحن لا نشارك معلوماتك الشخصية مع أطراف ثالثة إلا إذا كان ذلك مطلوباً بموجب القانون.\n\nالأمان: نحن نتخذ التدابير اللازمة لحماية معلوماتك من الوصول غير المصرح به.\n\nحقوقك: يمكنك الوصول إلى معلوماتك الشخصية وتحديثها أو حذفها في أي وقت من خلال إعدادات حسابك.\n\nالتغييرات في السياسة: قد نقوم بتحديث سياسة الخصوصية من وقت لآخر. سيتم إخطارك بأي تغييرات كبيرة."),
-        "privacyPolicyTitle": MessageLookupByLibrary.simpleMessage(
-            "سياسة الخصوصية (Privacy Policy)"),
+        "privacyPolicyTitle":
+            MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
@@ -377,8 +376,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "tap_to_rate": MessageLookupByLibrary.simpleMessage("انقر للتقييم"),
         "termsOfServiceContent": MessageLookupByLibrary.simpleMessage(
             "مرحباً بكم في تطبيق \"BNS360\". باستخدام التطبيق، فإنك توافق على الالتزام بشروط الخدمة التالية:\n\nاستخدام الخدمة: يتم توفير التطبيق لمساعدتك في العثور على خدمات مختلفة في محافظة بني سويف. يُحظر استخدام التطبيق لأي أغراض غير قانونية.\n\nالتسجيل: عند التسجيل، يجب أن تكون المعلومات التي تقدمها دقيقة وحديثة. أنت مسؤول عن حماية كلمة المرور الخاصة بك.\n\nحقوق الملكية: جميع الحقوق الملكية الفكرية في التطبيق ومحتواه مملوكة لـ\"BNS360\". لا يجوز لك نسخ أو تعديل أي جزء من التطبيق دون إذن.\n\nالتقييمات والتعليقات: يجب أن تكون جميع التقييمات والتعليقات التي تتركها صادقة ومحترمة. يحتفظ \"BNS360\" بالحق في إزالة أي محتوى غير مناسب.\n\nإخلاء المسؤولية: يتم توفير التطبيق على أساس \"كما هو\". لا يتحمل \"BNS360\" أي مسؤولية عن دقة أو اكتمال المعلومات المقدمة من المستخدمين أو مقدمي الخدمات.\n\nالتغييرات: يحتفظ \"BNS360\" بالحق في تعديل شروط الخدمة في أي وقت. سيتم إخطارك بأي تغييرات كبيرة.\n\nإنهاء الاستخدام: يحتفظ \"BNS360\" بالحق في إنهاء أو تعليق وصولك إلى التطبيق في حالة انتهاكك لشروط الخدمة."),
-        "termsOfServiceTitle": MessageLookupByLibrary.simpleMessage(
-            "شروط الخدمة (Terms of Service)"),
+        "termsOfServiceTitle":
+            MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
         "terms_of_service": MessageLookupByLibrary.simpleMessage("شروط الخدمة"),
         "the_image_size_is_too_large_the_maximum_allowed_size_is_mp":
             MessageLookupByLibrary.simpleMessage(

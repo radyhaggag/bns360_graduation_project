@@ -22,6 +22,7 @@ class ChatbotScreenAppBar extends StatelessWidget
       alignment: Alignment.center,
       child: Row(
         children: [
+          SizedBox(width: 10.w),
           const CustomBackButton(),
           Row(
             children: [
@@ -33,7 +34,6 @@ class ChatbotScreenAppBar extends StatelessWidget
                   height: 75,
                 ),
               ),
-              SizedBox(width: 10.w),
               Text(
                 S.of(context).chatbot,
                 style: context.textTheme.titleSmall,

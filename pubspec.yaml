@@ -48,6 +48,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_map: ^6.1.0
+  flutter_native_splash: ^2.4.0
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.0
   flutter_secure_storage: ^9.0.0
@@ -82,11 +83,10 @@ dev_dependencies:
     sdk: flutter
   hive_generator: ^2.0.1
 
-
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/app_logo.png"
+  image_path: "assets/images/logo_with_background.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
 
 # For information on the generic Dart part of this file, see the

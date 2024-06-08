@@ -1,15 +1,23 @@
+import 'package:bns360_graduation_project/config/app_config.dart';
+
 abstract class AppEndpoints {
-  static const baseUrl = "http://graduationbns360.runasp.net";
+  static String get baseUrl {
+    if (AppConfig().isDev) {
+      return "http://graduationbns360.runasp.net";
+    } else {
+      return "http://bns360.runasp.net/";
+    }
+  }
 
   //* Auth endpoints
-  static const login = "$baseUrl/api/Account/login";
-  static const register = "$baseUrl/api/Account/Register";
-  static const forgetPassword = "$baseUrl/api/Account/forgetPassword";
-  static const verifyOtp = "$baseUrl/api/Account/verfiyOtp";
-  static const resetPassword = "$baseUrl/api/Account/resetPassword";
+  static String login = "$baseUrl/api/Account/login";
+  static String register = "$baseUrl/api/Account/Register";
+  static String forgetPassword = "$baseUrl/api/Account/forgetPassword";
+  static String verifyOtp = "$baseUrl/api/Account/verfiyOtp";
+  static String resetPassword = "$baseUrl/api/Account/resetPassword";
 
   //* Business
-  static const addBusiness = "$baseUrl/api/Business";
+  static String addBusiness = "$baseUrl/api/Business";
 
   static String updateBusiness(int businessId) {
     return "$baseUrl/api/Business/$businessId";
@@ -28,7 +36,7 @@ abstract class AppEndpoints {
   }
 
   //* Crafts
-  static const addCraftsman = "$baseUrl/api/Craftsmen";
+  static String addCraftsman = "$baseUrl/api/Craftsmen";
 
   static String updateCraftsman(int businessId) {
     return "$baseUrl/api/Craftsmen/$businessId";
@@ -47,7 +55,7 @@ abstract class AppEndpoints {
   }
 
   //* Business Categories
-  static const getAllCategories = "$baseUrl/api/Categories";
+  static String getAllCategories = "$baseUrl/api/Categories";
   static String getAllCategoryItems(int id) {
     return "$baseUrl/api/Business/all-businessesWithReviewsAndCategories/$id";
   }
@@ -57,16 +65,16 @@ abstract class AppEndpoints {
   }
 
   //* Jobs
-  static const addJob = "$baseUrl/api/Job";
-  static const getAllJobs = "$baseUrl/api/Job";
+  static String addJob = "$baseUrl/api/Job";
+  static String getAllJobs = "$baseUrl/api/Job";
 
   static String jobById(String jobId) {
     return "$baseUrl/api/Job/$jobId";
   }
 
   //* Properties
-  static const addProperty = "$baseUrl/api/property";
-  static const getAllProperties = "$baseUrl/api/Property";
+  static String addProperty = "$baseUrl/api/property";
+  static String getAllProperties = "$baseUrl/api/Property";
 
   static String propertyById(int propertyId) {
     return "$baseUrl/api/Property/$propertyId";
@@ -77,12 +85,12 @@ abstract class AppEndpoints {
     return "$baseUrl/api/Profile/$userId";
   }
 
-  static const editProfileImage = "$baseUrl/api/Profile/updateImage";
+  static String editProfileImage = "$baseUrl/api/Profile/updateImage";
   static String editProfileName(String userId) {
     return "$baseUrl/api/Profile/$userId/name";
   }
 
-  static const changePassword = "$baseUrl/api/Account/ChangePassword";
+  static String changePassword = "$baseUrl/api/Account/ChangePassword";
 
   //* REVIEWS
   static String getBusinessReviews(int businessId) {
@@ -101,7 +109,7 @@ abstract class AppEndpoints {
     return "$baseUrl/api/RatingAndReviewForBusiness/$userId/$businessId/$reviewAndRatingId";
   }
 
-  static const sendBusinessReview = "$baseUrl/api/RatingAndReviewForBusiness";
+  static String sendBusinessReview = "$baseUrl/api/RatingAndReviewForBusiness";
 
   static String geCraftsmanReviews(int craftsmanId) {
     return "$baseUrl/api/RatingAndReviewForCraftsman/$craftsmanId";
@@ -119,23 +127,24 @@ abstract class AppEndpoints {
     return "$baseUrl/api/RatingAndReviewForCraftsman/$userId/$craftsmanId/$reviewAndRatingId";
   }
 
-  static const sendCraftsmanReview = "$baseUrl/api/RatingAndReviewForCraftsman";
+  static String sendCraftsmanReview =
+      "$baseUrl/api/RatingAndReviewForCraftsman";
 
   //* Favorites
-  static const businessFavorite = "$baseUrl/api/FavoritesBusinesses";
+  static String businessFavorite = "$baseUrl/api/FavoritesBusinesses";
   static String getBusinessFavorites(String userId) {
     return "$baseUrl/api/FavoritesBusinesses/GetBusinessReviewSummary/$userId";
   }
 
-  static const craftsmenFavorite = "$baseUrl/api/FavoritesCraftsmen";
+  static String craftsmenFavorite = "$baseUrl/api/FavoritesCraftsmen";
   static String getCraftsmenFavorites(String userId) {
     return "$baseUrl/api/FavoritesCraftsmen/GetCraftsmanFavorites/$userId";
   }
 
   //* Saved
-  static const savedJobs = "$baseUrl/api/SavedJobs";
+  static String savedJobs = "$baseUrl/api/SavedJobs";
 
-  static const savedProperties = "$baseUrl/api/SavedProperty";
+  static String savedProperties = "$baseUrl/api/SavedProperty";
 
   //* My posts
   static String myPostsJobs(String userId) {
@@ -151,7 +160,7 @@ abstract class AppEndpoints {
     return "$baseUrl/api/Craftsmen/GetAllCraftsmenWithDetails/$craftId";
   }
 
-  static const getAllCrafts = "$baseUrl/api/Crafts";
+  static String getAllCrafts = "$baseUrl/api/Crafts";
 
   //* account
   static String deleteAccount(String userId) => "$baseUrl/api/Profile/$userId";

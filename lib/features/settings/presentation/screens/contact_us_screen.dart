@@ -26,26 +26,30 @@ class ContactUsScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              String url = 'mailto:radyhaggag11@gmail.com';
+              String url = 'mailto:$email';
               launchUrlString(url);
             },
             child: AboutWidget(
               title: S.of(context).for_inquiries_and_suggestions,
-              message: "radyhaggag11@gmail.com",
+              message: email,
             ),
           ),
           InkWell(
             onTap: () {
-              String url = 'mailto:radyhaggag11@gmail.com';
+              String url = 'mailto:$email';
               launchUrlString(url);
             },
             child: AboutWidget(
               title: S.of(context).for_support,
-              message: "radyhaggag11@gmail.com",
+              message: email,
             ),
           ),
         ],
       ),
     );
+  }
+
+  String get email {
+    return "bns360.guide@gmail.com";
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
 class SocialMediaListItems extends StatelessWidget {
   const SocialMediaListItems({super.key});
 
@@ -16,14 +15,16 @@ class SocialMediaListItems extends StatelessWidget {
         _BuildIcon(
           iconPath: AppSvg.facebook,
           onTap: () {
-            launchUrl(Uri.parse("https://www.facebook.com/"));
+            launchUrl(Uri.parse(
+              "https://www.facebook.com/profile.php?id=61560665192698",
+            ));
           },
         ),
         25.horizontalSpace,
         _BuildIcon(
           iconPath: AppSvg.instagram,
           onTap: () {
-            launchUrl(Uri.parse("https://www.instagram.com/"));
+            launchUrl(Uri.parse("https://www.instagram.com/bns360guide/"));
           },
         ),
       ],

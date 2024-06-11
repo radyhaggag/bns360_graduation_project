@@ -4,10 +4,12 @@ class _ItemStatusWidget extends StatelessWidget {
   const _ItemStatusWidget({
     required this.start,
     required this.end,
+    required this.holiday,
   });
 
   final int start; // Assumes 0 to 24 format
   final int end; // Assumes 0 to 24 format
+  final int holiday;
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +25,33 @@ class _ItemStatusWidget extends StatelessWidget {
         ),
         const SizedBox(width: 15),
         Text(
-          status(context, adjustedStart, adjustedEnd),
+          _isHoliday
+              ? S.of(context).holiday
+              : status(context, adjustedStart, adjustedEnd),
           style: context.textTheme.titleSmall?.copyWith(
             color: statusColor(adjustedStart, adjustedEnd),
             fontSize: AppFontSize.details,
           ),
         ),
-        const Spacer(),
-        Text(
-          openAndClosedHours(context, adjustedStart, adjustedEnd),
-          style: context.textTheme.bodyLarge?.copyWith(
-            color: context.theme.hintColor,
-            fontSize: AppFontSize.details,
+        if (!_isHoliday) ...[
+          const Spacer(),
+          Text(
+            openAndClosedHours(context, adjustedStart, adjustedEnd),
+            style: context.textTheme.bodyLarge?.copyWith(
+              color: context.theme.hintColor,
+              fontSize: AppFontSize.details,
+            ),
           ),
-        ),
+        ],
       ],
     );
+  }
+
+  bool get _isHoliday {
+    final now = DateTime.now();
+    final currentDayName = DateFormat('EEEE').format(now);
+    final day = WorkDay.fromString(currentDayName);
+    return day == WorkDay.fromId(holiday);
   }
 
   // Validate and adjust start and end times

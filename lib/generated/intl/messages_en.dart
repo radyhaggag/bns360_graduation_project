@@ -215,6 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "You are currently browsing as a guest. To access all features, please sign up or log in."),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "holiday": MessageLookupByLibrary.simpleMessage("Holiday"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "hour_ago": MessageLookupByLibrary.simpleMessage("hour ago"),
         "hours_ago": m1,

@@ -1,6 +1,8 @@
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
@@ -38,6 +40,7 @@ class CategoryItemInfoSection extends StatelessWidget {
           _ItemStatusWidget(
             start: categoryItemEntity.opening,
             end: categoryItemEntity.closing,
+            holiday: categoryItemEntity.holidays,
           ),
           const SizedBox(height: 15),
           _CategoryItemLocation(

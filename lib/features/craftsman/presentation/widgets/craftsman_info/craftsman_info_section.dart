@@ -1,7 +1,9 @@
 import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
@@ -36,6 +38,7 @@ class CraftsmanInfoSection extends StatelessWidget {
           _ItemStatusWidget(
             start: craftsmanEntity.opening,
             end: craftsmanEntity.closing,
+            holiday: craftsmanEntity.holidays,
           ),
           const SizedBox(height: 15),
           _CraftsmanLocation(

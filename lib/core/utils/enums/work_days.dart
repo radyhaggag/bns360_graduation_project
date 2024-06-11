@@ -19,6 +19,27 @@ enum WorkDay {
     return WorkDay.values.firstWhere((element) => element.id == id);
   }
 
+  static WorkDay fromString(String day) {
+    switch (day) {
+      case 'Sunday':
+        return WorkDay.sunday;
+      case 'Monday':
+        return WorkDay.monday;
+      case 'Tuesday':
+        return WorkDay.tuesday;
+      case 'Wednesday':
+        return WorkDay.wednesday;
+      case 'Thursday':
+        return WorkDay.thursday;
+      case 'Friday':
+        return WorkDay.friday;
+      case 'Saturday':
+        return WorkDay.saturday;
+      default:
+        throw Exception('Invalid work day');
+    }
+  }
+
   static String localizedName(BuildContext context, int dayId) {
     final t = S.of(context);
     switch (dayId) {

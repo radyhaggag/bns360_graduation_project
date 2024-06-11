@@ -211,6 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "انت الان تتصفح التطبيق كضيف. يمكنك تسجيل الدخول أو التسجيل للحصول على ميزات إضافية."),
         "haveAccountMsg":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل؟"),
+        "holiday": MessageLookupByLibrary.simpleMessage("عطلة"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "hour_ago": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
         "hours_ago": m1,

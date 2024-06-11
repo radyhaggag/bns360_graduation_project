@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -28,6 +29,7 @@ class CraftsmanHeadActions extends StatelessWidget {
       child: !craftsmanEntity.isBelongToMe
           ? Row(
               children: [
+                if(!AppProvider().isGuest)
                 _BuildBtn(
                   iconData: FeatherIcons.messageCircle,
                   onPressed: () {

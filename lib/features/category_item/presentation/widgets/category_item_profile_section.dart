@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,27 +53,28 @@ class CategoryItemProfileSection extends StatelessWidget {
             },
           )
         else ...[
-          RoundedIconBtn(
-            size: 35.r,
-            icon: const Icon(FeatherIcons.messageCircle),
-            addMargin: false,
-            onPressed: () {
-              final params = ConversationScreenParams(
-                participantEntity: ParticipantEntity(
-                  id: categoryItemEntity.userId.toString(),
-                  nameEN: categoryItemEntity.businessNameEnglish,
-                  nameAR: categoryItemEntity.businessNameEnglish,
-                  imageUrl: categoryItemEntity.profileImageName,
-                  userType: UserType.businessOwner.id,
-                ),
-                categoryItemEntity: categoryItemEntity,
-              );
-              Navigator.of(context).pushNamed(
-                Routes.conversation,
-                arguments: params,
-              );
-            },
-          ),
+          if (!AppProvider().isGuest)
+            RoundedIconBtn(
+              size: 35.r,
+              icon: const Icon(FeatherIcons.messageCircle),
+              addMargin: false,
+              onPressed: () {
+                final params = ConversationScreenParams(
+                  participantEntity: ParticipantEntity(
+                    id: categoryItemEntity.userId.toString(),
+                    nameEN: categoryItemEntity.businessNameEnglish,
+                    nameAR: categoryItemEntity.businessNameEnglish,
+                    imageUrl: categoryItemEntity.profileImageName,
+                    userType: UserType.businessOwner.id,
+                  ),
+                  categoryItemEntity: categoryItemEntity,
+                );
+                Navigator.of(context).pushNamed(
+                  Routes.conversation,
+                  arguments: params,
+                );
+              },
+            ),
           const SizedBox(width: 10),
           FavoriteIcon(
             addMargin: false,

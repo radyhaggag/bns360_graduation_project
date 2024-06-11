@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,20 +31,22 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         titleSpacing: 20,
         actions: [
-          IconButton(
-            icon: const Icon(
-              FeatherIcons.messageCircle,
-              size: 30,
+          if (!AppProvider().isGuest)
+            IconButton(
+              icon: const Icon(
+                FeatherIcons.messageCircle,
+                size: 30,
+              ),
+              onPressed: () {
+                // Navigator.of(context).pushNamed(Routes.conversations);
+                context.read<BottomNavBarBloc>().add(
+                      ChangeBottomNavbarIndex(
+                        index:
+                            context.read<BottomNavBarBloc>().views.length - 2,
+                      ),
+                    );
+              },
             ),
-            onPressed: () {
-              // Navigator.of(context).pushNamed(Routes.conversations);
-              context.read<BottomNavBarBloc>().add(
-                    ChangeBottomNavbarIndex(
-                      index: context.read<BottomNavBarBloc>().views.length - 2,
-                    ),
-                  );
-            },
-          ),
           IconButton(
             icon: ProfileCircleIcon(
               imageUrl: context.read<ProfileBloc>().profile?.imageUrl,

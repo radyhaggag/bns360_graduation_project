@@ -34,6 +34,14 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
   void initState() {
     super.initState();
     selectedOfferType = widget.propertyEntity.type;
+
+    context.read<PropertiesBloc>().add(
+          SelectPropertyLocationEvent(
+            lat: widget.propertyEntity.latitude,
+            lng: widget.propertyEntity.longitude,
+          ),
+        );
+
     form = FormGroup({
       'description_ar': FormControl<String>(
         validators: [Validators.required],

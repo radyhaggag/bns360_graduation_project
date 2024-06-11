@@ -10,6 +10,8 @@ class CategoryItemInfoModel extends CategoryItemInfoEntity {
     required super.profileImageName,
     required super.averageRating,
     required super.totalReviews,
+    super.businessDescriptionArabic,
+    super.businessDescriptionEnglish,
   });
 
   factory CategoryItemInfoModel.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,8 @@ class CategoryItemInfoModel extends CategoryItemInfoEntity {
       profileImageName: json['ProfileImageName'],
       averageRating: json['AverageRating'],
       totalReviews: json['TotalReviews'],
+      businessDescriptionArabic: json['BusinessDescriptionArabic'],
+      businessDescriptionEnglish: json['BusinessDescriptionEnglish'],
     );
   }
 }

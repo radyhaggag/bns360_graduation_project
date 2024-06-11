@@ -11,6 +11,9 @@ class CategoryItemInfoEntity extends Equatable {
   final num totalReviews;
   final num averageRating;
 
+  final String? businessDescriptionArabic;
+  final String? businessDescriptionEnglish;
+
   const CategoryItemInfoEntity({
     required this.id,
     required this.businessNameArabic,
@@ -19,6 +22,8 @@ class CategoryItemInfoEntity extends Equatable {
     required this.profileImageName,
     required this.averageRating,
     required this.totalReviews,
+    this.businessDescriptionArabic,
+    this.businessDescriptionEnglish,
   });
 
   @override

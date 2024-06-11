@@ -37,18 +37,18 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          // Flexible(
-          //   child: Text(
-          //     LocalizationHelper.getLocalizedString(
-          //       context,
-          //       ar: categoryItemEntity.businessDescriptionArabic,
-          //       en: categoryItemEntity.businessDescriptionEnglish,
-          //     ),
-          //     style: context.textTheme.bodySmall,
-          //     maxLines: 2,
-          //     overflow: TextOverflow.ellipsis,
-          //   ),
-          // ),
+          Flexible(
+            child: Text(
+              LocalizationHelper.getLocalizedString(
+                context,
+                ar: categoryItemEntity.businessDescriptionArabic ?? "",
+                en: categoryItemEntity.businessDescriptionEnglish ?? "",
+              ),
+              style: context.textTheme.bodySmall,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
         ],
       ),
     );

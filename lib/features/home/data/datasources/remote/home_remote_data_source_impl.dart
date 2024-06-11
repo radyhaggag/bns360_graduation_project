@@ -1,5 +1,7 @@
+import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
+
 import '../../../../../core/api/api_consumer.dart';
-import '../../../../../core/shared_data/models/category_item_model.dart';
+import '../../../../../core/shared_data/models/category_item_info_model.dart';
 import '../../models/banner_model.dart';
 import 'home_remote_data_source.dart';
 
@@ -15,7 +17,13 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   }
 
   @override
-  Future<List<CategoryItemModel>> getPlacesToExplore() async {
-    return [];
+  Future<List<CategoryItemInfoModel>> getPlacesToExplore() async {
+    final res = await apiConsumer.get(
+      endpoint: AppEndpoints.topRated,
+    );
+    final categories = List<CategoryItemInfoModel>.from(res.data.map(
+      (category) => CategoryItemInfoModel.fromJson(category),
+    ));
+    return categories;
   }
 }

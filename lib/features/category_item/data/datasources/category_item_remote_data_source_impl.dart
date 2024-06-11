@@ -77,8 +77,8 @@ class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
     await apiConsumer.post(
       endpoint: AppEndpoints.sendBusinessReview,
       data: {
-        "review": review,
-        "rating": rating,
+        "Review": review,
+        "Rating": rating,
         "businessId": itemId,
         "userId": userId,
       },

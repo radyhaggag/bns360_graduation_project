@@ -3,7 +3,7 @@ part of 'category_item_card.dart';
 class _CategoryItemImage extends StatelessWidget {
   const _CategoryItemImage({required this.categoryItemEntity});
 
-  final CategoryItemEntity categoryItemEntity;
+  final CategoryItemInfoEntity categoryItemEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +13,8 @@ class _CategoryItemImage extends StatelessWidget {
           Routes.categoryItem,
           arguments: CategoryItemScreenParams(
             itemId: categoryItemEntity.id,
-            categoryItemEntity: categoryItemEntity,
-            isBelongToMe: categoryItemEntity.isBelongToMe,
+            categoryItemInfoEntity: categoryItemEntity,
+            isBelongToMe: false,
           ),
         );
       },

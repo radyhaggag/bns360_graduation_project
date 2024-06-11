@@ -1,13 +1,14 @@
+import 'package:bns360_graduation_project/core/shared_data/entities/category_item_info_entity.dart';
 import 'package:bns360_graduation_project/features/category_item/domain/params/category_item_screen_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/route_config.dart';
 import '../../helpers/localization_helper.dart';
-import '../../shared_data/entities/category_item_entity.dart';
 import '../../utils/extensions/context.dart';
 import '../icons/favorite_icon.dart';
 import '../main_network_image.dart';
+import '../ratings_item_with_count.dart';
 
 part 'category_item_image.dart';
 part 'category_item_name_and_description_section.dart';
@@ -19,7 +20,7 @@ class CategoryItemCard extends StatelessWidget {
     this.width,
   });
 
-  final CategoryItemEntity categoryItemEntity;
+  final CategoryItemInfoEntity categoryItemEntity;
   final double? width;
 
   @override
@@ -45,13 +46,13 @@ class CategoryItemCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Expanded(
-                        // child: RatingsItemWithCount(
-                        //   numOfRatings: categoryItemEntity.numOfRatings,
-                        //   starsCount: categoryItemEntity.starsCount,
-                        //   size: 19.r,
-                        // ),
-                        child: SizedBox(),
+                      Expanded(
+                        child: RatingsItemWithCount(
+                          numOfRatings: categoryItemEntity.totalReviews.toInt(),
+                          starsCount: categoryItemEntity.averageRating,
+                          size: 19.r,
+                        ),
+                        // child: SizedBox(),
                       ),
                       FavoriteIcon(
                         itemId: categoryItemEntity.id,

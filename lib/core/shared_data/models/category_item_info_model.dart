@@ -17,7 +17,9 @@ class CategoryItemInfoModel extends CategoryItemInfoEntity {
       id: json['id'],
       businessNameArabic: json['BusinessNameArabic'],
       businessNameEnglish: json['BusinessNameEnglish'],
-      categoriesModel: CategoryModel.fromJson(json['Category']),
+      categoriesModel: json['Category'] != null
+          ? CategoryModel.fromJson(json['Category'])
+          : CategoryModel.empty(),
       profileImageName: json['ProfileImageName'],
       averageRating: json['AverageRating'],
       totalReviews: json['TotalReviews'],

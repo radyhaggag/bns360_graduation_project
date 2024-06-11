@@ -26,6 +26,7 @@ class CategoryItemModel extends CategoryItemEntity {
     super.businessImageName2,
     super.businessImageName3,
     super.businessImageName4,
+    super.reviewSummary,
   });
 
   factory CategoryItemModel.fromJson(Map<String, dynamic> json) {
@@ -129,6 +130,7 @@ class CategoryItemModel extends CategoryItemEntity {
       profileImageName: entity.profileImageName,
       latitude: entity.latitude,
       longitude: entity.longitude,
+      reviewSummary: entity.reviewSummary,
     );
   }
 }

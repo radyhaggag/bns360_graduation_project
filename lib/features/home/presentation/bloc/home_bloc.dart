@@ -1,9 +1,7 @@
-import 'dart:async';
-
+import 'package:bns360_graduation_project/core/shared_data/entities/category_item_info_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../domain/entities/banner_entity.dart';
 import '../../domain/repositories/home_repo.dart';
 
@@ -34,15 +32,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     );
   }
 
-  List<CategoryItemEntity> placesToExplore = [];
+  List<CategoryItemInfoEntity> placesToExplore = [];
 
   _getPlacesToExplore(
     GetPlacesToExploreEvent event,
     Emitter<HomeState> emit,
   ) async {
-    return;
     emit(GetPlacesToExploreLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await homeRepo.getPlacesToExplore();
 

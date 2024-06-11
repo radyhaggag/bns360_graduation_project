@@ -24,6 +24,7 @@ class CategoriesRepoImpl implements CategoriesRepo {
   ) async {
     return executeAndHandleErrorAsync<List<CategoryItemInfoEntity>>(
       () => categoriesRemoteDataSource.getCategoryItemsById(id),
+      onFailure: (error) async => <CategoryItemInfoEntity>[],
     );
   }
 }

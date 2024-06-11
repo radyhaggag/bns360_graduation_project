@@ -17,7 +17,9 @@ class ReviewModel extends ReviewEntity {
   factory ReviewModel.fromJson(Map<String, dynamic> json) {
     return ReviewModel(
       id: json['Id'],
-      date: json['dateTime'] ?? DateTime.now().toString(),
+      date: DateTime.parse(json['dateTime'])
+          .add(const Duration(hours: 3))
+          .toString(),
       userName: json['UserName'] ?? "Someone",
       userImage:
           APIImagesHelper.toServerImage(json['PhotoUrl'], addDefault: true)!,

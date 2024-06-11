@@ -5,7 +5,7 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
     required this.categoryItemEntity,
   });
 
-  final CategoryItemEntity categoryItemEntity;
+  final CategoryItemInfoEntity categoryItemEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
                 Routes.categoryItem,
                 arguments: CategoryItemScreenParams(
                   itemId: categoryItemEntity.id,
-                  categoryItemEntity: categoryItemEntity,
-                  isBelongToMe: categoryItemEntity.isBelongToMe,
+                  categoryItemInfoEntity: categoryItemEntity,
+                  isBelongToMe: false,
                 ),
               );
             },
@@ -37,18 +37,18 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          Flexible(
-            child: Text(
-              LocalizationHelper.getLocalizedString(
-                context,
-                ar: categoryItemEntity.businessDescriptionArabic,
-                en: categoryItemEntity.businessDescriptionEnglish,
-              ),
-              style: context.textTheme.bodySmall,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
+          // Flexible(
+          //   child: Text(
+          //     LocalizationHelper.getLocalizedString(
+          //       context,
+          //       ar: categoryItemEntity.businessDescriptionArabic,
+          //       en: categoryItemEntity.businessDescriptionEnglish,
+          //     ),
+          //     style: context.textTheme.bodySmall,
+          //     maxLines: 2,
+          //     overflow: TextOverflow.ellipsis,
+          //   ),
+          // ),
         ],
       ),
     );

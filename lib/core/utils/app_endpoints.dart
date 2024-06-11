@@ -1,12 +1,11 @@
-import 'package:bns360_graduation_project/config/app_config.dart';
-
 abstract class AppEndpoints {
   static String get baseUrl {
-    if (AppConfig().isDev) {
-      return "http://graduationbns360.runasp.net";
-    } else {
-      return "http://bns360.runasp.net/";
-    }
+    return "http://bns360.runasp.net";
+    // if (!AppConfig().isDev) {
+    //   return "http://graduationbns360.runasp.net";
+    // } else {
+    //   return "http://bns360.runasp.net";
+    // }
   }
 
   //* Auth endpoints
@@ -164,4 +163,6 @@ abstract class AppEndpoints {
 
   //* account
   static String deleteAccount(String userId) => "$baseUrl/api/Profile/$userId";
+
+  static String topRated = "$baseUrl/api/Business/GetTopFiveRatedBusinesses";
 }

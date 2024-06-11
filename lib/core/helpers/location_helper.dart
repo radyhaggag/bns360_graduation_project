@@ -1,9 +1,8 @@
-import '../utils/main_logger.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../utils/main_logger.dart';
 import 'permissions/permissions_dialogs.dart';
 
 abstract class LocationHelper {
@@ -41,13 +40,5 @@ abstract class LocationHelper {
     );
     logger.i("Current location $location");
     return location;
-  }
-
-  static Future<List<Placemark>> getLocationByCoordinates(
-    double lat,
-    double lng,
-  ) async {
-    List<Placemark> placemarks = await placemarkFromCoordinates(lat, lng);
-    return placemarks;
   }
 }

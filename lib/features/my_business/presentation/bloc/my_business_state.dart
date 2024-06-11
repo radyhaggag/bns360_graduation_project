@@ -68,3 +68,13 @@ class BusinessCategoryUpdatedState extends MyBusinessState {
 class MainBusinessImageUpdatedState extends MyBusinessState {}
 
 class BusinessHolidayUpdatedState extends MyBusinessState {}
+
+class BusinessLocationUpdatedState extends MyBusinessState {
+  final double lat;
+  final double lng;
+
+  const BusinessLocationUpdatedState({
+    required this.lat,
+    required this.lng,
+  });
+}

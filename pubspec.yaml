@@ -19,7 +19,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+6
 
 environment:
-  sdk: ">=3.1.5 <4.0.0"
+  sdk: ">=3.3.3 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -47,17 +47,16 @@ dependencies:
   flutter_feather_icons: ^2.0.0+1
   flutter_localizations:
     sdk: flutter
-  flutter_map: ^6.1.0
   flutter_native_splash: ^2.4.0
   flutter_rating_bar: ^4.0.1
   flutter_screenutil: ^5.9.0
   flutter_secure_storage: ^9.0.0
   flutter_svg: ^2.0.9
   fluttertoast: ^8.2.5
-  geocoding: ^3.0.0
   geolocator: ^11.0.0
   get_it: ^7.6.4
   google_fonts: ^6.1.0
+  google_maps_flutter: ^2.5.3
   google_sign_in: ^6.2.1
   hive: ^2.2.3
   hive_flutter: ^1.1.0

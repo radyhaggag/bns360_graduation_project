@@ -35,15 +35,20 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     on<SelectBusinessHolidayEvent>(_selectBusinessHoliday);
   }
 
-  double? _businessLat;
-  double? _businessLng;
+  double? businessLat;
+  double? businessLng;
 
   _selectPropertyLocation(
     SelectBusinessLocationEvent event,
     Emitter<MyBusinessState> emit,
   ) {
-    _businessLat = event.lat;
-    _businessLng = event.lng;
+    businessLat = event.lat;
+    businessLng = event.lng;
+
+    emit(BusinessLocationUpdatedState(
+      lat: businessLat!,
+      lng: businessLng!,
+    ));
   }
 
   final List<File> _pickedImages = [];
@@ -149,8 +154,8 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     emit(AddBusinessLoadingState());
 
     final params = event.addBusinessParams.copyWith(
-      lat: _businessLat,
-      lng: _businessLng,
+      lat: businessLat,
+      lng: businessLng,
       businessCategory: selectedBusinessCategory,
       mainBusinessBackgroundImages: pickedImages.map((e) => e.path).toList(),
       mainBusinessImage: _mainBusinessImage?.path,
@@ -172,8 +177,8 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     emit(UpdateBusinessLoadingState());
 
     final params = event.categoryItemEntity.copyWith(
-      latitude: _businessLat,
-      longitude: _businessLng,
+      latitude: businessLat,
+      longitude: businessLng,
       removeImages: pickedImages.isEmpty,
       categoriesModelId: selectedBusinessCategory?.id,
       businessImageName1: pickedImages.isNotEmpty ? pickedImages[0].path : null,

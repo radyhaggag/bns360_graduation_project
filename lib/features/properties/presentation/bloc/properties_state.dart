@@ -65,3 +65,14 @@ class EditPropertyErrorState extends PropertiesState {
 }
 
 class PropertyImagesUpdatedState extends PropertiesState {}
+
+
+class PropertyLocationSelectedState extends PropertiesState {
+  final double lat;
+  final double lng;
+
+  const PropertyLocationSelectedState({
+    required this.lat,
+    required this.lng,
+  });
+}

@@ -1,14 +1,17 @@
-import '../../../../../core/utils/extensions/price.dart';
-import '../property_location_section.dart';
+import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
+import 'package:bns360_graduation_project/features/properties/presentation/bloc/properties_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/utils/enums/offer_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/price.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../map/presentation/screens/map_screen.dart';
 import '../property_offer_type_radio_tile.dart';
 
 class AddPropertyForm extends StatelessWidget {
@@ -44,7 +47,26 @@ class AddPropertyForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
-          const PropertyLocationSection(),
+          BlocBuilder<PropertiesBloc, PropertiesState>(
+            builder: (context, state) {
+              final bloc = context.read<PropertiesBloc>();
+              return MapScreen(
+                mapParams: MapParams(
+                  isMinimized: true,
+                  lat: bloc.propertyLat,
+                  lng: bloc.propertyLng,
+                  onTap: (lat, lng) {
+                    context.read<PropertiesBloc>().add(
+                          SelectPropertyLocationEvent(
+                            lat: lat,
+                            lng: lng,
+                          ),
+                        );
+                  },
+                ),
+              );
+            },
+          ),
           15.verticalSpace,
           const WhatsappAndMobileFields(),
           15.verticalSpace,

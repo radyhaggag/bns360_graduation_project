@@ -1,17 +1,23 @@
+import 'dart:async';
+
+import 'package:bns360_graduation_project/core/utils/app_colors.dart';
+import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:latlong2/latlong.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../../core/helpers/location_helper.dart';
-import '../../../../core/utils/main_logger.dart';
 import '../../../../core/widgets/custom_back_button.dart';
-import '../../../../core/widgets/custom_marker.dart';
 import '../../../../generated/l10n.dart';
 import '../../domain/params/map_params.dart';
+import '../components/map_widget.dart';
 
 class MapScreen extends StatefulWidget {
-  const MapScreen({super.key, this.mapParams});
+  const MapScreen({
+    super.key,
+    this.mapParams,
+  });
   final MapParams? mapParams;
 
   @override
@@ -19,110 +25,200 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  late MapController _mapController;
+  final _controller = Completer<GoogleMapController>();
+  GoogleMapController? controller;
   Position? currentLocation;
-  LatLng? selectedPoint;
-  List<Marker> markers = [];
+  LatLng selectedPoint = const LatLng(29.0666664, 31.083333);
+  late CameraPosition _kGooglePlex;
+  String? title;
+  Set<Marker> markers = {};
 
   @override
   void initState() {
     super.initState();
-    _mapController = MapController();
+
     if (widget.mapParams == null) {
       _getCurrentLocation();
     } else {
       final params = widget.mapParams!;
       title = params.location;
-      selectedPoint = LatLng(params.lat, params.lng);
+      if (params.lat != null && params.lng != null) {
+        selectedPoint = LatLng(params.lat!, params.lng!);
+      }
     }
+    _kGooglePlex = CameraPosition(
+      target: selectedPoint,
+      zoom: 14.4746,
+    );
   }
 
   _getCurrentLocation() async {
     currentLocation = await LocationHelper.determinePosition(context);
     if (currentLocation != null) {
-      selectedPoint = LatLng(
+      _onTap(
         currentLocation!.latitude,
         currentLocation!.longitude,
       );
-      markers.add(
-        Marker(
-          point: selectedPoint!,
-          child: const CustomMarker(),
-        ),
-      );
-      _mapController.move(selectedPoint!, 9);
-      _getLocationTitleForSelectedPoint(update: false);
-      setState(() {});
     }
   }
 
-  Future<void> _getLocationTitleForSelectedPoint({bool update = true}) async {
-    if (selectedPoint == null) return;
-    final placemarks = await LocationHelper.getLocationByCoordinates(
-      selectedPoint!.latitude,
-      selectedPoint!.longitude,
-    );
-    logger.i("placemarks $placemarks");
-    if (placemarks.isEmpty) return;
-    title = placemarks.first.street ??
-        placemarks.first.name ??
-        placemarks.first.locality;
-    setState(() {});
-  }
-
-  String? title;
-
   @override
   void dispose() {
-    _mapController.dispose();
+    controller?.dispose();
     super.dispose();
+  }
+
+  _onTap(double lat, double lng) {
+    selectedPoint = LatLng(lat, lng);
+
+    widget.mapParams?.onTap?.call(lat, lng);
+
+    controller?.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: selectedPoint,
+          zoom: 14.4746,
+        ),
+      ),
+    );
+
+    markers.clear();
+    markers.add(
+      Marker(
+        markerId: const MarkerId('1'),
+        position: selectedPoint,
+      ),
+    );
+  }
+
+  _onMapCreated(GoogleMapController controller) async {
+    if (!_controller.isCompleted) {
+      _controller.complete(controller);
+    }
+    this.controller = await _controller.future;
+    _onTap.call(
+      _kGooglePlex.target.latitude,
+      _kGooglePlex.target.longitude,
+    );
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
+    if (widget.mapParams?.isMinimized == true) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: AppColors.grey),
+            ),
+            height: 150.h,
+            child: MapWidget(
+              completer: _controller,
+              controller: controller,
+              zoomControlsEnabled: true,
+              markers: markers,
+              onTap: _onTap,
+              kGooglePlex: _kGooglePlex,
+              onMapCreated: _onMapCreated,
+            ),
+          ),
+          const SizedBox(height: 10),
+          CustomElevatedButton(
+            width: 150.w,
+            height: 40.h,
+            borderRadius: BorderRadius.circular(8),
+            label: S.of(context).add_location,
+            onPressed: () async {
+              await showModalBottomSheet(
+                isScrollControlled: true,
+                isDismissible: false,
+                enableDrag: false,
+                context: context,
+                useRootNavigator: true,
+                builder: (context) {
+                  return Stack(
+                    alignment: AlignmentDirectional.bottomEnd,
+                    children: [
+                      MapWidget(
+                        completer: _controller,
+                        controller: controller,
+                        zoomControlsEnabled: false,
+                        markers: markers,
+                        onTap: _onTap,
+                        kGooglePlex: _kGooglePlex,
+                        onMapCreated: _onMapCreated,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: FloatingActionButton(
+                          onPressed: () {
+                            _onTap(
+                              selectedPoint.latitude,
+                              selectedPoint.longitude,
+                            );
+                            Navigator.of(context).pop(
+                              selectedPoint,
+                            );
+                          },
+                          backgroundColor: AppColors.primary,
+                          foregroundColor: AppColors.white,
+                          child: const Icon(Icons.check),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+              _onTap(selectedPoint.latitude, selectedPoint.longitude);
+            },
+          ),
+        ],
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         title: FittedBox(
           fit: BoxFit.scaleDown,
           child: Text(title ?? S.of(context).add_location),
         ),
-        leading: const CustomBackButton(),
-        actions: const [SizedBox(width: 20)],
-      ),
-      body: FlutterMap(
-        mapController: _mapController,
-        options: MapOptions(
-          initialCenter: selectedPoint ?? const LatLng(50.5, 30.51),
-          initialZoom: 9.2,
-          minZoom: 5.2,
-          maxZoom: 18.2,
-          onTap: (tapPosition, point) {
-            widget.mapParams?.onTap?.call(point.latitude, point.longitude);
-            markers.clear();
-            selectedPoint = point;
-            markers.add(
-              Marker(
-                point: point,
-                child: const CustomMarker(),
-              ),
+        leading: CustomBackButton(
+          onPressed: () {
+            _onTap(
+              selectedPoint.latitude,
+              selectedPoint.longitude,
             );
-            _getLocationTitleForSelectedPoint(update: true);
+            Navigator.of(context).pop();
           },
         ),
-        children: [
-          TileLayer(
-            urlTemplate: urlTemplate,
-          ),
-          MarkerLayer(
-            markers: markers,
-            alignment: Alignment.center,
-          ),
-        ],
+        actions: const [SizedBox(width: 20)],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _onTap(
+            selectedPoint.latitude,
+            selectedPoint.longitude,
+          );
+          Navigator.of(context).pop(
+            selectedPoint,
+          );
+        },
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.white,
+        child: const Icon(Icons.check),
+      ),
+      body: MapWidget(
+        completer: _controller,
+        controller: controller,
+        zoomControlsEnabled: false,
+        markers: markers,
+        onTap: _onTap,
+        kGooglePlex: _kGooglePlex,
+        onMapCreated: _onMapCreated,
       ),
     );
-  }
-
-  String get urlTemplate {
-    return "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
   }
 }

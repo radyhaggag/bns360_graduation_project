@@ -45,6 +45,11 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
           holiday: WorkDay.fromId(widget.categoryItemEntity.holidays),
         ));
 
+    context.read<MyBusinessBloc>().add(SelectBusinessLocationEvent(
+          lat: widget.categoryItemEntity.latitude,
+          lng: widget.categoryItemEntity.longitude,
+        ));
+
     form = FormGroup({
       'name_ar': FormControl<String>(
         validators: [Validators.required],

@@ -1,4 +1,6 @@
 import 'package:bns360_graduation_project/core/widgets/select_holiday_dropdown.dart';
+import 'package:bns360_graduation_project/features/map/domain/params/map_params.dart';
+import 'package:bns360_graduation_project/features/map/presentation/screens/map_screen.dart';
 import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +11,6 @@ import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../generated/l10n.dart';
-import '../add_business_location_section.dart';
 import '../add_business_time_section.dart';
 import '../business_type_dropdown.dart';
 
@@ -74,8 +75,25 @@ class EditBusinessForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
-          AddBusinessLocationSection(
-            categoryItemEntity: categoryItemEntity,
+          BlocBuilder<MyBusinessBloc, MyBusinessState>(
+            builder: (context, state) {
+              final bloc = context.read<MyBusinessBloc>();
+              return MapScreen(
+                mapParams: MapParams(
+                  isMinimized: true,
+                  lat: bloc.businessLat ?? categoryItemEntity.latitude,
+                  lng: bloc.businessLng ?? categoryItemEntity.longitude,
+                  onTap: (lat, lng) {
+                    context.read<MyBusinessBloc>().add(
+                          SelectBusinessLocationEvent(
+                            lat: lat,
+                            lng: lng,
+                          ),
+                        );
+                  },
+                ),
+              );
+            },
           ),
           15.verticalSpace,
           const WhatsappAndMobileFields(

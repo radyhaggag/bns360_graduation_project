@@ -10,8 +10,6 @@ import '../../../../../core/utils/extensions/language.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
-import '../or_separator.dart';
-import '../social_icons_buttons.dart';
 import 'continue_as_guest_button.dart';
 
 class WelcomeBody extends StatelessWidget {
@@ -59,9 +57,9 @@ class WelcomeBody extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             const ContinueAsGuestButton(),
-            const SizedBox(height: 10),
-            const OrSeparator(),
-            const SocialIconsButtons(),
+            // const SizedBox(height: 10),
+            // const OrSeparator(),
+            // const SocialIconsButtons(),
           ],
         ),
       ),

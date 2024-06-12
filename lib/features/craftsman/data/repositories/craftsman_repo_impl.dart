@@ -1,8 +1,7 @@
-import '../../../../core/shared_data/entities/craftsman_entity.dart';
-import '../../../../core/shared_data/entities/review_summary_entity.dart';
-
 import '../../../../core/helpers/execute_and_handle_error.dart';
+import '../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../core/shared_data/entities/review_entity.dart';
+import '../../../../core/shared_data/entities/review_summary_entity.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/repositories/craftsman_repo.dart';
 import '../datasources/craftsman_remote_data_source.dart';
@@ -16,6 +15,9 @@ class CraftsmanRepoImpl implements CraftsmanRepo {
   FutureEither<List<ReviewEntity>> getReviews(int itemId) {
     return executeAndHandleErrorAsync(
       () => craftsmanRemoteDataSource.getReviews(itemId),
+      onFailure: (e) async {
+        return <ReviewEntity>[];
+      },
     );
   }
 

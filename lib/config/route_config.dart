@@ -1,13 +1,3 @@
-import '../features/category_item/domain/params/category_item_screen_params.dart';
-import '../features/chatbot/presentation/bloc/chatbot_bloc.dart';
-import '../features/chatbot/presentation/screens/chatbot_screen.dart';
-import '../features/craftsman/domain/params/craftsman_screen_params.dart';
-import '../features/my_business/presentation/bloc/my_business_bloc.dart';
-import '../features/my_business/presentation/screens/add_business_screen.dart';
-import '../features/profile/presentation/screen/change_password_screen.dart';
-import '../features/settings/presentation/screens/about_us_screen.dart';
-import '../features/settings/presentation/screens/contact_us_screen.dart';
-import '../features/settings/presentation/screens/privacy_policy_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,15 +19,19 @@ import '../features/bottom_navigation/presentation/screens/bottom_navigation_scr
 import '../features/categories/presentation/bloc/categories_bloc.dart';
 import '../features/categories/presentation/screens/categories_screen.dart';
 import '../features/categories/presentation/screens/category_items_screen.dart';
+import '../features/category_item/domain/params/category_item_screen_params.dart';
 import '../features/category_item/presentation/bloc/category_item_bloc.dart';
 import '../features/category_item/presentation/screens/category_item_review_summary_screen.dart';
 import '../features/category_item/presentation/screens/category_item_screen.dart';
+import '../features/chatbot/presentation/bloc/chatbot_bloc.dart';
+import '../features/chatbot/presentation/screens/chatbot_screen.dart';
 import '../features/conversations/domain/params/conversation_screen_params.dart';
 import '../features/conversations/presentation/bloc/conversations_bloc.dart';
 import '../features/conversations/presentation/screens/conversation_screen.dart';
 import '../features/conversations/presentation/screens/conversations_screen.dart';
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
 import '../features/crafts/presentation/screens/crafts_screen.dart';
+import '../features/craftsman/domain/params/craftsman_screen_params.dart';
 import '../features/craftsman/presentation/bloc/craftsman_bloc.dart';
 import '../features/craftsman/presentation/screens/craftsman_review_summary_screen.dart';
 import '../features/craftsman/presentation/screens/craftsman_screen.dart';
@@ -52,6 +46,8 @@ import '../features/jobs/presentation/screens/jobs_screen.dart';
 import '../features/map/domain/params/map_params.dart';
 import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
+import '../features/my_business/presentation/bloc/my_business_bloc.dart';
+import '../features/my_business/presentation/screens/add_business_screen.dart';
 import '../features/my_business/presentation/screens/edit_business_screen.dart';
 import '../features/my_business/presentation/screens/my_business_screen.dart';
 import '../features/my_posts/presentation/bloc/my_posts_bloc.dart';
@@ -60,6 +56,7 @@ import '../features/my_services/presentation/bloc/my_services_bloc.dart';
 import '../features/my_services/presentation/screens/add_service_screen.dart';
 import '../features/my_services/presentation/screens/edit_service_screen.dart';
 import '../features/my_services/presentation/screens/my_services_screen.dart';
+import '../features/profile/presentation/screen/change_password_screen.dart';
 import '../features/profile/presentation/screen/edit_profile_screen.dart';
 import '../features/properties/presentation/bloc/properties_bloc.dart';
 import '../features/properties/presentation/screens/add_property_screen.dart';
@@ -68,6 +65,9 @@ import '../features/properties/presentation/screens/properties_screen.dart';
 import '../features/properties/presentation/screens/property_details_screen.dart';
 import '../features/saved_items/presentation/screens/saved_screen.dart';
 import '../features/settings/presentation/bloc/settings_bloc.dart';
+import '../features/settings/presentation/screens/about_us_screen.dart';
+import '../features/settings/presentation/screens/contact_us_screen.dart';
+import '../features/settings/presentation/screens/privacy_policy_screen.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
 import '../features/settings/presentation/screens/terms_of_service_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
@@ -257,6 +257,11 @@ abstract class RouteConfig {
             final item = settings.arguments as CategoryItemEntity;
             return BlocProvider(
               create: (context) => sl<CategoryItemBloc>()
+                ..add(
+                  SetCategoryItemEntityEvent(
+                    categoryItemEntity: item,
+                  ),
+                )
                 ..add(GetCategoryItemReviewsEvent(
                   itemId: item.id,
                 )),
@@ -281,6 +286,9 @@ abstract class RouteConfig {
             final item = settings.arguments as CraftsmanEntity;
             return BlocProvider(
               create: (context) => sl<CraftsmanBloc>()
+                ..add(SetCraftsmanEntityEvent(
+                  craftsmanEntity: item,
+                ))
                 ..add(GetCraftsmanReviewsEvent(
                   itemId: item.id,
                 )),

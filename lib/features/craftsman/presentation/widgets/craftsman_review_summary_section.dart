@@ -1,14 +1,14 @@
-import '../../../../config/route_config.dart';
-import '../../../../core/shared_data/entities/review_summary_entity.dart';
-import '../../../../core/utils/extensions/context.dart';
-import '../../../../core/widgets/center_progress_indicator.dart';
-import '../bloc/craftsman_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/widgets/messages/error_message_widget.dart';
 import '../../../../../core/widgets/reviews/main_review_summary_card/main_review_summary_card.dart';
+import '../../../../config/route_config.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../core/shared_data/entities/review_summary_entity.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/widgets/center_progress_indicator.dart';
+import '../bloc/craftsman_bloc.dart';
 
 class CraftsmanReviewSummarySection extends StatelessWidget {
   const CraftsmanReviewSummarySection({
@@ -47,11 +47,15 @@ class CraftsmanReviewSummarySection extends StatelessWidget {
             twoStarCount: craftsman.reviewSummary!.twoStars,
             oneStarCount: craftsman.reviewSummary!.oneStars,
             showViewAllBtn: showViewAllBtn,
-            onViewAllTap: () {
-              Navigator.of(context).pushNamed(
+            onViewAllTap: () async {
+              await Navigator.of(context).pushNamed(
                 Routes.craftsmanReviewSummary,
                 arguments: craftsman,
               );
+              if (!context.mounted) return;
+              context.read<CraftsmanBloc>().add(GetCraftsmanReviewSummaryEvent(
+                    itemId: craftsman.id,
+                  ));
             },
           );
         }

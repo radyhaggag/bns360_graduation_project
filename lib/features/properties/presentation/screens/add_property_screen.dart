@@ -21,8 +21,8 @@ class AddPropertyScreen extends StatelessWidget {
           CommonDialogs.showSuccessDialog(
             context,
             message: S.of(context).add_property_success,
-          // ).then((_) => Navigator.pop(context));
-          ).then((_) => print('AddPropertySuccessState'));
+            // ).then((_) => Navigator.pop(context));
+          ).then((_) => Navigator.pop(context));
         }
       },
       child: Scaffold(

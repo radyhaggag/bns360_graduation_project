@@ -86,6 +86,9 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
     Emitter<CraftsmanState> emit,
   ) {
     craftsman = event.craftsmanEntity;
+    if (craftsman?.reviewSummary != null) {
+      reviewsSummary = craftsman?.reviewSummary;
+    }
     emit(GetCraftsmanSuccessState(craftsmanEntity: craftsman!));
   }
 
@@ -110,9 +113,9 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
       (r) {
         if (event.loadReviews) {
           add(GetCraftsmanReviewsEvent(itemId: event.itemId));
-        } else {
-          add(GetCraftsmanReviewSummaryEvent(itemId: event.itemId));
         }
+        add(GetCraftsmanReviewSummaryEvent(itemId: event.itemId));
+
         emit(SendCraftsmanReviewSuccessState());
       },
     );

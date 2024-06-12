@@ -88,6 +88,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
     Emitter<CategoryItemState> emit,
   ) {
     categoryItem = event.categoryItemEntity;
+    reviewsSummary = categoryItem?.reviewSummary;
     emit(GetCategoryItemSuccessState(categoryItem: categoryItem!));
   }
 

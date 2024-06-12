@@ -1,9 +1,11 @@
-import '../../../../../core/shared_data/entities/review_summary_entity.dart';
+import 'package:bns360_graduation_project/features/category_item/presentation/bloc/category_item_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../../core/shared_data/entities/review_summary_entity.dart';
 import '../../../../../core/widgets/reviews/sliver_reviews_app_bar_delegate.dart';
 import '../send_category_item_review_section.dart';
 import 'category_item_review_summary_app_bar.dart';
@@ -23,13 +25,20 @@ class CategoryItemReviewSummaryBody extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           const CategoryItemReviewSummaryAppBar(),
-          SliverPersistentHeader(
-            pinned: true,
-            floating: false,
-            delegate: SliverReviewsAppBarDelegate(
-              reviewSummary: categoryItemEntity.reviewSummary ??
-                  const ReviewSummaryEntity.empty(),
-            ),
+          BlocBuilder<CategoryItemBloc, CategoryItemState>(
+            builder: (context, state) {
+              final reviewSummary =
+                  context.read<CategoryItemBloc>().reviewsSummary ??
+                      categoryItemEntity.reviewSummary;
+              return SliverPersistentHeader(
+                pinned: true,
+                floating: false,
+                delegate: SliverReviewsAppBarDelegate(
+                  reviewSummary:
+                      reviewSummary ?? const ReviewSummaryEntity.empty(),
+                ),
+              );
+            },
           ),
           if (!categoryItemEntity.isBelongToMe)
             SliverPadding(

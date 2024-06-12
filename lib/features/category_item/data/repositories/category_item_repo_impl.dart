@@ -1,6 +1,5 @@
-import '../../../../core/shared_data/entities/category_item_entity.dart';
-
 import '../../../../core/helpers/execute_and_handle_error.dart';
+import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/review_entity.dart';
 import '../../../../core/shared_data/entities/review_summary_entity.dart';
 import '../../../../core/utils/custom_types.dart';
@@ -16,6 +15,9 @@ class CategoryItemRepoImpl implements CategoryItemRepo {
   FutureEither<List<ReviewEntity>> getReviews(int itemId) {
     return executeAndHandleErrorAsync(
       () => categoryItemRemoteDataSource.getReviews(itemId),
+      onFailure: (e) async {
+        return <ReviewEntity>[];
+      },
     );
   }
 

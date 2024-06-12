@@ -1,11 +1,12 @@
-import '../../../../core/providers/app_provider.dart';
-import '../../../../core/shared_data/models/category_item_model.dart';
-import '../../../../core/shared_data/models/review_summary_model.dart';
-import '../../../../core/utils/app_endpoints.dart';
+import 'package:bns360_graduation_project/config/app_config.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../core/api/api_consumer.dart';
+import '../../../../core/providers/app_provider.dart';
+import '../../../../core/shared_data/models/category_item_model.dart';
 import '../../../../core/shared_data/models/review_model.dart';
+import '../../../../core/shared_data/models/review_summary_model.dart';
+import '../../../../core/utils/app_endpoints.dart';
 import 'category_item_remote_data_source.dart';
 
 class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
@@ -26,7 +27,9 @@ class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
       (review) => ReviewModel.fromJson(review),
     ));
 
-    return reviews;
+    if (AppConfig().isProd) {
+      return reviews;
+    }
 
     List<ReviewModel> customReviews = [];
 

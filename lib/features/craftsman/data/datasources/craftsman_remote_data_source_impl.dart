@@ -1,11 +1,12 @@
-import '../../../../core/providers/app_provider.dart';
-import '../../../../core/shared_data/models/review_summary_model.dart';
-import '../../../../core/utils/app_endpoints.dart';
+import 'package:bns360_graduation_project/config/app_config.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../core/api/api_consumer.dart';
+import '../../../../core/providers/app_provider.dart';
 import '../../../../core/shared_data/models/craftsman_model.dart';
 import '../../../../core/shared_data/models/review_model.dart';
+import '../../../../core/shared_data/models/review_summary_model.dart';
+import '../../../../core/utils/app_endpoints.dart';
 import 'craftsman_remote_data_source.dart';
 
 class CraftsmanRemoteDataSourceImpl implements CraftsmanRemoteDataSource {
@@ -27,7 +28,9 @@ class CraftsmanRemoteDataSourceImpl implements CraftsmanRemoteDataSource {
       (review) => ReviewModel.fromJson(review),
     ));
 
-    return reviews;
+    if (AppConfig().isProd) {
+      return reviews;
+    }
 
     List<ReviewModel> customReviews = [];
 

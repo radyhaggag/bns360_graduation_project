@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/utils/constants.dart';
-import 'package:bns360_graduation_project/features/home/presentation/widgets/explore_places_section/explore_places_section.dart';
+import '../../../../core/utils/constants.dart';
+import 'explore_places_section/explore_places_section.dart';
 import 'package:flutter/material.dart';
 
 import 'home_slider/home_slider_section.dart';

@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/review_summary_entity.dart';
+import '../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../core/shared_data/entities/review_summary_entity.dart';
 
 import '../../../../core/helpers/execute_and_handle_error.dart';
 import '../../../../core/shared_data/entities/review_entity.dart';

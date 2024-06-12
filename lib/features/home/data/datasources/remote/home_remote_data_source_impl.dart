@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
+import '../../../../../core/utils/app_endpoints.dart';
 
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/shared_data/models/category_item_info_model.dart';
@@ -21,6 +21,9 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.topRated,
     );
+
+    if (res.data is! List) return [];
+
     final categories = List<CategoryItemInfoModel>.from(res.data.map(
       (category) => CategoryItemInfoModel.fromJson(category),
     ));

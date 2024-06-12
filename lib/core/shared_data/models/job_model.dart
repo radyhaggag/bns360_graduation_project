@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import '../../providers/app_provider.dart';
 
 import '../../utils/enums/job_type.dart';
 import '../entities/job_entity.dart';

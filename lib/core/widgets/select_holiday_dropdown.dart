@@ -1,10 +1,10 @@
-import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/widgets/custom_dropdown.dart';
 import '../../../../generated/l10n.dart';
+import '../utils/enums/work_days.dart';
+import '../utils/extensions/context.dart';
 
 class SelectHolidayDropdown extends StatefulWidget {
   const SelectHolidayDropdown({

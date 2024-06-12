@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/category_item_info_entity.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/category_model.dart';
+import '../entities/category_item_info_entity.dart';
+import 'category_model.dart';
 
 class CategoryItemInfoModel extends CategoryItemInfoEntity {
   const CategoryItemInfoModel({

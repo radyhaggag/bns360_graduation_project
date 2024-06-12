@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import '../../../../core/providers/app_provider.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

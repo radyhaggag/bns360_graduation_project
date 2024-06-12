@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/helpers/common_dialogs.dart';
-import 'package:bns360_graduation_project/features/my_services/presentation/bloc/my_services_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../../../core/helpers/common_dialogs.dart';
+import '../bloc/my_services_bloc.dart';
+import '../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

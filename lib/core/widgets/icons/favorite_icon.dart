@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import '../../providers/app_provider.dart';
+import '../buttons/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';

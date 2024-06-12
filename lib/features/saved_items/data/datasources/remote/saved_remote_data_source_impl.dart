@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/databases/local_storage/hive_manager.dart';
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
+import '../../../../../core/databases/local_storage/hive_manager.dart';
+import '../../../../../core/providers/app_provider.dart';
+import '../../../../../core/utils/app_endpoints.dart';
 
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/shared_data/models/job_model.dart';
@@ -22,6 +22,9 @@ class SavedRemoteDataSourceImpl implements SavedRemoteDataSource {
         "UserId": userId,
       },
     );
+
+    if (res.data is! List) return [];
+
     final jobs = List<JobModel>.from(res.data.map(
       (item) => JobModel.fromJson(item),
     ));
@@ -41,6 +44,9 @@ class SavedRemoteDataSourceImpl implements SavedRemoteDataSource {
         "UserId": userId,
       },
     );
+
+    if (res.data is! List) return [];
+
     final properties = List<PropertyModel>.from(res.data.map(
       (property) => PropertyModel.fromJson(property),
     ));

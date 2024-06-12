@@ -120,6 +120,9 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getAllCategories,
     );
+
+    if (res.data is! List) return [];
+
     final categories = List<CategoryModel>.from(res.data.map(
       (category) => CategoryModel.fromJson(category),
     ));

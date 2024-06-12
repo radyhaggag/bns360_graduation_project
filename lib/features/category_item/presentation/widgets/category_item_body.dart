@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/features/category_item/presentation/widgets/send_category_item_review_section.dart';
+import 'send_category_item_review_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

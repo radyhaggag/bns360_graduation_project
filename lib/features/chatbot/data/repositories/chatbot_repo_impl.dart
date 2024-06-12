@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/helpers/execute_and_handle_error.dart';
-import 'package:bns360_graduation_project/core/utils/custom_types.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/entities/message_entity.dart';
+import '../../../../core/helpers/execute_and_handle_error.dart';
+import '../../../../core/utils/custom_types.dart';
+import '../../../conversations/domain/entities/message_entity.dart';
 
 import '../../domain/repositories/chatbot_repo.dart';
 import '../datasources/chatbot_data_source.dart';

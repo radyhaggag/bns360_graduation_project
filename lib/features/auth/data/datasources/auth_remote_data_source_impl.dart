@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
+import '../../../../core/utils/enums/user_type.dart';
 
 import '../../../../core/api/api_consumer.dart';
 import '../../../../core/databases/secure_storage/token_manager.dart';

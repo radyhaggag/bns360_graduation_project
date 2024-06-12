@@ -14,6 +14,8 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getAllCategories,
     );
+    if (res.data is! List) return [];
+
     final categories = List<CategoryModel>.from(res.data.map(
       (category) => CategoryModel.fromJson(category),
     ));
@@ -25,6 +27,7 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getAllCategoryItems(id),
     );
+    if (res.data is! List) return [];
     final categories = List<CategoryItemInfoModel>.from(res.data.map(
       (category) => CategoryItemInfoModel.fromJson(category),
     ));

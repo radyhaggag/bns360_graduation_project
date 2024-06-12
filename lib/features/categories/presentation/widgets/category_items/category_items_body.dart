@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/category_item_info_entity.dart';
-import 'package:bns360_graduation_project/features/category_item/domain/params/category_item_screen_params.dart';
+import '../../../../../core/shared_data/entities/category_item_info_entity.dart';
+import '../../../../category_item/domain/params/category_item_screen_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

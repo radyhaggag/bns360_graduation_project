@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/craftsman_entity.dart';
-import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
+import '../../../../core/providers/app_provider.dart';
+import '../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../core/utils/app_endpoints.dart';
+import '../../../../core/utils/extensions/language.dart';
 import 'package:dio/dio.dart';
 import 'package:translator/translator.dart';
 
@@ -118,6 +118,9 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getAllCrafts,
     );
+
+    if (res.data is! List) return [];
+
     final crafts = List<CraftModel>.from(res.data.map(
       (craft) => CraftModel.fromJson(craft),
     ));

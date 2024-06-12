@@ -1,8 +1,8 @@
-import '../utils/main_logger.dart';
 import 'package:dartz/dartz.dart';
 
 import '../errors/error_handler.dart';
 import '../utils/custom_types.dart';
+import '../utils/main_logger.dart';
 
 FutureEither<T> executeAndHandleErrorAsync<T>(
   Future<T> Function() function, {

@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/helpers/api_images_helper.dart';
-import 'package:bns360_graduation_project/core/shared_data/models/contact_model.dart';
+import '../../helpers/api_images_helper.dart';
+import 'contact_model.dart';
 
 import '../entities/craftsman_entity.dart';
 import 'craft_model.dart';

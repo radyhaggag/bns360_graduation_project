@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/core/shared_data/entities/review_summary_entity.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/center_progress_indicator.dart';
-import 'package:bns360_graduation_project/features/craftsman/presentation/bloc/craftsman_bloc.dart';
+import '../../../../config/route_config.dart';
+import '../../../../core/shared_data/entities/review_summary_entity.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/widgets/center_progress_indicator.dart';
+import '../bloc/craftsman_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/utils/app_endpoints.dart';
+import '../../../../../core/providers/app_provider.dart';
+import '../../../../../core/utils/app_endpoints.dart';
 
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/shared_data/models/job_model.dart';
@@ -18,6 +18,9 @@ class MyPostsRemoteDataSourceImpl implements MyPostsRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.myPostsJobs(userId),
     );
+
+    if (res.data is! List) return [];
+
     final jobs = List<JobModel>.from(res.data.map(
       (item) {
         final job = JobModel.fromJson(item).copyWith(
@@ -34,6 +37,9 @@ class MyPostsRemoteDataSourceImpl implements MyPostsRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.myPostsProperties(userId),
     );
+
+    if (res.data is! List) return [];
+
     final properties = List<PropertyModel>.from(res.data.map(
       (item) {
         final property = PropertyModel.fromJson(item).copyWith(

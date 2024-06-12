@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/craft_entity.dart';
+import 'craft_entity.dart';
 import 'package:equatable/equatable.dart';
 
 class CraftsmanInfoEntity extends Equatable {

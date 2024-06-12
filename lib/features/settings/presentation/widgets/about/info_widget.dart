@@ -1,7 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/extensions/context.dart';
 
 class AboutWidget extends StatelessWidget {
   const AboutWidget({

@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import '../../../../core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,9 +20,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   @override
   void initState() {
     super.initState();
-    if (!AppProvider().isGuest) {
-      _fetchData();
-    }
+
     MainPermissionHandler().requestLocationPermission(context);
   }
 
@@ -41,11 +39,18 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<BottomNavBarBloc, BottomNavBarState>(
-        builder: (context, state) {
-          final currentScreen = context.read<BottomNavBarBloc>().currentView;
-          return currentScreen;
+      body: BlocListener<ProfileBloc, ProfileState>(
+        listener: (context, state) {
+          if (state is GetProfileSuccessState && !AppProvider().isGuest) {
+            _fetchData();
+          }
         },
+        child: BlocBuilder<BottomNavBarBloc, BottomNavBarState>(
+          builder: (context, state) {
+            final currentScreen = context.read<BottomNavBarBloc>().currentView;
+            return currentScreen;
+          },
+        ),
       ),
       bottomNavigationBar: const MainBottomNavbar(),
     );

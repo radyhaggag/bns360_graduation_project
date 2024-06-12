@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/write_review_btn.dart';
-import 'package:bns360_graduation_project/features/craftsman/presentation/bloc/craftsman_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../../../core/helpers/custom_toast.dart';
+import '../../../../core/widgets/buttons/write_review_btn.dart';
+import '../bloc/craftsman_bloc.dart';
+import '../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

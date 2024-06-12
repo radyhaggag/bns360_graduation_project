@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/shared_data/entities/review_summary_entity.dart';
+import '../../../../../core/shared_data/entities/review_summary_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

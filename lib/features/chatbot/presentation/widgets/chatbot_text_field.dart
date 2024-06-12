@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/enums.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
-import 'package:bns360_graduation_project/features/chatbot/presentation/bloc/chatbot_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/utils/extensions/language.dart';
+import '../bloc/chatbot_bloc.dart';
+import '../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/route_config.dart';
 import '../../../../core/helpers/custom_toast.dart';
+import '../../../profile/presentation/bloc/profile_bloc.dart';
 import '../bloc/auth_bloc.dart';
 import '../widgets/login/login_body.dart';
 
@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
               Routes.bottomNavBar,
               (route) => false,
             );
-            context.read<ProfileBloc>().add(GetProfileEvent());
+            context.read<ProfileBloc>().add(const GetProfileEvent());
           }
         },
         child: const LoginBody(),

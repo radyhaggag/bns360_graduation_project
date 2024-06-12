@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/features/saved_items/presentation/bloc/saved_bloc.dart';
+import '../../providers/app_provider.dart';
+import '../../utils/extensions/context.dart';
+import '../../../features/saved_items/presentation/bloc/saved_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';

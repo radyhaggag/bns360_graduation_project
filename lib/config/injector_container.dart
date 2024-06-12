@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/features/chatbot/chatbot_injector.dart';
-import 'package:bns360_graduation_project/features/my_business/business_injector.dart';
+import '../features/chatbot/chatbot_injector.dart';
+import '../features/my_business/business_injector.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';

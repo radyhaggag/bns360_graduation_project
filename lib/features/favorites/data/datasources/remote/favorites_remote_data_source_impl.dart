@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import '../../../../../core/providers/app_provider.dart';
 
 import '../../../../../core/api/api_consumer.dart';
 import '../../../../../core/databases/local_storage/hive_manager.dart';
@@ -20,6 +20,9 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getBusinessFavorites(userId),
     );
+
+    if (res.data is! List) return [];
+
     final categoriesFuture = List<Future<CategoryItemModel>>.from(res.data.map(
       (item) => _mapAndGetCategoryItemModel(item),
     ));
@@ -53,6 +56,9 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.getCraftsmenFavorites(userId),
     );
+
+    if (res.data is! List) return [];
+
     final categoriesFuture = List<Future<CraftsmanModel>>.from(res.data.map(
       (item) => _mapAndGetCraftsmanModel(item),
     ));

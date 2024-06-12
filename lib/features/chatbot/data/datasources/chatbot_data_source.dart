@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/features/conversations/data/models/message_model.dart';
+import '../../../../core/providers/app_provider.dart';
+import '../../../conversations/data/models/message_model.dart';
 
 import '../../../../core/firebase/firestore_collections.dart';
 import '../../../../core/firebase/firestore_manager.dart';

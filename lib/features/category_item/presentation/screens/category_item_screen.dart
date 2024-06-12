@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/center_progress_indicator.dart';
-import 'package:bns360_graduation_project/core/widgets/messages/error_message_widget.dart';
-import 'package:bns360_graduation_project/features/category_item/presentation/bloc/category_item_bloc.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/utils/extensions/media_query.dart';
+import '../../../../core/widgets/center_progress_indicator.dart';
+import '../../../../core/widgets/messages/error_message_widget.dart';
+import '../bloc/category_item_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -29,6 +29,7 @@ class CraftsmanMainCard extends StatelessWidget {
             children: [
               ClipOval(
                 child: MainNetworkImage(
+                  withImageView: true,
                   imageUrl: craftsmanEntity.profileImageUrl,
                   width: 90.r,
                   height: 90.r,

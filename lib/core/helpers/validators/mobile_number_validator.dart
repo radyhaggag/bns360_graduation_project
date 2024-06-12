@@ -1,5 +1,6 @@
-import '../../utils/extensions/validators.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+
+import '../../utils/extensions/validators.dart';
 
 class MobileNumberValidator extends Validator<dynamic> {
   const MobileNumberValidator() : super();

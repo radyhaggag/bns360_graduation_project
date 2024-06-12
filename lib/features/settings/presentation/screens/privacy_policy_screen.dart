@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/features/settings/presentation/widgets/about/info_widget.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../widgets/about/info_widget.dart';
+import '../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {

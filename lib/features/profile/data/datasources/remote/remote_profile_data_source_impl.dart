@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:bns360_graduation_project/core/helpers/api_images_helper.dart';
+import '../../../../../core/helpers/api_images_helper.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../../core/api/api_consumer.dart';

@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/databases/local_storage/hive_manager.dart';
+import '../../../../core/databases/local_storage/hive_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/shared_data/entities/job_entity.dart';

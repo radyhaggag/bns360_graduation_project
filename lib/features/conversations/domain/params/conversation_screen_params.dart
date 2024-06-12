@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/features/craftsman/domain/params/craftsman_screen_params.dart';
+import '../../../craftsman/domain/params/craftsman_screen_params.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 

@@ -1,13 +1,13 @@
-import 'package:bns360_graduation_project/features/category_item/domain/params/category_item_screen_params.dart';
-import 'package:bns360_graduation_project/features/chatbot/presentation/bloc/chatbot_bloc.dart';
-import 'package:bns360_graduation_project/features/chatbot/presentation/screens/chatbot_screen.dart';
-import 'package:bns360_graduation_project/features/craftsman/domain/params/craftsman_screen_params.dart';
-import 'package:bns360_graduation_project/features/my_business/presentation/bloc/my_business_bloc.dart';
-import 'package:bns360_graduation_project/features/my_business/presentation/screens/add_business_screen.dart';
-import 'package:bns360_graduation_project/features/profile/presentation/screen/change_password_screen.dart';
-import 'package:bns360_graduation_project/features/settings/presentation/screens/about_us_screen.dart';
-import 'package:bns360_graduation_project/features/settings/presentation/screens/contact_us_screen.dart';
-import 'package:bns360_graduation_project/features/settings/presentation/screens/privacy_policy_screen.dart';
+import '../features/category_item/domain/params/category_item_screen_params.dart';
+import '../features/chatbot/presentation/bloc/chatbot_bloc.dart';
+import '../features/chatbot/presentation/screens/chatbot_screen.dart';
+import '../features/craftsman/domain/params/craftsman_screen_params.dart';
+import '../features/my_business/presentation/bloc/my_business_bloc.dart';
+import '../features/my_business/presentation/screens/add_business_screen.dart';
+import '../features/profile/presentation/screen/change_password_screen.dart';
+import '../features/settings/presentation/screens/about_us_screen.dart';
+import '../features/settings/presentation/screens/contact_us_screen.dart';
+import '../features/settings/presentation/screens/privacy_policy_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

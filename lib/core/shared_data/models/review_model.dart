@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/helpers/api_images_helper.dart';
+import '../../helpers/api_images_helper.dart';
 
 import '../entities/review_entity.dart';
 

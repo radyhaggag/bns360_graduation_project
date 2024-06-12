@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/constants.dart';
+import '../utils/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart';

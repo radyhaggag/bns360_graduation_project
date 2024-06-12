@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/extensions/language.dart';
+import '../../../../../core/utils/extensions/language.dart';
 import 'package:flutter/material.dart';
 
 import '../requirements_widget/add_requirement_button.dart';

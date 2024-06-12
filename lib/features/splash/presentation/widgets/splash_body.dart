@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
+import '../../../../core/utils/extensions/media_query.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/assets/app_images.dart';
@@ -36,7 +36,7 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
               return SlideTransition(
                 position: _slidingAnimation,
                 child: SizedBox(
-                  width: context.width * 0.7,
+                  width: context.width * 0.5,
                   child: ClipOval(
                     child: Image.asset(
                       AppImages.appLogoWithBackground,

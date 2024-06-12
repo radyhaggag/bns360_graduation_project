@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/widgets/icons/save_icon.dart';
+import '../../../../../core/widgets/icons/save_icon.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared_data/entities/property_entity.dart';

@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../../core/helpers/location_helper.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../core/widgets/custom_back_button.dart';
 import '../../../../generated/l10n.dart';
 import '../../domain/params/map_params.dart';
@@ -25,8 +25,19 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  final _controller = Completer<GoogleMapController>();
-  GoogleMapController? controller;
+  final _completer = Completer<GoogleMapController>();
+  GoogleMapController? miniController;
+  GoogleMapController? fullController;
+
+  double zoom = 16;
+
+  GoogleMapController? get controller {
+    if (isInBottomSheet) {
+      return fullController;
+    }
+    return miniController;
+  }
+
   Position? currentLocation;
   LatLng selectedPoint = const LatLng(29.0666664, 31.083333);
   late CameraPosition _kGooglePlex;
@@ -37,7 +48,7 @@ class _MapScreenState extends State<MapScreen> {
   void initState() {
     super.initState();
 
-    if (widget.mapParams == null) {
+    if (widget.mapParams?.lat == null || widget.mapParams?.lng == null) {
       _getCurrentLocation();
     } else {
       final params = widget.mapParams!;
@@ -48,12 +59,12 @@ class _MapScreenState extends State<MapScreen> {
     }
     _kGooglePlex = CameraPosition(
       target: selectedPoint,
-      zoom: 14.4746,
+      zoom: zoom,
     );
   }
 
   _getCurrentLocation() async {
-    currentLocation = await LocationHelper.determinePosition(context);
+    currentLocation ??= await LocationHelper.determinePosition(context);
     if (currentLocation != null) {
       _onTap(
         currentLocation!.latitude,
@@ -77,7 +88,7 @@ class _MapScreenState extends State<MapScreen> {
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: selectedPoint,
-          zoom: 14.4746,
+          zoom: zoom,
         ),
       ),
     );
@@ -92,16 +103,25 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   _onMapCreated(GoogleMapController controller) async {
-    if (!_controller.isCompleted) {
-      _controller.complete(controller);
+    if (!_completer.isCompleted) {
+      _completer.complete(controller);
     }
-    this.controller = await _controller.future;
-    _onTap.call(
-      _kGooglePlex.target.latitude,
-      _kGooglePlex.target.longitude,
-    );
+    if (widget.mapParams?.isMinimized == true) {
+      miniController = controller;
+    } else {
+      fullController = controller;
+    }
+    // Wait until the map is fully rendered before moving the camera.
+    Future.delayed(const Duration(milliseconds: 500), () {
+      _onTap(
+        _kGooglePlex.target.latitude,
+        _kGooglePlex.target.longitude,
+      );
+    });
     setState(() {});
   }
+
+  bool isInBottomSheet = false;
 
   @override
   Widget build(BuildContext context) {
@@ -117,8 +137,7 @@ class _MapScreenState extends State<MapScreen> {
             ),
             height: 150.h,
             child: MapWidget(
-              completer: _controller,
-              controller: controller,
+              completer: _completer,
               zoomControlsEnabled: true,
               markers: markers,
               onTap: _onTap,
@@ -133,6 +152,7 @@ class _MapScreenState extends State<MapScreen> {
             borderRadius: BorderRadius.circular(8),
             label: S.of(context).add_location,
             onPressed: () async {
+              isInBottomSheet = true;
               await showModalBottomSheet(
                 isScrollControlled: true,
                 isDismissible: false,
@@ -140,39 +160,28 @@ class _MapScreenState extends State<MapScreen> {
                 context: context,
                 useRootNavigator: true,
                 builder: (context) {
-                  return Stack(
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      MapWidget(
-                        completer: _controller,
-                        controller: controller,
-                        zoomControlsEnabled: false,
-                        markers: markers,
-                        onTap: _onTap,
-                        kGooglePlex: _kGooglePlex,
-                        onMapCreated: _onMapCreated,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: FloatingActionButton(
-                          onPressed: () {
-                            _onTap(
-                              selectedPoint.latitude,
-                              selectedPoint.longitude,
-                            );
-                            Navigator.of(context).pop(
-                              selectedPoint,
-                            );
-                          },
-                          backgroundColor: AppColors.primary,
-                          foregroundColor: AppColors.white,
-                          child: const Icon(Icons.check),
+                  return MapWidget(
+                    isFullMode: true,
+                    completer: _completer,
+                    zoomControlsEnabled: false,
+                    markers: markers,
+                    onTap: _onTap,
+                    kGooglePlex: _kGooglePlex,
+                    onMapCreated: (controller) {
+                      fullController = controller;
+                      controller.animateCamera(
+                        CameraUpdate.newCameraPosition(
+                          CameraPosition(
+                            target: selectedPoint,
+                            zoom: zoom,
+                          ),
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   );
                 },
               );
+              isInBottomSheet = false;
               _onTap(selectedPoint.latitude, selectedPoint.longitude);
             },
           ),
@@ -196,29 +205,32 @@ class _MapScreenState extends State<MapScreen> {
         ),
         actions: const [SizedBox(width: 20)],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _onTap(
-            selectedPoint.latitude,
-            selectedPoint.longitude,
-          );
-          Navigator.of(context).pop(
-            selectedPoint,
-          );
-        },
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.white,
-        child: const Icon(Icons.check),
-      ),
+      floatingActionButton: _buildFloatingActionBtn(context),
       body: MapWidget(
-        completer: _controller,
-        controller: controller,
+        completer: _completer,
         zoomControlsEnabled: false,
         markers: markers,
         onTap: _onTap,
         kGooglePlex: _kGooglePlex,
         onMapCreated: _onMapCreated,
       ),
+    );
+  }
+
+  FloatingActionButton _buildFloatingActionBtn(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        _onTap(
+          selectedPoint.latitude,
+          selectedPoint.longitude,
+        );
+        Navigator.of(context).pop(
+          selectedPoint,
+        );
+      },
+      backgroundColor: AppColors.primary,
+      foregroundColor: AppColors.white,
+      child: const Icon(Icons.check),
     );
   }
 }

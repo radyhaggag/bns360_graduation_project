@@ -1,5 +1,5 @@
-import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
-import 'package:bns360_graduation_project/core/widgets/remove_icon.dart';
+import '../../../utils/assets/app_svg.dart';
+import '../../remove_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';

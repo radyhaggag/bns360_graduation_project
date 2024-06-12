@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
+import '../../../../core/utils/enums/work_days.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 

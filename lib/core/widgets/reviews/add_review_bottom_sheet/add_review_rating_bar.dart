@@ -29,7 +29,7 @@ class AddReviewRatingBar extends StatelessWidget {
         RatingBar(
           initialRating: initialRating ?? 0,
           glowColor: Colors.white,
-          allowHalfRating: true,
+          allowHalfRating: false,
           itemSize: starSize,
           itemPadding: EdgeInsets.zero,
           ratingWidget: RatingWidget(

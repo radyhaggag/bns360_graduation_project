@@ -1,8 +1,8 @@
-import 'extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 import 'app_fonts.dart';
+import 'extensions/context.dart';
 
 abstract class AppStyles {
   static TextStyle _getTextStyle(

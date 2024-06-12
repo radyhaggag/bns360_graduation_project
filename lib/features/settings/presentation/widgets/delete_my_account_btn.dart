@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/app/app_bloc.dart';
-import 'package:bns360_graduation_project/core/utils/enums.dart';
-import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
+import '../../../../core/app/app_bloc.dart';
+import '../../../../core/utils/enums.dart';
+import '../../../../core/widgets/confirm_delete_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

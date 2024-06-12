@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/messages/error_message_widget.dart';
-import 'package:bns360_graduation_project/features/craftsman/presentation/bloc/craftsman_bloc.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/utils/extensions/media_query.dart';
+import '../../../../core/widgets/messages/error_message_widget.dart';
+import '../bloc/craftsman_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

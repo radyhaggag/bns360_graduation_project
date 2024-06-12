@@ -32,6 +32,7 @@ class CraftsManWorkSamplesSection extends StatelessWidget {
         width: context.width,
         itemWidget: (url, index) {
           return MainNetworkImage(
+            withImageView: true,
             fit: BoxFit.cover,
             imageUrl: url,
             height: 75.h,

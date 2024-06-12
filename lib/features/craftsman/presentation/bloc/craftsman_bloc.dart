@@ -108,7 +108,11 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
         review: event.review,
       )),
       (r) {
-        add(GetCraftsmanReviewsEvent(itemId: event.itemId));
+        if (event.loadReviews) {
+          add(GetCraftsmanReviewsEvent(itemId: event.itemId));
+        } else {
+          add(GetCraftsmanReviewSummaryEvent(itemId: event.itemId));
+        }
         emit(SendCraftsmanReviewSuccessState());
       },
     );

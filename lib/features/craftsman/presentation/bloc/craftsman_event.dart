@@ -32,11 +32,13 @@ class SendCraftsmanReviewEvent extends CraftsmanEvent {
   final int itemId;
   final double rating;
   final String review;
+  final bool loadReviews;
 
   const SendCraftsmanReviewEvent({
     required this.itemId,
     required this.rating,
     required this.review,
+    required this.loadReviews,
   });
 }
 

@@ -252,6 +252,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_posts": MessageLookupByLibrary.simpleMessage("منشوراتي"),
         "my_services": MessageLookupByLibrary.simpleMessage("خدماتي"),
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
+        "no_business_found": MessageLookupByLibrary.simpleMessage(
+            "لم يتم العثور على نشاطات تجارية"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على حرفيين!"),
         "no_favorite_items":
@@ -263,6 +265,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_properties_found":
             MessageLookupByLibrary.simpleMessage("لم يتم العثور على عقارات"),
         "no_results": MessageLookupByLibrary.simpleMessage("لا توجد نتائج"),
+        "no_services_found":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على خدمات"),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":

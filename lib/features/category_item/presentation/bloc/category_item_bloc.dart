@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import '../../../../core/shared_data/entities/category_item_entity.dart';
-import '../../../../core/shared_data/entities/review_summary_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/review_entity.dart';
+import '../../../../core/shared_data/entities/review_summary_entity.dart';
 import '../../domain/repositories/category_item_repo.dart';
 
 part 'category_item_event.dart';
@@ -110,7 +110,10 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
         review: event.review,
       )),
       (r) {
-        add(GetCategoryItemReviewsEvent(itemId: event.itemId));
+        if (event.fetchReviews) {
+          add(GetCategoryItemReviewsEvent(itemId: event.itemId));
+        }
+        add(GetCategoryItemReviewSummaryEvent(itemId: event.itemId));
         emit(SendCategoryItemReviewSuccessState());
       },
     );

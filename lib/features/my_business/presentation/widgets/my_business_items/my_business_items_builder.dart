@@ -1,4 +1,3 @@
-import '../../../../../core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +7,7 @@ import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
+import '../../../../../core/widgets/empty_card.dart';
 import '../../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
 import '../../../../../core/widgets/more_icon.dart';
@@ -41,13 +41,13 @@ class MyBusinessItemsBuilder extends StatelessWidget {
             errorMessage: state is GetMyBusinessErrorState ? state.message : "",
             loadedWidget: MainListViewBuilder<CategoryItemEntity>(
               list: items,
-              emptyMessage: S.of(context).no_places_to_explore,
+              emptyMessage: S.of(context).no_services_found,
               emptyWidget: SizedBox(
                 width: context.width,
                 height: context.height / 2,
                 child: EmptyCard(
                   iconSize: 150.r,
-                  title: S.of(context).no_results,
+                  title: S.of(context).no_services_found,
                 ),
               ),
               itemWidget: (item, index) => HorizontalItemCard(

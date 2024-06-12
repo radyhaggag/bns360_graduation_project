@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -31,6 +32,11 @@ class FavoriteCraftsmenBuilder extends StatelessWidget {
           loadedWidget: MainListViewBuilder<CraftsmanEntity>(
             list: favoriteCraftsmen,
             emptyMessage: S.of(context).no_favorite_items,
+            emptyWidget: Center(
+              child: EmptyCard(
+                title: S.of(context).no_favorite_items,
+              ),
+            ),
             itemWidget: (item, _) => HorizontalItemCard(
               title: LocalizationHelper.getLocalizedString(
                 context,

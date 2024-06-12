@@ -271,5 +271,7 @@
   "aboutUsContent": "\"BNS360\" is an app that helps newcomers in Beni-Suef find the best services based on visitor reviews and distance. Our goal is to provide an easy and seamless experience for users to meet their needs.",
   "for_inquiries_and_suggestions": "For Inquiries and Suggestions",
   "for_support": "For Support",
-  "holiday": "Holiday"
+  "holiday": "Holiday",
+  "no_business_found": "No business found",
+  "no_services_found": "No services found"
 }

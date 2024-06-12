@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,6 +27,11 @@ class SavedJobsBuilder extends StatelessWidget {
           loadedWidget: MainListViewBuilder<JobEntity>(
             list: savedJobs,
             emptyMessage: S.of(context).no_jobs_found,
+            emptyWidget: Center(
+              child: EmptyCard(
+                title: S.of(context).no_jobs_found,
+              ),
+            ),
             itemWidget: (item, _) => JobCard(
               jobEntity: item,
               isInSavedScreen: true,

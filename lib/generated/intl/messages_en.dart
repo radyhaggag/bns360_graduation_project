@@ -257,6 +257,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_posts": MessageLookupByLibrary.simpleMessage("My posts"),
         "my_services": MessageLookupByLibrary.simpleMessage("My services"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "no_business_found":
+            MessageLookupByLibrary.simpleMessage("No business found"),
         "no_craftsmen_found":
             MessageLookupByLibrary.simpleMessage("No craftsmen found!"),
         "no_favorite_items":
@@ -267,6 +269,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "no_properties_found":
             MessageLookupByLibrary.simpleMessage("No properties found"),
         "no_results": MessageLookupByLibrary.simpleMessage("No results found"),
+        "no_services_found":
+            MessageLookupByLibrary.simpleMessage("No services found"),
         "notHaveAccountMsg":
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
         "notReceiveCode":

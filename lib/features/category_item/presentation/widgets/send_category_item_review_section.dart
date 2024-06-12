@@ -1,11 +1,11 @@
-import '../../../../core/helpers/custom_toast.dart';
-import '../../../../core/widgets/buttons/write_review_btn.dart';
-import '../bloc/category_item_bloc.dart';
-import '../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/helpers/custom_toast.dart';
+import '../../../../core/widgets/buttons/write_review_btn.dart';
 import '../../../../core/widgets/reviews/add_review_bottom_sheet/add_review_bottom_sheet.dart';
+import '../../../../generated/l10n.dart';
+import '../bloc/category_item_bloc.dart';
 
 class SendCategoryItemReviewSection extends StatelessWidget {
   const SendCategoryItemReviewSection({
@@ -72,6 +72,7 @@ class SendCategoryItemReviewSection extends StatelessWidget {
             itemId: itemId,
             rating: rating,
             review: review,
+            fetchReviews: refreshReviewsAfterSend,
           ),
         );
   }

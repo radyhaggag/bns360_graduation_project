@@ -1,11 +1,11 @@
-import '../../../../core/helpers/custom_toast.dart';
-import '../../../../core/widgets/buttons/write_review_btn.dart';
-import '../bloc/craftsman_bloc.dart';
-import '../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/helpers/custom_toast.dart';
+import '../../../../core/widgets/buttons/write_review_btn.dart';
 import '../../../../core/widgets/reviews/add_review_bottom_sheet/add_review_bottom_sheet.dart';
+import '../../../../generated/l10n.dart';
+import '../bloc/craftsman_bloc.dart';
 
 class SendCraftsmanReviewSection extends StatelessWidget {
   const SendCraftsmanReviewSection({
@@ -72,6 +72,7 @@ class SendCraftsmanReviewSection extends StatelessWidget {
             itemId: itemId,
             rating: rating,
             review: review,
+            loadReviews: refreshReviewsAfterSend,
           ),
         );
   }

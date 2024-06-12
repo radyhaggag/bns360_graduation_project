@@ -38,7 +38,6 @@ class PropertiesBuilder extends StatelessWidget {
             emptyWidget: Center(
               child: EmptyCard(
                 title: S.of(context).no_properties_found,
-                
               ),
             ),
             itemWidget: (item, _) => InkWell(

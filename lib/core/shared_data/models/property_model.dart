@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+
 import '../../helpers/api_images_helper.dart';
 import '../../utils/enums/offer_type.dart';
 import '../entities/property_entity.dart';
@@ -94,6 +96,7 @@ class PropertyModel extends PropertyEntity {
     if (id != -1) {
       map['Id'] = id;
     }
+    map["UserId"] = AppProvider().getProfile()!.id;
 
     // remove null values
     map.removeWhere((key, value) => value == null);

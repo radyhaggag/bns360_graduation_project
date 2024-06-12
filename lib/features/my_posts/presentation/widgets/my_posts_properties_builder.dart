@@ -1,7 +1,8 @@
-import '../../../../config/route_config.dart';
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../config/route_config.dart';
 import '../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/data_state_widget.dart';
@@ -37,7 +38,11 @@ class MyPostsPropertiesBuilder extends StatelessWidget {
               state is GetMyPostsPropertiesErrorState ? state.message : "",
           loadedWidget: MainListViewBuilder<PropertyEntity>(
             list: myPostsProperties,
-            emptyMessage: S.of(context).no_properties_found,
+            emptyWidget: Center(
+              child: EmptyCard(
+                title: S.of(context).no_properties_found,
+              ),
+            ),
             itemWidget: (item, index) => PropertyCard(
               propertyEntity: item.copyWith(isBelongToMe: true),
               moreWidget: MoreIcon(

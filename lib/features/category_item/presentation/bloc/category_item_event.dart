@@ -35,11 +35,13 @@ class SendReviewEvent extends CategoryItemEvent {
   final int itemId;
   final double rating;
   final String review;
+  final bool fetchReviews;
 
   const SendReviewEvent({
     required this.itemId,
     required this.rating,
     required this.review,
+    required this.fetchReviews,
   });
 }
 

@@ -1,15 +1,16 @@
-import '../../../../../core/shared_data/entities/category_item_info_entity.dart';
-import '../../../../category_item/domain/params/category_item_screen_params.dart';
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../config/route_config.dart';
 import '../../../../../core/helpers/localization_helper.dart';
+import '../../../../../core/shared_data/entities/category_item_info_entity.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/horizontal_item/horizontal_item_card.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../category_item/domain/params/category_item_screen_params.dart';
 import '../../bloc/categories_bloc.dart';
 
 class CategoryItemsBody extends StatelessWidget {
@@ -40,6 +41,11 @@ class CategoryItemsBody extends StatelessWidget {
             loadedWidget: MainListViewBuilder<CategoryItemInfoEntity>(
               list: items,
               emptyMessage: S.of(context).no_places_to_explore,
+              emptyWidget: Center(
+                child: EmptyCard(
+                  title: S.of(context).no_places_to_explore,
+                ),
+              ),
               itemWidget: (item, index) => HorizontalItemCard(
                 title: LocalizationHelper.getLocalizedString(
                   context,

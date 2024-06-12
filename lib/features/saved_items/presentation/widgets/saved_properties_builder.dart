@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,6 +28,11 @@ class SavedPropertiesBuilder extends StatelessWidget {
           loadedWidget: MainListViewBuilder<PropertyEntity>(
             list: savedProperties,
             emptyMessage: S.of(context).no_properties_found,
+            emptyWidget: Center(
+              child: EmptyCard(
+                title: S.of(context).no_properties_found,
+              ),
+            ),
             itemWidget: (item, _) => PropertyCard(
               propertyEntity: item,
               isInSavedScreen: true,

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +37,11 @@ class MyPostsJobsBuilder extends StatelessWidget {
           errorMessage: state is GetMyPostsJobsErrorState ? state.message : "",
           loadedWidget: MainListViewBuilder<JobEntity>(
             list: myPostsJobs,
-            emptyMessage: S.of(context).no_jobs_found,
+            emptyWidget: Center(
+              child: EmptyCard(
+                title: S.of(context).no_jobs_found,
+              ),
+            ),
             itemWidget: (item, index) => JobCard(
               jobEntity: item.copyWith(isBelongToMe: true),
               moreWidget: MoreIcon(

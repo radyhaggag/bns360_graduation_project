@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/custom_back_button.dart';
 import '../../../../core/widgets/icons/profile_circle_icon.dart';
@@ -25,7 +27,12 @@ class SettingsScreenAppBar extends StatelessWidget
       centerTitle: false,
       titleSpacing: 20,
       actions: [
-        ProfileCircleIcon(imageUrl: imageUrl),
+        BlocBuilder<ProfileBloc, ProfileState>(
+          builder: (context, state) {
+            final profileImage = context.read<ProfileBloc>().profile?.imageUrl;
+            return ProfileCircleIcon(imageUrl: profileImage);
+          },
+        ),
         const SizedBox(width: 20),
       ],
       leading: const CustomBackButton(),

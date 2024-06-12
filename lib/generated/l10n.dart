@@ -2610,20 +2610,20 @@ class S {
     );
   }
 
-  /// `Working`
+  /// `Available now`
   String get working {
     return Intl.message(
-      'Working',
+      'Available now',
       name: 'working',
       desc: '',
       args: [],
     );
   }
 
-  /// `Not working`
+  /// `Not Available now`
   String get not_working {
     return Intl.message(
-      'Not working',
+      'Not Available now',
       name: 'not_working',
       desc: '',
       args: [],

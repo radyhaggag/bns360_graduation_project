@@ -1,7 +1,8 @@
-import '../../../../core/utils/enums/offer_type.dart';
-import '../../../../core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/utils/enums/offer_type.dart';
+import '../../../../core/utils/extensions/context.dart';
 
 class PropertyOfferTypeRadioTile extends StatelessWidget {
   const PropertyOfferTypeRadioTile({super.key, this.value, this.onChanged});
@@ -12,26 +13,20 @@ class PropertyOfferTypeRadioTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Stack(
-        alignment: Alignment.center,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // alignment: Alignment.center,
         children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            margin: EdgeInsetsDirectional.only(start: 40.w),
-            child: _RadioItem(
-              selectedValue: value,
-              value: OfferType.sale,
-              onChanged: onChanged,
-            ),
+          _RadioItem(
+            selectedValue: value,
+            value: OfferType.sale,
+            onChanged: onChanged,
           ),
-          Container(
-            alignment: Alignment.center,
-            margin: EdgeInsetsDirectional.only(start: 125.w),
-            child: _RadioItem(
-              selectedValue: value,
-              value: OfferType.rent,
-              onChanged: onChanged,
-            ),
+          const SizedBox(width: 10),
+          _RadioItem(
+            selectedValue: value,
+            value: OfferType.rent,
+            onChanged: onChanged,
           ),
         ],
       ),

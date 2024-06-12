@@ -49,7 +49,7 @@ class _ItemStatusWidget extends StatelessWidget {
 
   bool get _isHoliday {
     final now = DateTime.now();
-    final currentDayName = DateFormat('EEEE').format(now);
+    final currentDayName = DateFormat('EEEE', "en").format(now);
     final day = WorkDay.fromString(currentDayName);
     return day == WorkDay.fromId(holiday);
   }

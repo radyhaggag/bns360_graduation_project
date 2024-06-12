@@ -1,8 +1,8 @@
-import '../../../../core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helpers/permissions/main_permissions_helper.dart';
+import '../../../../core/providers/app_provider.dart';
 import '../../../favorites/presentation/bloc/favorites_bloc.dart';
 import '../../../profile/presentation/bloc/profile_bloc.dart';
 import '../../../saved_items/presentation/bloc/saved_bloc.dart';
@@ -20,6 +20,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   @override
   void initState() {
     super.initState();
+    context.read<ProfileBloc>().add(const GetProfileEvent());
 
     MainPermissionHandler().requestLocationPermission(context);
   }
@@ -32,8 +33,6 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     context.read<SavedBloc>()
       ..add(GetSavedJobsEvent(skipPreviousCheck: true))
       ..add(GetSavedPropertiesEvent(skipPreviousCheck: true));
-
-    context.read<ProfileBloc>().add(const GetProfileEvent());
   }
 
   @override

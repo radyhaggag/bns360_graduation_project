@@ -267,7 +267,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("لم تتلقى رمز التحقق!"),
-        "not_working": MessageLookupByLibrary.simpleMessage("لا يعمل"),
+        "not_working": MessageLookupByLibrary.simpleMessage("غير متاح الان"),
         "number_validation_message":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال رقم صحيح"),
         "offer_type": MessageLookupByLibrary.simpleMessage("نوع العرض"),
@@ -421,7 +421,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_hours": MessageLookupByLibrary.simpleMessage("ساعات العمل"),
         "work_time": MessageLookupByLibrary.simpleMessage(
             "حدد ساعات عملك لكل يوم من 0 إلى 24."),
-        "working": MessageLookupByLibrary.simpleMessage("يعمل"),
+        "working": MessageLookupByLibrary.simpleMessage("متاح الان"),
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),

@@ -271,7 +271,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("I didn\'\'t receive a code!"),
-        "not_working": MessageLookupByLibrary.simpleMessage("Not working"),
+        "not_working":
+            MessageLookupByLibrary.simpleMessage("Not Available now"),
         "number_validation_message":
             MessageLookupByLibrary.simpleMessage("Please enter a valid number"),
         "offer_type": MessageLookupByLibrary.simpleMessage("Offer type"),
@@ -431,7 +432,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_hours": MessageLookupByLibrary.simpleMessage("Work hours"),
         "work_time": MessageLookupByLibrary.simpleMessage(
             "Select your working hours for each day from 0 to 24."),
-        "working": MessageLookupByLibrary.simpleMessage("Working"),
+        "working": MessageLookupByLibrary.simpleMessage("Available now"),
         "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("Write your message"),

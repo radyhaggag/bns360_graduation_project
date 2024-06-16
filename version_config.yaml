@@ -1,5 +1,5 @@
 ---
-android_version_code: 6
-android_version_name: 1.0.6
+android_version_code: 1
+android_version_name: 1.0.0
 ios_version: 1.0.0
-firebase_app_distribution_android_version_code: 6
+firebase_app_distribution_android_version_code: 1

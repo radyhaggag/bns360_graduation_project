@@ -137,6 +137,7 @@ class CategoryItemEntity extends Equatable {
       reviewSummary: reviewSummary ?? this.reviewSummary,
       userName: userName ?? this.userName,
       userImage: userImage ?? this.userImage,
+
     );
   }
 

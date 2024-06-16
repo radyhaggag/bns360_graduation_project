@@ -17,7 +17,7 @@ class _CategoryItemLocation extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AppSvg.marker,
-          color: context.theme.cardColor,
+          color: context.theme.cardColor.withOpacity(0.4),
           width: 20.r,
           height: 20.r,
         ),

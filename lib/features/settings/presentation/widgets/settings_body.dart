@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,24 +22,26 @@ class SettingsBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(height: 20.h),
-          SettingsSectionTile(
-            title: S.of(context).account,
-          ),
-          SettingsItemTile(
-            title: S.of(context).edit_profile,
-            svgPath: AppSvg.profileVector,
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.editProfile);
-            },
-          ),
-          SettingsItemTile(
-            title: S.of(context).change_password,
-            svgPath: AppSvg.key,
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.changePassword);
-            },
-          ),
+          if (!AppProvider().isGuest) ...[
+            SizedBox(height: 20.h),
+            SettingsSectionTile(
+              title: S.of(context).account,
+            ),
+            SettingsItemTile(
+              title: S.of(context).edit_profile,
+              svgPath: AppSvg.profileVector,
+              onTap: () {
+                Navigator.of(context).pushNamed(Routes.editProfile);
+              },
+            ),
+            SettingsItemTile(
+              title: S.of(context).change_password,
+              svgPath: AppSvg.key,
+              onTap: () {
+                Navigator.of(context).pushNamed(Routes.changePassword);
+              },
+            ),
+          ],
           SettingsSectionTile(
             title: S.of(context).app_settings,
           ),

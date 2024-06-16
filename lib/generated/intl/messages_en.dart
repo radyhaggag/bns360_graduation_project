@@ -192,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter service address"),
         "enter_the_requirements":
             MessageLookupByLibrary.simpleMessage("Enter the requirements"),
+        "enter_url_site":
+            MessageLookupByLibrary.simpleMessage("Enter your website URL"),
         "enter_your_address":
             MessageLookupByLibrary.simpleMessage("Enter your address"),
         "equals_validation_message":
@@ -419,6 +421,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upload property images"),
         "upload_service_images":
             MessageLookupByLibrary.simpleMessage("Upload service images"),
+        "url_site": MessageLookupByLibrary.simpleMessage("Your website URL"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "user_tooltip": MessageLookupByLibrary.simpleMessage(

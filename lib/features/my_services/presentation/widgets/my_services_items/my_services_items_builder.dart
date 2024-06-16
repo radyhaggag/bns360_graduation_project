@@ -41,13 +41,13 @@ class MyServicesItemsBuilder extends StatelessWidget {
             errorMessage: state is GetMyServicesErrorState ? state.message : "",
             loadedWidget: MainListViewBuilder<CraftsmanEntity>(
               list: items,
-              emptyMessage: S.of(context).no_results,
+              emptyMessage: S.of(context).no_services_found,
               emptyWidget: SizedBox(
                 width: context.width,
                 height: context.height / 2,
                 child: EmptyCard(
                   iconSize: 150.r,
-                  title: S.of(context).no_results,
+                  title: S.of(context).no_services_found,
                 ),
               ),
               itemWidget: (item, index) => HorizontalItemCard(

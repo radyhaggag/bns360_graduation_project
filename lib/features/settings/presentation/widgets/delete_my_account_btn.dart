@@ -1,13 +1,14 @@
-import '../../../../core/app/app_bloc.dart';
-import '../../../../core/utils/enums.dart';
-import '../../../../core/widgets/confirm_delete_pop_up.dart';
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/route_config.dart';
+import '../../../../core/app/app_bloc.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/enums.dart';
 import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/widgets/confirm_delete_pop_up.dart';
 import '../../../../generated/l10n.dart';
 import '../../../profile/presentation/bloc/profile_bloc.dart';
 
@@ -16,6 +17,8 @@ class DeleteAccountBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (AppProvider().isGuest) return const SizedBox.shrink();
+
     return ListTile(
       onTap: () {
         ConfirmationDialog.show(

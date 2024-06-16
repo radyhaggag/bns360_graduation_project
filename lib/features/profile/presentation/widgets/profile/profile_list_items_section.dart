@@ -41,56 +41,58 @@ class ProfileListItemsSection extends StatelessWidget {
               Navigator.of(context).pushNamed(Routes.settings);
             },
           ),
-          const SizedBox(height: 10),
-          ProfileItemTile(
-            title: S.of(context).favorites,
-            svgPath: AppSvg.favorite,
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.favorites);
-            },
-          ),
-          const SizedBox(height: 10),
-          if (AppProvider().getProfile()?.userType ==
-              UserType.businessOwner.id) ...[
+          if (!AppProvider().isGuest) ...[
+            const SizedBox(height: 10),
             ProfileItemTile(
-              title: S.of(context).my_business,
-              svgPath: AppSvg.business,
-              size: 30.r,
+              title: S.of(context).favorites,
+              svgPath: AppSvg.favorite,
               onTap: () {
-                Navigator.of(context).pushNamed(Routes.myBusiness);
+                Navigator.of(context).pushNamed(Routes.favorites);
               },
             ),
             const SizedBox(height: 10),
-          ],
-          if (AppProvider().getProfile()?.userType ==
-              UserType.serviceProvider.id) ...[
+            if (AppProvider().getProfile()?.userType ==
+                UserType.businessOwner.id) ...[
+              ProfileItemTile(
+                title: S.of(context).my_business,
+                svgPath: AppSvg.business,
+                size: 30.r,
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.myBusiness);
+                },
+              ),
+              const SizedBox(height: 10),
+            ],
+            if (AppProvider().getProfile()?.userType ==
+                UserType.serviceProvider.id) ...[
+              ProfileItemTile(
+                title: S.of(context).my_services,
+                svgPath: AppSvg.construction,
+                size: 30.r,
+                onTap: () {
+                  Navigator.of(context).pushNamed(Routes.myServices);
+                },
+              ),
+              const SizedBox(height: 10),
+            ],
             ProfileItemTile(
-              title: S.of(context).my_services,
-              svgPath: AppSvg.construction,
-              size: 30.r,
+              title: S.of(context).my_posts,
+              svgPath: AppSvg.posts,
+              size: 19.5.r,
               onTap: () {
-                Navigator.of(context).pushNamed(Routes.myServices);
+                Navigator.of(context).pushNamed(Routes.myPosts);
               },
             ),
             const SizedBox(height: 10),
-          ],
-          ProfileItemTile(
-            title: S.of(context).my_posts,
-            svgPath: AppSvg.posts,
-            size: 19.5.r,
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.myPosts);
-            },
-          ),
-          const SizedBox(height: 10),
-          ProfileItemTile(
-            title: S.of(context).saved,
-            icon: Icons.bookmark,
-            size: 30.r,
-            onTap: () {
-              Navigator.of(context).pushNamed(Routes.savedItems);
-            },
-          ),
+            ProfileItemTile(
+              title: S.of(context).saved,
+              icon: Icons.bookmark,
+              size: 30.r,
+              onTap: () {
+                Navigator.of(context).pushNamed(Routes.savedItems);
+              },
+            ),
+          ],  
           // const SizedBox(height: 10),
           // ProfileItemTile(
           //   title: S.of(context).share_this_app,

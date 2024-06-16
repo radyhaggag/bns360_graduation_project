@@ -2829,6 +2829,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Your website URL`
+  String get url_site {
+    return Intl.message(
+      'Your website URL',
+      name: 'url_site',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your website URL`
+  String get enter_url_site {
+    return Intl.message(
+      'Enter your website URL',
+      name: 'enter_url_site',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,11 +1,11 @@
-import '../../../../../../core/utils/enums/work_days.dart';
-import '../../../../../../core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../../../core/utils/enums/work_days.dart';
+import '../../../../../../core/utils/extensions/strings.dart';
 import '../../../bloc/my_services_bloc.dart';
 import '../craftsman_head/edit_craftsman_head_sliver.dart';
 import 'edit_service_form.dart';
@@ -37,6 +37,14 @@ class _EditServiceBodyState extends State<EditServiceBody> {
     context.read<MyServicesBloc>().add(SelectServiceHolidayEvent(
           holiday: WorkDay.fromId(widget.craftsmanEntity.holidays),
         ));
+
+    final phoneNumber = widget.craftsmanEntity.contact.phoneNumber;
+    final phoneOne = phoneNumber?.contains("-") ?? false
+        ? phoneNumber?.split("-")[0]
+        : phoneNumber;
+
+    final phoneTwo =
+        phoneNumber?.contains("-") ?? false ? phoneNumber?.split("-")[1] : null;
 
     form = FormGroup(
       {
@@ -84,7 +92,20 @@ class _EditServiceBodyState extends State<EditServiceBody> {
             Validators.number,
             Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
           ],
-          value: widget.craftsmanEntity.contact.phoneNumber.withoutCountryCode,
+          value: phoneOne.withoutCountryCode,
+        ),
+        'phoneNumber2': FormControl<String>(
+          validators: [
+            Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+          ],
+          value: phoneTwo.withoutCountryCode,
+        ),
+        'email': FormControl<String>(
+          validators: [Validators.email],
+          value: widget.craftsmanEntity.contact.email,
+        ),
+        'url': FormControl<String>(
+          value: widget.craftsmanEntity.contact.urlSite,
         ),
       },
     );

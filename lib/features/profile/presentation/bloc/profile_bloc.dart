@@ -86,6 +86,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     GetProfileEvent event,
     Emitter<ProfileState> emit,
   ) async {
+    if (AppProvider().isGuest) return;
     if (event.localProfile && _profile != null) {
       emit(GetProfileSuccessState(profileEntity: _profile!));
       return;

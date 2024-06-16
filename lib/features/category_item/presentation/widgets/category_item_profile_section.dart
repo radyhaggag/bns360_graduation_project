@@ -48,7 +48,7 @@ class CategoryItemProfileSection extends StatelessWidget {
             width: 50.w,
             onPressed: () {
               Navigator.of(context).pushNamed(
-                Routes.addBusiness,
+                Routes.editBusiness,
                 arguments: categoryItemEntity,
               );
             },

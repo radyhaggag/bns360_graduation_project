@@ -12,6 +12,8 @@ class AddServiceParams {
   final String mainServiceImage;
   final List<String> mainServiceBackgroundImages;
   final CraftEntity? serviceCategory;
+  final String? email;
+  final String? siteUrl;
 
   const AddServiceParams({
     required this.serviceName,
@@ -24,6 +26,8 @@ class AddServiceParams {
     required this.mainServiceBackgroundImages,
     required this.holiday,
     this.serviceCategory,
+    this.email,
+    this.siteUrl,
   });
 
   AddServiceParams copyWith({
@@ -37,6 +41,8 @@ class AddServiceParams {
     List<String>? mainServiceBackgroundImages,
     WorkDay? holiday,
     CraftEntity? serviceCategory,
+    String? email,
+    String? siteUrl,
   }) {
     return AddServiceParams(
       serviceName: serviceName ?? this.serviceName,
@@ -50,6 +56,8 @@ class AddServiceParams {
           mainServiceBackgroundImages ?? this.mainServiceBackgroundImages,
       holiday: holiday ?? this.holiday,
       serviceCategory: serviceCategory ?? this.serviceCategory,
+      email: email ?? this.email,
+      siteUrl: siteUrl ?? this.siteUrl,
     );
   }
 }

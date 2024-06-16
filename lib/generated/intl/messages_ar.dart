@@ -190,6 +190,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل عنوان الخدمة"),
         "enter_the_requirements":
             MessageLookupByLibrary.simpleMessage("ادخل المتطلبات"),
+        "enter_url_site":
+            MessageLookupByLibrary.simpleMessage("أدخل رابط الموقع"),
         "enter_your_address":
             MessageLookupByLibrary.simpleMessage("ادخل عنوانك"),
         "equals_validation_message":
@@ -408,6 +410,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحميل صور العقار"),
         "upload_service_images":
             MessageLookupByLibrary.simpleMessage("تحميل صور الخدمة"),
+        "url_site": MessageLookupByLibrary.simpleMessage("رابط الموقع"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "user_tooltip": MessageLookupByLibrary.simpleMessage(

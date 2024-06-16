@@ -1,8 +1,6 @@
-import '../../../../map/domain/params/map_params.dart';
-import '../../../../map/presentation/screens/map_screen.dart';
-import '../../bloc/my_business_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -11,6 +9,9 @@ import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dar
 import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../core/widgets/select_holiday_dropdown.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../map/domain/params/map_params.dart';
+import '../../../../map/presentation/screens/map_screen.dart';
+import '../../bloc/my_business_bloc.dart';
 import '../add_business_time_section.dart';
 import '../business_type_dropdown.dart';
 
@@ -38,15 +39,6 @@ class AddBusinessForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
-          if (categoryItemEntity != null) ...[
-            CustomReactiveFormField(
-              title: t.business_name,
-              hint: t.enter_business_name,
-              formControlName: 'name_eng',
-              textInputAction: TextInputAction.next,
-            ),
-            15.verticalSpace,
-          ],
           const BusinessTypeDropdown(),
           15.verticalSpace,
           CustomReactiveFormField(
@@ -95,6 +87,25 @@ class AddBusinessForm extends StatelessWidget {
           15.verticalSpace,
           const WhatsappAndMobileFields(
             viewWhatsapp: false,
+            withTwoPhoneNumbers: true,
+          ),
+          15.verticalSpace,
+          CustomReactiveFormField(
+            title: t.email,
+            hint: t.enterEmail,
+            formControlName: 'email',
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.emailAddress,
+            suffixIcon: const Icon(FeatherIcons.mail),
+          ),
+          15.verticalSpace,
+          CustomReactiveFormField(
+            title: t.url_site,
+            hint: t.enter_url_site,
+            formControlName: 'url',
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.emailAddress,
+            suffixIcon: const Icon(FeatherIcons.link),
           ),
           15.verticalSpace,
           const AddBusinessTimeSection(),

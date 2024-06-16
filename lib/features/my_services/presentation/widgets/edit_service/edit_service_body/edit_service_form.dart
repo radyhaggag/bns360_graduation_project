@@ -1,10 +1,11 @@
-import '../../../../../../core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../../../core/utils/extensions/strings.dart';
 import '../../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../../core/widgets/select_holiday_dropdown.dart';
@@ -78,7 +79,26 @@ class EditServiceForm extends StatelessWidget {
           15.verticalSpace,
           const WhatsappAndMobileFields(
             viewWhatsapp: false,
+            withTwoPhoneNumbers: true,
           ),
+          15.verticalSpace,
+          CustomReactiveFormField(
+            title: t.email,
+            hint: t.enterEmail,
+            formControlName: 'email',
+            textInputAction: TextInputAction.next,
+            keyboardType: TextInputType.emailAddress,
+            suffixIcon: const Icon(FeatherIcons.mail),
+          ),
+          // 15.verticalSpace,
+          // CustomReactiveFormField(
+          //   title: t.url_site,
+          //   hint: t.enter_url_site,
+          //   formControlName: 'url',
+          //   textInputAction: TextInputAction.next,
+          //   keyboardType: TextInputType.emailAddress,
+          //   suffixIcon: const Icon(FeatherIcons.link),
+          // ),
           15.verticalSpace,
           const AddServiceTimeSection(),
           15.verticalSpace,
@@ -104,6 +124,13 @@ class EditServiceForm extends StatelessWidget {
   void _submitForm(BuildContext context) {
     final formControls = form.controls;
 
+    String phoneNumber =
+        (formControls['phoneNumber']!.value as String).withCountryCode;
+    String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
+    if (phoneNumber2 != null) {
+      phoneNumber += "-${phoneNumber2.withCountryCode}";
+    }
+
     final newData = craftsmanEntity.copyWith(
       nameAR: formControls['name_ar']!.value as String,
       nameEN: formControls['name_en']!.value as String,
@@ -114,8 +141,9 @@ class EditServiceForm extends StatelessWidget {
       opening: int.parse(formControls['from']!.value as String),
       closing: int.parse(formControls['to']!.value as String),
       contact: craftsmanEntity.contact.copyWith(
-        phoneNumber:
-            (formControls['phoneNumber']!.value as String).withCountryCode,
+        phoneNumber: phoneNumber,
+        email: formControls['email']!.value as String?,
+        urlSite: formControls['url']!.value as String?,
       ),
     );
 

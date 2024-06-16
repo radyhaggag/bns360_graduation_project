@@ -92,6 +92,8 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       businessAddressEnglish: addressENG,
       contacts: ContactEntity(
         phoneNumber: params.phoneNumber,
+        email: params.email,
+        urlSite: params.siteUrl,
       ),
       categoriesModel: CategoryModel.empty(), // will not added
       categoriesModelId: params.businessCategory!.id,
@@ -99,10 +101,18 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       opening: params.from,
       holidays: params.holiday.id,
       profileImageName: params.mainBusinessImage,
-      businessImageName1: params.mainBusinessBackgroundImages[0],
-      businessImageName2: params.mainBusinessBackgroundImages[1],
-      businessImageName3: params.mainBusinessBackgroundImages[2],
-      businessImageName4: params.mainBusinessBackgroundImages[3],
+      businessImageName1: params.mainBusinessBackgroundImages.isNotEmpty
+          ? params.mainBusinessBackgroundImages[0]
+          : null,
+      businessImageName2: params.mainBusinessBackgroundImages.length > 1
+          ? params.mainBusinessBackgroundImages[1]
+          : null,
+      businessImageName3: params.mainBusinessBackgroundImages.length > 2
+          ? params.mainBusinessBackgroundImages[2]
+          : null,
+      businessImageName4: params.mainBusinessBackgroundImages.length > 3
+          ? params.mainBusinessBackgroundImages[3]
+          : null,
       userName: AppProvider().getProfile()!.name,
     );
 
@@ -149,6 +159,9 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
   Future<CategoryItemModel> _mapAndGetCategoryItemModel(
     Map<String, dynamic> json,
   ) async {
+    json['UserName'] = AppProvider().getProfile()!.name;
+    json['UserProfileImageName'] = AppProvider().getProfile()!.imageUrl;
+
     CategoryItemModel model = CategoryItemModel.fromJson(json);
 
     final res = await apiConsumer.get(

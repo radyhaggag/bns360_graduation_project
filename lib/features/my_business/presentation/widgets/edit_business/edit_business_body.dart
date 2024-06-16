@@ -1,4 +1,4 @@
-import '../../../../../core/utils/enums/work_days.dart';
+import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +10,7 @@ import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
+import '../../../../../core/utils/enums/work_days.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/my_business_bloc.dart';
@@ -49,6 +50,14 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
           lat: widget.categoryItemEntity.latitude,
           lng: widget.categoryItemEntity.longitude,
         ));
+
+    final phoneNumber = widget.categoryItemEntity.contacts.phoneNumber;
+    final phoneOne = phoneNumber?.contains("-") ?? false
+        ? phoneNumber?.split("-")[0]
+        : phoneNumber;
+
+    final phoneTwo =
+        phoneNumber?.contains("-") ?? false ? phoneNumber?.split("-")[1] : null;
 
     form = FormGroup({
       'name_ar': FormControl<String>(
@@ -95,7 +104,19 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
           Validators.number,
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: widget.categoryItemEntity.contacts.phoneNumber.toString(),
+        value: phoneOne.withoutCountryCode,
+      ),
+      'phoneNumber2': FormControl<String>(
+        validators: [
+          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+        ],
+        value: phoneTwo.withoutCountryCode,
+      ),
+      'email': FormControl<String>(
+        value: widget.categoryItemEntity.contacts.email,
+      ),
+      'url': FormControl<String>(
+        value: widget.categoryItemEntity.contacts.urlSite,
       ),
     });
   }
@@ -144,6 +165,14 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
 
   void _submitForm() {
     final formControls = form.controls;
+
+    String phoneNumber =
+        (formControls['phoneNumber']!.value as String).withCountryCode;
+    String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
+    if (phoneNumber2 != null) {
+      phoneNumber += "-${phoneNumber2.withCountryCode}";
+    }
+
     final entity = widget.categoryItemEntity.copyWith(
       businessNameArabic: formControls['name_ar']!.value as String,
       businessNameEnglish: formControls['name_eng']!.value as String,
@@ -156,7 +185,9 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
       opening: int.parse(formControls['from']!.value as String),
       closing: int.parse(formControls['to']!.value as String),
       contacts: widget.categoryItemEntity.contacts.copyWith(
-        phoneNumber: formControls['phoneNumber']!.value as String,
+        phoneNumber: phoneNumber,
+        email: formControls['email']!.value as String?,
+        urlSite: formControls['url']!.value as String?,
       ),
     );
     context.read<MyBusinessBloc>().add(UpdateBusinessEvent(

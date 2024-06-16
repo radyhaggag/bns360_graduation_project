@@ -14,6 +14,8 @@ class AddBusinessParams {
   final double? lng;
   final CategoryEntity? businessCategory;
   final WorkDay holiday;
+  final String? email;
+  final String? siteUrl;
 
   const AddBusinessParams({
     required this.businessName,
@@ -28,6 +30,8 @@ class AddBusinessParams {
     this.lng,
     this.businessCategory,
     required this.holiday,
+    this.email,
+    this.siteUrl,
   });
 
   AddBusinessParams copyWith({
@@ -43,6 +47,8 @@ class AddBusinessParams {
     double? lng,
     CategoryEntity? businessCategory,
     WorkDay? holiday,
+    String? email,
+    String? siteUrl,
   }) {
     return AddBusinessParams(
       businessName: businessName ?? this.businessName,
@@ -58,6 +64,8 @@ class AddBusinessParams {
       lng: lng ?? this.lng,
       businessCategory: businessCategory ?? this.businessCategory,
       holiday: holiday ?? this.holiday,
+      email: email ?? this.email,
+      siteUrl: siteUrl ?? this.siteUrl,
     );
   }
 

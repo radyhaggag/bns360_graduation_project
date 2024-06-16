@@ -29,6 +29,7 @@ class CategoryItemModel extends CategoryItemEntity {
     super.businessImageName3,
     super.businessImageName4,
     super.reviewSummary,
+    s
   });
 
   factory CategoryItemModel.fromJson(Map<String, dynamic> json) {

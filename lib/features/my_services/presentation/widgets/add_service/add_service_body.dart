@@ -1,5 +1,3 @@
-import '../../../../../core/utils/enums/work_days.dart';
-import '../../../../../core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +7,9 @@ import 'package:reactive_forms/reactive_forms.dart';
 import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/enums/work_days.dart';
 import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/strings.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/params/add_service_params.dart';
 import '../../bloc/my_services_bloc.dart';
@@ -60,6 +60,15 @@ class _AddServiceBodyState extends State<AddServiceBody> {
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
       ),
+      'phoneNumber2': FormControl<String>(
+        validators: [
+          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+        ],
+      ),
+      "email": FormControl<String>(
+        validators: [Validators.email],
+      ),
+      'url': FormControl<String>(),
     });
   }
 
@@ -106,6 +115,14 @@ class _AddServiceBodyState extends State<AddServiceBody> {
 
   void _submitForm() {
     final formControls = form.controls;
+
+    String phoneNumber =
+        (formControls['phoneNumber']!.value as String).withCountryCode;
+    String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
+    if (phoneNumber2 != null) {
+      phoneNumber += "-${phoneNumber2.withCountryCode}";
+    }
+
     final params = AddServiceParams(
       holiday: WorkDay.friday,
       serviceName: formControls['name']!.value as String,
@@ -113,9 +130,11 @@ class _AddServiceBodyState extends State<AddServiceBody> {
       serviceDescription: formControls['description']!.value as String,
       to: int.parse(formControls['to']!.value as String),
       from: int.parse(formControls['from']!.value as String),
-      phoneNumber: (formControls['phoneNumber']!.value as String).withCountryCode,
+      phoneNumber: phoneNumber,
       mainServiceBackgroundImages: [], // Will updated on the bloc
       mainServiceImage: "", // Will updated on the bloc
+      email: formControls['email']!.value as String?,
+      siteUrl: formControls['url']!.value as String,
     );
     context.read<MyServicesBloc>().add(AddServiceEvent(
           addServiceParams: params,

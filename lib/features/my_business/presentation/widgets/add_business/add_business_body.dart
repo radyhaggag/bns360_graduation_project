@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -61,6 +62,15 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
           Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
       ),
+      'phoneNumber2': FormControl<String>(
+        validators: [
+          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
+        ],
+      ),
+      'email': FormControl<String>(
+        validators: [Validators.email],
+      ),
+      'url': FormControl<String>(),
     });
   }
 
@@ -107,6 +117,11 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
 
   void _submitForm() {
     final formControls = form.controls;
+    String phoneNumber = (formControls['phoneNumber']!.value as String).withCountryCode;
+    String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
+    if (phoneNumber2 != null) {
+      phoneNumber += "-${phoneNumber2.withCountryCode}";
+    }
     final params = AddBusinessParams(
       holiday: WorkDay.friday,
       businessName: formControls['name_ar']!.value as String,
@@ -114,10 +129,12 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
       businessDescription: formControls['description_ar']!.value as String,
       to: int.parse(formControls['to']!.value as String),
       from: int.parse(formControls['from']!.value as String),
-      phoneNumber: formControls['phoneNumber']!.value as String,
+      phoneNumber: phoneNumber,
       mainBusinessBackgroundImages: [],
       // Will updated on the bloc
       mainBusinessImage: "", // Will updated on the bloc
+      email: formControls['email']!.value as String?,
+      siteUrl: formControls['url']!.value as String?,
     );
 
     context.read<MyBusinessBloc>().add(AddBusinessEvent(

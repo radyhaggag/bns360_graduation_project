@@ -41,13 +41,13 @@ class MyBusinessItemsBuilder extends StatelessWidget {
             errorMessage: state is GetMyBusinessErrorState ? state.message : "",
             loadedWidget: MainListViewBuilder<CategoryItemEntity>(
               list: items,
-              emptyMessage: S.of(context).no_services_found,
+              emptyMessage: S.of(context).no_business_found,
               emptyWidget: SizedBox(
                 width: context.width,
                 height: context.height / 2,
                 child: EmptyCard(
                   iconSize: 150.r,
-                  title: S.of(context).no_services_found,
+                  title: S.of(context).no_business_found,
                 ),
               ),
               itemWidget: (item, index) => HorizontalItemCard(

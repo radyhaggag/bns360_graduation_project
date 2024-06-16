@@ -90,7 +90,11 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
       descriptionEN: aboutENG,
       addressAR: addressAR,
       addressEN: addressENG,
-      contact: ContactEntity(phoneNumber: params.phoneNumber),
+      contact: ContactEntity(
+        phoneNumber: params.phoneNumber,
+        email: params.email,
+        urlSite: params.siteUrl,
+      ),
       craft: CraftModel.empty(), // will not added
       craftsModelId: params.serviceCategory!.id,
       closing: params.to,
@@ -146,6 +150,8 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
   Future<CraftsmanModel> _mapAndGetCraftsmanModel(
     Map<String, dynamic> json,
   ) async {
+    json["UserName"] = AppProvider().getProfile()!.name;
+    json["UserProfileImageName"] = AppProvider().getProfile()!.imageUrl;
     CraftsmanModel model = CraftsmanModel.fromJson(json);
 
     final res = await apiConsumer.get(

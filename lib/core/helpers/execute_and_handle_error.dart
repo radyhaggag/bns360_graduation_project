@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/foundation.dart';
 
 import '../errors/error_handler.dart';
 import '../utils/custom_types.dart';
@@ -13,9 +12,9 @@ FutureEither<T> executeAndHandleErrorAsync<T>(
     final result = await function();
     return Right(result);
   } catch (e) {
-    if (kDebugMode) {
-      rethrow;
-    }
+    // if (kDebugMode) {
+    //   rethrow;
+    // }
     if (onFailure != null) {
       final result = await onFailure.call(e);
       return Right(result);

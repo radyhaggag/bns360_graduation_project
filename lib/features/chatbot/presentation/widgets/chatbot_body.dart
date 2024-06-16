@@ -1,10 +1,10 @@
-import '../bloc/chatbot_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/empty_card.dart';
 import '../../../../../generated/l10n.dart';
+import '../bloc/chatbot_bloc.dart';
 import 'chatbot_messages_builder.dart';
 import 'chatbot_text_field.dart';
 

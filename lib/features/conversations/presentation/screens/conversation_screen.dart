@@ -51,13 +51,15 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.listTileTheme.tileColor,
-      appBar: ConversationScreenAppBar(
-        conversationParams: widget.conversationParams,
-      ),
-      body: ConversationScreenBody(
-        conversationParams: widget.conversationParams,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.listTileTheme.tileColor,
+        appBar: ConversationScreenAppBar(
+          conversationParams: widget.conversationParams,
+        ),
+        body: ConversationScreenBody(
+          conversationParams: widget.conversationParams,
+        ),
       ),
     );
   }

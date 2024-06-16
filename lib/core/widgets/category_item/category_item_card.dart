@@ -1,10 +1,10 @@
-import '../../shared_data/entities/category_item_info_entity.dart';
-import '../../../features/category_item/domain/params/category_item_screen_params.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/route_config.dart';
+import '../../../features/category_item/domain/params/category_item_screen_params.dart';
 import '../../helpers/localization_helper.dart';
+import '../../shared_data/entities/category_item_info_entity.dart';
 import '../../utils/extensions/context.dart';
 import '../icons/favorite_icon.dart';
 import '../main_network_image.dart';

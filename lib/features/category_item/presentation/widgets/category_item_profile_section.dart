@@ -1,10 +1,10 @@
-import '../../../../core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../config/route_config.dart';
 import '../../../../core/helpers/localization_helper.dart';
+import '../../../../core/providers/app_provider.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../core/utils/app_fonts.dart';
@@ -64,7 +64,7 @@ class CategoryItemProfileSection extends StatelessWidget {
                   participantEntity: ParticipantEntity(
                     id: categoryItemEntity.userId.toString(),
                     nameEN: categoryItemEntity.businessNameEnglish,
-                    nameAR: categoryItemEntity.businessNameEnglish,
+                    nameAR: categoryItemEntity.businessNameArabic,
                     imageUrl: categoryItemEntity.profileImageName,
                     userType: UserType.businessOwner.id,
                   ),

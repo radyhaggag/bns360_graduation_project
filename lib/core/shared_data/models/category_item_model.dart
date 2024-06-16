@@ -22,6 +22,8 @@ class CategoryItemModel extends CategoryItemEntity {
     required super.contacts,
     required super.longitude,
     required super.latitude,
+    required super.userName,
+     super.userImage,
     super.businessImageName1,
     super.businessImageName2,
     super.businessImageName3,
@@ -59,6 +61,8 @@ class CategoryItemModel extends CategoryItemEntity {
       contacts: ContactModel.fromJson(json),
       latitude: json['Latitude'],
       longitude: json['Longitude'],
+      userName: json['UserName'],
+      userImage: APIImagesHelper.toServerImage(json['UserProfileImageName']),
     );
   }
 
@@ -91,6 +95,8 @@ class CategoryItemModel extends CategoryItemEntity {
       "URls": contacts.urlSite,
       "Latitude": latitude,
       "Longitude": longitude,
+      "UserName": userName,
+      "UserProfileImageName": userImage,
     };
 
     if (id != -1) {
@@ -131,6 +137,8 @@ class CategoryItemModel extends CategoryItemEntity {
       latitude: entity.latitude,
       longitude: entity.longitude,
       reviewSummary: entity.reviewSummary,
+      userName: entity.userName,
+      userImage: entity.userImage,
     );
   }
 }

@@ -103,6 +103,7 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
       businessImageName2: params.mainBusinessBackgroundImages[1],
       businessImageName3: params.mainBusinessBackgroundImages[2],
       businessImageName4: params.mainBusinessBackgroundImages[3],
+      userName: AppProvider().getProfile()!.name,
     );
 
     final FormData formData = FormData.fromMap(

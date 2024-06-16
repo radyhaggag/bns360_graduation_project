@@ -1,16 +1,16 @@
-import '../../../../core/providers/app_provider.dart';
-import '../../../../core/shared_data/entities/craftsman_entity.dart';
-import '../../../../core/utils/app_endpoints.dart';
-import '../../../../core/utils/extensions/language.dart';
 import 'package:dio/dio.dart';
 import 'package:translator/translator.dart';
 
 import '../../../../core/api/api_consumer.dart';
+import '../../../../core/providers/app_provider.dart';
 import '../../../../core/shared_data/entities/contact_entity.dart';
+import '../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../core/shared_data/models/craft_model.dart';
 import '../../../../core/shared_data/models/craftsman_model.dart';
 import '../../../../core/shared_data/models/review_summary_model.dart';
+import '../../../../core/utils/app_endpoints.dart';
 import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/extensions/language.dart';
 import '../../domain/params/add_service_params.dart';
 import 'my_services_remote_data_source.dart';
 
@@ -101,6 +101,7 @@ class MyServicesRemoteDataSourceImpl implements MyServicesRemoteDataSource {
       imageName2: images.length > 1 ? images[1] : null,
       imageName3: images.length > 2 ? images[2] : null,
       imageName4: images.length > 3 ? images[3] : null,
+      userName: AppProvider().getProfile()!.name,
     );
 
     final FormData formData = FormData.fromMap(

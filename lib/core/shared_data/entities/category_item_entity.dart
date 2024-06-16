@@ -27,6 +27,8 @@ class CategoryItemEntity extends Equatable {
   final String? businessImageName4;
   final double longitude;
   final double latitude;
+  final String userName;
+  final String? userImage;
 
   final ReviewSummaryEntity? reviewSummary; // for ui
 
@@ -50,12 +52,15 @@ class CategoryItemEntity extends Equatable {
     required this.profileImageName,
     required this.latitude,
     required this.longitude,
+     this.userImage,
+    required this.userName,
     this.businessImageName1,
     this.businessImageName2,
     this.businessImageName3,
     this.businessImageName4,
     this.reviewSummary,
     this.isBelongToMe = false,
+    
   });
 
   List<String> get businessImages {
@@ -94,6 +99,8 @@ class CategoryItemEntity extends Equatable {
     double? latitude,
     bool removeImages = false,
     ReviewSummaryEntity? reviewSummary,
+    String? userName,
+    String? userImage,
   }) {
     return CategoryItemEntity(
       userId: userId ?? this.userId,
@@ -128,6 +135,8 @@ class CategoryItemEntity extends Equatable {
       longitude: longitude ?? this.longitude,
       latitude: latitude ?? this.latitude,
       reviewSummary: reviewSummary ?? this.reviewSummary,
+      userName: userName ?? this.userName,
+      userImage: userImage ?? this.userImage,
     );
   }
 

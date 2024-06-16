@@ -1,7 +1,6 @@
 import '../../helpers/api_images_helper.dart';
-import 'contact_model.dart';
-
 import '../entities/craftsman_entity.dart';
+import 'contact_model.dart';
 import 'craft_model.dart';
 
 class CraftsmanModel extends CraftsmanEntity {
@@ -21,6 +20,8 @@ class CraftsmanModel extends CraftsmanEntity {
     required super.nameEN,
     required super.profileImageUrl,
     required super.opening,
+    required super.userName,
+    super.userImage,
     super.imageName1,
     super.imageName2,
     super.imageName3,
@@ -53,6 +54,8 @@ class CraftsmanModel extends CraftsmanEntity {
       imageName2: APIImagesHelper.toServerImage(json['CraftsMenImageName2']),
       imageName3: APIImagesHelper.toServerImage(json['CraftsMenImageName3']),
       imageName4: APIImagesHelper.toServerImage(json['CraftsMenImageName4']),
+      userName: json['UserName'],
+      userImage: APIImagesHelper.toServerImage(json['UserProfileImageName']),
     );
   }
 
@@ -79,6 +82,8 @@ class CraftsmanModel extends CraftsmanEntity {
       imageName4: entity.imageName4,
       isBelongToMe: entity.isBelongToMe,
       reviewSummary: entity.reviewSummary,
+      userName: entity.userName,
+      userImage: entity.userImage,
     );
   }
 

@@ -26,7 +26,8 @@ class CraftsmanEntity extends Equatable {
   final String? imageName3;
   final String? imageName4;
   final bool isBelongToMe;
-
+  final String userName;
+  final String? userImage;
   final ReviewSummaryEntity? reviewSummary; // for ui
 
   const CraftsmanEntity({
@@ -49,6 +50,8 @@ class CraftsmanEntity extends Equatable {
     required this.imageName2,
     required this.imageName3,
     required this.imageName4,
+    required this.userName,
+    this.userImage,
     this.isBelongToMe = false,
     this.reviewSummary,
   });
@@ -79,6 +82,8 @@ class CraftsmanEntity extends Equatable {
     bool? isBelongToMe,
     ReviewSummaryEntity? reviewSummary,
     bool removeImages = false,
+    String? userName,
+    String? userImage,
   }) {
     return CraftsmanEntity(
       id: id ?? this.id,
@@ -103,6 +108,8 @@ class CraftsmanEntity extends Equatable {
       imageName4: removeImages ? null : imageName4 ?? this.imageName4,
       isBelongToMe: isBelongToMe ?? this.isBelongToMe,
       reviewSummary: reviewSummary ?? this.reviewSummary,
+      userName: userName ?? this.userName,
+      userImage: userImage ?? this.userImage,
     );
   }
 

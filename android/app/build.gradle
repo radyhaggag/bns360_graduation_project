@@ -85,7 +85,7 @@ android {
         }
         production {
             dimension "default"
-            resValue "string", "app_name", "BNS360 Production"
+            resValue "string", "app_name", "BNS360"
         }
     }
 

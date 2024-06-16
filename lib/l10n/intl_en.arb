@@ -274,5 +274,8 @@
   "holiday": "Holiday",
   "no_business_found": "No business found",
   "no_services_found": "No services found",
-  "logout_message": "Are you sure you want to log out?"
+  "logout_message": "Are you sure you want to log out?",
+  "user_tooltip": "Discover jobs and explore properties in your city. Post job openings to attract candidates. List properties for sale or rent to reach potential buyers or tenants.",
+  "business_owner_tooltip": "Manage your business profile and view past performance metrics. Add multiple businesses with detailed descriptions and contact information. Reach more customers and grow your business in the city.",
+  "craftsman_tooltip": "Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills."
 }

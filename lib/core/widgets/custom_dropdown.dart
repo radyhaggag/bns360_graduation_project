@@ -1,9 +1,9 @@
-import '../utils/extensions/context.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_colors.dart';
+import '../utils/extensions/context.dart';
 
 typedef CustomOnTapCallback = Function(dynamic value);
 
@@ -18,6 +18,8 @@ class CustomDropdown<T> extends StatefulWidget {
   final Color? selectedItemColor;
   final double? horizontalPadding;
 
+  final Function<Widget>(T value)? customChild;
+
   const CustomDropdown({
     super.key,
     required this.value,
@@ -29,6 +31,7 @@ class CustomDropdown<T> extends StatefulWidget {
     this.selectedItemColor,
     this.textValue,
     this.horizontalPadding,
+    this.customChild,
   });
 
   @override
@@ -75,10 +78,12 @@ class _CustomDropdownState<T> extends State<CustomDropdown<T>> {
                 border: Border.all(color: context.theme.cardColor, width: 2),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text(
-                widget.viewItems[index],
-                style: context.textTheme.bodyLarge,
-              ),
+              child: widget.customChild != null
+                  ? widget.customChild!(widget.items[index])
+                  : Text(
+                      widget.viewItems[index],
+                      style: context.textTheme.bodyLarge,
+                    ),
             ),
           ),
         ),

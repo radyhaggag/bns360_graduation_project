@@ -80,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("عنوان النشاط التجاري"),
         "business_name":
             MessageLookupByLibrary.simpleMessage("اسم النشاط التجاري"),
+        "business_owner_tooltip": MessageLookupByLibrary.simpleMessage(
+            "إدارة ملف تعريف عملك وعرض مقاييس الأداء السابقة. أضف العديد من الشركات مع أوصاف تفصيلية ومعلومات الاتصال. يمكنك الوصول إلى المزيد من العملاء وتنمية أعمالك في المدينة."),
         "buy_now": MessageLookupByLibrary.simpleMessage("اشترِ الآن"),
         "call": MessageLookupByLibrary.simpleMessage("اتصل"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
@@ -111,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
         "conversations": MessageLookupByLibrary.simpleMessage("المحادثات"),
         "craftsman": MessageLookupByLibrary.simpleMessage("حرفى"),
+        "craftsman_tooltip": MessageLookupByLibrary.simpleMessage(
+            "اعرض براعتك واجذب العملاء الذين يبحثون عن محترفين ماهرين. تصفح فرص العمل واستكشف العقارات في منطقتك. سلط الضوء على خبرتك وتواصل مع الأشخاص الذين يحتاجون إلى مهاراتك."),
         "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
         "creditCard_validation_message": MessageLookupByLibrary.simpleMessage(
@@ -406,6 +410,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحميل صور الخدمة"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
+        "user_tooltip": MessageLookupByLibrary.simpleMessage(
+            "اكتشف الوظائف واستكشف العقارات في مدينتك. نشر فرص العمل لجذب المرشحين. قم بإدراج العقارات المعروضة للبيع أو الإيجار للوصول إلى المشترين أو المستأجرين المحتملين."),
         "validateEmail":
             MessageLookupByLibrary.simpleMessage("البريد الإلكتروني غير صحيح"),
         "validateEmpty": MessageLookupByLibrary.simpleMessage("الحقل مطلوب"),

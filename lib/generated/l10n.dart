@@ -2799,6 +2799,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Discover jobs and explore properties in your city. Post job openings to attract candidates. List properties for sale or rent to reach potential buyers or tenants.`
+  String get user_tooltip {
+    return Intl.message(
+      'Discover jobs and explore properties in your city. Post job openings to attract candidates. List properties for sale or rent to reach potential buyers or tenants.',
+      name: 'user_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage your business profile and view past performance metrics. Add multiple businesses with detailed descriptions and contact information. Reach more customers and grow your business in the city.`
+  String get business_owner_tooltip {
+    return Intl.message(
+      'Manage your business profile and view past performance metrics. Add multiple businesses with detailed descriptions and contact information. Reach more customers and grow your business in the city.',
+      name: 'business_owner_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills.`
+  String get craftsman_tooltip {
+    return Intl.message(
+      'Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills.',
+      name: 'craftsman_tooltip',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

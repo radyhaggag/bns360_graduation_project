@@ -79,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "business_address":
             MessageLookupByLibrary.simpleMessage("Business address"),
         "business_name": MessageLookupByLibrary.simpleMessage("Business name"),
+        "business_owner_tooltip": MessageLookupByLibrary.simpleMessage(
+            "Manage your business profile and view past performance metrics. Add multiple businesses with detailed descriptions and contact information. Reach more customers and grow your business in the city."),
         "buy_now": MessageLookupByLibrary.simpleMessage("Buy now"),
         "call": MessageLookupByLibrary.simpleMessage("Call"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -111,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
         "conversations": MessageLookupByLibrary.simpleMessage("Conversations"),
         "craftsman": MessageLookupByLibrary.simpleMessage("Craftsman"),
+        "craftsman_tooltip": MessageLookupByLibrary.simpleMessage(
+            "Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills."),
         "craftsmen": MessageLookupByLibrary.simpleMessage("Craftsmen"),
         "createYourAccount":
             MessageLookupByLibrary.simpleMessage("Create your Account"),
@@ -417,6 +421,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upload service images"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
+        "user_tooltip": MessageLookupByLibrary.simpleMessage(
+            "Discover jobs and explore properties in your city. Post job openings to attract candidates. List properties for sale or rent to reach potential buyers or tenants."),
         "validateEmail":
             MessageLookupByLibrary.simpleMessage("Enter a valid email address"),
         "validateEmpty":

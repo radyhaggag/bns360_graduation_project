@@ -60,6 +60,7 @@ class CategoryItemCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                const SizedBox(height: 10),
                 ],
               ),
             ),

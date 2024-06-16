@@ -133,7 +133,6 @@ class _BuildImage extends StatelessWidget {
 
         return const SizedBox.shrink();
       },
-      
     );
   }
 }

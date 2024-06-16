@@ -21,12 +21,11 @@ class ProfileImageWithRadius extends StatelessWidget {
         color: context.theme.highlightColor,
       ),
       padding: EdgeInsets.all(2.r),
-      child: ClipOval(
-        child: MainNetworkImage(
-          imageUrl: imageUrl ?? kDefaultImgUrl,
-          width: 75.r,
-          height: 75.r,
-        ),
+      child: MainNetworkImage(
+        imageUrl: imageUrl ?? kDefaultImgUrl,
+        width: 75.r,
+        height: 75.r,
+        isCircular: true,
       ),
     );
   }

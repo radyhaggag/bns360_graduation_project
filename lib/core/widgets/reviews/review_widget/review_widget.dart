@@ -1,5 +1,3 @@
-import '../../../utils/assets/app_svg.dart';
-import '../../remove_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,10 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import '../../../helpers/date_formatter.dart';
 import '../../../shared_data/entities/review_entity.dart';
 import '../../../utils/app_fonts.dart';
+import '../../../utils/assets/app_svg.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/extensions/context.dart';
 import '../../main_network_image.dart';
 import '../../main_rating_bar.dart';
+import '../../remove_icon.dart';
 
 class ReviewWidget extends StatelessWidget {
   const ReviewWidget({
@@ -92,12 +92,11 @@ class _BuildReviewCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipOval(
-                child: MainNetworkImage(
-                  imageUrl: review.userImage,
-                  width: 38.r,
-                  height: 38.r,
-                ),
+              MainNetworkImage(
+                imageUrl: review.userImage,
+                width: 38.r,
+                height: 38.r,
+                isCircular: true,
               ),
               const SizedBox(width: 8),
               Expanded(

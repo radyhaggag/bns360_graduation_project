@@ -10,14 +10,12 @@ class JobPublisherImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(50),
-      child: MainNetworkImage(
-        imageUrl: imageUrl,
-        width: 50.r,
-        height: 50.r,
-        fit: BoxFit.cover,
-      ),
+    return MainNetworkImage(
+      imageUrl: imageUrl,
+      width: 50.r,
+      height: 50.r,
+      fit: BoxFit.cover,
+      isCircular: true,
     );
   }
 }

@@ -52,13 +52,12 @@ class JobDetailsTopSection extends StatelessWidget {
                 ],
               ),
             ),
-            ClipOval(
-              child: MainNetworkImage(
-                height: 70.r,
-                width: 70.r,
-                imageUrl: jobEntity.publisherDetails.photoUrl,
-                name: jobEntity.publisherDetails.name,
-              ),
+            MainNetworkImage(
+              height: 70.r,
+              width: 70.r,
+              imageUrl: jobEntity.publisherDetails.photoUrl,
+              name: jobEntity.publisherDetails.name,
+              isCircular: true,
             ),
             const SizedBox(height: 12),
             Text(

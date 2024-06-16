@@ -6,14 +6,12 @@ class _CategoryItemImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(50),
-      child: MainNetworkImage(
-        imageUrl: imageUrl,
-        width: 60.r,
-        height: 60.r,
-        fit: BoxFit.cover,
-      ),
+    return MainNetworkImage(
+      imageUrl: imageUrl,
+      width: 60.r,
+      height: 60.r,
+      fit: BoxFit.cover,
+      isCircular: true,
     );
   }
 }

@@ -1,8 +1,8 @@
-import '../../../../../../core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../../core/utils/constants.dart';
 import '../../../../../../core/utils/extensions/context.dart';
 import '../../../../../../core/widgets/main_network_image.dart';
 import '../../../bloc/my_services_bloc.dart';
@@ -45,12 +45,11 @@ class EditCraftsmanImageSection extends StatelessWidget {
                 ),
               )
             else
-              ClipOval(
-                child: MainNetworkImage(
-                  imageUrl: kDefaultImgUrl,
-                  width: 90.r,
-                  height: 90.r,
-                ),
+              MainNetworkImage(
+                imageUrl: kDefaultImgUrl,
+                width: 90.r,
+                height: 90.r,
+                isCircular: true,
               ),
             CircleAvatar(
               backgroundColor: context.theme.primaryColor.withOpacity(.25),

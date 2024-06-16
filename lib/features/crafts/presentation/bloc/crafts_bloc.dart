@@ -44,6 +44,8 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
   int selectedCraftId = 0;
 
   String? selectedCraftName(BuildContext context) {
+    if (crafts == null) return "";
+    if (crafts != null && crafts!.isEmpty) return "";
     final selectedCraft = crafts?.firstWhere(
       (craft) => craft.id == selectedCraftId,
     );

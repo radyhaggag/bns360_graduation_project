@@ -7,6 +7,7 @@ class MapParams extends Equatable {
   final double? lng;
 
   final bool isMinimized;
+  final bool isReadOnly;
 
   final void Function(double lat, double lng)? onTap;
 
@@ -16,6 +17,7 @@ class MapParams extends Equatable {
     this.lng,
     this.isMinimized = false,
     this.onTap,
+    this.isReadOnly = false,
   });
 
   @override

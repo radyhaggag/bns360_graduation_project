@@ -232,6 +232,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "مرحبًا بك مرة أخرى لتسجيل الدخول إلى حسابك"),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "logout_message": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد تسجيل الخروج؟"),
         "map": MessageLookupByLibrary.simpleMessage("الخريطة"),
         "maxLength_validation_message": m2,
         "max_no_of_image_uploads": m3,

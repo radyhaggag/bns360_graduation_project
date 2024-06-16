@@ -1,11 +1,11 @@
-import '../utils/app_colors.dart';
-import '../utils/assets/app_images.dart';
-import 'custom_shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/app_colors.dart';
+import '../utils/assets/app_images.dart';
 import '../utils/extensions/context.dart';
+import 'custom_shimmer.dart';
 
 class MainNetworkImage extends StatelessWidget {
   const MainNetworkImage({
@@ -133,6 +133,7 @@ class _BuildImage extends StatelessWidget {
 
         return const SizedBox.shrink();
       },
+      
     );
   }
 }

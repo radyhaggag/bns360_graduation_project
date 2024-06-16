@@ -21,11 +21,9 @@ class CraftsmenBuilder extends StatelessWidget {
     return BlocBuilder<CraftsBloc, CraftsState>(
       builder: (context, state) {
         final items = context.read<CraftsBloc>().items;
-        final craftsmen = context.read<CraftsBloc>().craftsmen;
 
         return DataStateWidget(
-          isLoading:
-              state is GetCraftItemsByIdLoadingState || craftsmen == null,
+          isLoading: state is GetCraftItemsByIdLoadingState,
           isError: state is GetCraftItemsByIdErrorState,
           isLoaded: state is GetCraftItemsByIdSuccessState,
           errorMessage:

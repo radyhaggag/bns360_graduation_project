@@ -1,13 +1,13 @@
-import '../../../config/navigation_service.dart';
-import '../icons/save_icon.dart';
-import '../../../features/saved_items/presentation/bloc/saved_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../config/navigation_service.dart';
 import '../../../config/route_config.dart';
+import '../../../features/saved_items/presentation/bloc/saved_bloc.dart';
 import '../../shared_data/entities/property_entity.dart';
 import '../custom_slider/custom_slider.dart';
+import '../icons/save_icon.dart';
 
 class PropertyCardImagesSection extends StatelessWidget {
   const PropertyCardImagesSection({
@@ -37,6 +37,7 @@ class PropertyCardImagesSection extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
+            if (!isMiniMode) return;
             Navigator.of(context)
                 .pushNamed(
               Routes.propertyDetails,

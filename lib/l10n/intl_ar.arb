@@ -271,5 +271,6 @@
   "for_support": "للدعم والمساعدة",
   "holiday": "عطلة",
   "no_business_found": "لم يتم العثور على نشاطات تجارية",
-  "no_services_found": "لم يتم العثور على خدمات"
+  "no_services_found": "لم يتم العثور على خدمات",
+  "logout_message": "هل أنت متأكد أنك تريد تسجيل الخروج؟"
 }

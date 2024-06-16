@@ -40,6 +40,14 @@ class ContactWithBottomSheet extends StatelessWidget {
     );
   }
 
+  List<String> get phones {
+    if (phoneNumber == null) return [];
+    if (phoneNumber!.contains("-")) {
+      return phoneNumber!.split("- ");
+    }
+    return [phoneNumber!];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -55,10 +63,12 @@ class ContactWithBottomSheet extends StatelessWidget {
             const SizedBox(height: 10),
           ],
           if (phoneNumber != null) ...[
-            _CallItem(
-              phoneNumber: phoneNumber!,
-            ),
-            const SizedBox(height: 10),
+            for (final phone in phones) ...[
+              _CallItem(
+                phoneNumber: phone,
+              ),
+              const SizedBox(height: 10),
+            ],
           ],
           CustomElevatedButton(
             label: S.of(context).cancel,
@@ -84,7 +94,7 @@ class _CallItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        launchUrl(Uri.parse("tel://$firstPhone"));
+        launchUrl(Uri.parse("tel://$phoneNumber"));
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -111,13 +121,6 @@ class _CallItem extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String get firstPhone {
-    if (phoneNumber.contains("-")) {
-      return phoneNumber.split("- ")[0];
-    }
-    return phoneNumber;
   }
 }
 

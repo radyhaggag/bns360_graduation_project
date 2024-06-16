@@ -1,6 +1,6 @@
 abstract class AppEndpoints {
   static String get baseUrl {
-    return "http://bns360.runasp.net";
+    return "http://officialbns360.runasp.net";
     // if (!AppConfig().isDev) {
     //   return "http://graduationbns360.runasp.net";
     // } else {

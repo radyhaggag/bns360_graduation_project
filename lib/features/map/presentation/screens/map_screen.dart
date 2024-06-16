@@ -80,6 +80,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   _onTap(double lat, double lng) {
+    if (widget.mapParams?.isReadOnly == true) return;
     selectedPoint = LatLng(lat, lng);
 
     widget.mapParams?.onTap?.call(lat, lng);
@@ -230,7 +231,9 @@ class _MapScreenState extends State<MapScreen> {
       },
       backgroundColor: AppColors.primary,
       foregroundColor: AppColors.white,
-      child: const Icon(Icons.check),
+      child: (widget.mapParams?.isReadOnly == true)
+          ? const Icon(Icons.close)
+          : const Icon(Icons.check),
     );
   }
 }

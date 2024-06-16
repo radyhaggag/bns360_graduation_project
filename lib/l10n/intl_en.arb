@@ -273,5 +273,6 @@
   "for_support": "For Support",
   "holiday": "Holiday",
   "no_business_found": "No business found",
-  "no_services_found": "No services found"
+  "no_services_found": "No services found",
+  "logout_message": "Are you sure you want to log out?"
 }

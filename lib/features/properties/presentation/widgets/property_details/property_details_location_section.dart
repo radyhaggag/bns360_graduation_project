@@ -1,6 +1,6 @@
-import '../../../../../core/helpers/localization_helper.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/buttons/map_btn.dart';
@@ -33,6 +33,7 @@ class PropertyDetailsLocationSection extends StatelessWidget {
             lat: propertyEntity.latitude,
             lng: propertyEntity.longitude,
             location: getAddress(context),
+            isReadOnly: true,
           ),
         )
       ],

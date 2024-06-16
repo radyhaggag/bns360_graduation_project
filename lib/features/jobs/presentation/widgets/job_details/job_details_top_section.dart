@@ -36,18 +36,21 @@ class JobDetailsTopSection extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const CustomBackButton(
-                  color: AppColors.white,
-                ),
-                SaveIcon(
-                  notSavedColor: AppColors.white,
-                  itemId: jobEntity.id,
-                  isJob: true,
-                ),
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const CustomBackButton(
+                    color: AppColors.white,
+                  ),
+                  SaveIcon(
+                    notSavedColor: AppColors.white,
+                    itemId: jobEntity.id,
+                    isJob: true,
+                  ),
+                ],
+              ),
             ),
             ClipOval(
               child: MainNetworkImage(

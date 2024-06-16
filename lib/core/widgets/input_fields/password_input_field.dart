@@ -44,7 +44,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
         RegExp(r'[A-Z]').hasMatch(password),
         RegExp(r'[a-z]').hasMatch(password),
         RegExp(r'\d').hasMatch(password),
-        RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password),
+        RegExp(r'[-_!@#$%^&*(),.?":{}|<>]').hasMatch(password),
       ];
 
   @override
@@ -75,14 +75,14 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
                     Icon(
                       Icons.check,
                       color: AppColors.green,
-                      size: 15.r,
+                      size: 20.r,
                     )
                   else
                     const SizedBox.shrink(),
                   Text(
                     "${isRequirementValid(password)[i] ? "" : "\t-"} ${passwordRequirements[i]}",
                     style: context.textTheme.bodySmall?.copyWith(
-                      fontSize: AppFontSize.details,
+                      fontSize: AppFontSize.body,
                     ),
                   ),
                 ],

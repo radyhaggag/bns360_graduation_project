@@ -37,6 +37,7 @@ class _CategoryItemLocation extends StatelessWidget {
             location: location,
             lat: categoryItemEntity.latitude,
             lng: categoryItemEntity.longitude,
+            isReadOnly: true,
           ),
         ),
       ],

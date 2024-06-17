@@ -1,5 +1,4 @@
 import '../../providers/app_provider.dart';
-
 import '../../utils/enums/job_type.dart';
 import '../entities/job_entity.dart';
 import 'contact_model.dart';
@@ -22,7 +21,6 @@ class JobModel extends JobEntity {
     required super.workHours,
     required super.timeAddedjob,
     required super.userId,
-    super.isBelongToMe,
   });
 
   factory JobModel.fromJson(Map<String, dynamic> json) {
@@ -65,7 +63,6 @@ class JobModel extends JobEntity {
       salary: entity.salary,
       type: entity.type,
       workHours: entity.workHours,
-      isBelongToMe: entity.isBelongToMe,
       timeAddedjob: entity.timeAddedjob,
       userId: entity.userId,
     );

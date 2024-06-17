@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:equatable/equatable.dart';
 
@@ -33,7 +34,9 @@ class CategoryItemEntity extends Equatable {
 
   final ReviewSummaryEntity? reviewSummary; // for ui
 
-  final bool isBelongToMe;
+  bool get isBelongToMe {
+    return userId == AppProvider().getProfile()?.id;
+  }
 
   const CategoryItemEntity({
     required this.userId,
@@ -60,7 +63,6 @@ class CategoryItemEntity extends Equatable {
     this.businessImageName3,
     this.businessImageName4,
     this.reviewSummary,
-    this.isBelongToMe = false,
   });
 
   List<String> get businessImages {
@@ -94,7 +96,6 @@ class CategoryItemEntity extends Equatable {
     String? businessImageName2,
     String? businessImageName3,
     String? businessImageName4,
-    bool? isBelongToMe,
     double? longitude,
     double? latitude,
     bool removeImages = false,
@@ -131,7 +132,6 @@ class CategoryItemEntity extends Equatable {
           removeImages ? null : businessImageName3 ?? this.businessImageName3,
       businessImageName4:
           removeImages ? null : businessImageName4 ?? this.businessImageName4,
-      isBelongToMe: isBelongToMe ?? this.isBelongToMe,
       longitude: longitude ?? this.longitude,
       latitude: latitude ?? this.latitude,
       reviewSummary: reviewSummary ?? this.reviewSummary,
@@ -166,8 +166,7 @@ class CategoryItemEntity extends Equatable {
 
   bool get isWorking24Hour => opening == 0 && closing == 24;
   bool get _isHasNotHoliday => holidays == WorkDay.none.id;
-  bool get isWorking24HourExceptHoliday =>
-      isWorking24Hour && !_isHasNotHoliday;
+  bool get isWorking24HourExceptHoliday => isWorking24Hour && !_isHasNotHoliday;
   bool get isAlwaysWorkingAndHasNotHolidays =>
       isWorking24Hour && _isHasNotHoliday;
 }

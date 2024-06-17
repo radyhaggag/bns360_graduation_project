@@ -29,11 +29,11 @@ class SubmitBusinessButton extends StatelessWidget {
             final businessImages = context.read<MyBusinessBloc>().pickedImages;
 
             bool isValid() {
-              if (form.valid && profileImage != null) {
+              if (form.valid) {
                 if (isUpdate) {
                   return true;
                 } else {
-                  return businessImages.isNotEmpty;
+                  return businessImages.isNotEmpty && profileImage != null;
                 }
               } else {
                 return false;

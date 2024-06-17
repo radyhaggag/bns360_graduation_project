@@ -66,15 +66,19 @@ class MyBusinessItemsBuilder extends StatelessWidget {
                   imageUrl: item.profileImageName,
                   numOfRatings: item.reviewSummary?.totalReviews ?? 0,
                   starsCount: item.reviewSummary?.averageRating ?? 0,
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(
+                  onPressed: () async {
+                    await Navigator.of(context).pushNamed(
                       Routes.categoryItem,
                       arguments: CategoryItemScreenParams(
                         itemId: item.id,
-                        categoryItemEntity: item.copyWith(isBelongToMe: true),
+                        categoryItemEntity: item,
                         isBelongToMe: true,
                       ),
                     );
+
+                    if (context.mounted) {
+                      context.read<MyBusinessBloc>().add(GetMyBusinessEvent());
+                    }
                   },
                   moreWidget: MoreIcon(
                     onDelete: () {

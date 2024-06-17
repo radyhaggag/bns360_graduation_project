@@ -1,13 +1,13 @@
-import '../../../../core/utils/extensions/context.dart';
-import '../../../../core/utils/extensions/media_query.dart';
-import '../../../../core/widgets/messages/error_message_widget.dart';
-import '../bloc/craftsman_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/center_progress_indicator.dart';
+import '../../../../core/widgets/messages/error_message_widget.dart';
 import '../../domain/params/craftsman_screen_params.dart';
+import '../bloc/craftsman_bloc.dart';
 import '../widgets/craftsman_body.dart';
 
 class CraftsmanScreen extends StatefulWidget {
@@ -62,7 +62,8 @@ class _CraftsmanScreenState extends State<CraftsmanScreen> {
           return states.contains(current.runtimeType);
         },
         builder: (context, state) {
-          final entity = widget.screenParams.craftsmanEntity;
+          final entity = context.read<CraftsmanBloc>().craftsman ??
+              widget.screenParams.craftsmanEntity;
 
           if (entity != null) {
             return CraftsmanBody(

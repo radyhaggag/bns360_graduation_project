@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/features/category_item/presentation/bloc/category_item_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -46,11 +48,19 @@ class CategoryItemProfileSection extends StatelessWidget {
           CustomTextButton(
             label: S.of(context).edit,
             width: 50.w,
-            onPressed: () {
-              Navigator.of(context).pushNamed(
+            onPressed: () async {
+              await Navigator.of(context).pushNamed(
                 Routes.editBusiness,
                 arguments: categoryItemEntity,
               );
+
+              if (!context.mounted) return;
+
+              context.read<CategoryItemBloc>().add(
+                    GetCategoryItemEvent(
+                      itemId: categoryItemEntity.id,
+                    ),
+                  );
             },
           )
         else ...[

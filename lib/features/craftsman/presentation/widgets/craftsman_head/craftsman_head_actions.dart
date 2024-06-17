@@ -1,10 +1,11 @@
-import '../../../../../core/providers/app_provider.dart';
-import '../../../../../generated/l10n.dart';
+import 'package:bns360_graduation_project/features/craftsman/presentation/bloc/craftsman_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
+import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../../core/utils/enums.dart';
@@ -13,6 +14,7 @@ import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/language.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../core/widgets/icons/favorite_icon.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../conversations/domain/params/conversation_screen_params.dart';
 
 class CraftsmanHeadActions extends StatelessWidget {
@@ -29,26 +31,26 @@ class CraftsmanHeadActions extends StatelessWidget {
       child: !craftsmanEntity.isBelongToMe
           ? Row(
               children: [
-                if(!AppProvider().isGuest)
-                _BuildBtn(
-                  iconData: FeatherIcons.messageCircle,
-                  onPressed: () {
-                    final params = ConversationScreenParams(
-                      participantEntity: ParticipantEntity(
-                        id: craftsmanEntity.userId.toString(),
-                        nameEN: craftsmanEntity.nameEN,
-                        nameAR: craftsmanEntity.nameAR,
-                        imageUrl: craftsmanEntity.profileImageUrl,
-                        userType: UserType.serviceProvider.id,
-                      ),
-                      craftsmanEntity: craftsmanEntity,
-                    );
-                    Navigator.of(context).pushNamed(
-                      Routes.conversation,
-                      arguments: params,
-                    );
-                  },
-                ),
+                if (!AppProvider().isGuest)
+                  _BuildBtn(
+                    iconData: FeatherIcons.messageCircle,
+                    onPressed: () {
+                      final params = ConversationScreenParams(
+                        participantEntity: ParticipantEntity(
+                          id: craftsmanEntity.userId.toString(),
+                          nameEN: craftsmanEntity.nameEN,
+                          nameAR: craftsmanEntity.nameAR,
+                          imageUrl: craftsmanEntity.profileImageUrl,
+                          userType: UserType.serviceProvider.id,
+                        ),
+                        craftsmanEntity: craftsmanEntity,
+                      );
+                      Navigator.of(context).pushNamed(
+                        Routes.conversation,
+                        arguments: params,
+                      );
+                    },
+                  ),
                 const SizedBox(width: 10),
                 FavoriteIcon(
                   addMargin: true,
@@ -63,11 +65,19 @@ class CraftsmanHeadActions extends StatelessWidget {
           : CustomTextButton(
               label: S.of(context).edit,
               height: 30.h,
-              onPressed: () {
-                Navigator.of(context).pushNamed(
+              onPressed: () async {
+                await Navigator.of(context).pushNamed(
                   Routes.editService,
                   arguments: craftsmanEntity,
                 );
+
+                if (!context.mounted) return;
+
+                context.read<CraftsmanBloc>().add(
+                      GetCraftsmanEvent(
+                        itemId: craftsmanEntity.id,
+                      ),
+                    );
               },
               width: 100.w,
             ),

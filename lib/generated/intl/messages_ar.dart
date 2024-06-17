@@ -420,6 +420,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("تحديث"),
         "upload_business_images":
             MessageLookupByLibrary.simpleMessage("تحميل صور النشاط التجاري"),
+        "upload_main_business_image": MessageLookupByLibrary.simpleMessage(
+            "تحديد الصورة الرئيسية للنشاط التجاري"),
         "upload_main_service_image": MessageLookupByLibrary.simpleMessage(
             "تحديد الصورة الرئيسية للخدمة"),
         "upload_property_images":

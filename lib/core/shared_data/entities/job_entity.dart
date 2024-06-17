@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../utils/enums/job_type.dart';
@@ -18,14 +19,12 @@ class JobEntity extends Equatable {
   final num salary;
   final PublisherDetailsEntity publisherDetails;
   final ContactEntity? contacts;
-  final bool isBelongToMe;
   final DateTime timeAddedjob;
   final String userId;
 
   const JobEntity({
     required this.id,
     required this.contacts,
-    this.isBelongToMe = false,
     required this.jobDescriptionArabic,
     required this.jobDescriptionEnglish,
     required this.jobTitleArabic,
@@ -69,10 +68,13 @@ class JobEntity extends Equatable {
       salary: salary ?? this.salary,
       publisherDetails: publisherDetails ?? this.publisherDetails,
       contacts: contacts ?? this.contacts,
-      isBelongToMe: isBelongToMe ?? this.isBelongToMe,
       timeAddedjob: timeAddedjob,
       userId: userId,
     );
+  }
+
+  bool get isBelongToMe {
+    return userId == AppProvider().getProfile()?.id;
   }
 
   @override

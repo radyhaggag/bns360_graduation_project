@@ -1,12 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/utils/extensions/context.dart';
 import '../../../../core/utils/extensions/media_query.dart';
 import '../../../../core/widgets/center_progress_indicator.dart';
 import '../../../../core/widgets/messages/error_message_widget.dart';
-import '../bloc/category_item_bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../domain/params/category_item_screen_params.dart';
+import '../bloc/category_item_bloc.dart';
 import '../widgets/category_item_body.dart';
 
 class CategoryItemScreen extends StatefulWidget {
@@ -60,7 +60,8 @@ class _CategoryItemScreenState extends State<CategoryItemScreen> {
           return states.contains(current.runtimeType);
         },
         builder: (context, state) {
-          final entity = widget.screenParams.categoryItemEntity;
+          final entity = context.read<CategoryItemBloc>().categoryItem ??
+              widget.screenParams.categoryItemEntity;
 
           if (entity != null) {
             return CategoryItemBody(

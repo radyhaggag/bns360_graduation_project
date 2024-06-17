@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:equatable/equatable.dart';
 
@@ -26,7 +27,6 @@ class CraftsmanEntity extends Equatable {
   final String? imageName2;
   final String? imageName3;
   final String? imageName4;
-  final bool isBelongToMe;
   final String userName;
   final String? userImage;
   final ReviewSummaryEntity? reviewSummary; // for ui
@@ -53,7 +53,6 @@ class CraftsmanEntity extends Equatable {
     required this.imageName4,
     required this.userName,
     this.userImage,
-    this.isBelongToMe = false,
     this.reviewSummary,
   });
 
@@ -107,7 +106,6 @@ class CraftsmanEntity extends Equatable {
       imageName2: removeImages ? null : imageName2 ?? this.imageName2,
       imageName3: removeImages ? null : imageName3 ?? this.imageName3,
       imageName4: removeImages ? null : imageName4 ?? this.imageName4,
-      isBelongToMe: isBelongToMe ?? this.isBelongToMe,
       reviewSummary: reviewSummary ?? this.reviewSummary,
       userName: userName ?? this.userName,
       userImage: userImage ?? this.userImage,
@@ -130,4 +128,8 @@ class CraftsmanEntity extends Equatable {
   bool get isWorking24HourExceptHoliday => isWorking24Hour && !_isHasNotHoliday;
   bool get isAlwaysWorkingAndHasNotHolidays =>
       isWorking24Hour && _isHasNotHoliday;
+
+  bool get isBelongToMe {
+    return userId == AppProvider().getProfile()?.id;
+  }
 }

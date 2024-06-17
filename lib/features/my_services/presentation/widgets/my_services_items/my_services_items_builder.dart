@@ -69,14 +69,18 @@ class MyServicesItemsBuilder extends StatelessWidget {
                 imageUrl: item.profileImageUrl,
                 numOfRatings: item.reviewSummary!.totalReviews,
                 starsCount: item.reviewSummary!.averageRating,
-                onPressed: () {
-                  Navigator.of(context).pushNamed(
+                onPressed: () async {
+                  await Navigator.of(context).pushNamed(
                     Routes.craftsman,
                     arguments: CraftsmanScreenParams(
                       itemId: item.id,
                       craftsmanEntity: item.copyWith(isBelongToMe: true),
                     ),
                   );
+
+                  if (context.mounted) {
+                    context.read<MyServicesBloc>().add(GetMyServicesEvent());
+                  }
                 },
                 moreWidget: MoreIcon(
                   onDelete: () {

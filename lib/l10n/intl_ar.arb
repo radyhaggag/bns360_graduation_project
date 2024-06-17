@@ -204,6 +204,7 @@
   "business_address": "عنوان النشاط التجاري",
   "enter_business_address": "أدخل عنوان النشاط التجاري",
   "upload_business_images": "تحميل صور النشاط التجاري",
+  "upload_main_business_image": "تحديد الصورة الرئيسية للنشاط التجاري",
   "business_name": "اسم النشاط التجاري",
   "enter_business_name": "أدخل اسم النشاط التجاري",
   "delete_business_images": "هل تريد حذف صور النشاط التجاري؟",

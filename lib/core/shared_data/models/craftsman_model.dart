@@ -27,7 +27,6 @@ class CraftsmanModel extends CraftsmanEntity {
     super.imageName3,
     super.imageName4,
     super.reviewSummary,
-    super.isBelongToMe,
   });
 
   factory CraftsmanModel.fromJson(Map<String, dynamic> json) {
@@ -80,7 +79,6 @@ class CraftsmanModel extends CraftsmanEntity {
       imageName2: entity.imageName2,
       imageName3: entity.imageName3,
       imageName4: entity.imageName4,
-      isBelongToMe: entity.isBelongToMe,
       reviewSummary: entity.reviewSummary,
       userName: entity.userName,
       userImage: entity.userImage,

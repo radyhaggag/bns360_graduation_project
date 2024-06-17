@@ -95,10 +95,10 @@ class InfoCard extends StatelessWidget {
 
   String message(BuildContext context) {
     if (craftsmanEntity.isAlwaysWorkingAndHasNotHolidays) {
-      return S.of(context).business_no_holidays;
+      return S.of(context).craftsman_no_holidays;
     } else if (craftsmanEntity.isWorking24HourExceptHoliday) {
       final holiday = WorkDay.localizedName(context, craftsmanEntity.holidays);
-      return "${S.of(context).business_specified_holidays} ($holiday)";
+      return "${S.of(context).craftsman_specified_holidays} ($holiday)";
     } else {
       return "";
     }

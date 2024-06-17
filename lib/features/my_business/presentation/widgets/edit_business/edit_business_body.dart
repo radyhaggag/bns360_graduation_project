@@ -51,6 +51,12 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
           lng: widget.categoryItemEntity.longitude,
         ));
 
+    if (widget.categoryItemEntity.isWorking24Hour) {
+      context.read<MyBusinessBloc>().add(const SetIsAlwaysAvailableValueEvent(
+            isAlwaysAvailable: true,
+          ));
+    }
+
     final phoneNumber = widget.categoryItemEntity.contacts.phoneNumber;
     final phoneOne = phoneNumber?.contains("-") ?? false
         ? phoneNumber?.split("-")[0]
@@ -123,41 +129,49 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kHorizontalPadding,
-      ),
-      child: ReactiveFormBuilder(
-        form: () => form,
-        builder: (context, formGroup, child) => child!,
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            Center(
-              child: Text(
-                S.of(context).edit_business,
-                style: context.textTheme.titleMedium?.copyWith(
-                  color: context.theme.cardColor,
-                  fontSize: AppFontSize.titleMedium,
+    return BlocListener<MyBusinessBloc, MyBusinessState>(
+      listener: (context, state) {
+        if (state is IsAlwaysWorkingToggledState && state.isAlwaysWorking) {
+          form.controls['from']!.value = "0";
+          form.controls['to']!.value = "24";
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: kHorizontalPadding,
+        ),
+        child: ReactiveFormBuilder(
+          form: () => form,
+          builder: (context, formGroup, child) => child!,
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              Center(
+                child: Text(
+                  S.of(context).edit_business,
+                  style: context.textTheme.titleMedium?.copyWith(
+                    color: context.theme.cardColor,
+                    fontSize: AppFontSize.titleMedium,
+                  ),
                 ),
               ),
-            ),
-            20.verticalSpace,
-            EditBusinessForm(
-              form: form,
-              categoryItemEntity: widget.categoryItemEntity,
-            ),
-            10.verticalSpace,
-            const UploadMainBusinessImageSection(),
-            10.verticalSpace,
-            const UploadBusinessImagesSection(),
-            20.verticalSpace,
-            SubmitBusinessButton(
-              onAdd: _submitForm,
-              isUpdate: true,
-            ),
-            20.verticalSpace,
-          ],
+              20.verticalSpace,
+              EditBusinessForm(
+                form: form,
+                categoryItemEntity: widget.categoryItemEntity,
+              ),
+              10.verticalSpace,
+              const UploadMainBusinessImageSection(),
+              10.verticalSpace,
+              const UploadBusinessImagesSection(),
+              20.verticalSpace,
+              SubmitBusinessButton(
+                onAdd: _submitForm,
+                isUpdate: true,
+              ),
+              20.verticalSpace,
+            ],
+          ),
         ),
       ),
     );

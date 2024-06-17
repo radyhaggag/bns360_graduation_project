@@ -39,10 +39,16 @@ class CategoryItemInfoSection extends StatelessWidget {
       ),
       child: Column(
         children: [
+          if (categoryItemEntity.isAlwaysWorkingAndHasNotHolidays ||
+              categoryItemEntity.isWorking24HourExceptHoliday) ...[
+            InfoCard(categoryItemEntity: categoryItemEntity),
+            const SizedBox(height: 15),
+          ],
           _ItemStatusWidget(
             start: categoryItemEntity.opening,
             end: categoryItemEntity.closing,
             holiday: categoryItemEntity.holidays,
+            isWorking24Hours: categoryItemEntity.isWorking24Hour,
           ),
           const SizedBox(height: 15),
           _CategoryItemLocation(
@@ -59,5 +65,42 @@ class CategoryItemInfoSection extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class InfoCard extends StatelessWidget {
+  const InfoCard({
+    super.key,
+    required this.categoryItemEntity,
+  });
+
+  final CategoryItemEntity categoryItemEntity;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          Icons.info,
+          color: context.theme.cardColor.withAlpha(80),
+        ),
+        const SizedBox(width: 10),
+        Flexible(
+          child: Text(message(context)),
+        ),
+      ],
+    );
+  }
+
+  String message(BuildContext context) {
+    if (categoryItemEntity.isAlwaysWorkingAndHasNotHolidays) {
+      return S.of(context).business_no_holidays;
+    } else if (categoryItemEntity.isWorking24HourExceptHoliday) {
+      final holiday =
+          WorkDay.localizedName(context, categoryItemEntity.holidays);
+      return "${S.of(context).business_specified_holidays} ($holiday)";
+    } else {
+      return "";
+    }
   }
 }

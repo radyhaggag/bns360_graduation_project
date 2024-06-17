@@ -78,3 +78,9 @@ class BusinessLocationUpdatedState extends MyBusinessState {
     required this.lng,
   });
 }
+
+class IsAlwaysWorkingToggledState extends MyBusinessState {
+  final bool isAlwaysWorking;
+
+  const IsAlwaysWorkingToggledState({required this.isAlwaysWorking});
+}

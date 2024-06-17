@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
@@ -48,6 +49,8 @@ class _MapScreenState extends State<MapScreen> {
   void initState() {
     super.initState();
 
+    isInBottomSheet = widget.mapParams?.isReadOnly ?? false;
+
     if (widget.mapParams?.lat == null || widget.mapParams?.lng == null) {
       _getCurrentLocation();
     } else {
@@ -60,6 +63,13 @@ class _MapScreenState extends State<MapScreen> {
     _kGooglePlex = CameraPosition(
       target: selectedPoint,
       zoom: zoom,
+    );
+
+    markers.add(
+      Marker(
+        markerId: const MarkerId('1'),
+        position: selectedPoint,
+      ),
     );
   }
 
@@ -207,13 +217,46 @@ class _MapScreenState extends State<MapScreen> {
         actions: const [SizedBox(width: 20)],
       ),
       floatingActionButton: _buildFloatingActionBtn(context),
-      body: MapWidget(
-        completer: _completer,
-        zoomControlsEnabled: false,
-        markers: markers,
-        onTap: _onTap,
-        kGooglePlex: _kGooglePlex,
-        onMapCreated: _onMapCreated,
+      body: Stack(
+        alignment: AlignmentDirectional.bottomStart,
+        children: [
+          MapWidget(
+            completer: _completer,
+            zoomControlsEnabled: false,
+            markers: markers,
+            onTap: _onTap,
+            kGooglePlex: _kGooglePlex,
+            onMapCreated: _onMapCreated,
+          ),
+          if ((widget.mapParams?.isReadOnly == true))
+            Container(
+              margin: const EdgeInsets.all(8),
+              child: CustomIconButton(
+                icon: const Icon(Icons.location_searching_outlined),
+                backgroundColor: context.theme.cardColor,
+                foregroundColor: context.theme.highlightColor,
+                onPressed: () {
+                  final params = widget.mapParams!;
+                  title = params.location;
+                  if (params.lat != null && params.lng != null) {
+                    selectedPoint = LatLng(params.lat!, params.lng!);
+                  }
+                  _kGooglePlex = CameraPosition(
+                    target: selectedPoint,
+                    zoom: zoom,
+                  );
+                  controller?.animateCamera(
+                    CameraUpdate.newCameraPosition(
+                      CameraPosition(
+                        target: selectedPoint,
+                        zoom: zoom,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
+        ],
       ),
     );
   }

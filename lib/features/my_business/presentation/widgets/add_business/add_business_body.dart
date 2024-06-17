@@ -76,40 +76,47 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kHorizontalPadding,
-      ),
-      child: ReactiveFormBuilder(
-        form: () => form,
-        builder: (context, formGroup, child) => child!,
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            Center(
-              child: Text(
-                S.of(context).add_business,
-                style: context.textTheme.titleMedium?.copyWith(
-                  color: context.theme.cardColor,
-                  fontSize: AppFontSize.titleMedium,
+    return BlocListener<MyBusinessBloc, MyBusinessState>(
+      listener: (context, state) {
+ if (state is IsAlwaysWorkingToggledState && state.isAlwaysWorking) {
+          form.controls['from']!.value = "0";
+          form.controls['to']!.value = "24";
+        }      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: kHorizontalPadding,
+        ),
+        child: ReactiveFormBuilder(
+          form: () => form,
+          builder: (context, formGroup, child) => child!,
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              Center(
+                child: Text(
+                  S.of(context).add_business,
+                  style: context.textTheme.titleMedium?.copyWith(
+                    color: context.theme.cardColor,
+                    fontSize: AppFontSize.titleMedium,
+                  ),
                 ),
               ),
-            ),
-            20.verticalSpace,
-            AddBusinessForm(
-              form: form,
-            ),
-            10.verticalSpace,
-            const UploadMainBusinessImageSection(),
-            10.verticalSpace,
-            const UploadBusinessImagesSection(),
-            20.verticalSpace,
-            SubmitBusinessButton(
-              onAdd: _submitForm,
-              isUpdate: false,
-            ),
-            20.verticalSpace,
-          ],
+              20.verticalSpace,
+              AddBusinessForm(
+                form: form,
+              ),
+              10.verticalSpace,
+              const UploadMainBusinessImageSection(),
+              10.verticalSpace,
+              const UploadBusinessImagesSection(),
+              20.verticalSpace,
+              SubmitBusinessButton(
+                onAdd: _submitForm,
+                isUpdate: false,
+              ),
+              20.verticalSpace,
+            ],
+          ),
         ),
       ),
     );
@@ -117,7 +124,8 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
 
   void _submitForm() {
     final formControls = form.controls;
-    String phoneNumber = (formControls['phoneNumber']!.value as String).withCountryCode;
+    String phoneNumber =
+        (formControls['phoneNumber']!.value as String).withCountryCode;
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
     if (phoneNumber2 != null) {
       phoneNumber += "-${phoneNumber2.withCountryCode}";

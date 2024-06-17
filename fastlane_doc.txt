@@ -164,3 +164,32 @@
 #  )
 # end
 # ```
+
+
+
+
+// You can run the app in development mode or prod mode by selecting the appropriate target from bottom left corner of VSCode.
+// Or by running the following commands in terminal:
+
+// To run the app in development mode, run the following command:
+// flutter run -t lib/main_development.dart --flavor=development
+
+// To run the app in prod mode, run the following command:
+// flutter run -t lib/main_production.dart --flavor=production
+
+// To build the apk in development mode, run the following command:
+// flutter build apk -t lib/main_development.dart --flavor=development
+
+// To build the apk in production mode, run the following command:
+// flutter build apk -t lib/main_production.dart --flavor=production
+
+// To build the appbundle in development mode, run the following command:
+// flutter build appbundle -t lib/main_development.dart --flavor=development
+
+// To build the appbundle in production mode, run the following command:
+// flutter build appbundle -t lib/main_production.dart --flavor=production
+
+// For IOS, replace apk with ios.
+// flutter build ios -t lib/main_production.dart --flavor=production
+//or
+// flutter build ios -t lib/main_development.dart --flavor=development

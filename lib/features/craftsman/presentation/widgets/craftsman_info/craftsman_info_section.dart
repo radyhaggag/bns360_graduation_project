@@ -37,10 +37,16 @@ class CraftsmanInfoSection extends StatelessWidget {
       ),
       child: Column(
         children: [
+          if (craftsmanEntity.isAlwaysWorkingAndHasNotHolidays ||
+              craftsmanEntity.isWorking24HourExceptHoliday) ...[
+            InfoCard(craftsmanEntity: craftsmanEntity),
+            const SizedBox(height: 15),
+          ],
           _ItemStatusWidget(
             start: craftsmanEntity.opening,
             end: craftsmanEntity.closing,
             holiday: craftsmanEntity.holidays,
+            isWorking24Hour: craftsmanEntity.isWorking24Hour,
           ),
           const SizedBox(height: 15),
           _CraftsmanLocation(
@@ -60,5 +66,41 @@ class CraftsmanInfoSection extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class InfoCard extends StatelessWidget {
+  const InfoCard({
+    super.key,
+    required this.craftsmanEntity,
+  });
+
+  final CraftsmanEntity craftsmanEntity;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(
+          Icons.info,
+          color: context.theme.cardColor.withAlpha(80),
+        ),
+        const SizedBox(width: 10),
+        Flexible(
+          child: Text(message(context)),
+        ),
+      ],
+    );
+  }
+
+  String message(BuildContext context) {
+    if (craftsmanEntity.isAlwaysWorkingAndHasNotHolidays) {
+      return S.of(context).business_no_holidays;
+    } else if (craftsmanEntity.isWorking24HourExceptHoliday) {
+      final holiday = WorkDay.localizedName(context, craftsmanEntity.holidays);
+      return "${S.of(context).business_specified_holidays} ($holiday)";
+    } else {
+      return "";
+    }
   }
 }

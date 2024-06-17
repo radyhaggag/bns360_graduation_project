@@ -279,5 +279,17 @@
   "business_owner_tooltip": "Manage your business profile and view past performance metrics. Add multiple businesses with detailed descriptions and contact information. Reach more customers and grow your business in the city.",
   "craftsman_tooltip": "Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills.",
   "url_site": "Your website URL",
-  "enter_url_site": "Enter your website URL"
+  "enter_url_site": "Enter your website URL",
+  "always_available": "Always available",
+  "always_available_question": "Are you always available?",
+  "yes": "Yes",
+  "no": "No",
+  "working_24_hours_question": "Do you work 24 hours a day?",
+  "business_no_holidays": "This business operates 24 hours a day and does not have any holidays.",
+  "business_specified_holidays": "This business operates 24 hours a day, except on specified holidays.",
+  "craftsman_no_holidays": "This Craftsman operates 24 hours a day and does not have any holidays.",
+  "craftsman_specified_holidays": "This Craftsman operates 24 hours a day, except on specified holidays.",
+  "business_not_full_24_no_holidays": "This business operates during specific hours daily and does not have any holidays.",
+  "craftsman_not_full_24_no_holidays": "This Craftsman operates during specific hours daily and does not have any holidays.",
+  "working_24_hours": "Working 24 hours"
 }

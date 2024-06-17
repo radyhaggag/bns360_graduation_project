@@ -73,3 +73,9 @@ class ServiceHolidayUpdatedState extends MyServicesState {
 
   const ServiceHolidayUpdatedState({required this.holiday});
 }
+
+class IsAlwaysWorkingToggledState extends MyServicesState {
+  final bool isAlwaysWorking;
+
+  const IsAlwaysWorkingToggledState({required this.isAlwaysWorking});
+}

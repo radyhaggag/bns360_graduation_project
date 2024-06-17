@@ -67,9 +67,16 @@ class DeleteMyBusinessEvent extends MyBusinessEvent {
   const DeleteMyBusinessEvent({required this.businessId});
 }
 
-
 class SelectBusinessHolidayEvent extends MyBusinessEvent {
   final WorkDay holiday;
 
   const SelectBusinessHolidayEvent({required this.holiday});
 }
+
+class SetIsAlwaysAvailableValueEvent extends MyBusinessEvent {
+  final bool isAlwaysAvailable;
+
+  const SetIsAlwaysAvailableValueEvent({
+    required this.isAlwaysAvailable,
+  });
+} 

@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/widgets/center_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,17 +25,17 @@ class MyBusinessItemsBuilder extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
       child: BlocBuilder<MyBusinessBloc, MyBusinessState>(
-        buildWhen: (previous, current) {
-          final states = [
-            GetMyBusinessLoadingState,
-            GetMyBusinessErrorState,
-            GetMyBusinessSuccessState,
-          ];
-          return states.contains(current.runtimeType);
-        },
         builder: (context, state) {
           final items = context.read<MyBusinessBloc>().myBusinessItems;
 
+          if (state is DeleteBusinessLoadingState) {
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: CenterProgressIndicator(
+                color: context.theme.cardColor,
+              ),
+            );
+          }
           return DataStateWidget(
             isLoading: state is GetMyBusinessLoadingState,
             isError: state is GetMyBusinessErrorState,

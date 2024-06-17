@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:equatable/equatable.dart';
 
 import 'contact_entity.dart';
@@ -123,4 +124,10 @@ class CraftsmanEntity extends Equatable {
 
     return images;
   }
+
+  bool get isWorking24Hour => opening == 0 && closing == 24;
+  bool get _isHasNotHoliday => holidays == WorkDay.none.id;
+  bool get isWorking24HourExceptHoliday => isWorking24Hour && !_isHasNotHoliday;
+  bool get isAlwaysWorkingAndHasNotHolidays =>
+      isWorking24Hour && _isHasNotHoliday;
 }

@@ -6,28 +6,15 @@ import '../../../../generated/l10n.dart';
 import '../utils/enums/work_days.dart';
 import '../utils/extensions/context.dart';
 
-class SelectHolidayDropdown extends StatefulWidget {
+class SelectHolidayDropdown extends StatelessWidget {
   const SelectHolidayDropdown({
     super.key,
-    this.initialHoliday = WorkDay.friday,
+    this.value = WorkDay.friday,
     required this.onChange,
   });
 
-  final WorkDay initialHoliday;
+  final WorkDay value;
   final Function(WorkDay holiday) onChange;
-
-  @override
-  State<SelectHolidayDropdown> createState() => _SelectHolidayDropdownState();
-}
-
-class _SelectHolidayDropdownState extends State<SelectHolidayDropdown> {
-  late WorkDay selectedHoliday;
-
-  @override
-  void initState() {
-    super.initState();
-    selectedHoliday = widget.initialHoliday;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,22 +27,22 @@ class _SelectHolidayDropdownState extends State<SelectHolidayDropdown> {
         ),
         10.verticalSpace,
         CustomDropdown<WorkDay>(
-          value: selectedHoliday,
+          value: value,
           onTapCallback: (value) {
-            setState(() => selectedHoliday = value);
-            widget.onChange(value);
+            onChange(value);
           },
           items: WorkDay.values.map((e) => e).toList(),
-          viewItems: WorkDay.values.map((e) => getTextValue(e)).toList(),
+          viewItems:
+              WorkDay.values.map((e) => getTextValue(context, e)).toList(),
           label: S.of(context).select_service_category,
-          textValue: getTextValue(selectedHoliday),
+          textValue: getTextValue(context, value),
           horizontalPadding: 0,
         ),
       ],
     );
   }
 
-  String getTextValue(WorkDay? holiday) {
-    return holiday?.name ?? '';
+  String getTextValue(BuildContext context, WorkDay? holiday) {
+    return WorkDay.localizedName(context, holiday?.id ?? WorkDay.none.id);
   }
 }

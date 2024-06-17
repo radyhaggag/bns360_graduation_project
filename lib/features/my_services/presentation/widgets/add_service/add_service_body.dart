@@ -74,40 +74,48 @@ class _AddServiceBodyState extends State<AddServiceBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kHorizontalPadding,
-      ),
-      child: ReactiveFormBuilder(
-        form: () => form,
-        builder: (context, formGroup, child) => child!,
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            Center(
-              child: Text(
-                S.of(context).add_service,
-                style: context.textTheme.titleMedium?.copyWith(
-                  color: context.theme.cardColor,
-                  fontSize: AppFontSize.titleMedium,
+    return BlocListener<MyServicesBloc, MyServicesState>(
+      listener: (context, state) {
+        if (state is IsAlwaysWorkingToggledState && state.isAlwaysWorking) {
+          form.controls['from']!.value = "0";
+          form.controls['to']!.value = "24";
+        }
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: kHorizontalPadding,
+        ),
+        child: ReactiveFormBuilder(
+          form: () => form,
+          builder: (context, formGroup, child) => child!,
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              Center(
+                child: Text(
+                  S.of(context).add_service,
+                  style: context.textTheme.titleMedium?.copyWith(
+                    color: context.theme.cardColor,
+                    fontSize: AppFontSize.titleMedium,
+                  ),
                 ),
               ),
-            ),
-            20.verticalSpace,
-            AddServiceForm(
-              form: form,
-            ),
-            10.verticalSpace,
-            const UploadMainServiceImageSection(),
-            10.verticalSpace,
-            const UploadServiceImagesSection(),
-            20.verticalSpace,
-            SubmitServiceButton(
-              onAdd: _submitForm,
-              isUpdate: false,
-            ),
-            20.verticalSpace,
-          ],
+              20.verticalSpace,
+              AddServiceForm(
+                form: form,
+              ),
+              10.verticalSpace,
+              const UploadMainServiceImageSection(),
+              10.verticalSpace,
+              const UploadServiceImagesSection(),
+              20.verticalSpace,
+              SubmitServiceButton(
+                onAdd: _submitForm,
+                isUpdate: false,
+              ),
+              20.verticalSpace,
+            ],
+          ),
         ),
       ),
     );

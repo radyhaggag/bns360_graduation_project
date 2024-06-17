@@ -9,7 +9,8 @@ enum WorkDay {
   wednesday(3),
   thursday(4),
   friday(5),
-  saturday(6);
+  saturday(6),
+  none(7);
 
   final int id;
 
@@ -36,7 +37,7 @@ enum WorkDay {
       case 'Saturday':
         return WorkDay.saturday;
       default:
-        throw Exception('Invalid work day');
+        throw WorkDay.none;
     }
   }
 
@@ -54,30 +55,32 @@ enum WorkDay {
       case 4:
         return t.thursday;
       case 5:
-        return  t.friday;
+        return t.friday;
       case 6:
         return t.saturday;
+      case 7:
+        return t.always_available;
       default:
         return '';
     }
   }
 }
 
-extension WorkDaysExtension on WorkDay {
-  int get id {
-    switch (this) {
-      case WorkDay.monday:
-        return 1;
-      case WorkDay.tuesday:
-        return 2;
-      case WorkDay.wednesday:
-        return 3;
-      case WorkDay.thursday:
-        return 4;
-      case WorkDay.friday:
-        return 5;
-      default:
-        throw Exception('Invalid work day');
-    }
-  }
-}
+// extension WorkDaysExtension on WorkDay {
+//   int get id {
+//     switch (this) {
+//       case WorkDay.monday:
+//         return 1;
+//       case WorkDay.tuesday:
+//         return 2;
+//       case WorkDay.wednesday:
+//         return 3;
+//       case WorkDay.thursday:
+//         return 4;
+//       case WorkDay.friday:
+//         return 5;
+//       default:
+//         throw Exception('Invalid work day');
+//     }
+//   }
+// }

@@ -61,3 +61,11 @@ class SelectServiceHolidayEvent extends MyServicesEvent {
 
   const SelectServiceHolidayEvent({required this.holiday});
 }
+
+class SetIsAlwaysAvailableValueEvent extends MyServicesEvent {
+  final bool isAlwaysAvailable;
+
+  const SetIsAlwaysAvailableValueEvent({
+    required this.isAlwaysAvailable,
+  });
+}

@@ -27,14 +27,23 @@ class SubmitBusinessButton extends StatelessWidget {
             final profileImage =
                 context.read<MyBusinessBloc>().mainBusinessImage;
             final businessImages = context.read<MyBusinessBloc>().pickedImages;
+
+            bool isValid() {
+              if (form.valid && profileImage != null) {
+                if (isUpdate) {
+                  return true;
+                } else {
+                  return businessImages.isNotEmpty;
+                }
+              } else {
+                return false;
+              }
+            }
+
             return CustomElevatedButton(
               label:
                   isUpdate ? S.of(context).update : S.of(context).add_business,
-              onPressed: (form.valid &&
-                      profileImage != null &&
-                      businessImages.isNotEmpty)
-                  ? onAdd
-                  : null,
+              onPressed: isValid() ? onAdd : null,
               isLoading: state is AddBusinessLoadingState ||
                   state is UpdateBusinessLoadingState,
               width: context.width,

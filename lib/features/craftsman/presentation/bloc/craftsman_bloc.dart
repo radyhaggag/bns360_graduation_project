@@ -142,4 +142,6 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
       },
     );
   }
+
+  bool isAlwaysWorking = false;
 }

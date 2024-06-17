@@ -65,6 +65,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_service": MessageLookupByLibrary.simpleMessage("إضافة نشاط تجاري"),
         "add_service_success":
             MessageLookupByLibrary.simpleMessage("تمت إضافة الخدمة بنجاح"),
+        "always_available": MessageLookupByLibrary.simpleMessage("متاح دائمًا"),
+        "always_available_question":
+            MessageLookupByLibrary.simpleMessage("هل أنت متاح دائمًا؟"),
         "am": MessageLookupByLibrary.simpleMessage("ص"),
         "any_validation_message":
             MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),
@@ -80,8 +83,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("عنوان النشاط التجاري"),
         "business_name":
             MessageLookupByLibrary.simpleMessage("اسم النشاط التجاري"),
+        "business_no_holidays": MessageLookupByLibrary.simpleMessage(
+            "يعمل هذا النشاط التجاري على مدار 24 ساعة يوميًا ولا توجد لديه أي إجازات."),
+        "business_not_full_24_no_holidays": MessageLookupByLibrary.simpleMessage(
+            "يعمل هذا النشاط التجاري خلال ساعات محددة يوميًا ولا توجد لديه أي إجازات."),
         "business_owner_tooltip": MessageLookupByLibrary.simpleMessage(
             "إدارة ملف تعريف عملك وعرض مقاييس الأداء السابقة. أضف العديد من الشركات مع أوصاف تفصيلية ومعلومات الاتصال. يمكنك الوصول إلى المزيد من العملاء وتنمية أعمالك في المدينة."),
+        "business_specified_holidays": MessageLookupByLibrary.simpleMessage(
+            "يعمل هذا النشاط التجاري على مدار 24 ساعة يوميًا، باستثناء في أيام الإجازات المحددة."),
         "buy_now": MessageLookupByLibrary.simpleMessage("اشترِ الآن"),
         "call": MessageLookupByLibrary.simpleMessage("اتصل"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
@@ -113,6 +122,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
         "conversations": MessageLookupByLibrary.simpleMessage("المحادثات"),
         "craftsman": MessageLookupByLibrary.simpleMessage("حرفى"),
+        "craftsman_no_holidays": MessageLookupByLibrary.simpleMessage(
+            "يعمل هذا الحرفي على مدار 24 ساعة يوميًا ولا توجد لديه أي إجازات."),
+        "craftsman_not_full_24_no_holidays": MessageLookupByLibrary.simpleMessage(
+            "يعمل هذا الحرفي خلال ساعات محددة يوميًا ولا توجد لديه أي إجازات."),
+        "craftsman_specified_holidays": MessageLookupByLibrary.simpleMessage(
+            "يعمل هذا الحرفي على مدار 24 ساعة يوميًا، باستثناء في أيام الإجازات المحددة."),
         "craftsman_tooltip": MessageLookupByLibrary.simpleMessage(
             "اعرض براعتك واجذب العملاء الذين يبحثون عن محترفين ماهرين. تصفح فرص العمل واستكشف العقارات في منطقتك. سلط الضوء على خبرتك وتواصل مع الأشخاص الذين يحتاجون إلى مهاراتك."),
         "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
@@ -260,6 +275,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_posts": MessageLookupByLibrary.simpleMessage("منشوراتي"),
         "my_services": MessageLookupByLibrary.simpleMessage("خدماتي"),
         "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
+        "no": MessageLookupByLibrary.simpleMessage("لا"),
         "no_business_found": MessageLookupByLibrary.simpleMessage(
             "لم يتم العثور على نشاطات تجارية"),
         "no_craftsmen_found":
@@ -437,11 +453,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_time": MessageLookupByLibrary.simpleMessage(
             "حدد ساعات عملك لكل يوم من 0 إلى 24."),
         "working": MessageLookupByLibrary.simpleMessage("متاح الان"),
+        "working_24_hours":
+            MessageLookupByLibrary.simpleMessage("يعمل 24 ساعة"),
+        "working_24_hours_question":
+            MessageLookupByLibrary.simpleMessage("هل تعمل 24 ساعة في اليوم؟"),
         "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),
         "write_your_review":
             MessageLookupByLibrary.simpleMessage("أكتب تقييمك"),
+        "yes": MessageLookupByLibrary.simpleMessage("نعم"),
         "yesterday": MessageLookupByLibrary.simpleMessage("الأمس"),
         "you_deleted_this_message":
             MessageLookupByLibrary.simpleMessage("لقد حذفت هذه الرسالة"),

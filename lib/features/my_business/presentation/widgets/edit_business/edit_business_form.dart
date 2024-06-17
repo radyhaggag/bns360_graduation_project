@@ -119,15 +119,21 @@ class EditBusinessForm extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             suffixIcon: const Icon(FeatherIcons.link),
           ),
-          const AddBusinessTimeSection(),
           15.verticalSpace,
-          SelectHolidayDropdown(
-            onChange: (holiday) {
-              context.read<MyBusinessBloc>().add(
-                    SelectBusinessHolidayEvent(holiday: holiday),
-                  );
+          BlocBuilder<MyBusinessBloc, MyBusinessState>(
+            builder: (context, state) {
+              return SelectHolidayDropdown(
+                value: context.read<MyBusinessBloc>().holiday,
+                onChange: (holiday) {
+                  context.read<MyBusinessBloc>().add(
+                        SelectBusinessHolidayEvent(holiday: holiday),
+                      );
+                },
+              );
             },
           ),
+          15.verticalSpace,
+          const AddBusinessTimeSection(),
         ],
       ),
     );

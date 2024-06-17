@@ -67,6 +67,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_service": MessageLookupByLibrary.simpleMessage("Add service"),
         "add_service_success": MessageLookupByLibrary.simpleMessage(
             "The service has been added successfully"),
+        "always_available":
+            MessageLookupByLibrary.simpleMessage("Always available"),
+        "always_available_question":
+            MessageLookupByLibrary.simpleMessage("Are you always available?"),
         "am": MessageLookupByLibrary.simpleMessage("AM"),
         "any_validation_message":
             MessageLookupByLibrary.simpleMessage("Invalid value"),
@@ -79,8 +83,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "business_address":
             MessageLookupByLibrary.simpleMessage("Business address"),
         "business_name": MessageLookupByLibrary.simpleMessage("Business name"),
+        "business_no_holidays": MessageLookupByLibrary.simpleMessage(
+            "This business operates 24 hours a day and does not have any holidays."),
+        "business_not_full_24_no_holidays": MessageLookupByLibrary.simpleMessage(
+            "This business operates during specific hours daily and does not have any holidays."),
         "business_owner_tooltip": MessageLookupByLibrary.simpleMessage(
             "Manage your business profile and view past performance metrics. Add multiple businesses with detailed descriptions and contact information. Reach more customers and grow your business in the city."),
+        "business_specified_holidays": MessageLookupByLibrary.simpleMessage(
+            "This business operates 24 hours a day, except on specified holidays."),
         "buy_now": MessageLookupByLibrary.simpleMessage("Buy now"),
         "call": MessageLookupByLibrary.simpleMessage("Call"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -113,6 +123,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
         "conversations": MessageLookupByLibrary.simpleMessage("Conversations"),
         "craftsman": MessageLookupByLibrary.simpleMessage("Craftsman"),
+        "craftsman_no_holidays": MessageLookupByLibrary.simpleMessage(
+            "This Craftsman operates 24 hours a day and does not have any holidays."),
+        "craftsman_not_full_24_no_holidays": MessageLookupByLibrary.simpleMessage(
+            "This Craftsman operates during specific hours daily and does not have any holidays."),
+        "craftsman_specified_holidays": MessageLookupByLibrary.simpleMessage(
+            "This Craftsman operates 24 hours a day, except on specified holidays."),
         "craftsman_tooltip": MessageLookupByLibrary.simpleMessage(
             "Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills."),
         "craftsmen": MessageLookupByLibrary.simpleMessage("Craftsmen"),
@@ -265,6 +281,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_posts": MessageLookupByLibrary.simpleMessage("My posts"),
         "my_services": MessageLookupByLibrary.simpleMessage("My services"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New password"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "no_business_found":
             MessageLookupByLibrary.simpleMessage("No business found"),
         "no_craftsmen_found":
@@ -448,11 +465,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_time": MessageLookupByLibrary.simpleMessage(
             "Select your working hours for each day from 0 to 24."),
         "working": MessageLookupByLibrary.simpleMessage("Available now"),
+        "working_24_hours":
+            MessageLookupByLibrary.simpleMessage("Working 24 hours"),
+        "working_24_hours_question":
+            MessageLookupByLibrary.simpleMessage("Do you work 24 hours a day?"),
         "write_review": MessageLookupByLibrary.simpleMessage("write a Review"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("Write your message"),
         "write_your_review":
             MessageLookupByLibrary.simpleMessage("Write your review"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
         "you_deleted_this_message":
             MessageLookupByLibrary.simpleMessage("You deleted this message"),

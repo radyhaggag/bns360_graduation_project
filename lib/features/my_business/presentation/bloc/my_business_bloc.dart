@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import '../../../../core/utils/enums/work_days.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/shared_data/entities/category_entity.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/utils/enums/work_days.dart';
 import '../../../../core/utils/extensions/iterable.dart';
 import '../../domain/params/add_business_params.dart';
 import '../../domain/repositories/my_business_repo.dart';
@@ -33,6 +33,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     on<AddMainBusinessImageEvent>(_addMainBusinessImageE);
     on<DeleteMyBusinessEvent>(_deleteMyBusiness);
     on<SelectBusinessHolidayEvent>(_selectBusinessHoliday);
+    on<SetIsAlwaysAvailableValueEvent>(_setIsAlwaysWorking);
   }
 
   double? businessLat;
@@ -160,6 +161,8 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
       mainBusinessBackgroundImages: pickedImages.map((e) => e.path).toList(),
       mainBusinessImage: _mainBusinessImage?.path,
       holiday: holiday,
+      from: isAlwaysWorking ? 0 : null,
+      to: isAlwaysWorking ? 24 : null,
     );
 
     final res = await myBusinessRepo.addBusiness(params);
@@ -187,6 +190,8 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
       businessImageName4: pickedImages.length > 2 ? pickedImages[3].path : null,
       profileImageName: _mainBusinessImage?.path,
       holidays: holiday.id,
+      opening: isAlwaysWorking ? 0 : null,
+      closing: isAlwaysWorking ? 24 : null,
     );
 
     final res = await myBusinessRepo.updateBusiness(params);
@@ -270,5 +275,18 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     holiday = event.holiday;
 
     emit(BusinessHolidayUpdatedState());
+  }
+
+  bool isAlwaysWorking = false;
+
+  _setIsAlwaysWorking(
+    SetIsAlwaysAvailableValueEvent event,
+    Emitter<MyBusinessState> emit,
+  ) {
+    isAlwaysWorking = event.isAlwaysAvailable;
+
+    emit(IsAlwaysWorkingToggledState(
+      isAlwaysWorking: isAlwaysWorking,
+    ));
   }
 }

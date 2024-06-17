@@ -38,6 +38,12 @@ class _EditServiceBodyState extends State<EditServiceBody> {
           holiday: WorkDay.fromId(widget.craftsmanEntity.holidays),
         ));
 
+    if (widget.craftsmanEntity.isWorking24Hour) {
+      context.read<MyServicesBloc>().add(const SetIsAlwaysAvailableValueEvent(
+            isAlwaysAvailable: true,
+          ));
+    }
+
     final phoneNumber = widget.craftsmanEntity.contact.phoneNumber;
     final phoneOne = phoneNumber?.contains("-") ?? false
         ? phoneNumber?.split("-")[0]
@@ -119,31 +125,39 @@ class _EditServiceBodyState extends State<EditServiceBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: ReactiveForm(
-        formGroup: form,
-        child: CustomScrollView(
-          slivers: [
-            SliverPersistentHeader(
-              pinned: true,
-              delegate: EditCraftsmanHeadSliver(
-                craftsmanEntity: widget.craftsmanEntity,
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate(
-                  [
-                    EditServiceForm(
-                      craftsmanEntity: widget.craftsmanEntity,
-                      form: form,
-                    ),
-                  ],
+    return BlocListener<MyServicesBloc, MyServicesState>(
+      listener: (context, state) {
+        if (state is IsAlwaysWorkingToggledState && state.isAlwaysWorking) {
+          form.controls['from']!.value = "0";
+          form.controls['to']!.value = "24";
+        }
+      },
+      child: SafeArea(
+        child: ReactiveForm(
+          formGroup: form,
+          child: CustomScrollView(
+            slivers: [
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: EditCraftsmanHeadSliver(
+                  craftsmanEntity: widget.craftsmanEntity,
                 ),
               ),
-            ),
-          ],
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      EditServiceForm(
+                        craftsmanEntity: widget.craftsmanEntity,
+                        form: form,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

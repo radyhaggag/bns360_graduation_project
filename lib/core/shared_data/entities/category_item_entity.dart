@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:bns360_graduation_project/core/utils/enums/work_days.dart';
 import 'package:equatable/equatable.dart';
 
 import 'category_entity.dart';
@@ -52,7 +53,7 @@ class CategoryItemEntity extends Equatable {
     required this.profileImageName,
     required this.latitude,
     required this.longitude,
-     this.userImage,
+    this.userImage,
     required this.userName,
     this.businessImageName1,
     this.businessImageName2,
@@ -60,7 +61,6 @@ class CategoryItemEntity extends Equatable {
     this.businessImageName4,
     this.reviewSummary,
     this.isBelongToMe = false,
-    
   });
 
   List<String> get businessImages {
@@ -137,7 +137,6 @@ class CategoryItemEntity extends Equatable {
       reviewSummary: reviewSummary ?? this.reviewSummary,
       userName: userName ?? this.userName,
       userImage: userImage ?? this.userImage,
-
     );
   }
 
@@ -164,4 +163,11 @@ class CategoryItemEntity extends Equatable {
       businessImageName4,
     ];
   }
+
+  bool get isWorking24Hour => opening == 0 && closing == 24;
+  bool get _isHasNotHoliday => holidays == WorkDay.none.id;
+  bool get isWorking24HourExceptHoliday =>
+      isWorking24Hour && !_isHasNotHoliday;
+  bool get isAlwaysWorkingAndHasNotHolidays =>
+      isWorking24Hour && _isHasNotHoliday;
 }

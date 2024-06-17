@@ -2849,6 +2849,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Always available`
+  String get always_available {
+    return Intl.message(
+      'Always available',
+      name: 'always_available',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you always available?`
+  String get always_available_question {
+    return Intl.message(
+      'Are you always available?',
+      name: 'always_available_question',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you work 24 hours a day?`
+  String get working_24_hours_question {
+    return Intl.message(
+      'Do you work 24 hours a day?',
+      name: 'working_24_hours_question',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This business operates 24 hours a day and does not have any holidays.`
+  String get business_no_holidays {
+    return Intl.message(
+      'This business operates 24 hours a day and does not have any holidays.',
+      name: 'business_no_holidays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This business operates 24 hours a day, except on specified holidays.`
+  String get business_specified_holidays {
+    return Intl.message(
+      'This business operates 24 hours a day, except on specified holidays.',
+      name: 'business_specified_holidays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This Craftsman operates 24 hours a day and does not have any holidays.`
+  String get craftsman_no_holidays {
+    return Intl.message(
+      'This Craftsman operates 24 hours a day and does not have any holidays.',
+      name: 'craftsman_no_holidays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This Craftsman operates 24 hours a day, except on specified holidays.`
+  String get craftsman_specified_holidays {
+    return Intl.message(
+      'This Craftsman operates 24 hours a day, except on specified holidays.',
+      name: 'craftsman_specified_holidays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This business operates during specific hours daily and does not have any holidays.`
+  String get business_not_full_24_no_holidays {
+    return Intl.message(
+      'This business operates during specific hours daily and does not have any holidays.',
+      name: 'business_not_full_24_no_holidays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This Craftsman operates during specific hours daily and does not have any holidays.`
+  String get craftsman_not_full_24_no_holidays {
+    return Intl.message(
+      'This Craftsman operates during specific hours daily and does not have any holidays.',
+      name: 'craftsman_not_full_24_no_holidays',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Working 24 hours`
+  String get working_24_hours {
+    return Intl.message(
+      'Working 24 hours',
+      name: 'working_24_hours',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

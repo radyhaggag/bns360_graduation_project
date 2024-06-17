@@ -100,15 +100,22 @@ class EditServiceForm extends StatelessWidget {
           //   suffixIcon: const Icon(FeatherIcons.link),
           // ),
           15.verticalSpace,
-          const AddServiceTimeSection(),
-          15.verticalSpace,
-          SelectHolidayDropdown(
-            onChange: (holiday) {
-              context.read<MyServicesBloc>().add(
-                    SelectServiceHolidayEvent(holiday: holiday),
-                  );
+          BlocBuilder<MyServicesBloc, MyServicesState>(
+            builder: (context, state) {
+              return SelectHolidayDropdown(
+                value: context.read<MyServicesBloc>().holiday,
+                onChange: (holiday) {
+                  context.read<MyServicesBloc>().add(
+                        SelectServiceHolidayEvent(holiday: holiday),
+                      );
+                },
+              );
             },
           ),
+          15.verticalSpace,
+          const AddServiceTimeSection(),
+          15.verticalSpace,
+
           const SizedBox(height: 10),
           const UploadServiceImagesSection(),
           const SizedBox(height: 25),

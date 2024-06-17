@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import '../../../../core/utils/enums/work_days.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/shared_data/entities/craft_entity.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../core/utils/enums/work_days.dart';
 import '../../domain/params/add_service_params.dart';
 import '../../domain/repositories/my_services_repo.dart';
 
@@ -31,6 +31,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     on<AddMainServiceImageEvent>(_addMainServiceImageE);
     on<DeleteMyServicesEvent>(_deleteMyServices);
     on<SelectServiceHolidayEvent>(_selectHolidayWorkday);
+    on<SetIsAlwaysAvailableValueEvent>(_toggleIsAlwaysWorking);
   }
 
   final List<File> _pickedImages = [];
@@ -249,5 +250,15 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
         emit(DeleteMyServiceSuccessState());
       },
     );
+  }
+
+  bool isAlwaysWorking = false;
+
+  _toggleIsAlwaysWorking(
+    SetIsAlwaysAvailableValueEvent event,
+    Emitter<MyServicesState> emit,
+  ) {
+    isAlwaysWorking = !isAlwaysWorking;
+    emit(IsAlwaysWorkingToggledState(isAlwaysWorking: isAlwaysWorking));
   }
 }

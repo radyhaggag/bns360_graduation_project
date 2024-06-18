@@ -28,7 +28,9 @@ class IsAlwaysAvailableDropdown extends StatelessWidget {
           children: [
             Expanded(
               child: RadioListTile<bool>.adaptive(
-                title: Text(S.of(context).yes),
+                title: Text(
+                  S.of(context).yes,
+                  style: context.textTheme.bodyMedium,),
                 value: isAlwaysAvailable,
                 groupValue: true,
                 onChanged: (value) {
@@ -38,7 +40,10 @@ class IsAlwaysAvailableDropdown extends StatelessWidget {
             ),
             Expanded(
               child: RadioListTile<bool>.adaptive(
-                title: Text(S.of(context).no),
+                title: Text(
+                  S.of(context).no,
+                  style: context.textTheme.bodyMedium,
+                ),
                 value: isAlwaysAvailable,
                 groupValue: false,
                 onChanged: (value) {

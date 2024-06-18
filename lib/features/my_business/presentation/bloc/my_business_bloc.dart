@@ -187,7 +187,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
       businessImageName1: pickedImages.isNotEmpty ? pickedImages[0].path : null,
       businessImageName2: pickedImages.length > 1 ? pickedImages[1].path : null,
       businessImageName3: pickedImages.length > 2 ? pickedImages[2].path : null,
-      businessImageName4: pickedImages.length > 2 ? pickedImages[3].path : null,
+      businessImageName4: pickedImages.length > 3 ? pickedImages[3].path : null,
       profileImageName: _mainBusinessImage?.path,
       holidays: holiday.id,
       opening: isAlwaysWorking ? 0 : null,

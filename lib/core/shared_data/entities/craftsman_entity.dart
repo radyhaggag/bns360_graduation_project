@@ -100,8 +100,7 @@ class CraftsmanEntity extends Equatable {
       closing: closing ?? this.closing,
       addressAR: addressAR ?? this.addressAR,
       addressEN: addressEN ?? this.addressEN,
-      profileImageUrl:
-          removeImages ? "" : profileImageUrl ?? this.profileImageUrl,
+      profileImageUrl: profileImageUrl ?? this.profileImageUrl,
       imageName1: removeImages ? null : imageName1 ?? this.imageName1,
       imageName2: removeImages ? null : imageName2 ?? this.imageName2,
       imageName3: removeImages ? null : imageName3 ?? this.imageName3,

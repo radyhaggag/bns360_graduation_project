@@ -1,7 +1,8 @@
-import '../utils/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart';
+
+import '../utils/constants.dart';
 
 abstract class APIImagesHelper {
   // static const String _baseURL = 'https://image.tmdb.org/t/p/';
@@ -12,10 +13,11 @@ abstract class APIImagesHelper {
   // }
 
   static Future<MultipartFile?> convertImageToMultipartFile(
-    String? imagePath,
-  ) async {
+    String? imagePath, {
+    bool removeHttp = true,
+  }) async {
     if ((imagePath ?? "").isEmpty) return null;
-    if(imagePath!.contains("http")) {
+    if (imagePath!.contains("http") && removeHttp) {
       return null;
     }
     String fileName = basename(imagePath);

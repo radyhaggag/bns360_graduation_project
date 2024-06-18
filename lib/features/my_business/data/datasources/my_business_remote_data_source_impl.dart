@@ -177,10 +177,10 @@ class MyBusinessRemoteDataSourceImpl implements MyBusinessRemoteDataSource {
   @override
   Future<void> updateBusiness(CategoryItemEntity params) async {
     final model = CategoryItemModel.fromEntity(params);
-    print( await model.toJson());
-    final FormData formData = FormData.fromMap(
-      await model.toJson(),
-    );
+
+    final Map<String, dynamic> json = await model.toJson();
+
+    final FormData formData = FormData.fromMap(json);
 
     await apiConsumer.put(
       endpoint: AppEndpoints.updateBusiness(params.id),

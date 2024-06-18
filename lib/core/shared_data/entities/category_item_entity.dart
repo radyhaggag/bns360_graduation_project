@@ -122,8 +122,7 @@ class CategoryItemEntity extends Equatable {
       opening: opening ?? this.opening,
       closing: closing ?? this.closing,
       categoriesModel: categoriesModel ?? this.categoriesModel,
-      profileImageName:
-          removeImages ? "" : profileImageName ?? this.profileImageName,
+      profileImageName: profileImageName ?? this.profileImageName,
       businessImageName1:
           removeImages ? null : businessImageName1 ?? this.businessImageName1,
       businessImageName2:

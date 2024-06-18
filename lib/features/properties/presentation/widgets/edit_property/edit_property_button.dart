@@ -22,14 +22,14 @@ class EditPropertyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ReactiveFormConsumer(
       builder: (context, form, child) {
-        final images = context.read<PropertiesBloc>().pickedImages;
+        // final images = context.read<PropertiesBloc>().pickedImages;
         return BlocBuilder<PropertiesBloc, PropertiesState>(
           builder: (context, state) {
             return CustomElevatedButton(
               label: S.of(context).update,
               onPressed: onEdit,
               isDisabled:
-                  !(form.valid && isOfferTypeSelected) || images.isEmpty,
+                  !(form.valid && isOfferTypeSelected) ,
               isLoading: state is EditPropertyLoadingState,
               width: context.width,
               height: 50.h,

@@ -164,7 +164,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
       imageName1: pickedImages.isNotEmpty ? pickedImages[0].path : null,
       imageName2: pickedImages.length > 1 ? pickedImages[1].path : null,
       imageName3: pickedImages.length > 2 ? pickedImages[2].path : null,
-      imageName4: pickedImages.length > 2 ? pickedImages[3].path : null,
+      imageName4: pickedImages.length > 3 ? pickedImages[3].path : null,
       profileImageUrl: mainServiceImage?.path,
       holidays: holiday.id,
     );

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -150,6 +151,14 @@ class _EditJobBodyState extends State<EditJobBody> {
       ),
       whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
     );
+
+    if (jobEntity.workHours > 24) {
+      showToast(
+        S.of(context).work_hours_should_be_less_than_24,
+        ToastType.error,
+      );
+      return;
+    }
 
     context.read<JobsBloc>().add(EditJobEvent(jobEntity: jobEntity));
   }

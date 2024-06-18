@@ -2170,6 +2170,26 @@ class S {
     );
   }
 
+  /// `Invalid time range`
+  String get invalid_time_range {
+    return Intl.message(
+      'Invalid time range',
+      name: 'invalid_time_range',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Work hours should be less than 24`
+  String get work_hours_should_be_less_than_24 {
+    return Intl.message(
+      'Work hours should be less than 24',
+      name: 'work_hours_should_be_less_than_24',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delete main business image`
   String get delete_main_business_image {
     return Intl.message(

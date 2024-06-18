@@ -241,6 +241,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "in_english": MessageLookupByLibrary.simpleMessage("بالإنجليزية"),
         "invalid_otp_code_msg": MessageLookupByLibrary.simpleMessage(
             "الرمز غير صحيح. يرجى المحاولة مرة أخرى أو طلب رمز جديد."),
+        "invalid_time_range": MessageLookupByLibrary.simpleMessage(
+            "الرجاء اختيار نطاق زمني صالح"),
         "job_description": MessageLookupByLibrary.simpleMessage("وصف الوظيفة"),
         "job_title": MessageLookupByLibrary.simpleMessage("عنوان الوظيفة"),
         "job_type": MessageLookupByLibrary.simpleMessage("نوع الوظيفه"),
@@ -452,6 +454,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
         "work_hours": MessageLookupByLibrary.simpleMessage("ساعات العمل"),
+        "work_hours_should_be_less_than_24":
+            MessageLookupByLibrary.simpleMessage(
+                "ساعات العمل يجب أن تكون أقل من 24"),
         "work_time": MessageLookupByLibrary.simpleMessage(
             "حدد ساعات عملك لكل يوم من 0 إلى 24."),
         "working": MessageLookupByLibrary.simpleMessage("متاح الان"),

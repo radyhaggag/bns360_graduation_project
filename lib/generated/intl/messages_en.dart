@@ -246,6 +246,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "in_english": MessageLookupByLibrary.simpleMessage("In English"),
         "invalid_otp_code_msg": MessageLookupByLibrary.simpleMessage(
             "Invalid OTP. Please try again or request a new one."),
+        "invalid_time_range":
+            MessageLookupByLibrary.simpleMessage("Invalid time range"),
         "job_description":
             MessageLookupByLibrary.simpleMessage("Job description"),
         "job_title": MessageLookupByLibrary.simpleMessage("Job title"),
@@ -462,6 +464,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
         "work_hours": MessageLookupByLibrary.simpleMessage("Work hours"),
+        "work_hours_should_be_less_than_24":
+            MessageLookupByLibrary.simpleMessage(
+                "Work hours should be less than 24"),
         "work_time": MessageLookupByLibrary.simpleMessage(
             "Select your working hours for each day from 0 to 24."),
         "working": MessageLookupByLibrary.simpleMessage("Available now"),

@@ -212,6 +212,8 @@
   "select_business_category": "Select business category",
   "to": "To",
   "from": "From",
+  "invalid_time_range": "Invalid time range",
+  "work_hours_should_be_less_than_24": "Work hours should be less than 24",
   "delete_main_business_image": "Delete main business image",
   "upload_main_business_image": "Upload main business image",
   "work_time": "Select your working hours for each day from 0 to 24.",

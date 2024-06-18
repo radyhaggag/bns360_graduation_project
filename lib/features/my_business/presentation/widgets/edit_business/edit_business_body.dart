@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -204,6 +205,17 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
         urlSite: formControls['url']!.value as String?,
       ),
     );
+
+    if ((entity.opening > entity.closing) ||
+        entity.opening > 24 ||
+        entity.closing > 24) {
+      showToast(
+        S.of(context).invalid_time_range,
+        ToastType.error,
+      );
+      return;
+    }
+
     context.read<MyBusinessBloc>().add(UpdateBusinessEvent(
           categoryItemEntity: entity,
         ));

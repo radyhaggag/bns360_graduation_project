@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -145,6 +146,14 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
       email: formControls['email']!.value as String?,
       siteUrl: formControls['url']!.value as String?,
     );
+
+    if (params.from > params.to || params.from > 24 || params.to > 24) {
+      showToast(
+        S.of(context).invalid_time_range,
+        ToastType.error,
+      );
+      return;
+    }
 
     context.read<MyBusinessBloc>().add(AddBusinessEvent(
           addBusinessParams: params,

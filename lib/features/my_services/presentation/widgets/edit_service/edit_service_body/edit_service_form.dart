@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -153,6 +154,16 @@ class EditServiceForm extends StatelessWidget {
         email: formControls['email']!.value as String?,
       ),
     );
+
+    if (newData.opening > newData.closing ||
+        newData.opening > 24 ||
+        newData.closing > 24) {
+      showToast(
+        S.of(context).invalid_time_range,
+        ToastType.error,
+      );
+      return;
+    }
 
     context.read<MyServicesBloc>().add(UpdateServiceEvent(
           craftsmanEntity: newData,

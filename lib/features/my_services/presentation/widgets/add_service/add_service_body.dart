@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -143,6 +144,15 @@ class _AddServiceBodyState extends State<AddServiceBody> {
       mainServiceImage: "", // Will updated on the bloc
       email: formControls['email']!.value as String?,
     );
+
+    if (params.from > params.to || params.from > 24 || params.to > 24) {
+      showToast(
+        S.of(context).invalid_time_range,
+        ToastType.error,
+      );
+      return;
+    }
+
     context.read<MyServicesBloc>().add(AddServiceEvent(
           addServiceParams: params,
         ));

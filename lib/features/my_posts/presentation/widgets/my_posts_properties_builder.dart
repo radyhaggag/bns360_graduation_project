@@ -44,18 +44,22 @@ class MyPostsPropertiesBuilder extends StatelessWidget {
               ),
             ),
             itemWidget: (item, index) => PropertyCard(
-              propertyEntity: item.copyWith(isBelongToMe: true),
+              propertyEntity: item,
               moreWidget: MoreIcon(
                 onDelete: () {
                   context.read<MyPostsBloc>().add(
                         DeletePostEvent(isJob: false, index: index),
                       );
                 },
-                onEdit: () {
-                  Navigator.of(context).pushNamed(
-                    Routes.addProperty,
+                onEdit: () async {
+                  await Navigator.of(context).pushNamed(
+                    Routes.editProperty,
                     arguments: item,
                   );
+
+                  if (!context.mounted) return;
+
+                  context.read<MyPostsBloc>().add(GetMyPostsPropertiesEvent());
                 },
                 deleteMessage: S.of(context).delete_post,
               ),

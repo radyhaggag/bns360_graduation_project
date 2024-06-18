@@ -183,7 +183,7 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
     String phoneNumber =
         (formControls['phoneNumber']!.value as String).withCountryCode;
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
-    if (phoneNumber2 != null) {
+    if ((phoneNumber2 ?? "").isNotEmpty) {
       phoneNumber += "-${phoneNumber2.withCountryCode}";
     }
 

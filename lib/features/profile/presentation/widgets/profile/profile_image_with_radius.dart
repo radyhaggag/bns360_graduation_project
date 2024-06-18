@@ -26,6 +26,7 @@ class ProfileImageWithRadius extends StatelessWidget {
         width: 75.r,
         height: 75.r,
         isCircular: true,
+        withImageView: true,
       ),
     );
   }

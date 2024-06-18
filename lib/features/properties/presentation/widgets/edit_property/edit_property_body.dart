@@ -91,11 +91,11 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
       ),
     });
 
-    if ((widget.propertyEntity.images).isNotEmpty) {
-      context.read<PropertiesBloc>().add(InitNetworkPropertyImageEvent(
-            networkImages: widget.propertyEntity.images,
-          ));
-    }
+    // if ((widget.propertyEntity.images).isNotEmpty) {
+    //   context.read<PropertiesBloc>().add(InitNetworkPropertyImageEvent(
+    //         networkImages: widget.propertyEntity.images,
+    //       ));
+    // }
   }
 
   @override

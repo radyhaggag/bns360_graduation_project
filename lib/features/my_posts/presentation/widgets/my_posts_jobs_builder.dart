@@ -50,11 +50,15 @@ class MyPostsJobsBuilder extends StatelessWidget {
                         DeletePostEvent(isJob: true, index: index),
                       );
                 },
-                onEdit: () {
-                  Navigator.of(context).pushNamed(
-                    Routes.addJob,
+                onEdit: () async {
+                  await Navigator.of(context).pushNamed(
+                    Routes.editJob,
                     arguments: item,
                   );
+
+                  if (!context.mounted) return;
+
+                  context.read<MyPostsBloc>().add(GetMyPostsJobsEvent());
                 },
                 deleteMessage: S.of(context).delete_post,
               ),

@@ -62,6 +62,7 @@ class PropertyPublisherImage extends StatelessWidget {
       width: 45.r,
       height: 45.r,
       fit: BoxFit.cover,
+      withImageView: true,
     );
   }
 }

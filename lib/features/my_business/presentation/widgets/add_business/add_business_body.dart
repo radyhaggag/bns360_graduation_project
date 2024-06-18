@@ -78,10 +78,11 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
   Widget build(BuildContext context) {
     return BlocListener<MyBusinessBloc, MyBusinessState>(
       listener: (context, state) {
- if (state is IsAlwaysWorkingToggledState && state.isAlwaysWorking) {
+        if (state is IsAlwaysWorkingToggledState && state.isAlwaysWorking) {
           form.controls['from']!.value = "0";
           form.controls['to']!.value = "24";
-        }      },
+        }
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: kHorizontalPadding,
@@ -127,7 +128,7 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
     String phoneNumber =
         (formControls['phoneNumber']!.value as String).withCountryCode;
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
-    if (phoneNumber2 != null) {
+    if ((phoneNumber2 ?? "").isNotEmpty) {
       phoneNumber += "-${phoneNumber2.withCountryCode}";
     }
     final params = AddBusinessParams(

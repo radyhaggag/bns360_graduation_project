@@ -16,6 +16,7 @@ class JobPublisherImage extends StatelessWidget {
       height: 50.r,
       fit: BoxFit.cover,
       isCircular: true,
+      withImageView: true,
     );
   }
 }

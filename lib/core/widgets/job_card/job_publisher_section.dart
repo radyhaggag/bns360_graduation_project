@@ -10,11 +10,8 @@ class _JobPublisherSection extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InkWell(
-          onTap: () {},
-          child: JobPublisherImage(
-            imageUrl: jobEntity.publisherDetails.photoUrl,
-          ),
+        JobPublisherImage(
+          imageUrl: jobEntity.publisherDetails.photoUrl,
         ),
         const SizedBox(width: 5),
         Expanded(
@@ -22,12 +19,9 @@ class _JobPublisherSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InkWell(
-                onTap: () {},
-                child: _TitleAndSubTitleSection(
-                  title: jobEntity.publisherDetails.name,
-                  subTitle: jobEntity.publisherDetails.getDescription(context),
-                ),
+              _TitleAndSubTitleSection(
+                title: jobEntity.publisherDetails.name,
+                subTitle: jobEntity.publisherDetails.getDescription(context),
               ),
             ],
           ),

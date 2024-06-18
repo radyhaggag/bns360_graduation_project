@@ -24,8 +24,6 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
     GetMyPostsJobsEvent event,
     Emitter<MyPostsState> emit,
   ) async {
-    if (myPostsJobs.isNotEmpty) return;
-
     emit(GetMyPostsJobsLoadingState());
 
     final res = await myPostsRepo.getMyPostsJobs();
@@ -45,7 +43,6 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
     GetMyPostsPropertiesEvent event,
     Emitter<MyPostsState> emit,
   ) async {
-    if (myPostsProperties.isNotEmpty) return;
     emit(GetMyPostsPropertiesLoadingState());
 
     final res = await myPostsRepo.getMyPostsProperties();
@@ -65,7 +62,7 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
     ChangeCurrentView event,
     Emitter<MyPostsState> emit,
   ) {
-    if(event.index == activeTabIndex) return;
+    if (event.index == activeTabIndex) return;
     activeTabIndex = event.index;
     if (activeTabIndex == 1) {
       add(GetMyPostsJobsEvent());

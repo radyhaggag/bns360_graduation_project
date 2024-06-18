@@ -1,9 +1,8 @@
-import '../../../../../core/providers/app_provider.dart';
-import '../../../../../core/utils/app_endpoints.dart';
-
 import '../../../../../core/api/api_consumer.dart';
+import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/shared_data/models/job_model.dart';
 import '../../../../../core/shared_data/models/property_model.dart';
+import '../../../../../core/utils/app_endpoints.dart';
 import 'my_posts_remote_data_source.dart';
 
 class MyPostsRemoteDataSourceImpl implements MyPostsRemoteDataSource {
@@ -42,8 +41,13 @@ class MyPostsRemoteDataSourceImpl implements MyPostsRemoteDataSource {
 
     final properties = List<PropertyModel>.from(res.data.map(
       (item) {
-        final property = PropertyModel.fromJson(item).copyWith(
+        final itemModel = PropertyModel.fromJson(item);
+        final property = itemModel.copyWith(
           isBelongToMe: true,
+          image1: itemModel.image1,
+          image2: itemModel.image2,
+          image3: itemModel.image3,
+          image4: itemModel.image4,
         );
         return PropertyModel.fromEntity(property);
       },

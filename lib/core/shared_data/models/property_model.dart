@@ -68,6 +68,7 @@ class PropertyModel extends PropertyEntity {
       image2: entity.image2,
       image3: entity.image3,
       image4: entity.image4,
+      
     );
   }
 

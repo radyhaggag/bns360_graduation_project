@@ -58,6 +58,7 @@ class JobDetailsTopSection extends StatelessWidget {
               imageUrl: jobEntity.publisherDetails.photoUrl,
               name: jobEntity.publisherDetails.name,
               isCircular: true,
+              withImageView: true,
             ),
             const SizedBox(height: 12),
             Text(

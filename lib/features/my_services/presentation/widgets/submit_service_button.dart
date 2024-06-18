@@ -32,13 +32,22 @@ class SubmitServiceButton extends StatelessWidget {
             final pickedImages = context.read<MyServicesBloc>().pickedImages;
             final mainImage = context.read<MyServicesBloc>().mainServiceImage;
 
-            bool isImagesNotEmpty =
-                pickedImages.isNotEmpty && mainImage != null;
+            bool isValid() {
+              if (form.valid) {
+                if (isUpdate) {
+                  return true;
+                } else {
+                  return pickedImages.isNotEmpty && mainImage != null;
+                }
+              } else {
+                return false;
+              }
+            }
 
             return CustomElevatedButton(
               label:
                   isUpdate ? S.of(context).update : S.of(context).add_service,
-              onPressed: (form.valid && isImagesNotEmpty) ? onAdd : null,
+              onPressed: isValid() ? onAdd : null,
               isLoading: state is AddServiceLoadingState ||
                   state is UpdateServiceLoadingState,
               width: context.width,

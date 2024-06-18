@@ -97,6 +97,7 @@ class _BuildReviewCard extends StatelessWidget {
                 width: 38.r,
                 height: 38.r,
                 isCircular: true,
+                withImageView: true,
               ),
               const SizedBox(width: 8),
               Expanded(

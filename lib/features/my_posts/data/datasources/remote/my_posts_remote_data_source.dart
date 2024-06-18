@@ -4,4 +4,8 @@ import '../../../../../core/shared_data/models/property_model.dart';
 abstract class MyPostsRemoteDataSource {
   Future<List<JobModel>> getMyPostsJobs();
   Future<List<PropertyModel>> getMyPostsProperties();
+  Future<void> deletePost({
+    required bool isJob,
+    required int itemId,
+  });
 }

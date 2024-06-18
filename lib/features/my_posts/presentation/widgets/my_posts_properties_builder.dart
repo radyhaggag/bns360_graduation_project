@@ -18,20 +18,12 @@ class MyPostsPropertiesBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MyPostsBloc, MyPostsState>(
-      buildWhen: (previous, current) {
-        final states = [
-          GetMyPostsPropertiesLoadingState,
-          GetMyPostsPropertiesErrorState,
-          GetMyPostsPropertiesSuccessState,
-          PostsUpdatedState,
-        ];
-        return states.contains(current.runtimeType);
-      },
       builder: (context, state) {
         final myPostsProperties = context.read<MyPostsBloc>().myPostsProperties;
 
         return DataStateWidget(
-          isLoading: state is GetMyPostsPropertiesLoadingState,
+          isLoading: state is GetMyPostsPropertiesLoadingState ||
+              state is DeletePostLoadingState,
           isError: state is GetMyPostsPropertiesErrorState,
           isLoaded: state is GetMyPostsPropertiesSuccessState,
           errorMessage:
@@ -48,7 +40,11 @@ class MyPostsPropertiesBuilder extends StatelessWidget {
               moreWidget: MoreIcon(
                 onDelete: () {
                   context.read<MyPostsBloc>().add(
-                        DeletePostEvent(isJob: false, index: index),
+                        DeletePostEvent(
+                          isJob: false,
+                          index: index,
+                          itemId: item.id,
+                        ),
                       );
                 },
                 onEdit: () async {

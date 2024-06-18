@@ -44,7 +44,7 @@ class PropertiesBuilder extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(
                   context,
-                  Routes.editProperty,
+                  Routes.propertyDetails,
                   arguments: item,
                 );
               },

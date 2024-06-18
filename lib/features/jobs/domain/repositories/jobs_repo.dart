@@ -5,7 +5,7 @@ import '../params/add_job_params.dart';
 abstract class JobsRepo {
   FutureEither<List<JobEntity>> getJobs();
 
-  FutureEither<JobEntity> getJobById(String id);
+  FutureEither<JobEntity> getJobById(int id);
 
   FutureEither<void> addJob(AddJobParams addJobParams);
 

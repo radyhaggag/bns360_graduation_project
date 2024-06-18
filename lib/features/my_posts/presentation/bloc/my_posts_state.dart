@@ -47,3 +47,13 @@ class CurrentViewChangedState extends MyPostsState {
 }
 
 class PostsUpdatedState extends MyPostsState {}
+
+class DeletePostLoadingState extends MyPostsState {}
+
+class DeletePostSuccessState extends MyPostsState {}
+
+class DeletePostErrorState extends MyPostsState {
+  final String message;
+
+  const DeletePostErrorState({required this.message});
+}

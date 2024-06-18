@@ -23,4 +23,14 @@ class MyPostsRepoImpl implements MyPostsRepo {
       () => myPostsRemoteDataSource.getMyPostsProperties(),
     );
   }
+
+  @override
+  FutureEither<void> deletePost({required bool isJob, required int itemId}) {
+    return executeAndHandleErrorAsync(
+      () => myPostsRemoteDataSource.deletePost(
+        isJob: isJob,
+        itemId: itemId,
+      ),
+    );
+  }
 }

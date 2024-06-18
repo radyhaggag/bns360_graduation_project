@@ -39,7 +39,7 @@ class AddPropertyPickedImagesBuilder extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            if (images.isEmpty)
+            // if (images.isEmpty)
               RemoveIcon(
                 onTap: () {
                   context.read<PropertiesBloc>().add(

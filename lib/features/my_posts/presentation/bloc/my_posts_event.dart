@@ -23,9 +23,11 @@ class ChangeCurrentView extends MyPostsEvent {
 class DeletePostEvent extends MyPostsEvent {
   final bool isJob;
   final int index;
+  final int itemId;
 
   const DeletePostEvent({
     required this.isJob,
     required this.index,
+    required this.itemId,
   });
 }

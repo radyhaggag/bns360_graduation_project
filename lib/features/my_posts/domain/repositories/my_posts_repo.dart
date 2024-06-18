@@ -5,4 +5,8 @@ import '../../../../core/utils/custom_types.dart';
 abstract class MyPostsRepo {
   FutureEither<List<JobEntity>> getMyPostsJobs();
   FutureEither<List<PropertyEntity>> getMyPostsProperties();
+  FutureEither<void> deletePost({
+    required bool isJob,
+    required int itemId,
+  });
 }

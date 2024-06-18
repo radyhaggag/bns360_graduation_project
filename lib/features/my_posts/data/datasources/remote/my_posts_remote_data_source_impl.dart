@@ -54,4 +54,17 @@ class MyPostsRemoteDataSourceImpl implements MyPostsRemoteDataSource {
     ));
     return properties;
   }
+
+  @override
+  Future<void> deletePost({required bool isJob, required int itemId}) {
+    if (isJob) {
+      return apiConsumer.delete(
+        endpoint: AppEndpoints.jobById(itemId),
+      );
+    } else {
+      return apiConsumer.delete(
+        endpoint: AppEndpoints.propertyById(itemId),
+      );
+    }
+  }
 }

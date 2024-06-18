@@ -30,7 +30,7 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
   }
 
   @override
-  Future<JobModel> getJobById(String id) async {
+  Future<JobModel> getJobById(int id) async {
     final res = await apiConsumer.get(
       endpoint: AppEndpoints.jobById(id),
     );
@@ -130,7 +130,7 @@ class JobsRemoteDataSourceImpl implements JobsRemoteDataSource {
   @override
   Future<void> editJob(JobEntity job) async {
     final model = JobModel.fromEntity(job);
-    final path = AppEndpoints.jobById(job.id.toString());
+    final path = AppEndpoints.jobById(job.id);
     final data = model.toJson()..addAll({"id": model.id});
     await apiConsumer.put(
       endpoint: path,

@@ -7,7 +7,7 @@ abstract class JobsEvent {
 class GetJobsEvent extends JobsEvent {}
 
 class GetJobByIdEvent extends JobsEvent {
-  final String id;
+  final int id;
 
   const GetJobByIdEvent({required this.id});
 }

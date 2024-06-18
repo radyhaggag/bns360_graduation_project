@@ -18,7 +18,7 @@ class JobsRepoImpl implements JobsRepo {
   }
 
   @override
-  FutureEither<JobEntity> getJobById(String id) async {
+  FutureEither<JobEntity> getJobById(int id) async {
     return executeAndHandleErrorAsync(
       () => jobsRemoteDataSource.getJobById(id),
     );

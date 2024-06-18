@@ -15,8 +15,8 @@ class EditCraftsmanImageSection extends StatelessWidget {
     return BlocBuilder<MyServicesBloc, MyServicesState>(
       builder: (context, state) {
         final selectedImage = context.read<MyServicesBloc>().mainServiceImage;
-        // final currentNetworkImage =
-        //     context.read<MyServicesBloc>().mainNetworkImage;
+        final currentNetworkImage =
+            context.read<MyServicesBloc>().mainNetworkImage;
         return Stack(
           alignment: Alignment.center,
           children: [
@@ -46,7 +46,7 @@ class EditCraftsmanImageSection extends StatelessWidget {
               )
             else
               MainNetworkImage(
-                imageUrl: kDefaultImgUrl,
+                imageUrl: currentNetworkImage ?? kDefaultImgUrl,
                 width: 90.r,
                 height: 90.r,
                 isCircular: true,

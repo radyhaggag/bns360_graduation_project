@@ -142,7 +142,6 @@ class _AddServiceBodyState extends State<AddServiceBody> {
       mainServiceBackgroundImages: [], // Will updated on the bloc
       mainServiceImage: "", // Will updated on the bloc
       email: formControls['email']!.value as String?,
-      siteUrl: formControls['url']!.value as String,
     );
     context.read<MyServicesBloc>().add(AddServiceEvent(
           addServiceParams: params,

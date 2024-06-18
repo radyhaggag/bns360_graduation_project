@@ -115,7 +115,6 @@ class EditServiceForm extends StatelessWidget {
           15.verticalSpace,
           const AddServiceTimeSection(),
           15.verticalSpace,
-
           const SizedBox(height: 10),
           const UploadServiceImagesSection(),
           const SizedBox(height: 25),
@@ -123,6 +122,7 @@ class EditServiceForm extends StatelessWidget {
             onAdd: () => _submitForm(context),
             isUpdate: true,
           ),
+          15.verticalSpace,
         ],
       ),
     );
@@ -134,7 +134,7 @@ class EditServiceForm extends StatelessWidget {
     String phoneNumber =
         (formControls['phoneNumber']!.value as String).withCountryCode;
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
-    
+
     if ((phoneNumber2 ?? "").isNotEmpty) {
       phoneNumber += "-${phoneNumber2.withCountryCode}";
     }
@@ -151,7 +151,6 @@ class EditServiceForm extends StatelessWidget {
       contact: craftsmanEntity.contact.copyWith(
         phoneNumber: phoneNumber,
         email: formControls['email']!.value as String?,
-        urlSite: formControls['url']!.value as String?,
       ),
     );
 

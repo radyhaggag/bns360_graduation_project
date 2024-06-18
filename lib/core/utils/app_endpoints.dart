@@ -67,7 +67,7 @@ abstract class AppEndpoints {
   static String addJob = "$baseUrl/api/Job";
   static String getAllJobs = "$baseUrl/api/Job";
 
-  static String jobById(String jobId) {
+  static String jobById(int jobId) {
     return "$baseUrl/api/Job/$jobId";
   }
 

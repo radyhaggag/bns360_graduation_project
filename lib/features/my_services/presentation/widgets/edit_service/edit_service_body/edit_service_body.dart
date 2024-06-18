@@ -29,10 +29,10 @@ class _EditServiceBodyState extends State<EditServiceBody> {
   void initState() {
     super.initState();
 
-    // context.read<MyServicesBloc>().add(InitNetworkServiceImageEvent(
-    //       networkImages: widget.craftsmanEntity.serviceImages,
-    //       mainServiceImage: widget.craftsmanEntity.profileImageUrl,
-    //     ));
+    context.read<MyServicesBloc>().add(InitNetworkServiceImageEvent(
+          networkImages: widget.craftsmanEntity.serviceImages,
+          mainServiceImage: widget.craftsmanEntity.profileImageUrl,
+        ));
 
     context.read<MyServicesBloc>().add(SelectServiceHolidayEvent(
           holiday: WorkDay.fromId(widget.craftsmanEntity.holidays),

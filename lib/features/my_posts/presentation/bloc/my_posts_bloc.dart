@@ -76,12 +76,26 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
   _deletePostEvent(
     DeletePostEvent event,
     Emitter<MyPostsState> emit,
-  ) {
-    if (event.isJob) {
-      myPostsJobs.removeAt(event.index);
-    } else {
-      myPostsProperties.removeAt(event.index);
-    }
-    emit(PostsUpdatedState());
+  ) async {
+    emit(DeletePostLoadingState());
+
+    final res = await myPostsRepo.deletePost(
+      isJob: event.isJob,
+      itemId: event.itemId,
+    );
+
+    res.fold(
+      (l) => emit(DeletePostErrorState(message: l.message)),
+      (r) {
+        if (event.isJob) {
+          myPostsJobs.removeAt(event.index);
+        } else {
+          myPostsProperties.removeAt(event.index);
+        }
+        emit(DeletePostSuccessState());
+      },
+    );
+
+    // emit(PostsUpdatedState());
   }
 }

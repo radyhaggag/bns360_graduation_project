@@ -1,12 +1,10 @@
 import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
@@ -60,14 +58,9 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
       ),
-      'phoneNumber2': FormControl<String>(
-        validators: [
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-        ],
-      ),
+      'phoneNumber2': FormControl<String>(),
       'email': FormControl<String>(
         validators: [Validators.email],
       ),
@@ -126,11 +119,10 @@ class _AddBusinessBodyState extends State<AddBusinessBody> {
 
   void _submitForm() {
     final formControls = form.controls;
-    String phoneNumber =
-        (formControls['phoneNumber']!.value as String).withCountryCode;
+    String phoneNumber = (formControls['phoneNumber']!.value as String);
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
     if ((phoneNumber2 ?? "").isNotEmpty) {
-      phoneNumber += "-${phoneNumber2.withCountryCode}";
+      phoneNumber += "-$phoneNumber2";
     }
     final params = AddBusinessParams(
       holiday: WorkDay.friday,

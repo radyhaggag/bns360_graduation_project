@@ -1,11 +1,9 @@
-import '../../../../../core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
@@ -54,14 +52,12 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
       ),
       'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
       ),
     });
@@ -119,9 +115,8 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
       area: double.parse(formControls['area']!.value as String),
       offerType: selectedOfferType!,
       price: double.parse(formControls['price']!.value as String),
-      phoneNumber:
-          (formControls['phoneNumber']!.value as String).withCountryCode,
-      whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
+      phoneNumber: (formControls['phoneNumber']!.value as String),
+      whatsapp: (formControls['whatsapp']!.value as String),
     );
 
     context.read<PropertiesBloc>().add(AddPropertyEvent(

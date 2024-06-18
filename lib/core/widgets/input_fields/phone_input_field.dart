@@ -1,8 +1,8 @@
-import '../../utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
 import '../../utils/enums.dart';
+import '../../utils/extensions/context.dart';
 import '../../utils/extensions/language.dart';
 
 class PhoneInputField extends StatelessWidget {
@@ -33,7 +33,7 @@ class PhoneInputField extends StatelessWidget {
                 child: TextFormField(
                   readOnly: true,
                   decoration: const InputDecoration(
-                    hintText: '+20',
+                    // hintText: '+20',
                     // hintStyle: AppStyles.getRegularStyle(),
                     helperText: "",
                   ),

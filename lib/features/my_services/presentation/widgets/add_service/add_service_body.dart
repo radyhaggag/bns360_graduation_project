@@ -5,12 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/work_days.dart';
 import '../../../../../core/utils/extensions/context.dart';
-import '../../../../../core/utils/extensions/strings.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/params/add_service_params.dart';
 import '../../bloc/my_services_bloc.dart';
@@ -58,14 +56,9 @@ class _AddServiceBodyState extends State<AddServiceBody> {
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
       ),
-      'phoneNumber2': FormControl<String>(
-        validators: [
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-        ],
-      ),
+      'phoneNumber2': FormControl<String>(),
       "email": FormControl<String>(
         validators: [Validators.email],
       ),
@@ -126,10 +119,10 @@ class _AddServiceBodyState extends State<AddServiceBody> {
     final formControls = form.controls;
 
     String phoneNumber =
-        (formControls['phoneNumber']!.value as String).withCountryCode;
+        (formControls['phoneNumber']!.value as String);
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
     if ((phoneNumber2 ?? "").isNotEmpty) {
-      phoneNumber += "-${phoneNumber2.withCountryCode}";
+      phoneNumber += "-$phoneNumber2";
     }
 
     final params = AddServiceParams(

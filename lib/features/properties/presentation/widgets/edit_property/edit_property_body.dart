@@ -4,13 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
-import '../../../../../core/utils/extensions/strings.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/properties_bloc.dart';
 import 'edit_property_button.dart';
@@ -77,17 +75,13 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: widget.propertyEntity.contacts.phoneNumber.withoutCountryCode,
       ),
       'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: widget.propertyEntity.contacts.whatsapp.withoutCountryCode,
       ),
     });
 
@@ -155,8 +149,8 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
       price: double.parse(formControls['price']!.value as String),
       contacts: widget.propertyEntity.contacts.copyWith(
         phoneNumber:
-            (formControls['phoneNumber']!.value as String).withCountryCode,
-        whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
+            (formControls['phoneNumber']!.value as String),
+        whatsapp: (formControls['whatsapp']!.value as String),
       ),
       type: selectedOfferType!,
       image1: images.firstOrNull,

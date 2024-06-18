@@ -5,12 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/job_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
-import '../../../../../core/utils/extensions/strings.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/params/add_job_params.dart';
 import '../../bloc/jobs_bloc.dart';
@@ -54,14 +52,12 @@ class _AddJobBodyState extends State<AddJobBody> {
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
       ),
       'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
       ),
     });
@@ -119,9 +115,8 @@ class _AddJobBodyState extends State<AddJobBody> {
       // Will edited on the bloc
       workHours: int.parse(formControls['workHours']!.value as String),
       salary: double.parse(formControls['salary']!.value as String),
-      phoneNumber:
-          (formControls['phoneNumber']!.value as String).withCountryCode,
-      whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
+      phoneNumber: (formControls['phoneNumber']!.value as String),
+      whatsapp: (formControls['whatsapp']!.value as String),
     );
 
     if (params.workHours > 24) {

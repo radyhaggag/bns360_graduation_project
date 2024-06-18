@@ -1,12 +1,10 @@
 import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
@@ -109,15 +107,11 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: phoneOne.withoutCountryCode,
+        value: phoneOne,
       ),
       'phoneNumber2': FormControl<String>(
-        validators: [
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-        ],
-        value: phoneTwo.withoutCountryCode,
+        value: phoneTwo,
       ),
       'email': FormControl<String>(
         value: widget.categoryItemEntity.contacts.email,
@@ -182,10 +176,10 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
     final formControls = form.controls;
 
     String phoneNumber =
-        (formControls['phoneNumber']!.value as String).withCountryCode;
+        (formControls['phoneNumber']!.value as String);
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
     if ((phoneNumber2 ?? "").isNotEmpty) {
-      phoneNumber += "-${phoneNumber2.withCountryCode}";
+      phoneNumber += "-$phoneNumber2";
     }
 
     final entity = widget.categoryItemEntity.copyWith(

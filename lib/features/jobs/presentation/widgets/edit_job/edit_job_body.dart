@@ -5,13 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/job_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
-import '../../../../../core/utils/extensions/strings.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/jobs_bloc.dart';
 import 'edit_job_button.dart';
@@ -77,17 +75,15 @@ class _EditJobBodyState extends State<EditJobBody> {
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: widget.jobEntity.contacts?.phoneNumber?.withoutCountryCode,
+        value: widget.jobEntity.contacts?.phoneNumber,
       ),
       'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
-          Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
         ],
-        value: widget.jobEntity.contacts?.whatsapp?.withoutCountryCode,
+        value: widget.jobEntity.contacts?.whatsapp,
       ),
     });
   }
@@ -146,10 +142,9 @@ class _EditJobBodyState extends State<EditJobBody> {
       workHours: int.parse(formControls['workHours']!.value as String),
       salary: double.parse(formControls['salary']!.value as String),
       contacts: widget.jobEntity.contacts?.copyWith(
-        phoneNumber:
-            (formControls['phoneNumber']!.value as String).withCountryCode,
+        phoneNumber: (formControls['phoneNumber']!.value as String),
       ),
-      whatsapp: (formControls['whatsapp']!.value as String).withCountryCode,
+      whatsapp: (formControls['whatsapp']!.value as String),
     );
 
     if (jobEntity.workHours > 24) {

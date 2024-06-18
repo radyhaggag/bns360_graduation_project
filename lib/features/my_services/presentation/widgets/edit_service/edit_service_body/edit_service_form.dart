@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
-import '../../../../../../core/utils/extensions/strings.dart';
 import '../../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../../core/widgets/select_holiday_dropdown.dart';
@@ -133,11 +132,11 @@ class EditServiceForm extends StatelessWidget {
     final formControls = form.controls;
 
     String phoneNumber =
-        (formControls['phoneNumber']!.value as String).withCountryCode;
+        (formControls['phoneNumber']!.value as String);
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
 
     if ((phoneNumber2 ?? "").isNotEmpty) {
-      phoneNumber += "-${phoneNumber2.withCountryCode}";
+      phoneNumber += "-$phoneNumber2";
     }
 
     final newData = craftsmanEntity.copyWith(

@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../../core/helpers/validators/form_validators.dart';
 import '../../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../../../core/utils/enums/work_days.dart';
-import '../../../../../../core/utils/extensions/strings.dart';
 import '../../../bloc/my_services_bloc.dart';
 import '../craftsman_head/edit_craftsman_head_sliver.dart';
 import 'edit_service_form.dart';
@@ -96,15 +94,11 @@ class _EditServiceBodyState extends State<EditServiceBody> {
           validators: [
             Validators.required,
             Validators.number,
-            Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
           ],
-          value: phoneOne.withoutCountryCode,
+          value: phoneOne,
         ),
         'phoneNumber2': FormControl<String>(
-          validators: [
-            Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-          ],
-          value: phoneTwo.withoutCountryCode,
+          value: phoneTwo,
         ),
         'email': FormControl<String>(
           validators: [Validators.email],

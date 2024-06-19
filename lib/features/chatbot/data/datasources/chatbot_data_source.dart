@@ -13,7 +13,7 @@ abstract class ChatbotDataSource {
 
 class ChatbotDataSourceImpl implements ChatbotDataSource {
   String get currentUserId => AppProvider().getProfile()!.id;
-  String get chatbotAPI => "http://127.0.0.1:5000/predict_route";
+  String get chatbotAPI => "http://10.0.2.2:5000/predict_route";
 
   final APIConsumer apiConsumer;
 
@@ -25,21 +25,46 @@ class ChatbotDataSourceImpl implements ChatbotDataSource {
   Future<String?> sendMessage(
     String message,
   ) async {
+    final res = await apiConsumer.post(
+      endpoint: chatbotAPI,
+      data: {
+        "user_input": message,
+      },
+    );
+
+    final response = res.data["response"];
+
     final conversationId = "${AppProvider().getProfile()!.id}_chatbot";
 
-    final model = MessageModel(
+    final myMessageModel = MessageModel(
       senderId: currentUserId,
       type: MessageType.text,
       content: message,
       date: DateTime.now(),
     );
 
+    final botMessageModel = MessageModel(
+      senderId: "chatbot",
+      type: MessageType.text,
+      content: response,
+      date: DateTime.now(),
+    );
+
     final ref = FirestoreCollections.chatbotMessages(conversationId);
 
-    await FirestoreManager.addDoc(
-      reference: ref,
-      data: model.toMap(),
+    final batch = FirestoreManager.db.batch();
+
+    batch.set(
+      ref.doc(),
+      myMessageModel.toMap(),
     );
+
+    batch.set(
+      ref.doc(),
+      botMessageModel.toMap(),
+    );
+
+    await batch.commit();
 
     return conversationId;
   }

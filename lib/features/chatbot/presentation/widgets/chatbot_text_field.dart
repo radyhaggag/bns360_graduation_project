@@ -1,8 +1,3 @@
-import '../../../../core/utils/enums.dart';
-import '../../../../core/utils/extensions/context.dart';
-import '../../../../core/utils/extensions/language.dart';
-import '../bloc/chatbot_bloc.dart';
-import '../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
 import '../../../../../core/widgets/center_progress_indicator.dart';
+import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/utils/extensions/language.dart';
+import '../../../../generated/l10n.dart';
+import '../bloc/chatbot_bloc.dart';
 
 class ChatbotTextField extends StatelessWidget {
   const ChatbotTextField({
@@ -40,9 +40,6 @@ class ChatbotTextField extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          if (state is SendChatbotMessageLoadingState) {
-            return const CenterProgressIndicator();
-          }
           return Row(
             children: [
               Container(
@@ -72,22 +69,27 @@ class ChatbotTextField extends StatelessWidget {
                     content: textEditingController.text,
                   );
                 },
-                child: Container(
-                  height: 30.r,
-                  width: 30.r,
-                  alignment: Alignment.center,
-                  child: RotatedBox(
-                    quarterTurns: context.currentLanguage == Language.arabic ? 2 : 0,
-                    child: Center(
-                      child: SvgPicture.asset(
-                        AppSvg.sendArrow,
-                        color: AppColors.white,
-                        width: 30.r,
+                child: (state is SendChatbotMessageLoadingState)
+                    ? const CenterProgressIndicator()
+                    : Container(
                         height: 30.r,
+                        width: 30.r,
+                        alignment: Alignment.center,
+                        child: RotatedBox(
+                          quarterTurns:
+                              context.currentLanguage == Language.arabic
+                                  ? 2
+                                  : 0,
+                          child: Center(
+                            child: SvgPicture.asset(
+                              AppSvg.sendArrow,
+                              color: AppColors.white,
+                              width: 30.r,
+                              height: 30.r,
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
               ),
             ],
           );

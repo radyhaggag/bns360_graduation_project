@@ -1,4 +1,3 @@
-import '../bloc/chatbot_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +6,7 @@ import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
+import '../bloc/chatbot_bloc.dart';
 import 'chatbot_message_item.dart';
 
 class ChatbotMessagesBuilder extends StatefulWidget {

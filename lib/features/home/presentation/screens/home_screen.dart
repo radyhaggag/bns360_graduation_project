@@ -1,3 +1,5 @@
+import 'package:bns360_graduation_project/config/app_config.dart';
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/features/home/presentation/widgets/floating_action_button/home_floating_action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +21,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: HomeScreenAppBar(),
-      body: HomeBody(),
-      floatingActionButton: HomeFloatingActionButton(),
+    return Scaffold(
+      appBar: const HomeScreenAppBar(),
+      body: const HomeBody(),
+      floatingActionButton: (AppConfig().isProd || AppProvider().isGuest)
+          ? null
+          : const HomeFloatingActionButton(),
     );
   }
 }

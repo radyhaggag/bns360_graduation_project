@@ -295,5 +295,7 @@
   "business_not_full_24_no_holidays": "This business operates during specific hours daily and does not have any holidays.",
   "craftsman_not_full_24_no_holidays": "This Craftsman operates during specific hours daily and does not have any holidays.",
   "working_24_hours": "Working 24 hours",
-  "admin": "Admin"
+  "admin": "Admin",
+  "resend_email_verification": "Resend email verification",
+  "sent_email_verification_link": "We have sent an email verification link to your email address."
 }

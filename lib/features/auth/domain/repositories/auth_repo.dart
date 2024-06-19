@@ -14,4 +14,7 @@ abstract class AuthRepo {
   );
   FutureEither<bool> resetPassword(ResetPasswordParams params);
   FutureEither<void> continueAsGuest();
+  FutureEither<void> sendConfirmationEmail(
+    String email,
+  );
 }

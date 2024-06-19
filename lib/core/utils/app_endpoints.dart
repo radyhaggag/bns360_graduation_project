@@ -165,4 +165,6 @@ abstract class AppEndpoints {
   static String deleteAccount(String userId) => "$baseUrl/api/Profile/$userId";
 
   static String topRated = "$baseUrl/api/Business/GetTopFiveRatedBusinesses";
+
+  static String sendConfirmationEmail = "$baseUrl/api/Account/ResendConfirmationEmail";
 }

@@ -1,8 +1,11 @@
-import '../../../../core/utils/extensions/media_query.dart';
+import 'package:bns360_graduation_project/core/app/app_bloc.dart';
+import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/assets/app_images.dart';
 import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/extensions/media_query.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});
@@ -36,10 +39,12 @@ class _SplashBodyState extends State<SplashBody> with TickerProviderStateMixin {
               return SlideTransition(
                 position: _slidingAnimation,
                 child: SizedBox(
-                  width: context.width * 0.5,
+                  width: context.width * 0.7,
                   child: ClipOval(
                     child: Image.asset(
-                      AppImages.appLogoWithBackground,
+                      context.read<AppBloc>().state.theme == AppTheme.light
+                          ? AppImages.appLogoWithWhiteBackground
+                          : AppImages.appLogoWithBlackBackground,
                       fit: BoxFit.cover,
                     ),
                   ),

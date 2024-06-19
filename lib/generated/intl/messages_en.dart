@@ -373,6 +373,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("This field is required"),
         "requirements": MessageLookupByLibrary.simpleMessage("Requirements"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+        "resend_email_verification":
+            MessageLookupByLibrary.simpleMessage("Resend email verification"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset password"),
         "resetPasswordMsg": MessageLookupByLibrary.simpleMessage(
             "Please type something you’ll remember"),
@@ -403,6 +405,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "send_message": MessageLookupByLibrary.simpleMessage("Send message"),
         "sentCodeTo":
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to"),
+        "sent_email_verification_link": MessageLookupByLibrary.simpleMessage(
+            "We have sent an email verification link to your email address."),
         "serviceProvider":
             MessageLookupByLibrary.simpleMessage("Service provider"),
         "service_address":

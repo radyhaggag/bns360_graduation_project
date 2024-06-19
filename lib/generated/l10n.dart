@@ -3009,6 +3009,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Resend email verification`
+  String get resend_email_verification {
+    return Intl.message(
+      'Resend email verification',
+      name: 'resend_email_verification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We have sent an email verification link to your email address.`
+  String get sent_email_verification_link {
+    return Intl.message(
+      'We have sent an email verification link to your email address.',
+      name: 'sent_email_verification_link',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

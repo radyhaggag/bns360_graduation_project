@@ -1,9 +1,10 @@
-import '../../../../core/providers/app_provider.dart';
-import '../../../conversations/data/models/message_model.dart';
+import 'package:bns360_graduation_project/core/api/api_consumer.dart';
 
 import '../../../../core/firebase/firestore_collections.dart';
 import '../../../../core/firebase/firestore_manager.dart';
+import '../../../../core/providers/app_provider.dart';
 import '../../../../core/utils/enums/message_type.dart';
+import '../../../conversations/data/models/message_model.dart';
 
 abstract class ChatbotDataSource {
   Future<void> sendMessage(String message);
@@ -12,6 +13,13 @@ abstract class ChatbotDataSource {
 
 class ChatbotDataSourceImpl implements ChatbotDataSource {
   String get currentUserId => AppProvider().getProfile()!.id;
+  String get chatbotAPI => "http://127.0.0.1:5000/predict_route";
+
+  final APIConsumer apiConsumer;
+
+  ChatbotDataSourceImpl({
+    required this.apiConsumer,
+  });
 
   @override
   Future<String?> sendMessage(

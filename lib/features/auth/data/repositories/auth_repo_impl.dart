@@ -67,4 +67,11 @@ class AuthRepoImpl implements AuthRepo {
       () => authRemoteDataSource.continueAsGuest(),
     );
   }
+
+  @override
+  FutureEither<void> sendConfirmationEmail(String email) {
+    return executeAndHandleErrorAsync<void>(
+      () => authRemoteDataSource.sendConfirmationEmail(email),
+    );
+  }
 }

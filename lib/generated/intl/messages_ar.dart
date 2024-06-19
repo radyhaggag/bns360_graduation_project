@@ -367,6 +367,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "requirements": MessageLookupByLibrary.simpleMessage("المتطلبات"),
         "resend": MessageLookupByLibrary.simpleMessage("إعادة الارسال"),
+        "resend_email_verification":
+            MessageLookupByLibrary.simpleMessage("إعادة إرسال رمز التحقق"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "resetPasswordMsg":
@@ -397,6 +399,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "send_message": MessageLookupByLibrary.simpleMessage("ارسال رسالة"),
         "sentCodeTo": MessageLookupByLibrary.simpleMessage(
             "لقدم قمنا بإرسال كود التحقق الى"),
+        "sent_email_verification_link": MessageLookupByLibrary.simpleMessage(
+            "تم إرسال رابط التحقق إلى بريدك الإلكتروني"),
         "serviceProvider": MessageLookupByLibrary.simpleMessage("مقدم خدمة"),
         "service_address": MessageLookupByLibrary.simpleMessage("عنوان الخدمة"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),

@@ -294,5 +294,7 @@
   "business_not_full_24_no_holidays": "يعمل هذا النشاط التجاري خلال ساعات محددة يوميًا ولا توجد لديه أي إجازات.",
   "craftsman_not_full_24_no_holidays": "يعمل هذا الحرفي خلال ساعات محددة يوميًا ولا توجد لديه أي إجازات.",
   "working_24_hours": "يعمل 24 ساعة",
-  "admin": "ادمن"
+  "admin": "ادمن",
+  "resend_email_verification": "إعادة إرسال رمز التحقق",
+  "sent_email_verification_link": "تم إرسال رابط التحقق إلى بريدك الإلكتروني"
 }

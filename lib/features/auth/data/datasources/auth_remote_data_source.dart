@@ -11,4 +11,7 @@ abstract class AuthRemoteDataSource {
   Future<bool> verifyResetPasswordCode(VerifyResetPasswordParams params);
   Future<bool> resetPassword(ResetPasswordParams params);
   Future<void> continueAsGuest();
+  Future<void> sendConfirmationEmail(
+    String email,
+  );
 }

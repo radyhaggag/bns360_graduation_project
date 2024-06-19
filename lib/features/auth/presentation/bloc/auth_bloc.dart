@@ -26,6 +26,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<ResetPasswordEvent>(_resetPassword);
     on<ChangeUserTypeEvent>(_changeUserType);
     on<ContinueAsGuestEvent>(_continueAsGuest);
+    on<SendConfirmationEmailEvent>(_sendConfirmationEmail);
   }
 
   Future<void> _login(
@@ -38,7 +39,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final res = await authRepo.login(params);
 
     res.fold(
-      (l) => emit(LoginErrorState(message: l.message)),
+      (l) => emit(LoginErrorState(
+        message: l.message,
+        email: event.email,
+      )),
       (r) => emit(LoginSuccessState()),
     );
   }
@@ -128,8 +132,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final res = await authRepo.continueAsGuest();
 
     res.fold(
-      (l) => emit(LoginErrorState(message: l.message)),
+      (l) => emit(LoginErrorState(
+        message: l.message,
+        email: '',
+      )),
       (r) => emit(LoginSuccessState()),
+    );
+  }
+
+  _sendConfirmationEmail(
+    SendConfirmationEmailEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(SendConfirmationEmailLoadingState());
+
+    final res = await authRepo.sendConfirmationEmail(event.email);
+
+    res.fold(
+      (l) => emit(SendConfirmationEmailErrorState(message: l.message)),
+      (r) => emit(SendConfirmationEmailSuccessState()),
     );
   }
 }

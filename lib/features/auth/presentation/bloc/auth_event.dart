@@ -64,3 +64,11 @@ class ChangeUserTypeEvent extends AuthEvent {
 }
 
 class ContinueAsGuestEvent extends AuthEvent {}
+
+class SendConfirmationEmailEvent extends AuthEvent {
+  final String email;
+
+  const SendConfirmationEmailEvent({
+    required this.email,
+  });
+}

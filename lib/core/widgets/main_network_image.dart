@@ -1,6 +1,9 @@
+import 'package:bns360_graduation_project/core/app/app_bloc.dart';
+import 'package:bns360_graduation_project/core/utils/enums.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../utils/app_colors.dart';
 import '../utils/assets/app_images.dart';
@@ -113,7 +116,9 @@ class _BuildImage extends StatelessWidget {
       fit: BoxFit.cover,
       errorWidget: (context, url, error) {
         return Image.asset(
-          AppImages.appLogo,
+          context.read<AppBloc>().state.theme == AppTheme.light
+              ? AppImages.appLogoWithWhiteBackground
+              : AppImages.appLogoWithBlackBackground,
           width: width,
           height: height,
           fit: BoxFit.cover,

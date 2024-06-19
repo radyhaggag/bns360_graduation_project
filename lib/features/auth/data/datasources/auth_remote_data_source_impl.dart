@@ -1,9 +1,8 @@
-import '../../../../core/utils/enums/user_type.dart';
-
 import '../../../../core/api/api_consumer.dart';
 import '../../../../core/databases/secure_storage/token_manager.dart';
 import '../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../../../core/utils/app_endpoints.dart';
+import '../../../../core/utils/enums/user_type.dart';
 import '../../domain/params/login_params.dart';
 import '../../domain/params/reset_password_params.dart';
 import '../../domain/params/sign_up_params.dart';
@@ -96,5 +95,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     );
 
     await profile.saveToCache();
+  }
+
+  @override
+  Future<void> sendConfirmationEmail(
+    String email,
+  ) async {
+    await apiConsumer.post(
+      endpoint: AppEndpoints.sendConfirmationEmail,
+      queries: {"email": email},
+    );
   }
 }

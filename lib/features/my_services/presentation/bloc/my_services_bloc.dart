@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/shared_data/entities/craft_entity.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../core/utils/enums/time.dart';
 import '../../../../core/utils/enums/work_days.dart';
 import '../../domain/params/add_service_params.dart';
 import '../../domain/repositories/my_services_repo.dart';
@@ -32,6 +33,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     on<DeleteMyServicesEvent>(_deleteMyServices);
     on<SelectServiceHolidayEvent>(_selectHolidayWorkday);
     on<SetIsAlwaysAvailableValueEvent>(_toggleIsAlwaysWorking);
+    on<SetTimeDurationEvent>(_setTimeDuration);
   }
 
   final List<File> _pickedImages = [];
@@ -136,13 +138,25 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   ) async {
     emit(AddServiceLoadingState());
 
+    final from = TimeDuration.convertTo24Format(
+      event.addServiceParams.from,
+      fromTimeDuration,
+    );
+    final to = TimeDuration.convertTo24Format(
+      event.addServiceParams.to,
+      toTimeDuration,
+    );
+
     final params = event.addServiceParams.copyWith(
-        // lat: _serviceLat,
-        // lng: _serviceLng,
-        serviceCategory: selectedServiceCraft,
-        mainServiceBackgroundImages: pickedImages.map((e) => e.path).toList(),
-        mainServiceImage: _mainServiceImage?.path,
-        holiday: holiday);
+      // lat: _serviceLat,
+      // lng: _serviceLng,
+      serviceCategory: selectedServiceCraft,
+      mainServiceBackgroundImages: pickedImages.map((e) => e.path).toList(),
+      mainServiceImage: _mainServiceImage?.path,
+      holiday: holiday,
+      from: isAlwaysWorking ? 0 : from,
+      to: isAlwaysWorking ? 24 : to,
+    );
 
     final res = await myServicesRepo.addService(params);
 
@@ -158,6 +172,15 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   ) async {
     emit(UpdateServiceLoadingState());
 
+    final from = TimeDuration.convertTo24Format(
+      event.craftsmanEntity.opening,
+      fromTimeDuration,
+    );
+    final to = TimeDuration.convertTo24Format(
+      event.craftsmanEntity.closing,
+      toTimeDuration,
+    );
+
     final params = event.craftsmanEntity.copyWith(
       removeImages: pickedImages.isEmpty,
       craftsModelId: selectedServiceCraft?.id,
@@ -167,6 +190,8 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
       imageName4: pickedImages.length > 3 ? pickedImages[3].path : null,
       profileImageUrl: mainServiceImage?.path,
       holidays: holiday.id,
+      opening: isAlwaysWorking ? 0 : from,
+      closing: isAlwaysWorking ? 24 : to,
     );
 
     final res = await myServicesRepo.updateService(params);
@@ -260,5 +285,24 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   ) {
     isAlwaysWorking = !isAlwaysWorking;
     emit(IsAlwaysWorkingToggledState(isAlwaysWorking: isAlwaysWorking));
+  }
+
+  TimeDuration fromTimeDuration = TimeDuration.am;
+  TimeDuration toTimeDuration = TimeDuration.pm;
+
+  _setTimeDuration(
+    SetTimeDurationEvent event,
+    Emitter<MyServicesState> emit,
+  ) {
+    if (event.fromTimeDuration != null) {
+      fromTimeDuration = event.fromTimeDuration!;
+    }
+    if (event.toTimeDuration != null) {
+      toTimeDuration = event.toTimeDuration!;
+    }
+    emit(TimeDurationUpdatedState(
+      fromTimeDuration: fromTimeDuration,
+      toTimeDuration: toTimeDuration,
+    ));
   }
 }

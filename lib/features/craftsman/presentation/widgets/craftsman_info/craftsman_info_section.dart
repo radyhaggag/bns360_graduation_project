@@ -11,6 +11,7 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
 import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/enums/time.dart';
 import '../../../../../core/utils/enums/work_days.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../generated/l10n.dart';
@@ -46,7 +47,7 @@ class CraftsmanInfoSection extends StatelessWidget {
             start: craftsmanEntity.opening,
             end: craftsmanEntity.closing,
             holiday: craftsmanEntity.holidays,
-            isWorking24Hour: craftsmanEntity.isWorking24Hour,
+            isWorking24Hours: craftsmanEntity.isWorking24Hour,
           ),
           const SizedBox(height: 15),
           _CraftsmanLocation(

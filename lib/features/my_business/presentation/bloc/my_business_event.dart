@@ -79,4 +79,14 @@ class SetIsAlwaysAvailableValueEvent extends MyBusinessEvent {
   const SetIsAlwaysAvailableValueEvent({
     required this.isAlwaysAvailable,
   });
-} 
+}
+
+class SetTimeDurationEvent extends MyBusinessEvent {
+  final TimeDuration? fromTimeDuration;
+  final TimeDuration? toTimeDuration;
+
+  const SetTimeDurationEvent({
+    this.fromTimeDuration,
+    this.toTimeDuration,
+  });
+}

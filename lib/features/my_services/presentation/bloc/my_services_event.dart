@@ -69,3 +69,13 @@ class SetIsAlwaysAvailableValueEvent extends MyServicesEvent {
     required this.isAlwaysAvailable,
   });
 }
+
+class SetTimeDurationEvent extends MyServicesEvent {
+  final TimeDuration? fromTimeDuration;
+  final TimeDuration? toTimeDuration;
+
+  const SetTimeDurationEvent({
+    this.fromTimeDuration,
+    this.toTimeDuration,
+  });
+}

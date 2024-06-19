@@ -5,6 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/shared_data/entities/category_entity.dart';
 import '../../../../core/shared_data/entities/category_item_entity.dart';
+import '../../../../core/utils/enums/time.dart';
 import '../../../../core/utils/enums/work_days.dart';
 import '../../../../core/utils/extensions/iterable.dart';
 import '../../domain/params/add_business_params.dart';
@@ -34,6 +35,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     on<DeleteMyBusinessEvent>(_deleteMyBusiness);
     on<SelectBusinessHolidayEvent>(_selectBusinessHoliday);
     on<SetIsAlwaysAvailableValueEvent>(_setIsAlwaysWorking);
+    on<SetTimeDurationEvent>(_setTimeDuration);
   }
 
   double? businessLat;
@@ -154,6 +156,14 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   ) async {
     emit(AddBusinessLoadingState());
 
+    final from = TimeDuration.convertTo24Format(
+      event.addBusinessParams.from,
+      fromTimeDuration,
+    );
+    final to = TimeDuration.convertTo24Format(
+      event.addBusinessParams.to,
+      toTimeDuration,
+    );
     final params = event.addBusinessParams.copyWith(
       lat: businessLat,
       lng: businessLng,
@@ -161,8 +171,8 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
       mainBusinessBackgroundImages: pickedImages.map((e) => e.path).toList(),
       mainBusinessImage: _mainBusinessImage?.path,
       holiday: holiday,
-      from: isAlwaysWorking ? 0 : null,
-      to: isAlwaysWorking ? 24 : null,
+      from: isAlwaysWorking ? 0 : from,
+      to: isAlwaysWorking ? 24 : to,
     );
 
     final res = await myBusinessRepo.addBusiness(params);
@@ -179,6 +189,15 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   ) async {
     emit(UpdateBusinessLoadingState());
 
+    final from = TimeDuration.convertTo24Format(
+      event.categoryItemEntity.opening,
+      fromTimeDuration,
+    );
+    final to = TimeDuration.convertTo24Format(
+      event.categoryItemEntity.closing,
+      toTimeDuration,
+    );
+
     final params = event.categoryItemEntity.copyWith(
       latitude: businessLat,
       longitude: businessLng,
@@ -190,8 +209,8 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
       businessImageName4: pickedImages.length > 3 ? pickedImages[3].path : null,
       profileImageName: _mainBusinessImage?.path,
       holidays: holiday.id,
-      opening: isAlwaysWorking ? 0 : null,
-      closing: isAlwaysWorking ? 24 : null,
+      opening: isAlwaysWorking ? 0 : from,
+      closing: isAlwaysWorking ? 24 : to,
     );
 
     final res = await myBusinessRepo.updateBusiness(params);
@@ -287,6 +306,25 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
 
     emit(IsAlwaysWorkingToggledState(
       isAlwaysWorking: isAlwaysWorking,
+    ));
+  }
+
+  TimeDuration fromTimeDuration = TimeDuration.am;
+  TimeDuration toTimeDuration = TimeDuration.pm;
+
+  _setTimeDuration(
+    SetTimeDurationEvent event,
+    Emitter<MyBusinessState> emit,
+  ) {
+    if (event.fromTimeDuration != null) {
+      fromTimeDuration = event.fromTimeDuration!;
+    }
+    if (event.toTimeDuration != null) {
+      toTimeDuration = event.toTimeDuration!;
+    }
+    emit(TimeDurationUpdatedState(
+      fromTimeDuration: fromTimeDuration,
+      toTimeDuration: toTimeDuration,
     ));
   }
 }

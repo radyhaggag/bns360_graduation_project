@@ -79,3 +79,13 @@ class IsAlwaysWorkingToggledState extends MyServicesState {
 
   const IsAlwaysWorkingToggledState({required this.isAlwaysWorking});
 }
+
+class TimeDurationUpdatedState extends MyServicesState {
+  final TimeDuration fromTimeDuration;
+  final TimeDuration toTimeDuration;
+
+  const TimeDurationUpdatedState({
+    required this.fromTimeDuration,
+    required this.toTimeDuration,
+  });
+}

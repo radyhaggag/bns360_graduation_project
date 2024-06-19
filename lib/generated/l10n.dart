@@ -2210,13 +2210,23 @@ class S {
     );
   }
 
-  /// `Select your working hours for each day from 0 to 24.`
+  /// `Select your working hours for each day.`
   String get work_time {
     return Intl.message(
-      'Select your working hours for each day from 0 to 24.',
+      'Select your working hours for each day.',
       name: 'work_time',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Number of working hours is {number}`
+  String num_of_working_hours(Object number) {
+    return Intl.message(
+      'Number of working hours is $number',
+      name: 'num_of_working_hours',
+      desc: '',
+      args: [number],
     );
   }
 

@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m7(mins) => "${mins} mins ago";
 
+  static String m8(number) => "Number of working hours is ${number}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUsContent": MessageLookupByLibrary.simpleMessage(
@@ -304,6 +306,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("I didn\'\'t receive a code!"),
         "not_working":
             MessageLookupByLibrary.simpleMessage("Not Available now"),
+        "num_of_working_hours": m8,
         "number_validation_message":
             MessageLookupByLibrary.simpleMessage("Please enter a valid number"),
         "offer_type": MessageLookupByLibrary.simpleMessage("Offer type"),
@@ -468,7 +471,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Work hours should be less than 24"),
         "work_time": MessageLookupByLibrary.simpleMessage(
-            "Select your working hours for each day from 0 to 24."),
+            "Select your working hours for each day."),
         "working": MessageLookupByLibrary.simpleMessage("Available now"),
         "working_24_hours":
             MessageLookupByLibrary.simpleMessage("Working 24 hours"),

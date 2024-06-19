@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,6 +63,33 @@ class _AddServiceBodyState extends State<AddServiceBody> {
       ),
       'url': FormControl<String>(),
     });
+
+    form.valueChanges.listen((event) {
+      final fromValue = form.controls['from']?.value ?? "0";
+      final toValue = form.controls['to']?.value ?? "0";
+
+      if (fromValue.toString().isNotEmpty) {
+        final from = int.parse(fromValue.toString());
+        if (from > 12) {
+          form.controls['from']!.value = "12";
+        }
+        if (from == 0) {
+          form.controls['from']!.value = "1";
+        }
+      }
+
+      if (toValue.toString().isNotEmpty) {
+        final to = int.parse(toValue.toString());
+
+        if (to > 12) {
+          form.controls['to']!.value = "12";
+        }
+
+        if (to == 0) {
+          form.controls['to']!.value = "1";
+        }
+      }
+    });
   }
 
   @override
@@ -118,8 +144,7 @@ class _AddServiceBodyState extends State<AddServiceBody> {
   void _submitForm() {
     final formControls = form.controls;
 
-    String phoneNumber =
-        (formControls['phoneNumber']!.value as String);
+    String phoneNumber = (formControls['phoneNumber']!.value as String);
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
     if ((phoneNumber2 ?? "").isNotEmpty) {
       phoneNumber += "-$phoneNumber2";
@@ -137,14 +162,6 @@ class _AddServiceBodyState extends State<AddServiceBody> {
       mainServiceImage: "", // Will updated on the bloc
       email: formControls['email']!.value as String?,
     );
-
-    if (params.from > params.to || params.from > 24 || params.to > 24) {
-      showToast(
-        S.of(context).invalid_time_range,
-        ToastType.error,
-      );
-      return;
-    }
 
     context.read<MyServicesBloc>().add(AddServiceEvent(
           addServiceParams: params,

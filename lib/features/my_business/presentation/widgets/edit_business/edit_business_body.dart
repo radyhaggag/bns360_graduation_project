@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
+import 'package:bns360_graduation_project/core/utils/enums/time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,13 +34,6 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
   void initState() {
     super.initState();
 
-    // because the update cannot be done now without updating the images
-
-    // context.read<MyBusinessBloc>().add(InitNetworkBusinessImageEvent(
-    //       networkImages: widget.categoryItemEntity.businessImages,
-    //       mainBusinessImage: widget.categoryItemEntity.profileImageName,
-    //     ));
-
     context.read<MyBusinessBloc>().add(SelectBusinessHolidayEvent(
           holiday: WorkDay.fromId(widget.categoryItemEntity.holidays),
         ));
@@ -55,6 +48,17 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
             isAlwaysAvailable: true,
           ));
     }
+
+    context.read<MyBusinessBloc>().add(
+          SetTimeDurationEvent(
+            fromTimeDuration: TimeDuration.from24Hours(
+              widget.categoryItemEntity.opening,
+            ),
+            toTimeDuration: TimeDuration.from24Hours(
+              widget.categoryItemEntity.closing,
+            ),
+          ),
+        );
 
     final phoneNumber = widget.categoryItemEntity.contacts.phoneNumber;
     final phoneOne = phoneNumber?.contains("-") ?? false
@@ -94,14 +98,18 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
           Validators.required,
           Validators.number,
         ],
-        value: widget.categoryItemEntity.opening.toString(),
+        value: TimeDuration.convertTo12Format(
+          widget.categoryItemEntity.opening,
+        ).toString(),
       ),
       'to': FormControl<String>(
         validators: [
           Validators.required,
           Validators.number,
         ],
-        value: widget.categoryItemEntity.closing.toString(),
+        value: TimeDuration.convertTo12Format(
+          widget.categoryItemEntity.closing,
+        ).toString(),
       ),
       'phoneNumber': FormControl<String>(
         validators: [
@@ -119,6 +127,32 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
       'url': FormControl<String>(
         value: widget.categoryItemEntity.contacts.urlSite,
       ),
+    });
+    form.valueChanges.listen((event) {
+      final fromValue = form.controls['from']?.value ?? "0";
+      final toValue = form.controls['to']?.value ?? "0";
+
+      if (fromValue.toString().isNotEmpty) {
+        final from = int.parse(fromValue.toString());
+        if (from > 12) {
+          form.controls['from']!.value = "12";
+        }
+        if (from == 0) {
+          form.controls['from']!.value = "1";
+        }
+      }
+
+      if (toValue.toString().isNotEmpty) {
+        final to = int.parse(toValue.toString());
+
+        if (to > 12) {
+          form.controls['to']!.value = "12";
+        }
+
+        if (to == 0) {
+          form.controls['to']!.value = "1";
+        }
+      }
     });
   }
 
@@ -175,8 +209,7 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
   void _submitForm() {
     final formControls = form.controls;
 
-    String phoneNumber =
-        (formControls['phoneNumber']!.value as String);
+    String phoneNumber = (formControls['phoneNumber']!.value as String);
     String? phoneNumber2 = formControls['phoneNumber2']!.value as String?;
     if ((phoneNumber2 ?? "").isNotEmpty) {
       phoneNumber += "-$phoneNumber2";
@@ -199,16 +232,6 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
         urlSite: formControls['url']!.value as String?,
       ),
     );
-
-    if ((entity.opening > entity.closing) ||
-        entity.opening > 24 ||
-        entity.closing > 24) {
-      showToast(
-        S.of(context).invalid_time_range,
-        ToastType.error,
-      );
-      return;
-    }
 
     context.read<MyBusinessBloc>().add(UpdateBusinessEvent(
           categoryItemEntity: entity,

@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/utils/enums/time.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -81,14 +82,18 @@ class _EditServiceBodyState extends State<EditServiceBody> {
             Validators.required,
             Validators.number,
           ],
-          value: widget.craftsmanEntity.opening.toString(),
+          value: TimeDuration.convertTo12Format(
+            widget.craftsmanEntity.opening,
+          ).toString(),
         ),
         'to': FormControl<String>(
           validators: [
             Validators.required,
             Validators.number,
           ],
-          value: widget.craftsmanEntity.closing.toString(),
+          value: TimeDuration.convertTo12Format(
+            widget.craftsmanEntity.closing,
+          ).toString(),
         ),
         'phoneNumber': FormControl<String>(
           validators: [
@@ -109,6 +114,33 @@ class _EditServiceBodyState extends State<EditServiceBody> {
         ),
       },
     );
+
+    form.valueChanges.listen((event) {
+      final fromValue = form.controls['from']?.value ?? "0";
+      final toValue = form.controls['to']?.value ?? "0";
+
+      if (fromValue.toString().isNotEmpty) {
+        final from = int.parse(fromValue.toString());
+        if (from > 12) {
+          form.controls['from']!.value = "12";
+        }
+        if (from == 0) {
+          form.controls['from']!.value = "1";
+        }
+      }
+
+      if (toValue.toString().isNotEmpty) {
+        final to = int.parse(toValue.toString());
+
+        if (to > 12) {
+          form.controls['to']!.value = "12";
+        }
+
+        if (to == 0) {
+          form.controls['to']!.value = "1";
+        }
+      }
+    });
   }
 
   @override

@@ -45,6 +45,7 @@ class UpdateBusinessErrorState extends MyBusinessState {
 
   const UpdateBusinessErrorState({required this.message});
 }
+
 class DeleteBusinessLoadingState extends MyBusinessState {}
 
 class DeleteBusinessSuccessState extends MyBusinessState {}
@@ -83,4 +84,14 @@ class IsAlwaysWorkingToggledState extends MyBusinessState {
   final bool isAlwaysWorking;
 
   const IsAlwaysWorkingToggledState({required this.isAlwaysWorking});
+}
+
+class TimeDurationUpdatedState extends MyBusinessState {
+  final TimeDuration fromTimeDuration;
+  final TimeDuration toTimeDuration;
+
+  const TimeDurationUpdatedState({
+    required this.fromTimeDuration,
+    required this.toTimeDuration,
+  });
 }

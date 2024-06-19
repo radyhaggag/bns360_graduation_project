@@ -37,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m7(mins) => "قبل ${mins} دقائق";
 
+  static String m8(number) => "عدد ساعات العمل هو ${number}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUsContent": MessageLookupByLibrary.simpleMessage(
@@ -298,6 +300,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notReceiveCode":
             MessageLookupByLibrary.simpleMessage("لم تتلقى رمز التحقق!"),
         "not_working": MessageLookupByLibrary.simpleMessage("غير متاح الان"),
+        "num_of_working_hours": m8,
         "number_validation_message":
             MessageLookupByLibrary.simpleMessage("يرجى إدخال رقم صحيح"),
         "offer_type": MessageLookupByLibrary.simpleMessage("نوع العرض"),
@@ -457,8 +460,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "work_hours_should_be_less_than_24":
             MessageLookupByLibrary.simpleMessage(
                 "ساعات العمل يجب أن تكون أقل من 24"),
-        "work_time": MessageLookupByLibrary.simpleMessage(
-            "حدد ساعات عملك لكل يوم من 0 إلى 24."),
+        "work_time":
+            MessageLookupByLibrary.simpleMessage("حدد ساعات عملك لكل يوم."),
         "working": MessageLookupByLibrary.simpleMessage("متاح الان"),
         "working_24_hours":
             MessageLookupByLibrary.simpleMessage("يعمل 24 ساعة"),

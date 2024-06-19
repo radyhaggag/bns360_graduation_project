@@ -47,6 +47,8 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   ) {
     businessLat = event.lat;
     businessLng = event.lng;
+    // businessLat = 29.066995788495127;
+    // businessLng = 31.086381040513515;
 
     emit(BusinessLocationUpdatedState(
       lat: businessLat!,

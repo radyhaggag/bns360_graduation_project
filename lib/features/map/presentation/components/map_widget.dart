@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:bns360_graduation_project/core/helpers/location_helper.dart';
 import 'package:bns360_graduation_project/core/utils/app_colors.dart';
 import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
+import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
@@ -18,6 +20,7 @@ class MapWidget extends StatefulWidget {
     required this.markers,
     this.onMapCreated,
     this.isFullMode = false,
+    this.addSearchField = false,
   });
 
   final Completer<GoogleMapController> completer;
@@ -27,6 +30,7 @@ class MapWidget extends StatefulWidget {
   final CameraPosition kGooglePlex;
   final Function(GoogleMapController)? onMapCreated;
   final bool isFullMode;
+  final bool addSearchField;
 
   @override
   State<MapWidget> createState() => _MapWidgetState();
@@ -37,11 +41,14 @@ class _MapWidgetState extends State<MapWidget> {
   late LatLng selectedPoint;
   late Set<Marker> markers;
 
+  late TextEditingController searchController;
+
   @override
   void initState() {
     super.initState();
     markers = widget.markers;
     selectedPoint = widget.kGooglePlex.target;
+    searchController = TextEditingController();
   }
 
   _getCurrentLocation() async {
@@ -67,6 +74,12 @@ class _MapWidgetState extends State<MapWidget> {
     );
 
     setState(() {});
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
   }
 
   @override
@@ -107,6 +120,29 @@ class _MapWidgetState extends State<MapWidget> {
               ],
             ),
           ),
+        // if (widget.addSearchField)
+        //   Container(
+        //     margin: EdgeInsets.only(
+        //       top: 50.h,
+        //       left: 20.w,
+        //       right: 20.w,
+        //     ),
+        //     child: TextFormField(
+        //       decoration: InputDecoration(
+        //         hintText: S.of(context).search,
+        //         contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+        //         border: OutlineInputBorder(
+        //           borderRadius: BorderRadius.circular(8),
+        //         ),
+        //         fillColor: context.theme.highlightColor,
+        //         filled: true,
+        //         suffixIcon: IconButton(
+        //           icon: const Icon(Icons.search),
+        //           onPressed: ()=> extractCoordinates(searchController.text),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
       ],
     );
   }
@@ -126,5 +162,24 @@ class _MapWidgetState extends State<MapWidget> {
       foregroundColor: AppColors.white,
       child: const Icon(Icons.check),
     );
+  }
+
+  void extractCoordinates(String url) {
+    final pattern = RegExp(r'@(-?\d+\.\d+),(-?\d+\.\d+)');
+    final match = pattern.firstMatch(url);
+
+    if (match != null) {
+      final latitude = match.group(1);
+      final longitude = match.group(2);
+      widget.onTap(
+        double.parse(latitude!),
+        double.parse(longitude!),
+      );
+    } else {
+      showToast(
+        S.of(context).url_should_contain_coordinates,
+        ToastType.error,
+      );
+    }
   }
 }

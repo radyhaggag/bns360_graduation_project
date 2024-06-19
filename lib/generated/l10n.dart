@@ -3029,6 +3029,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Visit website`
+  String get visit_website {
+    return Intl.message(
+      'Visit website',
+      name: 'visit_website',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `URL should contain coordinates`
+  String get url_should_contain_coordinates {
+    return Intl.message(
+      'URL should contain coordinates',
+      name: 'url_should_contain_coordinates',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

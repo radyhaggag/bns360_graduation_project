@@ -15,15 +15,16 @@ class MyBusinessBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: kHorizontalPadding,
       ),
-      child: const SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            AddBusinessButton(),
-            SizedBox(height: 15),
-            MyBusinessItemsBuilder(),
-          ],
-        ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          AddBusinessButton(),
+          SizedBox(height: 15),
+          Expanded(
+            child: MyBusinessItemsBuilder(),
+          ),
+          SizedBox(height: 15),
+        ],
       ),
     );
   }

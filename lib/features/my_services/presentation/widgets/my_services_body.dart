@@ -15,15 +15,16 @@ class MyServicesBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: kHorizontalPadding,
       ),
-      child: const SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            AddServiceButton(),
-            SizedBox(height: 15),
-            MyServicesItemsBuilder(),
-          ],
-        ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          AddServiceButton(),
+          SizedBox(height: 15),
+          Expanded(
+            child: MyServicesItemsBuilder(),
+          ),
+          SizedBox(height: 15),
+        ],
       ),
     );
   }

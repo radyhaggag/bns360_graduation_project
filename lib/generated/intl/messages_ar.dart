@@ -438,6 +438,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحميل صور العقار"),
         "upload_service_images":
             MessageLookupByLibrary.simpleMessage("تحميل صور الخدمة"),
+        "url_should_contain_coordinates": MessageLookupByLibrary.simpleMessage(
+            "يجب أن يحتوي رابط الموقع على إحداثيات الخريطة"),
         "url_site": MessageLookupByLibrary.simpleMessage("رابط الموقع"),
         "user": MessageLookupByLibrary.simpleMessage("مستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
@@ -458,6 +460,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "view_profile":
             MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("عرض المراجعات"),
+        "visit_website": MessageLookupByLibrary.simpleMessage("زيارة الموقع"),
         "wednesday": MessageLookupByLibrary.simpleMessage("الأربعاء"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),

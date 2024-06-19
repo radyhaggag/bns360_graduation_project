@@ -177,6 +177,7 @@ class _MapScreenState extends State<MapScreen> {
                     zoomControlsEnabled: false,
                     markers: markers,
                     onTap: _onTap,
+                    addSearchField: true,
                     kGooglePlex: _kGooglePlex,
                     onMapCreated: (controller) {
                       fullController = controller;

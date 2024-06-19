@@ -9,17 +9,20 @@ import 'buttons/custom_buttons.dart';
 class ConfirmationDialog extends StatelessWidget {
   final VoidCallback onConfirm;
   final String message;
+  final String confirmLabel;
 
   const ConfirmationDialog({
     super.key,
     required this.onConfirm,
     required this.message,
+    required this.confirmLabel,
   });
 
   static void show(
     BuildContext context, {
     required VoidCallback onConfirm,
     required String message,
+    String? confirmLabel,
   }) {
     showDialog(
       context: context,
@@ -27,6 +30,7 @@ class ConfirmationDialog extends StatelessWidget {
         return ConfirmationDialog(
           onConfirm: onConfirm,
           message: message,
+          confirmLabel: confirmLabel ?? S.of(context).delete,
         );
       },
     );
@@ -47,7 +51,7 @@ class ConfirmationDialog extends StatelessWidget {
       actions: [
         CustomOutlinedButton(
           onPressed: onConfirm,
-          label: S.of(context).delete,
+          label: confirmLabel,
           width: 100.w,
           height: 35.h,
           backgroundColor: Colors.transparent,

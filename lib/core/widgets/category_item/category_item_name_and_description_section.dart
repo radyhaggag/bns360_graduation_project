@@ -31,7 +31,9 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
                 ar: categoryItemEntity.businessNameArabic,
                 en: categoryItemEntity.businessNameEnglish,
               ),
-              style: context.textTheme.titleSmall,
+              style: context.textTheme.titleSmall?.copyWith(
+                fontSize: AppFontSize.details,
+              ),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),

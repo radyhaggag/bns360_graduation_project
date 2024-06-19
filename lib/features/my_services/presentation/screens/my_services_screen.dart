@@ -1,7 +1,7 @@
-import '../bloc/my_services_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../bloc/my_services_bloc.dart';
 import '../widgets/my_service_screen_app_bar.dart';
 import '../widgets/my_services_body.dart';
 
@@ -16,9 +16,11 @@ class MyServicesScreen extends StatelessWidget {
           context.read<MyServicesBloc>().add(GetMyServicesEvent());
         }
       },
-      child: const Scaffold(
-        appBar: MyServicesScreenAppBar(),
-        body: MyServicesBody(),
+      child: const SafeArea(
+        child: Scaffold(
+          appBar: MyServicesScreenAppBar(),
+          body: MyServicesBody(),
+        ),
       ),
     );
   }

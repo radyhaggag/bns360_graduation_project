@@ -448,6 +448,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upload property images"),
         "upload_service_images":
             MessageLookupByLibrary.simpleMessage("Upload service images"),
+        "url_should_contain_coordinates": MessageLookupByLibrary.simpleMessage(
+            "URL should contain coordinates"),
         "url_site": MessageLookupByLibrary.simpleMessage("Your website URL"),
         "user": MessageLookupByLibrary.simpleMessage("User"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
@@ -468,6 +470,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "view_profile": MessageLookupByLibrary.simpleMessage("View profile"),
         "view_reviews": MessageLookupByLibrary.simpleMessage("View reviews"),
+        "visit_website": MessageLookupByLibrary.simpleMessage("Visit website"),
         "wednesday": MessageLookupByLibrary.simpleMessage("Wednesday"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome,"),
         "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),

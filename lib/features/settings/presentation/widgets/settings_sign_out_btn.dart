@@ -35,6 +35,7 @@ class SettingsSignOutBtn extends StatelessWidget {
           ConfirmationDialog.show(
             context,
             message: S.of(context).logout_message,
+            confirmLabel: S.of(context).logout,
             onConfirm: () {
               context.read<ProfileBloc>().add(SignOutEvent());
             },

@@ -18,11 +18,15 @@ class _CategoryItemContactInfo extends StatelessWidget {
         children: [
           ...List.generate(
               phoneNumbers.length,
-              (index) => _ContactRow(
-                    phone: phoneNumbers[index],
-                    iconPath: AppSvg.phone,
-                    onTap: () =>
-                        launchUrl(Uri.parse("tel:${phoneNumbers[index]}")),
+              (index) => Container(
+                    margin: const EdgeInsets.only(bottom: 5),
+                    child: _ContactRow(
+                      phone: phoneNumbers[index],
+                      iconPath: AppSvg.phone,
+                      onTap: () => launchUrl(
+                        Uri.parse("tel:${phoneNumbers[index]}"),
+                      ),
+                    ),
                   )),
           if (email != null) ...[
             const SizedBox(height: 10),
@@ -35,7 +39,7 @@ class _CategoryItemContactInfo extends StatelessWidget {
           if (url != null) ...[
             const SizedBox(height: 10),
             _ContactRow(
-              phone: url!,
+              phone: S.of(context).visit_website,
               icon: FeatherIcons.link,
               onTap: () => launchUrl(Uri.parse(url!)),
             ),

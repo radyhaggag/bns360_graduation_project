@@ -52,7 +52,8 @@ class ProfileListItemsSection extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             if (AppProvider().getProfile()?.userType ==
-                UserType.businessOwner.id) ...[
+                    UserType.businessOwner.id ||
+                AppProvider().isAdmin) ...[
               ProfileItemTile(
                 title: S.of(context).my_business,
                 svgPath: AppSvg.business,
@@ -64,7 +65,8 @@ class ProfileListItemsSection extends StatelessWidget {
               const SizedBox(height: 10),
             ],
             if (AppProvider().getProfile()?.userType ==
-                UserType.serviceProvider.id) ...[
+                    UserType.serviceProvider.id ||
+                AppProvider().isAdmin) ...[
               ProfileItemTile(
                 title: S.of(context).my_services,
                 svgPath: AppSvg.construction,
@@ -92,7 +94,7 @@ class ProfileListItemsSection extends StatelessWidget {
                 Navigator.of(context).pushNamed(Routes.savedItems);
               },
             ),
-          ],  
+          ],
           // const SizedBox(height: 10),
           // ProfileItemTile(
           //   title: S.of(context).share_this_app,

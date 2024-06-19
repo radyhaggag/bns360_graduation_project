@@ -2850,10 +2850,10 @@ class S {
     );
   }
 
-  /// `Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills.`
+  /// `Showcase your craftsmanship and attract clients looking for skilled craftsmen. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills.`
   String get craftsman_tooltip {
     return Intl.message(
-      'Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills.',
+      'Showcase your craftsmanship and attract clients looking for skilled craftsmen. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills.',
       name: 'craftsman_tooltip',
       desc: '',
       args: [],
@@ -2995,6 +2995,16 @@ class S {
     return Intl.message(
       'Working 24 hours',
       name: 'working_24_hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Admin`
+  String get admin {
+    return Intl.message(
+      'Admin',
+      name: 'admin',
       desc: '',
       args: [],
     );

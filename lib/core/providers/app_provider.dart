@@ -26,4 +26,5 @@ class AppProvider {
   Future<void> saveProfile() => HiveBoxes.profile.clear();
 
   bool get isGuest => getProfile()?.userType == UserType.guest.id;
+  bool get isAdmin => getProfile()?.userType == UserType.admin.id;
 }

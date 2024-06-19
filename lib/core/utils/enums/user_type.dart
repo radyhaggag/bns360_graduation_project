@@ -6,7 +6,8 @@ enum UserType {
   user(0),
   serviceProvider(1),
   businessOwner(2),
-  guest(4);
+  guest(3),
+  admin(4);
 
   const UserType(this.id);
   final int id;
@@ -27,6 +28,8 @@ enum UserType {
         return S.of(context).serviceProvider;
       case UserType.guest:
         return S.of(context).guest;
+      case UserType.admin:
+        return S.of(context).admin;
     }
   }
 
@@ -40,6 +43,8 @@ enum UserType {
         return S.of(context).serviceProvider;
       case UserType.guest:
         return S.of(context).guest;
+      case UserType.admin:
+        return S.of(context).admin;
     }
   }
 
@@ -53,6 +58,8 @@ enum UserType {
         return UserType.businessOwner;
       case 3:
         return UserType.guest;
+      case 4:
+        return UserType.admin;
       default:
         return UserType.user;
     }

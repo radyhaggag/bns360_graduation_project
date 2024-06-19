@@ -45,6 +45,7 @@ class AddServiceTimeSection extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: CustomReactiveFormField(
@@ -78,6 +79,7 @@ class AddServiceTimeSection extends StatelessWidget {
                     ),
                     10.verticalSpace,
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: CustomReactiveFormField(

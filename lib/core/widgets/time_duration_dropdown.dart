@@ -18,6 +18,7 @@ class TimeDurationDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 100.w,
+      height: 43.h  ,
       child: CustomDropdown<TimeDuration>(
         value: value,
         onTapCallback: (value) => onTapCallback(value),

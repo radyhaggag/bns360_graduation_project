@@ -43,8 +43,8 @@ class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
             },
           ),
         );
-        final result = res.data["sentiment"];
 
+        final result = res.data["sentiment"];
         final isHappy = result == "Happy";
 
         customReviews.add(

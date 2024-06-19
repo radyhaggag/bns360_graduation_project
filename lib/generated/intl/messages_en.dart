@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_service": MessageLookupByLibrary.simpleMessage("Add service"),
         "add_service_success": MessageLookupByLibrary.simpleMessage(
             "The service has been added successfully"),
+        "admin": MessageLookupByLibrary.simpleMessage("Admin"),
         "always_available":
             MessageLookupByLibrary.simpleMessage("Always available"),
         "always_available_question":
@@ -132,7 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "craftsman_specified_holidays": MessageLookupByLibrary.simpleMessage(
             "This Craftsman operates 24 hours a day, except on specified holidays."),
         "craftsman_tooltip": MessageLookupByLibrary.simpleMessage(
-            "Showcase your craftsmanship and attract clients looking for skilled professionals. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills."),
+            "Showcase your craftsmanship and attract clients looking for skilled craftsmen. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills."),
         "craftsmen": MessageLookupByLibrary.simpleMessage("Craftsmen"),
         "createYourAccount":
             MessageLookupByLibrary.simpleMessage("Create your Account"),

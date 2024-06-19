@@ -67,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_service": MessageLookupByLibrary.simpleMessage("إضافة نشاط تجاري"),
         "add_service_success":
             MessageLookupByLibrary.simpleMessage("تمت إضافة الخدمة بنجاح"),
+        "admin": MessageLookupByLibrary.simpleMessage("ادمن"),
         "always_available": MessageLookupByLibrary.simpleMessage("متاح دائمًا"),
         "always_available_question":
             MessageLookupByLibrary.simpleMessage("هل أنت متاح دائمًا؟"),
@@ -131,7 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "craftsman_specified_holidays": MessageLookupByLibrary.simpleMessage(
             "يعمل هذا الحرفي على مدار 24 ساعة يوميًا، باستثناء في أيام الإجازات المحددة."),
         "craftsman_tooltip": MessageLookupByLibrary.simpleMessage(
-            "اعرض براعتك واجذب العملاء الذين يبحثون عن محترفين ماهرين. تصفح فرص العمل واستكشف العقارات في منطقتك. سلط الضوء على خبرتك وتواصل مع الأشخاص الذين يحتاجون إلى مهاراتك."),
+            "اعرض براحتك واجذب العملاء الذين يبحثون عن حرفيين ماهرين. تصفح فرص العمل واستكشف العقارات في منطقتك. سلط الضوء على خبرتك وتواصل مع الأشخاص الذين يحتاجون إلى مهاراتك."),
         "craftsmen": MessageLookupByLibrary.simpleMessage("الحرفيين"),
         "createYourAccount": MessageLookupByLibrary.simpleMessage("أنشئ حسابك"),
         "creditCard_validation_message": MessageLookupByLibrary.simpleMessage(

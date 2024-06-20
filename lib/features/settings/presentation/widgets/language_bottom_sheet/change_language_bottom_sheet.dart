@@ -65,6 +65,9 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
           }),
           const SizedBox(height: 15),
           const ChangeLanguageBtn(),
+          SizedBox(
+            height: MediaQuery.of(context).padding.bottom + 16.h,
+          )
         ],
       ),
     );

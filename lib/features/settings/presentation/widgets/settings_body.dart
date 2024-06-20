@@ -90,6 +90,9 @@ class SettingsBody extends StatelessWidget {
           const SettingsSignOutBtn(),
           10.verticalSpace,
           const DeleteAccountBtn(),
+          SizedBox(
+            height: MediaQuery.of(context).padding.bottom + 16.h,
+          ),
         ],
       ),
     );

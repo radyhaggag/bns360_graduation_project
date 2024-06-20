@@ -299,5 +299,6 @@
   "resend_email_verification": "Resend email verification",
   "sent_email_verification_link": "We have sent an email verification link to your email address.",
   "visit_website": "Visit website",
-  "url_should_contain_coordinates": "URL should contain coordinates"
+  "url_should_contain_coordinates": "URL should contain coordinates",
+  "contact_seller": "Contact seller"
 }

@@ -119,6 +119,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactUsContent": MessageLookupByLibrary.simpleMessage(
             "We\'re here to help! If you have any inquiries or suggestions, feel free to contact us via the email or phone number provided below.\n\nWe value your feedback and will endeavor to respond to you as soon as possible."),
         "contactUsTitle": MessageLookupByLibrary.simpleMessage("Contact Us"),
+        "contact_seller":
+            MessageLookupByLibrary.simpleMessage("Contact seller"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "contains_validation_message":
             MessageLookupByLibrary.simpleMessage("Invalid value"),

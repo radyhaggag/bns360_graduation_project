@@ -298,5 +298,6 @@
   "resend_email_verification": "إعادة إرسال رمز التحقق",
   "sent_email_verification_link": "تم إرسال رابط التحقق إلى بريدك الإلكتروني",
   "visit_website": "زيارة الموقع",
-  "url_should_contain_coordinates": "يجب أن يحتوي رابط الموقع على إحداثيات الخريطة"
+  "url_should_contain_coordinates": "يجب أن يحتوي رابط الموقع على إحداثيات الخريطة",
+  "contact_seller": "Contact seller"
 }

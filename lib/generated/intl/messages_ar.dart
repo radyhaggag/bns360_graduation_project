@@ -118,6 +118,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactUsContent": MessageLookupByLibrary.simpleMessage(
             "إذا كان لديك أي أسئلة أو استفسارات، يرجى التواصل معنا عبر..."),
         "contactUsTitle": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
+        "contact_seller":
+            MessageLookupByLibrary.simpleMessage("Contact seller"),
         "contact_us": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "contains_validation_message":
             MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),

@@ -38,7 +38,7 @@ class PropertyDetailsBody extends StatelessWidget {
         ),
         if (!propertyEntity.isBelongToMe)
           Positioned(
-            bottom: 10,
+            bottom: MediaQuery.of(context).padding.bottom + 16.h,
             left: 0,
             right: 0,
             child: SizedBox(
@@ -46,7 +46,7 @@ class PropertyDetailsBody extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: CustomElevatedButton(
-                  label: S.of(context).buy_now,
+                  label: S.of(context).contact_seller,
                   onPressed: () {
                     ContactWithBottomSheet.show(
                       context: context,

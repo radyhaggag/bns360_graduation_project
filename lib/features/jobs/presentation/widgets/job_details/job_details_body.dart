@@ -38,7 +38,7 @@ class JobDetailsBody extends StatelessWidget {
         ),
         if (!jobEntity.isBelongToMe)
           Positioned(
-            bottom: 10,
+            bottom: MediaQuery.of(context).padding.bottom + 16.h,
             left: 0,
             right: 0,
             child: SizedBox(

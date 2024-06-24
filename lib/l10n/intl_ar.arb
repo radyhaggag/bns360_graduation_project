@@ -100,8 +100,8 @@
   "mins_ago": "قبل {mins} دقائق",
   "places": "الأماكن",
   "access_location_permission_msg": "نحتاج إلى إذن الوصول إلى موقعك لتحسين الخدمات وحساب المسافة بين موقعك والأماكن التي تشاهدها.",
-  "access_camera_permissions_msg": "To pick images for your business or work, please grant camera permission in settings.",
-  "access_storage_permissions_msg": "To upload images for your business or work, please grant storage permission in settings.",
+  "access_camera_permissions_msg": "لاختيار صور لعملك أو عملك، يرجى منح إذن الكاميرا في الإعدادات.",
+  "access_storage_permissions_msg": "لتحميل صور لعملك أو عملك، يرجى منح إذن التخزين في الإعدادات.",
   "ok": "حسنا",
   "permission_denied": "الإذن مرفوض",
   "cancel": "إلغاء",
@@ -205,6 +205,7 @@
   "enter_business_address": "أدخل عنوان النشاط التجاري",
   "upload_business_images": "تحميل صور النشاط التجاري",
   "upload_main_business_image": "تحديد الصورة الرئيسية للنشاط التجاري",
+  "delete_main_business_image": "هل تريد حذف الصورة الرئيسية للنشاط التجاري",
   "business_name": "اسم النشاط التجاري",
   "enter_business_name": "أدخل اسم النشاط التجاري",
   "delete_business_images": "هل تريد حذف صور النشاط التجاري؟",
@@ -220,6 +221,7 @@
   "add_service": "إضافة نشاط تجاري",
   "add_service_success": "تمت إضافة الخدمة بنجاح",
   "edit_service_success": "تم تعديل الخدمة بنجاح",
+  "add_business_success": "تمت إضافة النشاط التجاري بنجاح",
   "description_of_service": "وصف الخدمة",
   "service_address": "عنوان الخدمة",
   "enter_service_address": "أدخل عنوان الخدمة",
@@ -299,5 +301,5 @@
   "sent_email_verification_link": "تم إرسال رابط التحقق إلى بريدك الإلكتروني",
   "visit_website": "زيارة الموقع",
   "url_should_contain_coordinates": "يجب أن يحتوي رابط الموقع على إحداثيات الخريطة",
-  "contact_seller": "Contact seller"
+  "contact_seller": "تواصل مع البائع"
 }

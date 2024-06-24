@@ -46,16 +46,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUsTitle": MessageLookupByLibrary.simpleMessage("من نحن"),
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
         "access_camera_permissions_msg": MessageLookupByLibrary.simpleMessage(
-            "To pick images for your business or work, please grant camera permission in settings."),
+            "لاختيار صور لعملك أو عملك، يرجى منح إذن الكاميرا في الإعدادات."),
         "access_location_permission_msg": MessageLookupByLibrary.simpleMessage(
             "نحتاج إلى إذن الوصول إلى موقعك لتحسين الخدمات وحساب المسافة بين موقعك والأماكن التي تشاهدها."),
         "access_storage_permissions_msg": MessageLookupByLibrary.simpleMessage(
-            "To upload images for your business or work, please grant storage permission in settings."),
+            "لتحميل صور لعملك أو عملك، يرجى منح إذن التخزين في الإعدادات."),
         "account": MessageLookupByLibrary.simpleMessage("الحساب"),
         "add": MessageLookupByLibrary.simpleMessage("إضافة"),
         "add_a_job": MessageLookupByLibrary.simpleMessage("إضافة وظيفة"),
         "add_business":
             MessageLookupByLibrary.simpleMessage("إضافة نشاط تجاري"),
+        "add_business_success": MessageLookupByLibrary.simpleMessage(
+            "تمت إضافة النشاط التجاري بنجاح"),
         "add_job_success":
             MessageLookupByLibrary.simpleMessage("تم اضافة الوظيفة بنجاح"),
         "add_location": MessageLookupByLibrary.simpleMessage("إضافة موقع"),
@@ -119,7 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "إذا كان لديك أي أسئلة أو استفسارات، يرجى التواصل معنا عبر..."),
         "contactUsTitle": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "contact_seller":
-            MessageLookupByLibrary.simpleMessage("Contact seller"),
+            MessageLookupByLibrary.simpleMessage("تواصل مع البائع"),
         "contact_us": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "contains_validation_message":
             MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),
@@ -150,6 +152,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "هل تريد حذف صور النشاط التجاري؟"),
         "delete_by_sender": MessageLookupByLibrary.simpleMessage(
             "تم حذف هذه الرسالة من قبل المرسل."),
+        "delete_main_business_image": MessageLookupByLibrary.simpleMessage(
+            "هل تريد حذف الصورة الرئيسية للنشاط التجاري"),
         "delete_main_service_image": MessageLookupByLibrary.simpleMessage(
             "هل تريد حذف الصورة الرئيسية للخدمة"),
         "delete_post": MessageLookupByLibrary.simpleMessage("حذف المنشور؟"),

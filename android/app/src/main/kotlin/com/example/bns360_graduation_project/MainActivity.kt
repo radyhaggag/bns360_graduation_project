@@ -1,4 +1,4 @@
-package com.bns360.bns360
+package com.bns360.bns
 
 import io.flutter.embedding.android.FlutterActivity
 

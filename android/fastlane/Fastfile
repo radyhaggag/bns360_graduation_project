@@ -55,7 +55,7 @@ platform :android do
   end
   lane :increment_app_version_by_lastest_google_play_release do
     version_code = google_play_track_version_codes(
-      package_name: "com.bns360.bns360",
+      package_name: "com.bns360.bns",
       track: "internal",
       json_key: "Add the path here"
     )

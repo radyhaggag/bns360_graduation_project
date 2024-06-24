@@ -90,5 +90,6 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
     await apiConsumer.delete(
       endpoint: AppEndpoints.deleteAccount(userId!),
     );
+    await signOut();
   }
 }

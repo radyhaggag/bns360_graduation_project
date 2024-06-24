@@ -151,7 +151,7 @@
 # desc "Lane for Increment the app version code"
 # lane :increment_app_version do
 # version_code = google_play_track_version_codes(
-#   package_name: "com.bns360.bns360",
+#   package_name: "com.bns360.bns",
 #   track: "internal",
 #   json_key: "D:/keys/test-fastlane-418318-c0d07240e9ca.json"
 #  )

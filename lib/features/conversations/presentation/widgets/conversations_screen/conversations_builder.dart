@@ -29,6 +29,7 @@ class ConversationsListBuilder extends StatelessWidget {
                 if (conversation.otherParticipant == null) return;
                 final params = ConversationScreenParams(
                   participantEntity: conversation.otherParticipant!,
+                  conversationId: conversation.id,
                 );
                 Navigator.of(context).pushNamed(
                   Routes.conversation,

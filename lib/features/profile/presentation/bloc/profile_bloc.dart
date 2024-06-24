@@ -142,7 +142,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     res.fold(
       (l) => emit(SignOutErrorState(message: l.message)),
-      (r) => emit(SignOutSuccessState()),
+      (r) => emit(SignOutSuccessState(isGuest: r)),
     );
   }
 

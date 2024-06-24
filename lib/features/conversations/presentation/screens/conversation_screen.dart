@@ -29,10 +29,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
     conversationsBloc = context.read<ConversationsBloc>();
 
     final params = widget.conversationParams;
-    final conversationId = ChatParamsHelper.conversationId(
-      otherId: params.participantEntity.id,
-      otherUserType: params.participantEntity.userType,
-    );
+    final conversationId = widget.conversationParams.conversationId ??
+        ChatParamsHelper.conversationId(
+          otherId: params.participantEntity.id,
+          otherUserType: params.participantEntity.userType,
+        );
     conversationsBloc.add(GetConversationMessagesEvent(
       conversationId: conversationId,
     ));

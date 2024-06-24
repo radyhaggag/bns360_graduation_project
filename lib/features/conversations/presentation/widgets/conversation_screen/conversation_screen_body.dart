@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/helpers/chat_params_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -60,6 +61,12 @@ class ConversationScreenBody extends StatelessWidget {
               ),
               ChatMessageTextField(
                 otherParticipant: conversationParams.participantEntity,
+                conversationId: conversationParams.conversationId ??
+                    ChatParamsHelper.conversationId(
+                      otherId: conversationParams.participantEntity.id,
+                      otherUserType:
+                          conversationParams.participantEntity.userType,
+                    ),
               ),
             ],
           ),

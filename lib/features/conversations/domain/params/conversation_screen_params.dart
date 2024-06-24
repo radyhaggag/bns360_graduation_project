@@ -1,4 +1,3 @@
-import '../../../craftsman/domain/params/craftsman_screen_params.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
@@ -7,6 +6,7 @@ import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../category_item/domain/params/category_item_screen_params.dart';
+import '../../../craftsman/domain/params/craftsman_screen_params.dart';
 import '../entities/conversation_entity.dart';
 
 class ConversationScreenParams extends Equatable {
@@ -14,12 +14,14 @@ class ConversationScreenParams extends Equatable {
   final ConversationEntity? conversationEntity;
   final CraftsmanEntity? craftsmanEntity;
   final CategoryItemEntity? categoryItemEntity;
+  final String? conversationId;
 
   const ConversationScreenParams({
     required this.participantEntity,
     this.craftsmanEntity,
     this.categoryItemEntity,
     this.conversationEntity,
+    this.conversationId,
   });
 
   void navigationRoute(BuildContext context) {

@@ -26,7 +26,7 @@ class DeleteAccountBtn extends StatelessWidget {
           onConfirm: () {
             context.read<ProfileBloc>().add(DeleteAccountEvent());
             Navigator.of(context).pushNamedAndRemoveUntil(
-              Routes.login,
+              Routes.welcome,
               (route) => false,
             );
           },

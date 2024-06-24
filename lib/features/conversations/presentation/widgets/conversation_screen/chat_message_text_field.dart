@@ -12,10 +12,12 @@ class ChatMessageTextField extends StatefulWidget {
     super.key,
     this.onChange,
     required this.otherParticipant,
+    required this.conversationId,
   });
 
   final Function(String text)? onChange;
   final ParticipantEntity otherParticipant;
+  final String conversationId;
 
   @override
   ChatMessageTextFieldState createState() => ChatMessageTextFieldState();
@@ -81,6 +83,7 @@ class ChatMessageTextFieldState extends State<ChatMessageTextField> {
               SendMessageIconBtn(
                 textEditingController: textEditingController,
                 otherParticipant: widget.otherParticipant,
+                conversationId: widget.conversationId,
               ),
               15.horizontalSpace,
             ],

@@ -19,7 +19,11 @@ abstract class ChatParamsHelper {
         return "$currentUserId-$otherUserId";
       }
     } else {
-      return "$otherUserId-$currentUserId";
+      if (otherUserType == UserType.user.id) {
+        return "$otherUserId-$currentUserId";
+      } else {
+        return "$currentUserId-$otherUserId";
+      }
     }
   }
 }

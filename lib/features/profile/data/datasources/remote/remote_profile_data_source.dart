@@ -6,6 +6,6 @@ abstract class RemoteProfileDataSource {
   Future<ProfileModel?> getProfile();
   Future<void> editProfile(EditProfileParams editProfileParams);
   Future<void> changePassword(ChangePasswordParams changePasswordParams);
-  Future<void> signOut();
+  Future<bool> signOut();
   Future<void> deleteAccount();
 }

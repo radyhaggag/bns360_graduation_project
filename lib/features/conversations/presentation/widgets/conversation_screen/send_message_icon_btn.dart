@@ -1,5 +1,3 @@
-import '../../../../../core/utils/enums.dart';
-import '../../../../../core/utils/extensions/language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
+import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/extensions/language.dart';
 import '../../../../../core/widgets/center_progress_indicator.dart';
 import '../../../domain/params/send_message_params.dart';
 import '../../bloc/conversations_bloc.dart';
@@ -17,10 +17,12 @@ class SendMessageIconBtn extends StatelessWidget {
     super.key,
     required this.textEditingController,
     required this.otherParticipant,
+    required this.conversationId,
   });
 
   final TextEditingController textEditingController;
   final ParticipantEntity otherParticipant;
+  final String conversationId;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +86,7 @@ class SendMessageIconBtn extends StatelessWidget {
         content: content,
         otherParticipant: otherParticipant,
         isFirstMsg: bloc.messages.isEmpty,
+        conversationId: conversationId,
       ),
     ));
   }

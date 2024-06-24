@@ -33,7 +33,7 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  FutureEither<void> signOut() async {
+  FutureEither<bool> signOut() async {
     return executeAndHandleErrorAsync(
       () => remoteProfileDataSource.signOut(),
     );

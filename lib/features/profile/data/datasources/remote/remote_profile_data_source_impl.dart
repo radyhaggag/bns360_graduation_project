@@ -79,9 +79,11 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
   }
 
   @override
-  Future<void> signOut() async {
+  Future<bool> signOut() async {
+    final isGuest = AppProvider().isGuest;
     await AppProvider().clearProfile();
     await tokenManager.deleteToken();
+    return isGuest;
   }
 
   @override

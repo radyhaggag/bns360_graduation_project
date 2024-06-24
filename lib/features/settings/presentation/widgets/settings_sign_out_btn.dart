@@ -1,4 +1,5 @@
 import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/core/widgets/confirm_delete_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,10 +21,17 @@ class SettingsSignOutBtn extends StatelessWidget {
     return BlocListener<ProfileBloc, ProfileState>(
       listener: (context, state) {
         if (state is SignOutSuccessState) {
-          Navigator.of(context).pushNamedAndRemoveUntil(
-            Routes.login,
-            (route) => false,
-          );
+          if (state.isGuest) {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              Routes.login,
+              (route) => false,
+            );
+          } else {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              Routes.welcome,
+              (route) => false,
+            );
+          }
         }
 
         if (state is SignOutErrorState) {
@@ -32,6 +40,10 @@ class SettingsSignOutBtn extends StatelessWidget {
       },
       child: ListTile(
         onTap: () {
+          if (AppProvider().isGuest) {
+            context.read<ProfileBloc>().add(SignOutEvent());
+            return;
+          }
           ConfirmationDialog.show(
             context,
             message: S.of(context).logout_message,
@@ -45,7 +57,7 @@ class SettingsSignOutBtn extends StatelessWidget {
             ? AppColors.white
             : AppColors.black,
         title: Text(
-          S.of(context).logout,
+          AppProvider().isGuest ? S.of(context).login : S.of(context).logout,
           style: context.textTheme.bodyLarge?.copyWith(
             fontSize: AppFontSize.details,
             color: _mainColor(context),
@@ -54,7 +66,7 @@ class SettingsSignOutBtn extends StatelessWidget {
         trailing: RotatedBox(
           quarterTurns: 2,
           child: Icon(
-            Icons.logout,
+            AppProvider().isGuest ? Icons.login : Icons.logout,
             color: _mainColor(context),
           ),
         ),

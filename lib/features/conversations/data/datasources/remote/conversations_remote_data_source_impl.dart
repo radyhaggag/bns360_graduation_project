@@ -23,10 +23,7 @@ class ConversationsRemoteDataSourceImpl
   Future<String?> sendMessage(
     SendMessageParams sendMessageParams,
   ) async {
-    String conversationId = ChatParamsHelper.conversationId(
-      otherId: sendMessageParams.otherParticipant.id,
-      otherUserType: sendMessageParams.otherParticipant.userType,
-    );
+    String conversationId = sendMessageParams.conversationId;
 
     final file = sendMessageParams.pickedFile;
     String? imageUrl;

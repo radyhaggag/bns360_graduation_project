@@ -7,6 +7,6 @@ abstract class ProfileRepo {
   FutureEither<ProfileEntity?> getProfile();
   FutureEither<void> editProfile(EditProfileParams editProfileParams);
   FutureEither<void> changePassword(ChangePasswordParams changePasswordParams);
-  FutureEither<void> signOut();
+  FutureEither<bool> signOut();
   FutureEither<void> deleteAccount();
 }

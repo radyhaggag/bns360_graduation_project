@@ -10,12 +10,14 @@ class SendMessageParams extends Equatable {
   final ParticipantEntity otherParticipant;
   final bool isFirstMsg;
   final File? pickedFile;
+  final String conversationId;
 
   const SendMessageParams({
     required this.otherParticipant,
     required this.isFirstMsg,
     this.content,
     this.pickedFile,
+    required this.conversationId,
   });
 
   @override
@@ -42,12 +44,14 @@ class SendMessageParams extends Equatable {
     ParticipantEntity? otherParticipant,
     bool? isFirstMsg,
     File? pickedFile,
+    String? conversationId,
   }) {
     return SendMessageParams(
       content: content ?? this.content,
       otherParticipant: otherParticipant ?? this.otherParticipant,
       isFirstMsg: isFirstMsg ?? this.isFirstMsg,
       pickedFile: pickedFile ?? this.pickedFile,
+      conversationId: conversationId ?? this.conversationId,
     );
   }
 }

@@ -47,10 +47,13 @@ class RemovePickedImageEvent extends ConversationsEvent {}
 class ResetCurrentUnreadCountEvent extends ConversationsEvent {
   final String otherParticipantId;
   final int otherParticipantType;
+  final String conversationId;
+  
 
   ResetCurrentUnreadCountEvent({
     required this.otherParticipantId,
     required this.otherParticipantType,
+    required this.conversationId,
   });
 }
 
@@ -59,5 +62,13 @@ class DeleteMessageEvent extends ConversationsEvent {
 
   DeleteMessageEvent({
     required this.deleteMessageParams,
+  });
+}
+
+class SetCurrentParticipantEvent extends ConversationsEvent {
+  final ParticipantEntity participantEntity;
+
+  SetCurrentParticipantEvent({
+    required this.participantEntity,
   });
 }

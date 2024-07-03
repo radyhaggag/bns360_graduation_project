@@ -22,17 +22,20 @@ class ConversationScreen extends StatefulWidget {
 
 class _ConversationScreenState extends State<ConversationScreen> {
   late final ConversationsBloc conversationsBloc;
+  late String conversationId;
 
   @override
   void initState() {
     super.initState();
     conversationsBloc = context.read<ConversationsBloc>();
-
+    final currentParticipant = conversationsBloc.currentParticipant;
     final params = widget.conversationParams;
-    final conversationId = widget.conversationParams.conversationId ??
+    conversationId = widget.conversationParams.conversationId ??
         ChatParamsHelper.conversationId(
-          otherId: params.participantEntity.id,
+          otherId: params.participantEntity.modifiedId,
           otherUserType: params.participantEntity.userType,
+          currentUserId: currentParticipant.modifiedId,
+          currentUserType: currentParticipant.userType,
         );
     conversationsBloc.add(GetConversationMessagesEvent(
       conversationId: conversationId,
@@ -43,8 +46,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
   void deactivate() {
     final otherParticipant = widget.conversationParams.participantEntity;
     conversationsBloc.add(ResetCurrentUnreadCountEvent(
-      otherParticipantId: otherParticipant.id,
+      otherParticipantId: otherParticipant.modifiedId,
       otherParticipantType: otherParticipant.userType,
+      conversationId: conversationId,
     ));
     conversationsBloc.add(ClearCurrentSessionEvent());
     super.deactivate();
@@ -59,7 +63,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
           conversationParams: widget.conversationParams,
         ),
         body: ConversationScreenBody(
-          conversationParams: widget.conversationParams,
+          conversationParams: widget.conversationParams.copyWith(
+            conversationId: conversationId,
+          ),
         ),
       ),
     );

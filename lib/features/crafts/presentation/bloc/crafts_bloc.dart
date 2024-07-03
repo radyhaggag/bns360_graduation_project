@@ -34,11 +34,11 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
   List<CraftEntity>? _crafts;
   List<CraftEntity>? get crafts => _crafts;
 
-  List<CraftsmanInfoEntity> get items {
+  List<CraftsmanInfoEntity>? get items {
     if (isSearchEnabled) {
       return searchResults;
     }
-    return craftsmen ?? [];
+    return craftsmen;
   }
 
   int selectedCraftId = 0;
@@ -98,6 +98,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     res.fold(
       (l) {
         selectedCraftId = prevSelectedId;
+        craftsmen = [];
         emit(GetCraftItemsByIdErrorState(message: l.message));
       },
       (r) {
@@ -115,6 +116,9 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     Emitter<CraftsState> emit,
   ) {
     isSearchEnabled = !isSearchEnabled;
+    if (isSearchEnabled) {
+      searchResults = (craftsmen ?? []).where((element) => true).toList();
+    }
     emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
   }
 

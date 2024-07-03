@@ -5,6 +5,7 @@ import '../../../../../config/route_config.dart';
 import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/auth_bloc.dart';
+import 'continue_as_guest_pop_up.dart';
 
 class ContinueAsGuestButton extends StatelessWidget {
   const ContinueAsGuestButton({super.key});
@@ -15,8 +16,13 @@ class ContinueAsGuestButton extends StatelessWidget {
       builder: (context, state) {
         return CustomTextButton(
           isLoading: state is LoginLoadingState,
-          onPressed: () async {
-            context.read<AuthBloc>().add(ContinueAsGuestEvent());
+          onPressed: () {
+            GuestConfirmationDialog.show(
+              context,
+              onConfirm: () {
+                context.read<AuthBloc>().add(ContinueAsGuestEvent());
+              },
+            );
           },
           label: S.of(context).continueAsGuest,
         );

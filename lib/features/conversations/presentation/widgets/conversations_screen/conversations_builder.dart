@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/features/conversations/presentation/bloc/conversations_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
@@ -26,9 +28,15 @@ class ConversationsListBuilder extends StatelessWidget {
             ConversationCard(
               conversationEntity: conversation,
               onPressed: () {
-                if (conversation.otherParticipant == null) return;
+                final currentParticipant =
+                    context.read<ConversationsBloc>().currentParticipant;
+                final otherParticipant =
+                    conversation.otherParticipant(currentParticipant);
+                if (otherParticipant == null) {
+                  return;
+                }
                 final params = ConversationScreenParams(
-                  participantEntity: conversation.otherParticipant!,
+                  participantEntity: otherParticipant,
                   conversationId: conversation.id,
                 );
                 Navigator.of(context).pushNamed(

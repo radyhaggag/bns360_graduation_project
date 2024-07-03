@@ -1,18 +1,17 @@
-import '../providers/app_provider.dart';
 import '../utils/enums/user_type.dart';
 
 abstract class ChatParamsHelper {
   static String conversationId({
     required String otherId,
     required int otherUserType,
+    required String currentUserId,
+    required int currentUserType,
   }) {
-    final currentUser = AppProvider().getProfile();
-    final currentUserId = currentUser?.id.replaceAll("-", "");
     final otherUserId = otherId.replaceAll("-", "");
 
-    if (currentUser?.userType == UserType.user.id) {
+    if (currentUserType == UserType.user.id) {
       return "$currentUserId-$otherUserId";
-    } else if (currentUser?.userType == UserType.serviceProvider.id) {
+    } else if (currentUserType == UserType.serviceProvider.id) {
       if (otherUserType == UserType.user.id) {
         return "$otherUserId-$currentUserId";
       } else {

@@ -92,12 +92,16 @@ class CategoryItemRemoteDataSourceImpl implements CategoryItemRemoteDataSource {
   }
 
   @override
-  Future<void> removeReview(int reviewId, int categoryItemId) async {
+  Future<void> removeReview(
+    int reviewId,
+    int categoryItemId,
+  ) async {
     await apiConsumer.delete(
       endpoint: AppEndpoints.removeBusinessReview(
         businessId: categoryItemId,
         userId: userId,
         reviewAndRatingId: reviewId,
+        withoutBusinessId: AppProvider().isAdmin,
       ),
     );
   }

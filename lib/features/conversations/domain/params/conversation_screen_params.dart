@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 
@@ -47,4 +48,20 @@ class ConversationScreenParams extends Equatable {
 
   @override
   List<Object?> get props => [participantEntity];
+
+  ConversationScreenParams copyWith({
+    ParticipantEntity? participantEntity,
+    ConversationEntity? conversationEntity,
+    CraftsmanEntity? craftsmanEntity,
+    CategoryItemEntity? categoryItemEntity,
+    String? conversationId,
+  }) {
+    return ConversationScreenParams(
+      participantEntity: participantEntity ?? this.participantEntity,
+      conversationEntity: conversationEntity ?? this.conversationEntity,
+      craftsmanEntity: craftsmanEntity ?? this.craftsmanEntity,
+      categoryItemEntity: categoryItemEntity ?? this.categoryItemEntity,
+      conversationId: conversationId ?? this.conversationId,
+    );
+  }
 }

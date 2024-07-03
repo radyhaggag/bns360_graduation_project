@@ -53,4 +53,19 @@ abstract class HiveManager {
   static void _registerAdapters() {
     Hive.registerAdapter(ProfileEntityAdapter());
   }
+
+  static FutureEither<void> clearAllBoxes() async {
+    return executeAndHandleErrorAsync(() async {
+      final futures = [
+        HiveBoxes.language.clear(),
+        HiveBoxes.theme.clear(),
+        HiveBoxes.profile.clear(),
+        HiveBoxes.savedJobs.clear(),
+        HiveBoxes.savedProperties.clear(),
+        HiveBoxes.favoriteCrafts.clear(),
+        HiveBoxes.favoriteBusiness.clear(),
+      ];
+      await Future.wait(futures);
+    });
+  }
 }

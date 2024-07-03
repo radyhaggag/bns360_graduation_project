@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../../core/utils/extensions/context.dart';
-import '../../../../../core/widgets/confirm_delete_pop_up.dart';
+import '../../../../../core/widgets/confirm_pop_up.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../domain/entities/message_entity.dart';
 import '../../../domain/params/delete_message_params.dart';
@@ -17,14 +17,18 @@ class ChatMessageItem extends StatelessWidget {
     super.key,
     required this.message,
     required this.otherParticipant,
+    required this.conversationId,
   });
 
   final MessageEntity message;
   final ParticipantEntity otherParticipant;
+  final String conversationId;
 
   @override
   Widget build(BuildContext context) {
-    final isFromMe = message.isFromMe;
+    final currentUserId =
+        context.read<ConversationsBloc>().currentParticipant.modifiedId;
+    final isFromMe = message.isFromMe(currentUserId);
     final mainAxisAlignment =
         isFromMe ? MainAxisAlignment.end : MainAxisAlignment.start;
     return InkWell(
@@ -85,8 +89,9 @@ class ChatMessageItem extends StatelessWidget {
   DeleteMessageParams get deleteMessageParams {
     return DeleteMessageParams(
       messageId: message.id!,
-      otherParticipantId: otherParticipant.id,
+      otherParticipantId: otherParticipant.modifiedId,
       otherParticipantType: otherParticipant.userType,
+      conversationId: conversationId,
     );
   }
 }

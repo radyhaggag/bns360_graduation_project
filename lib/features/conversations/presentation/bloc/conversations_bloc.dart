@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/participant_entity.dart';
+import 'package:bns360_graduation_project/core/shared_data/models/participant_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -32,6 +35,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     on<RemovePickedImageEvent>(_removePickedImage);
     on<ResetCurrentUnreadCountEvent>(_resetUnreadCountForCurrentUser);
     on<DeleteMessageEvent>(_deleteMessage);
+    on<SetCurrentParticipantEvent>(_setCurrentParticipant);
   }
 
   bool _isInitialized = false;
@@ -96,12 +100,13 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   ) async {
     emit(GetConversationsLoadingState());
 
-    final res = conversationsRepo.getConversations();
+    final res = conversationsRepo.getConversations(
+      currentParticipant.modifiedId,
+    );
 
     res.fold(
       (l) {
         _isInitialized = true;
-
         emit(GetConversationsErrorState(message: l.message));
       },
       (r) {
@@ -217,6 +222,9 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
       otherParticipantId: event.otherParticipantId,
       otherParticipantType: event.otherParticipantType,
       numOfMessages: messages.length,
+      currentUserId: currentParticipant.modifiedId,
+      currentParticipantType: currentParticipant.userType,
+      conversationId: event.conversationId,
     );
     await conversationsRepo.resetUnreadCountForCurrentUser(params);
   }
@@ -235,8 +243,14 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   }
 
   bool _searchConditions(ConversationEntity conversation, String value) {
-    final nameAR = conversation.otherParticipant?.nameAR?.toLowerCase();
-    final nameEN = conversation.otherParticipant?.nameEN?.toLowerCase();
+    final nameAR = conversation
+        .otherParticipant(currentParticipant)
+        ?.nameAR
+        ?.toLowerCase();
+    final nameEN = conversation
+        .otherParticipant(currentParticipant)
+        ?.nameEN
+        ?.toLowerCase();
 
     final containAR = nameAR?.contains(value);
     final containEN = nameEN?.contains(value);
@@ -275,5 +289,18 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     await conversationsRepo.deleteMessage(
       event.deleteMessageParams,
     );
+  }
+
+  ParticipantEntity? customParticipant;
+
+  ParticipantEntity get currentParticipant {
+    return customParticipant ?? AppProvider().getProfile()!.toParticipant();
+  }
+
+  _setCurrentParticipant(
+    SetCurrentParticipantEvent event,
+    Emitter<ConversationsState> emit,
+  ) {
+    customParticipant = event.participantEntity;
   }
 }

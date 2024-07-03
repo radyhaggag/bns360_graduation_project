@@ -1,3 +1,4 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +18,7 @@ class ChatbotMessageItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isFromMe = message.isFromMe;
+    final isFromMe = message.isFromMe(AppProvider().getProfile()!.id);
     final mainAxisAlignment =
         isFromMe ? MainAxisAlignment.end : MainAxisAlignment.start;
     return InkWell(

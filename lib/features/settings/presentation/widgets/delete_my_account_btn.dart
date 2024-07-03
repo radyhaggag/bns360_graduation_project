@@ -8,7 +8,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
 import '../../../../core/utils/enums.dart';
 import '../../../../core/utils/extensions/context.dart';
-import '../../../../core/widgets/confirm_delete_pop_up.dart';
+import '../../../../core/widgets/confirm_pop_up.dart';
 import '../../../../generated/l10n.dart';
 import '../../../profile/presentation/bloc/profile_bloc.dart';
 

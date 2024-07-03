@@ -72,10 +72,10 @@ class CategoryItemProfileSection extends StatelessWidget {
               onPressed: () {
                 final params = ConversationScreenParams(
                   participantEntity: ParticipantEntity(
-                    id: categoryItemEntity.userId.toString(),
-                    nameEN: categoryItemEntity.userName,
-                    nameAR: categoryItemEntity.userName,
-                    imageUrl: categoryItemEntity.userImage,
+                    id: categoryItemEntity.id.toString(),
+                    nameEN: categoryItemEntity.businessNameEnglish,
+                    nameAR: categoryItemEntity.businessNameArabic,
+                    imageUrl: categoryItemEntity.profileImageName,
                     userType: UserType.businessOwner.id,
                   ),
                   categoryItemEntity: categoryItemEntity,

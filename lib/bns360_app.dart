@@ -10,6 +10,7 @@ import 'config/theme_config.dart';
 import 'core/app/app_bloc.dart';
 import 'core/utils/app_strings.dart';
 import 'core/utils/enums.dart';
+import 'features/conversations/presentation/bloc/conversations_bloc.dart';
 import 'features/favorites/presentation/bloc/favorites_bloc.dart';
 import 'features/profile/presentation/bloc/profile_bloc.dart';
 import 'features/saved_items/presentation/bloc/saved_bloc.dart';
@@ -49,6 +50,9 @@ class _BNS360AppState extends State<BNS360App> {
           ),
           BlocProvider(
             create: (context) => sl<ProfileBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => sl<ConversationsBloc>(),
           ),
         ],
         child: BlocBuilder<AppBloc, AppState>(

@@ -1,4 +1,6 @@
+import 'package:bns360_graduation_project/features/conversations/presentation/bloc/conversations_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../../core/helpers/date_formatter.dart';
@@ -28,9 +30,12 @@ class ConversationCard extends StatelessWidget {
       return const SizedBox();
     }
 
-    final otherUser = conversationEntity.otherParticipant;
+    final currentParticipant =
+        context.read<ConversationsBloc>().currentParticipant;
+    final otherParticipant =
+        conversationEntity.otherParticipant(currentParticipant);
 
-    if (otherUser == null) {
+    if (otherParticipant == null) {
       return const SizedBox.shrink();
     }
     return InkWell(
@@ -47,16 +52,16 @@ class ConversationCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             MainNetworkImage(
-              imageUrl: otherUser.imageUrl,
+              imageUrl: otherParticipant.imageUrl,
               isCircular: true,
               width: 55.r,
               height: 55.r,
-              name: name(context, otherUser),
+              name: name(context, otherParticipant),
             ),
             SizedBox(width: 15.w),
             Expanded(
               child: _UserNameAndLastMessageSection(
-                userName: name(context, otherUser) ?? "",
+                userName: name(context, otherParticipant) ?? "",
                 lastMessage: conversationEntity.lastMessage.content ??
                     conversationEntity.lastMessage.imageUrl ??
                     "",
@@ -65,7 +70,9 @@ class ConversationCard extends StatelessWidget {
             SizedBox(width: 15.w),
             _MessageDateAndUnreadCountSection(
               lastMessageDate: conversationEntity.lastMessage.date,
-              unreadCount: conversationEntity.currentUserUnreadCount,
+              unreadCount: conversationEntity.currentUserUnreadCount(
+                currentParticipant,
+              ),
             ),
           ],
         ),

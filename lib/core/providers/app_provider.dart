@@ -27,4 +27,8 @@ class AppProvider {
 
   bool get isGuest => getProfile()?.userType == UserType.guest.id;
   bool get isAdmin => getProfile()?.userType == UserType.admin.id;
+  bool get isBusiness => getProfile()?.userType == UserType.businessOwner.id;
+  bool get isUser => getProfile()?.userType == UserType.user.id;
+  bool get isServiceProvider =>
+      getProfile()?.userType == UserType.serviceProvider.id;
 }

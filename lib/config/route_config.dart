@@ -26,7 +26,6 @@ import '../features/category_item/presentation/screens/category_item_screen.dart
 import '../features/chatbot/presentation/bloc/chatbot_bloc.dart';
 import '../features/chatbot/presentation/screens/chatbot_screen.dart';
 import '../features/conversations/domain/params/conversation_screen_params.dart';
-import '../features/conversations/presentation/bloc/conversations_bloc.dart';
 import '../features/conversations/presentation/screens/conversation_screen.dart';
 import '../features/conversations/presentation/screens/conversations_screen.dart';
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
@@ -310,20 +309,13 @@ abstract class RouteConfig {
       case Routes.conversation:
         final params = settings.arguments as ConversationScreenParams;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => sl<ConversationsBloc>(),
-            child: ConversationScreen(
-              conversationParams: params,
-            ),
+          builder: (context) => ConversationScreen(
+            conversationParams: params,
           ),
         );
       case Routes.conversations:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) =>
-                sl<ConversationsBloc>()..add(GetConversationsEvent()),
-            child: const ConversationsScreen(),
-          ),
+          builder: (context) => const ConversationsScreen(),
         );
       case Routes.jobs:
         return MaterialPageRoute(

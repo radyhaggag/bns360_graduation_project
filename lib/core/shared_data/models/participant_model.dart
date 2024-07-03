@@ -1,5 +1,4 @@
 import '../../providers/app_provider.dart';
-import '../../utils/enums/user_type.dart';
 import '../entities/participant_entity.dart';
 import '../entities/profile/profile_entity.dart';
 
@@ -34,13 +33,7 @@ class ParticipantModel extends ParticipantEntity {
 
   static ParticipantEntity currentParticipant() {
     final profile = AppProvider().getProfile();
-    if (profile == null) {
-      return ParticipantEntity(
-        id: "30096242",
-        userType: UserType.user.id,
-      );
-    }
-    return profile.toParticipant();
+    return profile!.toParticipant();
   }
 }
 
@@ -57,7 +50,7 @@ extension ParticipantEntityToMap on ParticipantEntity {
 }
 
 extension ProfileEntityToParticipant on ProfileEntity {
-  toParticipant() {
+  ParticipantEntity toParticipant() {
     return ParticipantEntity(
       id: id,
       nameEN: name,

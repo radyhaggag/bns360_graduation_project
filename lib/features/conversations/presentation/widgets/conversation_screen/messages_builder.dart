@@ -11,9 +11,14 @@ import '../../bloc/conversations_bloc.dart';
 import '../messages/chat_message_item.dart';
 
 class MessagesBuilder extends StatefulWidget {
-  const MessagesBuilder({super.key, required this.otherParticipant});
+  const MessagesBuilder({
+    super.key,
+    required this.otherParticipant,
+    required this.conversationId,
+  });
 
   final ParticipantEntity otherParticipant;
+  final String conversationId;
 
   @override
   State<MessagesBuilder> createState() => _MessagesBuilderState();
@@ -72,6 +77,7 @@ class _MessagesBuilderState extends State<MessagesBuilder> {
                   ChatMessageItem(
                     message: message,
                     otherParticipant: widget.otherParticipant,
+                    conversationId: widget.conversationId,
                   ),
                   const SizedBox(height: 10),
                 ],

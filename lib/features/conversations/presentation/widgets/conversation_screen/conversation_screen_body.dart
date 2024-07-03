@@ -43,6 +43,7 @@ class ConversationScreenBody extends StatelessWidget {
         return states.contains(current.runtimeType);
       },
       builder: (context, state) {
+        final currentParticipant = bloc.currentParticipant;
         final errorMsg =
             (state is GetConversationMessagesErrorState) ? state.message : "";
         return DataStateWidget(
@@ -57,15 +58,20 @@ class ConversationScreenBody extends StatelessWidget {
                     ? const _EmptyWidget()
                     : MessagesBuilder(
                         otherParticipant: conversationParams.participantEntity,
+                        conversationId: conversationParams.conversationId ??
+                            conversationParams.conversationEntity?.id ??
+                            "",
                       ),
               ),
               ChatMessageTextField(
                 otherParticipant: conversationParams.participantEntity,
                 conversationId: conversationParams.conversationId ??
                     ChatParamsHelper.conversationId(
-                      otherId: conversationParams.participantEntity.id,
+                      otherId: conversationParams.participantEntity.modifiedId,
                       otherUserType:
                           conversationParams.participantEntity.userType,
+                      currentUserId: currentParticipant.modifiedId,
+                      currentUserType: currentParticipant.userType,
                     ),
               ),
             ],

@@ -116,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "confirm_delete_message": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to delete this message?"),
+        "confirm_remove_review_msg": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to delete this review?"),
         "contactUsContent": MessageLookupByLibrary.simpleMessage(
             "We\'re here to help! If you have any inquiries or suggestions, feel free to contact us via the email or phone number provided below.\n\nWe value your feedback and will endeavor to respond to you as soon as possible."),
         "contactUsTitle": MessageLookupByLibrary.simpleMessage("Contact Us"),
@@ -126,6 +128,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid value"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("Continue as Guest"),
+        "continueAsGuestMessage": MessageLookupByLibrary.simpleMessage(
+            "Continuing as a guest means you won\'t have access to all features. Do you want to proceed?"),
+        "continue_with_your_personal_account":
+            MessageLookupByLibrary.simpleMessage(
+                "Continue with your personal account"),
         "conversations": MessageLookupByLibrary.simpleMessage("Conversations"),
         "craftsman": MessageLookupByLibrary.simpleMessage("Craftsman"),
         "craftsman_no_holidays": MessageLookupByLibrary.simpleMessage(
@@ -265,9 +272,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginMsg": MessageLookupByLibrary.simpleMessage(
             "Welcome back to Login to your Account"),
-        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "logout_message": MessageLookupByLibrary.simpleMessage(
-            "Are you sure you want to log out?"),
+            "Are you sure you want to logout?"),
         "map": MessageLookupByLibrary.simpleMessage("Map"),
         "maxLength_validation_message": m2,
         "max_no_of_image_uploads": m3,
@@ -362,6 +369,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "properties": MessageLookupByLibrary.simpleMessage("Properties"),
         "property_address":
             MessageLookupByLibrary.simpleMessage("Property address"),
+        "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "remove_images": MessageLookupByLibrary.simpleMessage("Remove images"),
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("Remove profile image"),
@@ -396,6 +404,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "search_on": MessageLookupByLibrary.simpleMessage("Search on"),
         "search_on_properties":
             MessageLookupByLibrary.simpleMessage("Search on properties"),
+        "select_account_to_processed": MessageLookupByLibrary.simpleMessage(
+            "Select an account to proceed"),
         "select_business_category":
             MessageLookupByLibrary.simpleMessage("Select business category"),
         "select_holiday":

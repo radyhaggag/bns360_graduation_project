@@ -21,9 +21,13 @@ class ConversationsRepoImpl implements ConversationsRepo {
   }
 
   @override
-  ResultOrFailure<Stream<List<ConversationEntity>>> getConversations() {
+  ResultOrFailure<Stream<List<ConversationEntity>>> getConversations(
+    String currentUserId,
+  ) {
     return executeAndHandleError(() {
-      return conversationsRemoteDataSource.getConversations();
+      return conversationsRemoteDataSource.getConversations(
+        currentUserId,
+      );
     });
   }
 

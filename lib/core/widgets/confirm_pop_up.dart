@@ -52,18 +52,17 @@ class ConfirmationDialog extends StatelessWidget {
         CustomOutlinedButton(
           onPressed: onConfirm,
           label: confirmLabel,
-          width: 100.w,
-          height: 35.h,
+          height: 40.h,
           backgroundColor: Colors.transparent,
           foregroundColor: AppColors.red,
         ),
+        10.verticalSpace,
         CustomOutlinedButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           label: S.of(context).cancel,
-          width: 100.w,
-          height: 35.h,
+          height: 40.h,
           backgroundColor: Colors.transparent,
           foregroundColor: context.theme.primaryColor,
         ),

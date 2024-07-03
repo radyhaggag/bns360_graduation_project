@@ -7,7 +7,7 @@ import '../../../../core/utils/app_fonts.dart';
 import '../../../../core/utils/assets/app_svg.dart';
 import '../../../../core/utils/extensions/context.dart';
 import '../../../../core/widgets/buttons/custom_buttons.dart';
-import '../../../../core/widgets/confirm_delete_pop_up.dart';
+import '../../../../core/widgets/confirm_pop_up.dart';
 import '../../../../generated/l10n.dart';
 import '../bloc/my_business_bloc.dart';
 import 'add_business/add_business_picked_images_builder.dart';

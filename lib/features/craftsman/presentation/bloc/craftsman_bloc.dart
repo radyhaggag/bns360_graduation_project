@@ -138,6 +138,8 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
       (l) => emit(RemoveCraftsmanReviewErrorState(message: l.message)),
       (r) {
         reviews.removeWhere((element) => element.id == event.reviewId);
+        add(GetCraftsmanReviewSummaryEvent(itemId: event.craftsmanId));
+
         emit(RemoveCraftsmanReviewSuccessState());
       },
     );

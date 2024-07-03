@@ -1,11 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../generated/l10n.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_fonts.dart';
 import '../utils/assets/app_svg.dart';
 import '../utils/extensions/context.dart';
-import 'confirm_delete_pop_up.dart';
-import '../../generated/l10n.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'confirm_pop_up.dart';
 
 class MoreIcon extends StatelessWidget {
   const MoreIcon({

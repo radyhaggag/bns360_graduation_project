@@ -70,7 +70,7 @@
   "contact_us": "Contact Us",
   "privacy_policy": "Privacy policy",
   "about_us": "About Us",
-  "logout": "Log out",
+  "logout": "Logout",
   "app_settings": "App settings",
   "search_on": "Search on",
   "search": "Search",
@@ -277,7 +277,7 @@
   "holiday": "Holiday",
   "no_business_found": "No business found",
   "no_services_found": "No services found",
-  "logout_message": "Are you sure you want to log out?",
+  "logout_message": "Are you sure you want to logout?",
   "user_tooltip": "Discover jobs and explore properties in your city. Post job openings to attract candidates. List properties for sale or rent to reach potential buyers or tenants.",
   "business_owner_tooltip": "Manage your business profile and view past performance metrics. Add multiple businesses with detailed descriptions and contact information. Reach more customers and grow your business in the city.",
   "craftsman_tooltip": "Showcase your craftsmanship and attract clients looking for skilled craftsmen. Browse job opportunities and explore properties in your area. Highlight your expertise and connect with people who need your skills.",
@@ -300,5 +300,10 @@
   "sent_email_verification_link": "We have sent an email verification link to your email address.",
   "visit_website": "Visit website",
   "url_should_contain_coordinates": "URL should contain coordinates",
-  "contact_seller": "Contact seller"
+  "contact_seller": "Contact seller",
+  "continueAsGuestMessage": "Continuing as a guest means you won't have access to all features. Do you want to proceed?",
+  "confirm_remove_review_msg": "Are you sure you want to delete this review?",
+  "remove": "Remove",
+  "select_account_to_processed": "Select an account to proceed",
+  "continue_with_your_personal_account": "Continue with your personal account"
 }

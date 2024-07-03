@@ -99,6 +99,7 @@ class CraftsmanRemoteDataSourceImpl implements CraftsmanRemoteDataSource {
         craftsmanId: craftsmanId,
         userId: userId,
         reviewAndRatingId: reviewId,
+        withoutBusinessId: AppProvider().isAdmin,
       ),
     );
   }

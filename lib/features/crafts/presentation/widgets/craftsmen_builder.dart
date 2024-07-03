@@ -23,13 +23,13 @@ class CraftsmenBuilder extends StatelessWidget {
         final items = context.read<CraftsBloc>().items;
 
         return DataStateWidget(
-          isLoading: state is GetCraftItemsByIdLoadingState,
+          isLoading: state is GetCraftItemsByIdLoadingState || items == null,
           isError: state is GetCraftItemsByIdErrorState,
           isLoaded: state is GetCraftItemsByIdSuccessState,
           errorMessage:
               state is GetCraftItemsByIdErrorState ? state.message : "",
           loadedWidget: MainListViewBuilder<CraftsmanInfoEntity>(
-            list: items,
+            list: items ?? [],
             emptyMessage: S.of(context).no_craftsmen_found,
             emptyWidget: Center(
               child: EmptyCard(

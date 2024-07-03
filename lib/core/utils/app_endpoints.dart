@@ -104,7 +104,11 @@ abstract class AppEndpoints {
     required String userId,
     required int reviewAndRatingId,
     required int businessId,
+    bool withoutBusinessId = false,
   }) {
+    if (withoutBusinessId) {
+      return "$baseUrl/api/RatingAndReviewForBusiness/review/$reviewAndRatingId";
+    }
     return "$baseUrl/api/RatingAndReviewForBusiness/$userId/$businessId/$reviewAndRatingId";
   }
 
@@ -122,7 +126,11 @@ abstract class AppEndpoints {
     required String userId,
     required int reviewAndRatingId,
     required int craftsmanId,
+    bool withoutBusinessId = false,
   }) {
+    if (withoutBusinessId) {
+      return "$baseUrl/api/RatingAndReviewForCraftsman/review/$reviewAndRatingId";
+    }
     return "$baseUrl/api/RatingAndReviewForCraftsman/$userId/$craftsmanId/$reviewAndRatingId";
   }
 
@@ -166,5 +174,6 @@ abstract class AppEndpoints {
 
   static String topRated = "$baseUrl/api/Business/GetTopFiveRatedBusinesses";
 
-  static String sendConfirmationEmail = "$baseUrl/api/Account/ResendConfirmationEmail";
+  static String sendConfirmationEmail =
+      "$baseUrl/api/Account/ResendConfirmationEmail";
 }

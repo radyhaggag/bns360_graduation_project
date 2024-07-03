@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:bns360_graduation_project/core/databases/local_storage/hive_manager.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../../core/api/api_consumer.dart';
@@ -83,6 +84,7 @@ class RemoteProfileDataSourceImpl implements RemoteProfileDataSource {
     final isGuest = AppProvider().isGuest;
     await AppProvider().clearProfile();
     await tokenManager.deleteToken();
+    HiveManager.clearAllBoxes();
     return isGuest;
   }
 

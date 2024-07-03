@@ -750,10 +750,10 @@ class S {
     );
   }
 
-  /// `Log out`
+  /// `Logout`
   String get logout {
     return Intl.message(
-      'Log out',
+      'Logout',
       name: 'logout',
       desc: '',
       args: [],
@@ -2820,10 +2820,10 @@ class S {
     );
   }
 
-  /// `Are you sure you want to log out?`
+  /// `Are you sure you want to logout?`
   String get logout_message {
     return Intl.message(
-      'Are you sure you want to log out?',
+      'Are you sure you want to logout?',
       name: 'logout_message',
       desc: '',
       args: [],
@@ -3055,6 +3055,56 @@ class S {
     return Intl.message(
       'Contact seller',
       name: 'contact_seller',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continuing as a guest means you won't have access to all features. Do you want to proceed?`
+  String get continueAsGuestMessage {
+    return Intl.message(
+      'Continuing as a guest means you won\'t have access to all features. Do you want to proceed?',
+      name: 'continueAsGuestMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to delete this review?`
+  String get confirm_remove_review_msg {
+    return Intl.message(
+      'Are you sure you want to delete this review?',
+      name: 'confirm_remove_review_msg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove`
+  String get remove {
+    return Intl.message(
+      'Remove',
+      name: 'remove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select an account to proceed`
+  String get select_account_to_processed {
+    return Intl.message(
+      'Select an account to proceed',
+      name: 'select_account_to_processed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue with your personal account`
+  String get continue_with_your_personal_account {
+    return Intl.message(
+      'Continue with your personal account',
+      name: 'continue_with_your_personal_account',
       desc: '',
       args: [],
     );

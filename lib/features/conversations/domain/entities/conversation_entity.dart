@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:bns360_graduation_project/core/utils/extensions/iterable.dart';
 import 'package:equatable/equatable.dart';
 
@@ -47,18 +46,18 @@ class ConversationEntity extends Equatable {
     );
   }
 
-  ParticipantEntity? get otherParticipant {
-    final currentUserId = AppProvider().getProfile()!.id;
+  ParticipantEntity? otherParticipant(ParticipantEntity currentParticipant) {
+    final currentUserId = currentParticipant.modifiedId;
     return participants.firstWhereOrNull(
-      (participant) => participant.id != currentUserId,
+      (participant) => participant.modifiedId != currentUserId,
     );
   }
 
-  int get currentUserUnreadCount {
-    final currentUserId = AppProvider().getProfile()!.id;
-    final unread = unreadCount.firstWhere(
+  int currentUserUnreadCount(ParticipantEntity currentParticipant) {
+    final currentUserId = currentParticipant.modifiedId;
+    final unread = unreadCount.firstWhereOrNull(
       (participant) => participant.userId == currentUserId,
     );
-    return unread.count;
+    return unread?.count ?? 0;
   }
 }

@@ -37,7 +37,7 @@ class CraftsmanHeadActions extends StatelessWidget {
                     onPressed: () {
                       final params = ConversationScreenParams(
                         participantEntity: ParticipantEntity(
-                          id: craftsmanEntity.userId.toString(),
+                          id: craftsmanEntity.id.toString(),
                           nameEN: craftsmanEntity.nameEN,
                           nameAR: craftsmanEntity.nameAR,
                           imageUrl: craftsmanEntity.profileImageUrl,

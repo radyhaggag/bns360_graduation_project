@@ -84,10 +84,10 @@
   "map": "الخريطة",
   "am": "ص",
   "pm": "م",
-  "review_summary": "ملخص المراجعات",
-  "view_reviews": "عرض المراجعات",
+  "review_summary": "ملخص التقييمات",
+  "view_reviews": "عرض التقييمات",
   "reviewer": "مراجع",
-  "write_review": "أكتب مراجعة",
+  "write_review": "أكتب تقييم",
   "tap_to_rate": "انقر للتقييم",
   "write_your_review": "أكتب تقييمك",
   "send": "إرسال",
@@ -301,5 +301,10 @@
   "sent_email_verification_link": "تم إرسال رابط التحقق إلى بريدك الإلكتروني",
   "visit_website": "زيارة الموقع",
   "url_should_contain_coordinates": "يجب أن يحتوي رابط الموقع على إحداثيات الخريطة",
-  "contact_seller": "تواصل مع البائع"
+  "contact_seller": "تواصل مع البائع",
+  "continueAsGuestMessage": "المتابعة كضيف تعني أنك لن تتمكن من الوصول إلى جميع الميزات. هل ترغب في المتابعة؟",
+  "confirm_remove_review_msg": "هل أنت متأكد أنك تريد حذف هذه التقييم؟",
+  "remove": "حذف",
+  "select_account_to_processed": "اختر حساباً للمتابعة",
+  "continue_with_your_personal_account": "المتابعة بحسابك شخصي"
 }

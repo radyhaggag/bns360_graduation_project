@@ -135,6 +135,8 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
       (l) => emit(RemoveCategoryItemReviewErrorState(message: l.message)),
       (r) {
         reviews.removeWhere((element) => element.id == event.reviewId);
+        add(GetCategoryItemReviewSummaryEvent(itemId: event.categoryItemId));
+
         emit(RemoveCategoryItemReviewSuccessState());
       },
     );

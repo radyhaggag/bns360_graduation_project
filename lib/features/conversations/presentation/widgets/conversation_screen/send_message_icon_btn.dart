@@ -87,6 +87,7 @@ class SendMessageIconBtn extends StatelessWidget {
         otherParticipant: otherParticipant,
         isFirstMsg: bloc.messages.isEmpty,
         conversationId: conversationId,
+        currentParticipant: bloc.currentParticipant,
       ),
     ));
   }

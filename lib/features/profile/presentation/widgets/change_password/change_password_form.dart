@@ -58,7 +58,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
             title: S.of(context).newPassword,
             hint: S.of(context).enterNewPassword,
             controlName: 'newPassword',
-            showRequirements: true,
+            // showRequirements: true,
             textInputAction: TextInputAction.done,
           ),
           const SizedBox(height: 50),

@@ -1,13 +1,16 @@
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../helpers/date_formatter.dart';
 import '../../../shared_data/entities/review_entity.dart';
 import '../../../utils/app_fonts.dart';
 import '../../../utils/assets/app_svg.dart';
 import '../../../utils/constants.dart';
 import '../../../utils/extensions/context.dart';
+import '../../confirm_pop_up.dart';
 import '../../main_network_image.dart';
 import '../../main_rating_bar.dart';
 import '../../remove_icon.dart';
@@ -153,10 +156,20 @@ class _BuildReviewCard extends StatelessWidget {
                   ),
                 ),
               ),
-              if (review.isByMe) ...[
+              if (review.isByMe || AppProvider().isAdmin) ...[
                 const SizedBox(width: 15),
                 DeleteIcon(
-                  onTap: onRemove,
+                  onTap: () {
+                    ConfirmationDialog.show(
+                      context,
+                      onConfirm: () {
+                        onRemove();
+                        Navigator.pop(context);
+                      },
+                      message: S.of(context).confirm_remove_review_msg,
+                      confirmLabel: S.of(context).remove,
+                    );
+                  },
                   isLoading: isLoading,
                 ),
               ],

@@ -117,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
         "confirm_delete_message": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد أنك تريد حذف هذه الرسالة؟"),
+        "confirm_remove_review_msg": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد حذف هذه التقييم؟"),
         "contactUsContent": MessageLookupByLibrary.simpleMessage(
             "إذا كان لديك أي أسئلة أو استفسارات، يرجى التواصل معنا عبر..."),
         "contactUsTitle": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
@@ -127,6 +129,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),
         "continueAsGuest":
             MessageLookupByLibrary.simpleMessage("الاستمرار كضيف"),
+        "continueAsGuestMessage": MessageLookupByLibrary.simpleMessage(
+            "المتابعة كضيف تعني أنك لن تتمكن من الوصول إلى جميع الميزات. هل ترغب في المتابعة؟"),
+        "continue_with_your_personal_account":
+            MessageLookupByLibrary.simpleMessage("المتابعة بحسابك شخصي"),
         "conversations": MessageLookupByLibrary.simpleMessage("المحادثات"),
         "craftsman": MessageLookupByLibrary.simpleMessage("حرفى"),
         "craftsman_no_holidays": MessageLookupByLibrary.simpleMessage(
@@ -360,6 +366,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "properties": MessageLookupByLibrary.simpleMessage("العقارات"),
         "property_address":
             MessageLookupByLibrary.simpleMessage("عنوان العقار"),
+        "remove": MessageLookupByLibrary.simpleMessage("حذف"),
         "remove_images": MessageLookupByLibrary.simpleMessage("إزالة الصور"),
         "remove_profile_image":
             MessageLookupByLibrary.simpleMessage("حذف صورة البروفايل"),
@@ -382,7 +389,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "review_sent_successfully":
             MessageLookupByLibrary.simpleMessage("تم إرسال تقييمك بنجاح"),
         "review_summary":
-            MessageLookupByLibrary.simpleMessage("ملخص المراجعات"),
+            MessageLookupByLibrary.simpleMessage("ملخص التقييمات"),
         "reviewer": MessageLookupByLibrary.simpleMessage("مراجع"),
         "salary": MessageLookupByLibrary.simpleMessage("المرتب"),
         "sale": MessageLookupByLibrary.simpleMessage("للبيع"),
@@ -395,6 +402,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "search_on": MessageLookupByLibrary.simpleMessage("البحث في"),
         "search_on_properties":
             MessageLookupByLibrary.simpleMessage("البحث في العقارات"),
+        "select_account_to_processed":
+            MessageLookupByLibrary.simpleMessage("اختر حساباً للمتابعة"),
         "select_business_category":
             MessageLookupByLibrary.simpleMessage("اختار فئة النشاط التجاري"),
         "select_holiday": MessageLookupByLibrary.simpleMessage("اختر العطلة"),
@@ -465,7 +474,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
         "view_profile":
             MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي"),
-        "view_reviews": MessageLookupByLibrary.simpleMessage("عرض المراجعات"),
+        "view_reviews": MessageLookupByLibrary.simpleMessage("عرض التقييمات"),
         "visit_website": MessageLookupByLibrary.simpleMessage("زيارة الموقع"),
         "wednesday": MessageLookupByLibrary.simpleMessage("الأربعاء"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك،"),
@@ -481,7 +490,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("يعمل 24 ساعة"),
         "working_24_hours_question":
             MessageLookupByLibrary.simpleMessage("هل تعمل 24 ساعة في اليوم؟"),
-        "write_review": MessageLookupByLibrary.simpleMessage("أكتب مراجعة"),
+        "write_review": MessageLookupByLibrary.simpleMessage("أكتب تقييم"),
         "write_your_message":
             MessageLookupByLibrary.simpleMessage("اكتب رسالتك"),
         "write_your_review":

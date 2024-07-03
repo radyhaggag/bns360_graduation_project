@@ -9,9 +9,13 @@ class ProfileImageWithRadius extends StatelessWidget {
   const ProfileImageWithRadius({
     super.key,
     this.imageUrl,
+    this.width,
+    this.height,
   });
 
   final String? imageUrl;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +27,8 @@ class ProfileImageWithRadius extends StatelessWidget {
       padding: EdgeInsets.all(2.r),
       child: MainNetworkImage(
         imageUrl: imageUrl ?? kDefaultImgUrl,
-        width: 75.r,
-        height: 75.r,
+        width: width ?? 75.r,
+        height: height ?? 75.r,
         isCircular: true,
         withImageView: true,
       ),

@@ -98,6 +98,8 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     GetConversationsEvent event,
     Emitter<ConversationsState> emit,
   ) async {
+    _conversationsStream?.cancel();
+    conversations.clear();
     emit(GetConversationsLoadingState());
 
     final res = conversationsRepo.getConversations(
@@ -227,6 +229,8 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
       conversationId: event.conversationId,
     );
     await conversationsRepo.resetUnreadCountForCurrentUser(params);
+    messages.clear();
+    _messagesStream?.cancel();
   }
 
   final searchController = TextEditingController();

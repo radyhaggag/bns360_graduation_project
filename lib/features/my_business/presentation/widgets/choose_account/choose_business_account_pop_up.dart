@@ -3,6 +3,7 @@ import 'package:bns360_graduation_project/core/shared_data/entities/participant_
 import 'package:bns360_graduation_project/core/shared_data/models/participant_model.dart';
 import 'package:bns360_graduation_project/core/utils/enums/user_type.dart';
 import 'package:bns360_graduation_project/core/widgets/continue_with_personal_account.dart';
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -87,6 +88,9 @@ class ChooseBusinessAccountBody extends StatelessWidget {
                   isLoading: state is GetMyBusinessLoadingState,
                   loadedWidget: MainListViewBuilder(
                     list: myBusinesses,
+                    emptyWidget: EmptyCard(
+                      title: S.of(context).no_business_found,
+                    ),
                     itemWidget: (item, index) {
                       return InkWell(
                         onTap: () {

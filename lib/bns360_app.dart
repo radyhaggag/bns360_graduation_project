@@ -8,6 +8,7 @@ import 'config/navigation_service.dart';
 import 'config/route_config.dart';
 import 'config/theme_config.dart';
 import 'core/app/app_bloc.dart';
+import 'core/helpers/update_helper.dart';
 import 'core/utils/app_strings.dart';
 import 'core/utils/enums.dart';
 import 'features/conversations/presentation/bloc/conversations_bloc.dart';
@@ -27,6 +28,7 @@ class _BNS360AppState extends State<BNS360App> {
   @override
   void initState() {
     super.initState();
+    UpdateHelper.checkForInAppUpdate();
 
     ThemeConfig.configureStatusBarColor();
   }

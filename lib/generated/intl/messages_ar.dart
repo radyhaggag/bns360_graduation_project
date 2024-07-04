@@ -78,6 +78,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("قيمة غير صالحة"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("إعدادات التطبيق"),
+        "app_update_failed":
+            MessageLookupByLibrary.simpleMessage("فشل تحديث التطبيق"),
+        "app_update_success":
+            MessageLookupByLibrary.simpleMessage("تم تحديث التطبيق بنجاح"),
         "apply_now": MessageLookupByLibrary.simpleMessage("قم بالتقديم الان"),
         "area": MessageLookupByLibrary.simpleMessage("المساحة"),
         "backToLogin":

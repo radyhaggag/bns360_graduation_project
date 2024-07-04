@@ -3109,6 +3109,26 @@ class S {
       args: [],
     );
   }
+
+  /// `App updated successfully`
+  String get app_update_success {
+    return Intl.message(
+      'App updated successfully',
+      name: 'app_update_success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App update failed`
+  String get app_update_failed {
+    return Intl.message(
+      'App update failed',
+      name: 'app_update_failed',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

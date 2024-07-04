@@ -79,6 +79,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid value"),
         "appName": MessageLookupByLibrary.simpleMessage("BNS 360"),
         "app_settings": MessageLookupByLibrary.simpleMessage("App settings"),
+        "app_update_failed":
+            MessageLookupByLibrary.simpleMessage("App update failed"),
+        "app_update_success":
+            MessageLookupByLibrary.simpleMessage("App updated successfully"),
         "apply_now": MessageLookupByLibrary.simpleMessage("Apply now"),
         "area": MessageLookupByLibrary.simpleMessage("Area"),
         "backToLogin": MessageLookupByLibrary.simpleMessage("Back to log in"),

@@ -43,7 +43,6 @@ import '../features/jobs/presentation/screens/edit_job_screen.dart';
 import '../features/jobs/presentation/screens/job_details_screen.dart';
 import '../features/jobs/presentation/screens/jobs_screen.dart';
 import '../features/map/domain/params/map_params.dart';
-import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
 import '../features/my_business/presentation/bloc/my_business_bloc.dart';
 import '../features/my_business/presentation/screens/add_business_screen.dart';
@@ -299,11 +298,8 @@ abstract class RouteConfig {
         );
       case Routes.map:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => sl<MapBloc>(),
-            child: MapScreen(
-              mapParams: settings.arguments as MapParams?,
-            ),
+          builder: (context) => MapScreen(
+            mapParams: settings.arguments as MapParams?,
           ),
         );
       case Routes.conversation:

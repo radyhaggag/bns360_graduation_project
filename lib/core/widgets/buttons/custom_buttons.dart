@@ -81,8 +81,8 @@ class CustomOutlinedButton extends StatelessWidget {
       child: OutlinedButton(
         onPressed: !isLoading ? onPressed : null,
         style: context.theme.outlinedButtonTheme.style?.copyWith(
-          foregroundColor: MaterialStatePropertyAll(foregroundColor),
-          backgroundColor: MaterialStatePropertyAll(backgroundColor),
+          foregroundColor: WidgetStatePropertyAll(foregroundColor),
+          backgroundColor: WidgetStatePropertyAll(backgroundColor),
         ),
         child: isLoading
             ? const CenterProgressIndicator()
@@ -121,8 +121,8 @@ class CustomTextButton extends StatelessWidget {
       child: TextButton(
         onPressed: !isLoading ? onPressed : null,
         style: context.theme.textButtonTheme.style?.copyWith(
-          foregroundColor: MaterialStatePropertyAll(foregroundColor),
-          backgroundColor: MaterialStatePropertyAll(backgroundColor),
+          foregroundColor: WidgetStatePropertyAll(foregroundColor),
+          backgroundColor: WidgetStatePropertyAll(backgroundColor),
         ),
         child: isLoading
             ? const CenterProgressIndicator()
@@ -162,10 +162,10 @@ class CustomIconButton extends StatelessWidget {
       child: IconButton(
         onPressed: !isLoading ? onPressed : null,
         style: context.theme.iconButtonTheme.style?.copyWith(
-          foregroundColor: MaterialStatePropertyAll(foregroundColor),
-          backgroundColor: MaterialStatePropertyAll(backgroundColor),
+          foregroundColor: WidgetStatePropertyAll(foregroundColor),
+          backgroundColor: WidgetStatePropertyAll(backgroundColor),
           padding: padding != null
-              ? MaterialStatePropertyAll(padding)
+              ? WidgetStatePropertyAll(padding)
               : context.theme.iconButtonTheme.style?.padding,
         ),
         icon: isLoading

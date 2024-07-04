@@ -306,5 +306,7 @@
   "confirm_remove_review_msg": "هل أنت متأكد أنك تريد حذف هذه التقييم؟",
   "remove": "حذف",
   "select_account_to_processed": "اختر حساباً للمتابعة",
-  "continue_with_your_personal_account": "المتابعة بحسابك شخصي"
+  "continue_with_your_personal_account": "المتابعة بحسابك شخصي",
+  "app_update_success": "تم تحديث التطبيق بنجاح",
+  "app_update_failed": "فشل تحديث التطبيق"
 }

@@ -1,6 +1,7 @@
-import '../../../databases/local_storage/hive_manager.dart';
 import 'package:equatable/equatable.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../../databases/local_storage/hive_manager.dart';
 
 part 'profile_entity.g.dart';
 

@@ -1,5 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
+
+import '../../utils/extensions/context.dart';
+import '../buttons/custom_buttons.dart';
 
 class RoundedIconBtn extends StatelessWidget {
   const RoundedIconBtn({
@@ -9,6 +11,8 @@ class RoundedIconBtn extends StatelessWidget {
     this.size,
     required this.icon,
     this.addMargin = false,
+    this.isLoading = false,
+    this.padding,
   });
 
   final void Function()? onPressed;
@@ -16,6 +20,8 @@ class RoundedIconBtn extends StatelessWidget {
   final bool addMargin;
   final Color? backgroundColor;
   final double? size;
+  final bool isLoading;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +35,12 @@ class RoundedIconBtn extends StatelessWidget {
         color: backgroundColor,
         shape: BoxShape.circle,
       ),
-      child: IconButton(
+      child: CustomIconButton(
+        isLoading: isLoading,
         onPressed: () => onPressed?.call(),
-        style: IconButton.styleFrom(
-          backgroundColor: context.theme.hintColor.withOpacity(.05),
-          padding: EdgeInsets.zero,
-        ),
+        backgroundColor: context.theme.hintColor.withOpacity(.05),
+        padding: EdgeInsets.zero,
+        // ),
         icon: icon,
       ),
     );

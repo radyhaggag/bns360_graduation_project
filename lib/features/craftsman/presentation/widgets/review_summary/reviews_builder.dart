@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/center_progress_indicator.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
@@ -9,7 +9,9 @@ import '../../../../../core/widgets/reviews/review_widget/review_widget.dart';
 import '../../bloc/craftsman_bloc.dart';
 
 class CraftsmanReviewsBuilder extends StatefulWidget {
-  const CraftsmanReviewsBuilder({super.key});
+  const CraftsmanReviewsBuilder({super.key, required this.craftsmanId});
+
+  final int craftsmanId;
 
   @override
   State<CraftsmanReviewsBuilder> createState() =>
@@ -55,7 +57,19 @@ class _CraftsmanReviewsBuilderState extends State<CraftsmanReviewsBuilder> {
                   context.read<CraftsmanBloc>().reviews.length, (index) {
                 final item = context.read<CraftsmanBloc>().reviews[index];
 
-                return ReviewWidget(review: item);
+                return ReviewWidget(
+                  review: item,
+                  isLoading: state is RemoveCraftsmanReviewLoadingState &&
+                      state.reviewId == item.id,
+                  onRemove: () {
+                    context.read<CraftsmanBloc>().add(
+                          RemoveCraftsmanReviewEvent(
+                            reviewId: item.id,
+                            craftsmanId: widget.craftsmanId,
+                          ),
+                        );
+                  },
+                );
               }),
             ),
           ),

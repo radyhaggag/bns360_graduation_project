@@ -1,3 +1,5 @@
+import '../features/chatbot/chatbot_injector.dart';
+import '../features/my_business/business_injector.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -6,6 +8,7 @@ import '../core/api/api_consumer.dart';
 import '../core/api/dio_consumer.dart';
 import '../core/app/app_bloc.dart';
 import '../core/databases/secure_storage/secure_storage_manager.dart';
+import '../core/databases/secure_storage/token_manager.dart';
 import '../core/helpers/cache_helper.dart';
 import '../features/auth/auth_injector.dart';
 import '../features/categories/categories_injector.dart';
@@ -16,8 +19,11 @@ import '../features/craftsman/craftsman_injector.dart';
 import '../features/favorites/favorites_injector.dart';
 import '../features/home/home_injector.dart';
 import '../features/jobs/jobs_injector.dart';
+import '../features/my_posts/my_posts_injector.dart';
+import '../features/my_services/my_services_injector.dart';
 import '../features/profile/profile_injector.dart';
 import '../features/properties/properties_injector.dart';
+import '../features/saved_items/saved_injector.dart';
 import '../features/settings/settings_injector.dart';
 import '../features/splash/splash_injector.dart';
 
@@ -38,6 +44,11 @@ Future<void> initAppDependencies() async {
   initConversations();
   initJobs();
   initProperties();
+  initSaved();
+  initMyPosts();
+  initMyBusiness();
+  initMyServices();
+  initChatbot();
 }
 
 Future<void> initCore() async {
@@ -68,7 +79,10 @@ Future<void> initCore() async {
   );
   // Cache Helper
   sl.registerLazySingleton(
-    () => CacheHelper(sl()),
+    () => CacheHelper(),
+  );
+  sl.registerLazySingleton(
+    () => TokenManager(storage: sl()),
   );
   // Localization Bloc
   sl.registerFactory(

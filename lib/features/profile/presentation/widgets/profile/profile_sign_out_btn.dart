@@ -1,4 +1,6 @@
 import 'package:bns360_graduation_project/config/route_config.dart';
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import 'package:bns360_graduation_project/core/widgets/confirm_pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,28 +15,52 @@ class ProfileSignOutBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        context.read<ProfileBloc>().add(SignOutEvent());
-        Navigator.of(context).pushNamedAndRemoveUntil(
-          Routes.login,
-          (route) => false,
-        );
+    return BlocListener<ProfileBloc, ProfileState>(
+      listener: (context, state) {
+        if (state is SignOutSuccessState) {
+          if (state.isGuest) {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              Routes.login,
+              (route) => false,
+            );
+          } else {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              Routes.welcome,
+              (route) => false,
+            );
+          }
+        }
       },
-      tileColor: context.theme.listTileTheme.tileColor,
-      leading: RotatedBox(
-        quarterTurns: 2,
-        child: Icon(
-          Icons.logout,
-          color: context.theme.primaryColor.withAlpha(90),
-          size: 24.r,
+      child: ListTile(
+        onTap: () {
+          if (AppProvider().isGuest) {
+            context.read<ProfileBloc>().add(SignOutEvent());
+            return;
+          }
+          ConfirmationDialog.show(
+            context,
+            message: S.of(context).logout_message,
+            confirmLabel: S.of(context).logout,
+            onConfirm: () {
+              context.read<ProfileBloc>().add(SignOutEvent());
+            },
+          );
+        },
+        tileColor: context.theme.listTileTheme.tileColor,
+        leading: RotatedBox(
+          quarterTurns: 2,
+          child: Icon(
+            AppProvider().isGuest ? Icons.login : Icons.logout,
+            color: context.theme.primaryColor.withAlpha(90),
+            size: 25.r,
+          ),
         ),
-      ),
-      title: Text(
-        S.of(context).logout,
-        style: context.textTheme.titleSmall?.copyWith(
-          fontSize: AppFontSize.details,
-          color: context.theme.cardColor,
+        title: Text(
+          AppProvider().isGuest ? S.of(context).login : S.of(context).logout,
+          style: context.textTheme.titleSmall?.copyWith(
+            fontSize: AppFontSize.details,
+            color: context.theme.cardColor,
+          ),
         ),
       ),
     );

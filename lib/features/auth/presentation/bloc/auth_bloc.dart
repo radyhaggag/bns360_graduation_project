@@ -21,12 +21,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }) : super(AuthInitial()) {
     on<LoginEvent>(_login);
     on<SignUpEvent>(_signUp);
-    on<SendEmailVerificationEvent>(_sendEmailVerification);
     on<SendResetPasswordCodeEvent>(_sendResetPasswordCode);
     on<VerifyResetPasswordCodeEvent>(_verifyResetPasswordCode);
     on<ResetPasswordEvent>(_resetPassword);
     on<ChangeUserTypeEvent>(_changeUserType);
     on<ContinueAsGuestEvent>(_continueAsGuest);
+    on<SendConfirmationEmailEvent>(_sendConfirmationEmail);
   }
 
   Future<void> _login(
@@ -34,13 +34,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(LoginLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = LoginParams(email: event.email, password: event.password);
     final res = await authRepo.login(params);
 
     res.fold(
-      (l) => emit(LoginErrorState(message: l.message)),
+      (l) => emit(LoginErrorState(
+        message: l.message,
+        email: event.email,
+      )),
       (r) => emit(LoginSuccessState()),
     );
   }
@@ -49,13 +51,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     SignUpEvent event,
     Emitter<AuthState> emit,
   ) async {
+    if (userType == null) return;
     emit(SignUpLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = SignUpParams(
       email: event.email,
       password: event.password,
-      name: event.name,
+      displayName: event.name,
+      userType: userType!,
     );
     final res = await authRepo.signUp(params);
 
@@ -65,27 +68,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  Future<void> _sendEmailVerification(
-    SendEmailVerificationEvent event,
-    Emitter<AuthState> emit,
-  ) async {
-    emit(SendEmailVerificationLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
-
-    final res = await authRepo.sendEmailVerification(event.email);
-
-    res.fold(
-      (l) => emit(SendEmailVerificationErrorState(message: l.message)),
-      (r) => emit(SendEmailVerificationSuccessState()),
-    );
-  }
-
-  _sendResetPasswordCode(
+  Future<void> _sendResetPasswordCode(
     SendResetPasswordCodeEvent event,
     Emitter<AuthState> emit,
   ) async {
     emit(SendResetPasswordCodeLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await authRepo.sendResetPasswordCode(event.email);
 
@@ -100,7 +87,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(VerifyResetPasswordCodeLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = VerifyResetPasswordParams(
       email: event.email,
@@ -120,7 +106,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(ResetPasswordLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final params = ResetPasswordParams(
       email: event.email,
@@ -129,27 +114,43 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final res = await authRepo.resetPassword(params);
 
     res.fold(
-      (l) => emit(LoginErrorState(message: l.message)),
-      (r) => emit(LoginSuccessState()),
+      (l) => emit(ResetPasswordErrorState(message: l.message)),
+      (r) => emit(ResetPasswordSuccessState()),
     );
   }
 
   UserType? userType;
 
-  _changeUserType(ChangeUserTypeEvent event, Emitter<AuthState> emit) {
+  void _changeUserType(ChangeUserTypeEvent event, Emitter<AuthState> emit) {
     userType = event.userType;
     emit(UserTypeChanged(userType: event.userType));
   }
 
-  _continueAsGuest(ContinueAsGuestEvent event, Emitter<AuthState> emit) async {
+  Future<void> _continueAsGuest(ContinueAsGuestEvent event, Emitter<AuthState> emit) async {
     emit(LoginLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await authRepo.continueAsGuest();
 
     res.fold(
-      (l) => emit(LoginErrorState(message: l.message)),
+      (l) => emit(LoginErrorState(
+        message: l.message,
+        email: '',
+      )),
       (r) => emit(LoginSuccessState()),
+    );
+  }
+
+  Future<void> _sendConfirmationEmail(
+    SendConfirmationEmailEvent event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(SendConfirmationEmailLoadingState());
+
+    final res = await authRepo.sendConfirmationEmail(event.email);
+
+    res.fold(
+      (l) => emit(SendConfirmationEmailErrorState(message: l.message)),
+      (r) => emit(SendConfirmationEmailSuccessState()),
     );
   }
 }

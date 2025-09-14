@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../utils/extensions/context.dart';
 import '../../utils/extensions/media_query.dart';
 import '../center_progress_indicator.dart';
 
@@ -14,6 +14,7 @@ class CustomElevatedButton extends StatelessWidget {
   final void Function()? onPressed;
   final bool isLoading;
   final BorderRadius? borderRadius;
+  final bool isDisabled;
 
   const CustomElevatedButton({
     super.key,
@@ -24,6 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
     required this.label,
     this.onPressed,
     this.isLoading = false,
+    this.isDisabled = false,
     this.borderRadius,
   });
 
@@ -33,7 +35,7 @@ class CustomElevatedButton extends StatelessWidget {
       width: width ?? context.width,
       height: height ?? 45.h,
       child: ElevatedButton(
-        onPressed: !isLoading ? onPressed : null,
+        onPressed: (!isLoading && !isDisabled) ? onPressed : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
@@ -55,6 +57,7 @@ class CustomOutlinedButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? foregroundColor;
+  final Color? backgroundColor;
   final String label;
   final void Function()? onPressed;
   final bool isLoading;
@@ -64,6 +67,7 @@ class CustomOutlinedButton extends StatelessWidget {
     this.width,
     this.height,
     this.foregroundColor,
+    this.backgroundColor,
     required this.label,
     this.onPressed,
     this.isLoading = false,
@@ -77,7 +81,8 @@ class CustomOutlinedButton extends StatelessWidget {
       child: OutlinedButton(
         onPressed: !isLoading ? onPressed : null,
         style: context.theme.outlinedButtonTheme.style?.copyWith(
-          foregroundColor: MaterialStatePropertyAll(foregroundColor),
+          foregroundColor: WidgetStatePropertyAll(foregroundColor),
+          backgroundColor: WidgetStatePropertyAll(backgroundColor),
         ),
         child: isLoading
             ? const CenterProgressIndicator()
@@ -116,14 +121,58 @@ class CustomTextButton extends StatelessWidget {
       child: TextButton(
         onPressed: !isLoading ? onPressed : null,
         style: context.theme.textButtonTheme.style?.copyWith(
-          foregroundColor: MaterialStatePropertyAll(foregroundColor),
-          backgroundColor: MaterialStatePropertyAll(backgroundColor),
+          foregroundColor: WidgetStatePropertyAll(foregroundColor),
+          backgroundColor: WidgetStatePropertyAll(backgroundColor),
         ),
         child: isLoading
             ? const CenterProgressIndicator()
             : FittedBox(
                 child: Text(label),
               ),
+      ),
+    );
+  }
+}
+
+class CustomIconButton extends StatelessWidget {
+  final double? size;
+  final Color? foregroundColor;
+  final Color? backgroundColor;
+  final Widget icon;
+  final void Function()? onPressed;
+  final bool isLoading;
+  final EdgeInsets? padding;
+
+  const CustomIconButton({
+    super.key,
+    required this.icon,
+    this.size,
+    this.foregroundColor,
+    this.backgroundColor,
+    this.onPressed,
+    this.padding,
+    this.isLoading = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size ?? 50.r,
+      height: size ?? 50.r,
+      child: IconButton(
+        onPressed: !isLoading ? onPressed : null,
+        style: context.theme.iconButtonTheme.style?.copyWith(
+          foregroundColor: WidgetStatePropertyAll(foregroundColor),
+          backgroundColor: WidgetStatePropertyAll(backgroundColor),
+          padding: padding != null
+              ? WidgetStatePropertyAll(padding)
+              : context.theme.iconButtonTheme.style?.padding,
+        ),
+        icon: isLoading
+            ? CenterProgressIndicator(
+                size: (size ?? 50.r) - 5.r,
+              )
+            : icon,
       ),
     );
   }
@@ -165,6 +214,80 @@ class CustomElevatedButtonWithIcon extends StatelessWidget {
       width: width ?? context.width,
       height: height ?? 45.h,
       child: ElevatedButton(
+        onPressed: !isLoading ? onPressed : null,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          foregroundColor: foregroundColor,
+          shape: borderRadius != null
+              ? RoundedRectangleBorder(borderRadius: borderRadius!)
+              : null,
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
+        ),
+        child: isLoading
+            ? const CenterProgressIndicator()
+            : Row(
+                children: [
+                  if (leading != null) ...[const SizedBox(width: 10), leading!],
+                  const SizedBox(width: 10),
+                  if (isExpanded)
+                    Expanded(child: _textWidget(context))
+                  else
+                    _textWidget(context),
+                  if (trailing != null) trailing!,
+                ],
+              ),
+      ),
+    );
+  }
+
+  Widget _textWidget(BuildContext context) => FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          label,
+          style: context.textTheme.titleSmall?.copyWith(
+            fontSize: fontSize,
+            color: foregroundColor,
+          ),
+        ),
+      );
+}
+
+class CustomOutlinedButtonWithIcon extends StatelessWidget {
+  final double? width;
+  final double? height;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final String label;
+  final void Function()? onPressed;
+  final bool isLoading;
+  final BorderRadius? borderRadius;
+  final Widget? leading;
+  final Widget? trailing;
+  final double? fontSize;
+  final bool isExpanded;
+
+  const CustomOutlinedButtonWithIcon({
+    super.key,
+    this.width,
+    this.height,
+    this.backgroundColor,
+    this.foregroundColor,
+    required this.label,
+    this.onPressed,
+    this.isLoading = false,
+    this.borderRadius,
+    this.leading,
+    this.trailing,
+    this.fontSize,
+    this.isExpanded = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width ?? context.width,
+      height: height ?? 45.h,
+      child: OutlinedButton(
         onPressed: !isLoading ? onPressed : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,

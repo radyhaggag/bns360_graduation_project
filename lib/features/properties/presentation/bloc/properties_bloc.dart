@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../domain/entities/property_entity.dart';
+import '../../../../core/shared_data/entities/property_entity.dart';
 import '../../domain/repositories/properties_repo.dart';
 import '../../params/add_property_params.dart';
 
@@ -16,19 +16,36 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   final PropertiesRepo propertiesRepo;
 
   PropertiesBloc({required this.propertiesRepo}) : super(PropertiesInitial()) {
+    initListener();
     on<GetPropertiesEvent>(_getProperties);
-    on<GetPropertyByIdEvent>(_getPropertyById);
     on<SearchOnPropertiesEvent>(_searchOnProperties);
     on<SelectPropertyLocationEvent>(_selectPropertyLocation);
     on<AddPropertyEvent>(_addProperty);
+    on<EditPropertyEvent>(_editProperty);
     on<PickPropertyImagesEvent>(_pickPropertyImages);
     on<RemovePickedPropertyImageEvent>(_removePropertyImages);
+    on<ClearPropertyImagesEvent>(_clearPropertyImages);
+    on<InitNetworkPropertyImageEvent>(_initNetworkPropertyImage);
+  }
+
+  void initListener() {
+    searchController.addListener(() {
+      if ((properties).isEmpty) return;
+      add(SearchOnPropertiesEvent());
+    });
   }
 
   List<PropertyEntity> properties = [];
   List<PropertyEntity> searchResults = [];
 
-  _getProperties(
+  List<PropertyEntity> get items {
+    if (isSearchEnabled) {
+      return searchResults;
+    }
+    return properties;
+  }
+
+  Future<void> _getProperties(
     GetPropertiesEvent event,
     Emitter<PropertiesState> emit,
   ) async {
@@ -46,35 +63,35 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     );
   }
 
-  bool isSearchEnabled = false;
+  bool get isSearchEnabled => searchController.text.trim().isNotEmpty;
   final searchController = TextEditingController();
 
-  _searchOnProperties(
+  Future<void> _searchOnProperties(
     SearchOnPropertiesEvent event,
     Emitter<PropertiesState> emit,
   ) async {
     final searchVal = searchController.text.trim();
-    if (searchVal.isEmpty) {
-      isSearchEnabled = false;
-      add(GetPropertiesEvent());
-      return;
+    final searchLowercase = searchVal.toLowerCase();
+
+    bool isTrue(PropertyEntity item) {
+      if (searchLowercase.isEmpty) return true;
+      final itemNameLowercaseAR = item.arabicDescription.toLowerCase();
+      final itemNameLowercaseENG = item.englishDescription.toLowerCase();
+      final addressLowercaseAR = item.arabicAddress.toLowerCase();
+      final addressLowercaseENG = item.englishAddress.toLowerCase();
+      return (searchLowercase.contains(itemNameLowercaseAR) ||
+              itemNameLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(itemNameLowercaseENG) ||
+              itemNameLowercaseENG.contains(searchLowercase)) ||
+          (searchLowercase.contains(addressLowercaseAR) ||
+              addressLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(addressLowercaseENG) ||
+              addressLowercaseENG.contains(searchLowercase));
     }
-    isSearchEnabled = true;
 
-    emit(GetPropertiesLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
+    searchResults = (properties).where(isTrue).toList();
 
-    final res = await propertiesRepo.searchOnProperties(searchVal);
-
-    res.fold(
-      (l) {
-        emit(GetPropertiesErrorState(message: l.message));
-      },
-      (r) {
-        searchResults = r;
-        emit(GetPropertiesSuccessState(properties: r));
-      },
-    );
+    emit(GetPropertiesSuccessState(properties: searchResults));
   }
 
   @override
@@ -83,42 +100,32 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     return super.close();
   }
 
-  _getPropertyById(
-    GetPropertyByIdEvent event,
-    Emitter<PropertiesState> emit,
-  ) async {
-    emit(GetPropertyByIdLoadingState());
-    await Future.delayed(const Duration(seconds: 1));
+  double? propertyLat;
+  double? propertyLng;
 
-    final res = await propertiesRepo.getPropertyById(event.id);
-
-    res.fold(
-      (l) => emit(GetPropertyByIdErrorState(message: l.message)),
-      (r) {
-        emit(GetPropertyByIdSuccessState(property: r));
-      },
-    );
-  }
-
-  double? _propertyLat;
-  double? _propertyLng;
-
-  _selectPropertyLocation(
+  void _selectPropertyLocation(
     SelectPropertyLocationEvent event,
     Emitter<PropertiesState> emit,
   ) {
-    _propertyLat = event.lat;
-    _propertyLng = event.lng;
+    propertyLat = event.lat;
+    propertyLng = event.lng;
+
+    emit(PropertyLocationSelectedState(lat: event.lat, lng: event.lng));
   }
 
-  _addProperty(
+  Future<void> _addProperty(
     AddPropertyEvent event,
     Emitter<PropertiesState> emit,
   ) async {
     emit(AddPropertyLoadingState());
+    if (propertyLat == null || propertyLng == null) {
+      emit(const AddPropertyErrorState(
+          message: 'Please select property location'));
+      return;
+    }
     final params = event.addPropertyParams.copyWith(
-      lat: _propertyLat,
-      lng: _propertyLng,
+      lat: propertyLat,
+      lng: propertyLng,
       images: _pickedImages,
     );
     final res = await propertiesRepo.addProperty(params);
@@ -132,7 +139,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   final List<File> _pickedImages = [];
   List<File> get pickedImages => _pickedImages;
 
-  _pickPropertyImages(
+  Future<void> _pickPropertyImages(
     PickPropertyImagesEvent event,
     Emitter<PropertiesState> emit,
   ) async {
@@ -158,11 +165,48 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     }
   }
 
-  _removePropertyImages(
+  void _removePropertyImages(
     RemovePickedPropertyImageEvent event,
     Emitter<PropertiesState> emit,
   ) {
     _pickedImages.removeAt(event.index);
+    emit(PropertyImagesUpdatedState());
+  }
+
+  Future<void> _editProperty(EditPropertyEvent event, Emitter<PropertiesState> emit) async {
+    emit(EditPropertyLoadingState());
+    final params = event.propertyEntity.copyWith(
+      latitude: propertyLat,
+      longitude: propertyLng,
+      image1: _pickedImages.firstOrNull?.path,
+      image2: _pickedImages.length > 1 ? _pickedImages[1].path : null,
+      image3: _pickedImages.length > 2 ? _pickedImages[2].path : null,
+      image4: _pickedImages.length > 3 ? _pickedImages[3].path : null,
+    );
+    final res = await propertiesRepo.editProperty(params);
+
+    res.fold(
+      (l) => emit(EditPropertyErrorState(message: l.message)),
+      (r) => emit(const EditPropertySuccessState()),
+    );
+  }
+
+  List<String> networkImages = [];
+
+  void _clearPropertyImages(
+    ClearPropertyImagesEvent event,
+    Emitter<PropertiesState> emit,
+  ) {
+    networkImages.clear();
+    pickedImages.clear();
+    emit(PropertyImagesUpdatedState());
+  }
+
+  void _initNetworkPropertyImage(
+    InitNetworkPropertyImageEvent event,
+    Emitter<PropertiesState> emit,
+  ) {
+    networkImages = event.networkImages.map((e) => e).toList();
     emit(PropertyImagesUpdatedState());
   }
 }

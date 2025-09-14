@@ -1,5 +1,6 @@
+import '../../../../core/shared_data/models/category_item_info_model.dart';
+
 import '../../../../core/helpers/execute_and_handle_error.dart';
-import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/utils/custom_types.dart';
 import '../../domain/entities/banner_entity.dart';
 import '../../domain/repositories/home_repo.dart';
@@ -23,8 +24,8 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  FutureEither<List<CategoryItemEntity>> getPlacesToExplore() {
-    return executeAndHandleErrorAsync<List<CategoryItemEntity>>(
+  FutureEither<List<CategoryItemInfoModel>> getPlacesToExplore() {
+    return executeAndHandleErrorAsync<List<CategoryItemInfoModel>>(
       () => homeRemoteDataSource.getPlacesToExplore(),
     );
   }

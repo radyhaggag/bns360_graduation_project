@@ -1,10 +1,12 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/route_config.dart';
+import '../../../features/category_item/domain/params/category_item_screen_params.dart';
 import '../../helpers/localization_helper.dart';
-import '../../shared_data/entities/category_item_entity.dart';
+import '../../shared_data/entities/category_item_info_entity.dart';
+import '../../utils/extensions/context.dart';
 import '../icons/favorite_icon.dart';
 import '../main_network_image.dart';
 import '../ratings_item_with_count.dart';
@@ -16,17 +18,11 @@ class CategoryItemCard extends StatelessWidget {
   const CategoryItemCard({
     super.key,
     required this.categoryItemEntity,
-    this.onFavoriteIconPressed,
     this.width,
-    this.isFavorite,
-    this.useSetStateToChangeFavoriteColor,
   });
 
-  final CategoryItemEntity categoryItemEntity;
-  final void Function()? onFavoriteIconPressed;
+  final CategoryItemInfoEntity categoryItemEntity;
   final double? width;
-  final bool? isFavorite;
-  final bool? useSetStateToChangeFavoriteColor;
 
   @override
   Widget build(BuildContext context) {
@@ -53,19 +49,19 @@ class CategoryItemCard extends StatelessWidget {
                     children: [
                       Expanded(
                         child: RatingsItemWithCount(
-                          numOfRatings: categoryItemEntity.numOfRatings,
-                          starsCount: categoryItemEntity.starsCount,
+                          numOfRatings: categoryItemEntity.totalReviews.toInt(),
+                          starsCount: categoryItemEntity.averageRating,
                           size: 19.r,
                         ),
+                        // child: SizedBox(),
                       ),
                       FavoriteIcon(
-                        onPressed: onFavoriteIconPressed,
-                        isFavorite: isFavorite,
-                        useSetStateToChangeColor:
-                            useSetStateToChangeFavoriteColor,
+                        itemId: categoryItemEntity.id,
+                        isBusiness: true,
                       ),
                     ],
                   ),
+                  const SizedBox(height: 8),
                 ],
               ),
             ),

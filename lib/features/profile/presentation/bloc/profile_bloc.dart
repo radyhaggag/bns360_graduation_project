@@ -1,11 +1,9 @@
-import 'dart:async';
-
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-import 'package:bns360_graduation_project/features/profile/domain/params/change_password_params.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../../../core/providers/app_provider.dart';
 import '../../../../core/shared_data/entities/profile/profile_entity.dart';
+import '../../domain/params/change_password_params.dart';
 import '../../domain/params/edit_profile_params.dart';
 import '../../domain/repositories/profile_repo.dart';
 
@@ -19,11 +17,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }) : super(ProfileInitial()) {
     on<ChangeProfileImageEvent>(_changeProfileImage);
     on<ClearProfileImageEvent>(_clearProfileImage);
-    on<EditProfileDataEvent>(_editProfileImage);
+    on<EditProfileDataEvent>(_editProfileData);
     on<GetProfileEvent>(_getProfile);
-    on<RemoveProfileImageEvent>(_removeProfileImage);
     on<ChangePasswordEvent>(_changePassword);
     on<SignOutEvent>(_signOut);
+    on<DeleteAccountEvent>(_deleteAccount);
   }
 
   ProfileEntity? _profile;
@@ -34,7 +32,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   bool isProfileImageCleared = false;
 
-  _changeProfileImage(
+  Future<void> _changeProfileImage(
     ChangeProfileImageEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -49,7 +47,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     }
   }
 
-  _clearProfileImage(
+  Future<void> _clearProfileImage(
     ClearProfileImageEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -58,12 +56,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileImageChangedState());
   }
 
-  _editProfileImage(
+  Future<void> _editProfileData(
     EditProfileDataEvent event,
     Emitter<ProfileState> emit,
   ) async {
     emit(EditProfileLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final editParams = EditProfileParams(
       email: event.email,
@@ -76,16 +73,25 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     res.fold(
       (l) => emit(EditProfileErrorState(message: l.message)),
-      (r) => emit(EditProfileSuccessState()),
+      (r) {
+        _newImagePath = null;
+
+        add(const GetProfileEvent());
+        emit(EditProfileSuccessState());
+      },
     );
   }
 
-  _getProfile(
+  Future<void> _getProfile(
     GetProfileEvent event,
     Emitter<ProfileState> emit,
   ) async {
+    if (AppProvider().isGuest) return;
+    if (event.localProfile && _profile != null) {
+      emit(GetProfileSuccessState(profileEntity: _profile!));
+      return;
+    }
     emit(GetProfileLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final res = await profileRepo.getProfile();
 
@@ -94,32 +100,26 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         emit(GetProfileErrorState(message: l.message));
       },
       (r) {
+        if (r == null) return;
         _profile = r;
         emit(GetProfileSuccessState(profileEntity: r));
       },
     );
   }
 
-  _removeProfileImage(
-    RemoveProfileImageEvent event,
-    Emitter<ProfileState> emit,
-  ) {
-    emit(ProfileImageChangedState());
-  }
-
-  _changePassword(
+  Future<void> _changePassword(
     ChangePasswordEvent event,
     Emitter<ProfileState> emit,
   ) async {
     emit(ChangePasswordLoadingState());
 
-    final currentEmail = AppProvider().getProfile()?.email;
-    if (currentEmail == null) {
+    final userId = AppProvider().getProfile()?.id;
+    if (userId == null) {
       emit(const ChangePasswordErrorState(message: "You must logged in first"));
       return;
     }
     final params = ChangePasswordParams(
-      email: currentEmail,
+      userId: userId,
       oldPassword: event.oldPassword,
       newPassword: event.newPassword,
     );
@@ -132,7 +132,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     );
   }
 
-  _signOut(
+  Future<void> _signOut(
     SignOutEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -142,7 +142,24 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
     res.fold(
       (l) => emit(SignOutErrorState(message: l.message)),
-      (r) => emit(SignOutSuccessState()),
+      (r) {
+        _profile = null;
+        emit(SignOutSuccessState(isGuest: r));
+      },
+    );
+  }
+
+  Future<void> _deleteAccount(
+    DeleteAccountEvent event,
+    Emitter<ProfileState> emit,
+  ) async {
+    emit(DeleteAccountLoadingState());
+
+    final res = await profileRepo.deleteAccount();
+
+    res.fold(
+      (l) => emit(DeleteAccountErrorState(message: l.message)),
+      (r) => emit(DeleteAccountSuccessState()),
     );
   }
 }

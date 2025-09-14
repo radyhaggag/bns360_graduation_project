@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/input_fields/password_input_field.dart';
 import '../../../../../generated/l10n.dart';
 import 'reset_password_btn.dart';
@@ -47,6 +47,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             title: S.of(context).newPassword,
             hint: S.of(context).enterNewPassword,
             textInputAction: TextInputAction.next,
+            showRequirements: true,
           ),
           const SizedBox(height: 20),
           ConfirmPasswordInputField(
@@ -54,7 +55,9 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
             textInputAction: TextInputAction.done,
           ),
           const SizedBox(height: 50),
-          const ResetPasswordBtn(),
+          ResetPasswordBtn(
+            email: widget.email,
+          ),
         ],
       ),
     );

@@ -10,10 +10,20 @@ abstract class HiveBoxes {
   static const _theme = 'theme';
   static const _profile = 'profile';
 
+  static const _savedJobs = 'savedJobs';
+  static const _savedProperties = 'savedProperties';
+  static const _favoriteCrafts = 'favoriteCrafts';
+  static const _favoriteBusiness = 'favoriteBusiness';
+
   // Boxes
   static Box<String> get language => Hive.box<String>(_language);
   static Box<String> get theme => Hive.box<String>(_theme);
   static Box<ProfileEntity> get profile => Hive.box<ProfileEntity>(_profile);
+
+  static Box<int> get savedJobs => Hive.box<int>(_savedJobs);
+  static Box<int> get savedProperties => Hive.box<int>(_savedProperties);
+  static Box<int> get favoriteCrafts => Hive.box<int>(_favoriteCrafts);
+  static Box<int> get favoriteBusiness => Hive.box<int>(_favoriteBusiness);
 }
 
 abstract class HiveManager {
@@ -31,6 +41,10 @@ abstract class HiveManager {
         Hive.openBox<String>(HiveBoxes._language),
         Hive.openBox<String>(HiveBoxes._theme),
         Hive.openBox<ProfileEntity>(HiveBoxes._profile),
+        Hive.openBox<int>(HiveBoxes._savedJobs),
+        Hive.openBox<int>(HiveBoxes._savedProperties),
+        Hive.openBox<int>(HiveBoxes._favoriteCrafts),
+        Hive.openBox<int>(HiveBoxes._favoriteBusiness),
       ];
       await Future.wait(boxes);
     });
@@ -38,5 +52,20 @@ abstract class HiveManager {
 
   static void _registerAdapters() {
     Hive.registerAdapter(ProfileEntityAdapter());
+  }
+
+  static FutureEither<void> clearAllBoxes() async {
+    return executeAndHandleErrorAsync(() async {
+      final futures = [
+        HiveBoxes.language.clear(),
+        HiveBoxes.theme.clear(),
+        HiveBoxes.profile.clear(),
+        HiveBoxes.savedJobs.clear(),
+        HiveBoxes.savedProperties.clear(),
+        HiveBoxes.favoriteCrafts.clear(),
+        HiveBoxes.favoriteBusiness.clear(),
+      ];
+      await Future.wait(futures);
+    });
   }
 }

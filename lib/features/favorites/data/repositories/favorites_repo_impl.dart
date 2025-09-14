@@ -14,6 +14,7 @@ class FavoritesRepoImpl implements FavoritesRepo {
   FutureEither<List<CategoryItemEntity>> getFavoriteCategories() async {
     return executeAndHandleErrorAsync(
       () => favoritesRemoteDataSource.getFavoriteCategories(),
+      onFailure: (e) => Future.value(<CategoryItemEntity>[]),
     );
   }
 
@@ -21,6 +22,35 @@ class FavoritesRepoImpl implements FavoritesRepo {
   FutureEither<List<CraftsmanEntity>> getFavoriteCraftsmen() async {
     return executeAndHandleErrorAsync(
       () => favoritesRemoteDataSource.getFavoriteCraftsmen(),
+      onFailure: (e) => Future.value(<CraftsmanEntity>[]),
+    );
+  }
+
+  @override
+  FutureEither<void> addCategoryItemToFavorite(int itemId) async {
+    return executeAndHandleErrorAsync(
+      () => favoritesRemoteDataSource.addCategoryItemToFavorite(itemId),
+    );
+  }
+
+  @override
+  FutureEither<void> removeCategoryItemFromFavorite(int itemId) async {
+    return executeAndHandleErrorAsync(
+      () => favoritesRemoteDataSource.removeCategoryItemFromFavorite(itemId),
+    );
+  }
+
+  @override
+  FutureEither<void> addCraftsmanToFavorite(int itemId) async {
+    return executeAndHandleErrorAsync(
+      () => favoritesRemoteDataSource.addCraftsmanToFavorite(itemId),
+    );
+  }
+
+  @override
+  FutureEither<void> removeCraftsmanFromFavorite(int itemId) async {
+    return executeAndHandleErrorAsync(
+      () => favoritesRemoteDataSource.removeCraftsmanFromFavorite(itemId),
     );
   }
 }

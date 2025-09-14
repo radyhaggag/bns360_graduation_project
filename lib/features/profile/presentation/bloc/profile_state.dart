@@ -44,10 +44,24 @@ class ChangePasswordErrorState extends ProfileState {
 
 class SignOutLoadingState extends ProfileState {}
 
-class SignOutSuccessState extends ProfileState {}
+class SignOutSuccessState extends ProfileState {
+  final bool isGuest;
+
+  const SignOutSuccessState({required this.isGuest});
+}
 
 class SignOutErrorState extends ProfileState {
   final String message;
 
   const SignOutErrorState({required this.message});
+}
+
+class DeleteAccountLoadingState extends ProfileState {}
+
+class DeleteAccountSuccessState extends ProfileState {}
+
+class DeleteAccountErrorState extends ProfileState {
+  final String message;
+
+  const DeleteAccountErrorState({required this.message});
 }

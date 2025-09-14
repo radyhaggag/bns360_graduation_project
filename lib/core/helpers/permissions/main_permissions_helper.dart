@@ -15,6 +15,8 @@ class MainPermissionHandler {
     if (status.isGranted) {
       return true;
     } else {
+      if (status.isPermanentlyDenied) return false;
+
       if (!context.mounted) return false;
       PermissionsDialogs.showPermissionDeniedDialog(
         context,

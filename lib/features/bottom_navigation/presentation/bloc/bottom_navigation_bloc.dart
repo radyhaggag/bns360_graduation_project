@@ -24,14 +24,14 @@ class BottomNavBarBloc extends Bloc<BottomNavBarEvent, BottomNavBarState> {
     JobsScreen.getWithBlocProvider(),
     CraftsScreen.getWithBlocProvider(),
     PropertiesScreen.getWithBlocProvider(),
-    ConversationsScreen.getWithBlocProvider(), // Not on nav bar
-    ProfileScreen.getWithBlocProvider(), // Not on nav bar
+    const ConversationsScreen(), // Not on nav bar
+    const ProfileScreen(), // Not on nav bar
   ];
   int bottomNavbarIndex = 0;
 
   Widget get currentView => views[bottomNavbarIndex];
 
-  _changeBottomNavbarIndex(
+  void _changeBottomNavbarIndex(
     ChangeBottomNavbarIndex event,
     Emitter<BottomNavBarState> emit,
   ) {

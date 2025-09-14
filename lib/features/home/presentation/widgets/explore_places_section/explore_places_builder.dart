@@ -23,17 +23,15 @@ class _ExplorePlacesBuilder extends StatelessWidget {
           isLoaded: state is GetPlacesToExploreSuccessState,
           errorMessage:
               state is GetPlacesToExploreErrorState ? state.message : "",
-          loadedWidget: MainListViewBuilder<CategoryItemEntity>(
+          loadedWidget: MainListViewBuilder<CategoryItemInfoEntity>(
             list: placesToExplore,
             emptyMessage: S.of(context).no_places_to_explore,
             itemWidget: (item, _) => CategoryItemCard(
               categoryItemEntity: item,
-              onFavoriteIconPressed: () {},
-              useSetStateToChangeFavoriteColor: true,
             ),
             scrollDirection: Axis.horizontal,
             width: context.width,
-            height: 275.h,
+            height: 250.h,
           ),
         );
       },

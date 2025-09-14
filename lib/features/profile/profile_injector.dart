@@ -5,11 +5,12 @@ import 'data/repositories/profile_repo_impl.dart';
 import 'domain/repositories/profile_repo.dart';
 import 'presentation/bloc/profile_bloc.dart';
 
-initProfile() {
+void initProfile() {
   // Datasources
   sl.registerLazySingleton<RemoteProfileDataSource>(
     () => RemoteProfileDataSourceImpl(
       apiConsumer: sl(),
+      tokenManager: sl(),
     ),
   );
   // Repo

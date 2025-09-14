@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/center_progress_indicator.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
@@ -9,7 +9,9 @@ import '../../../../../core/widgets/reviews/review_widget/review_widget.dart';
 import '../../bloc/category_item_bloc.dart';
 
 class CategoryItemReviewsBuilder extends StatefulWidget {
-  const CategoryItemReviewsBuilder({super.key});
+  const CategoryItemReviewsBuilder({super.key, required this.categoryItemId});
+
+  final int categoryItemId;
 
   @override
   State<CategoryItemReviewsBuilder> createState() =>
@@ -53,11 +55,25 @@ class _CategoryItemReviewsBuilderState
             controller: scrollController,
             child: Column(
               children: List.generate(
-                  context.read<CategoryItemBloc>().reviews.length, (index) {
-                final item = context.read<CategoryItemBloc>().reviews[index];
+                context.read<CategoryItemBloc>().reviews.length,
+                (index) {
+                  final item = context.read<CategoryItemBloc>().reviews[index];
 
-                return ReviewWidget(review: item);
-              }),
+                  return ReviewWidget(
+                    review: item,
+                    isLoading: state is RemoveCategoryItemReviewLoadingState &&
+                        state.reviewId == item.id,
+                    onRemove: () {
+                      context.read<CategoryItemBloc>().add(
+                            RemoveCategoryItemReviewEvent(
+                              reviewId: item.id,
+                              categoryItemId: widget.categoryItemId,
+                            ),
+                          );
+                    },
+                  );
+                },
+              ),
             ),
           ),
         );

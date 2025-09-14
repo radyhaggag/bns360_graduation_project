@@ -26,12 +26,6 @@ class SignUpEvent extends AuthEvent {
   });
 }
 
-class SendEmailVerificationEvent extends AuthEvent {
-  final String email;
-
-  const SendEmailVerificationEvent({required this.email});
-}
-
 class SendResetPasswordCodeEvent extends AuthEvent {
   final String email;
 
@@ -69,5 +63,12 @@ class ChangeUserTypeEvent extends AuthEvent {
   List<Object> get props => [userType];
 }
 
-
 class ContinueAsGuestEvent extends AuthEvent {}
+
+class SendConfirmationEmailEvent extends AuthEvent {
+  final String email;
+
+  const SendConfirmationEmailEvent({
+    required this.email,
+  });
+}

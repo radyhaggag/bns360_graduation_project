@@ -1,9 +1,9 @@
+import '../../../../../core/widgets/icons/save_icon.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
-import '../../../../jobs/presentation/widgets/job_card/save_job_btn.dart';
-import '../../../domain/entities/property_entity.dart';
 
 class PropertyDetailsScreenAppBar extends StatelessWidget {
   const PropertyDetailsScreenAppBar({super.key, required this.propertyEntity});
@@ -12,14 +12,16 @@ class PropertyDetailsScreenAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverAppBar(
+    return SliverAppBar(
       pinned: true,
       backgroundColor: AppColors.primary,
-      leading: CustomBackButton(
+      leading: const CustomBackButton(
         color: Colors.white,
       ),
       actions: [
-        SaveJobBtn(
+        SaveIcon(
+          itemId: propertyEntity.id,
+          isJob: false,
           notSavedColor: AppColors.white,
         ),
       ],

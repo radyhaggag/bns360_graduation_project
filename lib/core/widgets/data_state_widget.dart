@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../utils/extensions/context.dart';
 import '../utils/extensions/media_query.dart';
 import 'center_progress_indicator.dart';
 import 'messages/error_message_widget.dart';
@@ -28,20 +28,20 @@ class DataStateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isLoading) {
+    if (isError) {
+      return ErrorMessageWidget(
+        message: errorMessage ?? "",
+        backgroundColor: errorMsgBackground,
+      );
+    } else if (isLoading) {
       return loadingWidget ??
           SizedBox(
             width: context.width,
             height: 150.r,
             child: CenterProgressIndicator(
-              color: context.theme.indicatorColor,
+              color: context.theme.tabBarTheme.indicatorColor,
             ),
           );
-    } else if (isError) {
-      return ErrorMessageWidget(
-        message: errorMessage ?? "",
-        backgroundColor: errorMsgBackground,
-      );
     } else {
       return loadedWidget!;
     }

@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/settings_bloc.dart';
@@ -15,7 +15,7 @@ import 'language_item_tile.dart';
 class ChangeLanguageBottomSheet extends StatelessWidget {
   const ChangeLanguageBottomSheet({super.key});
 
-  static show({
+  static void show({
     required BuildContext context,
     required SettingsBloc settingsBloc,
   }) {
@@ -65,6 +65,9 @@ class ChangeLanguageBottomSheet extends StatelessWidget {
           }),
           const SizedBox(height: 15),
           const ChangeLanguageBtn(),
+          SizedBox(
+            height: MediaQuery.of(context).padding.bottom + 16.h,
+          )
         ],
       ),
     );

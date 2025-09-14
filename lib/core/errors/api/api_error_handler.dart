@@ -23,6 +23,9 @@ abstract class APIErrorHandler {
           APIResponseMessages.receiveTimeout,
         );
       case DioExceptionType.badResponse:
+        final errorMessage = dioException.response?.data;
+        final isErrorOfString = errorMessage is String;
+        final error = isErrorOfString ? errorMessage : null;
         switch (dioException.response?.statusCode) {
           case APIResponseCode.success:
             return const Failure(
@@ -30,9 +33,9 @@ abstract class APIErrorHandler {
               APIResponseMessages.success,
             );
           case APIResponseCode.badRequest:
-            return const Failure(
+            return Failure(
               APIResponseCode.badRequest,
-              APIResponseMessages.badRequest,
+              error ?? APIResponseMessages.badRequest,
             );
           case APIResponseCode.unauthorized:
             return const Failure(

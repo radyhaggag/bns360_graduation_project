@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 enum JobType {
@@ -6,11 +6,12 @@ enum JobType {
   fullTime(1);
 
   const JobType(this.id);
+
   final int id;
 
-  JobType fromInteger(int hours) {
-    if (hours > 4) return JobType.partTime;
-    return JobType.fullTime;
+  static JobType fromInteger(int hours) {
+    if (hours > 4) return JobType.fullTime;
+    return JobType.partTime;
   }
 
   static JobType fromId(int id) {
@@ -18,10 +19,15 @@ enum JobType {
     return JobType.fullTime;
   }
 
+  static JobType fromString(String type) {
+    if (type.toLowerCase() == "FullTime".toLowerCase()) return JobType.fullTime;
+    return JobType.partTime;
+  }
+
   String getLocalizedString(BuildContext context) {
     return switch (this) {
       partTime => S.of(context).part_time,
-      fullTime => S.of(context).part_time
+      fullTime => S.of(context).full_time
     };
   }
 }

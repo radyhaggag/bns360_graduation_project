@@ -1,10 +1,13 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:translator/translator.dart';
 
-import '../../domain/entities/job_entity.dart';
+import '../../../../core/shared_data/entities/job_entity.dart';
+import '../../../../core/shared_data/entities/requirements_entity.dart';
+import '../../../../core/utils/enums.dart';
+import '../../../../core/utils/extensions/language.dart';
 import '../../domain/params/add_job_params.dart';
 import '../../domain/repositories/jobs_repo.dart';
 
@@ -15,21 +18,40 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
   final JobsRepo jobsRepo;
 
   JobsBloc({required this.jobsRepo}) : super(JobsInitial()) {
+    initListener();
     on<GetJobsEvent>(_getJobs);
     on<GetJobByIdEvent>(_getJobById);
     on<SearchOnJobs>(_searchOnJobs);
     on<AddJobEvent>(_addJob);
+    on<EditJobEvent>(_editJob);
+    on<AddRequirementEvent>(_addRequirement);
+    on<RemoveRequirementEvent>(_removeRequirement);
+    on<EditRequirementEvent>(_editRequirement);
+    on<InitJobRequirementsEvent>(_initJobRequirements);
+  }
+
+  void initListener() {
+    searchController.addListener(() {
+      if ((jobs).isEmpty) return;
+      add(SearchOnJobs());
+    });
   }
 
   List<JobEntity> jobs = [];
   List<JobEntity> searchResults = [];
 
-  _getJobs(
+  List<JobEntity> get items {
+    if (isSearchEnabled) {
+      return searchResults;
+    }
+    return jobs;
+  }
+
+  Future<void> _getJobs(
     GetJobsEvent event,
     Emitter<JobsState> emit,
   ) async {
     emit(GetJobsLoadingState());
-    await Future.delayed(const Duration(seconds: 1));
 
     final res = await jobsRepo.getJobs();
 
@@ -42,43 +64,45 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
-  bool isSearchEnabled = false;
+  bool get isSearchEnabled => searchController.text.trim().isNotEmpty;
+
   final searchController = TextEditingController();
 
-  _searchOnJobs(
+  Future<void> _searchOnJobs(
     SearchOnJobs event,
     Emitter<JobsState> emit,
   ) async {
     final searchVal = searchController.text.trim();
-    if (searchVal.isEmpty) {
-      isSearchEnabled = false;
-      add(GetJobsEvent());
-      return;
+    final searchLowercase = searchVal.toLowerCase();
+
+    bool isTrue(JobEntity item) {
+      if (searchLowercase.isEmpty) return true;
+      final itemNameLowercaseAR = item.jobTitleArabic.toLowerCase();
+      final itemNameLowercaseENG = item.jobTitleEnglish.toLowerCase();
+      final jobDescriptionLowercaseAR = item.jobDescriptionArabic.toLowerCase();
+      final jobDescriptionLowercaseENG =
+          item.jobDescriptionEnglish.toLowerCase();
+
+      return (searchLowercase.contains(itemNameLowercaseAR) ||
+              itemNameLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(itemNameLowercaseENG) ||
+              itemNameLowercaseENG.contains(searchLowercase)) ||
+          (searchLowercase.contains(jobDescriptionLowercaseAR) ||
+              jobDescriptionLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(jobDescriptionLowercaseENG) ||
+              jobDescriptionLowercaseENG.contains(searchLowercase));
     }
-    isSearchEnabled = true;
 
-    emit(GetJobsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
+    searchResults = (jobs).where(isTrue).toList();
 
-    final res = await jobsRepo.searchOnJobs(searchVal);
-
-    res.fold(
-      (l) {
-        emit(GetJobsErrorState(message: l.message));
-      },
-      (r) {
-        searchResults = r;
-        emit(GetJobsSuccessState(jobs: r));
-      },
-    );
+    emit(GetJobsSuccessState(jobs: searchResults));
   }
 
-  _getJobById(
+  Future<void> _getJobById(
     GetJobByIdEvent event,
     Emitter<JobsState> emit,
   ) async {
     emit(GetJobByIdLoadingState());
-    await Future.delayed(const Duration(seconds: 1));
 
     final res = await jobsRepo.getJobById(event.id);
 
@@ -90,13 +114,17 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
-  _addJob(
+  Future<void> _addJob(
     AddJobEvent event,
     Emitter<JobsState> emit,
   ) async {
     emit(AddJobLoadingState());
 
-    final res = await jobsRepo.addJob(event.addJobParams);
+    final params = event.addJobParams.copyWith(
+      requirements: requirementsAr,
+    );
+
+    final res = await jobsRepo.addJob(params);
 
     res.fold(
       (l) => emit(AddJobErrorState(message: l.message)),
@@ -104,9 +132,121 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
+  Future<void> _editJob(
+    EditJobEvent event,
+    Emitter<JobsState> emit,
+  ) async {
+    emit(EditJobLoadingState());
+
+    final jobEntity = event.jobEntity.copyWith(
+      requirementEnglish: RequirementsEntity(requirements: requirementsEng),
+      requirementsArabic: RequirementsEntity(requirements: requirementsAr),
+    );
+
+    final res = await jobsRepo.editJob(jobEntity);
+
+    res.fold(
+      (l) => emit(EditJobErrorState(message: l.message)),
+      (r) => emit(EditJobSuccessState()),
+    );
+  }
+
+  List<String> requirementsAr = [];
+  List<String> requirementsEng = [];
+
+  List<String> requirements(BuildContext context) {
+    return context.currentLanguage == Language.arabic
+        ? requirementsAr
+        : requirementsEng;
+  }
+
+  Future<void> _addRequirement(
+    AddRequirementEvent event,
+    Emitter<JobsState> emit,
+  ) async {
+    if (!event.withTranslation) {
+      requirementsEng.add(event.requirement);
+      requirementsAr.add(event.requirement);
+    } else if (event.context.currentLanguage == Language.arabic) {
+      final translation = await GoogleTranslator().translate(
+        event.requirement,
+        from: "ar",
+        to: 'en',
+      );
+
+      requirementsEng.add(translation.text);
+      requirementsAr.add(event.requirement);
+    } else {
+      final translation = await GoogleTranslator().translate(
+        event.requirement,
+        from: "en",
+        to: 'ar',
+      );
+
+      requirementsEng.add(event.requirement);
+      requirementsAr.add(translation.text);
+    }
+    emit(JobRequirementUpdatedState());
+  }
+
+  void _removeRequirement(
+    RemoveRequirementEvent event,
+    Emitter<JobsState> emit,
+  ) {
+    if (event.language == Language.arabic) {
+      requirementsAr.removeAt(event.index);
+    } else {
+      requirementsEng.removeAt(event.index);
+    }
+    emit(JobRequirementUpdatedState());
+  }
+
   @override
   Future<void> close() {
     searchController.dispose();
     return super.close();
+  }
+
+  void _initJobRequirements(
+    InitJobRequirementsEvent event,
+    Emitter<JobsState> emit,
+  ) {
+    requirementsAr = event.requirementsAr;
+    requirementsEng = event.requirementsEng;
+    emit(JobRequirementUpdatedState());
+  }
+
+  Future<void> _editRequirement(
+    EditRequirementEvent event,
+    Emitter<JobsState> emit,
+  ) async {
+    if (event.language == Language.arabic) {
+      requirementsAr[event.index] = event.requirement;
+    } else {
+      requirementsEng[event.index] = event.requirement;
+    }
+
+    // if (event.withTranslation) {
+    //   final translation = event.language == Language.arabic
+    //       ? await GoogleTranslator().translate(
+    //           event.requirement,
+    //           from: "ar",
+    //           to: 'en',
+    //         )
+    //       : await GoogleTranslator().translate(
+    //           event.requirement,
+    //           from: "en",
+    //           to: 'ar',
+    //         );
+
+    //   if (event.language == Language.arabic) {
+    //     requirementsAr[event.index] = event.requirement;
+    //     requirementsEng[event.index] = translation.text;
+    //   } else {
+    //     requirementsAr[event.index] = translation.text;
+    //     requirementsEng[event.index] = event.requirement;
+    //   }
+    // }
+    emit(JobRequirementUpdatedState());
   }
 }

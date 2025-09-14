@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +6,7 @@ import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/craft_entity.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../bloc/crafts_bloc.dart';
 
 class CraftItem extends StatelessWidget {

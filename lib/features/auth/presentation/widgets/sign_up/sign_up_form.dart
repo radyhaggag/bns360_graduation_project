@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/input_fields/email_input_field.dart';
 import '../../../../../core/widgets/input_fields/name_input_field.dart';
 import '../../../../../core/widgets/input_fields/password_input_field.dart';
@@ -28,7 +28,11 @@ class _SignUpFormState extends State<SignUpForm> {
       'password': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.minLength(kMinPasswordLength)
+          Validators.minLength(kMinPasswordLength),
+          // Validators.pattern(r'[A-Z]'),
+          // Validators.pattern(r'[a-z]'),
+          // Validators.pattern(r'\d'),
+          // Validators.pattern(r'[!@#$%^&*(),.?":{}|<>]'),
         ],
       ),
       'name': FormControl<String>(
@@ -55,6 +59,7 @@ class _SignUpFormState extends State<SignUpForm> {
           SizedBox(height: 15),
           PasswordInputField(
             textInputAction: TextInputAction.done,
+            // showRequirements: true,
           ),
           SizedBox(height: 15),
           UserTypeDropdown(),

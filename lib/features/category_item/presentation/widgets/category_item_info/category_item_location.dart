@@ -2,17 +2,27 @@ part of 'category_item_info_section.dart';
 
 class _CategoryItemLocation extends StatelessWidget {
   const _CategoryItemLocation({
-    required this.location,
+    required this.categoryItemEntity,
   });
-  final String location;
+  final CategoryItemEntity categoryItemEntity;
 
   @override
   Widget build(BuildContext context) {
+    final location = LocalizationHelper.getLocalizedString(
+      context,
+      ar: categoryItemEntity.businessAddressArabic,
+      en: categoryItemEntity.businessAddressEnglish,
+    );
     return Row(
       children: [
         SvgPicture.asset(
           AppSvg.marker,
-          color: context.theme.cardColor,
+          colorFilter: ColorFilter.mode(
+            context.theme.cardColor.withOpacity(0.4),
+            BlendMode.srcIn,
+          ),
+          width: 20.r,
+          height: 20.r,
         ),
         const SizedBox(width: 15),
         Expanded(
@@ -20,15 +30,17 @@ class _CategoryItemLocation extends StatelessWidget {
             location,
             style: context.textTheme.titleMedium?.copyWith(
               fontSize: AppFontSize.details,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
             ),
           ),
         ),
-        const MapBtn(
+        const SizedBox(width: 15),
+        MapBtn(
           mapParams: MapParams(
-            location: 'Beni Madi',
-            lat: 28.9826537,
-            lng: 31.0087249,
+            location: location,
+            lat: categoryItemEntity.latitude,
+            lng: categoryItemEntity.longitude,
+            isReadOnly: true,
           ),
         ),
       ],

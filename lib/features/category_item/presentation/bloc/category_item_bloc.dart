@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/shared_data/entities/category_item_entity.dart';
 import '../../../../core/shared_data/entities/review_entity.dart';
+import '../../../../core/shared_data/entities/review_summary_entity.dart';
 import '../../domain/repositories/category_item_repo.dart';
 
 part 'category_item_event.dart';
@@ -15,17 +17,21 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
   CategoryItemBloc({
     required this.categoryItemRepo,
   }) : super(CategoryItemInitial()) {
+    on<GetCategoryItemReviewSummaryEvent>(_getCategoryItemReviewSummary);
     on<GetCategoryItemReviewsEvent>(_getCategoryItemReviews);
+    on<GetCategoryItemEvent>(_getCategoryItem);
+    on<SetCategoryItemEntityEvent>(_setCategoryItemEntity);
+    on<SendReviewEvent>(_sendReview);
+    on<RemoveCategoryItemReviewEvent>(_removeCategoryItemReview);
   }
 
   List<ReviewEntity> reviews = [];
 
-  _getCategoryItemReviews(
+  Future<void> _getCategoryItemReviews(
     GetCategoryItemReviewsEvent event,
     Emitter<CategoryItemState> emit,
   ) async {
     emit(GetCategoryItemReviewsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final res = await categoryItemRepo.getReviews(event.itemId);
 
@@ -34,6 +40,104 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
       (r) {
         reviews = r;
         emit(GetCategoryItemReviewsSuccessState(reviews: r));
+      },
+    );
+  }
+
+  ReviewSummaryEntity? reviewsSummary;
+
+  Future<void> _getCategoryItemReviewSummary(
+    GetCategoryItemReviewSummaryEvent event,
+    Emitter<CategoryItemState> emit,
+  ) async {
+    emit(GetCategoryItemReviewSummaryLoadingState());
+
+    final res =
+        await categoryItemRepo.getCategoryItemReviewSummary(event.itemId);
+
+    res.fold(
+      (l) => emit(GetCategoryItemReviewSummaryErrorState(message: l.message)),
+      (r) {
+        reviewsSummary = r;
+        emit(GetCategoryItemReviewSummarySuccessState(summary: r));
+      },
+    );
+  }
+
+  CategoryItemEntity? categoryItem;
+
+  Future<void> _getCategoryItem(
+    GetCategoryItemEvent event,
+    Emitter<CategoryItemState> emit,
+  ) async {
+    emit(GetCategoryItemLoadingState());
+
+    final res = await categoryItemRepo.getCategoryItem(event.itemId);
+
+    res.fold(
+      (l) => emit(GetCategoryItemErrorState(message: l.message)),
+      (r) {
+        categoryItem = r;
+        emit(GetCategoryItemSuccessState(categoryItem: r));
+      },
+    );
+  }
+
+  void _setCategoryItemEntity(
+    SetCategoryItemEntityEvent event,
+    Emitter<CategoryItemState> emit,
+  ) {
+    categoryItem = event.categoryItemEntity;
+    reviewsSummary = categoryItem?.reviewSummary;
+    emit(GetCategoryItemSuccessState(categoryItem: categoryItem!));
+  }
+
+  FutureOr<void> _sendReview(
+    SendReviewEvent event,
+    Emitter<CategoryItemState> emit,
+  ) async {
+    emit(SendCategoryItemReviewLoadingState());
+
+    final res = await categoryItemRepo.sendReview(
+      event.itemId,
+      event.rating,
+      event.review,
+    );
+
+    res.fold(
+      (l) => emit(SendCategoryItemReviewErrorState(
+        message: l.message,
+        rating: event.rating,
+        review: event.review,
+      )),
+      (r) {
+        if (event.fetchReviews) {
+          add(GetCategoryItemReviewsEvent(itemId: event.itemId));
+        }
+        add(GetCategoryItemReviewSummaryEvent(itemId: event.itemId));
+        emit(SendCategoryItemReviewSuccessState());
+      },
+    );
+  }
+
+  Future<void> _removeCategoryItemReview(
+    RemoveCategoryItemReviewEvent event,
+    Emitter<CategoryItemState> emit,
+  ) async {
+    emit(RemoveCategoryItemReviewLoadingState(reviewId: event.reviewId));
+
+    final res = await categoryItemRepo.removeReview(
+      event.reviewId,
+      event.categoryItemId,
+    );
+
+    res.fold(
+      (l) => emit(RemoveCategoryItemReviewErrorState(message: l.message)),
+      (r) {
+        reviews.removeWhere((element) => element.id == event.reviewId);
+        add(GetCategoryItemReviewSummaryEvent(itemId: event.categoryItemId));
+
+        emit(RemoveCategoryItemReviewSuccessState());
       },
     );
   }

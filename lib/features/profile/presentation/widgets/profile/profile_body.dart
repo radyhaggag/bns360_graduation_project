@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/extensions/media_query.dart';
 import 'profile_card_section_with_background.dart';
 import 'profile_list_items_section.dart';
 
@@ -16,7 +16,7 @@ class ProfileBody extends StatelessWidget {
         children: [
           const ProfileCardSectionWithBackground(),
           Positioned(
-            top: context.height * .31,
+            top: context.height * .30,
             child: const ProfileListItemsSection(),
           ),
         ],

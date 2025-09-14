@@ -18,16 +18,16 @@ class EditProfileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      onPopInvoked: (_) {
+      onPopInvokedWithResult: (_, __) {
         context.read<ProfileBloc>().isProfileImageCleared = false;
       },
       canPop: true,
       child: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
           final profile = context.read<ProfileBloc>().profile;
-      
+
           return DataStateWidget(
-            isLoading: state is GetProfileLoadingState ,
+            isLoading: state is GetProfileLoadingState,
             isError: state is GetProfileErrorState,
             errorMessage: (state is GetProfileErrorState) ? state.message : "",
             isLoaded: profile != null,

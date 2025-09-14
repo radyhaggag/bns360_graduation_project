@@ -6,7 +6,9 @@ import '../../models/message_model.dart';
 
 abstract class ConversationsRemoteDataSource {
   Future<String?> sendMessage(SendMessageParams sendMessageParams);
-  Stream<List<ConversationModel>> getConversations();
+  Stream<List<ConversationModel>> getConversations(
+    String currentUserId,
+  );
   Future<Stream<List<MessageModel>>> getConversationMessages(
     String conversationId,
   );

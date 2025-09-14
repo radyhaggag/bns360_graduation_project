@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/helpers/chat_params_helper.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/helpers/chat_params_helper.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../../domain/params/conversation_screen_params.dart';
 import '../bloc/conversations_bloc.dart';
 import '../widgets/conversation_screen/conversation_screen_app_bar.dart';
@@ -22,17 +22,21 @@ class ConversationScreen extends StatefulWidget {
 
 class _ConversationScreenState extends State<ConversationScreen> {
   late final ConversationsBloc conversationsBloc;
+  late String conversationId;
 
   @override
   void initState() {
     super.initState();
     conversationsBloc = context.read<ConversationsBloc>();
-
+    final currentParticipant = conversationsBloc.currentParticipant;
     final params = widget.conversationParams;
-    final conversationId = ChatParamsHelper.conversationId(
-      otherId: params.participantEntity.id,
-      otherUserType: params.participantEntity.userType,
-    );
+    conversationId = widget.conversationParams.conversationId ??
+        ChatParamsHelper.conversationId(
+          otherId: params.participantEntity.modifiedId,
+          otherUserType: params.participantEntity.userType,
+          currentUserId: currentParticipant.modifiedId,
+          currentUserType: currentParticipant.userType,
+        );
     conversationsBloc.add(GetConversationMessagesEvent(
       conversationId: conversationId,
     ));
@@ -42,8 +46,9 @@ class _ConversationScreenState extends State<ConversationScreen> {
   void deactivate() {
     final otherParticipant = widget.conversationParams.participantEntity;
     conversationsBloc.add(ResetCurrentUnreadCountEvent(
-      otherParticipantId: otherParticipant.id,
+      otherParticipantId: otherParticipant.modifiedId,
       otherParticipantType: otherParticipant.userType,
+      conversationId: conversationId,
     ));
     conversationsBloc.add(ClearCurrentSessionEvent());
     super.deactivate();
@@ -51,13 +56,17 @@ class _ConversationScreenState extends State<ConversationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.listTileTheme.tileColor,
-      appBar: ConversationScreenAppBar(
-        conversationParams: widget.conversationParams,
-      ),
-      body: ConversationScreenBody(
-        conversationParams: widget.conversationParams,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.listTileTheme.tileColor,
+        appBar: ConversationScreenAppBar(
+          conversationParams: widget.conversationParams,
+        ),
+        body: ConversationScreenBody(
+          conversationParams: widget.conversationParams.copyWith(
+            conversationId: conversationId,
+          ),
+        ),
       ),
     );
   }

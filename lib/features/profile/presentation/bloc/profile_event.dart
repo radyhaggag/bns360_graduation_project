@@ -8,8 +8,6 @@ class ChangeProfileImageEvent extends ProfileEvent {}
 
 class ClearProfileImageEvent extends ProfileEvent {}
 
-class RemoveProfileImageEvent extends ProfileEvent {}
-
 class EditProfileDataEvent extends ProfileEvent {
   final String email;
   final String name;
@@ -20,7 +18,13 @@ class EditProfileDataEvent extends ProfileEvent {
   });
 }
 
-class GetProfileEvent extends ProfileEvent {}
+class GetProfileEvent extends ProfileEvent {
+  final bool localProfile;
+
+  const GetProfileEvent({
+    this.localProfile = false,
+  });
+}
 
 class ChangePasswordEvent extends ProfileEvent {
   final String oldPassword;
@@ -33,3 +37,5 @@ class ChangePasswordEvent extends ProfileEvent {
 }
 
 class SignOutEvent extends ProfileEvent {}
+
+class DeleteAccountEvent extends ProfileEvent {}

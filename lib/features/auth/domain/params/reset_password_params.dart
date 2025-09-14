@@ -9,6 +9,14 @@ class ResetPasswordParams extends Equatable {
     required this.newPassword,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      "email": email,
+      "password": newPassword,
+      "confirmPassword": newPassword,
+    };
+  }
+
   @override
   List<Object> get props => [email, newPassword];
 }

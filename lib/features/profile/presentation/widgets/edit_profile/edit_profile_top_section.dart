@@ -1,6 +1,3 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/features/profile/presentation/bloc/profile_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/shared_data/entities/profile/profile_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
 import '../../../../../generated/l10n.dart';
+import '../../bloc/profile_bloc.dart';
 import 'change_profile_image_widget.dart';
 
 class EditProfileTopSection extends StatelessWidget {
@@ -37,13 +37,25 @@ class EditProfileTopSection extends StatelessWidget {
           style: _textStyle(context),
         ),
         const SizedBox(height: 12),
-        CustomElevatedButton(
-          label: S.of(context).remove_profile_image,
-          width: 200.w,
-          height: 30.h,
-          backgroundColor: AppColors.red,
-          onPressed: () {
-            context.read<ProfileBloc>().add(ClearProfileImageEvent());
+        BlocBuilder<ProfileBloc, ProfileState>(
+          builder: (context, state) {
+            final newImagePath = context.read<ProfileBloc>().newImagePath;
+            final remoteImage = context.read<ProfileBloc>().profile?.imageUrl;
+            final isProfileImageCleared =
+                context.read<ProfileBloc>().isProfileImageCleared;
+            if (newImagePath != null ||
+                (remoteImage != null && !isProfileImageCleared)) {
+              return CustomElevatedButton(
+                label: S.of(context).remove_profile_image,
+                width: 200.w,
+                height: 30.h,
+                backgroundColor: AppColors.red,
+                onPressed: () {
+                  context.read<ProfileBloc>().add(ClearProfileImageEvent());
+                },
+              );
+            }
+            return const SizedBox.shrink();
           },
         ),
         SizedBox(height: 30.h),

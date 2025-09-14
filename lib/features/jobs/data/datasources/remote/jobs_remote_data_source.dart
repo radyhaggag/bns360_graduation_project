@@ -1,9 +1,13 @@
+import '../../../../../core/shared_data/entities/job_entity.dart';
+import '../../../../../core/shared_data/models/job_model.dart';
 import '../../../domain/params/add_job_params.dart';
-import '../../models/job_model.dart';
 
 abstract class JobsRemoteDataSource {
   Future<List<JobModel>> getJobs();
-  Future<JobModel> getJobById(String id);
-  Future<List<JobModel>> searchOnJobs(String text);
+
+  Future<JobModel> getJobById(int id);
+
   Future<void> addJob(AddJobParams addJobParams);
+
+  Future<void> editJob(JobEntity job);
 }

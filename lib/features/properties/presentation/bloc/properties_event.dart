@@ -6,12 +6,6 @@ abstract class PropertiesEvent {
 
 class GetPropertiesEvent extends PropertiesEvent {}
 
-class GetPropertyByIdEvent extends PropertiesEvent {
-  final String id;
-
-  const GetPropertyByIdEvent({required this.id});
-}
-
 class SearchOnPropertiesEvent extends PropertiesEvent {}
 
 class SelectPropertyLocationEvent extends PropertiesEvent {
@@ -32,10 +26,26 @@ class AddPropertyEvent extends PropertiesEvent {
   });
 }
 
+class EditPropertyEvent extends PropertiesEvent {
+  final PropertyEntity propertyEntity;
+
+  const EditPropertyEvent({
+    required this.propertyEntity,
+  });
+}
+
 class PickPropertyImagesEvent extends PropertiesEvent {}
 
 class RemovePickedPropertyImageEvent extends PropertiesEvent {
   final int index;
 
   const RemovePickedPropertyImageEvent({required this.index});
+}
+
+class ClearPropertyImagesEvent extends PropertiesEvent {}
+
+class InitNetworkPropertyImageEvent extends PropertiesEvent {
+  final List<String> networkImages;
+
+  const InitNetworkPropertyImageEvent({required this.networkImages});
 }

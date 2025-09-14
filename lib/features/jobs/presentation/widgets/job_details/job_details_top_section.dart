@@ -1,16 +1,16 @@
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/custom_back_button.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_card/save_job_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/helpers/localization_helper.dart';
+import '../../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../../core/widgets/icons/save_icon.dart';
 import '../../../../../core/widgets/main_network_image.dart';
-import '../../../domain/entities/job_entity.dart';
 
 class JobDetailsTopSection extends StatelessWidget {
   const JobDetailsTopSection({
@@ -27,7 +27,6 @@ class JobDetailsTopSection extends StatelessWidget {
         padding: EdgeInsets.only(top: 5.h),
         margin: EdgeInsets.only(bottom: 35.h),
         width: context.width,
-        // height: context.height * .42,
         decoration: BoxDecoration(
           color: AppColors.primary,
           borderRadius: BorderRadius.only(
@@ -37,39 +36,47 @@ class JobDetailsTopSection extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomBackButton(
-                  color: AppColors.white,
-                ),
-                SaveJobBtn(notSavedColor: AppColors.white),
-              ],
-            ),
-            ClipOval(
-              child: MainNetworkImage(
-                height: 70.r,
-                width: 70.r,
-                imageUrl: jobEntity.publisher.imageUrl,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const CustomBackButton(
+                    color: AppColors.white,
+                  ),
+                  SaveIcon(
+                    notSavedColor: AppColors.white,
+                    itemId: jobEntity.id,
+                    isJob: true,
+                  ),
+                ],
               ),
+            ),
+            MainNetworkImage(
+              height: 70.r,
+              width: 70.r,
+              imageUrl: jobEntity.publisherDetails.photoUrl,
+              name: jobEntity.publisherDetails.name,
+              isCircular: true,
+              withImageView: true,
             ),
             const SizedBox(height: 12),
             Text(
-              jobEntity.publisher.name,
+              jobEntity.publisherDetails.name,
               style: _textStyle1(context),
             ),
             const SizedBox(height: 8),
             Text(
-              LocalizationHelper.getLocalizedString(
-                context,
-                ar: jobEntity.publisher.userDescriptionAR ?? "",
-                en: jobEntity.publisher.userDescriptionEN ?? "",
-              ),
+              jobEntity.publisherDetails.getDescription(context),
               style: _textStyle2(context),
             ),
             SizedBox(height: 13.h),
             Text(
-              jobEntity.jobTitle,
+              LocalizationHelper.getLocalizedString(
+                context,
+                ar: jobEntity.jobTitleArabic,
+                en: jobEntity.jobTitleEnglish,
+              ),
               style: _textStyle3(context),
             ),
           ],

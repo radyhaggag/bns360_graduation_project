@@ -1,6 +1,6 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/enums/offer_type.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/widgets/propert_area_widget.dart';
+import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/enums/offer_type.dart';
+import '../propert_area_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../property_price_item.dart';

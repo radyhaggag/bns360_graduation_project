@@ -1,4 +1,4 @@
-import '../../../databases/local_storage/hive_manager.dart';
+import '../../../helpers/api_images_helper.dart';
 import '../../entities/profile/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {
@@ -22,15 +22,11 @@ class ProfileModel extends ProfileEntity {
 
   factory ProfileModel.fromJson(Map<String, dynamic> map) {
     return ProfileModel(
-      id: map['id'] as String,
-      name: map['name'] as String,
-      email: map['email'] as String,
-      imageUrl: map['image_url'] as String?,
-      userType: map['userType'] as int,
+      id: map['Id'] as String,
+      name: map['DisplayName'] as String,
+      email: map['Email'] as String,
+      imageUrl: map['profileImageName'] != null? APIImagesHelper.toServerImage(map['profileImageName']):null,
+      userType: map['UserRole'] as int,
     );
-  }
-
-  Future<void> saveToCache() async {
-    await HiveBoxes.profile.put('profile', this);
   }
 }

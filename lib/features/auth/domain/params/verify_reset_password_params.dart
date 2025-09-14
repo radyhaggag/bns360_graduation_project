@@ -9,6 +9,13 @@ class VerifyResetPasswordParams extends Equatable {
     required this.otpCode,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      "email": email,
+      "otp": otpCode,
+    };
+  }
+
   @override
   List<Object> get props => [email, otpCode];
 }

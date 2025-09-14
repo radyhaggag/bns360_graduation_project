@@ -19,7 +19,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<ChangeAppState>(_changeAppState);
   }
 
-  _changeAppState(ChangeAppState event, Emitter<AppState> emit) async {
+  Future<void> _changeAppState(ChangeAppState event, Emitter<AppState> emit) async {
     if (event.locale != null && event.locale != state.locale) {
       await cacheHelper.cacheLanguage(event.locale!);
     }

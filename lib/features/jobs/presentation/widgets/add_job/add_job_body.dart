@@ -1,19 +1,24 @@
-import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
-import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
+import 'package:bns360_graduation_project/core/helpers/custom_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/job_type.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../domain/params/add_job_params.dart';
+import '../../bloc/jobs_bloc.dart';
 import 'add_job_button.dart';
 import 'add_job_form.dart';
 
 class AddJobBody extends StatefulWidget {
-  const AddJobBody({super.key});
+  const AddJobBody({
+    super.key,
+  });
 
   @override
   State<AddJobBody> createState() => _AddJobBodyState();
@@ -27,27 +32,34 @@ class _AddJobBodyState extends State<AddJobBody> {
   void initState() {
     super.initState();
     form = FormGroup({
-      'title': FormControl<String>(validators: [Validators.required]),
+      'title': FormControl<String>(
+        validators: [Validators.required],
+      ),
       'description': FormControl<String>(),
-      'requirements': FormControl<String>(validators: [Validators.required]),
-      'workHours': FormControl<String>(validators: [
-        Validators.requiredTrue,
-        Validators.number,
-      ]),
-      'salary': FormControl<String>(validators: [
-        Validators.requiredTrue,
-        Validators.number,
-      ]),
-      'phoneNumber': FormControl<String>(validators: [
-        Validators.required,
-        Validators.number,
-        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-      ]),
-      'whatsapp': FormControl<String>(validators: [
-        Validators.required,
-        Validators.number,
-        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-      ]),
+      'workHours': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number(),
+        ],
+      ),
+      'salary': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number(),
+        ],
+      ),
+      'phoneNumber': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number(),
+        ],
+      ),
+      'whatsapp': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number(),
+        ],
+      ),
     });
   }
 
@@ -56,13 +68,20 @@ class _AddJobBodyState extends State<AddJobBody> {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: kHorizontalPadding,
-        vertical: 15,
       ),
       child: ReactiveFormBuilder(
         form: () => form,
         builder: (context, formGroup, child) => child!,
         child: Column(
           children: [
+            Text(
+              S.of(context).add_a_job,
+              style: context.textTheme.titleMedium?.copyWith(
+                color: context.theme.cardColor,
+                fontSize: AppFontSize.titleMedium,
+              ),
+            ),
+            20.verticalSpace,
             Expanded(
               child: AddJobForm(
                 form: form,
@@ -79,6 +98,7 @@ class _AddJobBodyState extends State<AddJobBody> {
               onAdd: _submitForm,
               isJobTypeSelected: selectedJobType != null,
             ),
+            10.verticalSpace,
           ],
         ),
       ),
@@ -90,13 +110,23 @@ class _AddJobBodyState extends State<AddJobBody> {
     final params = AddJobParams(
       title: formControls['title']!.value as String,
       description: formControls['description']!.value as String,
-      requirements: formControls['requirements']!.value as String,
       jobType: selectedJobType!,
+      requirements: [],
+      // Will edited on the bloc
       workHours: int.parse(formControls['workHours']!.value as String),
       salary: double.parse(formControls['salary']!.value as String),
-      phoneNumber: formControls['phoneNumber']!.value as String,
-      whatsapp: formControls['whatsapp']!.value as String,
+      phoneNumber: (formControls['phoneNumber']!.value as String),
+      whatsapp: (formControls['whatsapp']!.value as String),
     );
+
+    if (params.workHours > 24) {
+      showToast(
+        S.of(context).work_hours_should_be_less_than_24,
+        ToastType.error,
+      );
+      return;
+    }
+
     context.read<JobsBloc>().add(AddJobEvent(addJobParams: params));
   }
 

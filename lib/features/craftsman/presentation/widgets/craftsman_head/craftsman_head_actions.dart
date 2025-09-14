@@ -1,14 +1,20 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import 'package:bns360_graduation_project/features/craftsman/presentation/bloc/craftsman_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
+import '../../../../../core/providers/app_provider.dart';
 import '../../../../../core/shared_data/entities/craftsman_entity.dart';
 import '../../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../../core/utils/enums.dart';
 import '../../../../../core/utils/enums/user_type.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/language.dart';
+import '../../../../../core/widgets/buttons/custom_buttons.dart';
+import '../../../../../core/widgets/icons/favorite_icon.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../conversations/domain/params/conversation_screen_params.dart';
 
 class CraftsmanHeadActions extends StatelessWidget {
@@ -21,33 +27,60 @@ class CraftsmanHeadActions extends StatelessWidget {
     return Positioned(
       right: context.currentLanguage == Language.english ? 0 : null,
       left: context.currentLanguage == Language.english ? null : 0,
-      child: Row(
-        children: [
-          _BuildBtn(
-            iconData: FeatherIcons.messageCircle,
-            onPressed: () {
-              final params = ConversationScreenParams(
-                participantEntity: ParticipantEntity(
-                  id: craftsmanEntity.id.toString(),
-                  nameEN: craftsmanEntity.name,
-                  nameAR: craftsmanEntity.name,
-                  imageUrl: craftsmanEntity.imageUrl,
-                  userType: UserType.serviceProvider.id,
+      top: 10,
+      child: !craftsmanEntity.isBelongToMe
+          ? Row(
+              children: [
+                if (!AppProvider().isGuest)
+                  _BuildBtn(
+                    iconData: FeatherIcons.messageCircle,
+                    onPressed: () {
+                      final params = ConversationScreenParams(
+                        participantEntity: ParticipantEntity(
+                          id: craftsmanEntity.id.toString(),
+                          nameEN: craftsmanEntity.nameEN,
+                          nameAR: craftsmanEntity.nameAR,
+                          imageUrl: craftsmanEntity.profileImageUrl,
+                          userType: UserType.serviceProvider.id,
+                        ),
+                        craftsmanEntity: craftsmanEntity,
+                      );
+                      Navigator.of(context).pushNamed(
+                        Routes.conversation,
+                        arguments: params,
+                      );
+                    },
+                  ),
+                const SizedBox(width: 10),
+                FavoriteIcon(
+                  addMargin: true,
+                  notRounded: true,
+                  isBusiness: false,
+                  itemId: craftsmanEntity.id,
+                  size: 35.r,
                 ),
-                craftsmanEntity: craftsmanEntity,
-              );
-              Navigator.of(context).pushNamed(
-                Routes.conversation,
-                arguments: params,
-              );
-            },
-          ),
-          _BuildBtn(
-            iconData: FeatherIcons.heart,
-            onPressed: () {},
-          ),
-        ],
-      ),
+                const SizedBox(width: 10),
+              ],
+            )
+          : CustomTextButton(
+              label: S.of(context).edit,
+              height: 30.h,
+              onPressed: () async {
+                await Navigator.of(context).pushNamed(
+                  Routes.editService,
+                  arguments: craftsmanEntity,
+                );
+
+                if (!context.mounted) return;
+
+                context.read<CraftsmanBloc>().add(
+                      GetCraftsmanEvent(
+                        itemId: craftsmanEntity.id,
+                      ),
+                    );
+              },
+              width: 100.w,
+            ),
     );
   }
 }
@@ -64,17 +97,14 @@ class _BuildBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
+    return CustomIconButton(
       icon: Icon(
         iconData,
-        size: 20.r,
         color: context.theme.cardColor,
       ),
+      size: 35.r,
       padding: EdgeInsets.zero,
-      constraints: BoxConstraints(minHeight: 30.r, minWidth: 30.r),
-      style: IconButton.styleFrom(
-        backgroundColor: context.theme.highlightColor,
-      ),
+      backgroundColor: context.theme.highlightColor,
       onPressed: onPressed,
     );
   }

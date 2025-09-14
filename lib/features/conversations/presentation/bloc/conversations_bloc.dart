@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:bns360_graduation_project/core/providers/app_provider.dart';
+import 'package:bns360_graduation_project/core/shared_data/entities/participant_entity.dart';
+import 'package:bns360_graduation_project/core/shared_data/models/participant_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -32,6 +35,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     on<RemovePickedImageEvent>(_removePickedImage);
     on<ResetCurrentUnreadCountEvent>(_resetUnreadCountForCurrentUser);
     on<DeleteMessageEvent>(_deleteMessage);
+    on<SetCurrentParticipantEvent>(_setCurrentParticipant);
   }
 
   bool _isInitialized = false;
@@ -39,7 +43,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
 
   bool get isMessagesEmpty => messages.isEmpty;
 
-  _sendMessage(
+  Future<void> _sendMessage(
     SendMessageEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -90,18 +94,21 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
 
   StreamSubscription? _conversationsStream;
 
-  _getConversations(
+  Future<void> _getConversations(
     GetConversationsEvent event,
     Emitter<ConversationsState> emit,
   ) async {
+    _conversationsStream?.cancel();
+    conversations.clear();
     emit(GetConversationsLoadingState());
 
-    final res = conversationsRepo.getConversations();
+    final res = conversationsRepo.getConversations(
+      currentParticipant.modifiedId,
+    );
 
     res.fold(
       (l) {
         _isInitialized = true;
-
         emit(GetConversationsErrorState(message: l.message));
       },
       (r) {
@@ -113,7 +120,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     );
   }
 
-  _updateConversations(
+  void _updateConversations(
     UpdateConversationsEvent event,
     Emitter<ConversationsState> emit,
   ) {
@@ -128,7 +135,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   StreamSubscription<List<MessageEntity>>? _messagesStream;
   Stream<List<MessageEntity>>? messagesStream;
 
-  _getConversationMessages(
+  Future<void> _getConversationMessages(
     GetConversationMessagesEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -155,7 +162,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     );
   }
 
-  _updateConversationMessages(
+  void _updateConversationMessages(
     UpdateConversationMessagesEvent event,
     Emitter<ConversationsState> emit,
   ) {
@@ -171,12 +178,12 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     emit(GetConversationMessagesSuccessState(messages: messages));
   }
 
-  clearCurrentSession() {
+  void clearCurrentSession() {
     _messages = [];
     _messagesStream?.cancel();
   }
 
-  _clearCurrentSession(
+  void _clearCurrentSession(
     ClearCurrentSessionEvent event,
     Emitter<ConversationsState> emit,
   ) {
@@ -187,7 +194,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   File? _pickedFile;
   File? get pickedFile => _pickedFile;
 
-  _pickImage(
+  Future<void> _pickImage(
     PicKMessageImageEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -201,7 +208,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     }
   }
 
-  _removePickedImage(
+  void _removePickedImage(
     RemovePickedImageEvent event,
     Emitter<ConversationsState> emit,
   ) {
@@ -209,7 +216,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     emit(MessagePickedImageRemovedSuccessState());
   }
 
-  _resetUnreadCountForCurrentUser(
+  Future<void> _resetUnreadCountForCurrentUser(
     ResetCurrentUnreadCountEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -217,14 +224,19 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
       otherParticipantId: event.otherParticipantId,
       otherParticipantType: event.otherParticipantType,
       numOfMessages: messages.length,
+      currentUserId: currentParticipant.modifiedId,
+      currentParticipantType: currentParticipant.userType,
+      conversationId: event.conversationId,
     );
     await conversationsRepo.resetUnreadCountForCurrentUser(params);
+    messages.clear();
+    _messagesStream?.cancel();
   }
 
   final searchController = TextEditingController();
   final ScrollController scrollController = ScrollController();
 
-  initSearchListener() {
+  void initSearchListener() {
     searchController.addListener(() {
       final value = searchController.text.toLowerCase();
       _conversationsSearchResult = _allConversations
@@ -235,8 +247,14 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   }
 
   bool _searchConditions(ConversationEntity conversation, String value) {
-    final nameAR = conversation.otherParticipant?.nameAR?.toLowerCase();
-    final nameEN = conversation.otherParticipant?.nameEN?.toLowerCase();
+    final nameAR = conversation
+        .otherParticipant(currentParticipant)
+        ?.nameAR
+        ?.toLowerCase();
+    final nameEN = conversation
+        .otherParticipant(currentParticipant)
+        ?.nameEN
+        ?.toLowerCase();
 
     final containAR = nameAR?.contains(value);
     final containEN = nameEN?.contains(value);
@@ -253,7 +271,9 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     if ((containARReversed) || (containENReversed)) return true;
 
     if (identical(containARReversed, value) ||
-        identical(containENReversed, value)) return true;
+        identical(containENReversed, value)) {
+      return true;
+    }
 
     return false;
   }
@@ -268,12 +288,25 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     return super.close();
   }
 
-  _deleteMessage(
+  Future<void> _deleteMessage(
     DeleteMessageEvent event,
     Emitter<ConversationsState> emit,
   ) async {
     await conversationsRepo.deleteMessage(
       event.deleteMessageParams,
     );
+  }
+
+  ParticipantEntity? customParticipant;
+
+  ParticipantEntity get currentParticipant {
+    return customParticipant ?? AppProvider().getProfile()!.toParticipant();
+  }
+
+  void _setCurrentParticipant(
+    SetCurrentParticipantEvent event,
+    Emitter<ConversationsState> emit,
+  ) {
+    customParticipant = event.participantEntity;
   }
 }

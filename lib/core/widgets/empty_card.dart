@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../utils/assets/app_svg.dart';
+import '../utils/extensions/context.dart';
 
 class EmptyCard extends StatelessWidget {
   const EmptyCard({
@@ -106,7 +106,12 @@ class _BuildEmptyListIcon extends StatelessWidget {
       AppSvg.emptyList,
       width: iconSize ?? 64.r,
       height: iconSize ?? 64.r,
-      color: iconColor,
+      colorFilter: iconColor != null
+          ? ColorFilter.mode(
+              iconColor!,
+              BlendMode.srcIn,
+            )
+          : null,
     );
   }
 }

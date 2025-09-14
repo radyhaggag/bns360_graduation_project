@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/custom_shimmer.dart';
 
 class LazyLoadingCard extends StatelessWidget {
@@ -58,7 +58,8 @@ class _Item extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ShimmerWidget.square(
-            size: 50.r,
+            width: 50.r,
+            height: 50.r,
             borderRadius: 10,
             enabled: enabled,
           ),

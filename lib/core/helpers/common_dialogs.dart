@@ -1,13 +1,17 @@
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
+import '../../generated/l10n.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_fonts.dart';
 import '../utils/app_styles.dart';
+import '../widgets/buttons/custom_buttons.dart';
 
 abstract class CommonDialogs {
-  static void showErrorDialog(BuildContext context, {required String message}) {
+  static void showErrorDialog(
+    BuildContext context, {
+    required String message,
+    Widget? customWidget,
+  }) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -20,6 +24,11 @@ abstract class CommonDialogs {
           message,
           style: AppStyles.getMediumStyle(fontSize: AppFontSize.details),
         ),
+        actions: customWidget != null
+            ? [
+                customWidget,
+              ]
+            : [],
       ),
     );
   }

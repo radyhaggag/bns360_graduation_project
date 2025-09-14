@@ -33,7 +33,10 @@ class ProfileItemTile extends StatelessWidget {
       leading: (isSvg && svgPath != null)
           ? SvgPicture.asset(
               svgPath!,
-              color: _iconColor(context),
+              colorFilter: ColorFilter.mode(
+                _iconColor(context),
+                BlendMode.srcIn,
+              ),
               height: size,
               width: size,
             )

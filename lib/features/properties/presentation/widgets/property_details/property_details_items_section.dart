@@ -1,7 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/features/properties/domain/entities/property_entity.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import '../../../../../core/shared_data/entities/property_entity.dart';
+import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,7 +12,7 @@ class PropertyDetailsItemsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final offerTypeStr = propertyEntity.offerType.getLocalizedString(context);
+    final offerTypeStr = propertyEntity.type.getLocalizedString(context);
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(

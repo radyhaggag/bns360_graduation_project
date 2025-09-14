@@ -1,13 +1,14 @@
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/shared_data/entities/job_entity.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
+import '../../../../../core/widgets/job_card/job_card.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
-import '../../../domain/entities/job_entity.dart';
+import '../../../../../generated/l10n.dart';
 import '../../bloc/jobs_bloc.dart';
-import '../job_card/job_card.dart';
 
 class JobsBuilder extends StatelessWidget {
   const JobsBuilder({super.key});
@@ -32,10 +33,12 @@ class JobsBuilder extends StatelessWidget {
           isLoaded: state is GetJobsSuccessState,
           errorMessage: state is GetJobsErrorState ? state.message : "",
           loadedWidget: MainListViewBuilder<JobEntity>(
-            list: jobsBloc.isSearchEnabled
-                ? jobsBloc.searchResults
-                : jobsBloc.jobs,
-            emptyMessage: S.of(context).no_jobs_found,
+            list: jobsBloc.items,
+            emptyWidget: Center(
+              child: EmptyCard(
+                title: S.of(context).no_jobs_found,
+              ),
+            ),
             itemWidget: (item, _) => JobCard(jobEntity: item),
             scrollDirection: Axis.vertical,
             width: context.width,

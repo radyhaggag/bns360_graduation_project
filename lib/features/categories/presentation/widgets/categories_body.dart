@@ -15,41 +15,35 @@ class CategoriesBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: kHorizontalPadding,
+        vertical: 15,
       ),
-      child: Column(
-        children: [
-          const SizedBox(height: 30),
-          Expanded(
-            child: BlocBuilder<CategoriesBloc, CategoriesState>(
-              builder: (context, state) {
-                final bloc = context.read<CategoriesBloc>();
-                return DataStateWidget(
-                  isLoading: state is GetCategoriesLoadingState,
-                  isError: state is GetCategoriesErrorState,
-                  errorMessage:
-                      (state is GetCategoriesErrorState) ? state.message : "",
-                  isLoaded: bloc.categories != null,
-                  loadedWidget: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      // todo: maybe need to reduce to be as cross spacing
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                      mainAxisExtent: 160.h,
-                    ),
-                    itemCount:
-                        (bloc.categories != null) ? bloc.categories!.length : 0,
-                    itemBuilder: (context, index) {
-                      return CategoryCard(
-                        categoryEntity: bloc.categories![index],
-                      );
-                    },
-                  ),
+      child: BlocBuilder<CategoriesBloc, CategoriesState>(
+        builder: (context, state) {
+          final bloc = context.read<CategoriesBloc>();
+          return DataStateWidget(
+            isLoading: state is GetCategoriesLoadingState,
+            isError: state is GetCategoriesErrorState,
+            errorMessage:
+                (state is GetCategoriesErrorState) ? state.message : "",
+            isLoaded: bloc.categories != null,
+            loadedWidget: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                // todo: maybe need to reduce to be as cross spacing
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                mainAxisExtent: 160.h,
+              ),
+              itemCount:
+                  (bloc.categories != null) ? bloc.categories!.length : 0,
+              itemBuilder: (context, index) {
+                return CategoryCard(
+                  categoryEntity: bloc.categories![index],
                 );
               },
             ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }

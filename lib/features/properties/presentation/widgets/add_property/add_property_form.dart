@@ -1,15 +1,18 @@
-import 'package:bns360_graduation_project/core/utils/extensions/price.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_location_section.dart';
+import '../../../../map/domain/params/map_params.dart';
+import '../../bloc/properties_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../../core/utils/enums/offer_type.dart';
 import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/price.dart';
 import '../../../../../core/widgets/input_fields/custom_reactive_input_field.dart';
 import '../../../../../core/widgets/input_fields/whatsapp_and_mobile_fields.dart';
 import '../../../../../generated/l10n.dart';
-import 'property_offer_type_radio_tile.dart';
+import '../../../../map/presentation/screens/map_screen.dart';
+import '../property_offer_type_radio_tile.dart';
 
 class AddPropertyForm extends StatelessWidget {
   const AddPropertyForm({
@@ -44,7 +47,28 @@ class AddPropertyForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
           ),
           15.verticalSpace,
-          const AddPropertyLocationSection(),
+          BlocBuilder<PropertiesBloc, PropertiesState>(
+            builder: (context, state) {
+              final bloc = context.read<PropertiesBloc>();
+              return MapScreen(
+                mapParams: MapParams(
+                  isMinimized: true,
+                  lat: bloc.propertyLat,
+                  lng: bloc.propertyLng,
+                  onTap: (lat, lng) {
+                    context.read<PropertiesBloc>().add(
+                          SelectPropertyLocationEvent(
+                            lat: lat,
+                            lng: lng,
+                          ),
+                        );
+                  },
+                ),
+              );
+            },
+          ),
+          15.verticalSpace,
+          const WhatsappAndMobileFields(),
           15.verticalSpace,
           PropertyOfferTypeRadioTile(
             value: selectedOfferType,
@@ -61,14 +85,13 @@ class AddPropertyForm extends StatelessWidget {
             isDigitsOnly: true,
             separatorWidget: const Spacer(),
             textAlign: TextAlign.center,
-            // textFieldHeight: 40.h,
             textStyle: context.textTheme.bodyMedium,
             textInputAction: TextInputAction.next,
           ),
           10.verticalSpace,
           CustomReactiveFormField(
             title: t.area,
-            hint: t.meter_short,
+            hint: t.meter_lone,
             formControlName: 'area',
             isHorizontally: true,
             textFieldWidth: 100.w,
@@ -79,8 +102,6 @@ class AddPropertyForm extends StatelessWidget {
             textStyle: context.textTheme.bodyMedium,
             textInputAction: TextInputAction.next,
           ),
-          10.verticalSpace,
-          const WhatsappAndMobileFields(),
         ],
       ),
     );

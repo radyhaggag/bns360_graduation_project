@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../utils/app_fonts.dart';
+import '../../utils/extensions/context.dart';
 import '../../utils/extensions/media_query.dart';
 import '../icons/favorite_icon.dart';
 import '../main_network_image.dart';
@@ -19,11 +19,11 @@ class HorizontalItemCard extends StatelessWidget {
     required this.starsCount,
     required this.numOfRatings,
     required this.imageUrl,
-    this.onFavoriteIconPressed,
     this.onPressed,
     this.width,
-    this.isFavorite,
-    this.useSetStateToChangeFavoriteColor,
+    this.moreWidget,
+    required this.isBusiness,
+    required this.itemId,
   });
 
   final String title;
@@ -32,10 +32,10 @@ class HorizontalItemCard extends StatelessWidget {
   final num starsCount;
   final int numOfRatings;
   final double? width;
-  final bool? isFavorite;
-  final bool? useSetStateToChangeFavoriteColor;
-  final void Function()? onFavoriteIconPressed;
   final void Function()? onPressed;
+  final Widget? moreWidget;
+  final bool isBusiness;
+  final int itemId;
 
   @override
   Widget build(BuildContext context) {
@@ -75,12 +75,14 @@ class HorizontalItemCard extends StatelessWidget {
               ),
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: moreWidget == null
+                  ? MainAxisAlignment.end
+                  : MainAxisAlignment.spaceBetween,
               children: [
+                if (moreWidget != null) moreWidget!,
                 FavoriteIcon(
-                  onPressed: onFavoriteIconPressed,
-                  isFavorite: isFavorite,
-                  useSetStateToChangeColor: useSetStateToChangeFavoriteColor,
+                  itemId: itemId,
+                  isBusiness: isBusiness,
                 ),
               ],
             ),

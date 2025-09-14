@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/constants.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_fonts.dart';
+import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../../../../generated/l10n.dart';
 
 class CraftsmanDescription extends StatelessWidget {

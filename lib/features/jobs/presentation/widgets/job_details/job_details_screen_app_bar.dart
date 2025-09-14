@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/widgets/job_card/save_job_btn.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/shared_data/entities/job_entity.dart';
+import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/custom_back_button.dart';
-import '../../../domain/entities/job_entity.dart';
+import '../../../../../core/widgets/icons/save_icon.dart';
 
 class JobDetailsScreenAppBar extends StatelessWidget {
   const JobDetailsScreenAppBar({super.key, required this.jobEntity});
@@ -12,15 +12,17 @@ class JobDetailsScreenAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SliverAppBar(
+    return SliverAppBar(
       pinned: true,
       backgroundColor: AppColors.primary,
-      leading: CustomBackButton(
+      leading: const CustomBackButton(
         color: Colors.white,
       ),
       actions: [
-        SaveJobBtn(
+        SaveIcon(
           notSavedColor: AppColors.white,
+          itemId: jobEntity.id,
+          isJob: true,
         ),
       ],
     );

@@ -5,7 +5,7 @@ import 'data/repositories/crafts_repo_impl.dart';
 import 'domain/repositories/crafts_repo.dart';
 import 'presentation/bloc/crafts_bloc.dart';
 
-initCrafts() {
+void initCrafts() {
   // Datasources
   sl.registerLazySingleton<CraftsRemoteDataSource>(
     () => CraftsRemoteDataSourceImpl(sl()),

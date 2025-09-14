@@ -4,16 +4,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/extensions/media_query.dart';
 
 class CenterProgressIndicator extends StatelessWidget {
-  const CenterProgressIndicator({super.key, this.color, this.value});
+  const CenterProgressIndicator({
+    super.key,
+    this.color,
+    this.value,
+    this.size,
+  });
 
   final Color? color;
   final double? value;
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 22.5.r,
-      width: 22.5.r,
+      height: size ?? 22.5.r,
+      width: size ?? 22.5.r,
       alignment: Alignment.center,
       child: CircularProgressIndicator(
         color: color,

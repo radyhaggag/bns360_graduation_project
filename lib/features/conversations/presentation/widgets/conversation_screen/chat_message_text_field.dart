@@ -1,8 +1,8 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/participant_entity.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import 'picked_image_section.dart';
 import 'send_message_default_field.dart';
 import 'send_message_icon_btn.dart';
@@ -12,10 +12,12 @@ class ChatMessageTextField extends StatefulWidget {
     super.key,
     this.onChange,
     required this.otherParticipant,
+    required this.conversationId,
   });
 
   final Function(String text)? onChange;
   final ParticipantEntity otherParticipant;
+  final String conversationId;
 
   @override
   ChatMessageTextFieldState createState() => ChatMessageTextFieldState();
@@ -81,6 +83,7 @@ class ChatMessageTextFieldState extends State<ChatMessageTextField> {
               SendMessageIconBtn(
                 textEditingController: textEditingController,
                 otherParticipant: widget.otherParticipant,
+                conversationId: widget.conversationId,
               ),
               15.horizontalSpace,
             ],

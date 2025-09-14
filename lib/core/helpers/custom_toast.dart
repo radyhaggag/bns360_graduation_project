@@ -14,3 +14,5 @@ void showToast(String message, ToastType type) => Fluttertoast.showToast(
       textColor: AppColors.white,
       fontSize: AppFontSize.body,
     );
+    
+

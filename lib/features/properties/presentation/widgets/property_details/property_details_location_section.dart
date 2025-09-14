@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../core/helpers/localization_helper.dart';
+import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/widgets/buttons/map_btn.dart';
 import '../../../../map/domain/params/map_params.dart';
-import '../../../domain/entities/property_entity.dart';
 import '../property_address_widget.dart';
 
 class PropertyDetailsLocationSection extends StatelessWidget {
@@ -19,19 +20,31 @@ class PropertyDetailsLocationSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        PropertyAddressWidget(
-          address: propertyEntity.address,
-          markerColor: context.theme.hoverColor,
+        Expanded(
+          child: PropertyAddressWidget(
+            address: getAddress(context),
+            markerColor: context.theme.hoverColor,
+          ),
         ),
+        const SizedBox(width: 10),
         MapBtn(
           borderRadius: BorderRadius.circular(8),
           mapParams: MapParams(
-            lat: propertyEntity.lat,
-            lng: propertyEntity.lng,
-            location: propertyEntity.address,
+            lat: propertyEntity.latitude,
+            lng: propertyEntity.longitude,
+            location: getAddress(context),
+            isReadOnly: true,
           ),
         )
       ],
+    );
+  }
+
+  String getAddress(BuildContext context) {
+    return LocalizationHelper.getLocalizedString(
+      context,
+      ar: propertyEntity.arabicAddress,
+      en: propertyEntity.englishAddress,
     );
   }
 }

@@ -1,13 +1,15 @@
+import 'package:bns360_graduation_project/core/widgets/empty_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../config/route_config.dart';
+import '../../../../../core/shared_data/entities/property_entity.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
 import '../../../../../core/widgets/data_state_widget.dart';
 import '../../../../../core/widgets/main_list_view_builder.dart';
+import '../../../../../core/widgets/property_card/property_card.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../domain/entities/property_entity.dart';
 import '../../bloc/properties_bloc.dart';
-import '../property_card/property_card.dart';
 
 class PropertiesBuilder extends StatelessWidget {
   const PropertiesBuilder({super.key});
@@ -32,11 +34,22 @@ class PropertiesBuilder extends StatelessWidget {
           isLoaded: state is GetPropertiesSuccessState,
           errorMessage: state is GetPropertiesErrorState ? state.message : "",
           loadedWidget: MainListViewBuilder<PropertyEntity>(
-            list: propertiesBloc.isSearchEnabled
-                ? propertiesBloc.searchResults
-                : propertiesBloc.properties,
-            emptyMessage: S.of(context).no_properties_found,
-            itemWidget: (item, _) => PropertyCard(propertyEntity: item),
+            list: propertiesBloc.items,
+            emptyWidget: Center(
+              child: EmptyCard(
+                title: S.of(context).no_properties_found,
+              ),
+            ),
+            itemWidget: (item, _) => InkWell(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  Routes.propertyDetails,
+                  arguments: item,
+                );
+              },
+              child: PropertyCard(propertyEntity: item),
+            ),
             scrollDirection: Axis.vertical,
             width: context.width,
             height: context.height,

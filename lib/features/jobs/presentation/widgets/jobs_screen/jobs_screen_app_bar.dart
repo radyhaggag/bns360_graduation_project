@@ -1,12 +1,13 @@
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/icons/rounded_icon_btn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../config/route_config.dart';
+import '../../../../../core/providers/app_provider.dart';
+import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/icons/rounded_icon_btn.dart';
 import '../../../../../core/widgets/input_fields/search_field.dart';
 import '../../../../../generated/l10n.dart';
 import '../../bloc/jobs_bloc.dart';
@@ -37,7 +38,9 @@ class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
             top: 20,
           ),
           margin: EdgeInsets.only(
-              top: MediaQuery.of(context).padding.top, bottom: 10.h),
+            top: MediaQuery.of(context).padding.top,
+            bottom: 10.h,
+          ),
           alignment: Alignment.center,
           child: Column(
             children: [
@@ -50,17 +53,20 @@ class JobsScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
                       fontSize: AppFontSize.subTitle,
                     ),
                   ),
-                  RoundedIconBtn(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(Routes.addJob);
-                    },
-                    icon: Icon(
-                      Icons.add,
-                      color: context.theme.highlightColor,
+                  if (AppProvider().isGuest)
+                    const SizedBox.shrink()
+                  else
+                    RoundedIconBtn(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(Routes.addJob);
+                      },
+                      icon: Icon(
+                        Icons.add,
+                        color: context.theme.highlightColor,
+                      ),
+                      size: 30.r,
+                      backgroundColor: context.theme.cardColor,
                     ),
-                    size: 30.r,
-                    backgroundColor: context.theme.cardColor,
-                  ),
                 ],
               ),
               const SizedBox(height: 10),

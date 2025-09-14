@@ -52,4 +52,27 @@ class AddPropertyErrorState extends PropertiesState {
   const AddPropertyErrorState({required this.message});
 }
 
+class EditPropertyLoadingState extends PropertiesState {}
+
+class EditPropertySuccessState extends PropertiesState {
+  const EditPropertySuccessState();
+}
+
+class EditPropertyErrorState extends PropertiesState {
+  final String message;
+
+  const EditPropertyErrorState({required this.message});
+}
+
 class PropertyImagesUpdatedState extends PropertiesState {}
+
+
+class PropertyLocationSelectedState extends PropertiesState {
+  final double lat;
+  final double lng;
+
+  const PropertyLocationSelectedState({
+    required this.lat,
+    required this.lng,
+  });
+}

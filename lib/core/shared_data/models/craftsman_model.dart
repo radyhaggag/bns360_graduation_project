@@ -1,28 +1,125 @@
+import '../../helpers/api_images_helper.dart';
 import '../entities/craftsman_entity.dart';
+import 'contact_model.dart';
 import 'craft_model.dart';
 
 class CraftsmanModel extends CraftsmanEntity {
   const CraftsmanModel({
     required super.id,
-    required super.name,
-    required super.imageUrl,
-    required super.numOfRatings,
-    required super.averageRatings,
+    required super.contact,
+    required super.closing,
+    required super.craftsModelId,
+    required super.holidays,
     required super.craft,
     required super.descriptionAR,
     required super.descriptionEN,
+    required super.addressAR,
+    required super.addressEN,
+    required super.userId,
+    required super.nameAR,
+    required super.nameEN,
+    required super.profileImageUrl,
+    required super.opening,
+    required super.userName,
+    super.userImage,
+    super.imageName1,
+    super.imageName2,
+    super.imageName3,
+    super.imageName4,
+    super.reviewSummary,
   });
 
   factory CraftsmanModel.fromJson(Map<String, dynamic> json) {
     return CraftsmanModel(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      imageUrl: json['image_url'] as String,
-      numOfRatings: json['num_of_ratings'] as int,
-      averageRatings: json['stars_count'] as num,
-      descriptionAR: json['description_ar'] as String,
-      descriptionEN: json['description_en'] as String,
-      craft: CraftModel.fromJson(json['craft'] as Map<String, dynamic>),
+      id: json['Id'],
+      contact: ContactModel.fromJson(json),
+      closing: json['Closing'],
+      craftsModelId: json['CraftsModelId'],
+      holidays: json['Holidays'],
+      craft: CraftModel.fromJson(json['CraftsModel']),
+      descriptionAR: json['CraftsMenDescriptionArabic'],
+      descriptionEN: json['CraftsMenDescriptionEnglish'],
+      addressAR: json['CraftsMenAddressArabic'],
+      addressEN: json['CraftsMenAddressEnglish'],
+      userId: json['UserId'],
+      nameAR: json['CraftsMenNameArabic'],
+      nameEN: json['CraftsMenNameEnglish'],
+      opening: json['Opening'],
+      profileImageUrl: APIImagesHelper.toServerImage(
+        json['ProfileImageName'],
+        addDefault: true,
+      )!,
+      imageName1: APIImagesHelper.toServerImage(json['CraftsMenImageName1']),
+      imageName2: APIImagesHelper.toServerImage(json['CraftsMenImageName2']),
+      imageName3: APIImagesHelper.toServerImage(json['CraftsMenImageName3']),
+      imageName4: APIImagesHelper.toServerImage(json['CraftsMenImageName4']),
+      userName: json['UserName'],
+      userImage: APIImagesHelper.toServerImage(json['UserProfileImageName']),
     );
+  }
+
+  factory CraftsmanModel.fromEntity(CraftsmanEntity entity) {
+    return CraftsmanModel(
+      id: entity.id,
+      contact: entity.contact,
+      closing: entity.closing,
+      craftsModelId: entity.craftsModelId,
+      holidays: entity.holidays,
+      craft: entity.craft,
+      descriptionAR: entity.descriptionAR,
+      descriptionEN: entity.descriptionEN,
+      addressAR: entity.addressAR,
+      addressEN: entity.addressEN,
+      userId: entity.userId,
+      nameAR: entity.nameAR,
+      nameEN: entity.nameEN,
+      opening: entity.opening,
+      profileImageUrl: entity.profileImageUrl,
+      imageName1: entity.imageName1,
+      imageName2: entity.imageName2,
+      imageName3: entity.imageName3,
+      imageName4: entity.imageName4,
+      reviewSummary: entity.reviewSummary,
+      userName: entity.userName,
+      userImage: entity.userImage,
+    );
+  }
+
+  Future<Map<String, dynamic>> toJson() async {
+    final map = {
+      'UserId': userId,
+      'CraftsMenAddressArabic': addressAR,
+      'CraftsMenAddressEnglish': addressEN,
+      'CraftsMenDescriptionArabic': descriptionAR,
+      'CraftsMenDescriptionEnglish': descriptionEN,
+      'CraftsMenNameArabic': nameAR,
+      'CraftsMenNameEnglish': nameEN,
+      'ProfileImage':
+          await APIImagesHelper.convertImageToMultipartFile(profileImageUrl),
+      'CraftsMenImage1':
+          await APIImagesHelper.convertImageToMultipartFile(imageName1),
+      'CraftsMenImage2':
+          await APIImagesHelper.convertImageToMultipartFile(imageName2),
+      'CraftsMenImage3':
+          await APIImagesHelper.convertImageToMultipartFile(imageName3),
+      'CraftsMenImage4':
+          await APIImagesHelper.convertImageToMultipartFile(imageName4),
+      'CraftsModelId': craftsModelId,
+      'Closing': closing,
+      'Opening': opening,
+      'Holidays': holidays,
+      "Phonenumbers": contact.phoneNumber,
+      "Emails": contact.email,
+      "URls": contact.urlSite,
+    };
+
+    if (id != -1) map['Id'] = id;
+
+    if (profileImageUrl.isEmpty) map["ProfileImage"] = null;
+
+    // remove null values
+    map.removeWhere((key, value) => value == null);
+
+    return map;
   }
 }

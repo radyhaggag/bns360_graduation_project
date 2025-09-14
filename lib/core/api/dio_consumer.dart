@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 
+import '../utils/app_endpoints.dart';
 import '../utils/constants.dart';
 import 'api_consumer.dart';
 
@@ -13,10 +14,10 @@ class DioConsumer implements APIConsumer {
     Map<String, dynamic> headers = {_contentType: _applicationJson};
 
     dio.options = BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: AppEndpoints.baseUrl,
       headers: headers,
-      sendTimeout: const Duration(seconds: 30),
-      receiveTimeout: const Duration(seconds: 30),
+      sendTimeout: const Duration(seconds: 60),
+      receiveTimeout: const Duration(seconds: 60),
     );
 
     dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
@@ -40,8 +41,20 @@ class DioConsumer implements APIConsumer {
     required String endpoint,
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
+    Map<String, dynamic>? headers,
+    FormData? formData,
   }) async {
-    return await dio.post(endpoint, queryParameters: queries, data: data);
+    if (headers != null) {
+      for (var header in headers.entries) {
+        dio.options.headers[header.key] = header.value;
+      }
+    }
+
+    return await dio.post(
+      endpoint,
+      queryParameters: queries,
+      data: formData ?? data,
+    );
   }
 
   @override
@@ -49,7 +62,36 @@ class DioConsumer implements APIConsumer {
     required String endpoint,
     Map<String, dynamic>? queries,
     Map<String, dynamic>? data,
+    FormData? formData,
+    dynamic customData,
   }) async {
-    return await dio.patch(endpoint, queryParameters: queries, data: data);
+    return await dio.patch(
+      endpoint,
+      queryParameters: queries,
+      data: customData ?? formData ?? data,
+    );
+  }
+
+  @override
+  Future<Response> put({
+    required String endpoint,
+    Map<String, dynamic>? queries,
+    Map<String, dynamic>? data,
+    FormData? formData,
+  }) async {
+    return await dio.put(
+      endpoint,
+      queryParameters: queries,
+      data: formData ?? data,
+    );
+  }
+
+  @override
+  Future<Response> delete({
+    required String endpoint,
+    Map<String, dynamic>? queries,
+    Map<String, dynamic>? data,
+  }) async {
+    return await dio.delete(endpoint, queryParameters: queries, data: data);
   }
 }

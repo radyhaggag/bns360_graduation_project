@@ -1,13 +1,13 @@
-import 'package:bns360_graduation_project/core/helpers/localization_helper.dart';
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/constants.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/media_query.dart';
-import 'package:bns360_graduation_project/core/widgets/main_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/helpers/localization_helper.dart';
 import '../../../../../core/shared_data/entities/craftsman_entity.dart';
+import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/media_query.dart';
+import '../../../../../core/widgets/main_network_image.dart';
 
 class CraftsmanMainCard extends StatelessWidget {
   const CraftsmanMainCard({
@@ -29,7 +29,8 @@ class CraftsmanMainCard extends StatelessWidget {
             children: [
               ClipOval(
                 child: MainNetworkImage(
-                  imageUrl: craftsmanEntity.imageUrl,
+                  withImageView: true,
+                  imageUrl: craftsmanEntity.profileImageUrl,
                   width: 90.r,
                   height: 90.r,
                 ),
@@ -41,7 +42,11 @@ class CraftsmanMainCard extends StatelessWidget {
                 ),
                 child: FittedBox(
                   child: Text(
-                    craftsmanEntity.name,
+                    LocalizationHelper.getLocalizedString(
+                      context,
+                      ar: craftsmanEntity.nameAR,
+                      en: craftsmanEntity.nameEN,
+                    ),
                     style: context.textTheme.titleSmall?.copyWith(
                       color: context.theme.cardColor,
                       fontSize: AppFontSize.subTitle,

@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-
 import '../../../../core/utils/constants.dart';
 import 'explore_places_section/explore_places_section.dart';
+import 'package:flutter/material.dart';
+
 import 'home_slider/home_slider_section.dart';
 
 class HomeBody extends StatelessWidget {

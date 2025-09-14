@@ -7,7 +7,12 @@ import '../../../../../generated/l10n.dart';
 import '../../bloc/auth_bloc.dart';
 
 class ResetPasswordBtn extends StatelessWidget {
-  const ResetPasswordBtn({super.key});
+  const ResetPasswordBtn({
+    super.key,
+    required this.email,
+  });
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +22,17 @@ class ResetPasswordBtn extends StatelessWidget {
           builder: (context) {
             return ReactiveFormConsumer(builder: (context, form, child) {
               return CustomElevatedButton(
-                onPressed: form.valid
-                    ? () {
-                        final formControls = form.controls;
+                isDisabled: !form.valid,
+                onPressed: () {
+                  final formControls = form.controls;
 
-                        final email = formControls['email']!.value as String;
-                        final newPassword =
-                            formControls['password']!.value as String;
+                  final newPassword = formControls['password']!.value as String;
 
-                        context.read<AuthBloc>().add(ResetPasswordEvent(
-                              email: email,
-                              newPassword: newPassword,
-                            ));
-                      }
-                    : null,
+                  context.read<AuthBloc>().add(ResetPasswordEvent(
+                        email: email,
+                        newPassword: newPassword,
+                      ));
+                },
                 label: S.of(context).resetPassword,
                 isLoading: state is ResetPasswordLoadingState,
               );

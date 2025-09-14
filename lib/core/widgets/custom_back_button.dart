@@ -1,6 +1,7 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../utils/extensions/context.dart';
 
 class CustomBackButton extends StatelessWidget {
   const CustomBackButton({
@@ -42,7 +43,7 @@ class CustomBackButtonWithCircle extends StatelessWidget {
         backgroundColor: context.theme.highlightColor.withOpacity(.5),
         alignment: Alignment.center,
         shape: const CircleBorder(),
-        padding: const EdgeInsets.only(left: 6),
+        padding: const EdgeInsetsDirectional.only(start: 6),
         elevation: 0,
       ),
       alignment: Alignment.center,

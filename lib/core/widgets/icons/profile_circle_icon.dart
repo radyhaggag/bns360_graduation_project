@@ -10,20 +10,22 @@ class ProfileCircleIcon extends StatelessWidget {
     this.imageUrl,
     this.width,
     this.height,
+    this.withImageView = false,
   });
 
   final String? imageUrl;
   final double? width;
   final double? height;
+  final bool withImageView;
 
   @override
   Widget build(BuildContext context) {
-    return ClipOval(
-      child: MainNetworkImage(
-        imageUrl: imageUrl ?? kDefaultImgUrl,
-        width: width ?? 30.r,
-        height: height ?? 30.r,
-      ),
+    return MainNetworkImage(
+      withImageView: withImageView,
+      imageUrl: imageUrl ?? kDefaultImgUrl,
+      width: width ?? 30.r,
+      height: height ?? 30.r,
+      isCircular: true,
     );
   }
 }

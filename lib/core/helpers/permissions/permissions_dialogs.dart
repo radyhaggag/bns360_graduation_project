@@ -1,9 +1,9 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../generated/l10n.dart';
+import '../../utils/app_colors.dart';
+import '../../utils/extensions/context.dart';
 import 'main_permissions_helper.dart';
 
 abstract class PermissionsDialogs {

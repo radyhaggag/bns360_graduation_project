@@ -4,8 +4,8 @@ extension FormValidatorExtension on String {
     return emailFormat.hasMatch(this);
   }
 
-  bool isPhone() {
-    final phoneFormat = RegExp(r'^\+20(10|11|12|15)\d{8}$');
-    return phoneFormat.hasMatch(this);
-  }
+  // bool isPhone() {
+  //   final phoneFormat = RegExp(r'^\+20(10|11|12|15)\d{8}$');
+  //   return phoneFormat.hasMatch(this);
+  // }
 }

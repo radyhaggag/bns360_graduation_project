@@ -1,13 +1,13 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/app/app_bloc.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets/app_svg.dart';
+import '../../../../core/utils/enums.dart';
 import '../../../../generated/l10n.dart';
 import 'settings_item_tile.dart';
 
@@ -33,7 +33,10 @@ class SwitchModeTile extends StatelessWidget {
               indicatorAppearingBuilder: (context, value, indicator) {
                 return SvgPicture.asset(
                   AppSvg.ellipse,
-                  color: AppColors.white,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.white,
+                    BlendMode.srcIn,
+                  ),
                 );
               },
               borderWidth: 3,

@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -12,6 +11,10 @@
         android:enableOnBackInvokedCallback="true"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/launcher_icon">
+
+        <!-- TODO: Add your Google Maps API key here -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyABcVw8cNn1SJY9kp6nGC1G_3ivyqzOZ6g" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

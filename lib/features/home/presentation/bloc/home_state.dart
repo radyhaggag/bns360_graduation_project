@@ -26,7 +26,7 @@ class GetBannersErrorState extends HomeState {
 class GetPlacesToExploreLoadingState extends HomeState {}
 
 class GetPlacesToExploreSuccessState extends HomeState {
-  final List<CategoryItemEntity> placesToExplore;
+  final List<CategoryItemInfoEntity> placesToExplore;
 
   const GetPlacesToExploreSuccessState({required this.placesToExplore});
 }

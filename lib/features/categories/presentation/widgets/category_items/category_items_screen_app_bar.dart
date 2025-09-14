@@ -1,4 +1,4 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
+import '../../../../../core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -115,8 +115,8 @@ class CategoryItemsScreenAppBar extends StatelessWidget
   String getItemTxt(BuildContext context) {
     return LocalizationHelper.getLocalizedString(
       context,
-      ar: categoryEntity.nameAR,
-      en: categoryEntity.nameEN,
+      ar: categoryEntity.categoryNameArabic,
+      en: categoryEntity.categoryNameEnglish,
     );
   }
 }

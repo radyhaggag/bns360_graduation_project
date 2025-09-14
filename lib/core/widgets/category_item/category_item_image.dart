@@ -3,7 +3,7 @@ part of 'category_item_card.dart';
 class _CategoryItemImage extends StatelessWidget {
   const _CategoryItemImage({required this.categoryItemEntity});
 
-  final CategoryItemEntity categoryItemEntity;
+  final CategoryItemInfoEntity categoryItemEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,11 @@ class _CategoryItemImage extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(
           Routes.categoryItem,
-          arguments: categoryItemEntity,
+          arguments: CategoryItemScreenParams(
+            itemId: categoryItemEntity.id,
+            categoryItemInfoEntity: categoryItemEntity,
+            isBelongToMe: false,
+          ),
         );
       },
       child: ClipRRect(
@@ -20,7 +24,7 @@ class _CategoryItemImage extends StatelessWidget {
           topRight: Radius.circular(10),
         ),
         child: MainNetworkImage(
-          imageUrl: categoryItemEntity.imageUrl,
+          imageUrl: categoryItemEntity.profileImageName,
           width: 250.w,
           height: 125.h,
           fit: BoxFit.cover,

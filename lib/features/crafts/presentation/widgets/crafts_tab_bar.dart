@@ -27,9 +27,9 @@ class CraftsTabBar extends StatelessWidget {
             GetCraftsLoadingState,
             GetCraftsErrorState,
             GetCraftsSuccessState,
-            GetCraftsmenLoadingState,
-            GetCraftsmenErrorState,
-            GetCraftsmenSuccessState,
+            GetCraftItemsByIdLoadingState,
+            GetCraftItemsByIdErrorState,
+            GetCraftItemsByIdSuccessState,
           ];
           return states.contains(current.runtimeType);
         },

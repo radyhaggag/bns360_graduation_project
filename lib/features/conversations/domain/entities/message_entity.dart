@@ -1,4 +1,3 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/utils/enums/message_type.dart';
@@ -22,8 +21,7 @@ class MessageEntity extends Equatable {
     this.isDeleted = false,
   });
 
-  bool get isFromMe {
-    final currentUserId = AppProvider().getProfile()!.id;
+  bool isFromMe(String currentUserId) {
     return currentUserId == senderId;
   }
 

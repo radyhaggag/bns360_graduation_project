@@ -9,8 +9,12 @@ abstract class AuthState extends Equatable {
 
 class ErrorState extends AuthState {
   final String message;
+  final String? email;
 
-  const ErrorState({required this.message});
+  const ErrorState({
+    required this.message,
+    this.email,
+  });
 
   @override
   List<Object> get props => [message];
@@ -23,7 +27,10 @@ class LoginLoadingState extends AuthState {}
 class LoginSuccessState extends AuthState {}
 
 class LoginErrorState extends ErrorState {
-  const LoginErrorState({required super.message});
+  const LoginErrorState({
+    required super.message,
+    super.email,
+  });
 }
 
 class SignUpLoadingState extends AuthState {}
@@ -32,14 +39,6 @@ class SignUpSuccessState extends AuthState {}
 
 class SignUpErrorState extends ErrorState {
   const SignUpErrorState({required super.message});
-}
-
-class SendEmailVerificationLoadingState extends AuthState {}
-
-class SendEmailVerificationSuccessState extends AuthState {}
-
-class SendEmailVerificationErrorState extends ErrorState {
-  const SendEmailVerificationErrorState({required super.message});
 }
 
 class SendResetPasswordCodeLoadingState extends AuthState {}
@@ -80,4 +79,12 @@ class UserTypeChanged extends AuthState {
 
   @override
   List<Object> get props => [userType];
+}
+
+class SendConfirmationEmailLoadingState extends AuthState {}
+
+class SendConfirmationEmailSuccessState extends AuthState {}
+
+class SendConfirmationEmailErrorState extends ErrorState {
+  const SendConfirmationEmailErrorState({required super.message});
 }

@@ -1,10 +1,12 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/utils/app_fonts.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
+import 'package:bns360_graduation_project/features/conversations/presentation/bloc/conversations_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/app_colors.dart';
+import '../../../../../core/utils/app_fonts.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../domain/entities/message_entity.dart';
 
 class MessageTextTemplate extends StatelessWidget {
@@ -20,7 +22,9 @@ class MessageTextTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isFromMe = message.isFromMe;
+    final currentUserId =
+        context.read<ConversationsBloc>().currentParticipant.modifiedId;
+    final isFromMe = message.isFromMe(currentUserId);
 
     return ConstrainedBox(
       constraints: BoxConstraints(
@@ -76,8 +80,11 @@ class MessageTextTemplate extends StatelessWidget {
   }
 
   Color getColor(BuildContext context) {
-    final color =
-        message.isFromMe ? AppColors.white : context.theme.primaryColor;
+    final currentUserId =
+        context.read<ConversationsBloc>().currentParticipant.modifiedId;
+    final isFromMe = message.isFromMe(currentUserId);
+
+    final color = isFromMe ? AppColors.white : context.theme.primaryColor;
     if (message.isDeleted) {
       return color.withOpacity(.7);
     }
@@ -88,7 +95,9 @@ class MessageTextTemplate extends StatelessWidget {
     if (!message.isDeleted) {
       return message.content!;
     }
-    final isFromMe = message.isFromMe;
+    final currentUserId =
+        context.read<ConversationsBloc>().currentParticipant.modifiedId;
+    final isFromMe = message.isFromMe(currentUserId);
     if (isFromMe) {
       return S.of(context).you_deleted_this_message;
     } else {

@@ -1,13 +1,11 @@
-import 'package:bns360_graduation_project/features/conversations/domain/params/delete_message_params.dart';
-
 import '../../../../../core/firebase/firebase_storage_manager.dart';
 import '../../../../../core/firebase/firestore_collections.dart';
 import '../../../../../core/firebase/firestore_manager.dart';
 import '../../../../../core/helpers/chat_params_helper.dart';
 import '../../../../../core/shared_data/entities/participant_entity.dart';
-import '../../../../../core/shared_data/models/participant_model.dart';
 import '../../../domain/entities/message_entity.dart';
 import '../../../domain/entities/unread_count_entity.dart';
+import '../../../domain/params/delete_message_params.dart';
 import '../../../domain/params/reset_unread_count_params.dart';
 import '../../../domain/params/send_message_params.dart';
 import '../../models/conversation_model.dart';
@@ -17,17 +15,11 @@ import 'conversations_remote_data_source.dart';
 
 class ConversationsRemoteDataSourceImpl
     implements ConversationsRemoteDataSource {
-  final currentParticipant = ParticipantModel.currentParticipant();
-  final currentUserId = ParticipantModel.currentParticipant().id;
-
   @override
   Future<String?> sendMessage(
     SendMessageParams sendMessageParams,
   ) async {
-    String conversationId = ChatParamsHelper.conversationId(
-      otherId: sendMessageParams.otherParticipant.id,
-      otherUserType: sendMessageParams.otherParticipant.userType,
-    );
+    String conversationId = sendMessageParams.conversationId;
 
     final file = sendMessageParams.pickedFile;
     String? imageUrl;
@@ -41,7 +33,7 @@ class ConversationsRemoteDataSourceImpl
     }
 
     final message = MessageModel(
-      senderId: currentParticipant.id,
+      senderId: sendMessageParams.currentParticipant.modifiedId,
       type: sendMessageParams.messageType,
       content: sendMessageParams.content,
       imageUrl: imageUrl,
@@ -54,6 +46,7 @@ class ConversationsRemoteDataSourceImpl
       await _createConversation(
         message,
         sendMessageParams.otherParticipant,
+        sendMessageParams.currentParticipant,
       );
     }
 
@@ -63,7 +56,11 @@ class ConversationsRemoteDataSourceImpl
     );
 
     if (!sendMessageParams.isFirstMsg) {
-      await _updateUnreadCount(message, conversationId);
+      await _updateUnreadCount(
+        message,
+        conversationId,
+        sendMessageParams.currentParticipant.modifiedId,
+      );
     }
 
     return conversationId;
@@ -72,15 +69,21 @@ class ConversationsRemoteDataSourceImpl
   Future<ConversationModel> _createConversation(
     MessageModel message,
     ParticipantEntity otherParticipant,
+    ParticipantEntity currentParticipant,
   ) async {
-    final participantIds = [currentParticipant.id, otherParticipant.id];
-    final model = await checkIfConversationExist(otherParticipant.id);
+    final participantIds = [
+      currentParticipant.modifiedId,
+      otherParticipant.modifiedId
+    ];
+    final model = await checkIfConversationExist(otherParticipant.modifiedId);
 
     if (model != null) return model;
 
     String conversationId = ChatParamsHelper.conversationId(
-      otherId: otherParticipant.id,
+      otherId: otherParticipant.modifiedId,
       otherUserType: otherParticipant.userType,
+      currentUserId: currentParticipant.modifiedId,
+      currentUserType: currentParticipant.userType,
     );
 
     final conversation = ConversationModel(
@@ -89,8 +92,8 @@ class ConversationsRemoteDataSourceImpl
       participants: [currentParticipant, otherParticipant],
       lastMessage: message,
       unreadCount: [
-        UnreadCountModel(userId: currentParticipant.id, count: 0),
-        UnreadCountModel(userId: otherParticipant.id, count: 1),
+        UnreadCountModel(userId: currentParticipant.modifiedId, count: 0),
+        UnreadCountModel(userId: otherParticipant.modifiedId, count: 1),
       ],
     );
 
@@ -102,7 +105,7 @@ class ConversationsRemoteDataSourceImpl
   }
 
   @override
-  Stream<List<ConversationModel>> getConversations() {
+  Stream<List<ConversationModel>> getConversations(String currentUserId) {
     final snapshots = FirestoreCollections.conversations
         .where('participantIds', arrayContains: currentUserId)
         .snapshots();
@@ -162,15 +165,20 @@ class ConversationsRemoteDataSourceImpl
     ResetUnreadCountParams resetUnreadCountParams,
   ) async {
     if (resetUnreadCountParams.numOfMessages == 0) return;
-    String conversationId = ChatParamsHelper.conversationId(
-      otherId: resetUnreadCountParams.otherParticipantId,
-      otherUserType: resetUnreadCountParams.otherParticipantType,
-    );
+    String conversationId = resetUnreadCountParams.conversationId;
 
-    final conversation = await _getConversation(conversationId);
+    final conversation = await _getConversation(
+      conversationId,
+    );
     if (conversation == null) return;
-    final currentUnreadCount = _currentUnread(conversation.unreadCount);
-    final otherUnreadCount = _otherUnread(conversation.unreadCount);
+    final currentUnreadCount = _currentUnread(
+      conversation.unreadCount,
+      resetUnreadCountParams.currentUserId,
+    );
+    final otherUnreadCount = _otherUnread(
+      conversation.unreadCount,
+      resetUnreadCountParams.currentUserId,
+    );
 
     final unreadCount = [
       currentUnreadCount.copyWith(0),
@@ -187,14 +195,21 @@ class ConversationsRemoteDataSourceImpl
   Future<void> _updateUnreadCount(
     MessageEntity lastMessage,
     String conversationId,
+    String currentUserId,
   ) async {
     final doc =
         await FirestoreCollections.conversationDoc(conversationId).get();
     ConversationModel conversation = ConversationModel.fromMap(
       doc.data()! as Map<String, dynamic>,
     );
-    final currentUnreadCount = _currentUnread(conversation.unreadCount);
-    final otherUnreadCount = _otherUnread(conversation.unreadCount);
+    final currentUnreadCount = _currentUnread(
+      conversation.unreadCount,
+      currentUserId,
+    );
+    final otherUnreadCount = _otherUnread(
+      conversation.unreadCount,
+      currentUserId,
+    );
     conversation = conversation.copyWith(
       lastMessage: lastMessage,
       unreadCount: [
@@ -209,14 +224,20 @@ class ConversationsRemoteDataSourceImpl
     );
   }
 
-  UnreadCountEntity _currentUnread(List<UnreadCountEntity> unreadCounts) {
+  UnreadCountEntity _currentUnread(
+    List<UnreadCountEntity> unreadCounts,
+    String currentUserId,
+  ) {
     final data = unreadCounts.firstWhere(
       (model) => model.userId == currentUserId,
     );
     return data;
   }
 
-  UnreadCountEntity _otherUnread(List<UnreadCountEntity> unreadCounts) {
+  UnreadCountEntity _otherUnread(
+    List<UnreadCountEntity> unreadCounts,
+    String currentUserId,
+  ) {
     final data = unreadCounts.firstWhere(
       (model) => model.userId != currentUserId,
     );

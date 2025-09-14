@@ -32,4 +32,12 @@ abstract class AppSvg {
   static const share = '$_svgPath/share.svg';
   static const bookmark = '$_svgPath/bookmark.svg';
   static const whatsapp = '$_svgPath/whatsapp.svg';
+  static const business = '$_svgPath/business.svg';
+  static const editPost = '$_svgPath/edit_post.svg';
+  static const deletePost = '$_svgPath/delete_post.svg';
+
+  static const happy = '$_svgPath/happy.svg';
+  static const sad = '$_svgPath/sad.svg';
+  static const facebook = '$_svgPath/facebook.svg';
+  static const instagram = '$_svgPath/instagram.svg';
 }

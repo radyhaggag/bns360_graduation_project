@@ -7,7 +7,9 @@ import '../params/send_message_params.dart';
 
 abstract class ConversationsRepo {
   FutureEither<String?> sendMessage(SendMessageParams sendMessageParams);
-  ResultOrFailure<Stream<List<ConversationEntity>>> getConversations();
+  ResultOrFailure<Stream<List<ConversationEntity>>> getConversations(
+    String currentUserId,
+  );
   FutureEither<Stream<List<MessageEntity>>> getConversationMessages(
     String conversationId,
   );

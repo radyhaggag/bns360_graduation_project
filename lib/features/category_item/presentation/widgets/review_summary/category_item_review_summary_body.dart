@@ -1,10 +1,13 @@
+import 'package:bns360_graduation_project/features/category_item/presentation/bloc/category_item_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/category_item_entity.dart';
-import '../../../../../core/widgets/buttons/write_review_btn.dart';
+import '../../../../../core/shared_data/entities/review_summary_entity.dart';
 import '../../../../../core/widgets/reviews/sliver_reviews_app_bar_delegate.dart';
+import '../send_category_item_review_section.dart';
 import 'category_item_review_summary_app_bar.dart';
 import 'reviews_builder.dart';
 
@@ -22,26 +25,37 @@ class CategoryItemReviewSummaryBody extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           const CategoryItemReviewSummaryAppBar(),
-          SliverPersistentHeader(
-            pinned: true,
-            floating: false,
-            delegate: SliverReviewsAppBarDelegate(
-              numOfRatings: categoryItemEntity.numOfRatings,
-              starsCount: categoryItemEntity.starsCount,
-            ),
+          BlocBuilder<CategoryItemBloc, CategoryItemState>(
+            builder: (context, state) {
+              final reviewSummary =
+                  context.read<CategoryItemBloc>().reviewsSummary ??
+                      categoryItemEntity.reviewSummary;
+              return SliverPersistentHeader(
+                pinned: true,
+                floating: false,
+                delegate: SliverReviewsAppBarDelegate(
+                  reviewSummary:
+                      reviewSummary ?? const ReviewSummaryEntity.empty(),
+                ),
+              );
+            },
           ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 50.w),
-            sliver: SliverToBoxAdapter(
-              child: WriteReviewBtn(
-                addReviewCallback: (rating, value) {},
+          if (!categoryItemEntity.isBelongToMe)
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 50.w),
+              sliver: SliverToBoxAdapter(
+                child: SendCategoryItemReviewSection(
+                  itemId: categoryItemEntity.id,
+                  refreshReviewsAfterSend: true,
+                ),
               ),
             ),
-          ),
           SliverPadding(
             padding: EdgeInsets.symmetric(vertical: 10.h),
-            sliver: const SliverToBoxAdapter(
-              child: CategoryItemReviewsBuilder(),
+            sliver: SliverToBoxAdapter(
+              child: CategoryItemReviewsBuilder(
+                categoryItemId: categoryItemEntity.id,
+              ),
             ),
           ),
         ],

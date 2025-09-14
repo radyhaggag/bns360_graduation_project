@@ -1,17 +1,19 @@
-import 'package:bns360_graduation_project/core/helpers/validators/form_validators.dart';
-import 'package:bns360_graduation_project/features/properties/params/add_property_params.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/bloc/properties_bloc.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/widgets/add_property/add_property_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../../../core/utils/app_fonts.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/enums/offer_type.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../params/add_property_params.dart';
+import '../../bloc/properties_bloc.dart';
+import 'add_property_button.dart';
 import 'add_property_form.dart';
-import 'upload_proprty_images_section.dart';
+import 'upload_property_images_section.dart';
 
 class AddPropertyBody extends StatefulWidget {
   const AddPropertyBody({super.key});
@@ -27,28 +29,37 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
   @override
   void initState() {
     super.initState();
-
     form = FormGroup({
-      'description': FormControl<String>(validators: [Validators.required]),
-      'address': FormControl<String>(validators: [Validators.required]),
-      'area': FormControl<String>(validators: [
-        Validators.requiredTrue,
-        Validators.number,
-      ]),
-      'price': FormControl<String>(validators: [
-        Validators.requiredTrue,
-        Validators.number,
-      ]),
-      'phoneNumber': FormControl<String>(validators: [
-        Validators.required,
-        Validators.number,
-        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-      ]),
-      'whatsapp': FormControl<String>(validators: [
-        Validators.required,
-        Validators.number,
-        Validators.pattern(FormValidator.phoneFormatWithoutCountryCode),
-      ]),
+      'description': FormControl<String>(
+        validators: [Validators.required],
+      ),
+      'address': FormControl<String>(
+        validators: [Validators.required],
+      ),
+      'area': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number(),
+        ],
+      ),
+      'price': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number(),
+        ],
+      ),
+      'phoneNumber': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number(),
+        ],
+      ),
+      'whatsapp': FormControl<String>(
+        validators: [
+          Validators.required,
+          Validators.number(),
+        ],
+      ),
     });
   }
 
@@ -57,7 +68,6 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: kHorizontalPadding,
-        vertical: 15,
       ),
       child: ReactiveFormBuilder(
         form: () => form,
@@ -65,6 +75,15 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
         child: ListView(
           shrinkWrap: true,
           children: [
+            Text(
+              S.of(context).add_property,
+              style: context.textTheme.titleMedium?.copyWith(
+                color: context.theme.cardColor,
+                fontSize: AppFontSize.titleMedium,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            20.verticalSpace,
             AddPropertyForm(
               form: form,
               selectedOfferType: selectedOfferType,
@@ -81,6 +100,7 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
               onAdd: _submitForm,
               isOfferTypeSelected: selectedOfferType != null,
             ),
+            10.verticalSpace,
           ],
         ),
       ),
@@ -95,9 +115,10 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
       area: double.parse(formControls['area']!.value as String),
       offerType: selectedOfferType!,
       price: double.parse(formControls['price']!.value as String),
-      phoneNumber: formControls['phoneNumber']!.value as String,
-      whatsapp: formControls['whatsapp']!.value as String,
+      phoneNumber: (formControls['phoneNumber']!.value as String),
+      whatsapp: (formControls['whatsapp']!.value as String),
     );
+
     context.read<PropertiesBloc>().add(AddPropertyEvent(
           addPropertyParams: params,
         ));

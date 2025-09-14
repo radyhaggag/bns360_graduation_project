@@ -5,7 +5,7 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
     required this.categoryItemEntity,
   });
 
-  final CategoryItemEntity categoryItemEntity;
+  final CategoryItemInfoEntity categoryItemEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +18,22 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pushNamed(
                 Routes.categoryItem,
-                arguments: categoryItemEntity,
+                arguments: CategoryItemScreenParams(
+                  itemId: categoryItemEntity.id,
+                  categoryItemInfoEntity: categoryItemEntity,
+                  isBelongToMe: false,
+                ),
               );
             },
             child: Text(
               LocalizationHelper.getLocalizedString(
                 context,
-                ar: categoryItemEntity.nameAR,
-                en: categoryItemEntity.nameEN,
+                ar: categoryItemEntity.businessNameArabic,
+                en: categoryItemEntity.businessNameEnglish,
               ),
-              style: context.textTheme.titleSmall,
+              style: context.textTheme.titleSmall?.copyWith(
+                fontSize: AppFontSize.details,
+              ),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
@@ -37,8 +43,8 @@ class _CategoryItemNameAndDescriptionSection extends StatelessWidget {
             child: Text(
               LocalizationHelper.getLocalizedString(
                 context,
-                ar: categoryItemEntity.descriptionAR,
-                en: categoryItemEntity.descriptionEN,
+                ar: categoryItemEntity.businessDescriptionArabic ?? "",
+                en: categoryItemEntity.businessDescriptionEnglish ?? "",
               ),
               style: context.textTheme.bodySmall,
               maxLines: 2,

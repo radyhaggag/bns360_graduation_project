@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:bns360_graduation_project/core/shared_data/entities/category_item_entity.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/shared_data/entities/category_entity.dart';
+import '../../../../core/shared_data/entities/category_item_info_entity.dart';
 import '../../domain/repositories/categories_repo.dart';
 
 part 'categories_event.dart';
@@ -16,20 +16,28 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   CategoriesBloc({
     required this.categoriesRepo,
   }) : super(CategoriesInitial()) {
+    initListener();
+
     on<GetCategoriesEvent>(_getCatteries);
     on<ToggleSearchIcon>(_toggleSearchIcon);
     on<SearchOnCategoryItems>(_searchOnCategoryItems);
     on<GetCategoryItemsByIdEvent>(_getCategoryItemsById);
   }
 
+  void initListener() {
+    searchController.addListener(() {
+      if ((categoryItems ?? []).isEmpty) return;
+      add(SearchOnCategoryItems(categoryId: categoryItems!.first.id));
+    });
+  }
+
   List<CategoryEntity>? categories;
 
-  _getCatteries(
+  Future<void> _getCatteries(
     GetCategoriesEvent event,
     Emitter<CategoriesState> emit,
   ) async {
     emit(GetCategoriesLoadingState());
-    await Future.delayed(const Duration(seconds: 2)); // TODO: FOR TEST
 
     final res = await categoriesRepo.getCategories();
 
@@ -42,53 +50,56 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     );
   }
 
-  List<CategoryItemEntity> items = [];
+  List<CategoryItemInfoEntity>? categoryItems;
+  List<CategoryItemInfoEntity> searchResults = [];
+
+  List<CategoryItemInfoEntity> get items {
+    if (isSearchEnabled) {
+      return searchResults;
+    } else {
+      return categoryItems ?? [];
+    }
+  }
 
   bool isSearchEnabled = false;
   final searchController = TextEditingController();
 
-  _toggleSearchIcon(
+  void _toggleSearchIcon(
     ToggleSearchIcon event,
     Emitter<CategoriesState> emit,
   ) {
     isSearchEnabled = !isSearchEnabled;
     emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
-    if (!isSearchEnabled && searchController.text.isNotEmpty) {
-      searchController.clear();
-      add(GetCategoryItemsByIdEvent(categoryId: event.categoryId));
-    }
   }
 
-  _searchOnCategoryItems(
+  Future<void> _searchOnCategoryItems(
     SearchOnCategoryItems event,
     Emitter<CategoriesState> emit,
   ) async {
     final searchVal = searchController.text.trim();
-    if (searchVal.isEmpty) return;
+    final searchLowercase = searchVal.toLowerCase();
 
-    emit(GetCategoryItemsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
+    bool isTrue(CategoryItemInfoEntity item) {
+      if (searchLowercase.isEmpty) return true;
 
-    final res = await categoriesRepo.searchOnCategoryItemsById(
-      event.categoryId,
-      searchVal,
-    );
+      final itemNameLowercaseAR = item.businessNameArabic.toLowerCase();
+      final itemNameLowercaseENG = item.businessNameEnglish.toLowerCase();
+      return (searchLowercase.contains(itemNameLowercaseAR) ||
+              itemNameLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(itemNameLowercaseENG) ||
+              itemNameLowercaseENG.contains(searchLowercase));
+    }
 
-    res.fold(
-      (l) => emit(GetCategoryItemsErrorState(message: l.message)),
-      (r) {
-        items = r;
-        emit(GetCategoryItemsSuccessState(items: r));
-      },
-    );
+    searchResults = (categoryItems ?? []).where(isTrue).toList();
+
+    emit(GetCategoryItemsSuccessState(items: searchResults));
   }
 
-  _getCategoryItemsById(
+  Future<void> _getCategoryItemsById(
     GetCategoryItemsByIdEvent event,
     Emitter<CategoriesState> emit,
   ) async {
     emit(GetCategoryItemsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final res = await categoriesRepo.getCategoryItemsById(
       event.categoryId,
@@ -97,7 +108,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     res.fold(
       (l) => emit(GetCategoryItemsErrorState(message: l.message)),
       (r) {
-        items = r;
+        categoryItems = r;
         emit(GetCategoryItemsSuccessState(items: r));
       },
     );

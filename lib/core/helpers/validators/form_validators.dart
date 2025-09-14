@@ -1,31 +1,30 @@
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../utils/extensions/validators.dart';
+import '../../../generated/l10n.dart';
 
 class FormValidator {
-  static final phoneFormatWithCountryCode = RegExp(r'^\+20(10|11|12|15)\d{8}$');
-  static final phoneFormatWithoutCountryCode = RegExp(r'^(10|11|12|15)\d{8}$');
+  // static final phoneFormatWithCountryCode = RegExp(r'^\+20(10|11|12|15)\d{8}$');
+  // static final phoneFormatWithoutCountryCode = RegExp(r'^(10|11|12|15)\d{8}$');
 
-  static String? validatePhoneNumber(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return null;
-    }
+  // static String? validatePhoneNumber(String? value) {
+  //   if (value == null || value.trim().isEmpty) {
+  //     return null;
+  //   }
 
-    // Regular expression for Egypt phone number
-    // The format: +2001XXXXXXXXX
+  //   // Regular expression for Egypt phone number
+  //   // The format: +2001XXXXXXXXX
 
-    if (!value.isPhone()) {
-      return Intl.message(
-        'Invalid phone number',
-        name: 'validatePhone',
-      );
-    }
+  //   // if (!value.isPhone()) {
+  //   //   return Intl.message(
+  //   //     'Invalid phone number',
+  //   //     name: 'validatePhone',
+  //   //   );
+  //   // }
 
-    return null;
-  }
+  //   return null;
+  // }
 
   static String? validateName(String? value) {
     if (value == null || value.trim().isEmpty) {

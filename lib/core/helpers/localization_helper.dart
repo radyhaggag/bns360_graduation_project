@@ -25,4 +25,15 @@ abstract class LocalizationHelper {
     }
     return en;
   }
+
+  static dynamic getLocalizedValue(
+    BuildContext context, {
+    required dynamic ar,
+    required dynamic en,
+  }) {
+    if (currentLanguage == Language.arabic) {
+      return ar.isNotEmpty ? ar : en;
+    }
+    return en;
+  }
 }

@@ -1,11 +1,13 @@
-import 'package:bns360_graduation_project/core/utils/app_colors.dart';
-import 'package:bns360_graduation_project/core/utils/assets/app_svg.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/buttons/custom_buttons.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../generated/l10n.dart';
+import '../utils/app_colors.dart';
+import '../utils/assets/app_svg.dart';
+import '../utils/extensions/context.dart';
+import 'buttons/custom_buttons.dart';
 
 class ContactWithBottomSheet extends StatelessWidget {
   const ContactWithBottomSheet({
@@ -14,13 +16,13 @@ class ContactWithBottomSheet extends StatelessWidget {
     required this.phoneNumber,
   });
 
-  final String whatsapp;
-  final String phoneNumber;
+  final String? whatsapp;
+  final String? phoneNumber;
 
-  static show({
+  static void show({
     required BuildContext context,
-    required String whatsapp,
-    required String phoneNumber,
+    String? whatsapp,
+    String? phoneNumber,
   }) {
     showModalBottomSheet(
       context: context,
@@ -38,6 +40,14 @@ class ContactWithBottomSheet extends StatelessWidget {
     );
   }
 
+  List<String> get phones {
+    if (phoneNumber == null) return [];
+    if (phoneNumber!.contains("-")) {
+      return phoneNumber!.split("- ");
+    }
+    return [phoneNumber!];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,14 +56,20 @@ class ContactWithBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _WhatsappItem(
-            phoneNumber: whatsapp,
-          ),
-          const SizedBox(height: 10),
-          _CallItem(
-            phoneNumber: phoneNumber,
-          ),
-          const SizedBox(height: 10),
+          if (whatsapp != null) ...[
+            _WhatsappItem(
+              phoneNumber: whatsapp!,
+            ),
+            const SizedBox(height: 10),
+          ],
+          if (phoneNumber != null) ...[
+            for (final phone in phones) ...[
+              _CallItem(
+                phoneNumber: phone,
+              ),
+              const SizedBox(height: 10),
+            ],
+          ],
           CustomElevatedButton(
             label: S.of(context).cancel,
             onPressed: () {
@@ -76,28 +92,33 @@ class _CallItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        color: context.theme.highlightColor,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      height: 50.h,
-      child: Row(
-        children: [
-          Icon(
-            Icons.call,
-            // FeatherIcons.phoneCall,
-            color: AppColors.primary,
-            size: 35.r,
-          ),
-          const SizedBox(width: 15),
-          Expanded(
-            child: Text(
-              "${S.of(context).call} $phoneNumber",
+    return InkWell(
+      onTap: () {
+        launchUrl(Uri.parse("tel://$phoneNumber"));
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: context.theme.highlightColor,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        height: 50.h,
+        child: Row(
+          children: [
+            Icon(
+              Icons.call,
+              // FeatherIcons.phoneCall,
+              color: AppColors.primary,
+              size: 35.r,
             ),
-          ),
-        ],
+            const SizedBox(width: 15),
+            Expanded(
+              child: Text(
+                "${S.of(context).call} $phoneNumber",
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -109,25 +130,30 @@ class _WhatsappItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        color: context.theme.highlightColor,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      height: 50.h,
-      child: Row(
-        children: [
-          SvgPicture.asset(
-            AppSvg.whatsapp,
-          ),
-          const SizedBox(width: 15),
-          Expanded(
-            child: Text(
-              S.of(context).send_message,
+    return InkWell(
+      onTap: () {
+        launchUrl(Uri.parse("https://wa.me/$phoneNumber"));
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: context.theme.highlightColor,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        height: 50.h,
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              AppSvg.whatsapp,
             ),
-          ),
-        ],
+            const SizedBox(width: 15),
+            Expanded(
+              child: Text(
+                S.of(context).send_message,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

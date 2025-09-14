@@ -1,10 +1,10 @@
-import 'package:bns360_graduation_project/core/helpers/common_dialogs.dart';
-import 'package:bns360_graduation_project/features/properties/presentation/bloc/properties_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../widgets/add_property/add_property_app_bar.dart';
+import '../../../../core/helpers/common_dialogs.dart';
+import '../../../../core/widgets/custom_back_button.dart';
+import '../../../../generated/l10n.dart';
+import '../bloc/properties_bloc.dart';
 import '../widgets/add_property/add_property_body.dart';
 
 class AddPropertyScreen extends StatelessWidget {
@@ -21,12 +21,17 @@ class AddPropertyScreen extends StatelessWidget {
           CommonDialogs.showSuccessDialog(
             context,
             message: S.of(context).add_property_success,
-          ).then((_) => Navigator.pop(context));
+            // ).then((_) => Navigator.pop(context));
+          ).then((_) {
+            if (context.mounted) Navigator.pop(context);
+          });
         }
       },
-      child: const Scaffold(
-        appBar: AddPropertyScreenAppBar(),
-        body: AddPropertyBody(),
+      child: Scaffold(
+        appBar: AppBar(
+          leading: const CustomBackButton(),
+        ),
+        body: const AddPropertyBody(),
       ),
     );
   }

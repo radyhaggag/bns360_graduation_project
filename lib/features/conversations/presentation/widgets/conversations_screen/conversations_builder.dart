@@ -1,10 +1,12 @@
-import 'package:bns360_graduation_project/config/route_config.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
-import 'package:bns360_graduation_project/core/widgets/main_list_view_builder.dart';
-import 'package:bns360_graduation_project/features/conversations/domain/entities/conversation_entity.dart';
+import 'package:bns360_graduation_project/features/conversations/presentation/bloc/conversations_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../config/route_config.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/widgets/main_list_view_builder.dart';
+import '../../../domain/entities/conversation_entity.dart';
 import '../../../domain/params/conversation_screen_params.dart';
 import 'conversations_card/conversations_card.dart';
 
@@ -26,9 +28,16 @@ class ConversationsListBuilder extends StatelessWidget {
             ConversationCard(
               conversationEntity: conversation,
               onPressed: () {
-                if (conversation.otherParticipant == null) return;
+                final currentParticipant =
+                    context.read<ConversationsBloc>().currentParticipant;
+                final otherParticipant =
+                    conversation.otherParticipant(currentParticipant);
+                if (otherParticipant == null) {
+                  return;
+                }
                 final params = ConversationScreenParams(
-                  participantEntity: conversation.otherParticipant!,
+                  participantEntity: otherParticipant,
+                  conversationId: conversation.id,
                 );
                 Navigator.of(context).pushNamed(
                   Routes.conversation,

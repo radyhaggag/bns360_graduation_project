@@ -19,19 +19,21 @@ class _TitleAndSubTitleSection extends StatelessWidget {
           Text(
             title,
             style: context.textTheme.titleSmall?.copyWith(
-              fontSize: AppFontSize.subTitle,
+              fontSize: AppFontSize.details,
             ),
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
           ),
-          Text(
-            subTitle,
-            style: context.textTheme.bodyLarge?.copyWith(
-              fontSize: AppFontSize.light,
-              color: context.theme.primaryColor.withOpacity(.25),
+          FittedBox(
+            child: Text(
+              subTitle,
+              style: context.textTheme.bodyLarge?.copyWith(
+                fontSize: AppFontSize.light,
+                color: context.theme.primaryColor.withOpacity(.25),
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),

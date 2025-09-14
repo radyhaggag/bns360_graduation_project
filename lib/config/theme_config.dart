@@ -73,7 +73,6 @@ abstract class ThemeConfig {
         scrolledUnderElevation: 0.0,
         titleSpacing: 0.0,
       ),
-      indicatorColor: AppColors.primary,
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: AppColors.white,
       ),
@@ -94,7 +93,7 @@ abstract class ThemeConfig {
         suffixIconColor: AppColors.black50,
         prefixIconColor: AppColors.black50,
       ),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         color: AppColors.white,
         elevation: 5.0,
         surfaceTintColor: AppColors.white,
@@ -117,6 +116,7 @@ abstract class ThemeConfig {
       listTileTheme: const ListTileThemeData(
         tileColor: AppColors.lightBackground,
       ),
+      tabBarTheme: const TabBarThemeData(indicatorColor: AppColors.primary),
     );
   }
 
@@ -178,8 +178,7 @@ abstract class ThemeConfig {
         systemOverlayStyle: _systemUiOverlayStyle,
         scrolledUnderElevation: 0.0,
         titleSpacing: 0.0,
-      ),
-      indicatorColor: AppColors.white, //todo: review this
+      ), //todo: review this
       progressIndicatorTheme: const ProgressIndicatorThemeData(
         color: AppColors.white,
       ),
@@ -202,7 +201,7 @@ abstract class ThemeConfig {
         suffixIconColor: AppColors.white50,
         prefixIconColor: AppColors.white50,
       ),
-      cardTheme: const CardTheme(
+      cardTheme: const CardThemeData(
         color: AppColors.black,
         elevation: 5.0,
         surfaceTintColor: AppColors.white,
@@ -225,6 +224,7 @@ abstract class ThemeConfig {
       listTileTheme: ListTileThemeData(
         tileColor: AppColors.surface.withOpacity(.9),
       ),
+      tabBarTheme: const TabBarThemeData(indicatorColor: AppColors.white),
     );
   }
 

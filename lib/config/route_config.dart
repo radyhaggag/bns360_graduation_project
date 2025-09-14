@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../core/shared_data/entities/category_entity.dart';
 import '../core/shared_data/entities/category_item_entity.dart';
 import '../core/shared_data/entities/craftsman_entity.dart';
+import '../core/shared_data/entities/job_entity.dart';
+import '../core/shared_data/entities/property_entity.dart';
 import '../features/auth/presentation/bloc/auth_bloc.dart';
 import '../features/auth/presentation/screens/forgot_password_screen.dart';
 import '../features/auth/presentation/screens/login_screen.dart';
@@ -17,38 +19,55 @@ import '../features/bottom_navigation/presentation/screens/bottom_navigation_scr
 import '../features/categories/presentation/bloc/categories_bloc.dart';
 import '../features/categories/presentation/screens/categories_screen.dart';
 import '../features/categories/presentation/screens/category_items_screen.dart';
+import '../features/category_item/domain/params/category_item_screen_params.dart';
 import '../features/category_item/presentation/bloc/category_item_bloc.dart';
 import '../features/category_item/presentation/screens/category_item_review_summary_screen.dart';
 import '../features/category_item/presentation/screens/category_item_screen.dart';
+import '../features/chatbot/presentation/bloc/chatbot_bloc.dart';
+import '../features/chatbot/presentation/screens/chatbot_screen.dart';
 import '../features/conversations/domain/params/conversation_screen_params.dart';
-import '../features/conversations/presentation/bloc/conversations_bloc.dart';
 import '../features/conversations/presentation/screens/conversation_screen.dart';
 import '../features/conversations/presentation/screens/conversations_screen.dart';
 import '../features/crafts/presentation/bloc/crafts_bloc.dart';
 import '../features/crafts/presentation/screens/crafts_screen.dart';
+import '../features/craftsman/domain/params/craftsman_screen_params.dart';
 import '../features/craftsman/presentation/bloc/craftsman_bloc.dart';
 import '../features/craftsman/presentation/screens/craftsman_review_summary_screen.dart';
 import '../features/craftsman/presentation/screens/craftsman_screen.dart';
-import '../features/favorites/presentation/bloc/favorites_bloc.dart';
 import '../features/favorites/presentation/screens/favorites_screen.dart';
 import '../features/home/presentation/bloc/home_bloc.dart';
 import '../features/home/presentation/screens/home_screen.dart';
-import '../features/jobs/domain/entities/job_entity.dart';
 import '../features/jobs/presentation/bloc/jobs_bloc.dart';
 import '../features/jobs/presentation/screens/add_job_screen.dart';
+import '../features/jobs/presentation/screens/edit_job_screen.dart';
 import '../features/jobs/presentation/screens/job_details_screen.dart';
 import '../features/jobs/presentation/screens/jobs_screen.dart';
 import '../features/map/domain/params/map_params.dart';
-import '../features/map/presentation/bloc/map_bloc.dart';
 import '../features/map/presentation/screens/map_screen.dart';
+import '../features/my_business/presentation/bloc/my_business_bloc.dart';
+import '../features/my_business/presentation/screens/add_business_screen.dart';
+import '../features/my_business/presentation/screens/edit_business_screen.dart';
+import '../features/my_business/presentation/screens/my_business_screen.dart';
+import '../features/my_posts/presentation/bloc/my_posts_bloc.dart';
+import '../features/my_posts/presentation/screens/my_posts_screen.dart';
+import '../features/my_services/presentation/bloc/my_services_bloc.dart';
+import '../features/my_services/presentation/screens/add_service_screen.dart';
+import '../features/my_services/presentation/screens/edit_service_screen.dart';
+import '../features/my_services/presentation/screens/my_services_screen.dart';
+import '../features/profile/presentation/screen/change_password_screen.dart';
 import '../features/profile/presentation/screen/edit_profile_screen.dart';
-import '../features/properties/domain/entities/property_entity.dart';
 import '../features/properties/presentation/bloc/properties_bloc.dart';
 import '../features/properties/presentation/screens/add_property_screen.dart';
+import '../features/properties/presentation/screens/edit_property_screen.dart';
 import '../features/properties/presentation/screens/properties_screen.dart';
 import '../features/properties/presentation/screens/property_details_screen.dart';
+import '../features/saved_items/presentation/screens/saved_screen.dart';
 import '../features/settings/presentation/bloc/settings_bloc.dart';
+import '../features/settings/presentation/screens/about_us_screen.dart';
+import '../features/settings/presentation/screens/contact_us_screen.dart';
+import '../features/settings/presentation/screens/privacy_policy_screen.dart';
 import '../features/settings/presentation/screens/settings_screen.dart';
+import '../features/settings/presentation/screens/terms_of_service_screen.dart';
 import '../features/splash/presentation/bloc/splash_bloc.dart';
 import '../features/splash/presentation/screens/splash_screen.dart';
 import 'injector_container.dart';
@@ -80,9 +99,25 @@ abstract class Routes {
   static const jobDetails = '/jobDetails';
   static const jobs = '/jobs';
   static const addJob = '/addJob';
+  static const editJob = '/editJob';
   static const propertyDetails = '/propertyDetails';
   static const properties = '/properties';
   static const addProperty = '/addProperty';
+  static const editProperty = '/editProperty';
+  static const savedItems = '/savedItems';
+  static const myPosts = '/myPosts';
+  static const myBusiness = '/myBusiness';
+  static const addBusiness = '/addBusiness';
+  static const editBusiness = '/editBusiness';
+  static const myServices = '/myServices';
+  static const addService = '/addService';
+  static const editService = '/editService';
+  static const changePassword = '/changePassword';
+  static const chatbot = '/chatbot';
+  static const termsOfService = '/termsOfService';
+  static const contactUs = '/contactUs';
+  static const privacyPolicy = '/privacyPolicy';
+  static const aboutUs = '/aboutUs';
 }
 
 abstract class RouteConfig {
@@ -164,11 +199,7 @@ abstract class RouteConfig {
         );
       case Routes.favorites:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) =>
-                sl<FavoritesBloc>()..add(GetFavoriteCategoriesEvent()),
-            child: const FavoritesScreen(),
-          ),
+          builder: (context) => const FavoritesScreen(),
         );
       case Routes.categories:
         return MaterialPageRoute(
@@ -209,11 +240,12 @@ abstract class RouteConfig {
           builder: (context) => const EditProfileScreen(),
         );
       case Routes.categoryItem:
+        final params = settings.arguments as CategoryItemScreenParams;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => sl<CategoryItemBloc>(),
             child: CategoryItemScreen(
-              categoryItemEntity: settings.arguments as CategoryItemEntity,
+              screenParams: params,
             ),
           ),
         );
@@ -223,8 +255,13 @@ abstract class RouteConfig {
             final item = settings.arguments as CategoryItemEntity;
             return BlocProvider(
               create: (context) => sl<CategoryItemBloc>()
+                ..add(
+                  SetCategoryItemEntityEvent(
+                    categoryItemEntity: item,
+                  ),
+                )
                 ..add(GetCategoryItemReviewsEvent(
-                  itemId: item.id.toString(),
+                  itemId: item.id,
                 )),
               child: CategoryItemReviewSummaryScreen(
                 categoryItemEntity: item,
@@ -237,7 +274,7 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<CraftsmanBloc>(),
             child: CraftsmanScreen(
-              craftsmanEntity: settings.arguments as CraftsmanEntity,
+              screenParams: settings.arguments as CraftsmanScreenParams,
             ),
           ),
         );
@@ -247,8 +284,11 @@ abstract class RouteConfig {
             final item = settings.arguments as CraftsmanEntity;
             return BlocProvider(
               create: (context) => sl<CraftsmanBloc>()
+                ..add(SetCraftsmanEntityEvent(
+                  craftsmanEntity: item,
+                ))
                 ..add(GetCraftsmanReviewsEvent(
-                  itemId: item.id.toString(),
+                  itemId: item.id,
                 )),
               child: CraftsmanReviewSummaryScreen(
                 craftsmanEntity: item,
@@ -258,30 +298,20 @@ abstract class RouteConfig {
         );
       case Routes.map:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => sl<MapBloc>(),
-            child: MapScreen(
-              mapParams: settings.arguments as MapParams?,
-            ),
+          builder: (context) => MapScreen(
+            mapParams: settings.arguments as MapParams?,
           ),
         );
       case Routes.conversation:
         final params = settings.arguments as ConversationScreenParams;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => sl<ConversationsBloc>(),
-            child: ConversationScreen(
-              conversationParams: params,
-            ),
+          builder: (context) => ConversationScreen(
+            conversationParams: params,
           ),
         );
       case Routes.conversations:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) =>
-                sl<ConversationsBloc>()..add(GetConversationsEvent()),
-            child: const ConversationsScreen(),
-          ),
+          builder: (context) => const ConversationsScreen(),
         );
       case Routes.jobs:
         return MaterialPageRoute(
@@ -291,9 +321,17 @@ abstract class RouteConfig {
           ),
         );
       case Routes.jobDetails:
+        final job = settings.arguments as JobEntity;
         return MaterialPageRoute(
-          builder: (context) => JobDetailsScreen(
-            jobEntity: settings.arguments as JobEntity,
+          builder: (context) => BlocProvider(
+            create: (context) => sl<JobsBloc>()
+              ..add(InitJobRequirementsEvent(
+                requirementsAr: job.requirementsArabic.requirements,
+                requirementsEng: job.requirementEnglish.requirements,
+              )),
+            child: JobDetailsScreen(
+              jobEntity: job,
+            ),
           ),
         );
       case Routes.addJob:
@@ -301,6 +339,16 @@ abstract class RouteConfig {
           builder: (context) => BlocProvider(
             create: (context) => sl<JobsBloc>(),
             child: const AddJobScreen(),
+          ),
+        );
+      case Routes.editJob:
+        final params = settings.arguments as JobEntity;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<JobsBloc>(),
+            child: EditJobScreen(
+              jobEntity: params,
+            ),
           ),
         );
       case Routes.properties:
@@ -324,6 +372,119 @@ abstract class RouteConfig {
             child: const AddPropertyScreen(),
           ),
         );
+      case Routes.editProperty:
+        final params = settings.arguments as PropertyEntity;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<PropertiesBloc>(),
+            child: EditPropertyScreen(
+              propertyEntity: params,
+            ),
+          ),
+        );
+      case Routes.savedItems:
+        return MaterialPageRoute(
+          builder: (context) => const SavedScreen(),
+        );
+      case Routes.myPosts:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyPostsBloc>()..add(GetMyPostsPropertiesEvent()),
+            child: const MyPostsScreen(),
+          ),
+        );
+      case Routes.myBusiness:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyBusinessBloc>()..add(GetMyBusinessEvent()),
+            child: const MyBusinessScreen(),
+          ),
+        );
+      case Routes.addBusiness:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyBusinessBloc>()..add(GetBusinessTypesEvent()),
+            child: const AddBusinessScreen(),
+          ),
+        );
+      case Routes.editBusiness:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyBusinessBloc>()..add(GetBusinessTypesEvent()),
+            child: EditBusinessScreen(
+              categoryItemEntity: settings.arguments as CategoryItemEntity,
+            ),
+          ),
+        );
+      case Routes.myServices:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyServicesBloc>()..add(GetMyServicesEvent()),
+            child: const MyServicesScreen(),
+          ),
+        );
+      case Routes.addService:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                sl<MyServicesBloc>()..add(GetServiceTypesEvent()),
+            child: const AddServiceScreen(),
+          ),
+        );
+      case Routes.editService:
+        final args = settings.arguments as CraftsmanEntity;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<MyServicesBloc>()
+              ..add(GetServiceTypesEvent())
+              ..add(InitNetworkServiceImageEvent(
+                networkImages: args.serviceImages,
+                mainServiceImage: args.profileImageUrl,
+              ))
+              ..add(SelectServiceCategoryEvent(
+                serviceCategory: args.craft,
+              )),
+            child: EditServiceScreen(
+              craftsmanEntity: args,
+            ),
+          ),
+        );
+
+      case Routes.changePassword:
+        return MaterialPageRoute(
+          builder: (context) => const ChangePasswordScreen(),
+        );
+
+      case Routes.chatbot:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => sl<ChatbotBloc>(),
+            child: const ChatbotScreen(),
+          ),
+        );
+
+      case Routes.termsOfService:
+        return MaterialPageRoute(
+          builder: (context) => const TermsOfServiceScreen(),
+        );
+      case Routes.contactUs:
+        return MaterialPageRoute(
+          builder: (context) => const ContactUsScreen(),
+        );
+      case Routes.privacyPolicy:
+        return MaterialPageRoute(
+          builder: (context) => const PrivacyPolicyScreen(),
+        );
+      case Routes.aboutUs:
+        return MaterialPageRoute(
+          builder: (context) => const AboutUsScreen(),
+        );
+
       default:
         return null;
     }

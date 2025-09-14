@@ -5,7 +5,7 @@ import 'data/repositories/favorites_repo_impl.dart';
 import 'domain/repositories/favorites_repo.dart';
 import 'presentation/bloc/favorites_bloc.dart';
 
-initFavorites() {
+void initFavorites() {
   // Datasources
   sl.registerLazySingleton<FavoritesRemoteDataSource>(
     () => FavoritesRemoteDataSourceImpl(sl()),

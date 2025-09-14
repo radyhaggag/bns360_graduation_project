@@ -1,10 +1,11 @@
-import 'package:bns360_graduation_project/core/helpers/common_dialogs.dart';
-import 'package:bns360_graduation_project/features/jobs/presentation/bloc/jobs_bloc.dart';
-import 'package:bns360_graduation_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../widgets/add_job/add_job_app_bar.dart';
+import '../../../../core/helpers/common_dialogs.dart';
+import '../../../../core/utils/extensions/context.dart';
+import '../../../../core/widgets/custom_back_button.dart';
+import '../../../../generated/l10n.dart';
+import '../bloc/jobs_bloc.dart';
 import '../widgets/add_job/add_job_body.dart';
 
 class AddJobScreen extends StatelessWidget {
@@ -21,12 +22,17 @@ class AddJobScreen extends StatelessWidget {
           CommonDialogs.showSuccessDialog(
             context,
             message: S.of(context).add_job_success,
-          ).then((_) => Navigator.pop(context));
+          ).then((_) {
+            if (context.mounted) Navigator.pop(context);
+          });
         }
       },
-      child: const Scaffold(
-        appBar: AddJobScreenAppBar(),
-        body: AddJobBody(),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: context.theme.scaffoldBackgroundColor,
+          leading: const CustomBackButton(),
+        ),
+        body: const AddJobBody(),
       ),
     );
   }

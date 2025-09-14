@@ -1,13 +1,14 @@
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_data/entities/participant_entity.dart';
+import '../../../../../core/utils/extensions/context.dart';
+import '../../../../../core/widgets/confirm_pop_up.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../domain/entities/message_entity.dart';
 import '../../../domain/params/delete_message_params.dart';
 import '../../bloc/conversations_bloc.dart';
-import 'confirm_delete_message_pop_up.dart';
 import 'message_content_widget.dart';
 import 'message_date_widget.dart';
 
@@ -16,14 +17,18 @@ class ChatMessageItem extends StatelessWidget {
     super.key,
     required this.message,
     required this.otherParticipant,
+    required this.conversationId,
   });
 
   final MessageEntity message;
   final ParticipantEntity otherParticipant;
+  final String conversationId;
 
   @override
   Widget build(BuildContext context) {
-    final isFromMe = message.isFromMe;
+    final currentUserId =
+        context.read<ConversationsBloc>().currentParticipant.modifiedId;
+    final isFromMe = message.isFromMe(currentUserId);
     final mainAxisAlignment =
         isFromMe ? MainAxisAlignment.end : MainAxisAlignment.start;
     return InkWell(
@@ -32,15 +37,12 @@ class ChatMessageItem extends StatelessWidget {
       onLongPress: !message.isDeleted
           ? () {
               if (!isFromMe) return;
-              ConfirmationDialog.show(
-                context,
-                onConfirm: () {
-                  context.read<ConversationsBloc>().add(DeleteMessageEvent(
-                        deleteMessageParams: deleteMessageParams,
-                      ));
-                  Navigator.of(context).pop();
-                },
-              );
+              ConfirmationDialog.show(context, onConfirm: () {
+                context.read<ConversationsBloc>().add(DeleteMessageEvent(
+                      deleteMessageParams: deleteMessageParams,
+                    ));
+                Navigator.of(context).pop();
+              }, message: S.of(context).confirm_delete_message);
             }
           : null,
       child: Container(
@@ -87,8 +89,9 @@ class ChatMessageItem extends StatelessWidget {
   DeleteMessageParams get deleteMessageParams {
     return DeleteMessageParams(
       messageId: message.id!,
-      otherParticipantId: otherParticipant.id,
+      otherParticipantId: otherParticipant.modifiedId,
       otherParticipantType: otherParticipant.userType,
+      conversationId: conversationId,
     );
   }
 }

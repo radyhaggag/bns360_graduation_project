@@ -30,7 +30,7 @@ class _LeftSection extends StatelessWidget {
         Container(
           margin: EdgeInsets.symmetric(horizontal: 60.w),
           child: Text(
-            starsCount.toString(),
+            starsCount.toStringAsFixed(1),
             style: context.textTheme.titleSmall?.copyWith(
               fontSize: AppFontSize.subTitle,
             ),

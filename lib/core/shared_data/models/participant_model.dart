@@ -1,5 +1,4 @@
-import 'package:bns360_graduation_project/core/providers/app_provider.dart';
-
+import '../../providers/app_provider.dart';
 import '../entities/participant_entity.dart';
 import '../entities/profile/profile_entity.dart';
 
@@ -51,7 +50,7 @@ extension ParticipantEntityToMap on ParticipantEntity {
 }
 
 extension ProfileEntityToParticipant on ProfileEntity {
-  toParticipant() {
+  ParticipantEntity toParticipant() {
     return ParticipantEntity(
       id: id,
       nameEN: name,

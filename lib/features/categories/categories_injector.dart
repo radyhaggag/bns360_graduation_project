@@ -5,7 +5,7 @@ import 'data/repositories/categories_repo_impl.dart';
 import 'domain/repositories/categories_repo.dart';
 import 'presentation/bloc/categories_bloc.dart';
 
-initCategories() {
+void initCategories() {
   // Datasources
   sl.registerLazySingleton<CategoriesRemoteDataSource>(
     () => CategoriesRemoteDataSourceImpl(sl()),

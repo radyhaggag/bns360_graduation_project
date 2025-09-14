@@ -1,8 +1,7 @@
-import 'package:bns360_graduation_project/features/jobs/domain/params/add_job_params.dart';
-
 import '../../../../core/helpers/execute_and_handle_error.dart';
+import '../../../../core/shared_data/entities/job_entity.dart';
 import '../../../../core/utils/custom_types.dart';
-import '../../domain/entities/job_entity.dart';
+import '../../domain/params/add_job_params.dart';
 import '../../domain/repositories/jobs_repo.dart';
 import '../datasources/remote/jobs_remote_data_source.dart';
 
@@ -19,18 +18,9 @@ class JobsRepoImpl implements JobsRepo {
   }
 
   @override
-  FutureEither<JobEntity> getJobById(String id) async {
+  FutureEither<JobEntity> getJobById(int id) async {
     return executeAndHandleErrorAsync(
       () => jobsRemoteDataSource.getJobById(id),
-    );
-  }
-
-  @override
-  FutureEither<List<JobEntity>> searchOnJobs(
-    String text,
-  ) async {
-    return executeAndHandleErrorAsync(
-      () => jobsRemoteDataSource.searchOnJobs(text),
     );
   }
 
@@ -40,6 +30,15 @@ class JobsRepoImpl implements JobsRepo {
   ) async {
     return executeAndHandleErrorAsync(
       () => jobsRemoteDataSource.addJob(addJobParams),
+    );
+  }
+
+  @override
+  FutureEither<void> editJob(
+    JobEntity job,
+  ) async {
+    return executeAndHandleErrorAsync(
+      () => jobsRemoteDataSource.editJob(job),
     );
   }
 }

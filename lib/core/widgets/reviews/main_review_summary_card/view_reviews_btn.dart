@@ -15,7 +15,7 @@ class _ViewReviewsHintBtn extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            "View reviews",
+            S.of(context).view_reviews,
             style: context.textTheme.bodyLarge?.copyWith(
               color: context.theme.primaryColor.withOpacity(.3),
               fontSize: AppFontSize.light,

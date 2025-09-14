@@ -1,11 +1,11 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:bns360_graduation_project/core/utils/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets/app_svg.dart';
+import '../../../../core/utils/extensions/context.dart';
 import '../bloc/bottom_navigation_bloc.dart';
 
 const _iconList = [
@@ -38,7 +38,10 @@ class MainBottomNavbar extends StatelessWidget {
               child: SvgPicture.asset(
                 _iconList[index],
                 fit: BoxFit.scaleDown,
-                color: iconColor,
+                colorFilter: ColorFilter.mode(
+                  iconColor,
+                  BlendMode.srcIn,
+                ),
                 height: (index == 0 || index == 2) ? 26 : 30,
               ),
             );

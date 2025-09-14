@@ -44,7 +44,7 @@ class _CustomSliderState extends State<CustomSlider> {
           height: widget.height,
           imagesRadius: widget.imagesRadius,
         ),
-        if (widget.viewPaginationBars)
+        if (widget.viewPaginationBars && widget.images.length > 1)
           _SliderRectBuilder(
             length: widget.images.length,
             activeIndex: activeIndex,

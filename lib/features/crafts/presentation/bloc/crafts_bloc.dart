@@ -1,13 +1,11 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helpers/localization_helper.dart';
 import '../../../../core/shared_data/entities/craft_entity.dart';
-import '../../../../core/shared_data/entities/craftsman_entity.dart';
-import '../../../../core/utils/custom_types.dart';
+import '../../../../core/shared_data/entities/craftsman_info_entity.dart';
 import '../../domain/repositories/crafts_repo.dart';
 
 part 'crafts_event.dart';
@@ -16,56 +14,42 @@ part 'crafts_state.dart';
 class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
   final CraftsRepo craftsRepo;
   CraftsBloc({required this.craftsRepo}) : super(CraftsInitial()) {
-    on<GetCraftsmenEvent>(_getCraftsmen);
+    initListener();
     on<GetCraftsEvent>(_getCrafts);
     on<GetCraftItemsByIdEvent>(_getCraftItemsById);
     on<ToggleSearchIcon>(_toggleSearchIcon);
     on<SearchOnCrafts>(_searchOnCrafts);
   }
 
-  List<CraftsmanEntity> craftsmen = [];
-  List<CraftsmanEntity> searchResults = [];
-
-  _getCraftsmen(
-    GetCraftsmenEvent event,
-    Emitter<CraftsState> emit,
-  ) async {
-    emit(GetCraftsmenLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
-
-    final res = await craftsRepo.getCraftsmen();
-
-    res.fold(
-      (l) => emit(GetCraftsmenErrorState(message: l.message)),
-      (r) {
-        craftsmen = r;
-        emit(GetCraftsmenSuccessState(craftsmen: r));
-      },
-    );
+  void initListener() {
+    searchController.addListener(() {
+      if ((craftsmen ?? []).isEmpty) return;
+      add(SearchOnCrafts());
+    });
   }
 
-  final craftAllEntity = const CraftEntity(
-    id: -1,
-    nameAR: 'الجميع',
-    nameEN: 'All',
-  );
+  List<CraftsmanInfoEntity>? craftsmen;
+  List<CraftsmanInfoEntity> searchResults = [];
 
   List<CraftEntity>? _crafts;
-  List<CraftEntity>? get crafts {
-    if (_crafts != null) {
-      return [craftAllEntity, ..._crafts!];
+  List<CraftEntity>? get crafts => _crafts;
+
+  List<CraftsmanInfoEntity>? get items {
+    if (isSearchEnabled) {
+      return searchResults;
     }
-    return null;
+    return craftsmen;
   }
 
-  int selectedCraftId = -1;
+  int selectedCraftId = 0;
 
   String? selectedCraftName(BuildContext context) {
-    var selectedCraft = crafts?.firstWhere(
+    if (crafts == null) return "";
+    if (crafts != null && crafts!.isEmpty) return "";
+    final selectedCraft = crafts?.firstWhere(
       (craft) => craft.id == selectedCraftId,
-      orElse: () => craftAllEntity,
     );
-    selectedCraft ??= craftAllEntity;
+    if (selectedCraft == null) return "";
     return LocalizationHelper.getLocalizedString(
       context,
       ar: selectedCraft.nameAR,
@@ -73,13 +57,12 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     );
   }
 
-  _getCrafts(
+  Future<void> _getCrafts(
     GetCraftsEvent event,
     Emitter<CraftsState> emit,
   ) async {
     if (crafts != null) return;
     emit(GetCraftsLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
 
     final res = await craftsRepo.getCrafts();
 
@@ -87,12 +70,15 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
       (l) => emit(GetCraftsErrorState(message: l.message)),
       (r) {
         _crafts = r;
+        if (r.isNotEmpty) {
+          add(GetCraftItemsByIdEvent(id: r.first.id));
+        }
         emit(GetCraftsSuccessState(crafts: r));
       },
     );
   }
 
-  _getCraftItemsById(
+  Future<void> _getCraftItemsById(
     GetCraftItemsByIdEvent event,
     Emitter<CraftsState> emit,
   ) async {
@@ -101,30 +87,23 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     selectedCraftId = event.id;
 
     // thats mean the selected craft is "ALL" so fetch all data
-    if (selectedCraftId == -1) {
-      if (searchController.text.isNotEmpty) {
-        add(SearchOnCrafts());
-      } else {
-        add(GetCraftsmenEvent());
-      }
-      return;
-    }
     if (searchController.text.isNotEmpty) {
       add(SearchOnCrafts());
       return;
     }
-    emit(GetCraftsmenLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
+    emit(GetCraftItemsByIdLoadingState());
 
     final res = await craftsRepo.getCraftItemsById(selectedCraftId);
+
     res.fold(
       (l) {
         selectedCraftId = prevSelectedId;
-        emit(GetCraftsmenErrorState(message: l.message));
+        craftsmen = [];
+        emit(GetCraftItemsByIdErrorState(message: l.message));
       },
       (r) {
         craftsmen = r;
-        emit(GetCraftsmenSuccessState(craftsmen: r));
+        emit(GetCraftItemsByIdSuccessState(craftsmen: r));
       },
     );
   }
@@ -132,49 +111,37 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
   bool isSearchEnabled = false;
   final searchController = TextEditingController();
 
-  _toggleSearchIcon(
+  void _toggleSearchIcon(
     ToggleSearchIcon event,
     Emitter<CraftsState> emit,
   ) {
     isSearchEnabled = !isSearchEnabled;
-    emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
-    if (!isSearchEnabled && searchController.text.isNotEmpty) {
-      searchController.clear();
-      add(GetCraftsmenEvent());
+    if (isSearchEnabled) {
+      searchResults = (craftsmen ?? []).where((element) => true).toList();
     }
+    emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
   }
 
-  _searchOnCrafts(
+  Future<void> _searchOnCrafts(
     SearchOnCrafts event,
     Emitter<CraftsState> emit,
   ) async {
     final searchVal = searchController.text.trim();
-    if (searchVal.isEmpty) return;
+    final searchLowercase = searchVal.toLowerCase();
 
-    emit(GetCraftsmenLoadingState());
-    await Future.delayed(const Duration(seconds: 1)); // TODO: FOR TEST
-
-    ResultOrFailure<List<CraftsmanEntity>> res;
-    if (selectedCraftId == -1) {
-      res = await craftsRepo.searchOnAllCrafts(
-        searchVal,
-      );
-    } else {
-      res = await craftsRepo.searchOnCraftsById(
-        selectedCraftId,
-        searchVal,
-      );
+    bool isTrue(CraftsmanInfoEntity item) {
+      if (searchLowercase.isEmpty) return true;
+      final itemNameLowercaseAR = item.craftsmanNameArabic.toLowerCase();
+      final itemNameLowercaseENG = item.craftsmanNameEnglish.toLowerCase();
+      return (searchLowercase.contains(itemNameLowercaseAR) ||
+              itemNameLowercaseAR.contains(searchLowercase)) ||
+          (searchLowercase.contains(itemNameLowercaseENG) ||
+              itemNameLowercaseENG.contains(searchLowercase));
     }
 
-    res.fold(
-      (l) {
-        emit(GetCraftsmenErrorState(message: l.message));
-      },
-      (r) {
-        craftsmen = r;
-        emit(GetCraftsmenSuccessState(craftsmen: r));
-      },
-    );
+    searchResults = (craftsmen ?? []).where(isTrue).toList();
+
+    emit(GetCraftItemsByIdSuccessState(craftsmen: searchResults));
   }
 
   @override

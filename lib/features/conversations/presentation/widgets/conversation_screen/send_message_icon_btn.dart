@@ -6,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/shared_data/entities/participant_entity.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/assets/app_svg.dart';
+import '../../../../../core/utils/enums.dart';
+import '../../../../../core/utils/extensions/language.dart';
 import '../../../../../core/widgets/center_progress_indicator.dart';
 import '../../../domain/params/send_message_params.dart';
 import '../../bloc/conversations_bloc.dart';
@@ -15,10 +17,12 @@ class SendMessageIconBtn extends StatelessWidget {
     super.key,
     required this.textEditingController,
     required this.otherParticipant,
+    required this.conversationId,
   });
 
   final TextEditingController textEditingController;
   final ParticipantEntity otherParticipant;
+  final String conversationId;
 
   @override
   Widget build(BuildContext context) {
@@ -54,11 +58,18 @@ class SendMessageIconBtn extends StatelessWidget {
             width: 30.r,
             alignment: Alignment.center,
             child: Center(
-              child: SvgPicture.asset(
-                AppSvg.sendArrow,
-                color: AppColors.white,
-                width: 30.r,
-                height: 30.r,
+              child: RotatedBox(
+                quarterTurns:
+                    context.currentLanguage == Language.arabic ? 2 : 0,
+                child: SvgPicture.asset(
+                  AppSvg.sendArrow,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.white,
+                    BlendMode.srcIn,
+                  ),
+                  width: 30.r,
+                  height: 30.r,
+                ),
               ),
             ),
           ),
@@ -67,7 +78,7 @@ class SendMessageIconBtn extends StatelessWidget {
     );
   }
 
-  _sendMessage({
+  void _sendMessage({
     required BuildContext context,
     required String content,
     required ParticipantEntity otherParticipant,
@@ -78,6 +89,8 @@ class SendMessageIconBtn extends StatelessWidget {
         content: content,
         otherParticipant: otherParticipant,
         isFirstMsg: bloc.messages.isEmpty,
+        conversationId: conversationId,
+        currentParticipant: bloc.currentParticipant,
       ),
     ));
   }

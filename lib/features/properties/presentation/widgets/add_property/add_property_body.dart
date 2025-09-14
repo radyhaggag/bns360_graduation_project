@@ -39,25 +39,25 @@ class _AddPropertyBodyState extends State<AddPropertyBody> {
       'area': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'price': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'phoneNumber': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
     });

@@ -28,7 +28,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     on<InitNetworkPropertyImageEvent>(_initNetworkPropertyImage);
   }
 
-  initListener() {
+  void initListener() {
     searchController.addListener(() {
       if ((properties).isEmpty) return;
       add(SearchOnPropertiesEvent());
@@ -45,7 +45,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     return properties;
   }
 
-  _getProperties(
+  Future<void> _getProperties(
     GetPropertiesEvent event,
     Emitter<PropertiesState> emit,
   ) async {
@@ -66,7 +66,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   bool get isSearchEnabled => searchController.text.trim().isNotEmpty;
   final searchController = TextEditingController();
 
-  _searchOnProperties(
+  Future<void> _searchOnProperties(
     SearchOnPropertiesEvent event,
     Emitter<PropertiesState> emit,
   ) async {
@@ -103,7 +103,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   double? propertyLat;
   double? propertyLng;
 
-  _selectPropertyLocation(
+  void _selectPropertyLocation(
     SelectPropertyLocationEvent event,
     Emitter<PropertiesState> emit,
   ) {
@@ -113,7 +113,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     emit(PropertyLocationSelectedState(lat: event.lat, lng: event.lng));
   }
 
-  _addProperty(
+  Future<void> _addProperty(
     AddPropertyEvent event,
     Emitter<PropertiesState> emit,
   ) async {
@@ -139,7 +139,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
   final List<File> _pickedImages = [];
   List<File> get pickedImages => _pickedImages;
 
-  _pickPropertyImages(
+  Future<void> _pickPropertyImages(
     PickPropertyImagesEvent event,
     Emitter<PropertiesState> emit,
   ) async {
@@ -165,7 +165,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     }
   }
 
-  _removePropertyImages(
+  void _removePropertyImages(
     RemovePickedPropertyImageEvent event,
     Emitter<PropertiesState> emit,
   ) {
@@ -173,7 +173,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     emit(PropertyImagesUpdatedState());
   }
 
-  _editProperty(EditPropertyEvent event, Emitter<PropertiesState> emit) async {
+  Future<void> _editProperty(EditPropertyEvent event, Emitter<PropertiesState> emit) async {
     emit(EditPropertyLoadingState());
     final params = event.propertyEntity.copyWith(
       latitude: propertyLat,
@@ -193,7 +193,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
 
   List<String> networkImages = [];
 
-  _clearPropertyImages(
+  void _clearPropertyImages(
     ClearPropertyImagesEvent event,
     Emitter<PropertiesState> emit,
   ) {
@@ -202,7 +202,7 @@ class PropertiesBloc extends Bloc<PropertiesEvent, PropertiesState> {
     emit(PropertyImagesUpdatedState());
   }
 
-  _initNetworkPropertyImage(
+  void _initNetworkPropertyImage(
     InitNetworkPropertyImageEvent event,
     Emitter<PropertiesState> emit,
   ) {

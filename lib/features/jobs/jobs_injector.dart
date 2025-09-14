@@ -5,7 +5,7 @@ import 'data/repositories/jobs_repo_impl.dart';
 import 'domain/repositories/jobs_repo.dart';
 import 'presentation/bloc/jobs_bloc.dart';
 
-initJobs() {
+void initJobs() {
   // repos
   sl.registerLazySingleton<JobsRemoteDataSource>(
     () => JobsRemoteDataSourceImpl(sl()),

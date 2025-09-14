@@ -83,7 +83,10 @@ class ChatbotTextField extends StatelessWidget {
                           child: Center(
                             child: SvgPicture.asset(
                               AppSvg.sendArrow,
-                              color: AppColors.white,
+                              colorFilter: const ColorFilter.mode(
+                                AppColors.white,
+                                BlendMode.srcIn,
+                              ),
                               width: 30.r,
                               height: 30.r,
                             ),
@@ -98,7 +101,7 @@ class ChatbotTextField extends StatelessWidget {
     );
   }
 
-  _sendMessage({
+  void _sendMessage({
     required BuildContext context,
     required String content,
   }) {

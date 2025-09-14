@@ -5,7 +5,7 @@ import 'data/repositories/my_posts_repo_impl.dart';
 import 'domain/repositories/my_posts_repo.dart';
 import 'presentation/bloc/my_posts_bloc.dart';
 
-initMyPosts() {
+void initMyPosts() {
   // Datasources
   sl.registerLazySingleton<MyPostsRemoteDataSource>(
     () => MyPostsRemoteDataSourceImpl(sl()),

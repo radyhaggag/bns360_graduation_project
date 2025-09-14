@@ -5,7 +5,7 @@ import 'data/repositories/craftsman_repo_impl.dart';
 import 'domain/repositories/craftsman_repo.dart';
 import 'presentation/bloc/craftsman_bloc.dart';
 
-initCraftsman() {
+void initCraftsman() {
   // Datasources
   sl.registerLazySingleton<CraftsmanRemoteDataSource>(
     () => CraftsmanRemoteDataSourceImpl(

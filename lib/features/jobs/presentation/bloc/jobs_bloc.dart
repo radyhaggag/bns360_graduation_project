@@ -30,7 +30,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     on<InitJobRequirementsEvent>(_initJobRequirements);
   }
 
-  initListener() {
+  void initListener() {
     searchController.addListener(() {
       if ((jobs).isEmpty) return;
       add(SearchOnJobs());
@@ -47,7 +47,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     return jobs;
   }
 
-  _getJobs(
+  Future<void> _getJobs(
     GetJobsEvent event,
     Emitter<JobsState> emit,
   ) async {
@@ -68,7 +68,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
 
   final searchController = TextEditingController();
 
-  _searchOnJobs(
+  Future<void> _searchOnJobs(
     SearchOnJobs event,
     Emitter<JobsState> emit,
   ) async {
@@ -98,7 +98,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     emit(GetJobsSuccessState(jobs: searchResults));
   }
 
-  _getJobById(
+  Future<void> _getJobById(
     GetJobByIdEvent event,
     Emitter<JobsState> emit,
   ) async {
@@ -114,7 +114,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
-  _addJob(
+  Future<void> _addJob(
     AddJobEvent event,
     Emitter<JobsState> emit,
   ) async {
@@ -132,7 +132,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     );
   }
 
-  _editJob(
+  Future<void> _editJob(
     EditJobEvent event,
     Emitter<JobsState> emit,
   ) async {
@@ -160,7 +160,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
         : requirementsEng;
   }
 
-  _addRequirement(
+  Future<void> _addRequirement(
     AddRequirementEvent event,
     Emitter<JobsState> emit,
   ) async {
@@ -189,7 +189,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     emit(JobRequirementUpdatedState());
   }
 
-  _removeRequirement(
+  void _removeRequirement(
     RemoveRequirementEvent event,
     Emitter<JobsState> emit,
   ) {
@@ -207,7 +207,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     return super.close();
   }
 
-  _initJobRequirements(
+  void _initJobRequirements(
     InitJobRequirementsEvent event,
     Emitter<JobsState> emit,
   ) {
@@ -216,7 +216,7 @@ class JobsBloc extends Bloc<JobsEvent, JobsState> {
     emit(JobRequirementUpdatedState());
   }
 
-  _editRequirement(
+  Future<void> _editRequirement(
     EditRequirementEvent event,
     Emitter<JobsState> emit,
   ) async {

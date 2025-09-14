@@ -11,8 +11,6 @@ enum TimeDuration {
         return S.of(context).am;
       case TimeDuration.pm:
         return S.of(context).pm;
-      default:
-        return "";
     }
   }
 

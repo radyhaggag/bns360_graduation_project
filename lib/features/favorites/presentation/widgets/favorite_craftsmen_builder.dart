@@ -60,10 +60,12 @@ class FavoriteCraftsmenBuilder extends StatelessWidget {
                     craftsmanEntity: item,
                   ),
                 )
-                    .then((value) {
-                  context.read<FavoritesBloc>().add(GetFavoriteCategoriesEvent(
-                        skipPreviousCheck: false,
-                      ));
+                    .then((_) {
+                  if (context.mounted) {
+                    context.read<FavoritesBloc>().add(GetFavoriteCraftsmenEvent(
+                          skipPreviousCheck: false,
+                        ));
+                  }
                 });
               },
               isBusiness: false,

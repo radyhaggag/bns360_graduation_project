@@ -5,7 +5,7 @@ import 'data/repositories/properties_repo_impl.dart';
 import 'domain/repositories/properties_repo.dart';
 import 'presentation/bloc/properties_bloc.dart';
 
-initProperties() {
+void initProperties() {
   // repos
   sl.registerLazySingleton<PropertiesRemoteDataSource>(
     () => PropertiesRemoteDataSourceImpl(sl()),

@@ -15,7 +15,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     on<CheckUserLoginStatusEvent>(_checkUseLoginStatus);
   }
 
-  _checkUseLoginStatus(
+  Future<void> _checkUseLoginStatus(
     CheckUserLoginStatusEvent event,
     Emitter<SplashState> emit,
   ) async {

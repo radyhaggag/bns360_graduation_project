@@ -5,7 +5,7 @@ import 'data/repositories/my_services_repo_impl.dart';
 import 'domain/repositories/my_services_repo.dart';
 import 'presentation/bloc/my_services_bloc.dart';
 
-initMyServices() {
+void initMyServices() {
   // Datasources
   sl.registerLazySingleton<MyServicesRemoteDataSource>(
     () => MyServicesRemoteDataSourceImpl(apiConsumer: sl()),

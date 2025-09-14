@@ -60,28 +60,28 @@ class _EditJobBodyState extends State<EditJobBody> {
       'workHours': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: widget.jobEntity.workHours.toString(),
       ),
       'salary': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: widget.jobEntity.salary.toInt().toString(),
       ),
       'phoneNumber': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: widget.jobEntity.contacts?.phoneNumber,
       ),
       'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: widget.jobEntity.contacts?.whatsapp,
       ),

@@ -27,7 +27,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
 
   List<ReviewEntity> reviews = [];
 
-  _getCategoryItemReviews(
+  Future<void> _getCategoryItemReviews(
     GetCategoryItemReviewsEvent event,
     Emitter<CategoryItemState> emit,
   ) async {
@@ -46,7 +46,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
 
   ReviewSummaryEntity? reviewsSummary;
 
-  _getCategoryItemReviewSummary(
+  Future<void> _getCategoryItemReviewSummary(
     GetCategoryItemReviewSummaryEvent event,
     Emitter<CategoryItemState> emit,
   ) async {
@@ -66,7 +66,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
 
   CategoryItemEntity? categoryItem;
 
-  _getCategoryItem(
+  Future<void> _getCategoryItem(
     GetCategoryItemEvent event,
     Emitter<CategoryItemState> emit,
   ) async {
@@ -83,7 +83,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
     );
   }
 
-  _setCategoryItemEntity(
+  void _setCategoryItemEntity(
     SetCategoryItemEntityEvent event,
     Emitter<CategoryItemState> emit,
   ) {
@@ -120,7 +120,7 @@ class CategoryItemBloc extends Bloc<CategoryItemEvent, CategoryItemState> {
     );
   }
 
-  _removeCategoryItemReview(
+  Future<void> _removeCategoryItemReview(
     RemoveCategoryItemReviewEvent event,
     Emitter<CategoryItemState> emit,
   ) async {

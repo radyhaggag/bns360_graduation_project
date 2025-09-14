@@ -32,7 +32,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   bool isProfileImageCleared = false;
 
-  _changeProfileImage(
+  Future<void> _changeProfileImage(
     ChangeProfileImageEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -47,7 +47,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     }
   }
 
-  _clearProfileImage(
+  Future<void> _clearProfileImage(
     ClearProfileImageEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -56,7 +56,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileImageChangedState());
   }
 
-  _editProfileData(
+  Future<void> _editProfileData(
     EditProfileDataEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -82,7 +82,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     );
   }
 
-  _getProfile(
+  Future<void> _getProfile(
     GetProfileEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -107,7 +107,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     );
   }
 
-  _changePassword(
+  Future<void> _changePassword(
     ChangePasswordEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -132,7 +132,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     );
   }
 
-  _signOut(
+  Future<void> _signOut(
     SignOutEvent event,
     Emitter<ProfileState> emit,
   ) async {
@@ -149,7 +149,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     );
   }
 
-  _deleteAccount(
+  Future<void> _deleteAccount(
     DeleteAccountEvent event,
     Emitter<ProfileState> emit,
   ) async {

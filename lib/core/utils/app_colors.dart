@@ -28,13 +28,13 @@ abstract class AppColors {
   static const white25 = Color(0x40ffffff);
 
   ///
-  static backgroundColor(BuildContext context) {
+  static Color? backgroundColor(BuildContext context) {
     return context.brightness == Brightness.light
         ? context.theme.listTileTheme.tileColor
         : context.theme.scaffoldBackgroundColor;
   }
 
-  static foregroundColor(BuildContext context) {
+  static Color? foregroundColor(BuildContext context) {
     return context.brightness != Brightness.light
         ? context.theme.listTileTheme.tileColor
         : context.theme.scaffoldBackgroundColor;

@@ -19,7 +19,10 @@ class _ItemStatusWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AppSvg.clock,
-          color: context.theme.cardColor,
+          colorFilter: ColorFilter.mode(
+            context.theme.cardColor,
+            BlendMode.srcIn,
+          ),
         ),
         const SizedBox(width: 15),
         Text(

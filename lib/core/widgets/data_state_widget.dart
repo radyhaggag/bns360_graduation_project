@@ -39,7 +39,7 @@ class DataStateWidget extends StatelessWidget {
             width: context.width,
             height: 150.r,
             child: CenterProgressIndicator(
-              color: context.theme.indicatorColor,
+              color: context.theme.tabBarTheme.indicatorColor,
             ),
           );
     } else {

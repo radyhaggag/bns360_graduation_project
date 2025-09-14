@@ -61,12 +61,14 @@ class FavoriteCategoriesBuilder extends StatelessWidget {
                       isBelongToMe: item.isBelongToMe,
                     ),
                   )
-                      .then((value) {
-                    context
-                        .read<FavoritesBloc>()
-                        .add(GetFavoriteCategoriesEvent(
-                          skipPreviousCheck: false,
-                        ));
+                      .then((_) {
+                    if (context.mounted) {
+                      context
+                          .read<FavoritesBloc>()
+                          .add(GetFavoriteCategoriesEvent(
+                            skipPreviousCheck: false,
+                          ));
+                    }
                   });
                 },
                 isBusiness: true,

@@ -26,7 +26,7 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
 
   List<ReviewEntity> reviews = [];
 
-  _getCraftsmanReviews(
+  Future<void> _getCraftsmanReviews(
     GetCraftsmanReviewsEvent event,
     Emitter<CraftsmanState> emit,
   ) async {
@@ -45,7 +45,7 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
 
   ReviewSummaryEntity? reviewsSummary;
 
-  _getCraftsmanReviewSummary(
+  Future<void> _getCraftsmanReviewSummary(
     GetCraftsmanReviewSummaryEvent event,
     Emitter<CraftsmanState> emit,
   ) async {
@@ -64,7 +64,7 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
 
   CraftsmanEntity? craftsman;
 
-  _getCraftsman(
+  Future<void> _getCraftsman(
     GetCraftsmanEvent event,
     Emitter<CraftsmanState> emit,
   ) async {
@@ -81,7 +81,7 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
     );
   }
 
-  _setCraftsmanEntity(
+  void _setCraftsmanEntity(
     SetCraftsmanEntityEvent event,
     Emitter<CraftsmanState> emit,
   ) {
@@ -121,7 +121,7 @@ class CraftsmanBloc extends Bloc<CraftsmanEvent, CraftsmanState> {
     );
   }
 
-  _removeCraftsmanReview(
+  Future<void> _removeCraftsmanReview(
     RemoveCraftsmanReviewEvent event,
     Emitter<CraftsmanState> emit,
   ) async {

@@ -24,7 +24,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     on<GetCategoryItemsByIdEvent>(_getCategoryItemsById);
   }
 
-  initListener() {
+  void initListener() {
     searchController.addListener(() {
       if ((categoryItems ?? []).isEmpty) return;
       add(SearchOnCategoryItems(categoryId: categoryItems!.first.id));
@@ -33,7 +33,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
 
   List<CategoryEntity>? categories;
 
-  _getCatteries(
+  Future<void> _getCatteries(
     GetCategoriesEvent event,
     Emitter<CategoriesState> emit,
   ) async {
@@ -64,7 +64,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   bool isSearchEnabled = false;
   final searchController = TextEditingController();
 
-  _toggleSearchIcon(
+  void _toggleSearchIcon(
     ToggleSearchIcon event,
     Emitter<CategoriesState> emit,
   ) {
@@ -72,7 +72,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
   }
 
-  _searchOnCategoryItems(
+  Future<void> _searchOnCategoryItems(
     SearchOnCategoryItems event,
     Emitter<CategoriesState> emit,
   ) async {
@@ -95,7 +95,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
     emit(GetCategoryItemsSuccessState(items: searchResults));
   }
 
-  _getCategoryItemsById(
+  Future<void> _getCategoryItemsById(
     GetCategoryItemsByIdEvent event,
     Emitter<CategoriesState> emit,
   ) async {

@@ -77,7 +77,10 @@ class _EditProfileBottomSectionState extends State<EditProfileBottomSection> {
               suffixIcon: SvgPicture.asset(
                 AppSvg.edit,
                 fit: BoxFit.scaleDown,
-                color: context.theme.hoverColor,
+                colorFilter: ColorFilter.mode(
+                  context.theme.primaryColor,
+                  BlendMode.srcIn,
+                ),
               ),
               fontSize: AppFontSize.subTitle,
               heightBetweenLabelAndField: 15,
@@ -91,7 +94,10 @@ class _EditProfileBottomSectionState extends State<EditProfileBottomSection> {
               suffixIcon: SvgPicture.asset(
                 AppSvg.edit,
                 fit: BoxFit.scaleDown,
-                color: context.theme.hoverColor,
+                colorFilter: ColorFilter.mode(
+                  context.theme.hoverColor,
+                  BlendMode.srcIn,
+                ),
               ),
               fontSize: AppFontSize.subTitle,
               heightBetweenLabelAndField: 15,

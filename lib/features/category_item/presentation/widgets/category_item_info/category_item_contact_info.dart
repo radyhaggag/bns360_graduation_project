@@ -77,7 +77,10 @@ class _ContactRow extends StatelessWidget {
           else if (iconPath != null)
             SvgPicture.asset(
               iconPath!,
-              color: context.theme.cardColor,
+              colorFilter: ColorFilter.mode(
+                context.theme.cardColor,
+                BlendMode.srcIn,
+              ),
             ),
           const SizedBox(width: 15),
           Flexible(

@@ -19,7 +19,7 @@ class ContactWithBottomSheet extends StatelessWidget {
   final String? whatsapp;
   final String? phoneNumber;
 
-  static show({
+  static void show({
     required BuildContext context,
     String? whatsapp,
     String? phoneNumber,

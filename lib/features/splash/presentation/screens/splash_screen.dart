@@ -28,7 +28,11 @@ class SplashScreen extends StatelessWidget {
   void _navigateToNext(BuildContext context, String route) {
     Future.delayed(
       const Duration(seconds: 2),
-      () => Navigator.of(context).popAndPushNamed(route),
+      () {
+        if (context.mounted) {
+          return Navigator.of(context).popAndPushNamed(route);
+        }
+      },
     );
   }
 }

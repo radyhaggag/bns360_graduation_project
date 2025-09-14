@@ -1,5 +1,4 @@
 import '../../../helpers/api_images_helper.dart';
-
 import '../../entities/profile/profile_entity.dart';
 
 class ProfileModel extends ProfileEntity {

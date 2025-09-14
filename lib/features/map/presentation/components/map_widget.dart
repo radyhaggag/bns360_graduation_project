@@ -51,7 +51,7 @@ class _MapWidgetState extends State<MapWidget> {
     searchController = TextEditingController();
   }
 
-  _getCurrentLocation() async {
+  Future<void> _getCurrentLocation() async {
     currentLocation ??= await LocationHelper.determinePosition(context);
     if (currentLocation != null) {
       selectedPoint = LatLng(

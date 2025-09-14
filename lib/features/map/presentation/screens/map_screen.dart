@@ -73,7 +73,7 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  _getCurrentLocation() async {
+  Future<void> _getCurrentLocation() async {
     currentLocation ??= await LocationHelper.determinePosition(context);
     if (currentLocation != null) {
       _onTap(
@@ -89,7 +89,7 @@ class _MapScreenState extends State<MapScreen> {
     super.dispose();
   }
 
-  _onTap(double lat, double lng) {
+  void _onTap(double lat, double lng) {
     if (widget.mapParams?.isReadOnly == true) return;
     selectedPoint = LatLng(lat, lng);
 
@@ -113,7 +113,7 @@ class _MapScreenState extends State<MapScreen> {
     );
   }
 
-  _onMapCreated(GoogleMapController controller) async {
+  Future<void> _onMapCreated(GoogleMapController controller) async {
     if (!_completer.isCompleted) {
       _completer.complete(controller);
     }

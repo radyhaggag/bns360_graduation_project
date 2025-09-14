@@ -22,7 +22,7 @@ class AddReviewBottomSheet extends StatefulWidget {
   final String? initialReview;
   final double? initialRating;
 
-  static show({
+  static void show({
     required BuildContext context,
     required AddReviewCallback addReviewCallback,
     String? initialReview,
@@ -50,7 +50,7 @@ class AddReviewBottomSheet extends StatefulWidget {
 
 class _AddReviewBottomSheetState extends State<AddReviewBottomSheet> {
   double? rate;
-  onRatingUpdate(double value) => setState(() => rate = value);
+  void onRatingUpdate(double value) => setState(() => rate = value);
   final reviewController = TextEditingController();
 
   @override

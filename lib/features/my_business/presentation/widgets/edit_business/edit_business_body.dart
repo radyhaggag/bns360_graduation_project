@@ -96,7 +96,7 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
       'from': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: TimeDuration.convertTo12Format(
           widget.categoryItemEntity.opening,
@@ -105,7 +105,7 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
       'to': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: TimeDuration.convertTo12Format(
           widget.categoryItemEntity.closing,
@@ -114,7 +114,7 @@ class _EditBusinessBodyState extends State<EditBusinessBody> {
       'phoneNumber': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: phoneOne,
       ),

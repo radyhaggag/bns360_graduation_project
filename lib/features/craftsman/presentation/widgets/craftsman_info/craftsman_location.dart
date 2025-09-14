@@ -12,7 +12,10 @@ class _CraftsmanLocation extends StatelessWidget {
       children: [
         SvgPicture.asset(
           AppSvg.marker,
-          color: context.theme.cardColor.withOpacity(0.4),
+          colorFilter: ColorFilter.mode(
+            context.theme.cardColor.withOpacity(0.4),
+            BlendMode.srcIn,
+          ),
           width: 20.r,
           height: 20.r,
         ),

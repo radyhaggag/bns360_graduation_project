@@ -27,7 +27,7 @@ class RequirementWidget extends StatelessWidget {
   final bool withTranslation;
   final Language language;
 
-  _onTap(BuildContext context) {
+  void _onTap(BuildContext context) {
     ConfirmationDialog.show(
       context,
       onConfirm: () {
@@ -89,7 +89,10 @@ class RequirementWidget extends StatelessWidget {
                 },
                 child: SvgPicture.asset(
                   AppSvg.edit,
-                  color: context.theme.cardColor,
+                  colorFilter: ColorFilter.mode(
+                    context.theme.cardColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
           ],

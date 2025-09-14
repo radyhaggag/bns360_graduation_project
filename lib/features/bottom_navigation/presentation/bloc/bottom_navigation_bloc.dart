@@ -31,7 +31,7 @@ class BottomNavBarBloc extends Bloc<BottomNavBarEvent, BottomNavBarState> {
 
   Widget get currentView => views[bottomNavbarIndex];
 
-  _changeBottomNavbarIndex(
+  void _changeBottomNavbarIndex(
     ChangeBottomNavbarIndex event,
     Emitter<BottomNavBarState> emit,
   ) {

@@ -15,7 +15,7 @@ import 'language_item_tile.dart';
 class ChangeLanguageBottomSheet extends StatelessWidget {
   const ChangeLanguageBottomSheet({super.key});
 
-  static show({
+  static void show({
     required BuildContext context,
     required SettingsBloc settingsBloc,
   }) {

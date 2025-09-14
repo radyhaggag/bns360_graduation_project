@@ -60,27 +60,27 @@ class _EditPropertyBodyState extends State<EditPropertyBody> {
       'area': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: widget.propertyEntity.area.toInt().toString(),
       ),
       'price': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
         value: widget.propertyEntity.price.toInt().toString(),
       ),
       'phoneNumber': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
     });

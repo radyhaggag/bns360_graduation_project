@@ -20,7 +20,7 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
 
   List<JobEntity> myPostsJobs = [];
 
-  _getMyPostsJobs(
+  Future<void> _getMyPostsJobs(
     GetMyPostsJobsEvent event,
     Emitter<MyPostsState> emit,
   ) async {
@@ -39,7 +39,7 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
 
   List<PropertyEntity> myPostsProperties = [];
 
-  _getMyPostsProperties(
+  Future<void> _getMyPostsProperties(
     GetMyPostsPropertiesEvent event,
     Emitter<MyPostsState> emit,
   ) async {
@@ -58,7 +58,7 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
 
   int activeTabIndex = 0;
 
-  _changeCurrentView(
+  void _changeCurrentView(
     ChangeCurrentView event,
     Emitter<MyPostsState> emit,
   ) {
@@ -73,7 +73,7 @@ class MyPostsBloc extends Bloc<MyPostsEvent, MyPostsState> {
     emit(CurrentViewChangedState(index: activeTabIndex));
   }
 
-  _deletePostEvent(
+  Future<void> _deletePostEvent(
     DeletePostEvent event,
     Emitter<MyPostsState> emit,
   ) async {

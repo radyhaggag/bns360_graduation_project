@@ -63,7 +63,10 @@ class SendMessageIconBtn extends StatelessWidget {
                     context.currentLanguage == Language.arabic ? 2 : 0,
                 child: SvgPicture.asset(
                   AppSvg.sendArrow,
-                  color: AppColors.white,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.white,
+                    BlendMode.srcIn,
+                  ),
                   width: 30.r,
                   height: 30.r,
                 ),
@@ -75,7 +78,7 @@ class SendMessageIconBtn extends StatelessWidget {
     );
   }
 
-  _sendMessage({
+  void _sendMessage({
     required BuildContext context,
     required String content,
     required ParticipantEntity otherParticipant,

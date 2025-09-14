@@ -32,7 +32,7 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     return HiveBoxes.savedProperties.values.toList();
   }
 
-  _getSavedJobs(
+  Future<void> _getSavedJobs(
     GetSavedJobsEvent event,
     Emitter<SavedState> emit,
   ) async {
@@ -52,7 +52,7 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     );
   }
 
-  _getSavedProperties(
+  Future<void> _getSavedProperties(
     GetSavedPropertiesEvent event,
     Emitter<SavedState> emit,
   ) async {
@@ -74,7 +74,7 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
 
   int activeTabIndex = 0;
 
-  _changeCurrentView(
+  void _changeCurrentView(
     ChangeCurrentView event,
     Emitter<SavedState> emit,
   ) {
@@ -89,7 +89,7 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     emit(CurrentViewChanged(index: activeTabIndex));
   }
 
-  _saveJob(SaveJobEvent event, Emitter<SavedState> emit) async {
+  Future<void> _saveJob(SaveJobEvent event, Emitter<SavedState> emit) async {
     emit(SaveJobLoadingState(jobId: event.jobId));
 
     final res = await savedRepo.saveJob(event.jobId);
@@ -105,7 +105,7 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     );
   }
 
-  _saveProperty(SavePropertyEvent event, Emitter<SavedState> emit) async {
+  Future<void> _saveProperty(SavePropertyEvent event, Emitter<SavedState> emit) async {
     emit(SavePropertyLoadingState(propertyId: event.propertyId));
 
     final res = await savedRepo.saveProperty(event.propertyId);
@@ -121,7 +121,7 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     );
   }
 
-  _unSaveJob(UnSaveJobEvent event, Emitter<SavedState> emit) async {
+  Future<void> _unSaveJob(UnSaveJobEvent event, Emitter<SavedState> emit) async {
     emit(UnSaveJobLoadingState(jobId: event.jobId));
 
     final res = await savedRepo.unSaveJob(event.jobId);
@@ -140,7 +140,7 @@ class SavedBloc extends Bloc<SavedEvent, SavedState> {
     );
   }
 
-  _unSaveProperty(UnSavePropertyEvent event, Emitter<SavedState> emit) async {
+  Future<void> _unSaveProperty(UnSavePropertyEvent event, Emitter<SavedState> emit) async {
     emit(UnSavePropertyLoadingState(propertyId: event.propertyId));
 
     final res = await savedRepo.unSaveProperty(event.propertyId);

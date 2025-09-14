@@ -25,7 +25,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 
   ValueNotifier<bool> isLanguageChanged = ValueNotifier(false);
 
-  _selectLanguageToChange(
+  void _selectLanguageToChange(
     SelectLanguageToChangeEvent event,
     Emitter<SettingsState> emit,
   ) {
@@ -38,7 +38,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     emit(LanguageSelectedState(language: _selectedLanguage!));
   }
 
-  _changeAppLanguage(
+  void _changeAppLanguage(
     ChangeAppLanguageEvent event,
     Emitter<SettingsState> emit,
   ) {

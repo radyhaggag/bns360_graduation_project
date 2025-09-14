@@ -17,7 +17,7 @@ class AddRequirementDialog extends StatefulWidget {
   final void Function(String)? onAdd;
   final String? initialValue;
 
-  static show({
+  static void show({
     required BuildContext context,
     required void Function(String)? onAdd,
     String? initialValue,

@@ -39,25 +39,25 @@ class _AddJobBodyState extends State<AddJobBody> {
       'workHours': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'salary': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'phoneNumber': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'whatsapp': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
     });

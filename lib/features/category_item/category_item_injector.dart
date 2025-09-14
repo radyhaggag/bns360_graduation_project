@@ -5,7 +5,7 @@ import 'data/repositories/category_item_repo_impl.dart';
 import 'domain/repositories/category_item_repo.dart';
 import 'presentation/bloc/category_item_bloc.dart';
 
-initCategoryItem() {
+void initCategoryItem() {
   // Datasources
   sl.registerLazySingleton<CategoryItemRemoteDataSource>(
     () => CategoryItemRemoteDataSourceImpl(

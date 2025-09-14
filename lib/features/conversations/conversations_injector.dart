@@ -5,7 +5,7 @@ import 'data/repositories/conversations_repo_impl.dart';
 import 'domain/repositories/conversations_repo.dart';
 import 'presentation/bloc/conversations_bloc.dart';
 
-initConversations() {
+void initConversations() {
   // Datasources
   sl.registerLazySingleton<ConversationsRemoteDataSource>(
     () => ConversationsRemoteDataSourceImpl(),

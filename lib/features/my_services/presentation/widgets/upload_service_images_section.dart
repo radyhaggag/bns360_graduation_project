@@ -44,7 +44,10 @@ class UploadServiceImagesSection extends StatelessWidget {
               leading: isRemoveEnabled
                   ? SvgPicture.asset(
                       AppSvg.deletePost,
-                      color: AppColors.white,
+                      colorFilter: const ColorFilter.mode(
+                        AppColors.white,
+                        BlendMode.srcIn,
+                      ),
                     )
                   : const Icon(Icons.file_upload_outlined),
               backgroundColor: isRemoveEnabled

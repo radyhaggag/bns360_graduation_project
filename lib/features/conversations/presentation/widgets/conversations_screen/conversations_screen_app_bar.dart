@@ -81,7 +81,7 @@ class ConversationsScreenAppBar extends StatelessWidget
     );
   }
 
-  _onSelectBusiness(BuildContext context, ParticipantEntity item) {
+  void _onSelectBusiness(BuildContext context, ParticipantEntity item) {
     Navigator.pop(context);
 
     context.read<ConversationsBloc>().add(
@@ -95,7 +95,7 @@ class ConversationsScreenAppBar extends StatelessWidget
         );
   }
 
-  _onSelectCraftsman(BuildContext context, ParticipantEntity item) {
+  void _onSelectCraftsman(BuildContext context, ParticipantEntity item) {
     Navigator.pop(context);
 
     context.read<ConversationsBloc>().add(

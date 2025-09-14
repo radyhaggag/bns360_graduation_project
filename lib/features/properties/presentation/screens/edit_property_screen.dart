@@ -24,7 +24,9 @@ class EditPropertyScreen extends StatelessWidget {
           CommonDialogs.showSuccessDialog(
             context,
             message: S.of(context).edit_property_success,
-          ).then((_) => Navigator.pop(context));
+          ).then((_) {
+            if (context.mounted) Navigator.pop(context);
+          });
         }
       },
       child: Scaffold(

@@ -79,10 +79,10 @@ abstract class UpdateHelper {
   }
 }
 
-_onFailure() {
+void _onFailure() {
   showToast(S.current.app_update_failed, ToastType.error);
 }
 
-_onSuccess() {
+void _onSuccess() {
   showToast(S.current.app_update_success, ToastType.success);
 }

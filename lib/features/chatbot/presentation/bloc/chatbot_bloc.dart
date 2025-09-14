@@ -27,7 +27,7 @@ class ChatbotBloc extends Bloc<ChatbotEvent, ChatbotState> {
   StreamSubscription<List<MessageEntity>>? _messagesStream;
   Stream<List<MessageEntity>>? messagesStream;
 
-  _getChatbotMessages(
+  Future<void> _getChatbotMessages(
     ChatbotGetMessages event,
     Emitter<ChatbotState> emit,
   ) async {
@@ -57,7 +57,7 @@ class ChatbotBloc extends Bloc<ChatbotEvent, ChatbotState> {
   final textInputController = TextEditingController();
   final ScrollController scrollController = ScrollController();
 
-  _updateChatbotMessages(
+  void _updateChatbotMessages(
     UpdateChatbotMessagesEvent event,
     Emitter<ChatbotState> emit,
   ) {
@@ -80,7 +80,7 @@ class ChatbotBloc extends Bloc<ChatbotEvent, ChatbotState> {
     textInputController.dispose();
   }
 
-  _sendChatbotMessage(
+  Future<void> _sendChatbotMessage(
     SendChatbotMessageEvent event,
     Emitter<ChatbotState> emit,
   ) async {

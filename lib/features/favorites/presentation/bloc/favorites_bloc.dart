@@ -33,7 +33,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
   List<CategoryItemEntity> favoriteCategories = [];
 
-  _getFavoriteCategories(
+  Future<void> _getFavoriteCategories(
     GetFavoriteCategoriesEvent event,
     Emitter<FavoritesState> emit,
   ) async {
@@ -57,7 +57,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
   List<CraftsmanEntity> favoriteCraftsmen = [];
 
-  _getFavoriteCraftsmen(
+  Future<void> _getFavoriteCraftsmen(
     GetFavoriteCraftsmenEvent event,
     Emitter<FavoritesState> emit,
   ) async {
@@ -81,7 +81,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
 
   int activeTabIndex = 0;
 
-  _changeCurrentView(
+  void _changeCurrentView(
     ChangeCurrentView event,
     Emitter<FavoritesState> emit,
   ) {
@@ -96,7 +96,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     emit(CurrentViewChanged(index: activeTabIndex));
   }
 
-  _addCategoryItemToFavorite(
+  Future<void> _addCategoryItemToFavorite(
     AddCategoryItemToFavorite event,
     Emitter<FavoritesState> emit,
   ) async {
@@ -117,7 +117,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     );
   }
 
-  _removeCategoryItemFromFavorite(
+  Future<void> _removeCategoryItemFromFavorite(
     RemoveCategoryItemFromFavorite event,
     Emitter<FavoritesState> emit,
   ) async {
@@ -145,7 +145,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     );
   }
 
-  _addCraftsmanToFavorite(
+  Future<void> _addCraftsmanToFavorite(
     AddCraftsmanToFavorite event,
     Emitter<FavoritesState> emit,
   ) async {
@@ -166,7 +166,7 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     );
   }
 
-  _removeCraftsmanFromFavorite(
+  Future<void> _removeCraftsmanFromFavorite(
     RemoveCraftsmanFromFavorite event,
     Emitter<FavoritesState> emit,
   ) async {

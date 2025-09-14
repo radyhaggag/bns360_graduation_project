@@ -23,7 +23,7 @@ class _VerifyOtpCodeFormState extends State<VerifyOtpCodeForm> {
   String otp = "";
   Color borderColor = AppColors.primary;
 
-  getPinTheme(Color borderColor) => PinTheme(
+  PinTheme getPinTheme(Color borderColor) => PinTheme(
         shape: PinCodeFieldShape.box,
         inactiveColor: context.theme.primaryColor.withOpacity(.7),
         borderRadius: BorderRadius.circular(8),

@@ -68,7 +68,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  _sendResetPasswordCode(
+  Future<void> _sendResetPasswordCode(
     SendResetPasswordCodeEvent event,
     Emitter<AuthState> emit,
   ) async {
@@ -121,12 +121,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   UserType? userType;
 
-  _changeUserType(ChangeUserTypeEvent event, Emitter<AuthState> emit) {
+  void _changeUserType(ChangeUserTypeEvent event, Emitter<AuthState> emit) {
     userType = event.userType;
     emit(UserTypeChanged(userType: event.userType));
   }
 
-  _continueAsGuest(ContinueAsGuestEvent event, Emitter<AuthState> emit) async {
+  Future<void> _continueAsGuest(ContinueAsGuestEvent event, Emitter<AuthState> emit) async {
     emit(LoginLoadingState());
 
     final res = await authRepo.continueAsGuest();
@@ -140,7 +140,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  _sendConfirmationEmail(
+  Future<void> _sendConfirmationEmail(
     SendConfirmationEmailEvent event,
     Emitter<AuthState> emit,
   ) async {

@@ -39,7 +39,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   final List<File> _pickedImages = [];
   List<File> get pickedImages => _pickedImages;
 
-  _pickServiceImages(
+  Future<void> _pickServiceImages(
     PickServiceImagesEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -65,7 +65,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     }
   }
 
-  _removeServiceImages(
+  void _removeServiceImages(
     RemovePickedServiceImageEvent event,
     Emitter<MyServicesState> emit,
   ) {
@@ -76,7 +76,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   List<String> networkImages = [];
   String? mainNetworkImage;
 
-  _clearServiceImages(
+  void _clearServiceImages(
     ClearServiceImagesEvent event,
     Emitter<MyServicesState> emit,
   ) {
@@ -85,7 +85,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     emit(ServiceImagesUpdatedState());
   }
 
-  _initNetworkServiceImage(
+  void _initNetworkServiceImage(
     InitNetworkServiceImageEvent event,
     Emitter<MyServicesState> emit,
   ) {
@@ -96,7 +96,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
 
   List<CraftsmanEntity> myServicesItems = [];
 
-  _getMyServices(
+  Future<void> _getMyServices(
     GetMyServicesEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -115,7 +115,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
 
   List<CraftEntity> serviceCategories = [];
 
-  _getServiceTypes(
+  Future<void> _getServiceTypes(
     GetServiceTypesEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -132,7 +132,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     );
   }
 
-  _addService(
+  Future<void> _addService(
     AddServiceEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -166,7 +166,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     );
   }
 
-  _updateService(
+  Future<void> _updateService(
     UpdateServiceEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -204,7 +204,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
 
   CraftEntity? selectedServiceCraft;
 
-  _selectServiceCategory(
+  Future<void> _selectServiceCategory(
     SelectServiceCategoryEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -218,7 +218,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
 
   WorkDay holiday = WorkDay.friday;
 
-  _selectHolidayWorkday(
+  Future<void> _selectHolidayWorkday(
     SelectServiceHolidayEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -230,7 +230,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   File? _mainServiceImage;
   File? get mainServiceImage => _mainServiceImage;
 
-  _clearMainServiceImageE(
+  void _clearMainServiceImageE(
     ClearMainServiceImageEvent event,
     Emitter<MyServicesState> emit,
   ) {
@@ -239,7 +239,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     emit(MainServiceImageUpdatedState());
   }
 
-  _addMainServiceImageE(
+  Future<void> _addMainServiceImageE(
     AddMainServiceImageEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -256,7 +256,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
     return _mainServiceImage != null && pickedImages.isNotEmpty;
   }
 
-  _deleteMyServices(
+  Future<void> _deleteMyServices(
     DeleteMyServicesEvent event,
     Emitter<MyServicesState> emit,
   ) async {
@@ -279,7 +279,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
 
   bool isAlwaysWorking = false;
 
-  _toggleIsAlwaysWorking(
+  void _toggleIsAlwaysWorking(
     SetIsAlwaysAvailableValueEvent event,
     Emitter<MyServicesState> emit,
   ) {
@@ -290,7 +290,7 @@ class MyServicesBloc extends Bloc<MyServicesEvent, MyServicesState> {
   TimeDuration fromTimeDuration = TimeDuration.am;
   TimeDuration toTimeDuration = TimeDuration.pm;
 
-  _setTimeDuration(
+  void _setTimeDuration(
     SetTimeDurationEvent event,
     Emitter<MyServicesState> emit,
   ) {

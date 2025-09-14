@@ -42,19 +42,19 @@ class _AddServiceBodyState extends State<AddServiceBody> {
       'from': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'to': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'phoneNumber': FormControl<String>(
         validators: [
           Validators.required,
-          Validators.number,
+          Validators.number(),
         ],
       ),
       'phoneNumber2': FormControl<String>(),

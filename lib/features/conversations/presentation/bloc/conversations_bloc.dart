@@ -43,7 +43,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
 
   bool get isMessagesEmpty => messages.isEmpty;
 
-  _sendMessage(
+  Future<void> _sendMessage(
     SendMessageEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -94,7 +94,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
 
   StreamSubscription? _conversationsStream;
 
-  _getConversations(
+  Future<void> _getConversations(
     GetConversationsEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -120,7 +120,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     );
   }
 
-  _updateConversations(
+  void _updateConversations(
     UpdateConversationsEvent event,
     Emitter<ConversationsState> emit,
   ) {
@@ -135,7 +135,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   StreamSubscription<List<MessageEntity>>? _messagesStream;
   Stream<List<MessageEntity>>? messagesStream;
 
-  _getConversationMessages(
+  Future<void> _getConversationMessages(
     GetConversationMessagesEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -162,7 +162,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     );
   }
 
-  _updateConversationMessages(
+  void _updateConversationMessages(
     UpdateConversationMessagesEvent event,
     Emitter<ConversationsState> emit,
   ) {
@@ -178,12 +178,12 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     emit(GetConversationMessagesSuccessState(messages: messages));
   }
 
-  clearCurrentSession() {
+  void clearCurrentSession() {
     _messages = [];
     _messagesStream?.cancel();
   }
 
-  _clearCurrentSession(
+  void _clearCurrentSession(
     ClearCurrentSessionEvent event,
     Emitter<ConversationsState> emit,
   ) {
@@ -194,7 +194,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   File? _pickedFile;
   File? get pickedFile => _pickedFile;
 
-  _pickImage(
+  Future<void> _pickImage(
     PicKMessageImageEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -208,7 +208,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     }
   }
 
-  _removePickedImage(
+  void _removePickedImage(
     RemovePickedImageEvent event,
     Emitter<ConversationsState> emit,
   ) {
@@ -216,7 +216,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     emit(MessagePickedImageRemovedSuccessState());
   }
 
-  _resetUnreadCountForCurrentUser(
+  Future<void> _resetUnreadCountForCurrentUser(
     ResetCurrentUnreadCountEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -236,7 +236,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
   final searchController = TextEditingController();
   final ScrollController scrollController = ScrollController();
 
-  initSearchListener() {
+  void initSearchListener() {
     searchController.addListener(() {
       final value = searchController.text.toLowerCase();
       _conversationsSearchResult = _allConversations
@@ -271,7 +271,9 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     if ((containARReversed) || (containENReversed)) return true;
 
     if (identical(containARReversed, value) ||
-        identical(containENReversed, value)) return true;
+        identical(containENReversed, value)) {
+      return true;
+    }
 
     return false;
   }
@@ -286,7 +288,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     return super.close();
   }
 
-  _deleteMessage(
+  Future<void> _deleteMessage(
     DeleteMessageEvent event,
     Emitter<ConversationsState> emit,
   ) async {
@@ -301,7 +303,7 @@ class ConversationsBloc extends Bloc<ConversationsEvent, ConversationsState> {
     return customParticipant ?? AppProvider().getProfile()!.toParticipant();
   }
 
-  _setCurrentParticipant(
+  void _setCurrentParticipant(
     SetCurrentParticipantEvent event,
     Emitter<ConversationsState> emit,
   ) {

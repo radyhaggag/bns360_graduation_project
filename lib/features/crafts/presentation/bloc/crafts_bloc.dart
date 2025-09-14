@@ -21,7 +21,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     on<SearchOnCrafts>(_searchOnCrafts);
   }
 
-  initListener() {
+  void initListener() {
     searchController.addListener(() {
       if ((craftsmen ?? []).isEmpty) return;
       add(SearchOnCrafts());
@@ -57,7 +57,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     );
   }
 
-  _getCrafts(
+  Future<void> _getCrafts(
     GetCraftsEvent event,
     Emitter<CraftsState> emit,
   ) async {
@@ -78,7 +78,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     );
   }
 
-  _getCraftItemsById(
+  Future<void> _getCraftItemsById(
     GetCraftItemsByIdEvent event,
     Emitter<CraftsState> emit,
   ) async {
@@ -111,7 +111,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
   bool isSearchEnabled = false;
   final searchController = TextEditingController();
 
-  _toggleSearchIcon(
+  void _toggleSearchIcon(
     ToggleSearchIcon event,
     Emitter<CraftsState> emit,
   ) {
@@ -122,7 +122,7 @@ class CraftsBloc extends Bloc<CraftsEvent, CraftsState> {
     emit(SearchIconToggled(isSearchEnabled: isSearchEnabled));
   }
 
-  _searchOnCrafts(
+  Future<void> _searchOnCrafts(
     SearchOnCrafts event,
     Emitter<CraftsState> emit,
   ) async {

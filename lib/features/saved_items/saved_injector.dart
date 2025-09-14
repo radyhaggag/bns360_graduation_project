@@ -5,7 +5,7 @@ import 'data/repositories/saved_repo_impl.dart';
 import 'domain/repositories/saved_repo.dart';
 import 'presentation/bloc/saved_bloc.dart';
 
-initSaved() {
+void initSaved() {
   // Datasources
   sl.registerLazySingleton<SavedRemoteDataSource>(
     () => SavedRemoteDataSourceImpl(sl()),

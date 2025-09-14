@@ -106,7 +106,12 @@ class _BuildEmptyListIcon extends StatelessWidget {
       AppSvg.emptyList,
       width: iconSize ?? 64.r,
       height: iconSize ?? 64.r,
-      color: iconColor,
+      colorFilter: iconColor != null
+          ? ColorFilter.mode(
+              iconColor!,
+              BlendMode.srcIn,
+            )
+          : null,
     );
   }
 }

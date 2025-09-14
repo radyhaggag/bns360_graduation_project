@@ -41,7 +41,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   double? businessLat;
   double? businessLng;
 
-  _selectPropertyLocation(
+  void _selectPropertyLocation(
     SelectBusinessLocationEvent event,
     Emitter<MyBusinessState> emit,
   ) {
@@ -59,7 +59,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   final List<File> _pickedImages = [];
   List<File> get pickedImages => _pickedImages;
 
-  _pickBusinessImages(
+  Future<void> _pickBusinessImages(
     PickBusinessImagesEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -85,7 +85,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     }
   }
 
-  _removeBusinessImages(
+  void _removeBusinessImages(
     RemovePickedBusinessImageEvent event,
     Emitter<MyBusinessState> emit,
   ) {
@@ -96,7 +96,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   List<String> networkImages = [];
   String? mainNetworkImage;
 
-  _clearBusinessImages(
+  void _clearBusinessImages(
     ClearBusinessImagesEvent event,
     Emitter<MyBusinessState> emit,
   ) {
@@ -105,7 +105,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     emit(BusinessImagesUpdatedState());
   }
 
-  _initNetworkBusinessImage(
+  void _initNetworkBusinessImage(
     InitNetworkBusinessImageEvent event,
     Emitter<MyBusinessState> emit,
   ) {
@@ -116,7 +116,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
 
   List<CategoryItemEntity> myBusinessItems = [];
 
-  _getMyBusiness(
+  Future<void> _getMyBusiness(
     GetMyBusinessEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -135,7 +135,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
 
   List<CategoryEntity> businessCategories = [];
 
-  _getBusinessTypes(
+  Future<void> _getBusinessTypes(
     GetBusinessTypesEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -152,7 +152,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     );
   }
 
-  _addBusiness(
+  Future<void> _addBusiness(
     AddBusinessEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -185,7 +185,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     );
   }
 
-  _updateBusiness(
+  Future<void> _updateBusiness(
     UpdateBusinessEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -225,7 +225,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
 
   CategoryEntity? selectedBusinessCategory;
 
-  _selectBusinessCategory(
+  Future<void> _selectBusinessCategory(
     SelectBusinessCategoryEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -242,7 +242,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   File? _mainBusinessImage;
   File? get mainBusinessImage => _mainBusinessImage;
 
-  _clearMainBusinessImageE(
+  void _clearMainBusinessImageE(
     ClearMainBusinessImageEvent event,
     Emitter<MyBusinessState> emit,
   ) {
@@ -251,7 +251,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     emit(MainBusinessImageUpdatedState());
   }
 
-  _addMainBusinessImageE(
+  Future<void> _addMainBusinessImageE(
     AddMainBusinessImageEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -268,7 +268,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
     return _mainBusinessImage != null && pickedImages.isNotEmpty;
   }
 
-  _deleteMyBusiness(
+  Future<void> _deleteMyBusiness(
     DeleteMyBusinessEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -289,7 +289,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
 
   WorkDay holiday = WorkDay.friday;
 
-  _selectBusinessHoliday(
+  Future<void> _selectBusinessHoliday(
     SelectBusinessHolidayEvent event,
     Emitter<MyBusinessState> emit,
   ) async {
@@ -300,7 +300,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
 
   bool isAlwaysWorking = false;
 
-  _setIsAlwaysWorking(
+  void _setIsAlwaysWorking(
     SetIsAlwaysAvailableValueEvent event,
     Emitter<MyBusinessState> emit,
   ) {
@@ -314,7 +314,7 @@ class MyBusinessBloc extends Bloc<MyBusinessEvent, MyBusinessState> {
   TimeDuration fromTimeDuration = TimeDuration.am;
   TimeDuration toTimeDuration = TimeDuration.pm;
 
-  _setTimeDuration(
+  void _setTimeDuration(
     SetTimeDurationEvent event,
     Emitter<MyBusinessState> emit,
   ) {

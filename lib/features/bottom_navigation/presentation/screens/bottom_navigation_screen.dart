@@ -25,7 +25,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
     MainPermissionHandler().requestLocationPermission(context);
   }
 
-  _fetchData() {
+  void _fetchData() {
     context.read<FavoritesBloc>()
       ..add(GetFavoriteCategoriesEvent(skipPreviousCheck: true))
       ..add(GetFavoriteCraftsmenEvent(skipPreviousCheck: true));

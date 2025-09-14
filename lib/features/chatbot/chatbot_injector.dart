@@ -4,7 +4,7 @@ import 'data/repositories/chatbot_repo_impl.dart';
 import 'domain/repositories/chatbot_repo.dart';
 import 'presentation/bloc/chatbot_bloc.dart';
 
-initChatbot() {
+void initChatbot() {
   sl.registerLazySingleton<ChatbotDataSource>(() {
     return ChatbotDataSourceImpl(
       apiConsumer: sl(),

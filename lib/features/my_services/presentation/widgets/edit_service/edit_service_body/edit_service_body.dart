@@ -80,7 +80,7 @@ class _EditServiceBodyState extends State<EditServiceBody> {
         'from': FormControl<String>(
           validators: [
             Validators.required,
-            Validators.number,
+            Validators.number(),
           ],
           value: TimeDuration.convertTo12Format(
             widget.craftsmanEntity.opening,
@@ -89,7 +89,7 @@ class _EditServiceBodyState extends State<EditServiceBody> {
         'to': FormControl<String>(
           validators: [
             Validators.required,
-            Validators.number,
+            Validators.number(),
           ],
           value: TimeDuration.convertTo12Format(
             widget.craftsmanEntity.closing,
@@ -98,7 +98,7 @@ class _EditServiceBodyState extends State<EditServiceBody> {
         'phoneNumber': FormControl<String>(
           validators: [
             Validators.required,
-            Validators.number,
+            Validators.number(),
           ],
           value: phoneOne,
         ),

@@ -103,7 +103,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  _onSelectBusiness(BuildContext context, ParticipantEntity item) {
+  void _onSelectBusiness(BuildContext context, ParticipantEntity item) {
     Navigator.pop(context);
 
     context.read<ConversationsBloc>().add(
@@ -119,7 +119,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
         );
   }
 
-  _onSelectCraftsman(BuildContext context, ParticipantEntity item) {
+  void _onSelectCraftsman(BuildContext context, ParticipantEntity item) {
     Navigator.pop(context);
 
     context.read<ConversationsBloc>().add(

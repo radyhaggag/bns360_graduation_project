@@ -17,7 +17,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<GetPlacesToExploreEvent>(_getPlacesToExplore);
   }
 
-  _getBanners(
+  Future<void> _getBanners(
     GetBannersEvent event,
     Emitter<HomeState> emit,
   ) async {
@@ -34,7 +34,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   List<CategoryItemInfoEntity> placesToExplore = [];
 
-  _getPlacesToExplore(
+  Future<void> _getPlacesToExplore(
     GetPlacesToExploreEvent event,
     Emitter<HomeState> emit,
   ) async {

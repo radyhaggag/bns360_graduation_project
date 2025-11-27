@@ -1,16 +1,6 @@
 # bns360_graduation_project
 
-A new Flutter project.
+- An application to provide essential services for expatriates in Beni Suef Governorate.
+- Tools: (Flutter BLoC, Firebase, Clean architecture, Google maps, Notifications, DIO for handle API requests)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![bns360](https://github.com/user-attachments/assets/28fec9e5-6920-4d8b-a5ea-2572d92b00ce)
